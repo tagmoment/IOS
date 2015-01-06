@@ -18,21 +18,29 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gpi-ca-Rk4" userLabel="InfoBar">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="76"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="PcB-DP-0eJ"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="PcB-DP-0eJ"/>
+                        </mask>
+                    </variation>
                 </view>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HAf-SR-1E8" userLabel="Canvas">
-                    <rect key="frame" x="0.0" y="44" width="600" height="356"/>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HAf-SR-1E8" userLabel="Canvas">
+                    <rect key="frame" x="0.0" y="76" width="600" height="320"/>
                     <color key="backgroundColor" red="0.99607843139999996" green="0.73725490199999999" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="320" id="b5A-1a-i7T"/>
+                    </constraints>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bMg-Z8-kyr" userLabel="ControlsContainer">
-                    <rect key="frame" x="0.0" y="400" width="600" height="200"/>
+                    <rect key="frame" x="0.0" y="396" width="600" height="204"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="200" id="8OX-Pp-wds"/>
+                        <constraint firstAttribute="height" constant="204" id="8OX-Pp-wds"/>
                     </constraints>
                 </view>
             </subviews>

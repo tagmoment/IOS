@@ -14,55 +14,80 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="204"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gRN-ga-yzb">
-                    <rect key="frame" x="0.0" y="100" width="600" height="100"/>
+                    <rect key="frame" x="0.0" y="136" width="600" height="68"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="100" id="N8y-AV-2V0"/>
+                        <constraint firstAttribute="height" constant="68" id="N8y-AV-2V0"/>
                     </constraints>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qdJ-F2-ov7">
                         <size key="itemSize" width="50" height="50"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <inset key="sectionInset" minX="8" minY="10" maxX="8" maxY="8"/>
                     </collectionViewFlowLayout>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="YH8-SP-kYj"/>
                         <outlet property="delegate" destination="-1" id="g8p-nm-J3c"/>
                     </connections>
                 </collectionView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5b-la-WW7">
-                    <rect key="frame" x="269" y="41" width="62" height="63"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" backgroundImage="take_button">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5b-la-WW7" userLabel="capture_button">
+                    <rect key="frame" x="234" y="0.0" width="132" height="132"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" backgroundImage="capture_button">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="takeButtonPressed:" destination="-1" eventType="touchUpInside" id="INf-gl-Lu0"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2A-Qz-l4B" userLabel="settings_button">
+                    <rect key="frame" x="30" y="42" width="50" height="50"/>
+                    <state key="normal" image="settingsicon_off">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" image="settingsicon_on"/>
+                    <state key="highlighted" image="settingsicon_on"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WEf-Ca-DjX" userLabel="switchcam button">
+                    <rect key="frame" x="520" y="42" width="50" height="50"/>
+                    <state key="normal" image="frontbackicon_off">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" image="frontbackicon_on"/>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="h5b-la-WW7" firstAttribute="leading" secondItem="WEf-Ca-DjX" secondAttribute="trailing" constant="42" id="2ZJ-BJ-htk"/>
                 <constraint firstAttribute="bottom" secondItem="gRN-ga-yzb" secondAttribute="bottom" id="B2K-nG-Id8"/>
-                <constraint firstItem="h5b-la-WW7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="41" id="K1s-fe-cAX"/>
+                <constraint firstItem="h5b-la-WW7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="K1s-fe-cAX"/>
+                <constraint firstAttribute="trailing" secondItem="WEf-Ca-DjX" secondAttribute="trailing" constant="30" id="LM4-dj-bE3"/>
                 <constraint firstItem="gRN-ga-yzb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="e46-da-NfG"/>
+                <constraint firstItem="K2A-Qz-l4B" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="ema-5V-sKR"/>
                 <constraint firstAttribute="centerY" secondItem="h5b-la-WW7" secondAttribute="centerY" id="gFH-kW-fAN"/>
+                <constraint firstItem="WEf-Ca-DjX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="42" id="hkZ-gD-6c7"/>
                 <constraint firstAttribute="centerX" secondItem="h5b-la-WW7" secondAttribute="centerX" id="rcH-kL-Jca"/>
                 <constraint firstAttribute="trailing" secondItem="gRN-ga-yzb" secondAttribute="trailing" id="v14-a5-hSt"/>
+                <constraint firstItem="K2A-Qz-l4B" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="42" id="zo1-Hm-QwT"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
                 <mask key="constraints">
+                    <exclude reference="2ZJ-BJ-htk"/>
                     <exclude reference="gFH-kW-fAN"/>
                 </mask>
             </variation>
         </view>
     </objects>
     <resources>
-        <image name="take_button" width="62" height="63"/>
+        <image name="capture_button" width="132" height="132"/>
+        <image name="frontbackicon_off" width="50" height="50"/>
+        <image name="frontbackicon_on" width="50" height="50"/>
+        <image name="settingsicon_off" width="50" height="50"/>
+        <image name="settingsicon_on" width="50" height="50"/>
     </resources>
 </document>

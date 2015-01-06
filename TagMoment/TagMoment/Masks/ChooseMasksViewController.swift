@@ -51,19 +51,27 @@ class ChooseMasksViewController: UIViewController, UICollectionViewDataSource, U
 		
 		var maskModel = self.masksViewModels![indexPath.row]
 		cell.maskImage.image = UIImage(named: maskModel.name!.lowercaseString + "_off")
+		cell.maskImage.highlightedImage = UIImage(named: maskModel.name!.lowercaseString + "_on")
 		return cell
 	}
 	
 	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+		
 		self.masksChooseDelegate?.maskChosen(self.masksViewModels?[indexPath.item].name!)
 	}
 	
 	@IBAction func takeButtonPressed(sender: AnyObject) {
-		UIView.animateWithDuration(1.0, animations: { () -> Void in
+		UIView.animateWithDuration(0.5, delay: 0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
 					self.takeButton.layer.transform = CATransform3DMakeRotation(CGFloat(M_PI), 0, 0, 1)
 						//CGAffineTransformMakeRotation(CGFloat(-M_PI*2+0.1))
 					}, completion: {(Bool) -> () in
-						//self.takeButton.transform = CGAffineTransformIdentity
+						UIView.animateWithDuration(0.5, delay: 0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
+							self.takeButton.layer.transform = CATransform3DMakeRotation(CGFloat(M_PI*2), 0, 0, 1)
+							//CGAffineTransformMakeRotation(CGFloat(-M_PI*2+0.1))
+							}, completion: {(Bool) -> () in
+								self.takeButton.layer.transform = CATransform3DIdentity
+							}
+						)
 					}
 		)
 		

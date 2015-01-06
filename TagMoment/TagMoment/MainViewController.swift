@@ -25,11 +25,6 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 		canvas.layer.masksToBounds = true
 		canvas.pinSubViewToAllEdges(secondImageView)
 		
-//		var maskLayer = CAShapeLayer()
-//		var bezierMask = TMTraingleMask(rect: canvas.bounds)
-//		maskLayer.path = bezierMask.clippingPath.CGPath
-//		secondImageView.layer.mask = maskLayer
-		
     }
 	
 	override func viewDidLayoutSubviews() {
