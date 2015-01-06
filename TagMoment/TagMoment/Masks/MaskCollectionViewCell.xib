@@ -13,24 +13,20 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ic1-JS-nWA">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wt9-la-LPz">
                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                        <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="ic1-JS-nWA" secondAttribute="trailing" id="XwS-g9-j1a"/>
-                <constraint firstAttribute="bottom" secondItem="ic1-JS-nWA" secondAttribute="bottom" id="nwD-2t-zLi"/>
-                <constraint firstItem="ic1-JS-nWA" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="sCT-vd-3zS"/>
-                <constraint firstItem="ic1-JS-nWA" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="uUd-bk-iIL"/>
+                <constraint firstAttribute="trailing" secondItem="Wt9-la-LPz" secondAttribute="trailing" id="8Zl-jA-9zl"/>
+                <constraint firstAttribute="bottom" secondItem="Wt9-la-LPz" secondAttribute="bottom" id="Bep-ER-Ikl"/>
+                <constraint firstItem="Wt9-la-LPz" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="QqM-DC-skD"/>
+                <constraint firstItem="Wt9-la-LPz" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="RgB-0a-9r3"/>
             </constraints>
             <connections>
-                <outlet property="label" destination="ic1-JS-nWA" id="fEr-8k-qbT"/>
+                <outlet property="maskImage" destination="Wt9-la-LPz" id="j3z-Dv-ZoT"/>
             </connections>
         </collectionViewCell>
     </objects>

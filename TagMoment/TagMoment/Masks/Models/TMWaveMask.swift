@@ -18,10 +18,10 @@ class TMWaveMask: NSObject, TMMask {
 	var clippingPath : UIBezierPath{
 		
 		var path = UIBezierPath()
-		path.moveToPoint(CGPoint(x: self.workingBounds.width/2+100, y: 0))
-		path.addCurveToPoint(CGPoint(x: self.workingBounds.width/2-100, y: self.workingBounds.height),
-			controlPoint1: CGPoint(x: self.workingBounds.width/4, y: self.workingBounds.height/4),
-			controlPoint2: CGPoint(x: self.workingBounds.width*3/4, y: self.workingBounds.height*3/4))
+		path.moveToPoint(CGPoint(x: self.workingBounds.width/2, y: 0))
+		path.addQuadCurveToPoint(CGPoint(x: self.workingBounds.width/2, y: self.workingBounds.height/2),
+			controlPoint: CGPoint(x: self.workingBounds.width/4, y: self.workingBounds.height/4))
+		path.addQuadCurveToPoint(CGPoint(x: self.workingBounds.width/2, y: self.workingBounds.height), controlPoint: CGPoint(x: self.workingBounds.width*3/4, y: self.workingBounds.height*3/4))
 		path.addLineToPoint(CGPoint(x: self.workingBounds.width, y: self.workingBounds.height))
 		path.addLineToPoint(CGPoint(x: self.workingBounds.width, y: 0))
 		path.closePath()

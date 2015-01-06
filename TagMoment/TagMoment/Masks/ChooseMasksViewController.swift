@@ -49,7 +49,8 @@ class ChooseMasksViewController: UIViewController, UICollectionViewDataSource, U
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 		var cell : MaskCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(CellIdent, forIndexPath: indexPath) as MaskCollectionViewCell
 		
-		cell.label.text = self.masksViewModels?[indexPath.item].name
+		var maskModel = self.masksViewModels![indexPath.row]
+		cell.maskImage.image = UIImage(named: maskModel.name!.lowercaseString + "_off")
 		return cell
 	}
 	

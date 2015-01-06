@@ -25,7 +25,7 @@ class TMTraingleMask: TMMask {
 	}
 	
 	func createViewModel() -> TMMaskViewModel{
-		return TMMaskViewModel(name: "Name it")
+		return TMMaskViewModel(name: " nameit")
 	}
 
 }

@@ -22,6 +22,6 @@ class TMVerticalRectMask: TMMask{
 	}
 
 	func createViewModel() -> TMMaskViewModel{
-		return TMMaskViewModel(name: "u&me")
+		return TMMaskViewModel(name: "uandme")
 	}
 }

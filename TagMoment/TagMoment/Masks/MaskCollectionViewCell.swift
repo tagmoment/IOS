@@ -10,7 +10,8 @@ import UIKit
 
 class MaskCollectionViewCell: UICollectionViewCell {
 
-	@IBOutlet weak var label: UILabel!
+
+	@IBOutlet weak var maskImage: UIImageView!
 	
     override func awakeFromNib() {
         super.awakeFromNib()
