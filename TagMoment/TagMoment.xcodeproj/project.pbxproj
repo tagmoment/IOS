@@ -1,0 +1,524 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F109CE9E1A56F8770011CA55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F109CE9D1A56F8770011CA55 /* AppDelegate.swift */; };
+		F109CEA71A56F8770011CA55 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F109CEA61A56F8770011CA55 /* Images.xcassets */; };
+		F109CEAA1A56F8770011CA55 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F109CEA81A56F8770011CA55 /* LaunchScreen.xib */; };
+		F109CEB61A56F8770011CA55 /* TagMomentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F109CEB51A56F8770011CA55 /* TagMomentTests.swift */; };
+		F109CEC11A56FAA40011CA55 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F109CEBF1A56FAA40011CA55 /* MainViewController.swift */; };
+		F109CEC21A56FAA40011CA55 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F109CEC01A56FAA40011CA55 /* MainViewController.xib */; };
+		F14A81431A58B0B300B5D14F /* TMCircleMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A81421A58B0B300B5D14F /* TMCircleMask.swift */; };
+		F14A81451A58B31500B5D14F /* TMWaveMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A81441A58B31500B5D14F /* TMWaveMask.swift */; };
+		F14A81471A58B52700B5D14F /* TMHeartMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A81461A58B52700B5D14F /* TMHeartMask.swift */; };
+		F1604C681A5711DF0055C721 /* ImageProcessingUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1604C671A5711DF0055C721 /* ImageProcessingUtil.swift */; };
+		F1604C701A574CC40055C721 /* image1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F1604C6E1A574CC40055C721 /* image1.jpeg */; };
+		F1604C711A574CC40055C721 /* image2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F1604C6F1A574CC40055C721 /* image2.jpeg */; };
+		F1604C731A574DED0055C721 /* ViewLayoutUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1604C721A574DED0055C721 /* ViewLayoutUtils.swift */; };
+		F1A7B7611A585DF80033FE64 /* TMHorizontalRectMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A7B75D1A585DF80033FE64 /* TMHorizontalRectMask.swift */; };
+		F1A7B7621A585DF80033FE64 /* TMMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A7B75E1A585DF80033FE64 /* TMMask.swift */; };
+		F1A7B7631A585DF80033FE64 /* TMTraingleMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A7B75F1A585DF80033FE64 /* TMTraingleMask.swift */; };
+		F1A7B7641A585DF80033FE64 /* TMVerticalRectMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A7B7601A585DF80033FE64 /* TMVerticalRectMask.swift */; };
+		F1A7B7661A585E180033FE64 /* MaskFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A7B7651A585E180033FE64 /* MaskFactory.swift */; };
+		F1A7B7681A5893010033FE64 /* TMMaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A7B7671A5893010033FE64 /* TMMaskViewModel.swift */; };
+		F1A7B76C1A58A71A0033FE64 /* take_button.png in Resources */ = {isa = PBXBuildFile; fileRef = F1A7B76B1A58A71A0033FE64 /* take_button.png */; };
+		F1A7B7711A58AF4B0033FE64 /* ChooseMasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A7B76D1A58AF4B0033FE64 /* ChooseMasksViewController.swift */; };
+		F1A7B7721A58AF4B0033FE64 /* ChooseMasksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1A7B76E1A58AF4B0033FE64 /* ChooseMasksViewController.xib */; };
+		F1A7B7731A58AF4B0033FE64 /* MaskCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A7B76F1A58AF4B0033FE64 /* MaskCollectionViewCell.swift */; };
+		F1A7B7741A58AF4B0033FE64 /* MaskCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1A7B7701A58AF4B0033FE64 /* MaskCollectionViewCell.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F109CEB01A56F8770011CA55 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F109CE901A56F8770011CA55 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F109CE971A56F8770011CA55;
+			remoteInfo = TagMoment;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F109CE981A56F8770011CA55 /* TagMoment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TagMoment.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F109CE9C1A56F8770011CA55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F109CE9D1A56F8770011CA55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F109CEA41A56F8770011CA55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F109CEA61A56F8770011CA55 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F109CEA91A56F8770011CA55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		F109CEAF1A56F8770011CA55 /* TagMomentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TagMomentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F109CEB41A56F8770011CA55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F109CEB51A56F8770011CA55 /* TagMomentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagMomentTests.swift; sourceTree = "<group>"; };
+		F109CEBF1A56FAA40011CA55 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		F109CEC01A56FAA40011CA55 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		F14A81421A58B0B300B5D14F /* TMCircleMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMCircleMask.swift; sourceTree = "<group>"; };
+		F14A81441A58B31500B5D14F /* TMWaveMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMWaveMask.swift; sourceTree = "<group>"; };
+		F14A81461A58B52700B5D14F /* TMHeartMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMHeartMask.swift; sourceTree = "<group>"; };
+		F1604C671A5711DF0055C721 /* ImageProcessingUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageProcessingUtil.swift; sourceTree = "<group>"; };
+		F1604C6E1A574CC40055C721 /* image1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image1.jpeg; sourceTree = "<group>"; };
+		F1604C6F1A574CC40055C721 /* image2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image2.jpeg; sourceTree = "<group>"; };
+		F1604C721A574DED0055C721 /* ViewLayoutUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewLayoutUtils.swift; sourceTree = "<group>"; };
+		F1A7B75D1A585DF80033FE64 /* TMHorizontalRectMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMHorizontalRectMask.swift; sourceTree = "<group>"; };
+		F1A7B75E1A585DF80033FE64 /* TMMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMMask.swift; sourceTree = "<group>"; };
+		F1A7B75F1A585DF80033FE64 /* TMTraingleMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMTraingleMask.swift; sourceTree = "<group>"; };
+		F1A7B7601A585DF80033FE64 /* TMVerticalRectMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMVerticalRectMask.swift; sourceTree = "<group>"; };
+		F1A7B7651A585E180033FE64 /* MaskFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaskFactory.swift; sourceTree = "<group>"; };
+		F1A7B7671A5893010033FE64 /* TMMaskViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMMaskViewModel.swift; sourceTree = "<group>"; };
+		F1A7B76B1A58A71A0033FE64 /* take_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = take_button.png; sourceTree = "<group>"; };
+		F1A7B76D1A58AF4B0033FE64 /* ChooseMasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseMasksViewController.swift; sourceTree = "<group>"; };
+		F1A7B76E1A58AF4B0033FE64 /* ChooseMasksViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseMasksViewController.xib; sourceTree = "<group>"; };
+		F1A7B76F1A58AF4B0033FE64 /* MaskCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaskCollectionViewCell.swift; sourceTree = "<group>"; };
+		F1A7B7701A58AF4B0033FE64 /* MaskCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaskCollectionViewCell.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F109CE951A56F8770011CA55 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F109CEAC1A56F8770011CA55 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F109CE8F1A56F8770011CA55 = {
+			isa = PBXGroup;
+			children = (
+				F109CE9A1A56F8770011CA55 /* TagMoment */,
+				F109CEB21A56F8770011CA55 /* TagMomentTests */,
+				F109CE991A56F8770011CA55 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F109CE991A56F8770011CA55 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F109CE981A56F8770011CA55 /* TagMoment.app */,
+				F109CEAF1A56F8770011CA55 /* TagMomentTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F109CE9A1A56F8770011CA55 /* TagMoment */ = {
+			isa = PBXGroup;
+			children = (
+				F1604C741A5754410055C721 /* Masks */,
+				F1604C6D1A574CC40055C721 /* Resources */,
+				F109CE9D1A56F8770011CA55 /* AppDelegate.swift */,
+				F109CEA31A56F8770011CA55 /* Main.storyboard */,
+				F109CEA61A56F8770011CA55 /* Images.xcassets */,
+				F109CEA81A56F8770011CA55 /* LaunchScreen.xib */,
+				F109CE9B1A56F8770011CA55 /* Supporting Files */,
+				F109CEBF1A56FAA40011CA55 /* MainViewController.swift */,
+				F109CEC01A56FAA40011CA55 /* MainViewController.xib */,
+				F1604C721A574DED0055C721 /* ViewLayoutUtils.swift */,
+				F1604C671A5711DF0055C721 /* ImageProcessingUtil.swift */,
+			);
+			path = TagMoment;
+			sourceTree = "<group>";
+		};
+		F109CE9B1A56F8770011CA55 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F109CE9C1A56F8770011CA55 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F109CEB21A56F8770011CA55 /* TagMomentTests */ = {
+			isa = PBXGroup;
+			children = (
+				F109CEB51A56F8770011CA55 /* TagMomentTests.swift */,
+				F109CEB31A56F8770011CA55 /* Supporting Files */,
+			);
+			path = TagMomentTests;
+			sourceTree = "<group>";
+		};
+		F109CEB31A56F8770011CA55 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F109CEB41A56F8770011CA55 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F1604C6D1A574CC40055C721 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F1A7B76B1A58A71A0033FE64 /* take_button.png */,
+				F1604C6E1A574CC40055C721 /* image1.jpeg */,
+				F1604C6F1A574CC40055C721 /* image2.jpeg */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F1604C741A5754410055C721 /* Masks */ = {
+			isa = PBXGroup;
+			children = (
+				F1A7B76D1A58AF4B0033FE64 /* ChooseMasksViewController.swift */,
+				F1A7B76E1A58AF4B0033FE64 /* ChooseMasksViewController.xib */,
+				F1A7B76F1A58AF4B0033FE64 /* MaskCollectionViewCell.swift */,
+				F1A7B7701A58AF4B0033FE64 /* MaskCollectionViewCell.xib */,
+				F1A7B75C1A585DF80033FE64 /* Models */,
+				F1A7B7651A585E180033FE64 /* MaskFactory.swift */,
+			);
+			path = Masks;
+			sourceTree = "<group>";
+		};
+		F1A7B75C1A585DF80033FE64 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F1A7B75D1A585DF80033FE64 /* TMHorizontalRectMask.swift */,
+				F1A7B75E1A585DF80033FE64 /* TMMask.swift */,
+				F1A7B75F1A585DF80033FE64 /* TMTraingleMask.swift */,
+				F1A7B7601A585DF80033FE64 /* TMVerticalRectMask.swift */,
+				F1A7B7671A5893010033FE64 /* TMMaskViewModel.swift */,
+				F14A81421A58B0B300B5D14F /* TMCircleMask.swift */,
+				F14A81441A58B31500B5D14F /* TMWaveMask.swift */,
+				F14A81461A58B52700B5D14F /* TMHeartMask.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F109CE971A56F8770011CA55 /* TagMoment */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F109CEB91A56F8770011CA55 /* Build configuration list for PBXNativeTarget "TagMoment" */;
+			buildPhases = (
+				F109CE941A56F8770011CA55 /* Sources */,
+				F109CE951A56F8770011CA55 /* Frameworks */,
+				F109CE961A56F8770011CA55 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TagMoment;
+			productName = TagMoment;
+			productReference = F109CE981A56F8770011CA55 /* TagMoment.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F109CEAE1A56F8770011CA55 /* TagMomentTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F109CEBC1A56F8770011CA55 /* Build configuration list for PBXNativeTarget "TagMomentTests" */;
+			buildPhases = (
+				F109CEAB1A56F8770011CA55 /* Sources */,
+				F109CEAC1A56F8770011CA55 /* Frameworks */,
+				F109CEAD1A56F8770011CA55 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F109CEB11A56F8770011CA55 /* PBXTargetDependency */,
+			);
+			name = TagMomentTests;
+			productName = TagMomentTests;
+			productReference = F109CEAF1A56F8770011CA55 /* TagMomentTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F109CE901A56F8770011CA55 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = TagMoment;
+				TargetAttributes = {
+					F109CE971A56F8770011CA55 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					F109CEAE1A56F8770011CA55 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = F109CE971A56F8770011CA55;
+					};
+				};
+			};
+			buildConfigurationList = F109CE931A56F8770011CA55 /* Build configuration list for PBXProject "TagMoment" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F109CE8F1A56F8770011CA55;
+			productRefGroup = F109CE991A56F8770011CA55 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F109CE971A56F8770011CA55 /* TagMoment */,
+				F109CEAE1A56F8770011CA55 /* TagMomentTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F109CE961A56F8770011CA55 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F109CEAA1A56F8770011CA55 /* LaunchScreen.xib in Resources */,
+				F1A7B7721A58AF4B0033FE64 /* ChooseMasksViewController.xib in Resources */,
+				F1A7B76C1A58A71A0033FE64 /* take_button.png in Resources */,
+				F109CEC21A56FAA40011CA55 /* MainViewController.xib in Resources */,
+				F1604C711A574CC40055C721 /* image2.jpeg in Resources */,
+				F109CEA71A56F8770011CA55 /* Images.xcassets in Resources */,
+				F1A7B7741A58AF4B0033FE64 /* MaskCollectionViewCell.xib in Resources */,
+				F1604C701A574CC40055C721 /* image1.jpeg in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F109CEAD1A56F8770011CA55 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F109CE941A56F8770011CA55 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1A7B7641A585DF80033FE64 /* TMVerticalRectMask.swift in Sources */,
+				F1604C681A5711DF0055C721 /* ImageProcessingUtil.swift in Sources */,
+				F14A81431A58B0B300B5D14F /* TMCircleMask.swift in Sources */,
+				F14A81451A58B31500B5D14F /* TMWaveMask.swift in Sources */,
+				F1A7B7731A58AF4B0033FE64 /* MaskCollectionViewCell.swift in Sources */,
+				F1A7B7631A585DF80033FE64 /* TMTraingleMask.swift in Sources */,
+				F1A7B7661A585E180033FE64 /* MaskFactory.swift in Sources */,
+				F1A7B7621A585DF80033FE64 /* TMMask.swift in Sources */,
+				F1A7B7611A585DF80033FE64 /* TMHorizontalRectMask.swift in Sources */,
+				F109CEC11A56FAA40011CA55 /* MainViewController.swift in Sources */,
+				F109CE9E1A56F8770011CA55 /* AppDelegate.swift in Sources */,
+				F14A81471A58B52700B5D14F /* TMHeartMask.swift in Sources */,
+				F1A7B7711A58AF4B0033FE64 /* ChooseMasksViewController.swift in Sources */,
+				F1604C731A574DED0055C721 /* ViewLayoutUtils.swift in Sources */,
+				F1A7B7681A5893010033FE64 /* TMMaskViewModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F109CEAB1A56F8770011CA55 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F109CEB61A56F8770011CA55 /* TagMomentTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F109CEB11A56F8770011CA55 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F109CE971A56F8770011CA55 /* TagMoment */;
+			targetProxy = F109CEB01A56F8770011CA55 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F109CEA31A56F8770011CA55 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F109CEA41A56F8770011CA55 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F109CEA81A56F8770011CA55 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F109CEA91A56F8770011CA55 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F109CEB71A56F8770011CA55 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F109CEB81A56F8770011CA55 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F109CEBA1A56F8770011CA55 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = TagMoment/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F109CEBB1A56F8770011CA55 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = TagMoment/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F109CEBD1A56F8770011CA55 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TagMomentTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TagMoment.app/TagMoment";
+			};
+			name = Debug;
+		};
+		F109CEBE1A56F8770011CA55 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = TagMomentTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TagMoment.app/TagMoment";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F109CE931A56F8770011CA55 /* Build configuration list for PBXProject "TagMoment" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F109CEB71A56F8770011CA55 /* Debug */,
+				F109CEB81A56F8770011CA55 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F109CEB91A56F8770011CA55 /* Build configuration list for PBXNativeTarget "TagMoment" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F109CEBA1A56F8770011CA55 /* Debug */,
+				F109CEBB1A56F8770011CA55 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F109CEBC1A56F8770011CA55 /* Build configuration list for PBXNativeTarget "TagMomentTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F109CEBD1A56F8770011CA55 /* Debug */,
+				F109CEBE1A56F8770011CA55 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F109CE901A56F8770011CA55 /* Project object */;
+}
