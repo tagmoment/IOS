@@ -11,6 +11,7 @@ import UIKit
 
 protocol ChooseMasksControllerDelegate : class{
 	func maskChosen(name : String?)
+	func captureButtonPressed()
 }
 
 class ChooseMasksViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
@@ -68,13 +69,13 @@ class ChooseMasksViewController: UIViewController, UICollectionViewDataSource, U
 						UIView.animateWithDuration(0.5, delay: 0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
 							self.takeButton.layer.transform = CATransform3DMakeRotation(CGFloat(M_PI*2), 0, 0, 1)
 							//CGAffineTransformMakeRotation(CGFloat(-M_PI*2+0.1))
-							}, completion: {(Bool) -> () in
+							}, completion: {(Bool) -> Void in
 								self.takeButton.layer.transform = CATransform3DIdentity
 							}
 						)
 					}
 		)
-		
+		self.masksChooseDelegate?.captureButtonPressed()
 	}
     /*
     // MARK: - Navigation

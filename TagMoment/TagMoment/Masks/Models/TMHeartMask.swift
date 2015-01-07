@@ -26,18 +26,19 @@ class TMHeartMask: NSObject, TMMask {
 	
 	
 	class func toRadians(angle: CGFloat) -> CGFloat{
-		return angle / CGFloat(180 * M_PI);
+		return angle*CGFloat(M_PI)/CGFloat(180.0);
 	}
 	
 	class func bezierHeartShapePathWithWidth(width: CGFloat, center: CGPoint) -> UIBezierPath{
 		var w = width/2
+		var h = width/2
 		var path = UIBezierPath()
-		path.addArcWithCenter(CGPoint(x: center.x - w/2,y: center.y - sqrt(3)*w/6), radius: w/sqrt(3), startAngle: TMHeartMask.toRadians(150), endAngle: TMHeartMask.toRadians(-30), clockwise: true)
-		path.addArcWithCenter(CGPoint(x: center.x + w/2,y: center.y - sqrt(3)*w/6), radius: w/sqrt(3), startAngle: TMHeartMask.toRadians(-150), endAngle: TMHeartMask.toRadians(30), clockwise: true)
-		path.moveToPoint(CGPoint(x: center.x - w, y: center.y))
-		path.addLineToPoint(CGPoint(x: center.x, y: center.y + w*sqrt(3)))
-		path.addLineToPoint(CGPoint(x: center.x + w, y: center.y))
+		path.addArcWithCenter(CGPoint(x: center.x + w/2,y: center.y - w/2), radius: w/2, startAngle: TMHeartMask.toRadians(30), endAngle: TMHeartMask.toRadians(210), clockwise: false)
 		
+		path.addArcWithCenter(CGPoint(x: center.x - w/2,y: center.y - w/2), radius: w/2, startAngle: TMHeartMask.toRadians(-30), endAngle: TMHeartMask.toRadians(150), clockwise: false)
+		path.addLineToPoint(CGPoint(x: center.x, y: center.y + w/2))
+		path.addLineToPoint(CGPoint(x: center.x + w, y: center.y))
+		path.closePath()
 		return path
 	}
 	

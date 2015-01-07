@@ -29,7 +29,7 @@
                         </mask>
                     </variation>
                 </view>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HAf-SR-1E8" userLabel="Canvas">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HAf-SR-1E8" userLabel="Canvas">
                     <rect key="frame" x="0.0" y="76" width="600" height="320"/>
                     <color key="backgroundColor" red="0.99607843139999996" green="0.73725490199999999" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
