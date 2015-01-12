@@ -22,12 +22,12 @@ struct MaskFactory {
 		
 		var masks = [TMMask]()
 		for name in MASKS{
-			masks.append(maskForName(name, rect: CGRect.zeroRect)!)
+			masks.append(maskForName(name,rect: CGRect.zeroRect)!)
 		}
 		return masks
 	}
 	
-	static func maskForName(name: String, rect: CGRect) -> TMMask?{
+	static func maskForName(name: String,rect: CGRect) -> TMMask?{
 		switch name{
 			case "nameit":
 				return TMTraingleMask(rect: rect)

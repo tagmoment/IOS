@@ -13,6 +13,7 @@
 		F109CEB61A56F8770011CA55 /* TagMomentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F109CEB51A56F8770011CA55 /* TagMomentTests.swift */; };
 		F109CEC11A56FAA40011CA55 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F109CEBF1A56FAA40011CA55 /* MainViewController.swift */; };
 		F109CEC21A56FAA40011CA55 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F109CEC01A56FAA40011CA55 /* MainViewController.xib */; };
+		F137FDD01A648CEF007B40B3 /* CameraSessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F137FDCF1A648CEF007B40B3 /* CameraSessionService.swift */; };
 		F14A81431A58B0B300B5D14F /* TMCircleMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A81421A58B0B300B5D14F /* TMCircleMask.swift */; };
 		F14A81451A58B31500B5D14F /* TMWaveMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A81441A58B31500B5D14F /* TMWaveMask.swift */; };
 		F14A81471A58B52700B5D14F /* TMHeartMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A81461A58B52700B5D14F /* TMHeartMask.swift */; };
@@ -56,6 +57,7 @@
 		F109CEB51A56F8770011CA55 /* TagMomentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagMomentTests.swift; sourceTree = "<group>"; };
 		F109CEBF1A56FAA40011CA55 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F109CEC01A56FAA40011CA55 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		F137FDCF1A648CEF007B40B3 /* CameraSessionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraSessionService.swift; sourceTree = "<group>"; };
 		F14A81421A58B0B300B5D14F /* TMCircleMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMCircleMask.swift; sourceTree = "<group>"; };
 		F14A81441A58B31500B5D14F /* TMWaveMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMWaveMask.swift; sourceTree = "<group>"; };
 		F14A81461A58B52700B5D14F /* TMHeartMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMHeartMask.swift; sourceTree = "<group>"; };
@@ -116,6 +118,8 @@
 		F109CE9A1A56F8770011CA55 /* TagMoment */ = {
 			isa = PBXGroup;
 			children = (
+				F137FDCE1A648CC7007B40B3 /* Camera */,
+				F137FDCB1A646B5E007B40B3 /* Utils */,
 				F1604C741A5754410055C721 /* Masks */,
 				F1604C6D1A574CC40055C721 /* Resources */,
 				F109CE9D1A56F8770011CA55 /* AppDelegate.swift */,
@@ -154,6 +158,21 @@
 				F109CEB41A56F8770011CA55 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F137FDCB1A646B5E007B40B3 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		F137FDCE1A648CC7007B40B3 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				F137FDCF1A648CEF007B40B3 /* CameraSessionService.swift */,
+			);
+			path = Camera;
 			sourceTree = "<group>";
 		};
 		F1604C6D1A574CC40055C721 /* Resources */ = {
@@ -244,6 +263,7 @@
 				TargetAttributes = {
 					F109CE971A56F8770011CA55 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 46DWPR6488;
 					};
 					F109CEAE1A56F8770011CA55 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -312,6 +332,7 @@
 				F1A7B7611A585DF80033FE64 /* TMHorizontalRectMask.swift in Sources */,
 				F109CEC11A56FAA40011CA55 /* MainViewController.swift in Sources */,
 				F109CE9E1A56F8770011CA55 /* AppDelegate.swift in Sources */,
+				F137FDD01A648CEF007B40B3 /* CameraSessionService.swift in Sources */,
 				F14A81471A58B52700B5D14F /* TMHeartMask.swift in Sources */,
 				F1A7B7711A58AF4B0033FE64 /* ChooseMasksViewController.swift in Sources */,
 				F1604C731A574DED0055C721 /* ViewLayoutUtils.swift in Sources */,
@@ -440,10 +461,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TagMoment/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -451,10 +475,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TagMoment/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

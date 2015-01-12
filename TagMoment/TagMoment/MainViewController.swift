@@ -17,8 +17,26 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 	var captureSession : AVCaptureSession!
 	var stillImageOutput : AVCaptureStillImageOutput?
 	
+	var sessionService : CameraSessionService!
+	
 	@IBOutlet weak var canvas: UIImageView!
 	@IBOutlet weak var controlContainer: UIView!
+	
+	required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+		super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+		commonInit()
+	}
+
+	required init(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
+		commonInit()
+	}
+	
+	private func commonInit() {
+		sessionService = CameraSessionService()
+	}
+	
+	
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,74 +49,29 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 		frontSessionView = UIView()
 		
 		canvas.pinSubViewToAllEdges(frontSessionView)
-		initializeCamera()
+		frontSessionView.frame = canvas.frame
+		initStageOne()
+		secondImageView = UIImageView(image: UIImage(named: "image2.jpeg"))
+		canvas.pinSubViewToAllEdges(secondImageView)
 		
-//		secondImageView = UIImageView(image: UIImage(named: "image2.jpeg"))
-//		canvas.pinSubViewToAllEdges(secondImageView)
     }
 	
-//	override func viewDidLayoutSubviews() {
-//		if (secondImageView.layer.mask == nil){
-//			var maskLayer = CAShapeLayer()
-//			var bezierMask = TMTraingleMask(rect: canvas.bounds)
-//			maskLayer.path = bezierMask.clippingPath.CGPath
-//			secondImageView.layer.mask = maskLayer
-//			
-//			
-//		}
-
-//	}
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		self.masksViewController.masksCollectionView.selectItemAtIndexPath(NSIndexPath(forItem: 3, inSection: 0), animated: false, scrollPosition: UICollectionViewScrollPosition.CenteredHorizontally)
+		self.masksViewController.collectionView(self.masksViewController.masksCollectionView, didSelectItemAtIndexPath: NSIndexPath(forItem: 3, inSection: 0))
+	}
 	
-	func initializeCamera() {
-		captureSession = AVCaptureSession()
-		captureSession.sessionPreset = AVCaptureSessionPresetPhoto;
-		
-		var captureVideoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-		
-		captureVideoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
-		
-		captureVideoPreviewLayer.frame = self.canvas.bounds;
-		self.frontSessionView.layer.addSublayer(captureVideoPreviewLayer);
-		
-		let devices = AVCaptureDevice.devices()
-		var frontCamera : AnyObject?
-		var backCamera : AnyObject?
-		
-		for device in devices {
-			
-			println("Device name: " + device.localizedName!!)
-			
-			if (device.hasMediaType(AVMediaTypeVideo)) {
-				
-				if (device.position == AVCaptureDevicePosition.Back) {
-					println("Device position : back")
-					backCamera = device
-				}
-				else if (device.position == AVCaptureDevicePosition.Front){
-					println("Device position : front")
-					frontCamera = device
-				}
-			}
-		}
-		
-		if (backCamera != nil) {
-			var err : NSError? = nil
-			var input: AnyObject! = AVCaptureDeviceInput.deviceInputWithDevice(backCamera as AVCaptureDevice, error: &err)
-			
-			if (input != nil) {
-				println("ERROR: trying to open camera:" /*+ err!.localizedDescription()*/)
-			}
-			captureSession.addInput(input as AVCaptureInput)
-		}
-		
-		self.stillImageOutput = AVCaptureStillImageOutput()
-		var outputSettings = [ AVVideoCodecKey : AVVideoCodecJPEG]
-		
-		stillImageOutput?.outputSettings = outputSettings
-		
-		captureSession.addOutput(stillImageOutput);
-		
-		captureSession.startRunning();
+	func initStageOne()
+	{
+		addVideoLayer(toView: self.frontSessionView)
+		sessionService.startSessionOnBackCamera()
+	}
+	
+	private func addVideoLayer(toView host: UIView){
+		var captureVideoPreviewLayer = sessionService.initializeSessionForCaptureLayer()
+		captureVideoPreviewLayer.frame = host.bounds;
+		host.layer.addSublayer(captureVideoPreviewLayer)
 		
 	}
 
@@ -106,7 +79,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 		if (name != nil){
 			var mask = MaskFactory.maskForName(name!, rect: canvas.bounds)
 			var maskLayer = CAShapeLayer()
-			maskLayer.path = mask?.clippingPath.CGPath
+			maskLayer.path = mask!.clippingPath.CGPath
 			secondImageView.layer.mask = maskLayer
 		}
 	}
@@ -114,7 +87,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 	func captureButtonPressed() {
 //		captureSession.stopRunning()
 		var videoConnection : AVCaptureConnection?
-		var connectionsArray = self.stillImageOutput?.connections as [AVCaptureConnection]
+		var connectionsArray = self.stillImageOutput!.connections as [AVCaptureConnection]
 		
 		for connection in connectionsArray {
 			
@@ -150,7 +123,10 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 		}
 	}
 	
-	
+//	func createBlurredImage() -> UIImage {
+//		
+//	}
+//	
 	
 	
 	
