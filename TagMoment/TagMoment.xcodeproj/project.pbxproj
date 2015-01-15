@@ -18,17 +18,14 @@
 		F14A81451A58B31500B5D14F /* TMWaveMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A81441A58B31500B5D14F /* TMWaveMask.swift */; };
 		F14A81471A58B52700B5D14F /* TMHeartMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A81461A58B52700B5D14F /* TMHeartMask.swift */; };
 		F156B4281A5C918600B1E0EA /* TMMaskCasual.swift in Sources */ = {isa = PBXBuildFile; fileRef = F156B4271A5C918600B1E0EA /* TMMaskCasual.swift */; };
-		F1604C681A5711DF0055C721 /* ImageProcessingUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1604C671A5711DF0055C721 /* ImageProcessingUtil.swift */; };
 		F1604C701A574CC40055C721 /* image1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F1604C6E1A574CC40055C721 /* image1.jpeg */; };
 		F1604C711A574CC40055C721 /* image2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F1604C6F1A574CC40055C721 /* image2.jpeg */; };
-		F1604C731A574DED0055C721 /* ViewLayoutUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1604C721A574DED0055C721 /* ViewLayoutUtils.swift */; };
 		F1A7B7611A585DF80033FE64 /* TMHorizontalRectMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A7B75D1A585DF80033FE64 /* TMHorizontalRectMask.swift */; };
 		F1A7B7621A585DF80033FE64 /* TMMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A7B75E1A585DF80033FE64 /* TMMask.swift */; };
 		F1A7B7631A585DF80033FE64 /* TMTraingleMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A7B75F1A585DF80033FE64 /* TMTraingleMask.swift */; };
 		F1A7B7641A585DF80033FE64 /* TMVerticalRectMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A7B7601A585DF80033FE64 /* TMVerticalRectMask.swift */; };
 		F1A7B7661A585E180033FE64 /* MaskFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A7B7651A585E180033FE64 /* MaskFactory.swift */; };
 		F1A7B7681A5893010033FE64 /* TMMaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A7B7671A5893010033FE64 /* TMMaskViewModel.swift */; };
-		F1A7B76C1A58A71A0033FE64 /* take_button.png in Resources */ = {isa = PBXBuildFile; fileRef = F1A7B76B1A58A71A0033FE64 /* take_button.png */; };
 		F1A7B7711A58AF4B0033FE64 /* ChooseMasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A7B76D1A58AF4B0033FE64 /* ChooseMasksViewController.swift */; };
 		F1A7B7721A58AF4B0033FE64 /* ChooseMasksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1A7B76E1A58AF4B0033FE64 /* ChooseMasksViewController.xib */; };
 		F1A7B7731A58AF4B0033FE64 /* MaskCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A7B76F1A58AF4B0033FE64 /* MaskCollectionViewCell.swift */; };
@@ -62,17 +59,14 @@
 		F14A81441A58B31500B5D14F /* TMWaveMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMWaveMask.swift; sourceTree = "<group>"; };
 		F14A81461A58B52700B5D14F /* TMHeartMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMHeartMask.swift; sourceTree = "<group>"; };
 		F156B4271A5C918600B1E0EA /* TMMaskCasual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMMaskCasual.swift; sourceTree = "<group>"; };
-		F1604C671A5711DF0055C721 /* ImageProcessingUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageProcessingUtil.swift; sourceTree = "<group>"; };
 		F1604C6E1A574CC40055C721 /* image1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image1.jpeg; sourceTree = "<group>"; };
 		F1604C6F1A574CC40055C721 /* image2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image2.jpeg; sourceTree = "<group>"; };
-		F1604C721A574DED0055C721 /* ViewLayoutUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewLayoutUtils.swift; sourceTree = "<group>"; };
 		F1A7B75D1A585DF80033FE64 /* TMHorizontalRectMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMHorizontalRectMask.swift; sourceTree = "<group>"; };
 		F1A7B75E1A585DF80033FE64 /* TMMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMMask.swift; sourceTree = "<group>"; };
 		F1A7B75F1A585DF80033FE64 /* TMTraingleMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMTraingleMask.swift; sourceTree = "<group>"; };
 		F1A7B7601A585DF80033FE64 /* TMVerticalRectMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMVerticalRectMask.swift; sourceTree = "<group>"; };
 		F1A7B7651A585E180033FE64 /* MaskFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaskFactory.swift; sourceTree = "<group>"; };
 		F1A7B7671A5893010033FE64 /* TMMaskViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMMaskViewModel.swift; sourceTree = "<group>"; };
-		F1A7B76B1A58A71A0033FE64 /* take_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = take_button.png; sourceTree = "<group>"; };
 		F1A7B76D1A58AF4B0033FE64 /* ChooseMasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseMasksViewController.swift; sourceTree = "<group>"; };
 		F1A7B76E1A58AF4B0033FE64 /* ChooseMasksViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseMasksViewController.xib; sourceTree = "<group>"; };
 		F1A7B76F1A58AF4B0033FE64 /* MaskCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaskCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -119,7 +113,6 @@
 			isa = PBXGroup;
 			children = (
 				F137FDCE1A648CC7007B40B3 /* Camera */,
-				F137FDCB1A646B5E007B40B3 /* Utils */,
 				F1604C741A5754410055C721 /* Masks */,
 				F1604C6D1A574CC40055C721 /* Resources */,
 				F109CE9D1A56F8770011CA55 /* AppDelegate.swift */,
@@ -129,8 +122,6 @@
 				F109CE9B1A56F8770011CA55 /* Supporting Files */,
 				F109CEBF1A56FAA40011CA55 /* MainViewController.swift */,
 				F109CEC01A56FAA40011CA55 /* MainViewController.xib */,
-				F1604C721A574DED0055C721 /* ViewLayoutUtils.swift */,
-				F1604C671A5711DF0055C721 /* ImageProcessingUtil.swift */,
 			);
 			path = TagMoment;
 			sourceTree = "<group>";
@@ -160,13 +151,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		F137FDCB1A646B5E007B40B3 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
 		F137FDCE1A648CC7007B40B3 /* Camera */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,7 +162,6 @@
 		F1604C6D1A574CC40055C721 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F1A7B76B1A58A71A0033FE64 /* take_button.png */,
 				F1604C6E1A574CC40055C721 /* image1.jpeg */,
 				F1604C6F1A574CC40055C721 /* image2.jpeg */,
 			);
@@ -297,7 +280,6 @@
 			files = (
 				F109CEAA1A56F8770011CA55 /* LaunchScreen.xib in Resources */,
 				F1A7B7721A58AF4B0033FE64 /* ChooseMasksViewController.xib in Resources */,
-				F1A7B76C1A58A71A0033FE64 /* take_button.png in Resources */,
 				F109CEC21A56FAA40011CA55 /* MainViewController.xib in Resources */,
 				F1604C711A574CC40055C721 /* image2.jpeg in Resources */,
 				F109CEA71A56F8770011CA55 /* Images.xcassets in Resources */,
@@ -321,7 +303,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1A7B7641A585DF80033FE64 /* TMVerticalRectMask.swift in Sources */,
-				F1604C681A5711DF0055C721 /* ImageProcessingUtil.swift in Sources */,
 				F14A81431A58B0B300B5D14F /* TMCircleMask.swift in Sources */,
 				F156B4281A5C918600B1E0EA /* TMMaskCasual.swift in Sources */,
 				F14A81451A58B31500B5D14F /* TMWaveMask.swift in Sources */,
@@ -335,7 +316,6 @@
 				F137FDD01A648CEF007B40B3 /* CameraSessionService.swift in Sources */,
 				F14A81471A58B52700B5D14F /* TMHeartMask.swift in Sources */,
 				F1A7B7711A58AF4B0033FE64 /* ChooseMasksViewController.swift in Sources */,
-				F1604C731A574DED0055C721 /* ViewLayoutUtils.swift in Sources */,
 				F1A7B7681A5893010033FE64 /* TMMaskViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

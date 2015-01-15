@@ -105,8 +105,14 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 		sessionService.captureImage { (image: UIImage?, error: NSError!) -> Void in
 			if (error != nil)
 			{
+				/* print error message */
+				return
+			}
+			if (image != nil)
+			{
 				self.processImage(image)
 				/* Move to stage II */
+
 			}
 		}
 	}
@@ -131,7 +137,15 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 	private func processImage(image: UIImage?) {
 		if (image != nil)
 		{
-			backCamSessionView.hidden = true;
+			if (frontCamSessionView != nil)
+			{
+				frontCamSessionView.hidden = true
+			}
+			
+			if (backCamSessionView != nil)
+			{
+				backCamSessionView.hidden = true
+			}
 			self.canvas.image = image
 		}
 	}
