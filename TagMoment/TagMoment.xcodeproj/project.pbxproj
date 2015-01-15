@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F101858C1A673E4D003F906E /* ChooseFiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F101858A1A673E4D003F906E /* ChooseFiltersViewController.swift */; };
+		F101858D1A673E4D003F906E /* ChooseFiltersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F101858B1A673E4D003F906E /* ChooseFiltersViewController.xib */; };
+		F101858F1A674120003F906E /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F101858E1A674120003F906E /* FilterCollectionViewCell.swift */; };
+		F10185911A67414A003F906E /* FilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F10185901A67414A003F906E /* FilterCollectionViewCell.xib */; };
+		F10185951A67434F003F906E /* ImageProcessingUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10185931A67434F003F906E /* ImageProcessingUtil.swift */; };
+		F10185961A67434F003F906E /* ViewLayoutUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10185941A67434F003F906E /* ViewLayoutUtils.swift */; };
 		F109CE9E1A56F8770011CA55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F109CE9D1A56F8770011CA55 /* AppDelegate.swift */; };
 		F109CEA71A56F8770011CA55 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F109CEA61A56F8770011CA55 /* Images.xcassets */; };
 		F109CEAA1A56F8770011CA55 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F109CEA81A56F8770011CA55 /* LaunchScreen.xib */; };
@@ -43,6 +49,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F101858A1A673E4D003F906E /* ChooseFiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseFiltersViewController.swift; sourceTree = "<group>"; };
+		F101858B1A673E4D003F906E /* ChooseFiltersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseFiltersViewController.xib; sourceTree = "<group>"; };
+		F101858E1A674120003F906E /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
+		F10185901A67414A003F906E /* FilterCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterCollectionViewCell.xib; sourceTree = "<group>"; };
+		F10185931A67434F003F906E /* ImageProcessingUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageProcessingUtil.swift; sourceTree = "<group>"; };
+		F10185941A67434F003F906E /* ViewLayoutUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewLayoutUtils.swift; sourceTree = "<group>"; };
 		F109CE981A56F8770011CA55 /* TagMoment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TagMoment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F109CE9C1A56F8770011CA55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F109CE9D1A56F8770011CA55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +103,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F10185891A673E37003F906E /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				F101858A1A673E4D003F906E /* ChooseFiltersViewController.swift */,
+				F101858B1A673E4D003F906E /* ChooseFiltersViewController.xib */,
+				F101858E1A674120003F906E /* FilterCollectionViewCell.swift */,
+				F10185901A67414A003F906E /* FilterCollectionViewCell.xib */,
+			);
+			path = Filters;
+			sourceTree = "<group>";
+		};
+		F10185921A67434F003F906E /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F10185931A67434F003F906E /* ImageProcessingUtil.swift */,
+				F10185941A67434F003F906E /* ViewLayoutUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		F109CE8F1A56F8770011CA55 = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +144,8 @@
 		F109CE9A1A56F8770011CA55 /* TagMoment */ = {
 			isa = PBXGroup;
 			children = (
+				F10185921A67434F003F906E /* Utils */,
+				F10185891A673E37003F906E /* Filters */,
 				F137FDCE1A648CC7007B40B3 /* Camera */,
 				F1604C741A5754410055C721 /* Masks */,
 				F1604C6D1A574CC40055C721 /* Resources */,
@@ -279,8 +313,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F109CEAA1A56F8770011CA55 /* LaunchScreen.xib in Resources */,
+				F101858D1A673E4D003F906E /* ChooseFiltersViewController.xib in Resources */,
 				F1A7B7721A58AF4B0033FE64 /* ChooseMasksViewController.xib in Resources */,
 				F109CEC21A56FAA40011CA55 /* MainViewController.xib in Resources */,
+				F10185911A67414A003F906E /* FilterCollectionViewCell.xib in Resources */,
 				F1604C711A574CC40055C721 /* image2.jpeg in Resources */,
 				F109CEA71A56F8770011CA55 /* Images.xcassets in Resources */,
 				F1A7B7741A58AF4B0033FE64 /* MaskCollectionViewCell.xib in Resources */,
@@ -311,12 +347,16 @@
 				F1A7B7661A585E180033FE64 /* MaskFactory.swift in Sources */,
 				F1A7B7621A585DF80033FE64 /* TMMask.swift in Sources */,
 				F1A7B7611A585DF80033FE64 /* TMHorizontalRectMask.swift in Sources */,
+				F101858F1A674120003F906E /* FilterCollectionViewCell.swift in Sources */,
+				F10185961A67434F003F906E /* ViewLayoutUtils.swift in Sources */,
 				F109CEC11A56FAA40011CA55 /* MainViewController.swift in Sources */,
 				F109CE9E1A56F8770011CA55 /* AppDelegate.swift in Sources */,
+				F10185951A67434F003F906E /* ImageProcessingUtil.swift in Sources */,
 				F137FDD01A648CEF007B40B3 /* CameraSessionService.swift in Sources */,
 				F14A81471A58B52700B5D14F /* TMHeartMask.swift in Sources */,
 				F1A7B7711A58AF4B0033FE64 /* ChooseMasksViewController.swift in Sources */,
 				F1A7B7681A5893010033FE64 /* TMMaskViewModel.swift in Sources */,
+				F101858C1A673E4D003F906E /* ChooseFiltersViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

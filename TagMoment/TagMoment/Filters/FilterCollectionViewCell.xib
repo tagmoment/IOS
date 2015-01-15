@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="uA8-PF-SZW" customClass="FilterCollectionViewCell" customModule="TagMoment" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="filter_bg_off" highlightedImage="filter_bg_on" translatesAutoresizingMaskIntoConstraints="NO" id="uwG-ge-vbY" userLabel="bgview">
+                        <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JIv-3B-zoy" userLabel="iconView">
+                        <rect key="frame" x="19" y="18" width="32" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="32" id="Wd0-rJ-VF7"/>
+                            <constraint firstAttribute="height" constant="32" id="m3w-rI-lcv"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstItem="uwG-ge-vbY" firstAttribute="leading" secondItem="uA8-PF-SZW" secondAttribute="leading" id="D2J-oh-C2h"/>
+                <constraint firstAttribute="centerX" secondItem="JIv-3B-zoy" secondAttribute="centerX" id="EFP-nk-ekN"/>
+                <constraint firstAttribute="centerY" secondItem="JIv-3B-zoy" secondAttribute="centerY" id="NQC-jz-exZ"/>
+                <constraint firstAttribute="trailing" secondItem="uwG-ge-vbY" secondAttribute="trailing" id="Xi1-XD-SkA"/>
+                <constraint firstItem="uwG-ge-vbY" firstAttribute="top" secondItem="uA8-PF-SZW" secondAttribute="top" id="YF4-mv-Jpg"/>
+                <constraint firstAttribute="bottom" secondItem="uwG-ge-vbY" secondAttribute="bottom" id="jDK-4g-izL"/>
+                <constraint firstItem="JIv-3B-zoy" firstAttribute="top" secondItem="uA8-PF-SZW" secondAttribute="top" constant="18" id="jvy-oc-a9v"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="NQC-jz-exZ"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="bgImageView" destination="uwG-ge-vbY" id="WTi-GY-Ijv"/>
+                <outlet property="iconImageView" destination="JIv-3B-zoy" id="YcQ-yp-d4f"/>
+            </connections>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="filter_bg_off" width="70" height="68"/>
+        <image name="filter_bg_on" width="70" height="68"/>
+    </resources>
+</document>
