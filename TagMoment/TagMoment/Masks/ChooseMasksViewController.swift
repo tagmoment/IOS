@@ -12,6 +12,7 @@ import UIKit
 protocol ChooseMasksControllerDelegate : class{
 	func maskChosen(name : String?)
 	func captureButtonPressed()
+	func switchCamButtonPressed()
 }
 
 class ChooseMasksViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
@@ -75,9 +76,20 @@ class ChooseMasksViewController: UIViewController, UICollectionViewDataSource, U
 						)
 					}
 		)
-		self.masksChooseDelegate?.captureButtonPressed()
+		if (self.masksChooseDelegate != nil)
+		{
+			self.masksChooseDelegate?.captureButtonPressed()
+		}
 	}
-    /*
+	@IBAction func switchCamButtonPressed(sender: AnyObject) {
+		if (self.masksChooseDelegate != nil)
+		{
+			self.masksChooseDelegate?.switchCamButtonPressed()
+		}
+	}
+	
+	/*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

@@ -8,6 +8,7 @@
 
 import Foundation
 import AVFoundation
+import UIKit
 
 class CameraSessionService : NSObject{
 	var captureSession : AVCaptureSession?
@@ -28,6 +29,25 @@ class CameraSessionService : NSObject{
 		
 	}
 	
+	func startSessionOnFrontCamera() {
+		if (frontCamera == nil)
+		{
+			initCameras()
+		}
+		
+		var err : NSError? = nil
+		var input : AnyObject! = AVCaptureDeviceInput.deviceInputWithDevice(frontCamera as AVCaptureDevice, error: &err)
+		
+		if (input != nil) {
+			if let error = err? {
+				println("ERROR: trying to open camera:" + error.localizedDescription)
+				
+			}
+		}
+		
+		self.startRunningSession(input: input as AVCaptureInput)
+	}
+	
 	func startSessionOnBackCamera() {
 		if (backCamera == nil)
 		{
@@ -43,11 +63,62 @@ class CameraSessionService : NSObject{
 
 			}
 		}
-		self.captureSession?.addInput(input as AVCaptureInput)
+		
+		self.startRunningSession(input: input as AVCaptureInput)
+		
+	}
+	
+	
+	
+	func stopCurrentSession() {
+		self.captureSession?.stopRunning()
+		cleanup()
+	}
+	
+	private func cleanup () {
+		self.stillImageOutputRef = nil
+		self.captureSession = nil
+	}
+	
+	private func startRunningSession(#input : AVCaptureInput)
+	{
+		self.captureSession?.addInput(input)
 		prepareOutput()
 		self.captureSession?.addOutput(self.stillImageOutputRef);
 		self.captureSession?.startRunning()
+	}
+	
+	func captureImage(#endBlock: (UIImage?, NSError!) -> Void){
+		var videoConnection : AVCaptureConnection?
+		var connectionsArray = self.stillImageOutputRef!.connections as [AVCaptureConnection]
 		
+		for connection in connectionsArray {
+			
+			for port in connection.inputPorts {
+				
+				if (port.mediaType == AVMediaTypeVideo) {
+					videoConnection = connection;
+					break;
+				}
+			}
+			
+			if (videoConnection != nil) {
+				break;
+			}
+		}
+		self.stillImageOutputRef?.captureStillImageAsynchronouslyFromConnection(videoConnection, completionHandler: { (buffer: CMSampleBuffer! , error: NSError! ) -> Void in
+			if (error != nil)
+			{
+				endBlock(nil, error)
+			}
+			
+			if (buffer != nil)
+			{
+				var imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer)
+				var image = UIImage(data: imageData)
+				endBlock(image, error)
+			}
+		})
 	}
 	
 	private func prepareOutput(){
@@ -65,7 +136,7 @@ class CameraSessionService : NSObject{
 	
 	
 	private func initCameras() {
-		let devices = AVCaptureDevice.devices()
+		var devices = AVCaptureDevice.devices()
 		for device in devices {
 			
 			println("Device name: " + device.localizedName!!)

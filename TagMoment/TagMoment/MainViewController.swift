@@ -12,10 +12,8 @@ import AVFoundation
 class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 	var masksViewController : ChooseMasksViewController!
 	var secondImageView : UIImageView!
-	var frontSessionView : UIView!
-	
-	var captureSession : AVCaptureSession!
-	var stillImageOutput : AVCaptureStillImageOutput?
+	var frontCamSessionView : UIView!
+	var backCamSessionView : UIView!
 	
 	var sessionService : CameraSessionService!
 	
@@ -46,13 +44,10 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 		canvas.image = UIImage(named: "image1.jpeg")
 		
 		canvas.layer.masksToBounds = true
-		frontSessionView = UIView()
 		
-		canvas.pinSubViewToAllEdges(frontSessionView)
-		frontSessionView.frame = canvas.frame
-		initStageOne()
 		secondImageView = UIImageView(image: UIImage(named: "image2.jpeg"))
 		canvas.pinSubViewToAllEdges(secondImageView)
+		initStageOne()
 		
     }
 	
@@ -64,9 +59,31 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 	
 	func initStageOne()
 	{
-		addVideoLayer(toView: self.frontSessionView)
+		startSessionOnBackCam()
+	}
+	
+	
+	func startSessionOnBackCam()
+	{
+		backCamSessionView = createSessionView()
 		sessionService.startSessionOnBackCamera()
 	}
+	
+	func startSessionOnFrontCam()
+	{
+		frontCamSessionView = createSessionView()
+		sessionService.startSessionOnFrontCamera()
+	}
+	
+	private func createSessionView() -> UIView {
+		var sessionView = UIView()
+		canvas.pinSubViewToAllEdges(sessionView)
+		canvas.bringSubviewToFront(secondImageView)
+		sessionView.frame = canvas.frame
+		addVideoLayer(toView: sessionView)
+		return sessionView
+	}
+	
 	
 	private func addVideoLayer(toView host: UIView){
 		var captureVideoPreviewLayer = sessionService.initializeSessionForCaptureLayer()
@@ -85,48 +102,40 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 	}
 	
 	func captureButtonPressed() {
-//		captureSession.stopRunning()
-		var videoConnection : AVCaptureConnection?
-		var connectionsArray = self.stillImageOutput!.connections as [AVCaptureConnection]
-		
-		for connection in connectionsArray {
-			
-			for port in connection.inputPorts {
-				
-				if (port.mediaType == AVMediaTypeVideo) {
-					videoConnection = connection;
-					break;
-				}
-			}
-			
-			if (videoConnection != nil) {
-				break;
+		sessionService.captureImage { (image: UIImage?, error: NSError!) -> Void in
+			if (error != nil)
+			{
+				self.processImage(image)
+				/* Move to stage II */
 			}
 		}
-		self.stillImageOutput?.captureStillImageAsynchronouslyFromConnection(videoConnection, completionHandler: { (buffer: CMSampleBuffer! , error: NSError! ) -> Void in
-			
-			if (buffer != nil)
-			{
-				var imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer)
-				self.processImage(imageData)
-			}
-		})
-		
 	}
 	
-	func processImage(imageData: NSData!) {
-		if (imageData != nil)
+	func switchCamButtonPressed() {
+		sessionService.stopCurrentSession()
+		
+		if (self.frontCamSessionView != nil)
 		{
-			var image = UIImage(data: imageData)
-			frontSessionView.hidden = true;
+			self.frontCamSessionView.removeFromSuperview()
+			self.frontCamSessionView = nil
+			startSessionOnBackCam()
+		}
+		else if (self.backCamSessionView != nil)
+		{
+			self.backCamSessionView.removeFromSuperview()
+			self.backCamSessionView = nil
+			startSessionOnFrontCam()
+		}
+	}
+	
+	private func processImage(image: UIImage?) {
+		if (image != nil)
+		{
+			backCamSessionView.hidden = true;
 			self.canvas.image = image
 		}
 	}
 	
-//	func createBlurredImage() -> UIImage {
-//		
-//	}
-//	
 	
 	
 	
