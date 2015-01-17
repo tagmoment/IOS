@@ -39,8 +39,8 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 		var cell = filterButtonsCollecionView.dequeueReusableCellWithReuseIdentifier(CellIdent, forIndexPath: indexPath) as FilterCollectionViewCell
 		
 		var imageName = FilterNames[indexPath.item]
-		var imageOn = imageName + "_On"
-		var imageOff = imageName + "_Off"
+		var imageOn = imageName + "_on"
+		var imageOff = imageName + "_off"
 		
 		cell.iconImageView.image = UIImage(named: imageOff)
 		cell.iconImageView.highlightedImage = UIImage(named: imageOn)

@@ -11,16 +11,18 @@ import AVFoundation
 
 class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 	var masksViewController : ChooseMasksViewController!
+	var filtersViewController : ChooseFiltersViewController!
+	
 	var secondImageView : UIImageView!
 	var frontCamSessionView : UIView!
 	var backCamSessionView : UIView!
 	
 	var sessionService : CameraSessionService!
 	
-	var blurredView : UIVisualEffectView!
+	var blurredView : UIView?
 	
 	@IBOutlet weak var canvas: UIImageView!
-	@IBOutlet weak var controlContainer: UIView!
+	@IBOutlet weak var controlContainer: SlidingView!
 	
 	required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
 		super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -41,7 +43,8 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
 		masksViewController = ChooseMasksViewController(nibName: "ChooseMasksViewController", bundle: nil)
-		controlContainer.pinSubViewToAllEdges(masksViewController.view)
+		println(controlContainer.frame.width)
+		controlContainer.addViewWithConstraints(masksViewController.view)
 		masksViewController.masksChooseDelegate = self
 //		canvas.image = UIImage(named: "image1.jpeg")
 		
@@ -50,7 +53,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 		initBlurredOverLay(toView: secondImageView)
 		canvas.layer.masksToBounds = true
 		
-		initStageOne()
+//		initStageOne()
 		
     }
 	
@@ -69,7 +72,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 			if !UIAccessibilityIsReduceTransparencyEnabled() {
 				let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
 				blurredView = UIVisualEffectView(effect: blurEffect)
-				holder.pinSubViewToAllEdges(blurredView);
+				holder.pinSubViewToAllEdges(blurredView!);
 				
 			} else {
 				holder.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
@@ -86,11 +89,15 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 	
 	func initStageTwo()
 	{
-		if (self.blurredView != nil)
-		{
-			self.blurredView.removeFromSuperview()
-		}
-		self.switchCamButtonPressed()
+		
+	}
+	
+	func initStageThree()
+	{
+		filtersViewController = ChooseFiltersViewController(nibName: "ChooseFiltersViewController", bundle: nil)
+		controlContainer.addViewWithConstraints(filtersViewController.view)
+		controlContainer.animateEnteringView()
+		
 	}
 
 
@@ -146,6 +153,8 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 	}
 	
 	func captureButtonPressed() {
+		initStageThree()
+		/*
 		sessionService.captureImage { (image: UIImage?, error: NSError!) -> Void in
 			if (error != nil)
 			{
@@ -157,15 +166,21 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 				self.processImage(image)
 				if (self.isOnSecondStage())
 				{
-					/* move to filter stage */
+					self.initStageThree()
 					
 				}
 				else
 				{
+//					if (self.blurredView != nil)
+//					{
+//						self.blurredView?.removeFromSuperview()
+//					}
+					self.switchCamButtonPressed()
 					self.initStageTwo()
 				}
 			}
 		}
+*/
 	}
 	
 	func switchCamButtonPressed() {

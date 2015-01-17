@@ -13,6 +13,7 @@
 		F10185911A67414A003F906E /* FilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F10185901A67414A003F906E /* FilterCollectionViewCell.xib */; };
 		F10185951A67434F003F906E /* ImageProcessingUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10185931A67434F003F906E /* ImageProcessingUtil.swift */; };
 		F10185961A67434F003F906E /* ViewLayoutUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10185941A67434F003F906E /* ViewLayoutUtils.swift */; };
+		F101F1611A6B202D004849F1 /* SlidingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F101F1601A6B202D004849F1 /* SlidingView.swift */; };
 		F109CE9E1A56F8770011CA55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F109CE9D1A56F8770011CA55 /* AppDelegate.swift */; };
 		F109CEA71A56F8770011CA55 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F109CEA61A56F8770011CA55 /* Images.xcassets */; };
 		F109CEAA1A56F8770011CA55 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F109CEA81A56F8770011CA55 /* LaunchScreen.xib */; };
@@ -55,6 +56,7 @@
 		F10185901A67414A003F906E /* FilterCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterCollectionViewCell.xib; sourceTree = "<group>"; };
 		F10185931A67434F003F906E /* ImageProcessingUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageProcessingUtil.swift; sourceTree = "<group>"; };
 		F10185941A67434F003F906E /* ViewLayoutUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewLayoutUtils.swift; sourceTree = "<group>"; };
+		F101F1601A6B202D004849F1 /* SlidingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingView.swift; sourceTree = "<group>"; };
 		F109CE981A56F8770011CA55 /* TagMoment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TagMoment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F109CE9C1A56F8770011CA55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F109CE9D1A56F8770011CA55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +125,14 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		F101F15F1A6B191B004849F1 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				F101F1601A6B202D004849F1 /* SlidingView.swift */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
 		F109CE8F1A56F8770011CA55 = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +154,7 @@
 		F109CE9A1A56F8770011CA55 /* TagMoment */ = {
 			isa = PBXGroup;
 			children = (
+				F101F15F1A6B191B004849F1 /* Controls */,
 				F10185921A67434F003F906E /* Utils */,
 				F10185891A673E37003F906E /* Filters */,
 				F137FDCE1A648CC7007B40B3 /* Camera */,
@@ -347,6 +358,7 @@
 				F1A7B7661A585E180033FE64 /* MaskFactory.swift in Sources */,
 				F1A7B7621A585DF80033FE64 /* TMMask.swift in Sources */,
 				F1A7B7611A585DF80033FE64 /* TMHorizontalRectMask.swift in Sources */,
+				F101F1611A6B202D004849F1 /* SlidingView.swift in Sources */,
 				F101858F1A674120003F906E /* FilterCollectionViewCell.swift in Sources */,
 				F10185961A67434F003F906E /* ViewLayoutUtils.swift in Sources */,
 				F109CEC11A56FAA40011CA55 /* MainViewController.swift in Sources */,
