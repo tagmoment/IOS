@@ -17,6 +17,8 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 	
 	var sessionService : CameraSessionService!
 	
+	var blurredView : UIVisualEffectView!
+	
 	@IBOutlet weak var canvas: UIImageView!
 	@IBOutlet weak var controlContainer: UIView!
 	
@@ -41,12 +43,13 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 		masksViewController = ChooseMasksViewController(nibName: "ChooseMasksViewController", bundle: nil)
 		controlContainer.pinSubViewToAllEdges(masksViewController.view)
 		masksViewController.masksChooseDelegate = self
-		canvas.image = UIImage(named: "image1.jpeg")
+//		canvas.image = UIImage(named: "image1.jpeg")
 		
+		secondImageView = UIImageView()
+		canvas.pinSubViewToAllEdges(secondImageView)
+		initBlurredOverLay(toView: secondImageView)
 		canvas.layer.masksToBounds = true
 		
-		secondImageView = UIImageView(image: UIImage(named: "image2.jpeg"))
-		canvas.pinSubViewToAllEdges(secondImageView)
 		initStageOne()
 		
     }
@@ -55,6 +58,25 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 		super.viewWillAppear(animated)
 		self.masksViewController.masksCollectionView.selectItemAtIndexPath(NSIndexPath(forItem: 3, inSection: 0), animated: false, scrollPosition: UICollectionViewScrollPosition.CenteredHorizontally)
 		self.masksViewController.collectionView(self.masksViewController.masksCollectionView, didSelectItemAtIndexPath: NSIndexPath(forItem: 3, inSection: 0))
+		
+	}
+	
+	
+	
+	func initBlurredOverLay(toView holder: UIView)
+	{
+		if let theClass: AnyClass = NSClassFromString("UIVisualEffectView") {
+			if !UIAccessibilityIsReduceTransparencyEnabled() {
+				let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+				blurredView = UIVisualEffectView(effect: blurEffect)
+				holder.pinSubViewToAllEdges(blurredView);
+				
+			} else {
+				holder.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
+			}
+		} else {
+			holder.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
+		}
 	}
 	
 	func initStageOne()
@@ -62,10 +84,20 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 		startSessionOnBackCam()
 	}
 	
-	
+	func initStageTwo()
+	{
+		if (self.blurredView != nil)
+		{
+			self.blurredView.removeFromSuperview()
+		}
+		self.switchCamButtonPressed()
+	}
+
+
 	func startSessionOnBackCam()
 	{
 		backCamSessionView = createSessionView()
+		backCamSessionView.hidden = false;
 		sessionService.startSessionOnBackCamera()
 	}
 	
@@ -77,9 +109,20 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 	
 	private func createSessionView() -> UIView {
 		var sessionView = UIView()
-		canvas.pinSubViewToAllEdges(sessionView)
-		canvas.bringSubviewToFront(secondImageView)
-		sessionView.frame = canvas.frame
+		if (self.isOnFirstStage())
+		{
+			canvas.pinSubViewToAllEdges(sessionView)
+			canvas.bringSubviewToFront(secondImageView)
+			sessionView.frame = canvas.frame
+
+		}
+		else
+		{
+			secondImageView.pinSubViewToAllEdges(sessionView)
+			secondImageView.backgroundColor = UIColor.clearColor()
+			sessionView.frame = canvas.frame
+		}
+		
 		addVideoLayer(toView: sessionView)
 		return sessionView
 	}
@@ -94,7 +137,8 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 
 	func maskChosen(name: String?) {
 		if (name != nil){
-			var mask = MaskFactory.maskForName(name!, rect: canvas.bounds)
+			var workingRect = CGRect(x: 0.0, y: 0.0, width: self.view.frame.size.width, height: self.view.frame.size.width)
+			var mask = MaskFactory.maskForName(name!, rect: workingRect)
 			var maskLayer = CAShapeLayer()
 			maskLayer.path = mask!.clippingPath.CGPath
 			secondImageView.layer.mask = maskLayer
@@ -111,8 +155,15 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 			if (image != nil)
 			{
 				self.processImage(image)
-				/* Move to stage II */
-
+				if (self.isOnSecondStage())
+				{
+					/* move to filter stage */
+					
+				}
+				else
+				{
+					self.initStageTwo()
+				}
 			}
 		}
 	}
@@ -134,19 +185,26 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 		}
 	}
 	
+	private func isOnFirstStage() -> Bool{
+		return (self.canvas.image == nil)
+	}
+	
+	
+	private func isOnSecondStage() -> Bool{
+		return (self.secondImageView.image != nil)
+	}
+	
 	private func processImage(image: UIImage?) {
 		if (image != nil)
 		{
-			if (frontCamSessionView != nil)
+			if (self.canvas.image == nil)
 			{
-				frontCamSessionView.hidden = true
+				self.canvas.image = image //Populating first stage
 			}
-			
-			if (backCamSessionView != nil)
+			else
 			{
-				backCamSessionView.hidden = true
+				self.secondImageView.image = image
 			}
-			self.canvas.image = image
 		}
 	}
 	
