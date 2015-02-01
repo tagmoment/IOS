@@ -14,4 +14,8 @@ class TMMaskViewModel: NSObject {
 	init(name: String){
 		self.name = name
 	}
+	
+	func getJumperImageName() -> String {
+		return self.name! + "_jumper_"
+	}
 }

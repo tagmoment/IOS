@@ -14,13 +14,14 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gpi-ca-Rk4" userLabel="InfoBar">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstAttribute="height" constant="44" id="7tg-53-6hh"/>
                         <constraint firstAttribute="height" constant="44" id="PcB-DP-0eJ"/>
                     </constraints>
                     <variation key="default">
@@ -30,14 +31,19 @@
                     </variation>
                 </view>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HAf-SR-1E8" userLabel="Canvas">
-                    <rect key="frame" x="0.0" y="44" width="320" height="320"/>
+                    <rect key="frame" x="0.0" y="44" width="600" height="352"/>
                     <color key="backgroundColor" red="0.99607843139999996" green="0.73725490199999999" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="320" id="b5A-1a-i7T"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="b5A-1a-i7T"/>
+                        </mask>
+                    </variation>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bMg-Z8-kyr" userLabel="ControlsContainer" customClass="SlidingView" customModule="TagMoment" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="364" width="320" height="204"/>
+                    <rect key="frame" x="0.0" y="396" width="600" height="204"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="204" id="8OX-Pp-wds"/>
@@ -57,7 +63,6 @@
                 <constraint firstItem="gpi-ca-Rk4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="r04-au-x94"/>
                 <constraint firstItem="gpi-ca-Rk4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="yDX-4i-kDl"/>
             </constraints>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <point key="canvasLocation" x="357" y="48"/>
         </view>
     </objects>

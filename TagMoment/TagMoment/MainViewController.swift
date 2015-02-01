@@ -46,7 +46,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 		println(controlContainer.frame.width)
 		controlContainer.addViewWithConstraints(masksViewController.view)
 		masksViewController.masksChooseDelegate = self
-//		canvas.image = UIImage(named: "image1.jpeg")
+		canvas.image = UIImage(named: "image1.jpeg")
 		
 		secondImageView = UIImageView()
 		canvas.pinSubViewToAllEdges(secondImageView)
@@ -57,8 +57,9 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 		
     }
 	
-	override func viewWillAppear(animated: Bool) {
-		super.viewWillAppear(animated)
+	override func viewDidAppear(animated: Bool) {
+		super.viewDidAppear(animated)
+		
 		self.masksViewController.masksCollectionView.selectItemAtIndexPath(NSIndexPath(forItem: 3, inSection: 0), animated: false, scrollPosition: UICollectionViewScrollPosition.CenteredHorizontally)
 		self.masksViewController.collectionView(self.masksViewController.masksCollectionView, didSelectItemAtIndexPath: NSIndexPath(forItem: 3, inSection: 0))
 		
@@ -95,6 +96,8 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 	func initStageThree()
 	{
 		filtersViewController = ChooseFiltersViewController(nibName: "ChooseFiltersViewController", bundle: nil)
+		filtersViewController.maskViewModel = masksViewController.getSelectedViewModel()
+		filtersViewController.workingImageView = canvas
 		controlContainer.addViewWithConstraints(filtersViewController.view)
 		controlContainer.animateEnteringView()
 		
@@ -144,7 +147,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 
 	func maskChosen(name: String?) {
 		if (name != nil){
-			var workingRect = CGRect(x: 0.0, y: 0.0, width: self.view.frame.size.width, height: self.view.frame.size.width)
+			var workingRect = CGRect(x: 0.0, y: 0.0, width: self.view.frame.size.width, height: self.canvas.frame.size.height)
 			var mask = MaskFactory.maskForName(name!, rect: workingRect)
 			var maskLayer = CAShapeLayer()
 			maskLayer.path = mask!.clippingPath.CGPath

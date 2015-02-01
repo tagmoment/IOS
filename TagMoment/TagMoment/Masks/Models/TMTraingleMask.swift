@@ -17,9 +17,9 @@ class TMTraingleMask: TMMask {
 	
 	var clippingPath : UIBezierPath{
 		var somepath = UIBezierPath()
-		somepath.moveToPoint(CGPoint(x: 0.0,y: 0.0))
-		somepath.addLineToPoint(CGPoint(x: 0.0,y: workingBounds.height))
-		somepath.addLineToPoint(CGPoint(x: workingBounds.width, y: workingBounds.height))
+		somepath.moveToPoint(CGPoint(x: workingBounds.width,y: 0.0))
+		somepath.addLineToPoint(CGPoint(x: workingBounds.width,y: workingBounds.height))
+		somepath.addLineToPoint(CGPoint(x: 0.0, y: workingBounds.height))
 		somepath.closePath()
 		return somepath
 	}

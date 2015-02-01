@@ -88,6 +88,11 @@ class ChooseMasksViewController: UIViewController, UICollectionViewDataSource, U
 		}
 	}
 	
+	func getSelectedViewModel() -> TMMaskViewModel
+	{
+		var selectedIndexPath = self.masksCollectionView.indexPathsForSelectedItems()[0] as NSIndexPath
+		return self.masksViewModels![selectedIndexPath.item];
+	}
 	/*
 
     // MARK: - Navigation

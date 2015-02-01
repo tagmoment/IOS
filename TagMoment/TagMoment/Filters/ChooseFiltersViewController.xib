@@ -8,16 +8,18 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChooseFiltersViewController" customModule="TagMoment" customModuleProvider="target">
             <connections>
                 <outlet property="filterButtonsCollecionView" destination="InD-dJ-xR0" id="eZw-qZ-lIg"/>
+                <outlet property="jumperButton" destination="qzN-gB-kgI" id="J45-AF-BAr"/>
+                <outlet property="someSlider" destination="wuA-ol-ldl" id="al5-dD-gGL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="204"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="InD-dJ-xR0">
-                    <rect key="frame" x="0.0" y="136" width="307" height="68"/>
+                    <rect key="frame" x="0.0" y="532" width="587" height="68"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="68" id="8de-TL-GJn"/>
                     </constraints>
@@ -32,15 +34,41 @@
                         <outlet property="delegate" destination="-1" id="0bf-Jq-Ory"/>
                     </connections>
                 </collectionView>
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="wuA-ol-ldl">
+                    <rect key="frame" x="24" y="469" width="552" height="31"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="hkr-Sq-Q94"/>
+                    </constraints>
+                    <connections>
+                        <action selector="sliderValueChanged:" destination="-1" eventType="valueChanged" id="B4l-z9-8Yi"/>
+                    </connections>
+                </slider>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qzN-gB-kgI">
+                    <rect key="frame" x="280" y="406" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="bUM-3T-KZR"/>
+                        <constraint firstAttribute="height" constant="40" id="gfM-e4-ioM"/>
+                    </constraints>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="jumperButtonPressed:" destination="-1" eventType="touchUpInside" id="Anm-60-cw3"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="InD-dJ-xR0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="DsF-Ru-K0s"/>
+                <constraint firstItem="wuA-ol-ldl" firstAttribute="top" secondItem="qzN-gB-kgI" secondAttribute="bottom" constant="23" id="J6H-2C-ky5"/>
                 <constraint firstAttribute="trailing" secondItem="InD-dJ-xR0" secondAttribute="trailing" constant="13" id="VEi-cW-mDw"/>
+                <constraint firstItem="InD-dJ-xR0" firstAttribute="top" secondItem="wuA-ol-ldl" secondAttribute="bottom" constant="33" id="X9b-0M-3zg"/>
+                <constraint firstAttribute="trailing" secondItem="wuA-ol-ldl" secondAttribute="trailing" constant="26" id="XOf-5K-QGr"/>
+                <constraint firstAttribute="centerX" secondItem="qzN-gB-kgI" secondAttribute="centerX" id="ZKJ-K2-4GU"/>
                 <constraint firstAttribute="bottom" secondItem="InD-dJ-xR0" secondAttribute="bottom" id="e3B-cH-EaO"/>
+                <constraint firstItem="wuA-ol-ldl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="26" id="mdV-Om-SIF"/>
             </constraints>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="227" y="111"/>
+            <point key="canvasLocation" x="62" y="63"/>
         </view>
     </objects>
 </document>

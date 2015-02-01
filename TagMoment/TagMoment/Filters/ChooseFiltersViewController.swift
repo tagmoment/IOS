@@ -15,21 +15,53 @@ let CellIdent = "CellIdentifier"
 class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
 
 	@IBOutlet weak var filterButtonsCollecionView: UICollectionView!
+	@IBOutlet weak var someSlider : UISlider!
+	weak var workingImageView : UIImageView!
+	
+	var currentContext : CIContext!
+	var currentFilter : CIFilter!
+	var currentCIImage : CIImage!
+	
+	@IBOutlet weak var jumperButton: UIButton!
+	var maskViewModel: TMMaskViewModel!
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 		filterButtonsCollecionView.registerNib(UINib(nibName: "FilterCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: CellIdent)
+		self.jumperButton.setImage(UIImage(named: maskViewModel.getJumperImageName() + "1"), forState: UIControlState.Normal)
+		self.jumperButton.setImage(UIImage(named: maskViewModel.getJumperImageName() + "2"), forState: UIControlState.Selected)
+		currentFilter = CIFilter(name: "CISepiaTone")
+		let image = workingImageView.image?.CIImage;
+		currentFilter.setValue(CIImage(CGImage: workingImageView.image?.CGImage), forKey: kCIInputImageKey)
+		currentFilter.setValue(0.5, forKey: kCIInputIntensityKey)
+		currentContext = CIContext(options:nil)
+		let outputImage = currentFilter.outputImage
+		let cgimg = currentContext.createCGImage(outputImage, fromRect: outputImage.extent())
 		
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+		let newImage = UIImage(CGImage: cgimg)
+		self.workingImageView.image = newImage
+	}
 	
+	
+	@IBAction func sliderValueChanged(sender: AnyObject) {
+		var slider : UISlider = sender as UISlider
+		let sliderValue = slider.value
+		
+		currentFilter.setValue(sliderValue, forKey: kCIInputIntensityKey)
+		let outputImage = currentFilter.outputImage
+		
+		let cgimg = currentContext.createCGImage(outputImage, fromRect: outputImage.extent())
+		
+		let newImage = UIImage(CGImage: cgimg)
+		self.workingImageView.image = newImage
+	}
+
+	
+	@IBAction func jumperButtonPressed(sender: AnyObject) {
+		self.jumperButton.selected = !self.jumperButton.selected
+	}
 	/*
-	// MARK: - Collection View Delegatioin
+	// MARK: - Collection View Delegation
 	*/
 	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return FilterNames.count
@@ -48,7 +80,8 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 		return cell
 	}
 	
-
+	
+	
     /*
     // MARK: - Navigation
 
