@@ -46,14 +46,14 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 		println(controlContainer.frame.width)
 		controlContainer.addViewWithConstraints(masksViewController.view)
 		masksViewController.masksChooseDelegate = self
-		canvas.image = UIImage(named: "image1.jpeg")
+//		canvas.image = UIImage(named: "image1.jpeg")
 		
 		secondImageView = UIImageView()
 		canvas.pinSubViewToAllEdges(secondImageView)
 		initBlurredOverLay(toView: secondImageView)
 		canvas.layer.masksToBounds = true
 		
-//		initStageOne()
+		initStageOne()
 		
     }
 	
@@ -156,8 +156,8 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 	}
 	
 	func captureButtonPressed() {
-		initStageThree()
-		/*
+//		initStageThree()
+		
 		sessionService.captureImage { (image: UIImage?, error: NSError!) -> Void in
 			if (error != nil)
 			{
@@ -169,6 +169,10 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 				self.processImage(image)
 				if (self.isOnSecondStage())
 				{
+					self.sessionService.stopCurrentSession()
+					self.frontCamSessionView.removeFromSuperview()
+					self.frontCamSessionView = nil
+					
 					self.initStageThree()
 					
 				}
@@ -183,7 +187,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 				}
 			}
 		}
-*/
+
 	}
 	
 	func switchCamButtonPressed() {
