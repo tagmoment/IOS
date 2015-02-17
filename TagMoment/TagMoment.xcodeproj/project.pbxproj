@@ -20,7 +20,7 @@
 		F109CEB61A56F8770011CA55 /* TagMomentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F109CEB51A56F8770011CA55 /* TagMomentTests.swift */; };
 		F109CEC11A56FAA40011CA55 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F109CEBF1A56FAA40011CA55 /* MainViewController.swift */; };
 		F109CEC21A56FAA40011CA55 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F109CEC01A56FAA40011CA55 /* MainViewController.xib */; };
-		F11647861A880BC10094BEF4 /* TMExposureAdjustFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11647851A880BC10094BEF4 /* TMExposureAdjustFilter.swift */; };
+		F11647861A880BC10094BEF4 /* TMFireFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11647851A880BC10094BEF4 /* TMFireFilter.swift */; };
 		F137FDD01A648CEF007B40B3 /* CameraSessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F137FDCF1A648CEF007B40B3 /* CameraSessionService.swift */; };
 		F14A81431A58B0B300B5D14F /* TMCircleMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A81421A58B0B300B5D14F /* TMCircleMask.swift */; };
 		F14A81451A58B31500B5D14F /* TMWaveMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A81441A58B31500B5D14F /* TMWaveMask.swift */; };
@@ -28,12 +28,17 @@
 		F156B4281A5C918600B1E0EA /* TMMaskCasual.swift in Sources */ = {isa = PBXBuildFile; fileRef = F156B4271A5C918600B1E0EA /* TMMaskCasual.swift */; };
 		F1604C701A574CC40055C721 /* image1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F1604C6E1A574CC40055C721 /* image1.jpeg */; };
 		F1604C711A574CC40055C721 /* image2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F1604C6F1A574CC40055C721 /* image2.jpeg */; };
+		F16A45231A93930700230DAD /* TMFilterBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16A45221A93930700230DAD /* TMFilterBase.swift */; };
 		F19620C11A881A8800DCFB85 /* TMBloomFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19620C01A881A8800DCFB85 /* TMBloomFilter.swift */; };
-		F19620C31A881B0800DCFB85 /* TMComicEffectFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19620C21A881B0800DCFB85 /* TMComicEffectFilter.swift */; };
-		F19620C51A881B7300DCFB85 /* TMCrystallizeFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19620C41A881B7300DCFB85 /* TMCrystallizeFilter.swift */; };
-		F19620C71A881BDE00DCFB85 /* TMEdgesFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19620C61A881BDE00DCFB85 /* TMEdgesFilter.swift */; };
-		F19620C91A881C5200DCFB85 /* TMPixellateFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19620C81A881C5200DCFB85 /* TMPixellateFilter.swift */; };
+		F19620C31A881B0800DCFB85 /* TMStarFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19620C21A881B0800DCFB85 /* TMStarFilter.swift */; };
+		F19620C51A881B7300DCFB85 /* TMSurpriseFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19620C41A881B7300DCFB85 /* TMSurpriseFilter.swift */; };
+		F19620C71A881BDE00DCFB85 /* TMTravelFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19620C61A881BDE00DCFB85 /* TMTravelFilter.swift */; };
+		F19620C91A881C5200DCFB85 /* TMCloudFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19620C81A881C5200DCFB85 /* TMCloudFilter.swift */; };
 		F19620CB1A881D3E00DCFB85 /* TMFilterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19620CA1A881D3E00DCFB85 /* TMFilterFactory.swift */; };
+		F1A142151A93FC81001D63C6 /* FilterScalarParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A142141A93FC81001D63C6 /* FilterScalarParameter.swift */; };
+		F1A142171A93FC8F001D63C6 /* FilterImageParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A142161A93FC8F001D63C6 /* FilterImageParameter.swift */; };
+		F1A142191A93FD5B001D63C6 /* FilterParameterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A142181A93FD5B001D63C6 /* FilterParameterProtocol.swift */; };
+		F1A1421B1A940073001D63C6 /* FilterVectorParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A1421A1A940073001D63C6 /* FilterVectorParameter.swift */; };
 		F1A7B7611A585DF80033FE64 /* TMHorizontalRectMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A7B75D1A585DF80033FE64 /* TMHorizontalRectMask.swift */; };
 		F1A7B7621A585DF80033FE64 /* TMMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A7B75E1A585DF80033FE64 /* TMMask.swift */; };
 		F1A7B7631A585DF80033FE64 /* TMTraingleMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A7B75F1A585DF80033FE64 /* TMTraingleMask.swift */; };
@@ -45,12 +50,11 @@
 		F1A7B7731A58AF4B0033FE64 /* MaskCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A7B76F1A58AF4B0033FE64 /* MaskCollectionViewCell.swift */; };
 		F1A7B7741A58AF4B0033FE64 /* MaskCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1A7B7701A58AF4B0033FE64 /* MaskCollectionViewCell.xib */; };
 		F1B4ECE41A88072400C11FEF /* TMFilterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B4ECE31A88072400C11FEF /* TMFilterInterface.swift */; };
-		F1B4ECE61A88082B00C11FEF /* TMSepiaToneFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B4ECE51A88082B00C11FEF /* TMSepiaToneFilter.swift */; };
-		F1D4B6AF1A8809AD00396E25 /* TMGaussianBlurFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D4B6AE1A8809AD00396E25 /* TMGaussianBlurFilter.swift */; };
-		F1D4B6B11A880A8300396E25 /* TMHueAdjustFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D4B6B01A880A8300396E25 /* TMHueAdjustFilter.swift */; };
-		F1D4B6B31A880B3900396E25 /* TMColorControlsFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D4B6B21A880B3900396E25 /* TMColorControlsFilter.swift */; };
-		F1ECA3741A88157A0018EFA2 /* TMLinearToSRGBToneCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECA3731A88157A0018EFA2 /* TMLinearToSRGBToneCurve.swift */; };
-		F1ECA3761A8816340018EFA2 /* TMColorInvertFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECA3751A8816340018EFA2 /* TMColorInvertFilter.swift */; };
+		F1B4ECE61A88082B00C11FEF /* TMArtistFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B4ECE51A88082B00C11FEF /* TMArtistFilter.swift */; };
+		F1D4B6AF1A8809AD00396E25 /* TMSunsetFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D4B6AE1A8809AD00396E25 /* TMSunsetFilter.swift */; };
+		F1D4B6B11A880A8300396E25 /* TMCocktailFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D4B6B01A880A8300396E25 /* TMCocktailFilter.swift */; };
+		F1D4B6B31A880B3900396E25 /* TMCoffeeFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D4B6B21A880B3900396E25 /* TMCoffeeFilter.swift */; };
+		F1ECA3741A88157A0018EFA2 /* TMVintageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECA3731A88157A0018EFA2 /* TMVintageFilter.swift */; };
 		F1ECA3781A88167A0018EFA2 /* TMPhotoEffectMonoFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECA3771A88167A0018EFA2 /* TMPhotoEffectMonoFilter.swift */; };
 /* End PBXBuildFile section */
 
@@ -83,7 +87,7 @@
 		F109CEB51A56F8770011CA55 /* TagMomentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagMomentTests.swift; sourceTree = "<group>"; };
 		F109CEBF1A56FAA40011CA55 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F109CEC01A56FAA40011CA55 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
-		F11647851A880BC10094BEF4 /* TMExposureAdjustFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMExposureAdjustFilter.swift; sourceTree = "<group>"; };
+		F11647851A880BC10094BEF4 /* TMFireFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMFireFilter.swift; sourceTree = "<group>"; };
 		F137FDCF1A648CEF007B40B3 /* CameraSessionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraSessionService.swift; sourceTree = "<group>"; };
 		F14A81421A58B0B300B5D14F /* TMCircleMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMCircleMask.swift; sourceTree = "<group>"; };
 		F14A81441A58B31500B5D14F /* TMWaveMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMWaveMask.swift; sourceTree = "<group>"; };
@@ -91,12 +95,17 @@
 		F156B4271A5C918600B1E0EA /* TMMaskCasual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMMaskCasual.swift; sourceTree = "<group>"; };
 		F1604C6E1A574CC40055C721 /* image1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image1.jpeg; sourceTree = "<group>"; };
 		F1604C6F1A574CC40055C721 /* image2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image2.jpeg; sourceTree = "<group>"; };
+		F16A45221A93930700230DAD /* TMFilterBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMFilterBase.swift; sourceTree = "<group>"; };
 		F19620C01A881A8800DCFB85 /* TMBloomFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMBloomFilter.swift; sourceTree = "<group>"; };
-		F19620C21A881B0800DCFB85 /* TMComicEffectFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMComicEffectFilter.swift; sourceTree = "<group>"; };
-		F19620C41A881B7300DCFB85 /* TMCrystallizeFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMCrystallizeFilter.swift; sourceTree = "<group>"; };
-		F19620C61A881BDE00DCFB85 /* TMEdgesFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMEdgesFilter.swift; sourceTree = "<group>"; };
-		F19620C81A881C5200DCFB85 /* TMPixellateFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPixellateFilter.swift; sourceTree = "<group>"; };
+		F19620C21A881B0800DCFB85 /* TMStarFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMStarFilter.swift; sourceTree = "<group>"; };
+		F19620C41A881B7300DCFB85 /* TMSurpriseFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMSurpriseFilter.swift; sourceTree = "<group>"; };
+		F19620C61A881BDE00DCFB85 /* TMTravelFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMTravelFilter.swift; sourceTree = "<group>"; };
+		F19620C81A881C5200DCFB85 /* TMCloudFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMCloudFilter.swift; sourceTree = "<group>"; };
 		F19620CA1A881D3E00DCFB85 /* TMFilterFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMFilterFactory.swift; sourceTree = "<group>"; };
+		F1A142141A93FC81001D63C6 /* FilterScalarParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterScalarParameter.swift; sourceTree = "<group>"; };
+		F1A142161A93FC8F001D63C6 /* FilterImageParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterImageParameter.swift; sourceTree = "<group>"; };
+		F1A142181A93FD5B001D63C6 /* FilterParameterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterParameterProtocol.swift; sourceTree = "<group>"; };
+		F1A1421A1A940073001D63C6 /* FilterVectorParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterVectorParameter.swift; sourceTree = "<group>"; };
 		F1A7B75D1A585DF80033FE64 /* TMHorizontalRectMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMHorizontalRectMask.swift; sourceTree = "<group>"; };
 		F1A7B75E1A585DF80033FE64 /* TMMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMMask.swift; sourceTree = "<group>"; };
 		F1A7B75F1A585DF80033FE64 /* TMTraingleMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMTraingleMask.swift; sourceTree = "<group>"; };
@@ -108,12 +117,11 @@
 		F1A7B76F1A58AF4B0033FE64 /* MaskCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaskCollectionViewCell.swift; sourceTree = "<group>"; };
 		F1A7B7701A58AF4B0033FE64 /* MaskCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaskCollectionViewCell.xib; sourceTree = "<group>"; };
 		F1B4ECE31A88072400C11FEF /* TMFilterInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMFilterInterface.swift; sourceTree = "<group>"; };
-		F1B4ECE51A88082B00C11FEF /* TMSepiaToneFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMSepiaToneFilter.swift; sourceTree = "<group>"; };
-		F1D4B6AE1A8809AD00396E25 /* TMGaussianBlurFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMGaussianBlurFilter.swift; sourceTree = "<group>"; };
-		F1D4B6B01A880A8300396E25 /* TMHueAdjustFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMHueAdjustFilter.swift; sourceTree = "<group>"; };
-		F1D4B6B21A880B3900396E25 /* TMColorControlsFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMColorControlsFilter.swift; sourceTree = "<group>"; };
-		F1ECA3731A88157A0018EFA2 /* TMLinearToSRGBToneCurve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMLinearToSRGBToneCurve.swift; sourceTree = "<group>"; };
-		F1ECA3751A8816340018EFA2 /* TMColorInvertFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMColorInvertFilter.swift; sourceTree = "<group>"; };
+		F1B4ECE51A88082B00C11FEF /* TMArtistFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMArtistFilter.swift; sourceTree = "<group>"; };
+		F1D4B6AE1A8809AD00396E25 /* TMSunsetFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMSunsetFilter.swift; sourceTree = "<group>"; };
+		F1D4B6B01A880A8300396E25 /* TMCocktailFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMCocktailFilter.swift; sourceTree = "<group>"; };
+		F1D4B6B21A880B3900396E25 /* TMCoffeeFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMCoffeeFilter.swift; sourceTree = "<group>"; };
+		F1ECA3731A88157A0018EFA2 /* TMVintageFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMVintageFilter.swift; sourceTree = "<group>"; };
 		F1ECA3771A88167A0018EFA2 /* TMPhotoEffectMonoFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPhotoEffectMonoFilter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -257,6 +265,17 @@
 			path = Masks;
 			sourceTree = "<group>";
 		};
+		F1A142131A93FC81001D63C6 /* FilterParameters */ = {
+			isa = PBXGroup;
+			children = (
+				F1A142141A93FC81001D63C6 /* FilterScalarParameter.swift */,
+				F1A142161A93FC8F001D63C6 /* FilterImageParameter.swift */,
+				F1A142181A93FD5B001D63C6 /* FilterParameterProtocol.swift */,
+				F1A1421A1A940073001D63C6 /* FilterVectorParameter.swift */,
+			);
+			path = FilterParameters;
+			sourceTree = "<group>";
+		};
 		F1A7B75C1A585DF80033FE64 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -276,21 +295,22 @@
 		F1B4ECE21A8806EE00C11FEF /* FilterModels */ = {
 			isa = PBXGroup;
 			children = (
+				F1A142131A93FC81001D63C6 /* FilterParameters */,
 				F1B4ECE31A88072400C11FEF /* TMFilterInterface.swift */,
-				F1B4ECE51A88082B00C11FEF /* TMSepiaToneFilter.swift */,
-				F1D4B6AE1A8809AD00396E25 /* TMGaussianBlurFilter.swift */,
-				F1D4B6B01A880A8300396E25 /* TMHueAdjustFilter.swift */,
-				F1D4B6B21A880B3900396E25 /* TMColorControlsFilter.swift */,
-				F11647851A880BC10094BEF4 /* TMExposureAdjustFilter.swift */,
-				F1ECA3731A88157A0018EFA2 /* TMLinearToSRGBToneCurve.swift */,
-				F1ECA3751A8816340018EFA2 /* TMColorInvertFilter.swift */,
+				F1B4ECE51A88082B00C11FEF /* TMArtistFilter.swift */,
+				F1D4B6AE1A8809AD00396E25 /* TMSunsetFilter.swift */,
+				F1D4B6B01A880A8300396E25 /* TMCocktailFilter.swift */,
+				F1D4B6B21A880B3900396E25 /* TMCoffeeFilter.swift */,
+				F19620C41A881B7300DCFB85 /* TMSurpriseFilter.swift */,
+				F19620C81A881C5200DCFB85 /* TMCloudFilter.swift */,
+				F19620C21A881B0800DCFB85 /* TMStarFilter.swift */,
+				F19620C61A881BDE00DCFB85 /* TMTravelFilter.swift */,
+				F11647851A880BC10094BEF4 /* TMFireFilter.swift */,
+				F1ECA3731A88157A0018EFA2 /* TMVintageFilter.swift */,
 				F1ECA3771A88167A0018EFA2 /* TMPhotoEffectMonoFilter.swift */,
 				F19620C01A881A8800DCFB85 /* TMBloomFilter.swift */,
-				F19620C21A881B0800DCFB85 /* TMComicEffectFilter.swift */,
-				F19620C41A881B7300DCFB85 /* TMCrystallizeFilter.swift */,
-				F19620C61A881BDE00DCFB85 /* TMEdgesFilter.swift */,
-				F19620C81A881C5200DCFB85 /* TMPixellateFilter.swift */,
 				F19620CA1A881D3E00DCFB85 /* TMFilterFactory.swift */,
+				F16A45221A93930700230DAD /* TMFilterBase.swift */,
 			);
 			path = FilterModels;
 			sourceTree = "<group>";
@@ -402,17 +422,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1A142171A93FC8F001D63C6 /* FilterImageParameter.swift in Sources */,
+				F1A142191A93FD5B001D63C6 /* FilterParameterProtocol.swift in Sources */,
 				F1A7B7641A585DF80033FE64 /* TMVerticalRectMask.swift in Sources */,
 				F1ECA3781A88167A0018EFA2 /* TMPhotoEffectMonoFilter.swift in Sources */,
 				F14A81431A58B0B300B5D14F /* TMCircleMask.swift in Sources */,
 				F19620CB1A881D3E00DCFB85 /* TMFilterFactory.swift in Sources */,
-				F1ECA3761A8816340018EFA2 /* TMColorInvertFilter.swift in Sources */,
 				F156B4281A5C918600B1E0EA /* TMMaskCasual.swift in Sources */,
-				F19620C71A881BDE00DCFB85 /* TMEdgesFilter.swift in Sources */,
+				F19620C71A881BDE00DCFB85 /* TMTravelFilter.swift in Sources */,
 				F14A81451A58B31500B5D14F /* TMWaveMask.swift in Sources */,
 				F1A7B7731A58AF4B0033FE64 /* MaskCollectionViewCell.swift in Sources */,
 				F1B4ECE41A88072400C11FEF /* TMFilterInterface.swift in Sources */,
-				F1D4B6B11A880A8300396E25 /* TMHueAdjustFilter.swift in Sources */,
+				F1D4B6B11A880A8300396E25 /* TMCocktailFilter.swift in Sources */,
 				F1A7B7631A585DF80033FE64 /* TMTraingleMask.swift in Sources */,
 				F19620C11A881A8800DCFB85 /* TMBloomFilter.swift in Sources */,
 				F1A7B7661A585E180033FE64 /* MaskFactory.swift in Sources */,
@@ -420,23 +441,26 @@
 				F1A7B7611A585DF80033FE64 /* TMHorizontalRectMask.swift in Sources */,
 				F101F1611A6B202D004849F1 /* SlidingView.swift in Sources */,
 				F101858F1A674120003F906E /* FilterCollectionViewCell.swift in Sources */,
-				F1ECA3741A88157A0018EFA2 /* TMLinearToSRGBToneCurve.swift in Sources */,
-				F19620C51A881B7300DCFB85 /* TMCrystallizeFilter.swift in Sources */,
-				F1D4B6B31A880B3900396E25 /* TMColorControlsFilter.swift in Sources */,
+				F1ECA3741A88157A0018EFA2 /* TMVintageFilter.swift in Sources */,
+				F16A45231A93930700230DAD /* TMFilterBase.swift in Sources */,
+				F19620C51A881B7300DCFB85 /* TMSurpriseFilter.swift in Sources */,
+				F1D4B6B31A880B3900396E25 /* TMCoffeeFilter.swift in Sources */,
 				F10185961A67434F003F906E /* ViewLayoutUtils.swift in Sources */,
 				F109CEC11A56FAA40011CA55 /* MainViewController.swift in Sources */,
-				F1D4B6AF1A8809AD00396E25 /* TMGaussianBlurFilter.swift in Sources */,
+				F1D4B6AF1A8809AD00396E25 /* TMSunsetFilter.swift in Sources */,
 				F109CE9E1A56F8770011CA55 /* AppDelegate.swift in Sources */,
 				F10185951A67434F003F906E /* ImageProcessingUtil.swift in Sources */,
-				F19620C91A881C5200DCFB85 /* TMPixellateFilter.swift in Sources */,
-				F1B4ECE61A88082B00C11FEF /* TMSepiaToneFilter.swift in Sources */,
+				F19620C91A881C5200DCFB85 /* TMCloudFilter.swift in Sources */,
+				F1B4ECE61A88082B00C11FEF /* TMArtistFilter.swift in Sources */,
 				F137FDD01A648CEF007B40B3 /* CameraSessionService.swift in Sources */,
 				F14A81471A58B52700B5D14F /* TMHeartMask.swift in Sources */,
-				F11647861A880BC10094BEF4 /* TMExposureAdjustFilter.swift in Sources */,
+				F11647861A880BC10094BEF4 /* TMFireFilter.swift in Sources */,
 				F1A7B7711A58AF4B0033FE64 /* ChooseMasksViewController.swift in Sources */,
 				F1A7B7681A5893010033FE64 /* TMMaskViewModel.swift in Sources */,
 				F101858C1A673E4D003F906E /* ChooseFiltersViewController.swift in Sources */,
-				F19620C31A881B0800DCFB85 /* TMComicEffectFilter.swift in Sources */,
+				F19620C31A881B0800DCFB85 /* TMStarFilter.swift in Sources */,
+				F1A142151A93FC81001D63C6 /* FilterScalarParameter.swift in Sources */,
+				F1A1421B1A940073001D63C6 /* FilterVectorParameter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class MainViewController: UIViewController, ChooseMasksControllerDelegate{
+class MainViewController: UIViewController, ChooseMasksControllerDelegate, ChooseFiltesControllerDelegate{
 	var masksViewController : ChooseMasksViewController!
 	var filtersViewController : ChooseFiltersViewController!
 	
@@ -98,6 +98,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 		filtersViewController = ChooseFiltersViewController(nibName: "ChooseFiltersViewController", bundle: nil)
 		filtersViewController.maskViewModel = masksViewController.getSelectedViewModel()
 		filtersViewController.workingImageView = canvas
+		filtersViewController.filtersChooseDelegate = self
 		controlContainer.addViewWithConstraints(filtersViewController.view)
 		controlContainer.animateEnteringView()
 		masksViewController = nil;
@@ -216,6 +217,10 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 		}
 	}
 	
+	func jumperSwitched() {
+		self.filtersViewController.workingImageView = self.filtersViewController.workingImageView == canvas ? self.secondImageView : self.canvas
+		
+	}
 	private func isOnFirstStage() -> Bool{
 		return (self.canvas.image == nil)
 	}
@@ -270,9 +275,5 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 		let context = CGBitmapContextCreate(nil, UInt(toWidth), UInt(toHeight), CGImageGetBitsPerComponent(cgimage), CGImageGetBytesPerRow(cgimage), colorSpace, CGImageGetBitmapInfo(cgimage))
 		CGContextDrawImage(context, CGRect(x: 0, y: 0, width: toWidth, height: toHeight), cgimage)
 		return CGBitmapContextCreateImage(context)
-		
 	}
-	
-	
-	
 }

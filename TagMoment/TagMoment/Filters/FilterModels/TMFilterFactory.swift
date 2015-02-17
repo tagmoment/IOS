@@ -2,24 +2,21 @@
 import Foundation
 
 struct TMFilterFactory{
-	static var filterArray : [TMFilterInterface] = [TMFilterInterface]()
+	static var filterArray : [TMFilterBase] = [TMFilterBase]()
 
-	static func getFilters() -> [TMFilterInterface]{
+	static func getFilters() -> [TMFilterBase]{
 		if (filterArray.count == 0)
 		{
-			filterArray.append(TMSepiaToneFilter())
-			filterArray.append(TMGaussianBlurFilter())
-			filterArray.append(TMHueAdjustFilter())
-			filterArray.append(TMColorControlsFilter())
-			filterArray.append(TMExposureAdjustFilter())
-			filterArray.append(TMLinearToSRGBToneCurveFilter())
-			filterArray.append(TMColorInvertFilter())
-			filterArray.append(TMPhotoEffectMonoFilter())
-			filterArray.append(TMComicEffectFilter())
-			filterArray.append(TMBloomFilter())
-//			filterArray.append(TMCrystallizeFilter())
-//			filterArray.append(TMEdgesFilter())
-			filterArray.append(TMPixellateFilter())
+			filterArray.append(TMArtistFilter())
+			filterArray.append(TMSunsetFilter())
+			filterArray.append(TMCocktailFilter())
+			filterArray.append(TMCoffeeFilter())
+			filterArray.append(TMSurpriseFilter())
+			filterArray.append(TMCloudFilter())
+			filterArray.append(TMStarFilter())
+			filterArray.append(TMVintageFilter())
+			filterArray.append(TMTravelFilter())
+			filterArray.append(TMFireFilter())
 		}
 		
 		return filterArray

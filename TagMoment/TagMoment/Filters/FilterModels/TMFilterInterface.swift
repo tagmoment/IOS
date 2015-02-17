@@ -6,9 +6,14 @@ protocol TMFilterInterface{
 	
 	
 	var iconName : String { get }
-	var filter : CIFilter { get }
+	var filters : [CIFilter] { get }
 	
 	func applyFilterValue(value : Float)
 	
 	func supportsChangingValues() -> Bool
+	
+	func outputImage() -> CIImage!
+	
+	func inputImage(inputImage : CIImage!)
+	
 }

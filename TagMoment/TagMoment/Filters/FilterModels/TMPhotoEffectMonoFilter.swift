@@ -9,18 +9,20 @@
 import Foundation
 import CoreImage
 
-class TMPhotoEffectMonoFilter : TMFilterInterface{
-	var iconName = "Love"
+class TMPhotoEffectMonoFilter : TMFilterBase{
+	
+	override init()
+	{
+		super.init()
+		self.iconName = "Love"
+	}
 	
 	lazy var filter : CIFilter = {
 		return CIFilter(name: "CIPhotoEffectMono")
 		}()
 	
-	func applyFilterValue(value: Float) {
-		return
-	}
 	
-	func supportsChangingValues() -> Bool{
+	override func supportsChangingValues() -> Bool{
 		return false;
 	}
 	

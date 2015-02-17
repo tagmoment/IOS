@@ -11,14 +11,19 @@ import UIKit
 
 let CellIdent = "CellIdentifier"
 
+protocol ChooseFiltesControllerDelegate : class{
+	func jumperSwitched()
+}
+
 class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
 
 	@IBOutlet weak var filterButtonsCollecionView: UICollectionView!
 	@IBOutlet weak var someSlider : UISlider!
+	weak var filtersChooseDelegate: ChooseFiltesControllerDelegate?
 	weak var workingImageView : UIImageView!
 	
 	var currentContext : CIContext!
-	var currentFilterModel : TMFilterInterface!
+	var currentFilterModel : TMFilterBase!
 	var currentCIImage : CIImage!
 	
 	@IBOutlet weak var jumperButton: UIButton!
@@ -47,7 +52,7 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 		slider.thumbTintColor = UIColor(white: CGFloat(sliderValue) , alpha: 1.0);
 		
 		currentFilterModel.applyFilterValue(sliderValue)
-		let outputImage = currentFilterModel.filter.outputImage
+		let outputImage = currentFilterModel.outputImage()
 		
 		let cgimg = currentContext.createCGImage(outputImage, fromRect: outputImage.extent())
 		
@@ -58,6 +63,14 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 	
 	@IBAction func jumperButtonPressed(sender: AnyObject) {
 		self.jumperButton.selected = !self.jumperButton.selected
+		if (self.filtersChooseDelegate != nil)
+		{
+			self.filtersChooseDelegate!.jumperSwitched()
+		}
+		currentCIImage = CIImage(CGImage: workingImageView.image?.CGImage)
+		currentContext = CIContext(options:nil)
+		self.filterButtonsCollecionView.selectItemAtIndexPath(NSIndexPath(forItem: 0, inSection: 0), animated: false, scrollPosition: UICollectionViewScrollPosition.CenteredHorizontally)
+		self.collectionView(self.filterButtonsCollecionView, didSelectItemAtIndexPath: NSIndexPath(forItem: 0, inSection: 0))
 	}
 	
 	/*
@@ -85,22 +98,9 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 		
 		var filterModel = TMFilterFactory.getFilters()[indexPath.item]
-		
 		self.currentFilterModel = filterModel
-		self.currentFilterModel.filter.setValue(self.currentCIImage, forKey: kCIInputImageKey)
+		filterModel.inputImage(self.currentCIImage)
 		self.someSlider.value = 0.5;
 		sliderValueChanged(self.someSlider)
 	}
-	
-	
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

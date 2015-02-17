@@ -1,5 +1,5 @@
 //
-//  TMBloomFilter.swift
+//  TMComicEffectFilter.swift
 //  TagMoment
 //
 //  Created by Tomer Hershkowitz on 2/9/15.
@@ -9,16 +9,18 @@
 import Foundation
 import CoreImage
 
-class TMBloomFilter : TMFilterBase{
-	override var filtersProtected : [CIFilter] { return [CIFilter(name: "CIBloom")] }
+class TMStarFilter : TMFilterBase{
+	override var filtersProtected : [CIFilter] {
+		get
+		{
+			return [CIFilter(name: "CIUnsharpMask")]
+		}
+	}
 	
 	override init()
 	{
 		super.init()
-		self.iconName = "Music"
+		self.iconName = "Star"
 	}
-	
-	
-
 	
 }
