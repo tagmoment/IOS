@@ -49,17 +49,17 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 //		canvas.image = UIImage(named: "image1.jpeg")
 		
 		secondImageView = UIImageView()
+		secondImageView.contentMode = UIViewContentMode.ScaleAspectFill
 		canvas.pinSubViewToAllEdges(secondImageView)
 		initBlurredOverLay(toView: secondImageView)
 		canvas.layer.masksToBounds = true
 		
-		initStageOne()
 		
     }
 	
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
-		
+		initStageOne()
 		self.masksViewController.masksCollectionView.selectItemAtIndexPath(NSIndexPath(forItem: 3, inSection: 0), animated: false, scrollPosition: UICollectionViewScrollPosition.CenteredHorizontally)
 		self.masksViewController.collectionView(self.masksViewController.masksCollectionView, didSelectItemAtIndexPath: NSIndexPath(forItem: 3, inSection: 0))
 		
@@ -100,6 +100,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 		filtersViewController.workingImageView = canvas
 		controlContainer.addViewWithConstraints(filtersViewController.view)
 		controlContainer.animateEnteringView()
+		masksViewController = nil;
 		
 	}
 
@@ -123,14 +124,14 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 		{
 			canvas.pinSubViewToAllEdges(sessionView)
 			canvas.bringSubviewToFront(secondImageView)
-			sessionView.frame = canvas.frame
+			sessionView.frame = canvas.bounds
 
 		}
 		else
 		{
 			secondImageView.pinSubViewToAllEdges(sessionView)
 			secondImageView.backgroundColor = UIColor.clearColor()
-			sessionView.frame = canvas.frame
+			sessionView.frame = canvas.bounds
 		}
 		
 		addVideoLayer(toView: sessionView)
@@ -140,7 +141,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 	
 	private func addVideoLayer(toView host: UIView){
 		var captureVideoPreviewLayer = sessionService.initializeSessionForCaptureLayer()
-		captureVideoPreviewLayer.frame = host.bounds;
+		captureVideoPreviewLayer.frame = host.bounds
 		host.layer.addSublayer(captureVideoPreviewLayer)
 		
 	}
@@ -156,7 +157,6 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 	}
 	
 	func captureButtonPressed() {
-//		initStageThree()
 		
 		sessionService.captureImage { (image: UIImage?, error: NSError!) -> Void in
 			if (error != nil)
@@ -170,18 +170,27 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 				if (self.isOnSecondStage())
 				{
 					self.sessionService.stopCurrentSession()
-					self.frontCamSessionView.removeFromSuperview()
-					self.frontCamSessionView = nil
+					if (self.backCamSessionView != nil)
+					{
+						self.backCamSessionView.removeFromSuperview()
+						self.backCamSessionView = nil
+					}
+					else
+					{
+						self.frontCamSessionView.removeFromSuperview()
+						self.frontCamSessionView = nil
+					}
+					
 					
 					self.initStageThree()
 					
 				}
 				else
 				{
-//					if (self.blurredView != nil)
-//					{
-//						self.blurredView?.removeFromSuperview()
-//					}
+					if (self.blurredView != nil)
+					{
+						self.blurredView?.removeFromSuperview()
+					}
 					self.switchCamButtonPressed()
 					self.initStageTwo()
 				}
@@ -219,17 +228,50 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate{
 	private func processImage(image: UIImage?) {
 		if (image != nil)
 		{
+			let viewToOperateOn = self.backCamSessionView == nil ? self.frontCamSessionView : self.backCamSessionView
+			let layer: AVCaptureVideoPreviewLayer = viewToOperateOn.layer.sublayers[0] as AVCaptureVideoPreviewLayer
+			
+			let outputRect = layer.metadataOutputRectOfInterestForRect(self.canvas.bounds)
+			var originalSize = image!.size
+			
+			if (UIDeviceOrientationIsPortrait(UIDevice.currentDevice().orientation))
+			{
+   				let temp = originalSize.width;
+				originalSize.width = originalSize.height;
+				originalSize.height = temp;
+			}
+			
+			
+			// metaRect is fractional, that's why we multiply here
+			
+			var cropRect = CGRect(x: outputRect.origin.x * originalSize.width, y: outputRect.origin.y * originalSize.height, width:outputRect.size.width * originalSize.width, height: outputRect.size.height * originalSize.height)
+			
+			cropRect = CGRectIntegral(cropRect);
+			
+			let cropCGImage = CGImageCreateWithImageInRect(image?.CGImage, cropRect);
+			let newImage = UIImage(CGImage: resizeCGImage(cropCGImage, toWidth: viewToOperateOn.frame.width, toHeight: viewToOperateOn.frame.height), scale: 1.0, orientation: image!.imageOrientation)
+			println("image width is \(image!.size.width) and height \(image!.size.height)")
+			println("canvas width is \(newImage!.size.width) and canvas height \(newImage!.size.height)")
 			if (self.canvas.image == nil)
 			{
-				self.canvas.image = image //Populating first stage
+				
+				self.canvas.image =	 newImage//Populating first stage
 			}
 			else
 			{
-				self.secondImageView.image = image
+				self.secondImageView.image = newImage
 			}
 		}
 	}
 	
+	private func resizeCGImage(cgimage : CGImage, toWidth : CGFloat, toHeight: CGFloat) -> CGImage
+	{
+		let colorSpace = CGImageGetColorSpace(cgimage)
+		let context = CGBitmapContextCreate(nil, UInt(toWidth), UInt(toHeight), CGImageGetBitsPerComponent(cgimage), CGImageGetBytesPerRow(cgimage), colorSpace, CGImageGetBitmapInfo(cgimage))
+		CGContextDrawImage(context, CGRect(x: 0, y: 0, width: toWidth, height: toHeight), cgimage)
+		return CGBitmapContextCreateImage(context)
+		
+	}
 	
 	
 	

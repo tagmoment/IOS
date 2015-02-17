@@ -44,14 +44,14 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 		var slider : UISlider = sender as UISlider
 		let sliderValue = slider.value
 		
-//		slider.thumbTintColor = UIColor(white: CGFloat(sliderValue) , alpha: 1.0);
+		slider.thumbTintColor = UIColor(white: CGFloat(sliderValue) , alpha: 1.0);
 		
 		currentFilterModel.applyFilterValue(sliderValue)
 		let outputImage = currentFilterModel.filter.outputImage
 		
 		let cgimg = currentContext.createCGImage(outputImage, fromRect: outputImage.extent())
 		
-		let newImage = UIImage(CGImage: cgimg)
+		let newImage = UIImage(CGImage: cgimg, scale: UIScreen.mainScreen().scale, orientation: self.workingImageView.image!.imageOrientation)
 		self.workingImageView.image = newImage
 	}
 
