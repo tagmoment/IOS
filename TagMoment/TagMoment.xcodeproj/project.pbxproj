@@ -16,7 +16,6 @@
 		F101F1611A6B202D004849F1 /* SlidingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F101F1601A6B202D004849F1 /* SlidingView.swift */; };
 		F109CE9E1A56F8770011CA55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F109CE9D1A56F8770011CA55 /* AppDelegate.swift */; };
 		F109CEA71A56F8770011CA55 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F109CEA61A56F8770011CA55 /* Images.xcassets */; };
-		F109CEAA1A56F8770011CA55 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F109CEA81A56F8770011CA55 /* LaunchScreen.xib */; };
 		F109CEB61A56F8770011CA55 /* TagMomentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F109CEB51A56F8770011CA55 /* TagMomentTests.swift */; };
 		F109CEC11A56FAA40011CA55 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F109CEBF1A56FAA40011CA55 /* MainViewController.swift */; };
 		F109CEC21A56FAA40011CA55 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F109CEC01A56FAA40011CA55 /* MainViewController.xib */; };
@@ -81,7 +80,6 @@
 		F109CE9D1A56F8770011CA55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F109CEA41A56F8770011CA55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F109CEA61A56F8770011CA55 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		F109CEA91A56F8770011CA55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		F109CEAF1A56F8770011CA55 /* TagMomentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TagMomentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F109CEB41A56F8770011CA55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F109CEB51A56F8770011CA55 /* TagMomentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagMomentTests.swift; sourceTree = "<group>"; };
@@ -202,7 +200,6 @@
 				F109CE9D1A56F8770011CA55 /* AppDelegate.swift */,
 				F109CEA31A56F8770011CA55 /* Main.storyboard */,
 				F109CEA61A56F8770011CA55 /* Images.xcassets */,
-				F109CEA81A56F8770011CA55 /* LaunchScreen.xib */,
 				F109CE9B1A56F8770011CA55 /* Supporting Files */,
 				F109CEBF1A56FAA40011CA55 /* MainViewController.swift */,
 				F109CEC01A56FAA40011CA55 /* MainViewController.xib */,
@@ -396,7 +393,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F109CEAA1A56F8770011CA55 /* LaunchScreen.xib in Resources */,
 				F101858D1A673E4D003F906E /* ChooseFiltersViewController.xib in Resources */,
 				F1A7B7721A58AF4B0033FE64 /* ChooseMasksViewController.xib in Resources */,
 				F109CEC21A56FAA40011CA55 /* MainViewController.xib in Resources */,
@@ -491,14 +487,6 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		F109CEA81A56F8770011CA55 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F109CEA91A56F8770011CA55 /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -585,6 +573,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TagMoment/Info.plist;
@@ -599,6 +588,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = TagMoment/Info.plist;
