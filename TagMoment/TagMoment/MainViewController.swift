@@ -266,33 +266,10 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		if (image != nil)
 		{
 			let viewToOperateOn = self.backCamSessionView == nil ? self.frontCamSessionView : self.backCamSessionView
-			let layer: AVCaptureVideoPreviewLayer = viewToOperateOn.layer.sublayers[0] as AVCaptureVideoPreviewLayer
 			
-			let outputRect = layer.metadataOutputRectOfInterestForRect(self.canvas.bounds)
-			var originalSize = image!.size
-			var workingSize = viewToOperateOn.frame.size
-			if (UIDeviceOrientationIsPortrait(UIDevice.currentDevice().orientation))
-			{
-   				var temp = originalSize.width
-				originalSize.width = originalSize.height
-				originalSize.height = temp
-				
-				temp = workingSize.width
-				workingSize.width = workingSize.height
-				workingSize.height = temp
-			}
-			
-			
-			// metaRect is fractional, that's why we multiply here
-			var cropRect = CGRect(x: outputRect.origin.x * originalSize.width, y: outputRect.origin.y * originalSize.height, width:outputRect.size.width * originalSize.width, height: outputRect.size.height * originalSize.height)
-			
-			cropRect = CGRectIntegral(cropRect);
-			
-			let cropCGImage = CGImageCreateWithImageInRect(image?.CGImage, cropRect);
-			let imageOrientation = self.canvas.image == nil ? image!.imageOrientation : UIImageOrientation.LeftMirrored
-			let newImage = UIImage(CGImage: resizeCGImage(cropCGImage, toWidth: workingSize.width, toHeight: workingSize.height), scale: 1.0, orientation: imageOrientation)
+			let newImage = ImageProcessingUtil.imageFromVideoView(viewToOperateOn, originalImage: image!, shouldMirrorImage: self.canvas.image != nil)
 			println("image width is \(image!.size.width) and height \(image!.size.height)")
-			println("canvas width is \(newImage!.size.width) and canvas height \(newImage!.size.height)")
+			println("canvas width is \(newImage.size.width) and canvas height \(newImage.size.height)")
 			if (self.canvas.image == nil)
 			{
 				
@@ -305,11 +282,4 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		}
 	}
 	
-	private func resizeCGImage(cgimage : CGImage, toWidth : CGFloat, toHeight: CGFloat) -> CGImage
-	{
-		let colorSpace = CGImageGetColorSpace(cgimage)
-		let context = CGBitmapContextCreate(nil, UInt(toWidth), UInt(toHeight), CGImageGetBitsPerComponent(cgimage), CGImageGetBytesPerRow(cgimage), colorSpace, CGImageGetBitmapInfo(cgimage))
-		CGContextDrawImage(context, CGRect(x: 0, y: 0, width: toWidth, height: toHeight), cgimage)
-		return CGBitmapContextCreateImage(context)
-	}
 }

@@ -7,20 +7,46 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ImageProcessingUtil: NSObject {
-	class func maskImageWithImage(frontImage: UIImage,backImage: UIImage, mask: TMMask) -> UIImage?{
+	
+	class func imageFromVideoView(workingView: UIView, originalImage: UIImage, shouldMirrorImage: Bool) -> UIImage
+	{
+		let layer: AVCaptureVideoPreviewLayer = workingView.layer.sublayers[0] as AVCaptureVideoPreviewLayer
+		
+		let outputRect = layer.metadataOutputRectOfInterestForRect(workingView.bounds)
+		var originalSize = originalImage.size
+		var workingSize = workingView.frame.size
+		if (UIDeviceOrientationIsPortrait(UIDevice.currentDevice().orientation))
+		{
+			var temp = originalSize.width
+			originalSize.width = originalSize.height
+			originalSize.height = temp
+			
+			temp = workingSize.width
+			workingSize.width = workingSize.height
+			workingSize.height = temp
+		}
 		
 		
+		// metaRect is fractional, that's why we multiply here
+		var cropRect = CGRect(x: outputRect.origin.x * originalSize.width, y: outputRect.origin.y * originalSize.height, width:outputRect.size.width * originalSize.width, height: outputRect.size.height * originalSize.height)
 		
-		return nil;
+		cropRect = CGRectIntegral(cropRect);
+		
+		let cropCGImage = CGImageCreateWithImageInRect(originalImage.CGImage, cropRect);
+		let imageOrientation = shouldMirrorImage ?  UIImageOrientation.LeftMirrored : originalImage.imageOrientation
+		return UIImage(CGImage: ImageProcessingUtil.resizeCGImage(cropCGImage, toWidth: workingSize.width, toHeight: workingSize.height), scale: 1.0, orientation: imageOrientation)!
 	}
 	
-	class func maskViewWithView(frontView: UIView,backImage: UIView, mask: TMMask) -> UIImage?{
-				
-		
-		
-		return nil;
+	
+	class func resizeCGImage(cgimage : CGImage, toWidth : CGFloat, toHeight: CGFloat) -> CGImage
+	{
+		let colorSpace = CGImageGetColorSpace(cgimage)
+		let context = CGBitmapContextCreate(nil, UInt(toWidth), UInt(toHeight), CGImageGetBitsPerComponent(cgimage), CGImageGetBytesPerRow(cgimage), colorSpace, CGImageGetBitmapInfo(cgimage))
+		CGContextDrawImage(context, CGRect(x: 0, y: 0, width: toWidth, height: toHeight), cgimage)
+		return CGBitmapContextCreateImage(context)
 	}
 	
 	class func blurImage(source: UIImage) -> UIImage{
