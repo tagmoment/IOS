@@ -136,7 +136,7 @@ class CameraSessionService : NSObject{
 	
 	
 	private func initCameras() {
-		var devices = AVCaptureDevice.devices()
+		var devices = AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo)
 		for device in devices {
 			
 			println("Device name: " + device.localizedName!!)

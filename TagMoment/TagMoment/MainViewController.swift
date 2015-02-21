@@ -9,13 +9,21 @@
 import UIKit
 import AVFoundation
 
-class MainViewController: UIViewController, ChooseMasksControllerDelegate, ChooseFiltesControllerDelegate{
+enum FlashState{
+	case None
+	case On
+	case Auto
+}
+
+class MainViewController: UIViewController, ChooseMasksControllerDelegate, ChooseFiltesControllerDelegate, NavBarDelegate{
 	var masksViewController : ChooseMasksViewController!
 	var filtersViewController : ChooseFiltersViewController!
+	var navigationView : TakeImageNavBar!
 	
 	var secondImageView : UIImageView!
 	var frontCamSessionView : UIView!
 	var backCamSessionView : UIView!
+	
 	
 	var sessionService : CameraSessionService!
 	
@@ -23,6 +31,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	
 	@IBOutlet weak var canvas: UIImageView!
 	@IBOutlet weak var controlContainer: SlidingView!
+	@IBOutlet weak var infobarHolder: UIView!
 	
 	required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
 		super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -85,6 +94,9 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	
 	func initStageOne()
 	{
+		navigationView = NSBundle.mainBundle().loadNibNamed("NavbarView", owner: nil, options: nil)[0] as TakeImageNavBar
+		infobarHolder.pinSubViewToAllEdges(navigationView)
+		navigationView.viewDelegate = self
 		startSessionOnBackCam()
 	}
 	
@@ -131,7 +143,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		else
 		{
 			secondImageView.pinSubViewToAllEdges(sessionView)
-			secondImageView.backgroundColor = UIColor.clearColor()
+//			secondImageView.backgroundColor = UIColor.clearColor()
 			sessionView.frame = canvas.bounds
 		}
 		
@@ -156,6 +168,21 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			secondImageView.layer.mask = maskLayer
 		}
 	}
+	
+	// MARK: - NavBarDelegation 
+	func retakeImageRequested() {
+		self.canvas.image = nil
+		self.secondImageView.image = nil
+		sessionService.stopCurrentSession()
+		self.frontCamSessionView?.removeFromSuperview()
+		self.frontCamSessionView = nil
+		self.backCamSessionView?.removeFromSuperview()
+		self.backCamSessionView = nil
+		self.initBlurredOverLay(toView: self.secondImageView)
+		startSessionOnBackCam()
+		self.navigationView.hideLeftButton(true)
+	}
+	
 	
 	func captureButtonPressed() {
 		
@@ -190,10 +217,13 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 				{
 					if (self.blurredView != nil)
 					{
-						self.blurredView?.removeFromSuperview()
+						self.blurredView!.removeFromSuperview()
+						self.blurredView = nil
 					}
+					self.navigationView.showLeftButton(true)
 					self.switchCamButtonPressed()
 					self.initStageTwo()
+					
 				}
 			}
 		}
