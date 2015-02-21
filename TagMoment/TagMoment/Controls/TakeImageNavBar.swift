@@ -101,13 +101,13 @@ class TakeImageNavBar: UIView {
 	
 	func takingImageStageAppearance(animated: Bool)
 	{
+		self.hideLeftButton(true)
 		if (self.rightButton.titleForState(UIControlState.Normal) == nil)
 		{
 			return
 		}
 		UIView.animateWithDuration(0.5, animations: { () -> Void in
 			self.rightButton.alpha = 0.0
-			self.backButton.alpha = 0.0
 			
 			}, completion: { (finished) -> Void in
 				self.rightButton.setTitle(nil, forState: UIControlState.Normal)

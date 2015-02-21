@@ -13,13 +13,17 @@ class SlidingView: UIView {
 	
 	var leftConstraints : [NSLayoutConstraint] = []
 	
-	func addViewWithConstraints(subview : UIView!){
+	func addViewWithConstraints(subview : UIView!, toTheRight : Bool){
 		if (subview == nil)
 		{
 			return;
 		}
 		
 		var xOffset = CGFloat(self.subviews.count)*self.frame.width
+		if (!toTheRight)
+		{
+			xOffset = -xOffset
+		}
 		leftConstraints.append(self.pinSubViewWithWidth(subview!, leftConstraintVal: xOffset))
 		
 	}
@@ -39,6 +43,27 @@ class SlidingView: UIView {
 				self.layoutIfNeeded()
 			}) { (finished: Bool) -> Void in
 			
+				var subview = self.subviews[0] as UIView
+				subview.removeFromSuperview()
+				self.leftConstraints.removeAtIndex(0)
+		}
+	}
+	
+	func animateExitingView()
+	{
+		
+		
+		self.layoutIfNeeded()
+		
+		UIView.animateWithDuration(2.0, delay: 0,usingSpringWithDamping: 0.7, initialSpringVelocity: -0.5, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
+			for constraint in self.leftConstraints
+			{
+				var val = constraint.constant + self.frame.width
+				constraint.constant = val
+			}
+			self.layoutIfNeeded()
+			}) { (finished: Bool) -> Void in
+				
 				var subview = self.subviews[0] as UIView
 				subview.removeFromSuperview()
 				self.leftConstraints.removeAtIndex(0)

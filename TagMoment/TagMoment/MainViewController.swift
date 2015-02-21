@@ -53,7 +53,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
         super.viewDidLoad()
 		masksViewController = ChooseMasksViewController(nibName: "ChooseMasksViewController", bundle: nil)
 		println(controlContainer.frame.width)
-		controlContainer.addViewWithConstraints(masksViewController.view)
+		controlContainer.addViewWithConstraints(masksViewController.view, toTheRight: true)
 		masksViewController.masksChooseDelegate = self
 //		canvas.image = UIImage(named: "image1.jpeg")
 		
@@ -69,8 +69,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
 		initStageOne()
-		self.masksViewController.masksCollectionView.selectItemAtIndexPath(NSIndexPath(forItem: 3, inSection: 0), animated: false, scrollPosition: UICollectionViewScrollPosition.CenteredHorizontally)
-		self.masksViewController.collectionView(self.masksViewController.masksCollectionView, didSelectItemAtIndexPath: NSIndexPath(forItem: 3, inSection: 0))
+		
 		
 	}
 	
@@ -111,7 +110,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		filtersViewController.maskViewModel = masksViewController.getSelectedViewModel()
 		filtersViewController.workingImageView = canvas
 		filtersViewController.filtersChooseDelegate = self
-		controlContainer.addViewWithConstraints(filtersViewController.view)
+		controlContainer.addViewWithConstraints(filtersViewController.view, toTheRight: true)
 		controlContainer.animateEnteringView()
 		navigationView.editingStageAppearance(true)
 		masksViewController = nil;
@@ -182,6 +181,14 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		self.backCamSessionView = nil
 		self.initBlurredOverLay(toView: self.secondImageView)
 		startSessionOnBackCam()
+		if (masksViewController == nil)
+		{
+			masksViewController = ChooseMasksViewController(nibName: "ChooseMasksViewController", bundle: nil)
+			masksViewController.masksChooseDelegate = self
+			controlContainer.addViewWithConstraints(masksViewController.view, toTheRight: false)
+			controlContainer.animateExitingView()
+		}
+		
 		
 	}
 	
@@ -200,18 +207,10 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 				if (self.isOnSecondStage())
 				{
 					self.sessionService.stopCurrentSession()
-					if (self.backCamSessionView != nil)
-					{
-						self.backCamSessionView.removeFromSuperview()
-						self.backCamSessionView = nil
-					}
-					else
-					{
-						self.frontCamSessionView.removeFromSuperview()
-						self.frontCamSessionView = nil
-					}
-					
-					
+					self.backCamSessionView?.removeFromSuperview()
+					self.backCamSessionView = nil
+					self.frontCamSessionView?.removeFromSuperview()
+					self.frontCamSessionView = nil
 					self.initStageThree()
 					
 				}

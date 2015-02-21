@@ -30,14 +30,14 @@ class ChooseMasksViewController: UIViewController, UICollectionViewDataSource, U
         super.viewDidLoad()
 		masksCollectionView.registerNib(UINib(nibName: "MaskCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: CellIdent)
 		self.masksViewModels = MaskFactory.getViewModels()
-        // Do any additional setup after loading the view.
+		
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-		
-	}
-	
+	override func viewDidAppear(animated: Bool) {
+		super.viewDidAppear(animated)
+		self.masksCollectionView.selectItemAtIndexPath(NSIndexPath(forItem: 3, inSection: 0), animated: false, scrollPosition: UICollectionViewScrollPosition.CenteredHorizontally)
+		self.collectionView(self.masksCollectionView, didSelectItemAtIndexPath: NSIndexPath(forItem: 3, inSection: 0))
+	}	
 	
 	// MARK: - UICollectionView delegation & datasource
 	func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
