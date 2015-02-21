@@ -270,24 +270,27 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			
 			let outputRect = layer.metadataOutputRectOfInterestForRect(self.canvas.bounds)
 			var originalSize = image!.size
-			
+			var workingSize = viewToOperateOn.frame.size
 			if (UIDeviceOrientationIsPortrait(UIDevice.currentDevice().orientation))
 			{
-   				let temp = originalSize.width;
-				originalSize.width = originalSize.height;
-				originalSize.height = temp;
+   				var temp = originalSize.width
+				originalSize.width = originalSize.height
+				originalSize.height = temp
+				
+				temp = workingSize.width
+				workingSize.width = workingSize.height
+				workingSize.height = temp
 			}
 			
 			
 			// metaRect is fractional, that's why we multiply here
-			
 			var cropRect = CGRect(x: outputRect.origin.x * originalSize.width, y: outputRect.origin.y * originalSize.height, width:outputRect.size.width * originalSize.width, height: outputRect.size.height * originalSize.height)
 			
 			cropRect = CGRectIntegral(cropRect);
 			
 			let cropCGImage = CGImageCreateWithImageInRect(image?.CGImage, cropRect);
 			let imageOrientation = self.canvas.image == nil ? image!.imageOrientation : UIImageOrientation.LeftMirrored
-			let newImage = UIImage(CGImage: resizeCGImage(cropCGImage, toWidth: viewToOperateOn.frame.width, toHeight: viewToOperateOn.frame.height), scale: 1.0, orientation: imageOrientation)
+			let newImage = UIImage(CGImage: resizeCGImage(cropCGImage, toWidth: workingSize.width, toHeight: workingSize.height), scale: 1.0, orientation: imageOrientation)
 			println("image width is \(image!.size.width) and height \(image!.size.height)")
 			println("canvas width is \(newImage!.size.width) and canvas height \(newImage!.size.height)")
 			if (self.canvas.image == nil)
