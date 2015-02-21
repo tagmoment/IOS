@@ -113,6 +113,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		filtersViewController.filtersChooseDelegate = self
 		controlContainer.addViewWithConstraints(filtersViewController.view)
 		controlContainer.animateEnteringView()
+		navigationView.editingStageAppearance(true)
 		masksViewController = nil;
 		
 	}
@@ -171,6 +172,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	
 	// MARK: - NavBarDelegation 
 	func retakeImageRequested() {
+		self.navigationView.takingImageStageAppearance(true)
 		self.canvas.image = nil
 		self.secondImageView.image = nil
 		sessionService.stopCurrentSession()
@@ -284,7 +286,8 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			cropRect = CGRectIntegral(cropRect);
 			
 			let cropCGImage = CGImageCreateWithImageInRect(image?.CGImage, cropRect);
-			let newImage = UIImage(CGImage: resizeCGImage(cropCGImage, toWidth: viewToOperateOn.frame.width, toHeight: viewToOperateOn.frame.height), scale: 1.0, orientation: image!.imageOrientation)
+			let imageOrientation = self.canvas.image == nil ? image!.imageOrientation : UIImageOrientation.LeftMirrored
+			let newImage = UIImage(CGImage: resizeCGImage(cropCGImage, toWidth: viewToOperateOn.frame.width, toHeight: viewToOperateOn.frame.height), scale: 1.0, orientation: imageOrientation)
 			println("image width is \(image!.size.width) and height \(image!.size.height)")
 			println("canvas width is \(newImage!.size.width) and canvas height \(newImage!.size.height)")
 			if (self.canvas.image == nil)

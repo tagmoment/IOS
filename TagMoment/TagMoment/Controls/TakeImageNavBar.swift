@@ -54,7 +54,7 @@ class TakeImageNavBar: UIView {
 	{
 		if animated
 		{
-			UIView.animateWithDuration(0.3, animations: { () -> Void in
+			UIView.animateWithDuration(0.5, animations: { () -> Void in
 				self.backButton.alpha = 1.0
 			})
 		}else
@@ -67,13 +67,55 @@ class TakeImageNavBar: UIView {
 	{
 		if animated
 		{
-			UIView.animateWithDuration(0.3, animations: { () -> Void in
+			UIView.animateWithDuration(0.5, animations: { () -> Void in
 				self.backButton.alpha = 0.0
 			})
 		}else
 		{
 			self.backButton.alpha = 0.0
 		}
+	}
+	
+	func editingStageAppearance(animated: Bool)
+	{
+		if animated
+		{
+			
+			UIView.animateWithDuration(0.5, animations: { () -> Void in
+				self.rightButton.alpha = 0.0
+				self.middleButton.alpha = 0.0
+			}, completion: { (finished) -> Void in
+				self.rightButton.setTitle("Next", forState: UIControlState.Normal)
+				self.rightButton.setImage(nil, forState: UIControlState.Normal)
+				UIView.animateWithDuration(0.5, animations: { () -> Void in
+					self.rightButton.alpha = 1.0
+				})
+			})
+			
+		}else
+		{
+			self.rightButton.setTitle("Next", forState: UIControlState.Normal)
+			self.rightButton.setImage(nil, forState: UIControlState.Normal)
+		}
+	}
+	
+	func takingImageStageAppearance(animated: Bool)
+	{
+		if (self.rightButton.titleForState(UIControlState.Normal) == nil)
+		{
+			return
+		}
+		UIView.animateWithDuration(0.5, animations: { () -> Void in
+			self.rightButton.alpha = 0.0
+			
+			}, completion: { (finished) -> Void in
+				self.rightButton.setTitle(nil, forState: UIControlState.Normal)
+				self.rightButton.setImage(UIImage(named: "flash_auto"), forState: UIControlState.Normal)
+				UIView.animateWithDuration(0.5, animations: { () -> Void in
+					self.rightButton.alpha = 1.0
+					self.middleButton.alpha = 1.0
+				})
+		})
 	}
 	
 }
