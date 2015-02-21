@@ -107,6 +107,7 @@ class TakeImageNavBar: UIView {
 		}
 		UIView.animateWithDuration(0.5, animations: { () -> Void in
 			self.rightButton.alpha = 0.0
+			self.backButton.alpha = 0.0
 			
 			}, completion: { (finished) -> Void in
 				self.rightButton.setTitle(nil, forState: UIControlState.Normal)

@@ -182,7 +182,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		self.backCamSessionView = nil
 		self.initBlurredOverLay(toView: self.secondImageView)
 		startSessionOnBackCam()
-		self.navigationView.hideLeftButton(true)
+		
 	}
 	
 	
