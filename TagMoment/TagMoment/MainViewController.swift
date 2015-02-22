@@ -18,6 +18,7 @@ enum FlashState{
 class MainViewController: UIViewController, ChooseMasksControllerDelegate, ChooseFiltesControllerDelegate, NavBarDelegate{
 	var masksViewController : ChooseMasksViewController!
 	var filtersViewController : ChooseFiltersViewController!
+	var sharingController : SharingViewController!
 	var navigationView : TakeImageNavBar!
 	
 	var secondImageView : UIImageView!
@@ -29,6 +30,10 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	
 	var blurredView : UIView?
 	
+	@IBOutlet weak var logoLabel: UILabel!
+	@IBOutlet weak var userLabel: UILabel!
+	@IBOutlet weak var infoTopConstraint: NSLayoutConstraint!
+	@IBOutlet weak var controlContainerHeightConstraint: NSLayoutConstraint!
 	@IBOutlet weak var canvas: UIImageView!
 	@IBOutlet weak var controlContainer: SlidingView!
 	@IBOutlet weak var infobarHolder: UIView!
@@ -52,18 +57,16 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
     override func viewDidLoad() {
         super.viewDidLoad()
 		masksViewController = ChooseMasksViewController(nibName: "ChooseMasksViewController", bundle: nil)
-		println(controlContainer.frame.width)
 		controlContainer.addViewWithConstraints(masksViewController.view, toTheRight: true)
 		masksViewController.masksChooseDelegate = self
 //		canvas.image = UIImage(named: "image1.jpeg")
-		
+		infobarHolder.layer.borderColor = UIColor.blueColor().CGColor
+		infobarHolder.layer.borderWidth = 1.0
 		secondImageView = UIImageView()
 		secondImageView.contentMode = UIViewContentMode.ScaleAspectFill
 		canvas.pinSubViewToAllEdges(secondImageView)
 		initBlurredOverLay(toView: secondImageView)
 		canvas.layer.masksToBounds = true
-		
-		
     }
 	
 	override func viewDidAppear(animated: Bool) {
@@ -170,6 +173,38 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	}
 	
 	// MARK: - NavBarDelegation 
+	func sharingRequested() {
+//		sharingController = SharingViewController(nibName: "SharingViewController", bundle: nil)
+//		
+//		controlContainer.addViewWithConstraints(sharingController.view, toTheRight: true)
+//		controlContainer.animateEnteringView()
+//		sharingController.view.layer.borderColor = UIColor.redColor().CGColor
+//		sharingController.view.layer.borderWidth = 1.0
+		filtersViewController.view.layer.borderWidth = 1.0
+		filtersViewController.view.layer.borderColor = UIColor.redColor().CGColor
+//		infoTopConstraint.constant = -infobarHolder.frame.height
+		controlContainerHeightConstraint.constant += infobarHolder.frame.height
+//		logoLabel.hidden = false
+//		logoLabel.alpha = 0.0
+		println("first frame \(controlContainer.frame)")
+		for view in controlContainer.subviews[0].subviews
+		{
+			println("view \(view) frame is \(view.frame)")
+		}
+		self.view.layoutIfNeeded()
+		
+		println("second frame \(controlContainer.frame)")
+		for view in controlContainer.subviews[0].subviews
+		{
+			println("view \(view) frame is \(view.frame)")
+		}
+//		UIView .animateWithDuration(0.5, animations: { () -> Void in
+//			
+//			self.view.layoutIfNeeded()
+//			self.logoLabel.alpha = 1.0
+//		})
+	}
+	
 	func retakeImageRequested() {
 		self.navigationView.takingImageStageAppearance(true)
 		self.canvas.image = nil

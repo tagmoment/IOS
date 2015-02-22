@@ -10,6 +10,7 @@ import UIKit
 protocol NavBarDelegate : class
 {
 	func retakeImageRequested()
+	func sharingRequested()
 }
 
 
@@ -42,7 +43,17 @@ class TakeImageNavBar: UIView {
 	
 	@IBAction func rightButtonPressed(sender: AnyObject)
 	{
-		
+		if (rightButton.titleColorForState(UIControlState.Normal) == nil) //flash button
+		{
+			
+		}
+		else
+		{
+			if let delegate = viewDelegate
+			{
+				delegate.sharingRequested()
+			}
+		}
 	}
 	
 	func flashState() -> FlashState

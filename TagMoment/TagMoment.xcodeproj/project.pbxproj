@@ -29,6 +29,9 @@
 		F1604C701A574CC40055C721 /* image1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F1604C6E1A574CC40055C721 /* image1.jpeg */; };
 		F1604C711A574CC40055C721 /* image2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F1604C6F1A574CC40055C721 /* image2.jpeg */; };
 		F16A45231A93930700230DAD /* TMFilterBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16A45221A93930700230DAD /* TMFilterBase.swift */; };
+		F16D27761A9A712B0000F759 /* SharingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16D27741A9A712B0000F759 /* SharingViewController.swift */; };
+		F16D27771A9A712B0000F759 /* SharingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F16D27751A9A712B0000F759 /* SharingViewController.xib */; };
+		F16D277A1A9A84F60000F759 /* GiddyupStd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F16D27791A9A83570000F759 /* GiddyupStd.ttf */; };
 		F19620C11A881A8800DCFB85 /* TMBloomFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19620C01A881A8800DCFB85 /* TMBloomFilter.swift */; };
 		F19620C31A881B0800DCFB85 /* TMStarFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19620C21A881B0800DCFB85 /* TMStarFilter.swift */; };
 		F19620C51A881B7300DCFB85 /* TMSurpriseFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19620C41A881B7300DCFB85 /* TMSurpriseFilter.swift */; };
@@ -97,6 +100,9 @@
 		F1604C6E1A574CC40055C721 /* image1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image1.jpeg; sourceTree = "<group>"; };
 		F1604C6F1A574CC40055C721 /* image2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image2.jpeg; sourceTree = "<group>"; };
 		F16A45221A93930700230DAD /* TMFilterBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMFilterBase.swift; sourceTree = "<group>"; };
+		F16D27741A9A712B0000F759 /* SharingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharingViewController.swift; sourceTree = "<group>"; };
+		F16D27751A9A712B0000F759 /* SharingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SharingViewController.xib; sourceTree = "<group>"; };
+		F16D27791A9A83570000F759 /* GiddyupStd.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GiddyupStd.ttf; sourceTree = "<group>"; };
 		F19620C01A881A8800DCFB85 /* TMBloomFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMBloomFilter.swift; sourceTree = "<group>"; };
 		F19620C21A881B0800DCFB85 /* TMStarFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMStarFilter.swift; sourceTree = "<group>"; };
 		F19620C41A881B7300DCFB85 /* TMSurpriseFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMSurpriseFilter.swift; sourceTree = "<group>"; };
@@ -250,6 +256,8 @@
 		F15AA38E1A99432E0045BFD3 /* Sharing */ = {
 			isa = PBXGroup;
 			children = (
+				F16D27741A9A712B0000F759 /* SharingViewController.swift */,
+				F16D27751A9A712B0000F759 /* SharingViewController.xib */,
 			);
 			path = Sharing;
 			sourceTree = "<group>";
@@ -257,6 +265,7 @@
 		F1604C6D1A574CC40055C721 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F16D27791A9A83570000F759 /* GiddyupStd.ttf */,
 				F1604C6E1A574CC40055C721 /* image1.jpeg */,
 				F1604C6F1A574CC40055C721 /* image2.jpeg */,
 			);
@@ -410,6 +419,8 @@
 				F101858D1A673E4D003F906E /* ChooseFiltersViewController.xib in Resources */,
 				F1A7B7721A58AF4B0033FE64 /* ChooseMasksViewController.xib in Resources */,
 				F10F63681A97927A00EDCAE3 /* NavbarView.xib in Resources */,
+				F16D27771A9A712B0000F759 /* SharingViewController.xib in Resources */,
+				F16D277A1A9A84F60000F759 /* GiddyupStd.ttf in Resources */,
 				F109CEC21A56FAA40011CA55 /* MainViewController.xib in Resources */,
 				F10185911A67414A003F906E /* FilterCollectionViewCell.xib in Resources */,
 				F1604C711A574CC40055C721 /* image2.jpeg in Resources */,
@@ -440,6 +451,7 @@
 				F1ECA3781A88167A0018EFA2 /* TMPhotoEffectMonoFilter.swift in Sources */,
 				F14A81431A58B0B300B5D14F /* TMCircleMask.swift in Sources */,
 				F19620CB1A881D3E00DCFB85 /* TMFilterFactory.swift in Sources */,
+				F16D27761A9A712B0000F759 /* SharingViewController.swift in Sources */,
 				F156B4281A5C918600B1E0EA /* TMMaskCasual.swift in Sources */,
 				F19620C71A881BDE00DCFB85 /* TMTravelFilter.swift in Sources */,
 				F14A81451A58B31500B5D14F /* TMWaveMask.swift in Sources */,
