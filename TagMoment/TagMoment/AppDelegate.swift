@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		
+		UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.Fade)
 		self.window = UIWindow(frame: UIScreen .mainScreen().bounds)
 		self.window!.rootViewController = MainViewController(nibName: "MainViewController",bundle: nil)
 		

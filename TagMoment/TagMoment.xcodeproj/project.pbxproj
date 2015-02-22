@@ -197,6 +197,7 @@
 		F109CE9A1A56F8770011CA55 /* TagMoment */ = {
 			isa = PBXGroup;
 			children = (
+				F15AA38E1A99432E0045BFD3 /* Sharing */,
 				F101F15F1A6B191B004849F1 /* Controls */,
 				F10185921A67434F003F906E /* Utils */,
 				F10185891A673E37003F906E /* Filters */,
@@ -244,6 +245,13 @@
 				F137FDCF1A648CEF007B40B3 /* CameraSessionService.swift */,
 			);
 			path = Camera;
+			sourceTree = "<group>";
+		};
+		F15AA38E1A99432E0045BFD3 /* Sharing */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Sharing;
 			sourceTree = "<group>";
 		};
 		F1604C6D1A574CC40055C721 /* Resources */ = {
