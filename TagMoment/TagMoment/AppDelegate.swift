@@ -7,6 +7,7 @@
 //
 
 import UIKit
+//import TestFairy
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
@@ -21,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 		self.window!.rootViewController = MainViewController(nibName: "MainViewController",bundle: nil)
 		
 		self.window!.makeKeyAndVisible()
+		TestFairy.begin("008e0e4a9e585f7bb42687114d30b36e864c2a4b")
 		return true
 	}
 

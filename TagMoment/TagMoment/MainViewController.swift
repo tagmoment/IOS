@@ -60,8 +60,8 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		controlContainer.addViewWithConstraints(masksViewController.view, toTheRight: true)
 		masksViewController.masksChooseDelegate = self
 //		canvas.image = UIImage(named: "image1.jpeg")
-		infobarHolder.layer.borderColor = UIColor.blueColor().CGColor
-		infobarHolder.layer.borderWidth = 1.0
+//		infobarHolder.layer.borderColor = UIColor.blueColor().CGColor
+//		infobarHolder.layer.borderWidth = 1.0
 		secondImageView = UIImageView()
 		secondImageView.contentMode = UIViewContentMode.ScaleAspectFill
 		canvas.pinSubViewToAllEdges(secondImageView)
@@ -180,9 +180,9 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 //		controlContainer.animateEnteringView()
 //		sharingController.view.layer.borderColor = UIColor.redColor().CGColor
 //		sharingController.view.layer.borderWidth = 1.0
-		filtersViewController.view.layer.borderWidth = 1.0
-		filtersViewController.view.layer.borderColor = UIColor.redColor().CGColor
-//		infoTopConstraint.constant = -infobarHolder.frame.height
+//		filtersViewController.view.layer.borderWidth = 1.0
+//		filtersViewController.view.layer.borderColor = UIColor.redColor().CGColor
+		infoTopConstraint.constant = -infobarHolder.frame.height
 		controlContainerHeightConstraint.constant += infobarHolder.frame.height
 //		logoLabel.hidden = false
 //		logoLabel.alpha = 0.0
@@ -301,7 +301,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		{
 			let viewToOperateOn = self.backCamSessionView == nil ? self.frontCamSessionView : self.backCamSessionView
 			
-			let newImage = ImageProcessingUtil.imageFromVideoView(viewToOperateOn, originalImage: image!, shouldMirrorImage: self.canvas.image != nil)
+			let newImage = ImageProcessingUtil.imageFromVideoView(viewToOperateOn, originalImage: image!, shouldMirrorImage: self.frontCamSessionView != nil)
 			println("image width is \(image!.size.width) and height \(image!.size.height)")
 			println("canvas width is \(newImage.size.width) and canvas height \(newImage.size.height)")
 			if (self.canvas.image == nil)

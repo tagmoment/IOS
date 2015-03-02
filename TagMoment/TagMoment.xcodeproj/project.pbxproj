@@ -32,6 +32,13 @@
 		F16D27761A9A712B0000F759 /* SharingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16D27741A9A712B0000F759 /* SharingViewController.swift */; };
 		F16D27771A9A712B0000F759 /* SharingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F16D27751A9A712B0000F759 /* SharingViewController.xib */; };
 		F16D277A1A9A84F60000F759 /* GiddyupStd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F16D27791A9A83570000F759 /* GiddyupStd.ttf */; };
+		F17672691AA515BF00588865 /* libTestFairy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F17672661AA515BF00588865 /* libTestFairy.a */; };
+		F176726A1AA515BF00588865 /* upload-dsym.sh in Resources */ = {isa = PBXBuildFile; fileRef = F17672681AA515BF00588865 /* upload-dsym.sh */; };
+		F176726C1AA515D500588865 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F176726B1AA515D500588865 /* CoreMotion.framework */; };
+		F176726E1AA515E200588865 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F176726D1AA515E200588865 /* CoreMedia.framework */; };
+		F17672701AA515E900588865 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F176726F1AA515E900588865 /* AVFoundation.framework */; };
+		F17672721AA515F200588865 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F17672711AA515F200588865 /* SystemConfiguration.framework */; };
+		F17672741AA515FA00588865 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F17672731AA515FA00588865 /* OpenGLES.framework */; };
 		F19620C11A881A8800DCFB85 /* TMBloomFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19620C01A881A8800DCFB85 /* TMBloomFilter.swift */; };
 		F19620C31A881B0800DCFB85 /* TMStarFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19620C21A881B0800DCFB85 /* TMStarFilter.swift */; };
 		F19620C51A881B7300DCFB85 /* TMSurpriseFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19620C41A881B7300DCFB85 /* TMSurpriseFilter.swift */; };
@@ -103,6 +110,15 @@
 		F16D27741A9A712B0000F759 /* SharingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharingViewController.swift; sourceTree = "<group>"; };
 		F16D27751A9A712B0000F759 /* SharingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SharingViewController.xib; sourceTree = "<group>"; };
 		F16D27791A9A83570000F759 /* GiddyupStd.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GiddyupStd.ttf; sourceTree = "<group>"; };
+		F17672661AA515BF00588865 /* libTestFairy.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFairy.a; sourceTree = "<group>"; };
+		F17672671AA515BF00588865 /* TestFairy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFairy.h; sourceTree = "<group>"; };
+		F17672681AA515BF00588865 /* upload-dsym.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "upload-dsym.sh"; sourceTree = "<group>"; };
+		F176726B1AA515D500588865 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		F176726D1AA515E200588865 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		F176726F1AA515E900588865 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		F17672711AA515F200588865 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		F17672731AA515FA00588865 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		F17672751AA5195F00588865 /* TestFairy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestFairy-Bridging-Header.h"; sourceTree = "<group>"; };
 		F19620C01A881A8800DCFB85 /* TMBloomFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMBloomFilter.swift; sourceTree = "<group>"; };
 		F19620C21A881B0800DCFB85 /* TMStarFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMStarFilter.swift; sourceTree = "<group>"; };
 		F19620C41A881B7300DCFB85 /* TMSurpriseFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMSurpriseFilter.swift; sourceTree = "<group>"; };
@@ -138,6 +154,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F17672741AA515FA00588865 /* OpenGLES.framework in Frameworks */,
+				F17672721AA515F200588865 /* SystemConfiguration.framework in Frameworks */,
+				F17672701AA515E900588865 /* AVFoundation.framework in Frameworks */,
+				F176726E1AA515E200588865 /* CoreMedia.framework in Frameworks */,
+				F176726C1AA515D500588865 /* CoreMotion.framework in Frameworks */,
+				F17672691AA515BF00588865 /* libTestFairy.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +207,11 @@
 		F109CE8F1A56F8770011CA55 = {
 			isa = PBXGroup;
 			children = (
+				F17672731AA515FA00588865 /* OpenGLES.framework */,
+				F17672711AA515F200588865 /* SystemConfiguration.framework */,
+				F176726F1AA515E900588865 /* AVFoundation.framework */,
+				F176726D1AA515E200588865 /* CoreMedia.framework */,
+				F176726B1AA515D500588865 /* CoreMotion.framework */,
 				F109CE9A1A56F8770011CA55 /* TagMoment */,
 				F109CEB21A56F8770011CA55 /* TagMomentTests */,
 				F109CE991A56F8770011CA55 /* Products */,
@@ -203,6 +230,7 @@
 		F109CE9A1A56F8770011CA55 /* TagMoment */ = {
 			isa = PBXGroup;
 			children = (
+				F17672641AA515BF00588865 /* Externals */,
 				F15AA38E1A99432E0045BFD3 /* Sharing */,
 				F101F15F1A6B191B004849F1 /* Controls */,
 				F10185921A67434F003F906E /* Utils */,
@@ -224,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				F109CE9C1A56F8770011CA55 /* Info.plist */,
+				F17672751AA5195F00588865 /* TestFairy-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -283,6 +312,24 @@
 				F1A7B7651A585E180033FE64 /* MaskFactory.swift */,
 			);
 			path = Masks;
+			sourceTree = "<group>";
+		};
+		F17672641AA515BF00588865 /* Externals */ = {
+			isa = PBXGroup;
+			children = (
+				F17672651AA515BF00588865 /* TestFairy */,
+			);
+			path = Externals;
+			sourceTree = "<group>";
+		};
+		F17672651AA515BF00588865 /* TestFairy */ = {
+			isa = PBXGroup;
+			children = (
+				F17672661AA515BF00588865 /* libTestFairy.a */,
+				F17672671AA515BF00588865 /* TestFairy.h */,
+				F17672681AA515BF00588865 /* upload-dsym.sh */,
+			);
+			path = TestFairy;
 			sourceTree = "<group>";
 		};
 		F1A142131A93FC81001D63C6 /* FilterParameters */ = {
@@ -426,6 +473,7 @@
 				F1604C711A574CC40055C721 /* image2.jpeg in Resources */,
 				F109CEA71A56F8770011CA55 /* Images.xcassets in Resources */,
 				F1A7B7741A58AF4B0033FE64 /* MaskCollectionViewCell.xib in Resources */,
+				F176726A1AA515BF00588865 /* upload-dsym.sh in Resources */,
 				F1604C701A574CC40055C721 /* image1.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -604,11 +652,22 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/TagMoment/Externals/TestFairy",
+				);
 				INFOPLIST_FILE = TagMoment/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TagMoment/Externals/TestFairy",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "bdc333c9-a767-4046-8186-d5afa0b5c6ec";
+				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)/TagMoment/Externals/TestFairy";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/TagMoment/TestFairy-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -619,11 +678,22 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(PROJECT_DIR)/TagMoment/Externals/TestFairy",
+				);
 				INFOPLIST_FILE = TagMoment/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TagMoment/Externals/TestFairy",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "02081874-f22c-47ac-9d8b-38f0d89f5592";
+				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)/TagMoment/Externals/TestFairy";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/TagMoment/TestFairy-Bridging-Header.h";
 			};
 			name = Release;
 		};
