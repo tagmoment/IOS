@@ -16,6 +16,9 @@ enum FlashState{
 }
 
 class MainViewController: UIViewController, ChooseMasksControllerDelegate, ChooseFiltesControllerDelegate, NavBarDelegate, SharingControllerDelegate{
+	
+	let CachedImagePathKey = "cachedImagePathKey"
+	
 	var masksViewController : ChooseMasksViewController!
 	var filtersViewController : ChooseFiltersViewController!
 	var sharingController : SharingViewController!
@@ -175,6 +178,36 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		}
 	}
 	
+	func saveTempImage()
+	{
+		
+		let imageData = UIImagePNGRepresentation(imageForCaching())
+		
+		let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true);
+		let documentsDirectory = paths[0] as String
+		let imagePath = documentsDirectory + "/cached.png"
+		
+		if !imageData.writeToFile(imagePath, atomically: false)
+		{
+			print("Failed to cache image data to disk")
+		}
+		else
+		{
+			NSUserDefaults.standardUserDefaults().setObject(imagePath, forKey: CachedImagePathKey)
+			print("the cachedImagedPath is %@",imagePath)
+		}
+	}
+	
+	func imageForCaching() -> UIImage
+	{
+		UIGraphicsBeginImageContext(self.canvas.frame.size);
+		self.canvas.image?.drawInRect(self.canvas.bounds);
+		self.secondImageView.drawViewHierarchyInRect(self.canvas.bounds, afterScreenUpdates: true)
+		self.logoLabel.drawTextInRect(self.logoLabel.frame)
+		let newImage = UIGraphicsGetImageFromCurrentImageContext()
+		UIGraphicsEndImageContext();
+		return newImage;
+	}
 	// MARK: - NavBarDelegation 
 	func sharingRequested() {
 		sharingController = SharingViewController(nibName: "SharingViewController", bundle: nil)
@@ -190,6 +223,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			self.view.layoutIfNeeded()
 			self.logoLabel.alpha = 1.0
 		})
+		saveTempImage()
 	}
 	
 	func retakeImageRequested() {
@@ -213,7 +247,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		
 		
 	}
-	//MARK SharingControllerDelegate
+	//MARK: - SharingControllerDelegate
 	func taggingKeyboardWillChange(animationTime: Double, endFrame: CGRect) {
 		if endFrame.origin.y == self.view.frame.height
 		{
@@ -245,6 +279,10 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		}
 	}
 	
+	func imageForSharing() -> NSURL {
+		let path = NSUserDefaults.standardUserDefaults().objectForKey(CachedImagePathKey) as String
+		return NSURL(fileURLWithPath: path)!
+	}
 	
 	func captureButtonPressed() {
 #if (arch(i386) || arch(x86_64)) && os(iOS)

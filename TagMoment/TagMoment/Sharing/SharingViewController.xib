@@ -55,6 +55,9 @@
                     <state key="normal" title="Share" image="share_it" backgroundImage="share">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="shareButtonPressed:" destination="-1" eventType="touchUpInside" id="3Pv-lg-tTz"/>
+                    </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="id5-b8-9y4" userLabel="buttonsHolder">
                     <rect key="frame" x="185" y="96" width="230" height="116"/>

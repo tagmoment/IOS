@@ -11,13 +11,14 @@ import Foundation
 protocol SharingControllerDelegate : class{
 	func taggingKeyboardWillChange(animationTime : Double, endFrame: CGRect)
 	func updateUserInfoText(newText : String)
+	func imageForSharing() -> NSURL
 	
 }
 
-class SharingViewController: UIViewController, UITextFieldDelegate	{
+class SharingViewController: UIViewController, UITextFieldDelegate, UIDocumentInteractionControllerDelegate	{
 
 	weak var sharingDelegate: SharingControllerDelegate?
-	
+	var documentationInteractionController : UIDocumentInteractionController?
 	@IBOutlet weak var textField: UITextField!
 	@IBOutlet weak var shareButton: UIButton!
 	@IBOutlet weak var saveImageButton: UIButton!
@@ -120,7 +121,25 @@ class SharingViewController: UIViewController, UITextFieldDelegate	{
 	
 	// MARK: - Buttons Handling
 	@IBAction func pinButtonPressed(sender: AnyObject) {
-			}
+		
+	}
+	
+	@IBAction func shareButtonPressed(sender: AnyObject) {
+		
+		if let delegate = self.sharingDelegate
+		{
+			NSNotificationCenter.defaultCenter().removeObserver(self)
+			let url = delegate.imageForSharing()
+			documentationInteractionController = UIDocumentInteractionController(URL: url)
+			documentationInteractionController?.delegate = self
+			documentationInteractionController?.annotation = 
+		documentationInteractionController?.presentOpenInMenuFromRect(self.view.superview!.superview!.bounds, inView: self.view.superview!.superview!, animated: true)
+		
+		
+		}
+		
+	}
+	
 	
 
 }
