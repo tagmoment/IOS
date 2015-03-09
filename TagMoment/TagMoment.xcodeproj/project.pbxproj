@@ -59,6 +59,7 @@
 		F1A7B7721A58AF4B0033FE64 /* ChooseMasksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1A7B76E1A58AF4B0033FE64 /* ChooseMasksViewController.xib */; };
 		F1A7B7731A58AF4B0033FE64 /* MaskCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A7B76F1A58AF4B0033FE64 /* MaskCollectionViewCell.swift */; };
 		F1A7B7741A58AF4B0033FE64 /* MaskCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1A7B7701A58AF4B0033FE64 /* MaskCollectionViewCell.xib */; };
+		F1B190FA1AAE4DDB0001B86E /* Array+Shuffle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B190F91AAE4DDB0001B86E /* Array+Shuffle.swift */; };
 		F1B4ECE41A88072400C11FEF /* TMFilterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B4ECE31A88072400C11FEF /* TMFilterInterface.swift */; };
 		F1B4ECE61A88082B00C11FEF /* TMArtistFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B4ECE51A88082B00C11FEF /* TMArtistFilter.swift */; };
 		F1CC18341A97911300DB77F2 /* TakeImageNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CC18331A97911300DB77F2 /* TakeImageNavBar.swift */; };
@@ -139,6 +140,7 @@
 		F1A7B76E1A58AF4B0033FE64 /* ChooseMasksViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseMasksViewController.xib; sourceTree = "<group>"; };
 		F1A7B76F1A58AF4B0033FE64 /* MaskCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaskCollectionViewCell.swift; sourceTree = "<group>"; };
 		F1A7B7701A58AF4B0033FE64 /* MaskCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaskCollectionViewCell.xib; sourceTree = "<group>"; };
+		F1B190F91AAE4DDB0001B86E /* Array+Shuffle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Shuffle.swift"; sourceTree = "<group>"; };
 		F1B4ECE31A88072400C11FEF /* TMFilterInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMFilterInterface.swift; sourceTree = "<group>"; };
 		F1B4ECE51A88082B00C11FEF /* TMArtistFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMArtistFilter.swift; sourceTree = "<group>"; };
 		F1CC18331A97911300DB77F2 /* TakeImageNavBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakeImageNavBar.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 			children = (
 				F10185931A67434F003F906E /* ImageProcessingUtil.swift */,
 				F10185941A67434F003F906E /* ViewLayoutUtils.swift */,
+				F1B190F91AAE4DDB0001B86E /* Array+Shuffle.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -523,6 +526,7 @@
 				F109CE9E1A56F8770011CA55 /* AppDelegate.swift in Sources */,
 				F10185951A67434F003F906E /* ImageProcessingUtil.swift in Sources */,
 				F19620C91A881C5200DCFB85 /* TMCloudFilter.swift in Sources */,
+				F1B190FA1AAE4DDB0001B86E /* Array+Shuffle.swift in Sources */,
 				F1B4ECE61A88082B00C11FEF /* TMArtistFilter.swift in Sources */,
 				F137FDD01A648CEF007B40B3 /* CameraSessionService.swift in Sources */,
 				F14A81471A58B52700B5D14F /* TMHeartMask.swift in Sources */,

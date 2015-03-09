@@ -11,6 +11,7 @@ import Foundation
 protocol SharingControllerDelegate : class{
 	func taggingKeyboardWillChange(animationTime : Double, endFrame: CGRect)
 	func updateUserInfoText(newText : String)
+	
 }
 
 class SharingViewController: UIViewController, UITextFieldDelegate	{
@@ -20,6 +21,7 @@ class SharingViewController: UIViewController, UITextFieldDelegate	{
 	@IBOutlet weak var textField: UITextField!
 	@IBOutlet weak var shareButton: UIButton!
 	@IBOutlet weak var saveImageButton: UIButton!
+	@IBOutlet weak var buttonsHolder: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
 		var bgImage = shareButton.backgroundImageForState(UIControlState.Normal)
@@ -36,7 +38,16 @@ class SharingViewController: UIViewController, UITextFieldDelegate	{
 		
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleKeyboardNotification:", name: UIKeyboardWillChangeFrameNotification, object: nil)
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: "textFieldDidChangeText:", name: UITextFieldTextDidChangeNotification, object: nil)
+		prepareSocialButtonsAnimationState()
+		
 	}
+	
+	override func viewDidAppear(animated: Bool) {
+		super.viewDidAppear(animated)
+		animateButtonEntrance()
+	}
+	
+	
 	override func viewWillDisappear(animated: Bool) {
 		super.viewWillDisappear(animated)
 		NSNotificationCenter.defaultCenter().removeObserver(self)
@@ -68,7 +79,34 @@ class SharingViewController: UIViewController, UITextFieldDelegate	{
 		return true
 	}
 
+	// MARK: - Animations
+	func prepareSocialButtonsAnimationState()
+	{
+		for view in self.buttonsHolder.subviews
+		{
+			view.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1)
+		}
+	}
 	
+	func animateButtonEntrance()
+	{
+		var shuffled = self.buttonsHolder.subviews.shuffled()
+		for i : Int in 0..<shuffled.count
+		{
+			let view = shuffled[i] as UIView
+			let delay = Double(i)*0.1
+			UIView.animateWithDuration(1.0, delay: delay ,usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
+				view.layer.transform = CATransform3DIdentity
+			}, completion: nil)
+			
+		}
+	}
+	
+	// MARK: - Buttons Handling
+	@IBAction func pinButtonPressed(sender: AnyObject) {
+		prepareSocialButtonsAnimationState()
+		animateButtonEntrance()
+	}
 	
 
 }

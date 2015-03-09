@@ -35,6 +35,10 @@
                         <constraint firstAttribute="height" constant="44" id="7tg-53-6hh"/>
                     </constraints>
                 </view>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="HAf-SR-1E8" userLabel="Canvas">
+                    <rect key="frame" x="0.0" y="44" width="600" height="352"/>
+                    <color key="backgroundColor" red="0.99607843139999996" green="0.73725490199999999" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
+                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bMg-Z8-kyr" userLabel="ControlsContainer" customClass="SlidingView" customModule="TagMoment" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="396" width="600" height="204"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -43,7 +47,11 @@
                     </constraints>
                 </view>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Love" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hwp-Bm-Gjq" userLabel="userLabel">
-                    <rect key="frame" x="549" y="322" width="43" height="30"/>
+                    <rect key="frame" x="549" y="319" width="43" height="35"/>
+                    <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.0"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="iqi-Ux-IqS"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="GiddyupStd" family="Giddyup Std" pointSize="28"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
@@ -58,10 +66,6 @@
                     <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.57999999999999996" colorSpace="calibratedRGB"/>
                     <size key="shadowOffset" width="0.0" height="-2"/>
                 </label>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="HAf-SR-1E8" userLabel="Canvas">
-                    <rect key="frame" x="0.0" y="44" width="600" height="352"/>
-                    <color key="backgroundColor" red="0.99607843139999996" green="0.73725490199999999" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
-                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -80,7 +84,7 @@
                 <constraint firstItem="HAf-SR-1E8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hAr-jd-Qdz"/>
                 <constraint firstItem="gpi-ca-Rk4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="r04-au-x94"/>
                 <constraint firstItem="gpi-ca-Rk4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="yDX-4i-kDl"/>
-                <constraint firstItem="W4I-ty-ZYe" firstAttribute="top" secondItem="hwp-Bm-Gjq" secondAttribute="bottom" constant="2" id="zsj-Kw-v3R"/>
+                <constraint firstItem="W4I-ty-ZYe" firstAttribute="top" secondItem="hwp-Bm-Gjq" secondAttribute="bottom" id="zsj-Kw-v3R"/>
             </constraints>
             <variation key="default">
                 <mask key="constraints">

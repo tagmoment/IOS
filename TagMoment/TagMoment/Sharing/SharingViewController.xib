@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SharingViewController" customModule="TagMoment" customModuleProvider="target">
             <connections>
+                <outlet property="buttonsHolder" destination="id5-b8-9y4" id="amX-1b-eRm"/>
                 <outlet property="saveImageButton" destination="21g-rT-QKM" id="1dX-er-0Vn"/>
                 <outlet property="shareButton" destination="NGF-qY-cNl" id="VyT-WY-k1z"/>
                 <outlet property="textField" destination="aas-bg-iX7" id="12J-T9-Ce5"/>
@@ -31,6 +32,9 @@
                     <state key="normal" image="keep_it" backgroundImage="keep">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="pinButtonPressed:" destination="-1" eventType="touchUpInside" id="wXc-ON-omw"/>
+                    </connections>
                 </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="#moment" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="aas-bg-iX7">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -52,6 +56,102 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="id5-b8-9y4" userLabel="buttonsHolder">
+                    <rect key="frame" x="185" y="96" width="230" height="116"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="se8-qG-QNa">
+                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="3YY-fN-BbM"/>
+                                <constraint firstAttribute="height" constant="50" id="WqZ-2k-xyo"/>
+                            </constraints>
+                            <state key="normal" image="insegram_share">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="selected" image="insegram_share_on"/>
+                            <state key="highlighted" image="insegram_share_on"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zfA-Oh-Zxz">
+                            <rect key="frame" x="0.0" y="66" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="QjE-Y0-AXR"/>
+                                <constraint firstAttribute="width" constant="50" id="nh2-jQ-MBP"/>
+                            </constraints>
+                            <state key="normal" image="whatsapp_share">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="selected" image="whatsapp_share_on"/>
+                            <state key="highlighted" image="whatsapp_share_on"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CkO-hn-IF4">
+                            <rect key="frame" x="90" y="66" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="Xwz-ON-SXX"/>
+                                <constraint firstAttribute="height" constant="50" id="odE-xo-JCM"/>
+                            </constraints>
+                            <state key="normal" image="tumbler_share">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="selected" image="tumbler_share_on"/>
+                            <state key="highlighted" image="tumbler_share_on"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LuF-xL-T2f">
+                            <rect key="frame" x="180" y="66" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="9Cd-EJ-wew"/>
+                                <constraint firstAttribute="height" constant="50" id="UJe-pb-Xm2"/>
+                            </constraints>
+                            <state key="normal" image="more_share">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="selected" image="more_share_on"/>
+                            <state key="highlighted" image="more_share_on"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cW3-O0-mFk">
+                            <rect key="frame" x="180" y="0.0" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="Wq2-kD-RkY"/>
+                                <constraint firstAttribute="width" constant="50" id="Y0a-sq-eQ0"/>
+                            </constraints>
+                            <state key="normal" image="twitter_share">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="selected" image="twitter_share_on"/>
+                            <state key="highlighted" image="twitter_share_on"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="31H-6P-2mU">
+                            <rect key="frame" x="90" y="0.0" width="50" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="MG5-tH-TBF"/>
+                                <constraint firstAttribute="height" constant="50" id="zlQ-Le-1Gc"/>
+                            </constraints>
+                            <state key="normal" image="facebook_share">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <state key="selected" image="facebook_share_on"/>
+                            <state key="highlighted" image="facebook_share_on"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="31H-6P-2mU" firstAttribute="top" secondItem="id5-b8-9y4" secondAttribute="top" id="1up-xK-h78"/>
+                        <constraint firstItem="LuF-xL-T2f" firstAttribute="top" secondItem="cW3-O0-mFk" secondAttribute="bottom" constant="16" id="4On-AY-1DM"/>
+                        <constraint firstAttribute="bottom" secondItem="CkO-hn-IF4" secondAttribute="bottom" id="4fE-DO-aCU"/>
+                        <constraint firstAttribute="bottom" secondItem="zfA-Oh-Zxz" secondAttribute="bottom" id="5BB-ri-NBS"/>
+                        <constraint firstItem="zfA-Oh-Zxz" firstAttribute="top" secondItem="se8-qG-QNa" secondAttribute="bottom" constant="16" id="5Gz-fe-jKk"/>
+                        <constraint firstItem="se8-qG-QNa" firstAttribute="leading" secondItem="id5-b8-9y4" secondAttribute="leading" id="600-tP-Y0W"/>
+                        <constraint firstItem="31H-6P-2mU" firstAttribute="leading" secondItem="se8-qG-QNa" secondAttribute="trailing" constant="40" id="Ert-fj-zgk"/>
+                        <constraint firstItem="LuF-xL-T2f" firstAttribute="leading" secondItem="CkO-hn-IF4" secondAttribute="trailing" constant="40" id="Jdg-R2-JFK"/>
+                        <constraint firstItem="cW3-O0-mFk" firstAttribute="top" secondItem="id5-b8-9y4" secondAttribute="top" id="Qox-wc-4KR"/>
+                        <constraint firstItem="zfA-Oh-Zxz" firstAttribute="leading" secondItem="id5-b8-9y4" secondAttribute="leading" id="TQv-CI-lfK"/>
+                        <constraint firstItem="se8-qG-QNa" firstAttribute="top" secondItem="id5-b8-9y4" secondAttribute="top" id="XRn-Fb-hVc"/>
+                        <constraint firstItem="CkO-hn-IF4" firstAttribute="leading" secondItem="zfA-Oh-Zxz" secondAttribute="trailing" constant="40" id="gsh-qn-6Ae"/>
+                        <constraint firstAttribute="bottom" secondItem="LuF-xL-T2f" secondAttribute="bottom" id="uBh-vb-JpE"/>
+                        <constraint firstItem="cW3-O0-mFk" firstAttribute="leading" secondItem="31H-6P-2mU" secondAttribute="trailing" constant="40" id="umQ-Ov-ftN"/>
+                        <constraint firstAttribute="trailing" secondItem="LuF-xL-T2f" secondAttribute="trailing" id="vTy-Uc-a3R"/>
+                        <constraint firstAttribute="trailing" secondItem="cW3-O0-mFk" secondAttribute="trailing" id="ywj-k1-qCY"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
@@ -59,10 +159,12 @@
                 <constraint firstAttribute="bottom" secondItem="NGF-qY-cNl" secondAttribute="bottom" id="418-Kp-KfB"/>
                 <constraint firstItem="aas-bg-iX7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="7oh-rE-5zw"/>
                 <constraint firstItem="NGF-qY-cNl" firstAttribute="leading" secondItem="21g-rT-QKM" secondAttribute="trailing" constant="-40" id="R91-bi-rSS"/>
+                <constraint firstItem="NGF-qY-cNl" firstAttribute="top" secondItem="id5-b8-9y4" secondAttribute="bottom" constant="22" id="Tw3-wP-678"/>
                 <constraint firstAttribute="trailing" secondItem="aas-bg-iX7" secondAttribute="trailing" id="Yj1-8i-8D4"/>
                 <constraint firstItem="21g-rT-QKM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="a0z-9z-dIP"/>
                 <constraint firstAttribute="bottom" secondItem="21g-rT-QKM" secondAttribute="bottom" id="khM-1l-DE9"/>
                 <constraint firstAttribute="trailing" secondItem="NGF-qY-cNl" secondAttribute="trailing" id="koh-Z5-xVD"/>
+                <constraint firstAttribute="centerX" secondItem="id5-b8-9y4" secondAttribute="centerX" id="qGZ-hH-Pvy"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -70,9 +172,21 @@
         </view>
     </objects>
     <resources>
+        <image name="facebook_share" width="44" height="44"/>
+        <image name="facebook_share_on" width="44" height="44"/>
+        <image name="insegram_share" width="44" height="44"/>
+        <image name="insegram_share_on" width="44" height="44"/>
         <image name="keep" width="109" height="44"/>
         <image name="keep_it" width="23" height="23"/>
+        <image name="more_share" width="44" height="44"/>
+        <image name="more_share_on" width="44" height="44"/>
         <image name="share" width="253" height="44"/>
         <image name="share_it" width="20" height="20"/>
+        <image name="tumbler_share" width="44" height="44"/>
+        <image name="tumbler_share_on" width="44" height="44"/>
+        <image name="twitter_share" width="44" height="44"/>
+        <image name="twitter_share_on" width="44" height="44"/>
+        <image name="whatsapp_share" width="44" height="44"/>
+        <image name="whatsapp_share_on" width="44" height="44"/>
     </resources>
 </document>
