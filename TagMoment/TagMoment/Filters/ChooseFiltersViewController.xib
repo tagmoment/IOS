@@ -15,11 +15,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="247"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="InD-dJ-xR0">
-                    <rect key="frame" x="0.0" y="532" width="588" height="68"/>
+                    <rect key="frame" x="0.0" y="179" width="588" height="68"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="68" id="8de-TL-GJn"/>
                     </constraints>
@@ -35,16 +35,17 @@
                     </connections>
                 </collectionView>
                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="wuA-ol-ldl">
-                    <rect key="frame" x="24" y="469" width="552" height="31"/>
+                    <rect key="frame" x="158" y="116" width="284" height="31"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="hkr-Sq-Q94"/>
+                        <constraint firstAttribute="width" constant="280" id="qN2-yF-Aza"/>
                     </constraints>
                     <connections>
                         <action selector="sliderValueChanged:" destination="-1" eventType="valueChanged" id="B4l-z9-8Yi"/>
                     </connections>
                 </slider>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qzN-gB-kgI">
-                    <rect key="frame" x="280" y="406" width="40" height="40"/>
+                    <rect key="frame" x="280" y="10" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="40" id="bUM-3T-KZR"/>
                         <constraint firstAttribute="height" constant="40" id="gfM-e4-ioM"/>
@@ -61,15 +62,24 @@
             <constraints>
                 <constraint firstItem="InD-dJ-xR0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="DsF-Ru-K0s"/>
                 <constraint firstItem="wuA-ol-ldl" firstAttribute="top" secondItem="qzN-gB-kgI" secondAttribute="bottom" constant="23" id="J6H-2C-ky5"/>
+                <constraint firstAttribute="centerX" secondItem="wuA-ol-ldl" secondAttribute="centerX" id="RR8-3Y-bEi"/>
                 <constraint firstAttribute="trailing" secondItem="InD-dJ-xR0" secondAttribute="trailing" constant="12" id="VEi-cW-mDw"/>
                 <constraint firstItem="InD-dJ-xR0" firstAttribute="top" secondItem="wuA-ol-ldl" secondAttribute="bottom" constant="33" id="X9b-0M-3zg"/>
                 <constraint firstAttribute="trailing" secondItem="wuA-ol-ldl" secondAttribute="trailing" constant="26" id="XOf-5K-QGr"/>
                 <constraint firstAttribute="centerX" secondItem="qzN-gB-kgI" secondAttribute="centerX" id="ZKJ-K2-4GU"/>
+                <constraint firstItem="qzN-gB-kgI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="ag8-E6-5K6"/>
                 <constraint firstAttribute="bottom" secondItem="InD-dJ-xR0" secondAttribute="bottom" id="e3B-cH-EaO"/>
                 <constraint firstItem="wuA-ol-ldl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="26" id="mdV-Om-SIF"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="62" y="63"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="J6H-2C-ky5"/>
+                    <exclude reference="XOf-5K-QGr"/>
+                    <exclude reference="mdV-Om-SIF"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="62" y="239.5"/>
         </view>
     </objects>
 </document>

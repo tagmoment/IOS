@@ -15,7 +15,7 @@ enum FlashState{
 	case Auto
 }
 
-class MainViewController: UIViewController, ChooseMasksControllerDelegate, ChooseFiltesControllerDelegate, NavBarDelegate{
+class MainViewController: UIViewController, ChooseMasksControllerDelegate, ChooseFiltesControllerDelegate, NavBarDelegate, SharingControllerDelegate{
 	var masksViewController : ChooseMasksViewController!
 	var filtersViewController : ChooseFiltersViewController!
 	var sharingController : SharingViewController!
@@ -60,8 +60,6 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		controlContainer.addViewWithConstraints(masksViewController.view, toTheRight: true)
 		masksViewController.masksChooseDelegate = self
 //		canvas.image = UIImage(named: "image1.jpeg")
-//		infobarHolder.layer.borderColor = UIColor.blueColor().CGColor
-//		infobarHolder.layer.borderWidth = 1.0
 		secondImageView = UIImageView()
 		secondImageView.contentMode = UIViewContentMode.ScaleAspectFill
 		canvas.pinSubViewToAllEdges(secondImageView)
@@ -99,8 +97,13 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		navigationView = NSBundle.mainBundle().loadNibNamed("NavbarView", owner: nil, options: nil)[0] as TakeImageNavBar
 		infobarHolder.pinSubViewToAllEdges(navigationView)
 		navigationView.viewDelegate = self
+#if (arch(i386) || arch(x86_64)) && os(iOS)
+
+		print("In smulator stage 1")
+#else
 		startSessionOnBackCam()
-	}
+#endif
+}
 	
 	func initStageTwo()
 	{
@@ -174,35 +177,19 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	
 	// MARK: - NavBarDelegation 
 	func sharingRequested() {
-//		sharingController = SharingViewController(nibName: "SharingViewController", bundle: nil)
-//		
-//		controlContainer.addViewWithConstraints(sharingController.view, toTheRight: true)
-//		controlContainer.animateEnteringView()
-//		sharingController.view.layer.borderColor = UIColor.redColor().CGColor
-//		sharingController.view.layer.borderWidth = 1.0
-//		filtersViewController.view.layer.borderWidth = 1.0
-//		filtersViewController.view.layer.borderColor = UIColor.redColor().CGColor
+		sharingController = SharingViewController(nibName: "SharingViewController", bundle: nil)
+		sharingController.sharingDelegate = self
+		controlContainer.addViewWithConstraints(sharingController.view, toTheRight: true)
+		controlContainer.animateEnteringView()
 		infoTopConstraint.constant = -infobarHolder.frame.height
 		controlContainerHeightConstraint.constant += infobarHolder.frame.height
-//		logoLabel.hidden = false
-//		logoLabel.alpha = 0.0
-		println("first frame \(controlContainer.frame)")
-		for view in controlContainer.subviews[0].subviews
-		{
-			println("view \(view) frame is \(view.frame)")
-		}
-		self.view.layoutIfNeeded()
-		
-		println("second frame \(controlContainer.frame)")
-		for view in controlContainer.subviews[0].subviews
-		{
-			println("view \(view) frame is \(view.frame)")
-		}
-//		UIView .animateWithDuration(0.5, animations: { () -> Void in
-//			
-//			self.view.layoutIfNeeded()
-//			self.logoLabel.alpha = 1.0
-//		})
+		logoLabel.hidden = false
+		logoLabel.alpha = 0.0
+		UIView .animateWithDuration(0.5, animations: { () -> Void in
+			
+			self.view.layoutIfNeeded()
+			self.logoLabel.alpha = 1.0
+		})
 	}
 	
 	func retakeImageRequested() {
@@ -226,10 +213,45 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		
 		
 	}
+	//MARK SharingControllerDelegate
+	func taggingKeyboardWillChange(animationTime: Double, endFrame: CGRect) {
+		if endFrame.origin.y == self.view.frame.height
+		{
+			infoTopConstraint.constant = -infobarHolder.frame.height
+			controlContainerHeightConstraint.constant = 204 + infobarHolder.frame.height
+		}
+		else
+		{
+			infoTopConstraint.constant = -infobarHolder.frame.height - endFrame.height - 144
+			controlContainerHeightConstraint.constant = endFrame.height + 100
+		}
+		
+		UIView .animateWithDuration(animationTime, animations: { () -> Void in
+			
+			self.view.layoutIfNeeded()
+		})
+	}
+	
+	func updateUserInfoText(newText: String)
+	{
+		if newText.isEmpty
+		{
+			self.userLabel.hidden = true
+		}
+		else
+		{
+			self.userLabel.hidden = false
+			self.userLabel.text = newText
+		}
+	}
 	
 	
 	func captureButtonPressed() {
-		
+#if (arch(i386) || arch(x86_64)) && os(iOS)
+		canvas.image = UIImage(named: "image1.jpeg")
+		secondImageView.image = UIImage(named: "image2.jpeg")
+		initStageThree()
+#else
 		sessionService.captureImage { (image: UIImage?, error: NSError!) -> Void in
 			if (error != nil)
 			{
@@ -263,7 +285,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 				}
 			}
 		}
-
+#endif
 	}
 	
 	func switchCamButtonPressed() {

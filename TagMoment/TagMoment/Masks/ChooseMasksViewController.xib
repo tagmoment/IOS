@@ -83,6 +83,7 @@
                     <exclude reference="gFH-kW-fAN"/>
                 </mask>
             </variation>
+            <point key="canvasLocation" x="174" y="846"/>
         </view>
     </objects>
     <resources>

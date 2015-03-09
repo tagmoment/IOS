@@ -4,11 +4,17 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="GiddyupStd.ttf">
+            <string>GiddyupStd</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SharingViewController" customModule="TagMoment" customModuleProvider="target">
             <connections>
                 <outlet property="saveImageButton" destination="21g-rT-QKM" id="1dX-er-0Vn"/>
                 <outlet property="shareButton" destination="NGF-qY-cNl" id="VyT-WY-k1z"/>
+                <outlet property="textField" destination="aas-bg-iX7" id="12J-T9-Ce5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -26,8 +32,20 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="#moment" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="aas-bg-iX7">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="niY-L9-U6D"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="GiddyupStd" family="Giddyup Std" pointSize="38"/>
+                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="Tmf-Gq-vxp"/>
+                    </connections>
+                </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NGF-qY-cNl" userLabel="sharebutton">
-                    <rect key="frame" x="78" y="234" width="522" height="44"/>
+                    <rect key="frame" x="82" y="234" width="518" height="44"/>
                     <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="7"/>
                     <state key="normal" title="Share" image="share_it" backgroundImage="share">
@@ -37,8 +55,11 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="aas-bg-iX7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="3fn-ny-MC5"/>
                 <constraint firstAttribute="bottom" secondItem="NGF-qY-cNl" secondAttribute="bottom" id="418-Kp-KfB"/>
-                <constraint firstItem="NGF-qY-cNl" firstAttribute="leading" secondItem="21g-rT-QKM" secondAttribute="trailing" constant="-44" id="R91-bi-rSS"/>
+                <constraint firstItem="aas-bg-iX7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="7oh-rE-5zw"/>
+                <constraint firstItem="NGF-qY-cNl" firstAttribute="leading" secondItem="21g-rT-QKM" secondAttribute="trailing" constant="-40" id="R91-bi-rSS"/>
+                <constraint firstAttribute="trailing" secondItem="aas-bg-iX7" secondAttribute="trailing" id="Yj1-8i-8D4"/>
                 <constraint firstItem="21g-rT-QKM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="a0z-9z-dIP"/>
                 <constraint firstAttribute="bottom" secondItem="21g-rT-QKM" secondAttribute="bottom" id="khM-1l-DE9"/>
                 <constraint firstAttribute="trailing" secondItem="NGF-qY-cNl" secondAttribute="trailing" id="koh-Z5-xVD"/>

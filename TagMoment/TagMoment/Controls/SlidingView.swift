@@ -34,7 +34,7 @@ class SlidingView: UIView {
 		
 		self.layoutIfNeeded()
 		
-		UIView.animateWithDuration(2.0, delay: 0,usingSpringWithDamping: 0.7, initialSpringVelocity: -0.5, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
+		UIView.animateWithDuration(1.0, delay: 0,usingSpringWithDamping: 0.6, initialSpringVelocity: 6, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
 				for constraint in self.leftConstraints
 				{
 					var val = constraint.constant - self.frame.width
@@ -55,7 +55,7 @@ class SlidingView: UIView {
 		
 		self.layoutIfNeeded()
 		
-		UIView.animateWithDuration(2.0, delay: 0,usingSpringWithDamping: 0.7, initialSpringVelocity: -0.5, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
+		UIView.animateWithDuration(1.0, delay: 0,usingSpringWithDamping: 0.6, initialSpringVelocity: 6, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
 			for constraint in self.leftConstraints
 			{
 				var val = constraint.constant + self.frame.width
