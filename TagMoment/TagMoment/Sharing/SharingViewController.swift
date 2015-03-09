@@ -63,6 +63,16 @@ class SharingViewController: UIViewController, UITextFieldDelegate	{
 		{
 			delegate.taggingKeyboardWillChange(animationTime, endFrame: keyboardEndFrame.CGRectValue())
 		}
+		if (keyboardEndFrame.CGRectValue().origin.y == UIApplication.sharedApplication().keyWindow?.frame.height)
+		{
+			var dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(animationTime))
+			dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+				self.animateButtonEntranceWithPrep()
+			})
+			
+			
+
+		}
 	}
 	func textFieldDidChangeText(notif: NSNotification)
 	{
@@ -78,8 +88,10 @@ class SharingViewController: UIViewController, UITextFieldDelegate	{
 		self.textField .resignFirstResponder()
 		return true
 	}
-
+	
+	
 	// MARK: - Animations
+	
 	func prepareSocialButtonsAnimationState()
 	{
 		for view in self.buttonsHolder.subviews
@@ -87,7 +99,11 @@ class SharingViewController: UIViewController, UITextFieldDelegate	{
 			view.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1)
 		}
 	}
-	
+	func animateButtonEntranceWithPrep()
+	{
+		prepareSocialButtonsAnimationState()
+		animateButtonEntrance()
+	}
 	func animateButtonEntrance()
 	{
 		var shuffled = self.buttonsHolder.subviews.shuffled()
@@ -104,9 +120,7 @@ class SharingViewController: UIViewController, UITextFieldDelegate	{
 	
 	// MARK: - Buttons Handling
 	@IBAction func pinButtonPressed(sender: AnyObject) {
-		prepareSocialButtonsAnimationState()
-		animateButtonEntrance()
-	}
+			}
 	
 
 }

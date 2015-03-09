@@ -59,9 +59,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		masksViewController = ChooseMasksViewController(nibName: "ChooseMasksViewController", bundle: nil)
 		controlContainer.addViewWithConstraints(masksViewController.view, toTheRight: true)
 		masksViewController.masksChooseDelegate = self
-//		canvas.image = UIImage(named: "image1.jpeg")
-		logoLabel.layer.borderColor = UIColor.redColor().CGColor
-		logoLabel.layer.borderWidth = 1.0
+
 		secondImageView = UIImageView()
 		secondImageView.contentMode = UIViewContentMode.ScaleAspectFill
 		canvas.pinSubViewToAllEdges(secondImageView)
