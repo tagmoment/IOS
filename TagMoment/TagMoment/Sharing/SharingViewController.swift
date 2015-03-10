@@ -12,6 +12,7 @@ protocol SharingControllerDelegate : class{
 	func taggingKeyboardWillChange(animationTime : Double, endFrame: CGRect)
 	func updateUserInfoText(newText : String)
 	func imageForSharing() -> NSURL
+	func retakeImageRequested()
 	
 }
 
@@ -121,7 +122,10 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UIDocumentIn
 	
 	// MARK: - Buttons Handling
 	@IBAction func pinButtonPressed(sender: AnyObject) {
-		
+		if let delegate = self.sharingDelegate
+		{
+			delegate.retakeImageRequested()
+		}
 	}
 	
 	@IBAction func shareButtonPressed(sender: AnyObject) {

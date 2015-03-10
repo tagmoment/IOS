@@ -227,6 +227,15 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	}
 	
 	func retakeImageRequested() {
+		if (self.infoTopConstraint.constant != 0)
+		{
+			self.infoTopConstraint.constant = 0
+			self.controlContainerHeightConstraint.constant = 204
+			UIView.animateWithDuration(0.3, animations: { () -> Void in
+				self.view.layoutIfNeeded()
+			})
+		}
+		self.logoLabel.hidden = false
 		self.navigationView.takingImageStageAppearance(true)
 		self.canvas.image = nil
 		self.secondImageView.image = nil
