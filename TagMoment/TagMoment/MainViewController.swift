@@ -310,9 +310,11 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 				/* print error message */
 				return
 			}
+			
 			if (image != nil)
 			{
 				self.processImage(image)
+				self.navigationView.showLeftButton(true)
 				if (!self.isOnSecondStage() && self.masksViewController.maskAllowsSecondCapture())
 				{
 					if (self.blurredView != nil)
@@ -320,7 +322,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 						self.blurredView!.removeFromSuperview()
 						self.blurredView = nil
 					}
-					self.navigationView.showLeftButton(true)
+					
 					self.switchCamButtonPressed()
 					self.initStageTwo()
 				}
