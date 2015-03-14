@@ -5,7 +5,7 @@ import UIKit
 
 
 struct MaskFactory {
-	static let MASKS = ["nameit", "uandme", "Flat", "moment", "waves", "xoxo", "casual"]
+	static let MASKS = ["nameit", "uandme", "flat", "moment", "waves", "xoxo", "casual"]
 	
 	static func getViewModels() -> [TMMaskViewModel]
 	{
@@ -33,7 +33,7 @@ struct MaskFactory {
 				return TMTraingleMask(rect: rect)
 			case "uandme":
 				return TMVerticalRectMask(rect: rect)
-			case "Flat":
+			case "flat":
 				return TMHorizontalRectMask(rect: rect)
 			case "moment":
 				return TMCircleMask(rect: rect)

@@ -16,12 +16,12 @@ class TMHorizontalRectMask: TMMask {
 	}
 	
 	var clippingPath : UIBezierPath{
-		var somepath = UIBezierPath(rect: CGRect(x: 0.0, y: 0.0, width: workingBounds.maxX, height: workingBounds.maxY/2))
+		var somepath = UIBezierPath(rect: CGRect(x: 0.0, y: workingBounds.maxY/2, width: workingBounds.maxX, height: workingBounds.maxY/2))
 		
 		return somepath
 	}
 	
 	func createViewModel() -> TMMaskViewModel{
-		return TMMaskViewModel(name: "Flat")
+		return TMMaskViewModel(name: "flat")
 	}
 }
