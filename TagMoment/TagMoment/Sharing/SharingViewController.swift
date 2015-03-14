@@ -37,9 +37,7 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UIDocumentIn
 
 	override func viewWillAppear(animated: Bool) {
 		super.viewWillAppear(animated)
-		
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleKeyboardNotification:", name: UIKeyboardWillChangeFrameNotification, object: nil)
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: "textFieldDidChangeText:", name: UITextFieldTextDidChangeNotification, object: nil)
+		registerForNotifications()
 		prepareSocialButtonsAnimationState()
 		
 	}
@@ -55,6 +53,12 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UIDocumentIn
 		NSNotificationCenter.defaultCenter().removeObserver(self)
 	}
 	
+	private func registerForNotifications()
+	{
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleKeyboardNotification:", name: UIKeyboardWillChangeFrameNotification, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: "textFieldDidChangeText:", name: UITextFieldTextDidChangeNotification, object: nil)
+		
+	}
 	func handleKeyboardNotification(notif: NSNotification)
 	{
 		let animationTime = notif.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as Double
@@ -141,9 +145,12 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UIDocumentIn
 		
 		
 		}
-		
+
 	}
 	
+	func documentInteractionControllerDidDismissOpenInMenu(controller: UIDocumentInteractionController){
+		registerForNotifications()
+	}
 	
 
 }
