@@ -39,6 +39,7 @@
 		F17672701AA515E900588865 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F176726F1AA515E900588865 /* AVFoundation.framework */; };
 		F17672721AA515F200588865 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F17672711AA515F200588865 /* SystemConfiguration.framework */; };
 		F17672741AA515FA00588865 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F17672731AA515FA00588865 /* OpenGLES.framework */; };
+		F17A416D1AB477930074E5F5 /* TMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17A416C1AB477930074E5F5 /* TMTextField.swift */; };
 		F19620C11A881A8800DCFB85 /* TMBloomFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19620C01A881A8800DCFB85 /* TMBloomFilter.swift */; };
 		F19620C31A881B0800DCFB85 /* TMStarFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19620C21A881B0800DCFB85 /* TMStarFilter.swift */; };
 		F19620C51A881B7300DCFB85 /* TMSurpriseFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19620C41A881B7300DCFB85 /* TMSurpriseFilter.swift */; };
@@ -120,6 +121,7 @@
 		F17672711AA515F200588865 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F17672731AA515FA00588865 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		F17672751AA5195F00588865 /* TestFairy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestFairy-Bridging-Header.h"; sourceTree = "<group>"; };
+		F17A416C1AB477930074E5F5 /* TMTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMTextField.swift; sourceTree = "<group>"; };
 		F19620C01A881A8800DCFB85 /* TMBloomFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMBloomFilter.swift; sourceTree = "<group>"; };
 		F19620C21A881B0800DCFB85 /* TMStarFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMStarFilter.swift; sourceTree = "<group>"; };
 		F19620C41A881B7300DCFB85 /* TMSurpriseFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMSurpriseFilter.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				F101F1601A6B202D004849F1 /* SlidingView.swift */,
 				F1CC18331A97911300DB77F2 /* TakeImageNavBar.swift */,
 				F10F63671A97927A00EDCAE3 /* NavbarView.xib */,
+				F17A416C1AB477930074E5F5 /* TMTextField.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -498,6 +501,7 @@
 				F1A142171A93FC8F001D63C6 /* FilterImageParameter.swift in Sources */,
 				F1A142191A93FD5B001D63C6 /* FilterParameterProtocol.swift in Sources */,
 				F1CC18341A97911300DB77F2 /* TakeImageNavBar.swift in Sources */,
+				F17A416D1AB477930074E5F5 /* TMTextField.swift in Sources */,
 				F1A7B7641A585DF80033FE64 /* TMVerticalRectMask.swift in Sources */,
 				F1ECA3781A88167A0018EFA2 /* TMPhotoEffectMonoFilter.swift in Sources */,
 				F14A81431A58B0B300B5D14F /* TMCircleMask.swift in Sources */,

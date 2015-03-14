@@ -17,6 +17,8 @@ protocol SharingControllerDelegate : class{
 }
 
 class SharingViewController: UIViewController, UITextFieldDelegate, UIDocumentInteractionControllerDelegate	{
+	
+	let MaxLettersInTag = 15
 
 	weak var sharingDelegate: SharingControllerDelegate?
 	var documentationInteractionController : UIDocumentInteractionController?
@@ -26,6 +28,7 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UIDocumentIn
 	@IBOutlet weak var buttonsHolder: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
+		self.textField.keyboardType = .ASCIICapable
 		var bgImage = shareButton.backgroundImageForState(UIControlState.Normal)
 		bgImage = bgImage?.resizableImageWithCapInsets(UIEdgeInsets(top: 0, left: 46, bottom: 0, right: 0))
 		shareButton.setBackgroundImage(bgImage, forState: UIControlState.Normal)
@@ -80,12 +83,23 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UIDocumentIn
 
 		}
 	}
+	
+	// MARK: - Textfield handling
+	func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+		if (textField.text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) >= MaxLettersInTag && !string.isEmpty)
+		{
+			return false
+		}
+		
+		return true
+	}
+	
 	func textFieldDidChangeText(notif: NSNotification)
 	{
-				if let delegate = self.sharingDelegate
-				{
-					delegate.updateUserInfoText(textField.text)
-				}
+		if let delegate = self.sharingDelegate
+		{
+			delegate.updateUserInfoText(textField.text)
+		}
 
 	}
 	
