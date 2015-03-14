@@ -28,6 +28,8 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	var frontCamSessionView : UIView!
 	var backCamSessionView : UIView!
 	
+	var originalImageCanvas : UIImage?
+	var originalImageSecondary : UIImage?
 	
 	var sessionService : CameraSessionService!
 	
@@ -115,9 +117,10 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	
 	func initStageThree()
 	{
+		originalImageCanvas = self.canvas.image?.copy() as? UIImage
+		originalImageSecondary = self.secondImageView.image?.copy() as? UIImage
 		filtersViewController = ChooseFiltersViewController(nibName: "ChooseFiltersViewController", bundle: nil)
 		filtersViewController.maskViewModel = masksViewController.getSelectedViewModel()
-		filtersViewController.workingImageView = canvas
 		filtersViewController.filtersChooseDelegate = self
 		controlContainer.addViewWithConstraints(filtersViewController.view, toTheRight: true)
 		controlContainer.animateEnteringView()
@@ -209,6 +212,16 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		UIGraphicsEndImageContext();
 		return newImage;
 	}
+	
+	// MARK: - Filters delegation
+	func workingImage(outerImage : Bool) -> UIImage {
+		return outerImage ? originalImageCanvas! : originalImageSecondary!
+	}
+	
+	func workingImageView(outerImage : Bool) -> UIImageView {
+		return outerImage ? self.canvas : self.secondImageView
+	}
+	
 	// MARK: - NavBarDelegation 
 	func sharingRequested() {
 		sharingController = SharingViewController(nibName: "SharingViewController", bundle: nil)
@@ -372,10 +385,6 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		}
 	}
 	
-	func jumperSwitched() {
-		self.filtersViewController.workingImageView = self.filtersViewController.workingImageView == canvas ? self.secondImageView : self.canvas
-		
-	}
 	private func isOnFirstStage() -> Bool{
 		return (self.canvas.image == nil)
 	}
