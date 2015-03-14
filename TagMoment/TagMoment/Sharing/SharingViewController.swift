@@ -86,7 +86,11 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UIDocumentIn
 	
 	// MARK: - Textfield handling
 	func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+		
 		if (textField.text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) >= MaxLettersInTag && !string.isEmpty)
+		{
+			return false
+		}else if(string == " ")
 		{
 			return false
 		}
