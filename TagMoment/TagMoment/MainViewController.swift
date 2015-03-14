@@ -302,6 +302,8 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		secondImageView.image = UIImage(named: "image2.jpeg")
 		initStageThree()
 #else
+		makeSnapshotEffect()
+	
 		sessionService.captureImage { (image: UIImage?, error: NSError!) -> Void in
 			if (error != nil)
 			{
@@ -338,6 +340,19 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 #endif
 	}
 	
+	private func makeSnapshotEffect()
+	{
+		let effectView = UIView(frame: self.canvas.bounds)
+		effectView.backgroundColor = UIColor.blackColor()
+		effectView.alpha = 1.0
+		let superview = isOnFirstStage() ? self.canvas : self.secondImageView
+		superview.addSubview(effectView)
+		UIView.animateWithDuration(0.1, animations: { () -> Void in
+			effectView.alpha = 0.0
+			}, completion: { (finished : Bool) -> Void in
+				effectView.removeFromSuperview()
+		})
+	}
 	func switchCamButtonPressed() {
 		sessionService.stopCurrentSession()
 		

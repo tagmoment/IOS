@@ -98,17 +98,11 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 	
 	
 	
-	
-	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-		
-		
-	}
-	
 	@IBAction func takeButtonPressed(sender: AnyObject) {
-		UIView.animateWithDuration(0.5, delay: 0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
+		UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
 					self.takeButton.layer.transform = CATransform3DMakeRotation(CGFloat(M_PI), 0, 0, 1)
 					}, completion: {(Bool) -> () in
-						UIView.animateWithDuration(0.5, delay: 0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
+						UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
 							self.takeButton.layer.transform = CATransform3DMakeRotation(CGFloat(M_PI*2), 0, 0, 1)
 							}, completion: {(Bool) -> Void in
 								self.takeButton.layer.transform = CATransform3DIdentity
