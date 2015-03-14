@@ -308,17 +308,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			if (image != nil)
 			{
 				self.processImage(image)
-				if (self.isOnSecondStage())
-				{
-					self.sessionService.stopCurrentSession()
-					self.backCamSessionView?.removeFromSuperview()
-					self.backCamSessionView = nil
-					self.frontCamSessionView?.removeFromSuperview()
-					self.frontCamSessionView = nil
-					self.initStageThree()
-					
-				}
-				else
+				if (!self.isOnSecondStage() && self.masksViewController.maskAllowsSecondCapture())
 				{
 					if (self.blurredView != nil)
 					{
@@ -328,6 +318,16 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 					self.navigationView.showLeftButton(true)
 					self.switchCamButtonPressed()
 					self.initStageTwo()
+				}
+				else
+				{
+					self.sessionService.stopCurrentSession()
+					self.backCamSessionView?.removeFromSuperview()
+					self.backCamSessionView = nil
+					self.frontCamSessionView?.removeFromSuperview()
+					self.frontCamSessionView = nil
+					self.initStageThree()
+					
 					
 				}
 			}

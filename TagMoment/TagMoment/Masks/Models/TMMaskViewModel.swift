@@ -10,12 +10,16 @@ import UIKit
 
 class TMMaskViewModel: NSObject {
 	var name: String?
+	var hasOneCapture : Bool
 	
 	init(name: String){
 		self.name = name
+		self.hasOneCapture = false;
 	}
 	
 	func getJumperImageName() -> String {
 		return self.name! + "_jumper_"
 	}
+	
+	
 }

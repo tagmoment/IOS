@@ -93,15 +93,10 @@ class ChooseMasksViewController: UIViewController, UICollectionViewDataSource, U
 		var selectedIndexPath = self.masksCollectionView.indexPathsForSelectedItems()[0] as NSIndexPath
 		return self.masksViewModels![selectedIndexPath.item];
 	}
-	/*
-
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+	
+	func maskAllowsSecondCapture() -> Bool
+	{
+		return !getSelectedViewModel().hasOneCapture
+	}
 
 }

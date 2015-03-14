@@ -33,7 +33,15 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
         super.viewDidLoad()
 		filterButtonsCollecionView.registerNib(UINib(nibName: "FilterCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: CellIdent)
 		self.jumperButton.setImage(UIImage(named: maskViewModel.getJumperImageName() + "1"), forState: UIControlState.Normal)
-		self.jumperButton.setImage(UIImage(named: maskViewModel.getJumperImageName() + "2"), forState: UIControlState.Selected)
+		if (maskViewModel.hasOneCapture)
+		{
+			self.jumperButton.enabled = false
+		}
+		else
+		{
+			self.jumperButton.setImage(UIImage(named: maskViewModel.getJumperImageName() + "2"), forState: UIControlState.Selected)
+		}
+		
 		
 		
 		currentCIImage = CIImage(CGImage: workingImageView.image?.CGImage)
