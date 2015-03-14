@@ -203,6 +203,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		UIGraphicsBeginImageContext(self.canvas.frame.size);
 		self.canvas.image?.drawInRect(self.canvas.bounds);
 		self.secondImageView.drawViewHierarchyInRect(self.canvas.bounds, afterScreenUpdates: true)
+//		self.userLabel.drawTextInRect(self.userLabel.frame)
 		self.logoLabel.drawTextInRect(self.logoLabel.frame)
 		let newImage = UIGraphicsGetImageFromCurrentImageContext()
 		UIGraphicsEndImageContext();
@@ -235,7 +236,9 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 				self.view.layoutIfNeeded()
 			})
 		}
-		self.logoLabel.hidden = false
+		self.logoLabel.hidden = true
+		self.userLabel.hidden = true
+		self.userLabel.text = ""
 		self.navigationView.takingImageStageAppearance(true)
 		self.canvas.image = nil
 		self.secondImageView.image = nil
