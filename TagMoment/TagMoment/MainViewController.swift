@@ -9,8 +9,8 @@
 import UIKit
 import AVFoundation
 
-enum FlashState{
-	case None
+enum FlashState: Int{
+	case Off
 	case On
 	case Auto
 }

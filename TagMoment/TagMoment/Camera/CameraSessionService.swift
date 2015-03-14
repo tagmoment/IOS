@@ -13,8 +13,30 @@ import UIKit
 class CameraSessionService : NSObject{
 	var captureSession : AVCaptureSession?
 	var stillImageOutputRef : AVCaptureStillImageOutput?
-	var frontCamera : AnyObject?
-	var backCamera : AnyObject?
+	var frontCamera : AVCaptureDevice?
+	var backCamera : AVCaptureDevice?
+	
+	var flashState = FlashState.Auto
+	
+	override init()
+	{
+		super.init()
+		
+		NSNotificationCenter.defaultCenter().addObserverForName(FlashChangedNotification, object: nil, queue: nil) { (notif: NSNotification!) -> Void in
+			let dictObject : AnyObject? = notif.userInfo?[FlashStateKey]
+			if let newState = dictObject as? FlashState.RawValue
+			{
+				self.flashState = FlashState(rawValue: newState)!
+				self.flashStateChanged(AVCaptureFlashMode(rawValue: newState)!)
+			}
+		}
+	}
+	
+	
+	deinit
+	{
+		NSNotificationCenter.defaultCenter().removeObserver(self)
+	}
 	
 	func initializeSessionForCaptureLayer() -> AVCaptureVideoPreviewLayer {
 		
@@ -36,7 +58,7 @@ class CameraSessionService : NSObject{
 		}
 		
 		var err : NSError? = nil
-		var input : AnyObject! = AVCaptureDeviceInput.deviceInputWithDevice(frontCamera as AVCaptureDevice, error: &err)
+		var input : AnyObject! = AVCaptureDeviceInput.deviceInputWithDevice(frontCamera , error: &err)
 		
 		if (input != nil) {
 			if let error = err? {
@@ -54,9 +76,10 @@ class CameraSessionService : NSObject{
 			initCameras()
 		}
 		
+		
 		var err : NSError? = nil
-		var input : AnyObject! = AVCaptureDeviceInput.deviceInputWithDevice(backCamera as AVCaptureDevice, error: &err)
-			
+		var input : AnyObject! = AVCaptureDeviceInput.deviceInputWithDevice(backCamera, error: &err)
+		
 		if (input != nil) {
 			if let error = err? {
 				println("ERROR: trying to open camera:" + error.localizedDescription)
@@ -68,7 +91,21 @@ class CameraSessionService : NSObject{
 		
 	}
 	
-	
+	func flashStateChanged(newFlashState : AVCaptureFlashMode)
+	{
+		if let device = self.backCamera
+		{
+			if (device.isFlashModeSupported(newFlashState) != false)
+			{
+				self.captureSession?.beginConfiguration()
+				device.lockForConfiguration(nil)
+				device.flashMode = newFlashState
+				device.unlockForConfiguration()
+				self.captureSession?.commitConfiguration()
+			}
+			
+		}
+	}
 	
 	func stopCurrentSession() {
 		self.captureSession?.stopRunning()
@@ -80,9 +117,11 @@ class CameraSessionService : NSObject{
 		self.captureSession = nil
 	}
 	
+	
 	private func startRunningSession(#input : AVCaptureInput)
 	{
 		self.captureSession?.addInput(input)
+		flashStateChanged(AVCaptureFlashMode(rawValue: self.flashState.rawValue)!)
 		prepareOutput()
 		self.captureSession?.addOutput(self.stillImageOutputRef);
 		self.captureSession?.startRunning()
@@ -145,11 +184,11 @@ class CameraSessionService : NSObject{
 				
 				if (device.position == AVCaptureDevicePosition.Back) {
 					println("Device position : back")
-					backCamera = device
+					backCamera = device as? AVCaptureDevice
 				}
 				else if (device.position == AVCaptureDevicePosition.Front){
 					println("Device position : front")
-					frontCamera = device
+					frontCamera = device as? AVCaptureDevice
 				}
 				
 				
