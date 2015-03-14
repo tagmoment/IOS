@@ -33,11 +33,10 @@ class TMHeartMask: NSObject, TMMask {
 		var w = width/2
 		var h = width/2
 		var path = UIBezierPath()
-		path.addArcWithCenter(CGPoint(x: center.x + w/2,y: center.y - w/2), radius: w/2, startAngle: TMHeartMask.toRadians(30), endAngle: TMHeartMask.toRadians(210), clockwise: false)
+		path.addArcWithCenter(CGPoint(x: center.x + w/3 - 13.0,y: center.y + w/3), radius: w/3, startAngle: TMHeartMask.toRadians(30), endAngle: TMHeartMask.toRadians(210), clockwise: false)
 		
-		path.addArcWithCenter(CGPoint(x: center.x - w/2,y: center.y - w/2), radius: w/2, startAngle: TMHeartMask.toRadians(-30), endAngle: TMHeartMask.toRadians(150), clockwise: false)
-		path.addLineToPoint(CGPoint(x: center.x, y: center.y + w/2))
-		path.addLineToPoint(CGPoint(x: center.x + w, y: center.y))
+		path.addArcWithCenter(CGPoint(x: center.x - w/3 + 13.0,y: center.y + w/3), radius: w/3, startAngle: TMHeartMask.toRadians(-30), endAngle: TMHeartMask.toRadians(150), clockwise: false)
+		path.addLineToPoint(CGPoint(x: center.x, y: center.y + w))
 		path.closePath()
 		return path
 	}
