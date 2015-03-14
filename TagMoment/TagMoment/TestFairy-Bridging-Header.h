@@ -10,5 +10,6 @@
 #define TagMoment_TestFairy_Bridging_Header_h
 
 #import "TestFairy.h"
+#import "iCarousel.h"
 
 #endif

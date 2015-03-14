@@ -40,6 +40,7 @@
 		F17672721AA515F200588865 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F17672711AA515F200588865 /* SystemConfiguration.framework */; };
 		F17672741AA515FA00588865 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F17672731AA515FA00588865 /* OpenGLES.framework */; };
 		F17A416D1AB477930074E5F5 /* TMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17A416C1AB477930074E5F5 /* TMTextField.swift */; };
+		F17A41711AB47FAC0074E5F5 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = F17A41701AB47FAC0074E5F5 /* iCarousel.m */; };
 		F19620C11A881A8800DCFB85 /* TMBloomFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19620C01A881A8800DCFB85 /* TMBloomFilter.swift */; };
 		F19620C31A881B0800DCFB85 /* TMStarFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19620C21A881B0800DCFB85 /* TMStarFilter.swift */; };
 		F19620C51A881B7300DCFB85 /* TMSurpriseFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19620C41A881B7300DCFB85 /* TMSurpriseFilter.swift */; };
@@ -122,6 +123,9 @@
 		F17672731AA515FA00588865 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		F17672751AA5195F00588865 /* TestFairy-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestFairy-Bridging-Header.h"; sourceTree = "<group>"; };
 		F17A416C1AB477930074E5F5 /* TMTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMTextField.swift; sourceTree = "<group>"; };
+		F17A416F1AB47FAC0074E5F5 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
+		F17A41701AB47FAC0074E5F5 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
+		F17A41731AB480070074E5F5 /* iCarousel-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iCarousel-Bridging-Header.h"; sourceTree = "<group>"; };
 		F19620C01A881A8800DCFB85 /* TMBloomFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMBloomFilter.swift; sourceTree = "<group>"; };
 		F19620C21A881B0800DCFB85 /* TMStarFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMStarFilter.swift; sourceTree = "<group>"; };
 		F19620C41A881B7300DCFB85 /* TMSurpriseFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMSurpriseFilter.swift; sourceTree = "<group>"; };
@@ -257,6 +261,7 @@
 		F109CE9B1A56F8770011CA55 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F17A41731AB480070074E5F5 /* iCarousel-Bridging-Header.h */,
 				F109CE9C1A56F8770011CA55 /* Info.plist */,
 				F17672751AA5195F00588865 /* TestFairy-Bridging-Header.h */,
 			);
@@ -323,6 +328,7 @@
 		F17672641AA515BF00588865 /* Externals */ = {
 			isa = PBXGroup;
 			children = (
+				F17A416E1AB47FAC0074E5F5 /* iCarousel */,
 				F17672651AA515BF00588865 /* TestFairy */,
 			);
 			path = Externals;
@@ -336,6 +342,15 @@
 				F17672681AA515BF00588865 /* upload-dsym.sh */,
 			);
 			path = TestFairy;
+			sourceTree = "<group>";
+		};
+		F17A416E1AB47FAC0074E5F5 /* iCarousel */ = {
+			isa = PBXGroup;
+			children = (
+				F17A416F1AB47FAC0074E5F5 /* iCarousel.h */,
+				F17A41701AB47FAC0074E5F5 /* iCarousel.m */,
+			);
+			path = iCarousel;
 			sourceTree = "<group>";
 		};
 		F1A142131A93FC81001D63C6 /* FilterParameters */ = {
@@ -535,6 +550,7 @@
 				F137FDD01A648CEF007B40B3 /* CameraSessionService.swift in Sources */,
 				F14A81471A58B52700B5D14F /* TMHeartMask.swift in Sources */,
 				F11647861A880BC10094BEF4 /* TMFireFilter.swift in Sources */,
+				F17A41711AB47FAC0074E5F5 /* iCarousel.m in Sources */,
 				F1A7B7711A58AF4B0033FE64 /* ChooseMasksViewController.swift in Sources */,
 				F1A7B7681A5893010033FE64 /* TMMaskViewModel.swift in Sources */,
 				F101858C1A673E4D003F906E /* ChooseFiltersViewController.swift in Sources */,
@@ -676,6 +692,7 @@
 				PROVISIONING_PROFILE = "bdc333c9-a767-4046-8186-d5afa0b5c6ec";
 				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)/TagMoment/Externals/TestFairy";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/TagMoment/TestFairy-Bridging-Header.h";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "$(SRCROOT)/TagMoment/TestFairy-Bridging-Header.h";
 			};
 			name = Debug;
 		};

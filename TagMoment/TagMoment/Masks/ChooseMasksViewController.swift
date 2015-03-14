@@ -15,11 +15,11 @@ protocol ChooseMasksControllerDelegate : class{
 	func switchCamButtonPressed()
 }
 
-class ChooseMasksViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
+class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouselDelegate{
 	
 	let CellIdent = "CellIdent"
 
-	@IBOutlet weak var masksCollectionView: UICollectionView!
+	@IBOutlet weak var masksCarousel: iCarousel!
 	@IBOutlet weak var takeButton: UIButton!
 	
 	weak var masksChooseDelegate: ChooseMasksControllerDelegate?
@@ -28,48 +28,88 @@ class ChooseMasksViewController: UIViewController, UICollectionViewDataSource, U
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		masksCollectionView.registerNib(UINib(nibName: "MaskCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: CellIdent)
+		masksCarousel.type = .Linear
+		masksCarousel.pagingEnabled = true
 		self.masksViewModels = MaskFactory.getViewModels()
+		masksCarousel.reloadData()
+		masksCarousel.scrollToItemAtIndex(3, animated: false)
 		
     }
 
-	override func viewDidAppear(animated: Bool) {
-		super.viewDidAppear(animated)
-		self.masksCollectionView.selectItemAtIndexPath(NSIndexPath(forItem: 3, inSection: 0), animated: false, scrollPosition: UICollectionViewScrollPosition.CenteredHorizontally)
-		self.collectionView(self.masksCollectionView, didSelectItemAtIndexPath: NSIndexPath(forItem: 3, inSection: 0))
-	}	
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		self.masksChooseDelegate?.maskChosen(self.masksViewModels?[masksCarousel.currentItemIndex].name!)
+
+	}
 	
 	// MARK: - UICollectionView delegation & datasource
-	func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-		return 1;
+	func numberOfItemsInCarousel(carousel: iCarousel!) -> Int {
+		if let count = self.masksViewModels?.count
+		{
+			return count;
+		}
+		return 0
 	}
 	
-	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return self.masksViewModels!.count
-	}
-	
-	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-		var cell : MaskCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(CellIdent, forIndexPath: indexPath) as MaskCollectionViewCell
+	func carousel(carousel: iCarousel!, viewForItemAtIndex index: Int, var reusingView view: UIView!) -> UIView!
+	{
 		
-		var maskModel = self.masksViewModels![indexPath.row]
+		if (view == nil)
+		{
+			view = NSBundle.mainBundle().loadNibNamed("MaskCollectionViewCell", owner: nil, options: nil)[0] as UIView
+		}
+		
+		let cell = view as MaskCollectionViewCell
+		var maskModel = self.masksViewModels![index]
 		cell.maskImage.image = UIImage(named: maskModel.name!.lowercaseString + "_off")
 		cell.maskImage.highlightedImage = UIImage(named: maskModel.name!.lowercaseString + "_on")
-		return cell
+		
+		return cell;
 	}
+	
+	func carouselItemWidth(carousel: iCarousel!) -> CGFloat {
+		return CGFloat(50.0)
+	}
+	
+	func carouselCurrentItemIndexDidChange(carousel: iCarousel!) {
+		for view in carousel.visibleItemViews
+		{
+			let subview = view as MaskCollectionViewCell
+			subview.highlighted = false;
+		}
+		let view = carousel.currentItemView as MaskCollectionViewCell
+		view.highlighted = true
+		let index = masksCarousel.indexOfItemView(view)
+		self.masksChooseDelegate?.maskChosen(self.masksViewModels?[index].name!)
+	}
+	
+	func carousel(carousel: iCarousel!, didSelectItemAtIndex index: Int) {
+		
+		
+	}
+	func carousel(carousel: iCarousel!, valueForOption option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
+		
+		if option == .Spacing
+		{
+			return 1.1
+		}
+		return value;
+	}
+	
+	
+	
 	
 	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 		
-		self.masksChooseDelegate?.maskChosen(self.masksViewModels?[indexPath.item].name!)
+		
 	}
 	
 	@IBAction func takeButtonPressed(sender: AnyObject) {
 		UIView.animateWithDuration(0.5, delay: 0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
 					self.takeButton.layer.transform = CATransform3DMakeRotation(CGFloat(M_PI), 0, 0, 1)
-						//CGAffineTransformMakeRotation(CGFloat(-M_PI*2+0.1))
 					}, completion: {(Bool) -> () in
 						UIView.animateWithDuration(0.5, delay: 0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
 							self.takeButton.layer.transform = CATransform3DMakeRotation(CGFloat(M_PI*2), 0, 0, 1)
-							//CGAffineTransformMakeRotation(CGFloat(-M_PI*2+0.1))
 							}, completion: {(Bool) -> Void in
 								self.takeButton.layer.transform = CATransform3DIdentity
 							}
@@ -90,8 +130,7 @@ class ChooseMasksViewController: UIViewController, UICollectionViewDataSource, U
 	
 	func getSelectedViewModel() -> TMMaskViewModel
 	{
-		var selectedIndexPath = self.masksCollectionView.indexPathsForSelectedItems()[0] as NSIndexPath
-		return self.masksViewModels![selectedIndexPath.item];
+		return self.masksViewModels![self.masksCarousel.currentItemIndex];
 	}
 	
 	func maskAllowsSecondCapture() -> Bool

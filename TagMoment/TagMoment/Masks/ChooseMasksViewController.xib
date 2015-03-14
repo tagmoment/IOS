@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChooseMasksViewController" customModule="TagMoment" customModuleProvider="target">
             <connections>
-                <outlet property="masksCollectionView" destination="gRN-ga-yzb" id="Xik-X3-ebo"/>
+                <outlet property="masksCarousel" destination="df4-gF-7id" id="5Ow-RW-A5Z"/>
                 <outlet property="takeButton" destination="h5b-la-WW7" id="a2C-K1-I2b"/>
                 <outlet property="view" destination="iN0-l3-epB" id="XJi-LD-QrY"/>
             </connections>
@@ -17,25 +17,19 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gRN-ga-yzb">
-                    <rect key="frame" x="0.0" y="532" width="600" height="68"/>
-                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="df4-gF-7id" customClass="iCarousel">
+                    <rect key="frame" x="0.0" y="512" width="600" height="88"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="68" id="N8y-AV-2V0"/>
+                        <constraint firstAttribute="height" constant="88" id="bHQ-0W-pzf"/>
                     </constraints>
-                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qdJ-F2-ov7">
-                        <size key="itemSize" width="50" height="50"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="8" minY="10" maxX="8" maxY="8"/>
-                    </collectionViewFlowLayout>
                     <connections>
-                        <outlet property="dataSource" destination="-1" id="YH8-SP-kYj"/>
-                        <outlet property="delegate" destination="-1" id="g8p-nm-J3c"/>
+                        <outlet property="dataSource" destination="-1" id="eST-0j-Jxh"/>
+                        <outlet property="delegate" destination="-1" id="8zt-vL-24a"/>
                     </connections>
-                </collectionView>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5b-la-WW7" userLabel="capture_button">
-                    <rect key="frame" x="234" y="0.0" width="132" height="132"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5b-la-WW7" userLabel="capture_button">
+                    <rect key="frame" x="245" y="0.0" width="110" height="110"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <state key="normal" backgroundImage="capture_button">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -66,15 +60,15 @@
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="h5b-la-WW7" firstAttribute="leading" secondItem="WEf-Ca-DjX" secondAttribute="trailing" constant="42" id="2ZJ-BJ-htk"/>
-                <constraint firstAttribute="bottom" secondItem="gRN-ga-yzb" secondAttribute="bottom" id="B2K-nG-Id8"/>
+                <constraint firstAttribute="trailing" secondItem="df4-gF-7id" secondAttribute="trailing" id="AGe-oV-YCf"/>
+                <constraint firstItem="df4-gF-7id" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="FZP-eh-0Dd"/>
                 <constraint firstItem="h5b-la-WW7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="K1s-fe-cAX"/>
                 <constraint firstAttribute="trailing" secondItem="WEf-Ca-DjX" secondAttribute="trailing" constant="30" id="LM4-dj-bE3"/>
-                <constraint firstItem="gRN-ga-yzb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="e46-da-NfG"/>
                 <constraint firstItem="K2A-Qz-l4B" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="ema-5V-sKR"/>
+                <constraint firstAttribute="bottom" secondItem="df4-gF-7id" secondAttribute="bottom" id="fIn-gu-wIk"/>
                 <constraint firstAttribute="centerY" secondItem="h5b-la-WW7" secondAttribute="centerY" id="gFH-kW-fAN"/>
                 <constraint firstItem="WEf-Ca-DjX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="42" id="hkZ-gD-6c7"/>
                 <constraint firstAttribute="centerX" secondItem="h5b-la-WW7" secondAttribute="centerX" id="rcH-kL-Jca"/>
-                <constraint firstAttribute="trailing" secondItem="gRN-ga-yzb" secondAttribute="trailing" id="v14-a5-hSt"/>
                 <constraint firstItem="K2A-Qz-l4B" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="42" id="zo1-Hm-QwT"/>
             </constraints>
             <variation key="default">
