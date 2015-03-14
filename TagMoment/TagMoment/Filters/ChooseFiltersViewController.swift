@@ -44,7 +44,7 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 		{
 			self.jumperButton.setImage(UIImage(named: maskViewModel.getJumperImageName() + "2"), forState: UIControlState.Selected)
 		}
-		
+		self.someSlider.setThumbImage(UIImage(named: "opacity_button_50"), forState: .Normal)
 		currentCIImage = CIImage(CGImage: self.workingImage().CGImage)
 		currentContext = CIContext(options:nil)
 		self.filterButtonsCollecionView.selectItemAtIndexPath(NSIndexPath(forItem: 0, inSection: 0), animated: false, scrollPosition: UICollectionViewScrollPosition.CenteredHorizontally)
