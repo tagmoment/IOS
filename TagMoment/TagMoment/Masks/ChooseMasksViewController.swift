@@ -32,8 +32,7 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 		masksCarousel.pagingEnabled = true
 		self.masksViewModels = MaskFactory.getViewModels()
 		masksCarousel.reloadData()
-		masksCarousel.scrollToItemAtIndex(3, animated: false)
-		
+		masksCarousel.scrollToItemAtIndex(2, animated: false)
     }
 
 	override func viewWillAppear(animated: Bool) {
@@ -63,7 +62,8 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 		var maskModel = self.masksViewModels![index]
 		cell.maskImage.image = UIImage(named: maskModel.name!.lowercaseString + "_off")
 		cell.maskImage.highlightedImage = UIImage(named: maskModel.name!.lowercaseString + "_on")
-		
+		cell.maskName.text = maskModel.name
+	
 		return cell;
 	}
 	
@@ -76,27 +76,23 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 		{
 			let subview = view as MaskCollectionViewCell
 			subview.highlighted = false;
+			subview.labelHeightConstraint.constant = 0;
 		}
 		let view = carousel.currentItemView as MaskCollectionViewCell
 		view.highlighted = true
+		view.labelHeightConstraint.constant = 20.0;
 		let index = masksCarousel.indexOfItemView(view)
 		self.masksChooseDelegate?.maskChosen(self.masksViewModels?[index].name!)
 	}
 	
-	func carousel(carousel: iCarousel!, didSelectItemAtIndex index: Int) {
-		
-		
-	}
 	func carousel(carousel: iCarousel!, valueForOption option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
 		
 		if option == .Spacing
 		{
-			return 1.1
+			return 1.2
 		}
 		return value;
 	}
-	
-	
 	
 	@IBAction func takeButtonPressed(sender: AnyObject) {
 		UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
