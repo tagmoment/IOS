@@ -280,7 +280,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		}
 		else
 		{
-			infoTopConstraint.constant = -infobarHolder.frame.height - endFrame.height - 144
+			infoTopConstraint.constant = 204 - endFrame.height - 100
 			controlContainerHeightConstraint.constant = endFrame.height + 100
 		}
 		
