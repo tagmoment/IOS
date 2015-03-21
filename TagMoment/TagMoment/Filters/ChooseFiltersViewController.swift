@@ -47,12 +47,16 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 		self.someSlider.setThumbImage(UIImage(named: "opacity_button_50"), forState: .Normal)
 		currentCIImage = CIImage(CGImage: self.workingImage().CGImage)
 		currentContext = CIContext(options:nil)
-		self.filterButtonsCollecionView.selectItemAtIndexPath(NSIndexPath(forItem: 0, inSection: 0), animated: false, scrollPosition: UICollectionViewScrollPosition.CenteredHorizontally)
-		self.collectionView(self.filterButtonsCollecionView, didSelectItemAtIndexPath: NSIndexPath(forItem: 0, inSection: 0))
+		
 		
 		
 	}
 	
+	override func viewDidAppear(animated: Bool) {
+		super.viewDidAppear(animated)
+		self.filterButtonsCollecionView.selectItemAtIndexPath(NSIndexPath(forItem: 0, inSection: 0), animated: false, scrollPosition: UICollectionViewScrollPosition.CenteredHorizontally)
+		self.collectionView(self.filterButtonsCollecionView, didSelectItemAtIndexPath: NSIndexPath(forItem: 0, inSection: 0))
+	}
 	func workingImage() -> UIImage!
 	{
 		if let delegate = filtersChooseDelegate
@@ -126,19 +130,46 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 		var imageOn = imageName + "_on"
 		var imageOff = imageName + "_off"
 		
-		cell.iconImageView.image = UIImage(named: imageOff)
-		cell.iconImageView.highlightedImage = UIImage(named: imageOn)
+		if cell.selected
+		{
+			cell.iconImageView.image = UIImage(named: imageOn)
+		}
+		else
+		{
+			cell.iconImageView.image = UIImage(named: imageOff)
+		}
+	
 		
+//		print("cell index: \(indexPath.item) with images: \(imageOn) \(imageOff)")
 		return cell
 	}
 	
 	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 		
 		var filterModel = TMFilterFactory.getFilters()[indexPath.item]
+		
+		var imageName = filterModel.iconName
+		var imageOn = imageName + "_on"
+		var cell = collectionView.cellForItemAtIndexPath(indexPath) as FilterCollectionViewCell
+		cell.iconImageView.image = UIImage(named: imageOn)
 		self.currentFilterModel = filterModel
 		filterModel.inputImage(self.currentCIImage)
 		self.someSlider.value = 0.5;
 		sliderValueChanged(self.someSlider)
+	}
+	
+	func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+		var filterModel = TMFilterFactory.getFilters()[indexPath.item]
+		
+		var imageName = filterModel.iconName
+		var imageOff = imageName + "_off"
+		
+		var cell = collectionView.cellForItemAtIndexPath(indexPath) as? FilterCollectionViewCell
+		if (cell != nil)
+		{
+			cell!.iconImageView.image = UIImage(named: imageOff)
+		}
+		
 	}
 	
 	func saveCurrentState()
