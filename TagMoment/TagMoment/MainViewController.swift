@@ -328,13 +328,16 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			{
 				self.processImage(image)
 				self.navigationView.showLeftButton(true)
+				
+				if (self.blurredView != nil)
+				{
+					self.blurredView!.removeFromSuperview()
+					self.blurredView = nil
+				}
+				
 				if (!self.isOnSecondStage() && self.masksViewController.maskAllowsSecondCapture())
 				{
-					if (self.blurredView != nil)
-					{
-						self.blurredView!.removeFromSuperview()
-						self.blurredView = nil
-					}
+					
 					
 					self.switchCamButtonPressed()
 					self.initStageTwo()
