@@ -68,6 +68,8 @@
 		F1D4B6AF1A8809AD00396E25 /* TMSunsetFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D4B6AE1A8809AD00396E25 /* TMSunsetFilter.swift */; };
 		F1D4B6B11A880A8300396E25 /* TMCocktailFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D4B6B01A880A8300396E25 /* TMCocktailFilter.swift */; };
 		F1D4B6B31A880B3900396E25 /* TMCoffeeFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D4B6B21A880B3900396E25 /* TMCoffeeFilter.swift */; };
+		F1EC479B1ABDFE3700081CDF /* TagsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EC47991ABDFE3700081CDF /* TagsCollectionViewCell.swift */; };
+		F1EC479C1ABDFE3700081CDF /* TagsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1EC479A1ABDFE3700081CDF /* TagsCollectionViewCell.xib */; };
 		F1ECA3741A88157A0018EFA2 /* TMVintageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECA3731A88157A0018EFA2 /* TMVintageFilter.swift */; };
 		F1ECA3781A88167A0018EFA2 /* TMPhotoEffectMonoFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECA3771A88167A0018EFA2 /* TMPhotoEffectMonoFilter.swift */; };
 /* End PBXBuildFile section */
@@ -153,6 +155,8 @@
 		F1D4B6AE1A8809AD00396E25 /* TMSunsetFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMSunsetFilter.swift; sourceTree = "<group>"; };
 		F1D4B6B01A880A8300396E25 /* TMCocktailFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMCocktailFilter.swift; sourceTree = "<group>"; };
 		F1D4B6B21A880B3900396E25 /* TMCoffeeFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMCoffeeFilter.swift; sourceTree = "<group>"; };
+		F1EC47991ABDFE3700081CDF /* TagsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsCollectionViewCell.swift; sourceTree = "<group>"; };
+		F1EC479A1ABDFE3700081CDF /* TagsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagsCollectionViewCell.xib; sourceTree = "<group>"; };
 		F1ECA3731A88157A0018EFA2 /* TMVintageFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMVintageFilter.swift; sourceTree = "<group>"; };
 		F1ECA3771A88167A0018EFA2 /* TMPhotoEffectMonoFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPhotoEffectMonoFilter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -296,6 +300,7 @@
 		F15AA38E1A99432E0045BFD3 /* Sharing */ = {
 			isa = PBXGroup;
 			children = (
+				F1EC47981ABDFDBF00081CDF /* Tags */,
 				F16D27741A9A712B0000F759 /* SharingViewController.swift */,
 				F16D27751A9A712B0000F759 /* SharingViewController.xib */,
 			);
@@ -403,6 +408,15 @@
 			path = FilterModels;
 			sourceTree = "<group>";
 		};
+		F1EC47981ABDFDBF00081CDF /* Tags */ = {
+			isa = PBXGroup;
+			children = (
+				F1EC47991ABDFE3700081CDF /* TagsCollectionViewCell.swift */,
+				F1EC479A1ABDFE3700081CDF /* TagsCollectionViewCell.xib */,
+			);
+			path = Tags;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -491,6 +505,7 @@
 				F16D277A1A9A84F60000F759 /* GiddyupStd.ttf in Resources */,
 				F109CEC21A56FAA40011CA55 /* MainViewController.xib in Resources */,
 				F10185911A67414A003F906E /* FilterCollectionViewCell.xib in Resources */,
+				F1EC479C1ABDFE3700081CDF /* TagsCollectionViewCell.xib in Resources */,
 				F1604C711A574CC40055C721 /* image2.jpeg in Resources */,
 				F109CEA71A56F8770011CA55 /* Images.xcassets in Resources */,
 				F1A7B7741A58AF4B0033FE64 /* MaskCollectionViewCell.xib in Resources */,
@@ -529,6 +544,7 @@
 				F1B4ECE41A88072400C11FEF /* TMFilterInterface.swift in Sources */,
 				F1D4B6B11A880A8300396E25 /* TMCocktailFilter.swift in Sources */,
 				F1A7B7631A585DF80033FE64 /* TMTraingleMask.swift in Sources */,
+				F1EC479B1ABDFE3700081CDF /* TagsCollectionViewCell.swift in Sources */,
 				F19620C11A881A8800DCFB85 /* TMBloomFilter.swift in Sources */,
 				F1A7B7661A585E180033FE64 /* MaskFactory.swift in Sources */,
 				F1A7B7621A585DF80033FE64 /* TMMask.swift in Sources */,

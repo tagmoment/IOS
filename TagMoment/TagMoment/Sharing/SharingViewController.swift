@@ -17,9 +17,11 @@ protocol SharingControllerDelegate : class{
 	
 }
 
-class SharingViewController: UIViewController, UITextFieldDelegate, UIDocumentInteractionControllerDelegate	{
+class SharingViewController: UIViewController, UITextFieldDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIDocumentInteractionControllerDelegate	{
 	
+	let CellIdent = "cellIdent"
 	let MaxLettersInTag = 15
+	let TagsDataSource : [NSString] = ["Love", "Christmas", "Happy", "Birthday", "Mama", "Me", "Whatttt", "Oh no", "try it!"]
 
 	weak var sharingDelegate: SharingControllerDelegate?
 	var documentationInteractionController : UIDocumentInteractionController?
@@ -27,6 +29,9 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UIDocumentIn
 	@IBOutlet weak var shareButton: UIButton!
 	@IBOutlet weak var saveImageButton: UIButton!
 	@IBOutlet weak var buttonsHolder: UIView!
+	@IBOutlet weak var tagsHeightConstraint: NSLayoutConstraint!
+	@IBOutlet weak var tagsCollectionView: UICollectionView!
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		self.textField.keyboardType = .ASCIICapable
@@ -36,6 +41,7 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UIDocumentIn
 		bgImage = saveImageButton.backgroundImageForState(UIControlState.Normal)
 		bgImage = bgImage?.resizableImageWithCapInsets(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 46))
 		saveImageButton.setBackgroundImage(bgImage, forState: UIControlState.Normal)
+		tagsCollectionView.registerNib(UINib(nibName: "TagsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: CellIdent)
 		
     }
 
@@ -142,6 +148,49 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UIDocumentIn
 			
 		}
 	}
+	// MARK: - Collection view delegation
+	func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+		return 1
+	}
+	
+	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
+		return TagsDataSource.count
+	}
+	
+	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+		var cell = collectionView.dequeueReusableCellWithReuseIdentifier(CellIdent, forIndexPath: indexPath) as TagsCollectionViewCell
+		
+		
+		cell.tagName.text = TagsDataSource[indexPath.item]
+		return cell;
+		
+	}
+	
+	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+		
+		self.textField.text = TagsDataSource[indexPath.item]
+		if let delegate = self.sharingDelegate
+		{
+			delegate.updateUserInfoText(TagsDataSource[indexPath.item])
+		}
+	}
+	
+	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
+	{
+		var data = TagsDataSource[indexPath.item]
+		let font = UIFont(name: "Giddyup Std", size: 25)
+		let attributes : [NSObject : AnyObject!] = [NSFontAttributeName : font]
+		
+		let size = data.boundingRectWithSize(CGSize(width: 9999, height: 22),
+			options: NSStringDrawingOptions.UsesLineFragmentOrigin,
+			attributes: attributes,
+			context: nil)
+	
+		println("size for \(data) is \(size)")
+		return CGSize(width: ceil(size.width) + 26, height: 22)
+	}
+	
+	
 	
 	// MARK: - Buttons Handling
 	@IBAction func pinButtonPressed(sender: AnyObject) {

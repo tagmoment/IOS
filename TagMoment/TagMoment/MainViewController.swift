@@ -35,6 +35,8 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	
 	var blurredView : UIView?
 	
+	var initialized = false
+	
 	@IBOutlet weak var logoLabel: UILabel!
 	@IBOutlet weak var userLabel: UILabel!
 	@IBOutlet weak var infoTopConstraint: NSLayoutConstraint!
@@ -70,13 +72,16 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		canvas.pinSubViewToAllEdges(secondImageView)
 		initBlurredOverLay(toView: secondImageView)
 		canvas.layer.masksToBounds = true
+		
     }
 	
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
-		initStageOne()
-		
-		
+		if (!initialized)
+		{
+			initialized = true
+			initStageOne()
+		}
 	}
 	
 	
@@ -277,11 +282,14 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		{
 			infoTopConstraint.constant = -infobarHolder.frame.height
 			controlContainerHeightConstraint.constant = 204 + infobarHolder.frame.height
+			sharingController.tagsHeightConstraint.constant = 0
 		}
 		else
 		{
 			infoTopConstraint.constant = 204 - endFrame.height - 100
 			controlContainerHeightConstraint.constant = endFrame.height + 100
+			sharingController.tagsHeightConstraint.constant = 100
+			
 		}
 		
 		UIView .animateWithDuration(animationTime, animations: { () -> Void in
