@@ -105,6 +105,8 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 		if (self.lastFilterModel == nil)
 		{
 			saveCurrentState()
+			self.filterButtonsCollecionView.deselectItemAtIndexPath(NSIndexPath(forItem: lastSelectedIndex, inSection: 0), animated: false)
+			self.collectionView(self.filterButtonsCollecionView, didDeselectItemAtIndexPath: NSIndexPath(forItem: lastSelectedIndex, inSection: 0))
 			self.filterButtonsCollecionView.selectItemAtIndexPath(NSIndexPath(forItem: 0, inSection: 0), animated: false, scrollPosition: UICollectionViewScrollPosition.CenteredHorizontally)
 			self.collectionView(self.filterButtonsCollecionView, didSelectItemAtIndexPath: NSIndexPath(forItem: 0, inSection: 0))
 		}
@@ -140,7 +142,6 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 		}
 	
 		
-//		print("cell index: \(indexPath.item) with images: \(imageOn) \(imageOff)")
 		return cell
 	}
 	
@@ -150,8 +151,13 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 		
 		var imageName = filterModel.iconName
 		var imageOn = imageName + "_on"
-		var cell = collectionView.cellForItemAtIndexPath(indexPath) as FilterCollectionViewCell
-		cell.iconImageView.image = UIImage(named: imageOn)
+		var cell = collectionView.cellForItemAtIndexPath(indexPath) as? FilterCollectionViewCell
+		if (cell != nil)
+		{
+			cell!.iconImageView.image = UIImage(named: imageOn)
+		}
+
+		
 		self.currentFilterModel = filterModel
 		filterModel.inputImage(self.currentCIImage)
 		self.someSlider.value = 0.5;
@@ -164,10 +170,12 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 		var imageName = filterModel.iconName
 		var imageOff = imageName + "_off"
 		
-		var cell = collectionView.cellForItemAtIndexPath(indexPath) as? FilterCollectionViewCell
+		var cell = collectionView.cellForItemAtIndexPath(indexPath)
+		
 		if (cell != nil)
 		{
-			cell!.iconImageView.image = UIImage(named: imageOff)
+			var casted = cell as FilterCollectionViewCell
+			casted.iconImageView.image = UIImage(named: imageOff)
 		}
 		
 	}
@@ -183,7 +191,19 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 	func restoreFilterState()
 	{
 		let tempIndex = self.filterButtonsCollecionView.indexPathsForSelectedItems()[0].item
+		self.filterButtonsCollecionView.deselectItemAtIndexPath(NSIndexPath(forItem: tempIndex, inSection: 0), animated: false)
+		self.collectionView(self.filterButtonsCollecionView, didDeselectItemAtIndexPath: NSIndexPath(forItem: tempIndex, inSection: 0))
 		self.filterButtonsCollecionView.selectItemAtIndexPath(NSIndexPath(forItem: lastSelectedIndex, inSection: 0), animated: false, scrollPosition: UICollectionViewScrollPosition.CenteredHorizontally)
+		var filterModel = TMFilterFactory.getFilters()[lastSelectedIndex]
+		
+		var imageName = filterModel.iconName
+		var imageOn = imageName + "_on"
+		var cell = self.filterButtonsCollecionView.cellForItemAtIndexPath(NSIndexPath(forItem: lastSelectedIndex, inSection: 0)) as? FilterCollectionViewCell
+		if (cell != nil)
+		{
+			cell!.iconImageView.image = UIImage(named: imageOn)
+		}
+		
 		lastSelectedIndex = tempIndex
 		let tempModel = self.currentFilterModel
 		self.currentFilterModel = lastFilterModel
@@ -193,6 +213,7 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 		self.someSlider.value = lastSliderValue;
 		lastSliderValue = tempSliderValue
 		sliderValueChanged(self.someSlider)
+		
 	}
 	
 }

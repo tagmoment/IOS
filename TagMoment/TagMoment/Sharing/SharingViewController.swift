@@ -11,6 +11,7 @@ import Foundation
 protocol SharingControllerDelegate : class{
 	func taggingKeyboardWillChange(animationTime : Double, endFrame: CGRect)
 	func updateUserInfoText(newText : String)
+	func textEditingDidEnd()
 	func imageForSharing() -> NSURL
 	func retakeImageRequested()
 	
@@ -109,7 +110,7 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UIDocumentIn
 	
 	func textFieldShouldReturn(textField: UITextField) -> Bool
 	{
-		self.textField .resignFirstResponder()
+		self.textField.resignFirstResponder()
 		return true
 	}
 	
@@ -155,18 +156,16 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UIDocumentIn
 		if let delegate = self.sharingDelegate
 		{
 			NSNotificationCenter.defaultCenter().removeObserver(self)
+			delegate.textEditingDidEnd()
 			let url = delegate.imageForSharing()
 			documentationInteractionController = UIDocumentInteractionController(URL: url)
 			documentationInteractionController?.delegate = self
-			documentationInteractionController?.annotation = 
-		documentationInteractionController?.presentOpenInMenuFromRect(self.view.superview!.superview!.bounds, inView: self.view.superview!.superview!, animated: true)
-		
+			documentationInteractionController?.presentOptionsMenuFromRect(self.view.superview!.superview!.bounds, inView: self.view.superview!.superview!, animated: true)
 		
 		}
 
 	}
-	
-	func documentInteractionControllerDidDismissOpenInMenu(controller: UIDocumentInteractionController){
+	func documentInteractionControllerDidDismissOptionsMenu(controller: UIDocumentInteractionController) {
 		registerForNotifications()
 	}
 	

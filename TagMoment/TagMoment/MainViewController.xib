@@ -46,8 +46,7 @@
                         <constraint firstAttribute="height" constant="204" id="8OX-Pp-wds"/>
                     </constraints>
                 </view>
-                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Love" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hwp-Bm-Gjq" userLabel="userLabel">
-                    <rect key="frame" x="549" y="319" width="43" height="35"/>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hwp-Bm-Gjq" userLabel="userLabel">
                     <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.0"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="35" id="iqi-Ux-IqS"/>

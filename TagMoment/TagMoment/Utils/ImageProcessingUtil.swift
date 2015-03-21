@@ -18,6 +18,8 @@ class ImageProcessingUtil: NSObject {
 		let outputRect = layer.metadataOutputRectOfInterestForRect(workingView.bounds)
 		var originalSize = originalImage.size
 		var workingSize = workingView.frame.size
+		workingSize.height *= 2
+		workingSize.width *= 2
 		if (UIDeviceOrientationIsPortrait(UIDevice.currentDevice().orientation))
 		{
 			var temp = originalSize.width

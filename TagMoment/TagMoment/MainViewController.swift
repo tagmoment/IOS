@@ -188,7 +188,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		
 		let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true);
 		let documentsDirectory = paths[0] as String
-		let imagePath = documentsDirectory + "/cached.png"
+		let imagePath = documentsDirectory + "/ShareMe.png"
 		
 		if !imageData.writeToFile(imagePath, atomically: false)
 		{
@@ -206,7 +206,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		UIGraphicsBeginImageContext(self.canvas.frame.size);
 		self.canvas.image?.drawInRect(self.canvas.bounds);
 		self.secondImageView.drawViewHierarchyInRect(self.canvas.bounds, afterScreenUpdates: true)
-//		self.userLabel.drawTextInRect(self.userLabel.frame)
+		self.userLabel.drawTextInRect(self.userLabel.frame)
 		self.logoLabel.drawTextInRect(self.logoLabel.frame)
 		let newImage = UIGraphicsGetImageFromCurrentImageContext()
 		UIGraphicsEndImageContext();
@@ -237,7 +237,6 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			self.view.layoutIfNeeded()
 			self.logoLabel.alpha = 1.0
 		})
-		saveTempImage()
 	}
 	
 	func retakeImageRequested() {
@@ -302,6 +301,10 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			self.userLabel.hidden = false
 			self.userLabel.text = newText
 		}
+	}
+	
+	func textEditingDidEnd() {
+		saveTempImage()
 	}
 	
 	func imageForSharing() -> NSURL {
@@ -404,6 +407,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			
 			let newImage = ImageProcessingUtil.imageFromVideoView(viewToOperateOn, originalImage: image!, shouldMirrorImage: self.frontCamSessionView != nil)
 			println("image width is \(image!.size.width) and height \(image!.size.height)")
+			
 			println("canvas width is \(newImage.size.width) and canvas height \(newImage.size.height)")
 			if (self.canvas.image == nil)
 			{
