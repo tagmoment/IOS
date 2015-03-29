@@ -65,11 +65,16 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
         super.viewDidLoad()
 		masksViewController = ChooseMasksViewController(nibName: "ChooseMasksViewController", bundle: nil)
 		controlContainer.addViewWithConstraints(masksViewController.view, toTheRight: true)
+		
 		masksViewController.masksChooseDelegate = self
 
 		secondImageView = UIImageView()
 		secondImageView.contentMode = UIViewContentMode.ScaleAspectFill
 		canvas.pinSubViewToAllEdges(secondImageView)
+		navigationView = NSBundle.mainBundle().loadNibNamed("NavbarView", owner: nil, options: nil)[0] as TakeImageNavBar
+		infobarHolder.pinSubViewToAllEdges(navigationView)
+		navigationView.viewDelegate = self
+		changeMasksCarouselPositionIfNeeded()
 		initBlurredOverLay(toView: secondImageView)
 		canvas.layer.masksToBounds = true
 		
@@ -82,6 +87,40 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			initialized = true
 			initStageOne()
 		}
+	}
+	
+	func changeMasksCarouselPositionIfNeeded()
+	{
+		if (UIScreen.mainScreen().bounds.height <= 480)
+		{
+			masksViewController.masksCarousel.removeFromSuperview()
+			
+			self.canvas.pinSubViewToTop(masksViewController.masksCarousel, heightContraint: 88)
+			controlContainerHeightConstraint.constant = 117
+			masksViewController.settingsButtonTopConstraint.constant = 38
+			masksViewController.switchCamButtonTopConstraint.constant = 38
+			masksViewController.centerTakeImageButton()
+			self.navigationView.changeMasksButton.selected = true
+			turnOffMasks(true)
+		}
+	}
+	
+	func turnOffMasks(delay: Bool)
+	{
+		UIView.animateWithDuration(0.7, delay: delay ? 1.0 : 0.0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
+			
+				self.masksViewController.masksCarousel.alpha = 0.0
+			}, completion: { (finished : Bool) -> Void in
+				self.navigationView.changeMasksButton.selected = false
+		})
+	}
+	
+	func turnOnMasks()
+	{
+		UIView.animateWithDuration(0.7, delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
+			
+			self.masksViewController.masksCarousel.alpha = 1.0
+			}, nil)
 	}
 	
 	
@@ -104,9 +143,6 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	
 	func initStageOne()
 	{
-		navigationView = NSBundle.mainBundle().loadNibNamed("NavbarView", owner: nil, options: nil)[0] as TakeImageNavBar
-		infobarHolder.pinSubViewToAllEdges(navigationView)
-		navigationView.viewDelegate = self
 #if (arch(i386) || arch(x86_64)) && os(iOS)
 
 		print("In smulator stage 1")
@@ -250,9 +286,31 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	}
 	
 	// MARK: - NavBarDelegation 
+	func maskButtonPressed() {
+		if (navigationView.changeMasksButton.selected)
+		{
+			self.turnOnMasks()
+		}
+		else
+		{
+			self.turnOffMasks(false)
+		}
+	}
+	
 	func nextStageRequested() {
+		
+		
+		
+		
 		if (self.masksViewController != nil)
 		{
+			if (UIScreen.mainScreen().bounds.height <= 480)
+			{
+				self.turnOffMasks(false)
+				navigationView.hideMasksButton(true)
+				
+			}
+			
 			initStageThree()
 		}
 		else

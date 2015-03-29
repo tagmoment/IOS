@@ -19,10 +19,18 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 	
 	let CellIdent = "CellIdent"
 
-	@IBOutlet weak var masksCarousel: iCarousel!
+	@IBOutlet var masksCarousel: iCarousel!
 	@IBOutlet weak var takeButton: UIButton!
 	
 	@IBOutlet weak var switchCamButton: UIButton!
+	
+	@IBOutlet weak var settingsButtonTopConstraint : NSLayoutConstraint!
+	
+	@IBOutlet weak var switchCamButtonTopConstraint : NSLayoutConstraint!
+	
+	@IBOutlet weak var takeImageTopConstraint : NSLayoutConstraint!
+	
+	
 	weak var masksChooseDelegate: ChooseMasksControllerDelegate?
 	
 	var masksViewModels : [TMMaskViewModel]?
@@ -129,4 +137,11 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 		return !getSelectedViewModel().hasOneCapture
 	}
 
+	func centerTakeImageButton()
+	{
+		self.view.removeConstraint(self.takeImageTopConstraint)
+		self.takeImageTopConstraint = nil
+		let centerConstraint = NSLayoutConstraint(item: self.takeButton, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 0)
+		self.view.addConstraint(centerConstraint)
+	}
 }

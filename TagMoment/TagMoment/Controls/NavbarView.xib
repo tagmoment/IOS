@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
@@ -44,6 +44,20 @@
                         <action selector="rightButtonPressed:" destination="ddX-da-nOE" eventType="touchUpInside" id="KIx-Cb-GOX"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N8G-s5-8gw" userLabel="changemasksButton">
+                    <rect key="frame" x="214" y="0.0" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="44" id="MEL-DQ-7ez"/>
+                    </constraints>
+                    <state key="normal" image="small_jumper_off">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" image="small_jumper_on"/>
+                    <state key="highlighted" image="small_jumper_on"/>
+                    <connections>
+                        <action selector="maskButtonPressed:" destination="ddX-da-nOE" eventType="touchUpInside" id="ebZ-SH-jdi"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
@@ -51,8 +65,11 @@
                 <constraint firstAttribute="bottom" secondItem="3ia-PT-4zT" secondAttribute="bottom" id="5a9-c4-LzO"/>
                 <constraint firstItem="3ia-PT-4zT" firstAttribute="top" secondItem="ddX-da-nOE" secondAttribute="top" id="C52-Tv-Zz7"/>
                 <constraint firstAttribute="centerY" secondItem="dld-tD-30O" secondAttribute="centerY" id="DIQ-uo-T2K"/>
+                <constraint firstAttribute="bottom" secondItem="N8G-s5-8gw" secondAttribute="bottom" id="Do0-xI-rrP"/>
+                <constraint firstItem="N8G-s5-8gw" firstAttribute="leading" secondItem="uVQ-nH-Jlg" secondAttribute="trailing" constant="32" id="JKO-j1-NtX"/>
                 <constraint firstAttribute="centerX" secondItem="uVQ-nH-Jlg" secondAttribute="centerX" id="RBe-4q-WD8"/>
                 <constraint firstItem="uVQ-nH-Jlg" firstAttribute="top" secondItem="ddX-da-nOE" secondAttribute="top" id="YVL-2H-VxO"/>
+                <constraint firstItem="N8G-s5-8gw" firstAttribute="top" secondItem="ddX-da-nOE" secondAttribute="top" id="e1G-1O-iQM"/>
                 <constraint firstAttribute="trailing" secondItem="3ia-PT-4zT" secondAttribute="trailing" id="oeh-as-tEf"/>
                 <constraint firstAttribute="bottom" secondItem="uVQ-nH-Jlg" secondAttribute="bottom" id="y49-sL-gsl"/>
             </constraints>
@@ -60,6 +77,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="backButton" destination="dld-tD-30O" id="28s-0q-yVF"/>
+                <outlet property="changeMasksButton" destination="N8G-s5-8gw" id="ZKk-55-AAA"/>
                 <outlet property="middleButton" destination="uVQ-nH-Jlg" id="lT1-lL-gfF"/>
                 <outlet property="rightButton" destination="3ia-PT-4zT" id="lHb-jl-0DT"/>
             </connections>
@@ -67,6 +85,8 @@
     </objects>
     <resources>
         <image name="flash_auto" width="24" height="20"/>
+        <image name="small_jumper_off" width="20" height="20"/>
+        <image name="small_jumper_on" width="20" height="20"/>
         <image name="timericon_off" width="17" height="20"/>
     </resources>
 </document>

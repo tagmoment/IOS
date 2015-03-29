@@ -35,7 +35,7 @@
                         <constraint firstAttribute="height" constant="44" id="7tg-53-6hh"/>
                     </constraints>
                 </view>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="HAf-SR-1E8" userLabel="Canvas">
+                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="HAf-SR-1E8" userLabel="Canvas">
                     <rect key="frame" x="0.0" y="44" width="600" height="352"/>
                     <color key="backgroundColor" red="0.14117647059999999" green="0.14117647059999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                 </imageView>
@@ -46,7 +46,7 @@
                         <constraint firstAttribute="height" constant="204" id="8OX-Pp-wds"/>
                     </constraints>
                 </view>
-                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hwp-Bm-Gjq" userLabel="userLabel">
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hwp-Bm-Gjq" userLabel="userLabel">
                     <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.0"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="35" id="iqi-Ux-IqS"/>

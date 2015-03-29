@@ -11,6 +11,7 @@ protocol NavBarDelegate : class
 {
 	func retakeImageRequested()
 	func nextStageRequested()
+	func maskButtonPressed()
 	
 }
 
@@ -28,11 +29,16 @@ class TakeImageNavBar: UIView {
 	
 	@IBOutlet weak var middleButton: UIButton!
 	
+	@IBOutlet weak var changeMasksButton: UIButton!
 	var currentFlashState = FlashState.Auto
 	var flashStateImages = ["flash_off", "flash_on", "flash_auto"]
 	
 	override func awakeFromNib() {
 		self.backButton.alpha = 0.0
+		if (UIScreen.mainScreen().bounds.height > 480)
+		{
+			self.changeMasksButton.hidden = true
+		}
 	}
 	
 	@IBAction func backButtonPressed(sender: AnyObject)
@@ -60,6 +66,14 @@ class TakeImageNavBar: UIView {
 			{
 				delegate.nextStageRequested()
 			}
+		}
+	}
+	
+	@IBAction func maskButtonPressed(sender: AnyObject) {
+		self.changeMasksButton.selected = !self.changeMasksButton.selected
+		if let delegate = viewDelegate
+		{
+			delegate.maskButtonPressed()
 		}
 	}
 	
@@ -93,6 +107,20 @@ class TakeImageNavBar: UIView {
 			self.backButton.alpha = 0.0
 		}
 	}
+	
+	func hideMasksButton(animated: Bool)
+	{
+		if animated
+		{
+			UIView.animateWithDuration(0.5, animations: { () -> Void in
+				self.changeMasksButton.alpha = 0.0
+			})
+		}else
+		{
+			self.changeMasksButton.alpha = 0.0
+		}
+	}
+
 	
 	func editingStageAppearance(animated: Bool)
 	{

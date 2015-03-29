@@ -8,8 +8,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChooseMasksViewController" customModule="TagMoment" customModuleProvider="target">
             <connections>
                 <outlet property="masksCarousel" destination="df4-gF-7id" id="5Ow-RW-A5Z"/>
+                <outlet property="settingsButtonTopConstraint" destination="zo1-Hm-QwT" id="JOD-3g-kjC"/>
                 <outlet property="switchCamButton" destination="WEf-Ca-DjX" id="3gt-Zd-Eoz"/>
+                <outlet property="switchCamButtonTopConstraint" destination="hkZ-gD-6c7" id="dL9-RP-0bb"/>
                 <outlet property="takeButton" destination="h5b-la-WW7" id="a2C-K1-I2b"/>
+                <outlet property="takeImageTopConstraint" destination="K1s-fe-cAX" id="Cid-5T-fUt"/>
                 <outlet property="view" destination="iN0-l3-epB" id="XJi-LD-QrY"/>
             </connections>
         </placeholder>
@@ -29,16 +32,6 @@
                         <outlet property="delegate" destination="-1" id="8zt-vL-24a"/>
                     </connections>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5b-la-WW7" userLabel="capture_button">
-                    <rect key="frame" x="245" y="0.0" width="110" height="110"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <state key="normal" backgroundImage="capture_button">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="takeButtonPressed:" destination="-1" eventType="touchUpInside" id="INf-gl-Lu0"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2A-Qz-l4B" userLabel="settings_button">
                     <rect key="frame" x="30" y="42" width="50" height="50"/>
                     <state key="normal" image="settingsicon_off">
@@ -57,27 +50,33 @@
                         <action selector="switchCamButtonPressed:" destination="-1" eventType="touchUpInside" id="Txb-bv-v8a"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5b-la-WW7" userLabel="capture_button">
+                    <rect key="frame" x="245" y="0.0" width="110" height="110"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="110" id="KfH-Mi-axO"/>
+                        <constraint firstAttribute="width" constant="110" id="L2S-jx-xJx"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="capture_button">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="takeButtonPressed:" destination="-1" eventType="touchUpInside" id="INf-gl-Lu0"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="h5b-la-WW7" firstAttribute="leading" secondItem="WEf-Ca-DjX" secondAttribute="trailing" constant="42" id="2ZJ-BJ-htk"/>
                 <constraint firstAttribute="trailing" secondItem="df4-gF-7id" secondAttribute="trailing" id="AGe-oV-YCf"/>
                 <constraint firstItem="df4-gF-7id" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="FZP-eh-0Dd"/>
                 <constraint firstItem="h5b-la-WW7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="K1s-fe-cAX"/>
                 <constraint firstAttribute="trailing" secondItem="WEf-Ca-DjX" secondAttribute="trailing" constant="30" id="LM4-dj-bE3"/>
                 <constraint firstItem="K2A-Qz-l4B" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="ema-5V-sKR"/>
                 <constraint firstAttribute="bottom" secondItem="df4-gF-7id" secondAttribute="bottom" id="fIn-gu-wIk"/>
-                <constraint firstAttribute="centerY" secondItem="h5b-la-WW7" secondAttribute="centerY" id="gFH-kW-fAN"/>
                 <constraint firstItem="WEf-Ca-DjX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="42" id="hkZ-gD-6c7"/>
                 <constraint firstAttribute="centerX" secondItem="h5b-la-WW7" secondAttribute="centerX" id="rcH-kL-Jca"/>
                 <constraint firstItem="K2A-Qz-l4B" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="42" id="zo1-Hm-QwT"/>
             </constraints>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="2ZJ-BJ-htk"/>
-                    <exclude reference="gFH-kW-fAN"/>
-                </mask>
-            </variation>
             <point key="canvasLocation" x="174" y="846"/>
         </view>
     </objects>
