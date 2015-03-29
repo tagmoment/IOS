@@ -16,4 +16,9 @@ class TMTextField: UITextField {
 	override func textRectForBounds(bounds: CGRect) -> CGRect {
 		return CGRectMake(0.0, 4.0, bounds.width, bounds.height - 4.0)
 	}
+	
+	override func editingRectForBounds(bounds: CGRect) -> CGRect {
+		return CGRectMake(0.0, 4.0, bounds.width, bounds.height - 4.0)
+	}
+
 }

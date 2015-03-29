@@ -94,13 +94,23 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 	// MARK: - Textfield handling
 	func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
 		
+		
 		if (textField.text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) >= MaxLettersInTag && !string.isEmpty)
 		{
 			return false
+			
 		}else if(string == " ")
 		{
 			return false
 		}
+		
+		let indices = self.tagsCollectionView.indexPathsForSelectedItems()
+		if (indices.count != 0)
+		{
+			self.tagsCollectionView.deselectItemAtIndexPath(indices[0] as? NSIndexPath, animated: false)
+			self.collectionView(self.tagsCollectionView, didDeselectItemAtIndexPath: indices[0] as NSIndexPath)
+		}
+		
 		
 		return true
 	}
@@ -165,10 +175,19 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 		return cell;
 		
 	}
+	func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+		let cell = collectionView.cellForItemAtIndexPath(indexPath) as TagsCollectionViewCell
+		cell.backgroundColor = UIColor.blackColor()
+		cell.tagName.textColor = UIColor.whiteColor()
+	}
 	
 	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 		
 		self.textField.text = TagsDataSource[indexPath.item]
+		let cell = collectionView.cellForItemAtIndexPath(indexPath) as TagsCollectionViewCell
+		cell.backgroundColor = UIColor.whiteColor()
+		cell.tagName.textColor = UIColor.blackColor()
+		
 		if let delegate = self.sharingDelegate
 		{
 			delegate.updateUserInfoText(TagsDataSource[indexPath.item])
@@ -186,8 +205,8 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 			attributes: attributes,
 			context: nil)
 	
-		println("size for \(data) is \(size)")
-		return CGSize(width: ceil(size.width) + 26, height: 22)
+		
+		return CGSize(width: ceil(size.width) + 30, height: 22)
 	}
 	
 	
