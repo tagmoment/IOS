@@ -22,6 +22,7 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 	@IBOutlet weak var masksCarousel: iCarousel!
 	@IBOutlet weak var takeButton: UIButton!
 	
+	@IBOutlet weak var switchCamButton: UIButton!
 	weak var masksChooseDelegate: ChooseMasksControllerDelegate?
 	
 	var masksViewModels : [TMMaskViewModel]?

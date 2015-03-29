@@ -10,7 +10,8 @@ import UIKit
 protocol NavBarDelegate : class
 {
 	func retakeImageRequested()
-	func sharingRequested()
+	func nextStageRequested()
+	
 }
 
 let FlashChangedNotification = "FlashChangedNotification" as NSString
@@ -57,7 +58,7 @@ class TakeImageNavBar: UIView {
 		{
 			if let delegate = viewDelegate
 			{
-				delegate.sharingRequested()
+				delegate.nextStageRequested()
 			}
 		}
 	}
@@ -113,26 +114,41 @@ class TakeImageNavBar: UIView {
 		{
 			self.rightButton.setTitle("Next", forState: UIControlState.Normal)
 			self.rightButton.setImage(nil, forState: UIControlState.Normal)
+			self.rightButton.alpha = 1.0
+			self.middleButton.alpha = 0.0
+			
 		}
 	}
 	
 	func takingImageStageAppearance(animated: Bool)
 	{
-		self.hideLeftButton(true)
+		self.hideLeftButton(animated)
 		if (self.rightButton.titleForState(UIControlState.Normal) == nil)
 		{
 			return
 		}
-		UIView.animateWithDuration(0.5, animations: { () -> Void in
-			self.rightButton.alpha = 0.0
-			
-			}, completion: { (finished) -> Void in
-				self.zeroFlashState()
-				UIView.animateWithDuration(0.5, animations: { () -> Void in
-					self.rightButton.alpha = 1.0
-					self.middleButton.alpha = 1.0
-				})
-		})
+		
+		if (animated)
+		{
+			UIView.animateWithDuration(0.5, animations: { () -> Void in
+				self.rightButton.alpha = 0.0
+				
+				}, completion: { (finished) -> Void in
+					self.zeroFlashState()
+					UIView.animateWithDuration(0.5, animations: { () -> Void in
+						self.rightButton.alpha = 1.0
+						self.middleButton.alpha = 1.0
+					})
+			})
+		}
+		else
+		{
+			self.zeroFlashState()
+			self.rightButton.alpha = 1.0
+			self.middleButton.alpha = 1.0
+		}
+		
+		
 	}
 	
 	private func toggleFlashState()

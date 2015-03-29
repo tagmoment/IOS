@@ -117,7 +117,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	
 	func initStageTwo()
 	{
-		
+		changeSingleCaptureBehaviour()
 	}
 	
 	func initStageThree()
@@ -183,6 +183,28 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			var maskLayer = CAShapeLayer()
 			maskLayer.path = mask!.clippingPath.CGPath
 			secondImageView.layer.mask = maskLayer
+			
+			changeSingleCaptureBehaviour()
+			
+		}
+	}
+	
+	func changeSingleCaptureBehaviour()
+	{
+		if (!isOnFirstStage())
+		{
+			if (self.masksViewController.maskAllowsSecondCapture())
+			{
+				self.navigationView.takingImageStageAppearance(false)
+				self.masksViewController.takeButton.enabled = true
+				self.masksViewController.switchCamButton.enabled = true
+			}
+			else
+			{
+				self.navigationView.editingStageAppearance(false)
+				self.masksViewController.takeButton.enabled = false
+				self.masksViewController.switchCamButton.enabled = false
+			}
 		}
 	}
 	
@@ -228,6 +250,17 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	}
 	
 	// MARK: - NavBarDelegation 
+	func nextStageRequested() {
+		if (self.masksViewController != nil)
+		{
+			initStageThree()
+		}
+		else
+		{
+			sharingRequested()
+		}
+	}
+	
 	func sharingRequested() {
 		sharingController = SharingViewController(nibName: "SharingViewController", bundle: nil)
 		sharingController.sharingDelegate = self
