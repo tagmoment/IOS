@@ -23,6 +23,7 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 	let MaxLettersInTag = 15
 	let TagsDataSource : [NSString] = ["Love", "Christmas", "Happy", "Birthday", "Mama", "Me", "Whatttt", "Oh no", "try it!"]
 
+	var autoKeyboardWasOn = false
 	weak var sharingDelegate: SharingControllerDelegate?
 	var documentationInteractionController : UIDocumentInteractionController?
 	@IBOutlet weak var textField: UITextField!
@@ -101,7 +102,17 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 			
 		}else if(string == " ")
 		{
+			if autoKeyboardWasOn == true
+			{
+				autoKeyboardWasOn = false
+				notifyDelegateOnChangedText()
+			}
 			return false
+		}
+		
+		if (string.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 1)
+		{
+			autoKeyboardWasOn = true
 		}
 		
 		let indices = self.tagsCollectionView.indexPathsForSelectedItems()
@@ -110,6 +121,7 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 			self.tagsCollectionView.deselectItemAtIndexPath(indices[0] as? NSIndexPath, animated: false)
 			self.collectionView(self.tagsCollectionView, didDeselectItemAtIndexPath: indices[0] as NSIndexPath)
 		}
+			
 		
 		
 		return true
@@ -117,11 +129,15 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 	
 	func textFieldDidChangeText(notif: NSNotification)
 	{
+		notifyDelegateOnChangedText()
+	}
+	
+	func notifyDelegateOnChangedText()
+	{
 		if let delegate = self.sharingDelegate
 		{
 			delegate.updateUserInfoText(textField.text)
 		}
-
 	}
 	
 	func textFieldShouldReturn(textField: UITextField) -> Bool
