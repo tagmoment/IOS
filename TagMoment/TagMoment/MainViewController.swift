@@ -131,6 +131,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			if !UIAccessibilityIsReduceTransparencyEnabled() {
 				let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
 				blurredView = UIVisualEffectView(effect: blurEffect)
+				blurredView?.alpha = 0.5
 				holder.pinSubViewToAllEdges(blurredView!);
 				
 			} else {
