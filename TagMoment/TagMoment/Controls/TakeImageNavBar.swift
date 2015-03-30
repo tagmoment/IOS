@@ -174,6 +174,7 @@ class TakeImageNavBar: UIView {
 			self.zeroFlashState()
 			self.rightButton.alpha = 1.0
 			self.middleButton.alpha = 1.0
+			
 		}
 		
 		

@@ -62,7 +62,6 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	}
 	
 	
-	
     override func viewDidLoad() {
         super.viewDidLoad()
 		masksViewController = ChooseMasksViewController(nibName: "ChooseMasksViewController", bundle: nil)
@@ -227,21 +226,28 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 
 	func maskChosen(name: String?) {
 		if (name != nil){
-			var workingRect = CGRect(x: 0.0, y: 0.0, width: self.view.frame.size.width, height: self.canvas.frame.size.height)
+			var workingRect = CGRect(x: 0.0, y: 0.0, width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.width)
 			var mask = MaskFactory.maskForName(name!, rect: workingRect)
 			var maskLayer = CAShapeLayer()
 			maskLayer.path = mask!.clippingPath.CGPath
 			
 			
-			changeSingleCaptureBehaviour()
+			self.changeSingleCaptureBehaviour()
 			UIView.animateWithDuration(0.10, animations: { () -> Void in
 				self.secondImageView.alpha = 0.0
 				}, completion: { (finished: Bool) -> Void in
-				self.secondImageView.layer.mask = maskLayer
-				UIView.animateWithDuration(0.10, animations: { () -> Void in
-					self.secondImageView.alpha = 1.0
-				})
+					if (finished)
+					{
+						self.secondImageView.layer.mask = maskLayer
+						
+						UIView.animateWithDuration(0.10, animations: { () -> Void in
+							self.secondImageView.alpha = 1.0
+						})
+					}
+					
 			})
+
+			
 		}
 	}
 	
@@ -254,6 +260,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 				self.navigationView.takingImageStageAppearance(false)
 				self.masksViewController.takeButton.enabled = true
 				self.masksViewController.switchCamButton.enabled = true
+				self.navigationView.showLeftButton(false)
 			}
 			else
 			{
@@ -384,6 +391,8 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			controlContainer.addViewWithConstraints(masksViewController.view, toTheRight: false)
 			controlContainer.animateExitingView()
 		}
+		self.masksViewController.takeButton.enabled = true
+		self.masksViewController.switchCamButton.enabled = true
 		
 		
 	}
@@ -435,9 +444,11 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		secondImageView.image = UIImage(named: "image2.jpeg")
 		initStageThree()
 #else
-		makeSnapshotEffect()
 	
+		makeSnapshotEffect()
+		UIApplication.sharedApplication().beginIgnoringInteractionEvents()
 		sessionService.captureImage { (image: UIImage?, error: NSError!) -> Void in
+			UIApplication.sharedApplication().endIgnoringInteractionEvents()
 			if (error != nil)
 			{
 				/* print error message */

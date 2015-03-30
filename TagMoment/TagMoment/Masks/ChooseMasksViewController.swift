@@ -41,7 +41,7 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 		masksCarousel.pagingEnabled = true
 		self.masksViewModels = MaskFactory.getViewModels()
 		masksCarousel.reloadData()
-		masksCarousel.scrollToItemAtIndex(2, animated: false)
+		masksCarousel.scrollToItemAtIndex(3, animated: false)
     }
 
 	override func viewWillAppear(animated: Bool) {
