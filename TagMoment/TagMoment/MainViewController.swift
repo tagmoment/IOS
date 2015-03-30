@@ -108,8 +108,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			masksViewController.masksCarousel.removeFromSuperview()
 			
 			self.canvas.pinSubViewToTop(masksViewController.masksCarousel, heightContraint: 88)
-			masksViewController.settingsButtonTopConstraint.constant = 38
-			masksViewController.switchCamButtonTopConstraint.constant = 38
+		
 			masksViewController.centerTakeImageButton()
 			self.navigationView.changeMasksButton.selected = true
 			turnOffMasks(true)

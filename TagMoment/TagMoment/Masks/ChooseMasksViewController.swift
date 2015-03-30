@@ -24,10 +24,6 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 	
 	@IBOutlet weak var switchCamButton: UIButton!
 	
-	@IBOutlet weak var settingsButtonTopConstraint : NSLayoutConstraint!
-	
-	@IBOutlet weak var switchCamButtonTopConstraint : NSLayoutConstraint!
-	
 	@IBOutlet weak var takeImageTopConstraint : NSLayoutConstraint!
 	
 	
