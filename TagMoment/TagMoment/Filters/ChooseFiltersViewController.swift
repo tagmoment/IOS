@@ -20,6 +20,7 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 
 	@IBOutlet weak var filterButtonsCollecionView: UICollectionView!
 	@IBOutlet weak var someSlider : UISlider!
+	@IBOutlet weak var disabledSlider : UIImageView!
 	weak var filtersChooseDelegate: ChooseFiltesControllerDelegate?
 	
 	var currentContext : CIContext!
@@ -159,9 +160,21 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 
 		
 		self.currentFilterModel = filterModel
-		filterModel.inputImage(self.currentCIImage)
-		self.someSlider.value = 0.5;
-		sliderValueChanged(self.someSlider)
+		if (filterModel.supportsChangingValues())
+		{
+			self.someSlider.hidden = false
+			self.disabledSlider.hidden = true
+			filterModel.inputImage(self.currentCIImage)
+			self.someSlider.value = 0.5;
+			sliderValueChanged(self.someSlider)
+		}
+		else
+		{
+			self.workingImageView().image = self.workingImage()
+			self.disabledSlider.hidden = false
+			self.someSlider.hidden = true
+		}
+		
 	}
 	
 	func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
@@ -208,11 +221,28 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 		let tempModel = self.currentFilterModel
 		self.currentFilterModel = lastFilterModel
 		lastFilterModel = tempModel
-		self.currentFilterModel.inputImage(self.currentCIImage)
+		if (self.currentFilterModel.supportsChangingValues())
+		{
+			self.someSlider.hidden = false
+			self.disabledSlider.hidden = true
+			self.currentFilterModel.inputImage(self.currentCIImage)
+			
+		}
+		else
+		{
+			self.workingImageView().image = self.workingImage()
+			self.someSlider.hidden = true
+			self.disabledSlider.hidden = false
+		}
 		let tempSliderValue = self.someSlider.value
 		self.someSlider.value = lastSliderValue;
 		lastSliderValue = tempSliderValue
-		sliderValueChanged(self.someSlider)
+		if (self.currentFilterModel.supportsChangingValues())
+		{
+			sliderValueChanged(self.someSlider)
+		}
+		
+		
 		
 	}
 	

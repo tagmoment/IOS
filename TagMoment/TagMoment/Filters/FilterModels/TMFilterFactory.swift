@@ -7,6 +7,7 @@ struct TMFilterFactory{
 	static func getFilters() -> [TMFilterBase]{
 		if (filterArray.count == 0)
 		{
+			filterArray.append(TMSunFilter())
 			filterArray.append(TMArtistFilter())
 			filterArray.append(TMSunsetFilter())
 			filterArray.append(TMCocktailFilter())

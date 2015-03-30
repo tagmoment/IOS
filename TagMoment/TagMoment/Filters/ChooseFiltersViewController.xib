@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChooseFiltersViewController" customModule="TagMoment" customModuleProvider="target">
             <connections>
+                <outlet property="disabledSlider" destination="NVa-kF-Z1w" id="JTb-Gb-b1E"/>
                 <outlet property="filterButtonsCollecionView" destination="InD-dJ-xR0" id="eZw-qZ-lIg"/>
                 <outlet property="jumperButton" destination="qzN-gB-kgI" id="J45-AF-BAr"/>
                 <outlet property="someSlider" destination="wuA-ol-ldl" id="al5-dD-gGL"/>
@@ -35,7 +36,7 @@
                     </connections>
                 </collectionView>
                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="wuA-ol-ldl">
-                    <rect key="frame" x="158" y="105.5" width="284" height="29"/>
+                    <rect key="frame" x="158" y="105" width="284" height="29"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="28" id="hkr-Sq-Q94"/>
                         <constraint firstAttribute="width" constant="280" id="qN2-yF-Aza"/>
@@ -60,6 +61,9 @@
                         <action selector="jumperButtonPressed:" destination="-1" eventType="touchUpInside" id="Anm-60-cw3"/>
                     </connections>
                 </button>
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="opacity_button_50" translatesAutoresizingMaskIntoConstraints="NO" id="NVa-kF-Z1w">
+                    <rect key="frame" x="279" y="94.5" width="42" height="42"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
@@ -74,6 +78,8 @@
                 <constraint firstItem="qzN-gB-kgI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="ag8-E6-5K6"/>
                 <constraint firstAttribute="bottom" secondItem="InD-dJ-xR0" secondAttribute="bottom" id="e3B-cH-EaO"/>
                 <constraint firstItem="wuA-ol-ldl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="26" id="mdV-Om-SIF"/>
+                <constraint firstAttribute="centerX" secondItem="NVa-kF-Z1w" secondAttribute="centerX" id="mqf-09-XhG"/>
+                <constraint firstAttribute="centerY" secondItem="NVa-kF-Z1w" secondAttribute="centerY" constant="8" id="uKy-Da-nDY"/>
                 <constraint firstAttribute="centerY" secondItem="wuA-ol-ldl" secondAttribute="centerY" constant="4" id="zdI-Bw-Que"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -89,4 +95,7 @@
             <point key="canvasLocation" x="62" y="239.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="opacity_button_50" width="42" height="42"/>
+    </resources>
 </document>

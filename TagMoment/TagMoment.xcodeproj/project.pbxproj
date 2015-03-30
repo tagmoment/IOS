@@ -25,6 +25,8 @@
 		F14A81431A58B0B300B5D14F /* TMCircleMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A81421A58B0B300B5D14F /* TMCircleMask.swift */; };
 		F14A81451A58B31500B5D14F /* TMWaveMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A81441A58B31500B5D14F /* TMWaveMask.swift */; };
 		F14A81471A58B52700B5D14F /* TMHeartMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A81461A58B52700B5D14F /* TMHeartMask.swift */; };
+		F14C27081AC9E58800C19968 /* LeftAligned.m in Sources */ = {isa = PBXBuildFile; fileRef = F14C27071AC9E58800C19968 /* LeftAligned.m */; };
+		F14C270A1AC9E86700C19968 /* TMSunFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14C27091AC9E86700C19968 /* TMSunFilter.swift */; };
 		F156B4281A5C918600B1E0EA /* TMMaskCasual.swift in Sources */ = {isa = PBXBuildFile; fileRef = F156B4271A5C918600B1E0EA /* TMMaskCasual.swift */; };
 		F1604C701A574CC40055C721 /* image1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F1604C6E1A574CC40055C721 /* image1.jpeg */; };
 		F1604C711A574CC40055C721 /* image2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F1604C6F1A574CC40055C721 /* image2.jpeg */; };
@@ -108,6 +110,9 @@
 		F14A81421A58B0B300B5D14F /* TMCircleMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMCircleMask.swift; sourceTree = "<group>"; };
 		F14A81441A58B31500B5D14F /* TMWaveMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMWaveMask.swift; sourceTree = "<group>"; };
 		F14A81461A58B52700B5D14F /* TMHeartMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMHeartMask.swift; sourceTree = "<group>"; };
+		F14C27061AC9E58800C19968 /* LeftAligned.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftAligned.h; sourceTree = "<group>"; };
+		F14C27071AC9E58800C19968 /* LeftAligned.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftAligned.m; sourceTree = "<group>"; };
+		F14C27091AC9E86700C19968 /* TMSunFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMSunFilter.swift; sourceTree = "<group>"; };
 		F156B4271A5C918600B1E0EA /* TMMaskCasual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMMaskCasual.swift; sourceTree = "<group>"; };
 		F1604C6E1A574CC40055C721 /* image1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image1.jpeg; sourceTree = "<group>"; };
 		F1604C6F1A574CC40055C721 /* image2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image2.jpeg; sourceTree = "<group>"; };
@@ -402,6 +407,7 @@
 				F1ECA3731A88157A0018EFA2 /* TMVintageFilter.swift */,
 				F1ECA3771A88167A0018EFA2 /* TMPhotoEffectMonoFilter.swift */,
 				F19620C01A881A8800DCFB85 /* TMBloomFilter.swift */,
+				F14C27091AC9E86700C19968 /* TMSunFilter.swift */,
 				F19620CA1A881D3E00DCFB85 /* TMFilterFactory.swift */,
 				F16A45221A93930700230DAD /* TMFilterBase.swift */,
 			);
@@ -413,6 +419,8 @@
 			children = (
 				F1EC47991ABDFE3700081CDF /* TagsCollectionViewCell.swift */,
 				F1EC479A1ABDFE3700081CDF /* TagsCollectionViewCell.xib */,
+				F14C27061AC9E58800C19968 /* LeftAligned.h */,
+				F14C27071AC9E58800C19968 /* LeftAligned.m */,
 			);
 			path = Tags;
 			sourceTree = "<group>";
@@ -531,12 +539,14 @@
 				F1A142171A93FC8F001D63C6 /* FilterImageParameter.swift in Sources */,
 				F1A142191A93FD5B001D63C6 /* FilterParameterProtocol.swift in Sources */,
 				F1CC18341A97911300DB77F2 /* TakeImageNavBar.swift in Sources */,
+				F14C27081AC9E58800C19968 /* LeftAligned.m in Sources */,
 				F17A416D1AB477930074E5F5 /* TMTextField.swift in Sources */,
 				F1A7B7641A585DF80033FE64 /* TMVerticalRectMask.swift in Sources */,
 				F1ECA3781A88167A0018EFA2 /* TMPhotoEffectMonoFilter.swift in Sources */,
 				F14A81431A58B0B300B5D14F /* TMCircleMask.swift in Sources */,
 				F19620CB1A881D3E00DCFB85 /* TMFilterFactory.swift in Sources */,
 				F16D27761A9A712B0000F759 /* SharingViewController.swift in Sources */,
+				F14C270A1AC9E86700C19968 /* TMSunFilter.swift in Sources */,
 				F156B4281A5C918600B1E0EA /* TMMaskCasual.swift in Sources */,
 				F19620C71A881BDE00DCFB85 /* TMTravelFilter.swift in Sources */,
 				F14A81451A58B31500B5D14F /* TMWaveMask.swift in Sources */,

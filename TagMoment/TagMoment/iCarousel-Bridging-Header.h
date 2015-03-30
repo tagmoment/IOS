@@ -9,5 +9,6 @@
 #define TagMoment_iCarousel_Bridging_Header_h
 
 #import "iCarousel.h"
+#import "LeftAligned.h"
 
 #endif

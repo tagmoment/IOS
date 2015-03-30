@@ -115,14 +115,8 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 			autoKeyboardWasOn = true
 		}
 		
-		let indices = self.tagsCollectionView.indexPathsForSelectedItems()
-		if (indices.count != 0)
-		{
-			self.tagsCollectionView.deselectItemAtIndexPath(indices[0] as? NSIndexPath, animated: false)
-			self.collectionView(self.tagsCollectionView, didDeselectItemAtIndexPath: indices[0] as NSIndexPath)
-		}
-			
 		
+		deselectItems()
 		
 		return true
 	}
@@ -146,6 +140,21 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 		return true
 	}
 	
+	func textFieldShouldClear(textField: UITextField) -> Bool
+	{
+		deselectItems()
+		return true
+	}
+	
+	func deselectItems()
+	{
+		let indices = self.tagsCollectionView.indexPathsForSelectedItems()
+		if (indices.count != 0)
+		{
+			self.tagsCollectionView.deselectItemAtIndexPath(indices[0] as? NSIndexPath, animated: false)
+			self.collectionView(self.tagsCollectionView, didDeselectItemAtIndexPath: indices[0] as NSIndexPath)
+		}
+	}
 	
 	// MARK: - Animations
 	
