@@ -23,8 +23,8 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="68" id="8de-TL-GJn"/>
                     </constraints>
-                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="2" id="Ju8-WW-ER2">
-                        <size key="itemSize" width="70" height="68"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="Ju8-WW-ER2">
+                        <size key="itemSize" width="68" height="68"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -35,9 +35,9 @@
                     </connections>
                 </collectionView>
                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="wuA-ol-ldl">
-                    <rect key="frame" x="158" y="116" width="284" height="31"/>
+                    <rect key="frame" x="158" y="105.5" width="284" height="29"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="hkr-Sq-Q94"/>
+                        <constraint firstAttribute="height" constant="28" id="hkr-Sq-Q94"/>
                         <constraint firstAttribute="width" constant="280" id="qN2-yF-Aza"/>
                     </constraints>
                     <color key="minimumTrackTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -48,10 +48,10 @@
                     </connections>
                 </slider>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qzN-gB-kgI">
-                    <rect key="frame" x="280" y="10" width="40" height="40"/>
+                    <rect key="frame" x="275" y="10" width="50" height="50"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="40" id="bUM-3T-KZR"/>
-                        <constraint firstAttribute="height" constant="40" id="gfM-e4-ioM"/>
+                        <constraint firstAttribute="width" constant="50" id="bUM-3T-KZR"/>
+                        <constraint firstAttribute="height" constant="50" id="gfM-e4-ioM"/>
                     </constraints>
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -63,6 +63,7 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="centerX" secondItem="wuA-ol-ldl" secondAttribute="centerX" constant="4" id="5Zh-w6-upQ"/>
                 <constraint firstItem="InD-dJ-xR0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="DsF-Ru-K0s"/>
                 <constraint firstItem="wuA-ol-ldl" firstAttribute="top" secondItem="qzN-gB-kgI" secondAttribute="bottom" constant="23" id="J6H-2C-ky5"/>
                 <constraint firstAttribute="centerX" secondItem="wuA-ol-ldl" secondAttribute="centerX" id="RR8-3Y-bEi"/>
@@ -73,10 +74,13 @@
                 <constraint firstItem="qzN-gB-kgI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="ag8-E6-5K6"/>
                 <constraint firstAttribute="bottom" secondItem="InD-dJ-xR0" secondAttribute="bottom" id="e3B-cH-EaO"/>
                 <constraint firstItem="wuA-ol-ldl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="26" id="mdV-Om-SIF"/>
+                <constraint firstAttribute="centerY" secondItem="wuA-ol-ldl" secondAttribute="centerY" constant="4" id="zdI-Bw-Que"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
                 <mask key="constraints">
+                    <exclude reference="X9b-0M-3zg"/>
+                    <exclude reference="5Zh-w6-upQ"/>
                     <exclude reference="J6H-2C-ky5"/>
                     <exclude reference="XOf-5K-QGr"/>
                     <exclude reference="mdV-Om-SIF"/>

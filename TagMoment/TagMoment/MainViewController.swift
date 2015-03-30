@@ -36,14 +36,16 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	var blurredView : UIView?
 	
 	var initialized = false
+	var controlsContainerHeight : CGFloat = CGFloat(0)
 	
 	@IBOutlet weak var logoLabel: UILabel!
 	@IBOutlet weak var userLabel: UILabel!
 	@IBOutlet weak var infoTopConstraint: NSLayoutConstraint!
-	@IBOutlet weak var controlContainerHeightConstraint: NSLayoutConstraint!
 	@IBOutlet weak var canvas: UIImageView!
 	@IBOutlet weak var controlContainer: SlidingView!
 	@IBOutlet weak var infobarHolder: UIView!
+	
+	
 	
 	required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
 		super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -73,6 +75,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		canvas.pinSubViewToAllEdges(secondImageView)
 		navigationView = NSBundle.mainBundle().loadNibNamed("NavbarView", owner: nil, options: nil)[0] as TakeImageNavBar
 		infobarHolder.pinSubViewToAllEdges(navigationView)
+		applyShadowOnLabels()
 		navigationView.viewDelegate = self
 		changeMasksCarouselPositionIfNeeded()
 		initBlurredOverLay(toView: secondImageView)
@@ -89,6 +92,16 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		}
 	}
 	
+	func applyShadowOnLabels()
+	{
+		userLabel.layer.shadowRadius = 4.0
+		userLabel.layer.shadowOpacity = 0.5
+		userLabel.layer.shadowOffset = CGSize(width: 0.0, height: -1.0)
+		logoLabel.layer.shadowRadius = 4.0
+		logoLabel.layer.shadowOpacity = 0.5
+		logoLabel.layer.shadowOffset = CGSize(width: 0.0, height: -1.0)
+	}
+	
 	func changeMasksCarouselPositionIfNeeded()
 	{
 		if (UIScreen.mainScreen().bounds.height <= 480)
@@ -96,7 +109,6 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			masksViewController.masksCarousel.removeFromSuperview()
 			
 			self.canvas.pinSubViewToTop(masksViewController.masksCarousel, heightContraint: 88)
-			controlContainerHeightConstraint.constant = 117
 			masksViewController.settingsButtonTopConstraint.constant = 38
 			masksViewController.switchCamButtonTopConstraint.constant = 38
 			masksViewController.centerTakeImageButton()
@@ -219,10 +231,17 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			var mask = MaskFactory.maskForName(name!, rect: workingRect)
 			var maskLayer = CAShapeLayer()
 			maskLayer.path = mask!.clippingPath.CGPath
-			secondImageView.layer.mask = maskLayer
+			
 			
 			changeSingleCaptureBehaviour()
-			
+			UIView.animateWithDuration(0.10, animations: { () -> Void in
+				self.secondImageView.alpha = 0.0
+				}, completion: { (finished: Bool) -> Void in
+				self.secondImageView.layer.mask = maskLayer
+				UIView.animateWithDuration(0.10, animations: { () -> Void in
+					self.secondImageView.alpha = 1.0
+				})
+			})
 		}
 	}
 	
@@ -321,12 +340,13 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	}
 	
 	func sharingRequested() {
+		
 		sharingController = SharingViewController(nibName: "SharingViewController", bundle: nil)
 		sharingController.sharingDelegate = self
+		controlsContainerHeight = controlContainer.frame.height;
 		controlContainer.addViewWithConstraints(sharingController.view, toTheRight: true)
 		controlContainer.animateEnteringView()
 		infoTopConstraint.constant = -infobarHolder.frame.height
-		controlContainerHeightConstraint.constant += infobarHolder.frame.height
 		logoLabel.hidden = false
 		logoLabel.alpha = 0.0
 		UIView .animateWithDuration(0.5, animations: { () -> Void in
@@ -340,7 +360,6 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		if (self.infoTopConstraint.constant != 0)
 		{
 			self.infoTopConstraint.constant = 0
-			self.controlContainerHeightConstraint.constant = 204
 			UIView.animateWithDuration(0.3, animations: { () -> Void in
 				self.view.layoutIfNeeded()
 			})
@@ -373,14 +392,12 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		if endFrame.origin.y == self.view.frame.height
 		{
 			infoTopConstraint.constant = -infobarHolder.frame.height
-			controlContainerHeightConstraint.constant = 204 + infobarHolder.frame.height
 			sharingController.tagsHeightConstraint.constant = 0
 		}
 		else
 		{
-			infoTopConstraint.constant = 204 - endFrame.height - 100
-			controlContainerHeightConstraint.constant = endFrame.height + 100
-			sharingController.tagsHeightConstraint.constant = 100
+			infoTopConstraint.constant = controlsContainerHeight - endFrame.height - 104
+			sharingController.tagsHeightConstraint.constant = 104
 			
 		}
 		

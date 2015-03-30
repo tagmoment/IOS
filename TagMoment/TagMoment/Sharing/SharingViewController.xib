@@ -31,6 +31,7 @@
                     <constraints>
                         <constraint firstAttribute="width" constant="122" id="JpM-SC-7wV"/>
                     </constraints>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="22" maxY="0.0"/>
                     <state key="normal" image="keep_it" backgroundImage="keep">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -52,6 +53,7 @@
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NGF-qY-cNl" userLabel="sharebutton">
                     <rect key="frame" x="82" y="234" width="518" height="44"/>
+                    <inset key="contentEdgeInsets" minX="0.0" minY="6" maxX="0.0" maxY="0.0"/>
                     <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="7"/>
                     <state key="normal" title="Share" image="share_it" backgroundImage="share">
@@ -62,7 +64,7 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="id5-b8-9y4" userLabel="buttonsHolder">
-                    <rect key="frame" x="185" y="96" width="230" height="116"/>
+                    <rect key="frame" x="185" y="81" width="230" height="116"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="se8-qG-QNa">
                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -191,11 +193,11 @@
                 <constraint firstItem="aas-bg-iX7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="3fn-ny-MC5"/>
                 <constraint firstAttribute="bottom" secondItem="NGF-qY-cNl" secondAttribute="bottom" id="418-Kp-KfB"/>
                 <constraint firstItem="yGn-q6-e7R" firstAttribute="top" secondItem="aas-bg-iX7" secondAttribute="bottom" id="4c7-Ng-4vs"/>
+                <constraint firstAttribute="centerY" secondItem="id5-b8-9y4" secondAttribute="centerY" id="5HG-SQ-wfR"/>
                 <constraint firstItem="aas-bg-iX7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="7oh-rE-5zw"/>
                 <constraint firstAttribute="trailing" secondItem="yGn-q6-e7R" secondAttribute="trailing" id="GeK-NK-xt0"/>
                 <constraint firstItem="yGn-q6-e7R" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="H3g-4z-IAr"/>
                 <constraint firstItem="NGF-qY-cNl" firstAttribute="leading" secondItem="21g-rT-QKM" secondAttribute="trailing" constant="-40" id="R91-bi-rSS"/>
-                <constraint firstItem="NGF-qY-cNl" firstAttribute="top" secondItem="id5-b8-9y4" secondAttribute="bottom" constant="22" id="Tw3-wP-678"/>
                 <constraint firstAttribute="trailing" secondItem="aas-bg-iX7" secondAttribute="trailing" id="Yj1-8i-8D4"/>
                 <constraint firstItem="21g-rT-QKM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="a0z-9z-dIP"/>
                 <constraint firstAttribute="bottom" secondItem="21g-rT-QKM" secondAttribute="bottom" id="khM-1l-DE9"/>
