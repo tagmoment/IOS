@@ -9,11 +9,13 @@
 import Foundation
 import CoreImage
 
-class TMVintageFilter : TMFilterBase{
+class TMVintageFilter : TMAlphaFilterBase{
 	override var filtersProtected : [CIFilter] {
 		get
 		{
-			return [CIFilter(name: "CIPhotoEffectNoir"), CIFilter(name: "CIHighlightShadowAdjust")]
+			var filters = super.filtersProtected
+			filters.insert(CIFilter(name: "CIPhotoEffectTonal"), atIndex: 0)
+			return filters
 		}
 	}
 	
@@ -22,5 +24,4 @@ class TMVintageFilter : TMFilterBase{
 		super.init()
 		self.iconName = "Vintage"
 	}
-	
 }

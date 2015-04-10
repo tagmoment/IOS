@@ -9,12 +9,14 @@
 import Foundation
 import CoreImage
 
-class TMTravelFilter : TMFilterBase{
+class TMTravelFilter : TMAlphaFilterBase{
 	override var filtersProtected : [CIFilter]
 	{
 		get
 		{
-			return [CIFilter(name: "CIPhotoEffectTransfer")]
+			var filters = super.filtersProtected
+			filters.insert(CIFilter(name: "CIPhotoEffectFade"), atIndex: 0)
+			return filters
 		}
 		
 	}
@@ -23,9 +25,5 @@ class TMTravelFilter : TMFilterBase{
 	{
 		super.init()
 		self.iconName = "Travel"
-	}
-	
-	override func supportsChangingValues() -> Bool {
-		return false;
 	}
 }

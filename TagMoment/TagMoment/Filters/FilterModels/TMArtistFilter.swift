@@ -4,12 +4,14 @@ import Foundation
 import CoreImage
 
 /* Verified with params */
-class TMArtistFilter : TMFilterBase{
+class TMArtistFilter : TMAlphaFilterBase{
 	override var filtersProtected : [CIFilter]
 	{
 		get
 		{
-			return [CIFilter(name: "CISepiaTone")]
+			var filters = super.filtersProtected
+			filters.insert(CIFilter(name: "CIPhotoEffectTransfer"), atIndex: 0)
+			return filters
 		}
 	}
 

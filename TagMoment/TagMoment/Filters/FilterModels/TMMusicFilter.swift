@@ -9,16 +9,19 @@
 import Foundation
 import CoreImage
 
-class TMBloomFilter : TMFilterBase{
-	override var filtersProtected : [CIFilter] { return [CIFilter(name: "CIBloom")] }
-	
+class TMMusicFilter : TMAlphaFilterBase{
+	override var filtersProtected : [CIFilter]
+		{
+		get
+		{
+			var filters = super.filtersProtected
+			filters.insert(CIFilter(name: "CIPhotoEffectInstant"), atIndex: 0)
+			return filters
+		}
+	}
 	override init()
 	{
 		super.init()
 		self.iconName = "Music"
 	}
-	
-	
-
-	
 }

@@ -1,31 +1,29 @@
 //
-//  TMComicEffectFilter.swift
+//  TMGamerFilter.swift
 //  TagMoment
 //
-//  Created by Tomer Hershkowitz on 2/9/15.
+//  Created by Tomer Hershkowitz on 4/10/15.
 //  Copyright (c) 2015 TagMoment. All rights reserved.
 //
 
 import Foundation
 import CoreImage
 
-class TMStarFilter : TMAlphaFilterBase{
+class TMGamerFilter : TMAlphaFilterBase{
 	override var filtersProtected : [CIFilter] {
 		get
 		{
 			var filters = super.filtersProtected
-			filters.insert(CIFilter(name: "CIColorControls"), atIndex: 0)
+			filters.insert(CIFilter(name: "CIUnsharpMask"), atIndex: 0)
 			return filters
-
+			
 		}
 	}
 	
-	
-		
 	override init()
 	{
 		super.init()
-		self.iconName = "Star"
+		self.iconName = "Gamer"
 	}
 	
 	override func applyFilterValue(value : Float)
@@ -43,9 +41,8 @@ class TMStarFilter : TMAlphaFilterBase{
 	override func createConstantFilterParameters(inout outParams : [String : [FilterParameterProtocol]])
 	{
 		var colorControlsfilterParams = [FilterParameterProtocol]()
-		colorControlsfilterParams.append(FilterConstantParameter(key: "inputSaturation", constant: Float(0.64)))
-		colorControlsfilterParams.append(FilterConstantParameter(key: "inputBrightness", constant: Float(0.2)))
-		colorControlsfilterParams.append(FilterConstantParameter(key: "inputContrast", constant: Float(1.88)))
+		colorControlsfilterParams.append(FilterConstantParameter(key: "inputRadius", constant: Float(2.0)))
+		colorControlsfilterParams.append(FilterConstantParameter(key: "inputIntensity", constant: Float(6.5)))
 		outParams.updateValue(colorControlsfilterParams, forKey: self.filters[0].name())
 	}
 	

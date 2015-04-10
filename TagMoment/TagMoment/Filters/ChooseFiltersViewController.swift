@@ -86,12 +86,15 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 		
 		currentFilterModel.applyFilterValue(sliderValue)
 		let outputImage = currentFilterModel.outputImage()
+		if (outputImage != nil)
+		{
+			let cgimg = currentContext.createCGImage(outputImage, fromRect: outputImage.extent())
+			
+			let newImage = UIImage(CGImage: cgimg, scale: UIScreen.mainScreen().scale, orientation: self.workingImage().imageOrientation)
+			
+			self.workingImageView().image = newImage
+		}
 		
-		let cgimg = currentContext.createCGImage(outputImage, fromRect: outputImage.extent())
-		
-		let newImage = UIImage(CGImage: cgimg, scale: UIScreen.mainScreen().scale, orientation: self.workingImage().imageOrientation)
-		
-		self.workingImageView().image = newImage
 	}
 
 	private func isWorkingOnOuterImage() -> Bool
@@ -160,20 +163,21 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 
 		
 		self.currentFilterModel = filterModel
+		filterModel.inputImage(self.currentCIImage)
 		if (filterModel.supportsChangingValues())
 		{
 			self.someSlider.hidden = false
 			self.disabledSlider.hidden = true
-			filterModel.inputImage(self.currentCIImage)
-			self.someSlider.value = 0.5;
-			sliderValueChanged(self.someSlider)
 		}
 		else
 		{
 			self.workingImageView().image = self.workingImage()
 			self.disabledSlider.hidden = false
 			self.someSlider.hidden = true
+			
 		}
+		self.someSlider.value = 1.0;
+		sliderValueChanged(self.someSlider)
 		
 	}
 	

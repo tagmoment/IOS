@@ -2,11 +2,13 @@
 import Foundation
 import CoreImage
 
-class TMCocktailFilter : TMFilterBase{
+class TMCocktailFilter : TMAlphaFilterBase{
 	override var filtersProtected : [CIFilter] {
 		get
 		{
-			return [CIFilter(name: "CIHueAdjust")]
+			var filters = super.filtersProtected
+			filters.insert(CIFilter(name: "CIPhotoEffectProcess"), atIndex: 0)
+			return filters
 		}
 	}
 	
@@ -16,4 +18,5 @@ class TMCocktailFilter : TMFilterBase{
 		self.iconName = "Cocktail"
 	}
 	
+
 }

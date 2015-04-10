@@ -34,6 +34,9 @@
 		F16D277A1A9A84F60000F759 /* GiddyupStd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F16D27791A9A83570000F759 /* GiddyupStd.ttf */; };
 		F175A12E1AD8370200760025 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F175A12C1AD8370200760025 /* MainViewController.swift */; };
 		F175A12F1AD8370200760025 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F175A12D1AD8370200760025 /* MainViewController.xib */; };
+		F175A1311AD850B800760025 /* FilterConstantParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F175A1301AD850B800760025 /* FilterConstantParameter.swift */; };
+		F175A1331AD859F500760025 /* TMAlphaFilterBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F175A1321AD859F500760025 /* TMAlphaFilterBase.swift */; };
+		F175A1351AD85E6F00760025 /* TMGamerFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F175A1341AD85E6F00760025 /* TMGamerFilter.swift */; };
 		F17672691AA515BF00588865 /* libTestFairy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F17672661AA515BF00588865 /* libTestFairy.a */; };
 		F176726A1AA515BF00588865 /* upload-dsym.sh in Resources */ = {isa = PBXBuildFile; fileRef = F17672681AA515BF00588865 /* upload-dsym.sh */; };
 		F176726C1AA515D500588865 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F176726B1AA515D500588865 /* CoreMotion.framework */; };
@@ -43,7 +46,7 @@
 		F17672741AA515FA00588865 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F17672731AA515FA00588865 /* OpenGLES.framework */; };
 		F17A416D1AB477930074E5F5 /* TMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17A416C1AB477930074E5F5 /* TMTextField.swift */; };
 		F17A41711AB47FAC0074E5F5 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = F17A41701AB47FAC0074E5F5 /* iCarousel.m */; };
-		F19620C11A881A8800DCFB85 /* TMBloomFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19620C01A881A8800DCFB85 /* TMBloomFilter.swift */; };
+		F19620C11A881A8800DCFB85 /* TMMusicFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19620C01A881A8800DCFB85 /* TMMusicFilter.swift */; };
 		F19620C31A881B0800DCFB85 /* TMStarFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19620C21A881B0800DCFB85 /* TMStarFilter.swift */; };
 		F19620C51A881B7300DCFB85 /* TMSurpriseFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19620C41A881B7300DCFB85 /* TMSurpriseFilter.swift */; };
 		F19620C71A881BDE00DCFB85 /* TMTravelFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19620C61A881BDE00DCFB85 /* TMTravelFilter.swift */; };
@@ -73,7 +76,7 @@
 		F1EC479B1ABDFE3700081CDF /* TagsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EC47991ABDFE3700081CDF /* TagsCollectionViewCell.swift */; };
 		F1EC479C1ABDFE3700081CDF /* TagsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1EC479A1ABDFE3700081CDF /* TagsCollectionViewCell.xib */; };
 		F1ECA3741A88157A0018EFA2 /* TMVintageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECA3731A88157A0018EFA2 /* TMVintageFilter.swift */; };
-		F1ECA3781A88167A0018EFA2 /* TMPhotoEffectMonoFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECA3771A88167A0018EFA2 /* TMPhotoEffectMonoFilter.swift */; };
+		F1ECA3781A88167A0018EFA2 /* TMLoveFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECA3771A88167A0018EFA2 /* TMLoveFilter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +123,9 @@
 		F16D27791A9A83570000F759 /* GiddyupStd.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GiddyupStd.ttf; sourceTree = "<group>"; };
 		F175A12C1AD8370200760025 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		F175A12D1AD8370200760025 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		F175A1301AD850B800760025 /* FilterConstantParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterConstantParameter.swift; sourceTree = "<group>"; };
+		F175A1321AD859F500760025 /* TMAlphaFilterBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMAlphaFilterBase.swift; sourceTree = "<group>"; };
+		F175A1341AD85E6F00760025 /* TMGamerFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMGamerFilter.swift; sourceTree = "<group>"; };
 		F17672661AA515BF00588865 /* libTestFairy.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFairy.a; sourceTree = "<group>"; };
 		F17672671AA515BF00588865 /* TestFairy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFairy.h; sourceTree = "<group>"; };
 		F17672681AA515BF00588865 /* upload-dsym.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "upload-dsym.sh"; sourceTree = "<group>"; };
@@ -133,7 +139,7 @@
 		F17A416F1AB47FAC0074E5F5 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		F17A41701AB47FAC0074E5F5 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		F17A41731AB480070074E5F5 /* iCarousel-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iCarousel-Bridging-Header.h"; sourceTree = "<group>"; };
-		F19620C01A881A8800DCFB85 /* TMBloomFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMBloomFilter.swift; sourceTree = "<group>"; };
+		F19620C01A881A8800DCFB85 /* TMMusicFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMMusicFilter.swift; sourceTree = "<group>"; };
 		F19620C21A881B0800DCFB85 /* TMStarFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMStarFilter.swift; sourceTree = "<group>"; };
 		F19620C41A881B7300DCFB85 /* TMSurpriseFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMSurpriseFilter.swift; sourceTree = "<group>"; };
 		F19620C61A881BDE00DCFB85 /* TMTravelFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMTravelFilter.swift; sourceTree = "<group>"; };
@@ -163,7 +169,7 @@
 		F1EC47991ABDFE3700081CDF /* TagsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsCollectionViewCell.swift; sourceTree = "<group>"; };
 		F1EC479A1ABDFE3700081CDF /* TagsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagsCollectionViewCell.xib; sourceTree = "<group>"; };
 		F1ECA3731A88157A0018EFA2 /* TMVintageFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMVintageFilter.swift; sourceTree = "<group>"; };
-		F1ECA3771A88167A0018EFA2 /* TMPhotoEffectMonoFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMPhotoEffectMonoFilter.swift; sourceTree = "<group>"; };
+		F1ECA3771A88167A0018EFA2 /* TMLoveFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMLoveFilter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -378,6 +384,7 @@
 				F1A142161A93FC8F001D63C6 /* FilterImageParameter.swift */,
 				F1A142181A93FD5B001D63C6 /* FilterParameterProtocol.swift */,
 				F1A1421A1A940073001D63C6 /* FilterVectorParameter.swift */,
+				F175A1301AD850B800760025 /* FilterConstantParameter.swift */,
 			);
 			path = FilterParameters;
 			sourceTree = "<group>";
@@ -403,21 +410,23 @@
 			children = (
 				F1A142131A93FC81001D63C6 /* FilterParameters */,
 				F1B4ECE31A88072400C11FEF /* TMFilterInterface.swift */,
-				F1B4ECE51A88082B00C11FEF /* TMArtistFilter.swift */,
+				F14C27091AC9E86700C19968 /* TMSunFilter.swift */,
 				F1D4B6AE1A8809AD00396E25 /* TMSunsetFilter.swift */,
+				F1B4ECE51A88082B00C11FEF /* TMArtistFilter.swift */,
+				F19620C01A881A8800DCFB85 /* TMMusicFilter.swift */,
+				F1ECA3771A88167A0018EFA2 /* TMLoveFilter.swift */,
+				F1ECA3731A88157A0018EFA2 /* TMVintageFilter.swift */,
+				F19620C21A881B0800DCFB85 /* TMStarFilter.swift */,
 				F1D4B6B01A880A8300396E25 /* TMCocktailFilter.swift */,
+				F175A1341AD85E6F00760025 /* TMGamerFilter.swift */,
+				F19620C61A881BDE00DCFB85 /* TMTravelFilter.swift */,
 				F1D4B6B21A880B3900396E25 /* TMCoffeeFilter.swift */,
 				F19620C41A881B7300DCFB85 /* TMSurpriseFilter.swift */,
 				F19620C81A881C5200DCFB85 /* TMCloudFilter.swift */,
-				F19620C21A881B0800DCFB85 /* TMStarFilter.swift */,
-				F19620C61A881BDE00DCFB85 /* TMTravelFilter.swift */,
 				F11647851A880BC10094BEF4 /* TMFireFilter.swift */,
-				F1ECA3731A88157A0018EFA2 /* TMVintageFilter.swift */,
-				F1ECA3771A88167A0018EFA2 /* TMPhotoEffectMonoFilter.swift */,
-				F19620C01A881A8800DCFB85 /* TMBloomFilter.swift */,
-				F14C27091AC9E86700C19968 /* TMSunFilter.swift */,
 				F19620CA1A881D3E00DCFB85 /* TMFilterFactory.swift */,
 				F16A45221A93930700230DAD /* TMFilterBase.swift */,
+				F175A1321AD859F500760025 /* TMAlphaFilterBase.swift */,
 			);
 			path = FilterModels;
 			sourceTree = "<group>";
@@ -550,7 +559,7 @@
 				F14C27081AC9E58800C19968 /* LeftAligned.m in Sources */,
 				F17A416D1AB477930074E5F5 /* TMTextField.swift in Sources */,
 				F1A7B7641A585DF80033FE64 /* TMVerticalRectMask.swift in Sources */,
-				F1ECA3781A88167A0018EFA2 /* TMPhotoEffectMonoFilter.swift in Sources */,
+				F1ECA3781A88167A0018EFA2 /* TMLoveFilter.swift in Sources */,
 				F14A81431A58B0B300B5D14F /* TMCircleMask.swift in Sources */,
 				F19620CB1A881D3E00DCFB85 /* TMFilterFactory.swift in Sources */,
 				F16D27761A9A712B0000F759 /* SharingViewController.swift in Sources */,
@@ -564,17 +573,20 @@
 				F1D4B6B11A880A8300396E25 /* TMCocktailFilter.swift in Sources */,
 				F1A7B7631A585DF80033FE64 /* TMTraingleMask.swift in Sources */,
 				F1EC479B1ABDFE3700081CDF /* TagsCollectionViewCell.swift in Sources */,
-				F19620C11A881A8800DCFB85 /* TMBloomFilter.swift in Sources */,
+				F19620C11A881A8800DCFB85 /* TMMusicFilter.swift in Sources */,
 				F1A7B7661A585E180033FE64 /* MaskFactory.swift in Sources */,
 				F1A7B7621A585DF80033FE64 /* TMMask.swift in Sources */,
 				F1A7B7611A585DF80033FE64 /* TMHorizontalRectMask.swift in Sources */,
 				F101F1611A6B202D004849F1 /* SlidingView.swift in Sources */,
+				F175A1311AD850B800760025 /* FilterConstantParameter.swift in Sources */,
 				F101858F1A674120003F906E /* FilterCollectionViewCell.swift in Sources */,
 				F1ECA3741A88157A0018EFA2 /* TMVintageFilter.swift in Sources */,
 				F16A45231A93930700230DAD /* TMFilterBase.swift in Sources */,
 				F19620C51A881B7300DCFB85 /* TMSurpriseFilter.swift in Sources */,
 				F1D4B6B31A880B3900396E25 /* TMCoffeeFilter.swift in Sources */,
+				F175A1331AD859F500760025 /* TMAlphaFilterBase.swift in Sources */,
 				F10185961A67434F003F906E /* ViewLayoutUtils.swift in Sources */,
+				F175A1351AD85E6F00760025 /* TMGamerFilter.swift in Sources */,
 				F1D4B6AF1A8809AD00396E25 /* TMSunsetFilter.swift in Sources */,
 				F109CE9E1A56F8770011CA55 /* AppDelegate.swift in Sources */,
 				F10185951A67434F003F906E /* ImageProcessingUtil.swift in Sources */,

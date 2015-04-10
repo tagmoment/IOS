@@ -9,21 +9,19 @@
 import Foundation
 import CoreImage
 
-class TMPhotoEffectMonoFilter : TMFilterBase{
-	
+class TMLoveFilter : TMAlphaFilterBase{
+	override var filtersProtected : [CIFilter]
+		{
+		get
+		{
+			var filters = super.filtersProtected
+			filters.insert(CIFilter(name: "CILinearToSRGBToneCurve"), atIndex: 0)
+			return filters
+		}
+	}
 	override init()
 	{
 		super.init()
 		self.iconName = "Love"
 	}
-	
-	lazy var filter : CIFilter = {
-		return CIFilter(name: "CIPhotoEffectMono")
-		}()
-	
-	
-	override func supportsChangingValues() -> Bool{
-		return false;
-	}
-	
 }

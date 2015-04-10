@@ -16,6 +16,14 @@ class TMFilterBase{
 		return tempParams;
 	}()
 	
+	lazy var constantParams : [String : [FilterParameterProtocol]] =
+	{
+		var tempParams = [String : [FilterParameterProtocol]]()
+		self.createConstantFilterParameters(&tempParams)
+		return tempParams;
+
+	}()
+	
 	
 	init()
 	{
@@ -27,8 +35,23 @@ class TMFilterBase{
 	{
 		for filter in filters
 		{
+			
 			let name = filter.name()
+			
+			
 			let params = self.parameters[name]
+			let defaultParams = self.constantParams[name];
+			
+			if let myDefaultParams = defaultParams
+			{
+				
+				for myDefaultParam in myDefaultParams
+				{
+					filter.setValue(myDefaultParam.normalizedValueFromPercent(value), forKey: myDefaultParam.key)
+				}
+				continue
+			}
+			
 			if let myParams = params
 			{
 				for parameter in myParams
@@ -98,9 +121,17 @@ class TMFilterBase{
 		}
 	}
 	
+	func createConstantFilterParameters(inout outParams : [String : [FilterParameterProtocol]])
+	{
+	}
+	
 	func inputImage(inputImage : CIImage!)
 	{
-		self.filters[0].setValue(inputImage, forKey: kCIInputImageKey)
+		if (self.filters.count != 0)
+		{
+			self.filters[0].setValue(inputImage, forKey: kCIInputImageKey)
+		}
+		
 	}
 }
 
