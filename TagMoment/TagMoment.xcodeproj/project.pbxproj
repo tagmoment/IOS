@@ -17,8 +17,6 @@
 		F109CE9E1A56F8770011CA55 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F109CE9D1A56F8770011CA55 /* AppDelegate.swift */; };
 		F109CEA71A56F8770011CA55 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F109CEA61A56F8770011CA55 /* Images.xcassets */; };
 		F109CEB61A56F8770011CA55 /* TagMomentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F109CEB51A56F8770011CA55 /* TagMomentTests.swift */; };
-		F109CEC11A56FAA40011CA55 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F109CEBF1A56FAA40011CA55 /* MainViewController.swift */; };
-		F109CEC21A56FAA40011CA55 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F109CEC01A56FAA40011CA55 /* MainViewController.xib */; };
 		F10F63681A97927A00EDCAE3 /* NavbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F10F63671A97927A00EDCAE3 /* NavbarView.xib */; };
 		F11647861A880BC10094BEF4 /* TMFireFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11647851A880BC10094BEF4 /* TMFireFilter.swift */; };
 		F137FDD01A648CEF007B40B3 /* CameraSessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F137FDCF1A648CEF007B40B3 /* CameraSessionService.swift */; };
@@ -34,6 +32,8 @@
 		F16D27761A9A712B0000F759 /* SharingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16D27741A9A712B0000F759 /* SharingViewController.swift */; };
 		F16D27771A9A712B0000F759 /* SharingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F16D27751A9A712B0000F759 /* SharingViewController.xib */; };
 		F16D277A1A9A84F60000F759 /* GiddyupStd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F16D27791A9A83570000F759 /* GiddyupStd.ttf */; };
+		F175A12E1AD8370200760025 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F175A12C1AD8370200760025 /* MainViewController.swift */; };
+		F175A12F1AD8370200760025 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F175A12D1AD8370200760025 /* MainViewController.xib */; };
 		F17672691AA515BF00588865 /* libTestFairy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F17672661AA515BF00588865 /* libTestFairy.a */; };
 		F176726A1AA515BF00588865 /* upload-dsym.sh in Resources */ = {isa = PBXBuildFile; fileRef = F17672681AA515BF00588865 /* upload-dsym.sh */; };
 		F176726C1AA515D500588865 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F176726B1AA515D500588865 /* CoreMotion.framework */; };
@@ -102,8 +102,6 @@
 		F109CEAF1A56F8770011CA55 /* TagMomentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TagMomentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F109CEB41A56F8770011CA55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F109CEB51A56F8770011CA55 /* TagMomentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagMomentTests.swift; sourceTree = "<group>"; };
-		F109CEBF1A56FAA40011CA55 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		F109CEC01A56FAA40011CA55 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		F10F63671A97927A00EDCAE3 /* NavbarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavbarView.xib; sourceTree = "<group>"; };
 		F11647851A880BC10094BEF4 /* TMFireFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMFireFilter.swift; sourceTree = "<group>"; };
 		F137FDCF1A648CEF007B40B3 /* CameraSessionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraSessionService.swift; sourceTree = "<group>"; };
@@ -120,6 +118,8 @@
 		F16D27741A9A712B0000F759 /* SharingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharingViewController.swift; sourceTree = "<group>"; };
 		F16D27751A9A712B0000F759 /* SharingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SharingViewController.xib; sourceTree = "<group>"; };
 		F16D27791A9A83570000F759 /* GiddyupStd.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GiddyupStd.ttf; sourceTree = "<group>"; };
+		F175A12C1AD8370200760025 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		F175A12D1AD8370200760025 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		F17672661AA515BF00588865 /* libTestFairy.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFairy.a; sourceTree = "<group>"; };
 		F17672671AA515BF00588865 /* TestFairy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFairy.h; sourceTree = "<group>"; };
 		F17672681AA515BF00588865 /* upload-dsym.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "upload-dsym.sh"; sourceTree = "<group>"; };
@@ -249,6 +249,7 @@
 		F109CE9A1A56F8770011CA55 /* TagMoment */ = {
 			isa = PBXGroup;
 			children = (
+				F175A12B1AD8370200760025 /* MainView */,
 				F17672641AA515BF00588865 /* Externals */,
 				F15AA38E1A99432E0045BFD3 /* Sharing */,
 				F101F15F1A6B191B004849F1 /* Controls */,
@@ -261,8 +262,6 @@
 				F109CEA31A56F8770011CA55 /* Main.storyboard */,
 				F109CEA61A56F8770011CA55 /* Images.xcassets */,
 				F109CE9B1A56F8770011CA55 /* Supporting Files */,
-				F109CEBF1A56FAA40011CA55 /* MainViewController.swift */,
-				F109CEC01A56FAA40011CA55 /* MainViewController.xib */,
 			);
 			path = TagMoment;
 			sourceTree = "<group>";
@@ -333,6 +332,15 @@
 				F1A7B7651A585E180033FE64 /* MaskFactory.swift */,
 			);
 			path = Masks;
+			sourceTree = "<group>";
+		};
+		F175A12B1AD8370200760025 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				F175A12C1AD8370200760025 /* MainViewController.swift */,
+				F175A12D1AD8370200760025 /* MainViewController.xib */,
+			);
+			path = MainView;
 			sourceTree = "<group>";
 		};
 		F17672641AA515BF00588865 /* Externals */ = {
@@ -507,11 +515,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F101858D1A673E4D003F906E /* ChooseFiltersViewController.xib in Resources */,
+				F175A12F1AD8370200760025 /* MainViewController.xib in Resources */,
 				F1A7B7721A58AF4B0033FE64 /* ChooseMasksViewController.xib in Resources */,
 				F10F63681A97927A00EDCAE3 /* NavbarView.xib in Resources */,
 				F16D27771A9A712B0000F759 /* SharingViewController.xib in Resources */,
 				F16D277A1A9A84F60000F759 /* GiddyupStd.ttf in Resources */,
-				F109CEC21A56FAA40011CA55 /* MainViewController.xib in Resources */,
 				F10185911A67414A003F906E /* FilterCollectionViewCell.xib in Resources */,
 				F1EC479C1ABDFE3700081CDF /* TagsCollectionViewCell.xib in Resources */,
 				F1604C711A574CC40055C721 /* image2.jpeg in Resources */,
@@ -546,6 +554,7 @@
 				F14A81431A58B0B300B5D14F /* TMCircleMask.swift in Sources */,
 				F19620CB1A881D3E00DCFB85 /* TMFilterFactory.swift in Sources */,
 				F16D27761A9A712B0000F759 /* SharingViewController.swift in Sources */,
+				F175A12E1AD8370200760025 /* MainViewController.swift in Sources */,
 				F14C270A1AC9E86700C19968 /* TMSunFilter.swift in Sources */,
 				F156B4281A5C918600B1E0EA /* TMMaskCasual.swift in Sources */,
 				F19620C71A881BDE00DCFB85 /* TMTravelFilter.swift in Sources */,
@@ -566,7 +575,6 @@
 				F19620C51A881B7300DCFB85 /* TMSurpriseFilter.swift in Sources */,
 				F1D4B6B31A880B3900396E25 /* TMCoffeeFilter.swift in Sources */,
 				F10185961A67434F003F906E /* ViewLayoutUtils.swift in Sources */,
-				F109CEC11A56FAA40011CA55 /* MainViewController.swift in Sources */,
 				F1D4B6AF1A8809AD00396E25 /* TMSunsetFilter.swift in Sources */,
 				F109CE9E1A56F8770011CA55 /* AppDelegate.swift in Sources */,
 				F10185951A67434F003F906E /* ImageProcessingUtil.swift in Sources */,
