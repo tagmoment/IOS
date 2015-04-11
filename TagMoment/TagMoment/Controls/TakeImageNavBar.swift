@@ -83,15 +83,28 @@ class TakeImageNavBar: UIView {
 	func replicateJumperButtonToMiddleButton(jumper : UIButton)
 	{
 		self.middleButton.setImage(nil, forState: UIControlState.Normal)
-		self.middleButton.userInteractionEnabled = true
 		jumper.removeConstraints(jumper.constraints())
-				
+		jumper.tag = 1222
 		self.middleButtonHeightConstraint.constant = 34
 		self.middleButtonWidthConstraint.constant = 34
 		self.middleButton.pinSubViewToAllEdges(jumper)
 		UIView.animateWithDuration(0.5, animations: { () -> Void in
 			self.middleButton.alpha = 1.0
 		})
+	}
+	
+	func restoreMiddleButton()
+	{
+		if (self.middleButton.subviews.count != 0)
+		{
+			let jumper = self.middleButton.viewWithTag(1222)
+			if (jumper != nil)
+			{
+				jumper?.removeFromSuperview()
+			}
+			self.middleButton.setImage(UIImage(named: "timericon_off"), forState: UIControlState.Normal)
+		}
+		
 	}
 	
 	
@@ -182,18 +195,21 @@ class TakeImageNavBar: UIView {
 		{
 			UIView.animateWithDuration(0.5, animations: { () -> Void in
 				self.rightButton.alpha = 0.0
-				
+				self.middleButton.alpha = 0.0
 				}, completion: { (finished) -> Void in
 					self.zeroFlashState()
+					self.restoreMiddleButton()
 					UIView.animateWithDuration(0.5, animations: { () -> Void in
 						self.rightButton.alpha = 1.0
 						self.middleButton.alpha = 1.0
+						self.changeMasksButton.alpha = 1.0
 					})
 			})
 		}
 		else
 		{
 			self.zeroFlashState()
+			restoreMiddleButton()
 			self.rightButton.alpha = 1.0
 			self.middleButton.alpha = 1.0
 			

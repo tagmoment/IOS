@@ -170,6 +170,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		{
 			canvas.pinSubViewToAllEdges(sessionView)
 			canvas.bringSubviewToFront(secondImageView)
+			
 			sessionView.frame = canvas.bounds
 
 		}
@@ -181,6 +182,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		}
 		
 		addVideoLayer(toView: sessionView)
+		forwardMasksToFrontIfNeeded()
 		return sessionView
 	}
 	
@@ -339,6 +341,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			masksViewController = ChooseMasksViewController(nibName: "ChooseMasksViewController", bundle: nil)
 			masksViewController.masksChooseDelegate = self
 			controlContainer.addViewWithConstraints(masksViewController.view, toTheRight: false)
+			changeMasksCarouselPositionIfNeeded()
 			controlContainer.animateExitingView()
 		}
 		self.masksViewController.takeButton.enabled = true

@@ -130,6 +130,7 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 	{
 		if let delegate = self.sharingDelegate
 		{
+			textField.text = textField.text.stringByReplacingOccurrencesOfString(" ", withString: "", options: nil, range: nil)
 			delegate.updateUserInfoText(textField.text)
 		}
 	}

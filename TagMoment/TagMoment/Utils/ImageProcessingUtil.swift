@@ -37,8 +37,12 @@ class ImageProcessingUtil: NSObject {
 		
 		cropRect = CGRectIntegral(cropRect);
 		
+		let orientation = originalImage.imageOrientation
+
 		let cropCGImage = CGImageCreateWithImageInRect(originalImage.CGImage, cropRect);
-		let imageOrientation = shouldMirrorImage ?  UIImageOrientation.LeftMirrored : originalImage.imageOrientation
+		workingSize.width = min(workingSize.width,cropRect.width)
+		workingSize.height = min(workingSize.height,cropRect.height)
+		let imageOrientation = shouldMirrorImage ?  UIImageOrientation.LeftMirrored : orientation
 		return UIImage(CGImage: ImageProcessingUtil.resizeCGImage(cropCGImage, toWidth: workingSize.width, toHeight: workingSize.height), scale: 1.0, orientation: imageOrientation)!
 	}
 	

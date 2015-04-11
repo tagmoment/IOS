@@ -16,7 +16,7 @@ extension MainViewController
 			masksViewController.masksCarousel.removeFromSuperview()
 			
 			self.canvas.pinSubViewToTop(masksViewController.masksCarousel, heightContraint: 88)
-			
+			self.canvas.bringSubviewToFront(masksViewController.masksCarousel)
 			masksViewController.centerTakeImageButton()
 			self.navigationView.changeMasksButton.selected = true
 			turnOffMasks(true)
@@ -37,6 +37,18 @@ extension MainViewController
 		if isSmallestScreen()
 		{
 			sharingController.prepareForSmallScreenLayout()
+			
+		}
+	}
+	
+	func forwardMasksToFrontIfNeeded()
+	{
+		if isSmallestScreen()
+		{
+			if (masksViewController != nil)
+			{
+				self.canvas.bringSubviewToFront(masksViewController.masksCarousel)
+			}
 			
 		}
 	}
