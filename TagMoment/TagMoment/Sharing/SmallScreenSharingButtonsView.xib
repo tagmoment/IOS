@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="AfV-hl-gdt" userLabel="buttonsHolder">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="72"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ga9-ix-Skl">
+                    <rect key="frame" x="10" y="14" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="MDQ-Te-1aw"/>
+                        <constraint firstAttribute="width" constant="44" id="YZG-dX-mFl"/>
+                    </constraints>
+                    <state key="normal" image="insegram_share">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" image="insegram_share_on"/>
+                    <state key="highlighted" image="insegram_share_on"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KQy-5f-ZhI">
+                    <rect key="frame" x="138" y="14" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="L1M-qy-oFS"/>
+                        <constraint firstAttribute="width" constant="44" id="bAU-Pk-Ncw"/>
+                    </constraints>
+                    <state key="normal" image="twitter_share">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" image="twitter_share_on"/>
+                    <state key="highlighted" image="twitter_share_on"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ea-0R-xWg">
+                    <rect key="frame" x="74" y="14" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="2nD-uz-Wyy"/>
+                        <constraint firstAttribute="width" constant="44" id="4Ww-wE-UyL"/>
+                    </constraints>
+                    <state key="normal" image="facebook_share">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" image="facebook_share_on"/>
+                    <state key="highlighted" image="facebook_share_on"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aZ6-cZ-WoG">
+                    <rect key="frame" x="202" y="14" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="44" id="Dc5-Wd-B2A"/>
+                        <constraint firstAttribute="height" constant="44" id="Zgr-Z6-N7e"/>
+                    </constraints>
+                    <state key="normal" image="whatsapp_share">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" image="whatsapp_share_on"/>
+                    <state key="highlighted" image="whatsapp_share_on"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pmp-EN-as7">
+                    <rect key="frame" x="266" y="14" width="44" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="44" id="c57-SQ-8wu"/>
+                        <constraint firstAttribute="height" constant="44" id="efb-hF-Wok"/>
+                    </constraints>
+                    <state key="normal" image="more_share">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" image="more_share_on"/>
+                    <state key="highlighted" image="more_share_on"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="KQy-5f-ZhI" firstAttribute="leading" secondItem="7ea-0R-xWg" secondAttribute="trailing" constant="20" id="6qk-Th-dke"/>
+                <constraint firstItem="Ga9-ix-Skl" firstAttribute="leading" secondItem="AfV-hl-gdt" secondAttribute="leading" constant="10" id="9QG-Ax-MGr"/>
+                <constraint firstItem="aZ6-cZ-WoG" firstAttribute="leading" secondItem="KQy-5f-ZhI" secondAttribute="trailing" constant="20" id="9ip-b7-P9i"/>
+                <constraint firstItem="aZ6-cZ-WoG" firstAttribute="leading" secondItem="AfV-hl-gdt" secondAttribute="leading" id="AV0-gB-tMv"/>
+                <constraint firstItem="7ea-0R-xWg" firstAttribute="top" secondItem="AfV-hl-gdt" secondAttribute="top" id="Aua-hy-j0v"/>
+                <constraint firstItem="Ga9-ix-Skl" firstAttribute="centerY" secondItem="7ea-0R-xWg" secondAttribute="centerY" id="Bw7-f0-S6b"/>
+                <constraint firstAttribute="centerY" secondItem="Ga9-ix-Skl" secondAttribute="centerY" id="DpY-ZX-xmL"/>
+                <constraint firstItem="KQy-5f-ZhI" firstAttribute="centerY" secondItem="7ea-0R-xWg" secondAttribute="centerY" id="PeX-eX-X7U"/>
+                <constraint firstItem="KQy-5f-ZhI" firstAttribute="top" secondItem="AfV-hl-gdt" secondAttribute="top" id="U30-Nm-6QQ"/>
+                <constraint firstItem="Pmp-EN-as7" firstAttribute="leading" secondItem="aZ6-cZ-WoG" secondAttribute="trailing" constant="20" id="f09-mP-v81"/>
+                <constraint firstItem="Pmp-EN-as7" firstAttribute="centerY" secondItem="aZ6-cZ-WoG" secondAttribute="centerY" id="h89-qY-SWi"/>
+                <constraint firstItem="Pmp-EN-as7" firstAttribute="top" secondItem="KQy-5f-ZhI" secondAttribute="bottom" constant="16" id="k2o-Cv-q9L"/>
+                <constraint firstAttribute="bottom" secondItem="aZ6-cZ-WoG" secondAttribute="bottom" id="lKV-qG-7qH"/>
+                <constraint firstAttribute="bottom" secondItem="Pmp-EN-as7" secondAttribute="bottom" id="lzp-i7-Vsz"/>
+                <constraint firstItem="aZ6-cZ-WoG" firstAttribute="centerY" secondItem="KQy-5f-ZhI" secondAttribute="centerY" id="oYs-9Q-fVG"/>
+                <constraint firstAttribute="trailing" secondItem="KQy-5f-ZhI" secondAttribute="trailing" id="qHF-bi-eD9"/>
+                <constraint firstItem="7ea-0R-xWg" firstAttribute="leading" secondItem="Ga9-ix-Skl" secondAttribute="trailing" constant="20" id="yOr-Zw-LW7"/>
+                <constraint firstAttribute="trailing" secondItem="Pmp-EN-as7" secondAttribute="trailing" id="yrl-t0-6An"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Aua-hy-j0v"/>
+                    <exclude reference="U30-Nm-6QQ"/>
+                    <exclude reference="qHF-bi-eD9"/>
+                    <exclude reference="AV0-gB-tMv"/>
+                    <exclude reference="lKV-qG-7qH"/>
+                    <exclude reference="k2o-Cv-q9L"/>
+                    <exclude reference="lzp-i7-Vsz"/>
+                    <exclude reference="yrl-t0-6An"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="737" y="-680"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="facebook_share" width="44" height="44"/>
+        <image name="facebook_share_on" width="44" height="44"/>
+        <image name="insegram_share" width="44" height="44"/>
+        <image name="insegram_share_on" width="44" height="44"/>
+        <image name="more_share" width="44" height="44"/>
+        <image name="more_share_on" width="44" height="44"/>
+        <image name="twitter_share" width="44" height="44"/>
+        <image name="twitter_share_on" width="44" height="44"/>
+        <image name="whatsapp_share" width="44" height="44"/>
+        <image name="whatsapp_share_on" width="44" height="44"/>
+    </resources>
+</document>

@@ -23,6 +23,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uVQ-nH-Jlg" userLabel="timerButton">
                     <rect key="frame" x="138" y="0.0" width="44" height="44"/>
                     <constraints>
+                        <constraint firstAttribute="height" constant="44" id="IfJ-00-EKN"/>
                         <constraint firstAttribute="width" constant="44" id="vZf-oO-9IG"/>
                     </constraints>
                     <state key="normal" image="timericon_off">
@@ -70,15 +71,24 @@
                 <constraint firstAttribute="centerX" secondItem="uVQ-nH-Jlg" secondAttribute="centerX" id="RBe-4q-WD8"/>
                 <constraint firstItem="uVQ-nH-Jlg" firstAttribute="top" secondItem="ddX-da-nOE" secondAttribute="top" id="YVL-2H-VxO"/>
                 <constraint firstItem="N8G-s5-8gw" firstAttribute="top" secondItem="ddX-da-nOE" secondAttribute="top" id="e1G-1O-iQM"/>
+                <constraint firstAttribute="centerY" secondItem="uVQ-nH-Jlg" secondAttribute="centerY" id="hIT-aW-eK1"/>
                 <constraint firstAttribute="trailing" secondItem="3ia-PT-4zT" secondAttribute="trailing" id="oeh-as-tEf"/>
                 <constraint firstAttribute="bottom" secondItem="uVQ-nH-Jlg" secondAttribute="bottom" id="y49-sL-gsl"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="YVL-2H-VxO"/>
+                    <exclude reference="y49-sL-gsl"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="backButton" destination="dld-tD-30O" id="28s-0q-yVF"/>
                 <outlet property="changeMasksButton" destination="N8G-s5-8gw" id="ZKk-55-AAA"/>
                 <outlet property="middleButton" destination="uVQ-nH-Jlg" id="lT1-lL-gfF"/>
+                <outlet property="middleButtonHeightConstraint" destination="IfJ-00-EKN" id="ZyB-ug-oUC"/>
+                <outlet property="middleButtonWidthConstraint" destination="vZf-oO-9IG" id="Axv-sy-07S"/>
                 <outlet property="rightButton" destination="3ia-PT-4zT" id="lHb-jl-0DT"/>
             </connections>
         </view>

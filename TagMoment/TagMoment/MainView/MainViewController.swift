@@ -100,41 +100,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		logoLabel.layer.shadowOpacity = 0.5
 		logoLabel.layer.shadowOffset = CGSize(width: 0.0, height: -1.0)
 	}
-	
-	func changeMasksCarouselPositionIfNeeded()
-	{
-		if (UIScreen.mainScreen().bounds.height <= 480)
-		{
-			masksViewController.masksCarousel.removeFromSuperview()
-			
-			self.canvas.pinSubViewToTop(masksViewController.masksCarousel, heightContraint: 88)
-		
-			masksViewController.centerTakeImageButton()
-			self.navigationView.changeMasksButton.selected = true
-			turnOffMasks(true)
-		}
-	}
-	
-	func turnOffMasks(delay: Bool)
-	{
-		UIView.animateWithDuration(0.7, delay: delay ? 1.0 : 0.0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
-			
-				self.masksViewController.masksCarousel.alpha = 0.0
-			}, completion: { (finished : Bool) -> Void in
-				self.navigationView.changeMasksButton.selected = false
-		})
-	}
-	
-	func turnOnMasks()
-	{
-		UIView.animateWithDuration(0.7, delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
-			
-			self.masksViewController.masksCarousel.alpha = 1.0
-			}, nil)
-	}
-	
-	
-	
+
 	func initBlurredOverLay(toView holder: UIView)
 	{
 		if let theClass: AnyClass = NSClassFromString("UIVisualEffectView") {
@@ -169,12 +135,15 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	
 	func initStageThree()
 	{
+		removeMasksIfNeeded()
 		originalImageCanvas = self.canvas.image?.copy() as? UIImage
 		originalImageSecondary = self.secondImageView.image?.copy() as? UIImage
 		filtersViewController = ChooseFiltersViewController(nibName: "ChooseFiltersViewController", bundle: nil)
 		filtersViewController.maskViewModel = masksViewController.getSelectedViewModel()
 		filtersViewController.filtersChooseDelegate = self
+		
 		controlContainer.addViewWithConstraints(filtersViewController.view, toTheRight: true)
+		changeFiltersLayoutIfNeeded()
 		controlContainer.animateEnteringView()
 		navigationView.editingStageAppearance(true)
 		masksViewController = nil;
@@ -312,31 +281,12 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	}
 	
 	// MARK: - NavBarDelegation 
-	func maskButtonPressed() {
-		if (navigationView.changeMasksButton.selected)
-		{
-			self.turnOnMasks()
-		}
-		else
-		{
-			self.turnOffMasks(false)
-		}
-	}
+	
 	
 	func nextStageRequested() {
 		
-		
-		
-		
 		if (self.masksViewController != nil)
 		{
-			if (UIScreen.mainScreen().bounds.height <= 480)
-			{
-				self.turnOffMasks(false)
-				navigationView.hideMasksButton(true)
-				
-			}
-			
 			initStageThree()
 		}
 		else
@@ -351,6 +301,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		sharingController.sharingDelegate = self
 		controlsContainerHeight = controlContainer.frame.height;
 		controlContainer.addViewWithConstraints(sharingController.view, toTheRight: true)
+		changeSharingLayoutIfNeeded()
 		controlContainer.animateEnteringView()
 		infoTopConstraint.constant = -infobarHolder.frame.height
 		logoLabel.hidden = false

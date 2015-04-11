@@ -73,6 +73,9 @@
 		F1D4B6AF1A8809AD00396E25 /* TMSunsetFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D4B6AE1A8809AD00396E25 /* TMSunsetFilter.swift */; };
 		F1D4B6B11A880A8300396E25 /* TMCocktailFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D4B6B01A880A8300396E25 /* TMCocktailFilter.swift */; };
 		F1D4B6B31A880B3900396E25 /* TMCoffeeFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D4B6B21A880B3900396E25 /* TMCoffeeFilter.swift */; };
+		F1DDA81F1AD99D730005DEDD /* MainViewController+SmallScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DDA81E1AD99D730005DEDD /* MainViewController+SmallScreen.swift */; };
+		F1DDA8211AD9AD610005DEDD /* SmallScreenSharingButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DDA8201AD9AD610005DEDD /* SmallScreenSharingButtonsView.swift */; };
+		F1DDA8231AD9AD890005DEDD /* SmallScreenSharingButtonsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1DDA8221AD9AD890005DEDD /* SmallScreenSharingButtonsView.xib */; };
 		F1EC479B1ABDFE3700081CDF /* TagsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1EC47991ABDFE3700081CDF /* TagsCollectionViewCell.swift */; };
 		F1EC479C1ABDFE3700081CDF /* TagsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1EC479A1ABDFE3700081CDF /* TagsCollectionViewCell.xib */; };
 		F1ECA3741A88157A0018EFA2 /* TMVintageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECA3731A88157A0018EFA2 /* TMVintageFilter.swift */; };
@@ -166,6 +169,9 @@
 		F1D4B6AE1A8809AD00396E25 /* TMSunsetFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMSunsetFilter.swift; sourceTree = "<group>"; };
 		F1D4B6B01A880A8300396E25 /* TMCocktailFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMCocktailFilter.swift; sourceTree = "<group>"; };
 		F1D4B6B21A880B3900396E25 /* TMCoffeeFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMCoffeeFilter.swift; sourceTree = "<group>"; };
+		F1DDA81E1AD99D730005DEDD /* MainViewController+SmallScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainViewController+SmallScreen.swift"; sourceTree = "<group>"; };
+		F1DDA8201AD9AD610005DEDD /* SmallScreenSharingButtonsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SmallScreenSharingButtonsView.swift; path = TagMoment/Sharing/SmallScreenSharingButtonsView.swift; sourceTree = SOURCE_ROOT; };
+		F1DDA8221AD9AD890005DEDD /* SmallScreenSharingButtonsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmallScreenSharingButtonsView.xib; sourceTree = "<group>"; };
 		F1EC47991ABDFE3700081CDF /* TagsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsCollectionViewCell.swift; sourceTree = "<group>"; };
 		F1EC479A1ABDFE3700081CDF /* TagsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagsCollectionViewCell.xib; sourceTree = "<group>"; };
 		F1ECA3731A88157A0018EFA2 /* TMVintageFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMVintageFilter.swift; sourceTree = "<group>"; };
@@ -313,6 +319,8 @@
 				F1EC47981ABDFDBF00081CDF /* Tags */,
 				F16D27741A9A712B0000F759 /* SharingViewController.swift */,
 				F16D27751A9A712B0000F759 /* SharingViewController.xib */,
+				F1DDA8201AD9AD610005DEDD /* SmallScreenSharingButtonsView.swift */,
+				F1DDA8221AD9AD890005DEDD /* SmallScreenSharingButtonsView.xib */,
 			);
 			path = Sharing;
 			sourceTree = "<group>";
@@ -345,6 +353,7 @@
 			children = (
 				F175A12C1AD8370200760025 /* MainViewController.swift */,
 				F175A12D1AD8370200760025 /* MainViewController.xib */,
+				F1DDA81E1AD99D730005DEDD /* MainViewController+SmallScreen.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -534,6 +543,7 @@
 				F1604C711A574CC40055C721 /* image2.jpeg in Resources */,
 				F109CEA71A56F8770011CA55 /* Images.xcassets in Resources */,
 				F1A7B7741A58AF4B0033FE64 /* MaskCollectionViewCell.xib in Resources */,
+				F1DDA8231AD9AD890005DEDD /* SmallScreenSharingButtonsView.xib in Resources */,
 				F176726A1AA515BF00588865 /* upload-dsym.sh in Resources */,
 				F1604C701A574CC40055C721 /* image1.jpeg in Resources */,
 			);
@@ -570,6 +580,7 @@
 				F14A81451A58B31500B5D14F /* TMWaveMask.swift in Sources */,
 				F1A7B7731A58AF4B0033FE64 /* MaskCollectionViewCell.swift in Sources */,
 				F1B4ECE41A88072400C11FEF /* TMFilterInterface.swift in Sources */,
+				F1DDA8211AD9AD610005DEDD /* SmallScreenSharingButtonsView.swift in Sources */,
 				F1D4B6B11A880A8300396E25 /* TMCocktailFilter.swift in Sources */,
 				F1A7B7631A585DF80033FE64 /* TMTraingleMask.swift in Sources */,
 				F1EC479B1ABDFE3700081CDF /* TagsCollectionViewCell.swift in Sources */,
@@ -588,6 +599,7 @@
 				F10185961A67434F003F906E /* ViewLayoutUtils.swift in Sources */,
 				F175A1351AD85E6F00760025 /* TMGamerFilter.swift in Sources */,
 				F1D4B6AF1A8809AD00396E25 /* TMSunsetFilter.swift in Sources */,
+				F1DDA81F1AD99D730005DEDD /* MainViewController+SmallScreen.swift in Sources */,
 				F109CE9E1A56F8770011CA55 /* AppDelegate.swift in Sources */,
 				F10185951A67434F003F906E /* ImageProcessingUtil.swift in Sources */,
 				F19620C91A881C5200DCFB85 /* TMCloudFilter.swift in Sources */,

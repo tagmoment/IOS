@@ -8,8 +8,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChooseFiltersViewController" customModule="TagMoment" customModuleProvider="target">
             <connections>
                 <outlet property="disabledSlider" destination="NVa-kF-Z1w" id="JTb-Gb-b1E"/>
+                <outlet property="disabledSliderCenterYConstraint" destination="uKy-Da-nDY" id="43o-ju-bTn"/>
                 <outlet property="filterButtonsCollecionView" destination="InD-dJ-xR0" id="eZw-qZ-lIg"/>
                 <outlet property="jumperButton" destination="qzN-gB-kgI" id="J45-AF-BAr"/>
+                <outlet property="sliderCenterYConstraint" destination="zdI-Bw-Que" id="OZo-91-3Zm"/>
                 <outlet property="someSlider" destination="wuA-ol-ldl" id="al5-dD-gGL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -67,31 +69,17 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="centerX" secondItem="wuA-ol-ldl" secondAttribute="centerX" constant="4" id="5Zh-w6-upQ"/>
                 <constraint firstItem="InD-dJ-xR0" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="DsF-Ru-K0s"/>
-                <constraint firstItem="wuA-ol-ldl" firstAttribute="top" secondItem="qzN-gB-kgI" secondAttribute="bottom" constant="23" id="J6H-2C-ky5"/>
                 <constraint firstAttribute="centerX" secondItem="wuA-ol-ldl" secondAttribute="centerX" id="RR8-3Y-bEi"/>
                 <constraint firstAttribute="trailing" secondItem="InD-dJ-xR0" secondAttribute="trailing" constant="12" id="VEi-cW-mDw"/>
-                <constraint firstItem="InD-dJ-xR0" firstAttribute="top" secondItem="wuA-ol-ldl" secondAttribute="bottom" constant="33" id="X9b-0M-3zg"/>
-                <constraint firstAttribute="trailing" secondItem="wuA-ol-ldl" secondAttribute="trailing" constant="26" id="XOf-5K-QGr"/>
                 <constraint firstAttribute="centerX" secondItem="qzN-gB-kgI" secondAttribute="centerX" id="ZKJ-K2-4GU"/>
                 <constraint firstItem="qzN-gB-kgI" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="ag8-E6-5K6"/>
                 <constraint firstAttribute="bottom" secondItem="InD-dJ-xR0" secondAttribute="bottom" id="e3B-cH-EaO"/>
-                <constraint firstItem="wuA-ol-ldl" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="26" id="mdV-Om-SIF"/>
                 <constraint firstAttribute="centerX" secondItem="NVa-kF-Z1w" secondAttribute="centerX" id="mqf-09-XhG"/>
                 <constraint firstAttribute="centerY" secondItem="NVa-kF-Z1w" secondAttribute="centerY" constant="8" id="uKy-Da-nDY"/>
                 <constraint firstAttribute="centerY" secondItem="wuA-ol-ldl" secondAttribute="centerY" constant="4" id="zdI-Bw-Que"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="X9b-0M-3zg"/>
-                    <exclude reference="5Zh-w6-upQ"/>
-                    <exclude reference="J6H-2C-ky5"/>
-                    <exclude reference="XOf-5K-QGr"/>
-                    <exclude reference="mdV-Om-SIF"/>
-                </mask>
-            </variation>
             <point key="canvasLocation" x="62" y="239.5"/>
         </view>
     </objects>

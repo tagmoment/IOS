@@ -156,6 +156,26 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 		}
 	}
 	
+	func prepareForSmallScreenLayout()
+	{
+		let newButtonsHolder = NSBundle.mainBundle().loadNibNamed("SmallScreenSharingButtonsView", owner: nil, options: nil)[0] as UIView
+		
+		
+		self.buttonsHolder.removeFromSuperview()
+		newButtonsHolder.setTranslatesAutoresizingMaskIntoConstraints(false)
+		self.view.addSubview(newButtonsHolder)
+		self.buttonsHolder = newButtonsHolder
+		var constraint = NSLayoutConstraint(item: newButtonsHolder, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.shareButton, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 0)
+		self.view.addConstraint(constraint)
+		constraint = NSLayoutConstraint(item: newButtonsHolder, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0)
+		self.view.addConstraint(constraint)
+		constraint = NSLayoutConstraint(item: newButtonsHolder, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0)
+		self.view.addConstraint(constraint)
+		constraint = NSLayoutConstraint(item: newButtonsHolder, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 72)
+		self.view.addConstraint(constraint)
+		
+	}
+	
 	// MARK: - Animations
 	
 	func prepareSocialButtonsAnimationState()
@@ -165,6 +185,8 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 			view.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1)
 		}
 	}
+	
+	
 	func animateButtonEntranceWithPrep()
 	{
 		prepareSocialButtonsAnimationState()

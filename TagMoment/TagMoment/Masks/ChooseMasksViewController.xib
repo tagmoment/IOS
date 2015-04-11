@@ -7,10 +7,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChooseMasksViewController" customModule="TagMoment" customModuleProvider="target">
             <connections>
+                <outlet property="captureButtonCenterYConstraint" destination="cT0-j1-4G2" id="pp2-4a-GBa"/>
                 <outlet property="masksCarousel" destination="df4-gF-7id" id="5Ow-RW-A5Z"/>
                 <outlet property="switchCamButton" destination="WEf-Ca-DjX" id="3gt-Zd-Eoz"/>
                 <outlet property="takeButton" destination="h5b-la-WW7" id="a2C-K1-I2b"/>
-                <outlet property="takeImageTopConstraint" destination="K1s-fe-cAX" id="Cid-5T-fUt"/>
                 <outlet property="view" destination="iN0-l3-epB" id="XJi-LD-QrY"/>
             </connections>
         </placeholder>
@@ -67,10 +67,7 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="df4-gF-7id" secondAttribute="trailing" id="AGe-oV-YCf"/>
                 <constraint firstItem="df4-gF-7id" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="FZP-eh-0Dd"/>
-                <constraint firstItem="h5b-la-WW7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="K1s-fe-cAX"/>
                 <constraint firstAttribute="trailing" secondItem="WEf-Ca-DjX" secondAttribute="trailing" constant="30" id="LM4-dj-bE3"/>
-                <constraint firstAttribute="centerY" secondItem="K2A-Qz-l4B" secondAttribute="centerY" constant="25" id="TnD-R6-qmF"/>
-                <constraint firstAttribute="centerY" secondItem="WEf-Ca-DjX" secondAttribute="centerY" constant="25" id="VQh-gz-0cu"/>
                 <constraint firstAttribute="centerY" secondItem="h5b-la-WW7" secondAttribute="centerY" constant="38" id="cT0-j1-4G2"/>
                 <constraint firstItem="K2A-Qz-l4B" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="ema-5V-sKR"/>
                 <constraint firstAttribute="bottom" secondItem="df4-gF-7id" secondAttribute="bottom" id="fIn-gu-wIk"/>
@@ -79,13 +76,6 @@
                 <constraint firstAttribute="centerX" secondItem="h5b-la-WW7" secondAttribute="centerX" id="rcH-kL-Jca"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="TnD-R6-qmF"/>
-                    <exclude reference="K1s-fe-cAX"/>
-                    <exclude reference="VQh-gz-0cu"/>
-                </mask>
-            </variation>
             <point key="canvasLocation" x="168" y="706"/>
         </view>
     </objects>

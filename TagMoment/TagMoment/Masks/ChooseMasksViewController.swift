@@ -24,8 +24,7 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 	
 	@IBOutlet weak var switchCamButton: UIButton!
 	
-	@IBOutlet weak var takeImageTopConstraint : NSLayoutConstraint!
-	
+	@IBOutlet weak var captureButtonCenterYConstraint: NSLayoutConstraint!
 	
 	weak var masksChooseDelegate: ChooseMasksControllerDelegate?
 	
@@ -135,9 +134,6 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 
 	func centerTakeImageButton()
 	{
-		self.view.removeConstraint(self.takeImageTopConstraint)
-		self.takeImageTopConstraint = nil
-		let centerConstraint = NSLayoutConstraint(item: self.takeButton, attribute: NSLayoutAttribute.CenterY, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.CenterY, multiplier: 1.0, constant: 0)
-		self.view.addConstraint(centerConstraint)
+		captureButtonCenterYConstraint.constant = 0
 	}
 }

@@ -21,6 +21,10 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 	@IBOutlet weak var filterButtonsCollecionView: UICollectionView!
 	@IBOutlet weak var someSlider : UISlider!
 	@IBOutlet weak var disabledSlider : UIImageView!
+	
+	@IBOutlet weak var sliderCenterYConstraint : NSLayoutConstraint!
+	
+	@IBOutlet weak var disabledSliderCenterYConstraint : NSLayoutConstraint!
 	weak var filtersChooseDelegate: ChooseFiltesControllerDelegate?
 	
 	var currentContext : CIContext!
@@ -30,7 +34,7 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 	var lastSelectedIndex : NSInteger = 0
 	var lastSliderValue : Float = 0.0
 	
-	@IBOutlet weak var jumperButton: UIButton!
+	@IBOutlet var jumperButton: UIButton!
 	var maskViewModel: TMMaskViewModel!
 	
     override func viewDidLoad() {
@@ -102,6 +106,7 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 		return !jumperButton.selected
 	}
 	
+	
 	@IBAction func jumperButtonPressed(sender: AnyObject) {
 		self.jumperButton.selected = !self.jumperButton.selected
 		currentCIImage = CIImage(CGImage: self.workingImage().CGImage)
@@ -118,6 +123,13 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 		{
 			restoreFilterState()
 		}
+	}
+	
+	func prepareForSmallScreenLayout()
+	{
+		self.jumperButton.removeFromSuperview()
+		self.disabledSliderCenterYConstraint.constant = 35
+		self.sliderCenterYConstraint.constant = 35
 	}
 	
 	/*

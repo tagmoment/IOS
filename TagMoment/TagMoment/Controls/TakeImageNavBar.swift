@@ -12,6 +12,7 @@ protocol NavBarDelegate : class
 	func retakeImageRequested()
 	func nextStageRequested()
 	func maskButtonPressed()
+	func editingStageWillAppear()
 	
 }
 
@@ -23,6 +24,8 @@ class TakeImageNavBar: UIView {
 	
 	weak var viewDelegate : NavBarDelegate?
 	
+	@IBOutlet weak var middleButtonWidthConstraint: NSLayoutConstraint!
+	@IBOutlet weak var middleButtonHeightConstraint: NSLayoutConstraint!
 	@IBOutlet weak var backButton: UIButton!
 	
 	@IBOutlet weak var rightButton: UIButton!
@@ -76,6 +79,21 @@ class TakeImageNavBar: UIView {
 			delegate.maskButtonPressed()
 		}
 	}
+	
+	func replicateJumperButtonToMiddleButton(jumper : UIButton)
+	{
+		self.middleButton.setImage(nil, forState: UIControlState.Normal)
+		self.middleButton.userInteractionEnabled = true
+		jumper.removeConstraints(jumper.constraints())
+				
+		self.middleButtonHeightConstraint.constant = 34
+		self.middleButtonWidthConstraint.constant = 34
+		self.middleButton.pinSubViewToAllEdges(jumper)
+		UIView.animateWithDuration(0.5, animations: { () -> Void in
+			self.middleButton.alpha = 1.0
+		})
+	}
+	
 	
 	func flashState() -> FlashState
 	{
@@ -135,6 +153,10 @@ class TakeImageNavBar: UIView {
 				self.rightButton.setImage(nil, forState: UIControlState.Normal)
 				UIView.animateWithDuration(0.5, animations: { () -> Void in
 					self.rightButton.alpha = 1.0
+					if let delegate = self.viewDelegate
+					{
+						delegate.editingStageWillAppear()
+					}
 				})
 			})
 			
