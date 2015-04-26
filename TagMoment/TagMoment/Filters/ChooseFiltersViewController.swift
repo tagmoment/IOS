@@ -54,7 +54,6 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 		currentContext = CIContext(options:nil)
 		
 		
-		
 	}
 	
 	override func viewDidAppear(animated: Bool) {
@@ -83,11 +82,10 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 	}
 	
 	@IBAction func sliderValueChanged(sender: AnyObject) {
-		var slider : UISlider = sender as UISlider
+		var slider : UISlider = sender as! UISlider
 		let sliderValue = slider.value
 		
-		slider.thumbTintColor = UIColor(white: CGFloat(sliderValue) , alpha: 1.0);
-		
+		slider.thumbTintColor = UIColor(white: CGFloat (sliderValue*0.7 + 0.3) , alpha: 1.0);
 		currentFilterModel.applyFilterValue(sliderValue)
 		let outputImage = currentFilterModel.outputImage()
 		if (outputImage != nil)
@@ -106,6 +104,13 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 		return !jumperButton.selected
 	}
 	
+	func changeJumperSelectionState(toState selected: Bool)
+	{
+		if (self.jumperButton.selected != selected)
+		{
+			self.jumperButtonPressed(self.jumperButton)
+		}
+	}
 	
 	@IBAction func jumperButtonPressed(sender: AnyObject) {
 		self.jumperButton.selected = !self.jumperButton.selected
@@ -140,7 +145,7 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 	}
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 		
-		var cell = filterButtonsCollecionView.dequeueReusableCellWithReuseIdentifier(CellIdent, forIndexPath: indexPath) as FilterCollectionViewCell
+		var cell = filterButtonsCollecionView.dequeueReusableCellWithReuseIdentifier(CellIdent, forIndexPath: indexPath) as! FilterCollectionViewCell
 		
 		var filterModel = TMFilterFactory.getFilters()[indexPath.item]
 		
@@ -203,7 +208,7 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 		
 		if (cell != nil)
 		{
-			var casted = cell as FilterCollectionViewCell
+			var casted = cell as! FilterCollectionViewCell
 			casted.iconImageView.image = UIImage(named: imageOff)
 		}
 		

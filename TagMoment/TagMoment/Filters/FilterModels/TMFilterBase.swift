@@ -87,18 +87,18 @@ class TMFilterBase{
 		for filter in filters
 		{
 			println("working on filter " + filter.name());
-			var inputNames = (filter.inputKeys() as [String]).filter { (parameterName) -> Bool in
+			var inputNames = (filter.inputKeys() as! [String]).filter { (parameterName) -> Bool in
 				return (parameterName as String) != "inputImage"
 			}
 			
 			let attributes = filter.attributes()!
 			
 			let filterParams = inputNames.map { (inputName: String) -> FilterParameterProtocol in
-				let attribute = attributes[inputName] as [String : AnyObject]
+				let attribute = attributes[inputName] as! [String : AnyObject]
 				// strip "input" from the start of the parameter name to make it more presentation-friendly
 				println("working on attribue " + inputName);
 				println("attribute \(attribute)" )
-				let classType = attribute[kCIAttributeClass] as String
+				let classType = attribute[kCIAttributeClass] as! String
 				if (classType == "CIColor")
 				{
 					return FilterImageParameter(key: inputName)
@@ -109,8 +109,8 @@ class TMFilterBase{
 				}
 				else
 				{
-					let minValue = attribute[kCIAttributeSliderMin] as Float
-					let maxValue = attribute[kCIAttributeSliderMax] as Float
+					let minValue = attribute[kCIAttributeSliderMin] as! Float
+					let maxValue = attribute[kCIAttributeSliderMax] as! Float
 //					let defaultValue = attribute[kCIAttributeDefault] as Float
 				
 					return FilterScalarParameter(minValue: minValue, maxValue: maxValue, key: inputName)

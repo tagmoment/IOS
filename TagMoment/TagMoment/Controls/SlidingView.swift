@@ -43,7 +43,7 @@ class SlidingView: UIView {
 				self.layoutIfNeeded()
 			}) { (finished: Bool) -> Void in
 			
-				var subview = self.subviews[0] as UIView
+				var subview = self.subviews[0] as! UIView
 				subview.removeFromSuperview()
 				self.leftConstraints.removeAtIndex(0)
 		}
@@ -64,7 +64,7 @@ class SlidingView: UIView {
 			self.layoutIfNeeded()
 			}) { (finished: Bool) -> Void in
 				
-				var subview = self.subviews[0] as UIView
+				var subview = self.subviews[0] as! UIView
 				subview.removeFromSuperview()
 				self.leftConstraints.removeAtIndex(0)
 		}

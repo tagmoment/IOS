@@ -28,6 +28,7 @@
 		F156B4281A5C918600B1E0EA /* TMMaskCasual.swift in Sources */ = {isa = PBXBuildFile; fileRef = F156B4271A5C918600B1E0EA /* TMMaskCasual.swift */; };
 		F1604C701A574CC40055C721 /* image1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F1604C6E1A574CC40055C721 /* image1.jpeg */; };
 		F1604C711A574CC40055C721 /* image2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F1604C6F1A574CC40055C721 /* image2.jpeg */; };
+		F16112361AED7C3800A453C6 /* ClippingViewWithTouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16112351AED7C3800A453C6 /* ClippingViewWithTouch.swift */; };
 		F16A45231A93930700230DAD /* TMFilterBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16A45221A93930700230DAD /* TMFilterBase.swift */; };
 		F16D27761A9A712B0000F759 /* SharingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16D27741A9A712B0000F759 /* SharingViewController.swift */; };
 		F16D27771A9A712B0000F759 /* SharingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F16D27751A9A712B0000F759 /* SharingViewController.xib */; };
@@ -120,6 +121,7 @@
 		F156B4271A5C918600B1E0EA /* TMMaskCasual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMMaskCasual.swift; sourceTree = "<group>"; };
 		F1604C6E1A574CC40055C721 /* image1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image1.jpeg; sourceTree = "<group>"; };
 		F1604C6F1A574CC40055C721 /* image2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image2.jpeg; sourceTree = "<group>"; };
+		F16112351AED7C3800A453C6 /* ClippingViewWithTouch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClippingViewWithTouch.swift; sourceTree = "<group>"; };
 		F16A45221A93930700230DAD /* TMFilterBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMFilterBase.swift; sourceTree = "<group>"; };
 		F16D27741A9A712B0000F759 /* SharingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharingViewController.swift; sourceTree = "<group>"; };
 		F16D27751A9A712B0000F759 /* SharingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SharingViewController.xib; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				F1CC18331A97911300DB77F2 /* TakeImageNavBar.swift */,
 				F10F63671A97927A00EDCAE3 /* NavbarView.xib */,
 				F17A416C1AB477930074E5F5 /* TMTextField.swift */,
+				F16112351AED7C3800A453C6 /* ClippingViewWithTouch.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -595,6 +598,7 @@
 				F16A45231A93930700230DAD /* TMFilterBase.swift in Sources */,
 				F19620C51A881B7300DCFB85 /* TMSurpriseFilter.swift in Sources */,
 				F1D4B6B31A880B3900396E25 /* TMCoffeeFilter.swift in Sources */,
+				F16112361AED7C3800A453C6 /* ClippingViewWithTouch.swift in Sources */,
 				F175A1331AD859F500760025 /* TMAlphaFilterBase.swift in Sources */,
 				F10185961A67434F003F906E /* ViewLayoutUtils.swift in Sources */,
 				F175A1351AD85E6F00760025 /* TMGamerFilter.swift in Sources */,

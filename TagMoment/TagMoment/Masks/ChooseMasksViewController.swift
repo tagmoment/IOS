@@ -54,15 +54,18 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 		return 0
 	}
 	
-	func carousel(carousel: iCarousel!, viewForItemAtIndex index: Int, var reusingView view: UIView!) -> UIView!
+	func carousel(carousel: iCarousel!, viewForItemAtIndex index: Int,reusingView view: UIView!) -> UIView!
 	{
-		
+		var cell : MaskCollectionViewCell;
 		if (view == nil)
 		{
-			view = NSBundle.mainBundle().loadNibNamed("MaskCollectionViewCell", owner: nil, options: nil)[0] as UIView
+			cell = NSBundle.mainBundle().loadNibNamed("MaskCollectionViewCell", owner: nil, options: nil)[0] as! MaskCollectionViewCell
+		}
+		else
+		{
+			cell = view as! MaskCollectionViewCell
 		}
 		
-		let cell = view as MaskCollectionViewCell
 		var maskModel = self.masksViewModels![index]
 		cell.maskImage.image = UIImage(named: maskModel.name!.lowercaseString + "_off")
 		cell.maskImage.highlightedImage = UIImage(named: maskModel.name!.lowercaseString + "_on")
@@ -78,11 +81,11 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 	func carouselCurrentItemIndexDidChange(carousel: iCarousel!) {
 		for view in carousel.visibleItemViews
 		{
-			let subview = view as MaskCollectionViewCell
+			let subview = view as! MaskCollectionViewCell
 			subview.highlighted = false;
 			subview.labelHeightConstraint.constant = 0;
 		}
-		let view = carousel.currentItemView as MaskCollectionViewCell
+		let view = carousel.currentItemView as! MaskCollectionViewCell
 		view.highlighted = true
 		view.labelHeightConstraint.constant = 20.0;
 		let index = masksCarousel.indexOfItemView(view)

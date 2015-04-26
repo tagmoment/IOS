@@ -16,8 +16,8 @@ protocol NavBarDelegate : class
 	
 }
 
-let FlashChangedNotification = "FlashChangedNotification" as NSString
-let FlashStateKey = "FlashStateKey" as NSString
+let FlashChangedNotification = "FlashChangedNotification"
+let FlashStateKey = "FlashStateKey"
 
 class TakeImageNavBar: UIView {
 	

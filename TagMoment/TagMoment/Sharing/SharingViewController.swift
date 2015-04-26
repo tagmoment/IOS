@@ -21,9 +21,10 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 	
 	let CellIdent = "cellIdent"
 	let MaxLettersInTag = 15
-	let TagsDataSource : [NSString] = ["Love", "Christmas", "Happy", "Birthday", "Mama", "Me", "Whatttt", "Oh no", "try it!"]
+	let TagsDataSource = ["Love", "Christmas", "Happy", "Birthday", "Mama", "Me", "Whatttt", "Oh no", "try it!"]
 
 	var autoKeyboardWasOn = false
+	var keyboardWasShown = false
 	weak var sharingDelegate: SharingControllerDelegate?
 	var documentationInteractionController : UIDocumentInteractionController?
 	@IBOutlet weak var textField: UITextField!
@@ -72,8 +73,8 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 	}
 	func handleKeyboardNotification(notif: NSNotification)
 	{
-		let animationTime = notif.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as Double
-		let keyboardEndFrame = notif.userInfo?[UIKeyboardFrameEndUserInfoKey] as NSValue
+		let animationTime = notif.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as! Double
+		let keyboardEndFrame = notif.userInfo?[UIKeyboardFrameEndUserInfoKey] as! NSValue
 		
 		
 		if let delegate = self.sharingDelegate
@@ -153,13 +154,13 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 		if (indices.count != 0)
 		{
 			self.tagsCollectionView.deselectItemAtIndexPath(indices[0] as? NSIndexPath, animated: false)
-			self.collectionView(self.tagsCollectionView, didDeselectItemAtIndexPath: indices[0] as NSIndexPath)
+			self.collectionView(self.tagsCollectionView, didDeselectItemAtIndexPath: indices[0] as! NSIndexPath)
 		}
 	}
 	
 	func prepareForSmallScreenLayout()
 	{
-		let newButtonsHolder = NSBundle.mainBundle().loadNibNamed("SmallScreenSharingButtonsView", owner: nil, options: nil)[0] as UIView
+		let newButtonsHolder = NSBundle.mainBundle().loadNibNamed("SmallScreenSharingButtonsView", owner: nil, options: nil)[0] as! UIView
 		
 		
 		self.buttonsHolder.removeFromSuperview()
@@ -181,9 +182,10 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 	
 	func prepareSocialButtonsAnimationState()
 	{
-		for view in self.buttonsHolder.subviews
+		for view in self.buttonsHolder.subviews as! [UIView]
 		{
-			view.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1)
+			view.layer.transform = CATransform3DMakeScale(0.01, 0.01, 1)
+			view.hidden = true
 		}
 	}
 	
@@ -198,11 +200,18 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 		var shuffled = self.buttonsHolder.subviews.shuffled()
 		for i : Int in 0..<shuffled.count
 		{
-			let view = shuffled[i] as UIView
+			let view = shuffled[i] as! UIView
 			let delay = Double(i)*0.1
-			UIView.animateWithDuration(1.0, delay: delay ,usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
+			view.hidden = false
+			UIView.animateWithDuration(0.5, delay: delay ,usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
 				view.layer.transform = CATransform3DIdentity
-			}, completion: nil)
+				}, completion: { (finished: Bool) -> Void in
+					if !self.keyboardWasShown
+					{
+						self.keyboardWasShown = true
+						self.textField.becomeFirstResponder()
+					}
+			})
 			
 		}
 	}
@@ -216,7 +225,7 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 	}
 	
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-		var cell = collectionView.dequeueReusableCellWithReuseIdentifier(CellIdent, forIndexPath: indexPath) as TagsCollectionViewCell
+		var cell = collectionView.dequeueReusableCellWithReuseIdentifier(CellIdent, forIndexPath: indexPath) as! TagsCollectionViewCell
 		
 		
 		cell.tagName.text = TagsDataSource[indexPath.item]
@@ -224,7 +233,7 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 		
 	}
 	func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
-		let cell = collectionView.cellForItemAtIndexPath(indexPath) as TagsCollectionViewCell
+		let cell = collectionView.cellForItemAtIndexPath(indexPath) as! TagsCollectionViewCell
 		cell.backgroundColor = UIColor.blackColor()
 		cell.tagName.textColor = UIColor.whiteColor()
 	}
@@ -232,7 +241,7 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 		
 		self.textField.text = TagsDataSource[indexPath.item]
-		let cell = collectionView.cellForItemAtIndexPath(indexPath) as TagsCollectionViewCell
+		let cell = collectionView.cellForItemAtIndexPath(indexPath) as! TagsCollectionViewCell
 		cell.backgroundColor = UIColor.whiteColor()
 		cell.tagName.textColor = UIColor.blackColor()
 		

@@ -24,7 +24,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	var sharingController : SharingViewController!
 	var navigationView : TakeImageNavBar!
 	
-	var secondImageView : UIImageView!
+	var secondImageView : ClippingViewWithTouch!
 	var frontCamSessionView : UIView!
 	var backCamSessionView : UIView!
 	
@@ -69,10 +69,17 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		
 		masksViewController.masksChooseDelegate = self
 
-		secondImageView = UIImageView()
+		secondImageView = ClippingViewWithTouch()
+		secondImageView.userInteractionEnabled = true
+		var tapRecog = UITapGestureRecognizer()
+		tapRecog.addTarget(self, action: "croppedImageDidPress:")
+		secondImageView.addGestureRecognizer(tapRecog)
+		tapRecog = UITapGestureRecognizer()
+		tapRecog.addTarget(self, action: "croppedImageDidPress:")
+		canvas.addGestureRecognizer(tapRecog)
 		secondImageView.contentMode = UIViewContentMode.ScaleAspectFill
 		canvas.pinSubViewToAllEdges(secondImageView)
-		navigationView = NSBundle.mainBundle().loadNibNamed("NavbarView", owner: nil, options: nil)[0] as TakeImageNavBar
+		navigationView = NSBundle.mainBundle().loadNibNamed("NavbarView", owner: nil, options: nil)[0] as! TakeImageNavBar
 		infobarHolder.pinSubViewToAllEdges(navigationView)
 		applyShadowOnLabels()
 		navigationView.viewDelegate = self
@@ -82,6 +89,15 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		
     }
 	
+	func croppedImageDidPress(sender: AnyObject)
+	{
+		let tapRecog = sender as! UITapGestureRecognizer
+		if (filtersViewController != nil)
+		{
+			var value = (self.secondImageView === tapRecog.view)
+			filtersViewController.changeJumperSelectionState(toState: value)
+		}
+	}
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
 		if (!initialized)
@@ -247,7 +263,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		let imageData = UIImagePNGRepresentation(imageForCaching())
 		
 		let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true);
-		let documentsDirectory = paths[0] as String
+		let documentsDirectory = paths[0] as! String
 		let imagePath = documentsDirectory + "/ShareMe.png"
 		
 		if !imageData.writeToFile(imagePath, atomically: false)
@@ -387,7 +403,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	}
 	
 	func imageForSharing() -> NSURL {
-		let path = NSUserDefaults.standardUserDefaults().objectForKey(CachedImagePathKey) as String
+		let path = NSUserDefaults.standardUserDefaults().objectForKey(CachedImagePathKey) as! String
 		return NSURL(fileURLWithPath: path)!
 	}
 	

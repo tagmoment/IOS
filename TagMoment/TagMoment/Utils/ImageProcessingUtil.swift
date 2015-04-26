@@ -13,7 +13,7 @@ class ImageProcessingUtil: NSObject {
 	
 	class func imageFromVideoView(workingView: UIView, originalImage: UIImage, shouldMirrorImage: Bool) -> UIImage
 	{
-		let layer: AVCaptureVideoPreviewLayer = workingView.layer.sublayers[0] as AVCaptureVideoPreviewLayer
+		let layer: AVCaptureVideoPreviewLayer = workingView.layer.sublayers[0] as! AVCaptureVideoPreviewLayer
 		
 		let outputRect = layer.metadataOutputRectOfInterestForRect(workingView.bounds)
 		var originalSize = originalImage.size
@@ -50,7 +50,7 @@ class ImageProcessingUtil: NSObject {
 	class func resizeCGImage(cgimage : CGImage, toWidth : CGFloat, toHeight: CGFloat) -> CGImage
 	{
 		let colorSpace = CGImageGetColorSpace(cgimage)
-		let context = CGBitmapContextCreate(nil, UInt(toWidth), UInt(toHeight), CGImageGetBitsPerComponent(cgimage), CGImageGetBytesPerRow(cgimage), colorSpace, CGImageGetBitmapInfo(cgimage))
+		let context = CGBitmapContextCreate(nil, Int(toWidth), Int(toHeight), CGImageGetBitsPerComponent(cgimage), CGImageGetBytesPerRow(cgimage), colorSpace, CGImageGetBitmapInfo(cgimage))
 		CGContextDrawImage(context, CGRect(x: 0, y: 0, width: toWidth, height: toHeight), cgimage)
 		return CGBitmapContextCreateImage(context)
 	}
@@ -82,4 +82,5 @@ class ImageProcessingUtil: NSObject {
 		//		return returnImage;
 		return UIImage();
 	}
+
 }

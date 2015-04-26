@@ -76,7 +76,7 @@ extension MainViewController
 		UIView.animateWithDuration(0.7, delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
 			
 			self.masksViewController.masksCarousel.alpha = 1.0
-			}, nil)
+			}, completion: nil)
 	}
 	
 	func removeMasksIfNeeded()

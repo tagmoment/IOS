@@ -61,13 +61,13 @@ class CameraSessionService : NSObject{
 		var input : AnyObject! = AVCaptureDeviceInput.deviceInputWithDevice(frontCamera , error: &err)
 		
 		if (input != nil) {
-			if let error = err? {
+			if let error = err {
 				println("ERROR: trying to open camera:" + error.localizedDescription)
 				
 			}
 		}
 		
-		self.startRunningSession(input: input as AVCaptureInput)
+		self.startRunningSession(input: input as! AVCaptureInput)
 	}
 	
 	func startSessionOnBackCamera() {
@@ -81,13 +81,13 @@ class CameraSessionService : NSObject{
 		var input : AnyObject! = AVCaptureDeviceInput.deviceInputWithDevice(backCamera, error: &err)
 		
 		if (input != nil) {
-			if let error = err? {
+			if let error = err {
 				println("ERROR: trying to open camera:" + error.localizedDescription)
 
 			}
 		}
 		
-		self.startRunningSession(input: input as AVCaptureInput)
+		self.startRunningSession(input: input as! AVCaptureInput)
 		
 	}
 	
@@ -129,7 +129,7 @@ class CameraSessionService : NSObject{
 	
 	func captureImage(#endBlock: (UIImage?, NSError!) -> Void){
 		var videoConnection : AVCaptureConnection?
-		var connectionsArray = self.stillImageOutputRef!.connections as [AVCaptureConnection]
+		var connectionsArray = self.stillImageOutputRef!.connections as! [AVCaptureConnection]
 		
 		for connection in connectionsArray {
 			
