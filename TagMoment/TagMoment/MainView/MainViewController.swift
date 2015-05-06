@@ -345,6 +345,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			controlContainer.addViewWithConstraints(masksViewController.view, toTheRight: false)
 			changeMasksCarouselPositionIfNeeded()
 			controlContainer.animateExitingView()
+			filtersViewController = nil
 		}
 		self.masksViewController.takeButton.enabled = true
 		self.masksViewController.switchCamButton.enabled = true
