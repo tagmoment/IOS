@@ -15,8 +15,8 @@ class TMWaveMask: NSObject, TMMask {
 		self.workingBounds = rect
 	}
 	
-	var clippingPath : UIBezierPath{
-		
+	func clippingPathWithRect(bounds : CGRect) -> CGPath
+	{
 		var path = UIBezierPath()
 		path.moveToPoint(CGPoint(x: self.workingBounds.width/2, y: 0))
 		path.addQuadCurveToPoint(CGPoint(x: self.workingBounds.width/2, y: self.workingBounds.height/2),
@@ -26,7 +26,11 @@ class TMWaveMask: NSObject, TMMask {
 		path.addLineToPoint(CGPoint(x: self.workingBounds.width, y: 0))
 		path.closePath()
 		
-		return path
+		return path.CGPath
+	}
+		
+	var cameraBounds : CGRect{
+		return self.workingBounds;
 	}
 	
 	func createViewModel() -> TMMaskViewModel{

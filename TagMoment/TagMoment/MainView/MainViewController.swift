@@ -78,10 +78,11 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		tapRecog.addTarget(self, action: "croppedImageDidPress:")
 		canvas.addGestureRecognizer(tapRecog)
 		secondImageView.contentMode = UIViewContentMode.ScaleAspectFill
-		canvas.pinSubViewToAllEdges(secondImageView)
+		secondImageView.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
+		secondImageView.frame = canvas.bounds;
+		canvas.addSubview(secondImageView);
 		navigationView = NSBundle.mainBundle().loadNibNamed("NavbarView", owner: nil, options: nil)[0] as! TakeImageNavBar
 		infobarHolder.pinSubViewToAllEdges(navigationView)
-		applyShadowOnLabels()
 		navigationView.viewDelegate = self
 		changeMasksCarouselPositionIfNeeded()
 		initBlurredOverLay(toView: secondImageView)
@@ -98,6 +99,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			filtersViewController.changeJumperSelectionState(toState: value)
 		}
 	}
+	
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
 		if (!initialized)
@@ -107,16 +109,6 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		}
 	}
 	
-	func applyShadowOnLabels()
-	{
-		userLabel.layer.shadowRadius = 4.0
-		userLabel.layer.shadowOpacity = 0.5
-		userLabel.layer.shadowOffset = CGSize(width: 0.0, height: -1.0)
-		logoLabel.layer.shadowRadius = 4.0
-		logoLabel.layer.shadowOpacity = 0.5
-		logoLabel.layer.shadowOffset = CGSize(width: 0.0, height: -1.0)
-	}
-
 	func initBlurredOverLay(toView holder: UIView)
 	{
 		if let theClass: AnyClass = NSClassFromString("UIVisualEffectView") {
@@ -192,9 +184,9 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		}
 		else
 		{
+			sessionView.tag = 1000
 			secondImageView.pinSubViewToAllEdges(sessionView)
-//			secondImageView.backgroundColor = UIColor.clearColor()
-			sessionView.frame = canvas.bounds
+			sessionView.frame = secondImageView.bounds
 		}
 		
 		addVideoLayer(toView: sessionView)
@@ -212,11 +204,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 
 	func maskChosen(name: String?) {
 		if (name != nil){
-			var workingRect = CGRect(x: 0.0, y: 0.0, width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.width)
-			var mask = MaskFactory.maskForName(name!, rect: workingRect)
-			var maskLayer = CAShapeLayer()
-			maskLayer.path = mask!.clippingPath.CGPath
-			
+			let maskLayerAndBounds = maskLayerAndBoundsForMaskName(name)
 			
 			self.changeSingleCaptureBehaviour()
 			UIView.animateWithDuration(0.10, animations: { () -> Void in
@@ -224,16 +212,14 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 				}, completion: { (finished: Bool) -> Void in
 					if (finished)
 					{
-						self.secondImageView.layer.mask = maskLayer
-						
+						self.secondImageView.frame = maskLayerAndBounds.1!
+						self.changeMaskViewFrame(self.secondImageView.bounds)
+						self.secondImageView.layer.mask = maskLayerAndBounds.0!
 						UIView.animateWithDuration(0.10, animations: { () -> Void in
 							self.secondImageView.alpha = 1.0
 						})
 					}
-					
 			})
-
-			
 		}
 	}
 	
@@ -281,7 +267,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	{
 		UIGraphicsBeginImageContext(self.canvas.frame.size);
 		self.canvas.image?.drawInRect(self.canvas.bounds);
-		self.secondImageView.drawViewHierarchyInRect(self.canvas.bounds, afterScreenUpdates: true)
+		self.secondImageView.drawViewHierarchyInRect(self.secondImageView.frame, afterScreenUpdates: true)
 		self.userLabel.drawTextInRect(self.userLabel.frame)
 		self.logoLabel.drawTextInRect(self.logoLabel.frame)
 		let newImage = UIGraphicsGetImageFromCurrentImageContext()

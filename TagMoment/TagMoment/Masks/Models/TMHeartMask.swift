@@ -15,9 +15,11 @@ class TMHeartMask: NSObject, TMMask {
 		self.workingBounds = rect
 	}
 	
-	var clippingPath : UIBezierPath{
-		
-		return TMHeartMask.bezierHeartShapePathWithWidth(self.workingBounds.width, center: CGPoint(x: self.workingBounds.midX, y: self.workingBounds.midY))
+	func clippingPathWithRect(bounds: CGRect) -> CGPath {
+		return TMHeartMask.bezierHeartShapePathWithWidth(bounds.width, center: CGPoint(x: bounds.width/2, y: bounds.height/2)).CGPath
+	}
+	var cameraBounds : CGRect{
+		return CGRect(x: self.workingBounds.width/4, y: self.workingBounds.height/2 - 15, width: self.workingBounds.width/2, height: self.workingBounds.width/2)
 	}
 	
 	func createViewModel() -> TMMaskViewModel{
@@ -30,15 +32,16 @@ class TMHeartMask: NSObject, TMMask {
 	}
 	
 	class func bezierHeartShapePathWithWidth(width: CGFloat, center: CGPoint) -> UIBezierPath{
-		var w = width/2
-		var h = width/2
-		
-		var y = center.y + 20
+		let w = width
+		let h = width
+		let radiusConst = CGFloat(40.0)
+		let radius = w - center.x - radiusConst
+//		let y = center.y + 20
 		var path = UIBezierPath()
-		path.addArcWithCenter(CGPoint(x: center.x + w/3 - 13.0,y: y), radius: w/3, startAngle: TMHeartMask.toRadians(40), endAngle: TMHeartMask.toRadians(210), clockwise: false)
+		path.addArcWithCenter(CGPoint(x: center.x + radiusConst,y: radius), radius: radius, startAngle: TMHeartMask.toRadians(40), endAngle: TMHeartMask.toRadians(210), clockwise: false)
 		
-		path.addArcWithCenter(CGPoint(x: center.x - w/3 + 13.0,y: y), radius: w/3, startAngle: TMHeartMask.toRadians(-30), endAngle: TMHeartMask.toRadians(140), clockwise: false)
-		path.addLineToPoint(CGPoint(x: center.x, y: center.y + w - 25))
+		path.addArcWithCenter(CGPoint(x: center.x - radiusConst,y: radius), radius: radius, startAngle: TMHeartMask.toRadians(-30), endAngle: TMHeartMask.toRadians(140), clockwise: false)
+		path.addLineToPoint(CGPoint(x: center.x, y: width))
 		path.closePath()
 		return path
 	}

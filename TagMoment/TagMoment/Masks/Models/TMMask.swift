@@ -9,6 +9,8 @@
 import UIKit
 
 protocol TMMask {
-	var clippingPath: UIBezierPath { get }
+	var cameraBounds : CGRect { get }
+	
+	func clippingPathWithRect(bounds : CGRect) -> CGPath
 	func createViewModel() -> TMMaskViewModel
 }

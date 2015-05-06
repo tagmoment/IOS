@@ -67,6 +67,8 @@
 		F1A7B7721A58AF4B0033FE64 /* ChooseMasksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1A7B76E1A58AF4B0033FE64 /* ChooseMasksViewController.xib */; };
 		F1A7B7731A58AF4B0033FE64 /* MaskCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A7B76F1A58AF4B0033FE64 /* MaskCollectionViewCell.swift */; };
 		F1A7B7741A58AF4B0033FE64 /* MaskCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1A7B7701A58AF4B0033FE64 /* MaskCollectionViewCell.xib */; };
+		F1AE759B1AFAB3BC00A8335B /* MainViewController+MasksHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AE759A1AFAB3BC00A8335B /* MainViewController+MasksHandling.swift */; };
+		F1AE759D1AFAB65900A8335B /* MainViewController+CameraViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AE759C1AFAB65900A8335B /* MainViewController+CameraViews.swift */; };
 		F1B190FA1AAE4DDB0001B86E /* Array+Shuffle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B190F91AAE4DDB0001B86E /* Array+Shuffle.swift */; };
 		F1B4ECE41A88072400C11FEF /* TMFilterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B4ECE31A88072400C11FEF /* TMFilterInterface.swift */; };
 		F1B4ECE61A88082B00C11FEF /* TMArtistFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B4ECE51A88082B00C11FEF /* TMArtistFilter.swift */; };
@@ -104,7 +106,6 @@
 		F109CE981A56F8770011CA55 /* TagMoment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TagMoment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F109CE9C1A56F8770011CA55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F109CE9D1A56F8770011CA55 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F109CEA41A56F8770011CA55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F109CEA61A56F8770011CA55 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F109CEAF1A56F8770011CA55 /* TagMomentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TagMomentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F109CEB41A56F8770011CA55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -164,6 +165,8 @@
 		F1A7B76E1A58AF4B0033FE64 /* ChooseMasksViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseMasksViewController.xib; sourceTree = "<group>"; };
 		F1A7B76F1A58AF4B0033FE64 /* MaskCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaskCollectionViewCell.swift; sourceTree = "<group>"; };
 		F1A7B7701A58AF4B0033FE64 /* MaskCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaskCollectionViewCell.xib; sourceTree = "<group>"; };
+		F1AE759A1AFAB3BC00A8335B /* MainViewController+MasksHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainViewController+MasksHandling.swift"; sourceTree = "<group>"; };
+		F1AE759C1AFAB65900A8335B /* MainViewController+CameraViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainViewController+CameraViews.swift"; sourceTree = "<group>"; };
 		F1B190F91AAE4DDB0001B86E /* Array+Shuffle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Shuffle.swift"; sourceTree = "<group>"; };
 		F1B4ECE31A88072400C11FEF /* TMFilterInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMFilterInterface.swift; sourceTree = "<group>"; };
 		F1B4ECE51A88082B00C11FEF /* TMArtistFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMArtistFilter.swift; sourceTree = "<group>"; };
@@ -274,7 +277,6 @@
 				F1604C741A5754410055C721 /* Masks */,
 				F1604C6D1A574CC40055C721 /* Resources */,
 				F109CE9D1A56F8770011CA55 /* AppDelegate.swift */,
-				F109CEA31A56F8770011CA55 /* Main.storyboard */,
 				F109CEA61A56F8770011CA55 /* Images.xcassets */,
 				F109CE9B1A56F8770011CA55 /* Supporting Files */,
 			);
@@ -357,6 +359,8 @@
 				F175A12C1AD8370200760025 /* MainViewController.swift */,
 				F175A12D1AD8370200760025 /* MainViewController.xib */,
 				F1DDA81E1AD99D730005DEDD /* MainViewController+SmallScreen.swift */,
+				F1AE759A1AFAB3BC00A8335B /* MainViewController+MasksHandling.swift */,
+				F1AE759C1AFAB65900A8335B /* MainViewController+CameraViews.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -575,6 +579,7 @@
 				F1ECA3781A88167A0018EFA2 /* TMLoveFilter.swift in Sources */,
 				F14A81431A58B0B300B5D14F /* TMCircleMask.swift in Sources */,
 				F19620CB1A881D3E00DCFB85 /* TMFilterFactory.swift in Sources */,
+				F1AE759D1AFAB65900A8335B /* MainViewController+CameraViews.swift in Sources */,
 				F16D27761A9A712B0000F759 /* SharingViewController.swift in Sources */,
 				F175A12E1AD8370200760025 /* MainViewController.swift in Sources */,
 				F14C270A1AC9E86700C19968 /* TMSunFilter.swift in Sources */,
@@ -614,6 +619,7 @@
 				F11647861A880BC10094BEF4 /* TMFireFilter.swift in Sources */,
 				F17A41711AB47FAC0074E5F5 /* iCarousel.m in Sources */,
 				F1A7B7711A58AF4B0033FE64 /* ChooseMasksViewController.swift in Sources */,
+				F1AE759B1AFAB3BC00A8335B /* MainViewController+MasksHandling.swift in Sources */,
 				F1A7B7681A5893010033FE64 /* TMMaskViewModel.swift in Sources */,
 				F101858C1A673E4D003F906E /* ChooseFiltersViewController.swift in Sources */,
 				F19620C31A881B0800DCFB85 /* TMStarFilter.swift in Sources */,
@@ -639,17 +645,6 @@
 			targetProxy = F109CEB01A56F8770011CA55 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		F109CEA31A56F8770011CA55 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F109CEA41A56F8770011CA55 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		F109CEB71A56F8770011CA55 /* Debug */ = {

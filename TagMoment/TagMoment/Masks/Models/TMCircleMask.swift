@@ -15,11 +15,16 @@ class TMCircleMask: NSObject, TMMask {
 		self.workingBounds = rect
 	}
 	
-	var clippingPath : UIBezierPath{
-		var rectForOval = CGRect(x: self.workingBounds.width/4, y: self.workingBounds.height/2 - 15,width: self.workingBounds.width/2, height: self.workingBounds.width/2)
+	func clippingPathWithRect(bounds : CGRect) -> CGPath
+	{
+		var rectForOval = CGRect(x: 0, y: 0,width: bounds.width, height: bounds.width)
 		var somepath = UIBezierPath(ovalInRect: rectForOval)
 		
-		return somepath
+		return somepath.CGPath
+	}
+	
+	var cameraBounds : CGRect{
+		return CGRect(x: self.workingBounds.width/4, y: self.workingBounds.height/2 - 15, width: self.workingBounds.width/2, height: self.workingBounds.width/2);
 	}
 	
 	func createViewModel() -> TMMaskViewModel{

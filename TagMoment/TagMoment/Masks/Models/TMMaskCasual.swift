@@ -15,9 +15,13 @@ class TMMaskCasual: TMMask {
 		self.workingBounds = rect
 	}
 	
-	var clippingPath : UIBezierPath{
-		
-		return UIBezierPath()
+	func clippingPathWithRect(bounds: CGRect) -> CGPath
+	{
+		return UIBezierPath().CGPath
+	}
+	
+	var cameraBounds : CGRect{
+		return self.workingBounds;
 	}
 	
 	func createViewModel() -> TMMaskViewModel{
