@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="GiddyupStd.ttf">
@@ -13,44 +13,50 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MaskCollectionViewCell" customModule="TagMoment" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="50" height="70"/>
+            <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="50" height="70"/>
+                <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
                 <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mask_background" translatesAutoresizingMaskIntoConstraints="NO" id="eE7-TR-k2h" userLabel="background">
+                        <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
+                    </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wt9-la-LPz">
-                        <rect key="frame" x="0.0" y="2" width="50" height="50"/>
+                        <rect key="frame" x="18" y="15" width="35" height="35"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="50" id="i55-xQ-GHu"/>
+                            <constraint firstAttribute="width" constant="35" id="10r-yE-WWh"/>
+                            <constraint firstAttribute="height" constant="35" id="i55-xQ-GHu"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GAB-eI-chb">
-                        <rect key="frame" x="0.0" y="54" width="50" height="20"/>
+                        <rect key="frame" x="0.0" y="52" width="70" height="20"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="L7m-XE-R6h"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="GiddyupStd" family="Giddyup Std" pointSize="20"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </label>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="GAB-eI-chb" secondAttribute="trailing" id="3w7-jv-Qhb"/>
-                <constraint firstAttribute="trailing" secondItem="Wt9-la-LPz" secondAttribute="trailing" id="8Zl-jA-9zl"/>
-                <constraint firstAttribute="bottom" secondItem="Wt9-la-LPz" secondAttribute="bottom" id="Bep-ER-Ikl"/>
-                <constraint firstItem="Wt9-la-LPz" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="QqM-DC-skD"/>
+                <constraint firstAttribute="bottom" secondItem="eE7-TR-k2h" secondAttribute="bottom" id="7jX-nU-jhk"/>
+                <constraint firstItem="eE7-TR-k2h" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="DSF-U7-0AU"/>
+                <constraint firstAttribute="centerX" secondItem="Wt9-la-LPz" secondAttribute="centerX" id="NGr-s0-2Bn"/>
                 <constraint firstItem="GAB-eI-chb" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="RcR-4V-22g"/>
-                <constraint firstItem="Wt9-la-LPz" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="RgB-0a-9r3"/>
+                <constraint firstItem="GAB-eI-chb" firstAttribute="top" secondItem="eE7-TR-k2h" secondAttribute="bottom" id="Rh8-OE-9O6"/>
+                <constraint firstAttribute="trailing" secondItem="eE7-TR-k2h" secondAttribute="trailing" id="X7g-nE-KtS"/>
                 <constraint firstItem="GAB-eI-chb" firstAttribute="top" secondItem="Wt9-la-LPz" secondAttribute="bottom" constant="2" id="bhQ-LZ-lvJ"/>
+                <constraint firstItem="eE7-TR-k2h" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="vG8-Br-1Eg"/>
                 <constraint firstAttribute="bottom" secondItem="GAB-eI-chb" secondAttribute="bottom" constant="-4" id="yaH-Jf-26f"/>
             </constraints>
-            <size key="customSize" width="50" height="49"/>
+            <size key="customSize" width="124" height="87"/>
             <variation key="default">
                 <mask key="constraints">
-                    <exclude reference="Bep-ER-Ikl"/>
-                    <exclude reference="RgB-0a-9r3"/>
+                    <exclude reference="Rh8-OE-9O6"/>
                 </mask>
             </variation>
             <connections>
@@ -58,7 +64,10 @@
                 <outlet property="maskImage" destination="Wt9-la-LPz" id="j3z-Dv-ZoT"/>
                 <outlet property="maskName" destination="GAB-eI-chb" id="1Kg-ox-vld"/>
             </connections>
-            <point key="canvasLocation" x="263" y="244"/>
+            <point key="canvasLocation" x="256" y="218"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="mask_background" width="70" height="68"/>
+    </resources>
 </document>

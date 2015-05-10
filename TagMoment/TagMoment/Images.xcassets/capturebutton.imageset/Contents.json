@@ -2,8 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "capturebutton.png"
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
@@ -13,7 +12,7 @@
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "capture-button@3x.png"
+      "filename" : "capturebutton@3x.png"
     }
   ],
   "info" : {

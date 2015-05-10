@@ -36,13 +36,19 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 		masksCarousel.pagingEnabled = true
 		self.masksViewModels = MaskFactory.getViewModels()
 		masksCarousel.reloadData()
-		masksCarousel.scrollToItemAtIndex(3, animated: false)
+		
     }
 
-	override func viewWillAppear(animated: Bool) {
-		super.viewWillAppear(animated)
+	override func viewDidAppear(animated: Bool) {
+		super.viewDidAppear(animated)
+		if let view = masksCarousel.itemViewAtIndex(0)
+		{
+			let subview = view as! MaskCollectionViewCell
+			subview.highlighted = true
+			let index = masksCarousel.indexOfItemView(view)
+			self.masksChooseDelegate?.maskChosen(self.masksViewModels?[index].name!)
+		}
 		self.masksChooseDelegate?.maskChosen(self.masksViewModels?[masksCarousel.currentItemIndex].name!)
-
 	}
 	
 	// MARK: - UICollectionView delegation & datasource
@@ -75,7 +81,7 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 	}
 	
 	func carouselItemWidth(carousel: iCarousel!) -> CGFloat {
-		return CGFloat(50.0)
+		return CGFloat(70.0)
 	}
 	
 	func carouselCurrentItemIndexDidChange(carousel: iCarousel!) {
@@ -83,20 +89,23 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 		{
 			let subview = view as! MaskCollectionViewCell
 			subview.highlighted = false;
-			subview.labelHeightConstraint.constant = 0;
 		}
-		let view = carousel.currentItemView as! MaskCollectionViewCell
-		view.highlighted = true
-		view.labelHeightConstraint.constant = 20.0;
-		let index = masksCarousel.indexOfItemView(view)
-		self.masksChooseDelegate?.maskChosen(self.masksViewModels?[index].name!)
+		if let view = carousel.currentItemView
+		{
+			let subview = view as! MaskCollectionViewCell
+			subview.highlighted = true
+			let index = masksCarousel.indexOfItemView(view)
+			self.masksChooseDelegate?.maskChosen(self.masksViewModels?[index].name!)
+		}
+		
+		
 	}
 	
 	func carousel(carousel: iCarousel!, valueForOption option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
 		
 		if option == .Spacing
 		{
-			return 1.2
+			return 1.05
 		}
 		return value;
 	}
