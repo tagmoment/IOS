@@ -13,8 +13,12 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SharingViewController" customModule="TagMoment" customModuleProvider="target">
             <connections>
                 <outlet property="buttonsHolder" destination="id5-b8-9y4" id="amX-1b-eRm"/>
+                <outlet property="saveBGConstraint" destination="cDd-Sx-ZRg" id="MyZ-gc-bmN"/>
+                <outlet property="saveButtonBG" destination="HEA-SW-BrC" id="1nw-uM-3Ff"/>
                 <outlet property="saveImageButton" destination="21g-rT-QKM" id="1dX-er-0Vn"/>
+                <outlet property="shareBGConstraint" destination="Nc4-W4-3oc" id="veS-oG-VBz"/>
                 <outlet property="shareButton" destination="NGF-qY-cNl" id="VyT-WY-k1z"/>
+                <outlet property="shareButtonBG" destination="kGx-GW-XOC" id="Xvt-ic-l4v"/>
                 <outlet property="tagsCollectionView" destination="Fu5-p9-pIr" id="1Ab-yE-vjz"/>
                 <outlet property="tagsHeightConstraint" destination="acE-0B-OO6" id="dcY-3R-IBK"/>
                 <outlet property="textField" destination="aas-bg-iX7" id="12J-T9-Ce5"/>
@@ -26,17 +30,48 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="278"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="21g-rT-QKM" userLabel="saveImage">
-                    <rect key="frame" x="0.0" y="234" width="122" height="44"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HEA-SW-BrC" userLabel="saveImageBG">
+                    <rect key="frame" x="-100" y="230" width="144" height="44"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="122" id="JpM-SC-7wV"/>
+                        <constraint firstAttribute="width" constant="199" id="Pt6-Mn-nAX"/>
                     </constraints>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="22" maxY="0.0"/>
-                    <state key="normal" image="keep_it" backgroundImage="keep">
+                    <inset key="titleEdgeInsets" minX="40" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" backgroundImage="keep_background">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="Pt6-Mn-nAX"/>
+                        </mask>
+                    </variation>
+                    <connections>
+                        <action selector="pinButtonPressed:" destination="-1" eventType="touchUpInside" id="6Vu-hh-3le"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="21g-rT-QKM" userLabel="saveImage">
+                    <rect key="frame" x="8" y="236" width="32" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="32" id="Bjf-gV-tcU"/>
+                        <constraint firstAttribute="height" constant="32" id="O08-Sx-qqS"/>
+                    </constraints>
+                    <state key="normal" image="keep_icon">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="pinButtonPressed:" destination="-1" eventType="touchUpInside" id="wXc-ON-omw"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NGF-qY-cNl" userLabel="sharebutton">
+                    <rect key="frame" x="560" y="236" width="32" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="25T-x1-wkO"/>
+                        <constraint firstAttribute="width" constant="32" id="ZdU-lG-D6s"/>
+                    </constraints>
+                    <state key="normal" image="share_icon">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="shareButtonPressed:" destination="-1" eventType="touchUpInside" id="3Pv-lg-tTz"/>
                     </connections>
                 </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="#moment" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="aas-bg-iX7" customClass="TMTextField" customModule="TagMoment" customModuleProvider="target">
@@ -51,18 +86,6 @@
                         <outlet property="delegate" destination="-1" id="Tmf-Gq-vxp"/>
                     </connections>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NGF-qY-cNl" userLabel="sharebutton">
-                    <rect key="frame" x="82" y="234" width="518" height="44"/>
-                    <inset key="contentEdgeInsets" minX="0.0" minY="6" maxX="0.0" maxY="0.0"/>
-                    <inset key="titleEdgeInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="7"/>
-                    <state key="normal" title="Share" image="share_it" backgroundImage="share">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="shareButtonPressed:" destination="-1" eventType="touchUpInside" id="3Pv-lg-tTz"/>
-                    </connections>
-                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="id5-b8-9y4" userLabel="buttonsHolder">
                     <rect key="frame" x="185" y="81" width="230" height="116"/>
                     <subviews>
@@ -188,22 +211,35 @@
                         <constraint firstAttribute="trailing" secondItem="Fu5-p9-pIr" secondAttribute="trailing" id="cD8-Mk-jgt"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kGx-GW-XOC" userLabel="shareImageBG">
+                    <rect key="frame" x="556" y="230" width="144" height="44"/>
+                    <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="35" maxY="0.0"/>
+                    <state key="normal" backgroundImage="share_background">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="shareButtonPressed:" destination="-1" eventType="touchUpInside" id="8WD-sb-Q8d"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="kGx-GW-XOC" secondAttribute="bottom" constant="4" id="3IS-rz-O0P"/>
                 <constraint firstItem="aas-bg-iX7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="3fn-ny-MC5"/>
-                <constraint firstAttribute="bottom" secondItem="NGF-qY-cNl" secondAttribute="bottom" id="418-Kp-KfB"/>
+                <constraint firstAttribute="bottom" secondItem="NGF-qY-cNl" secondAttribute="bottom" constant="10" id="418-Kp-KfB"/>
                 <constraint firstItem="yGn-q6-e7R" firstAttribute="top" secondItem="aas-bg-iX7" secondAttribute="bottom" id="4c7-Ng-4vs"/>
                 <constraint firstAttribute="centerY" secondItem="id5-b8-9y4" secondAttribute="centerY" id="5HG-SQ-wfR"/>
                 <constraint firstItem="aas-bg-iX7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="7oh-rE-5zw"/>
+                <constraint firstItem="21g-rT-QKM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="GZK-JX-ln0"/>
                 <constraint firstAttribute="trailing" secondItem="yGn-q6-e7R" secondAttribute="trailing" id="GeK-NK-xt0"/>
                 <constraint firstItem="yGn-q6-e7R" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="H3g-4z-IAr"/>
-                <constraint firstItem="NGF-qY-cNl" firstAttribute="leading" secondItem="21g-rT-QKM" secondAttribute="trailing" constant="-40" id="R91-bi-rSS"/>
+                <constraint firstAttribute="trailing" secondItem="kGx-GW-XOC" secondAttribute="trailing" constant="-100" id="Nc4-W4-3oc"/>
                 <constraint firstAttribute="trailing" secondItem="aas-bg-iX7" secondAttribute="trailing" id="Yj1-8i-8D4"/>
-                <constraint firstItem="21g-rT-QKM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="a0z-9z-dIP"/>
-                <constraint firstAttribute="bottom" secondItem="21g-rT-QKM" secondAttribute="bottom" id="khM-1l-DE9"/>
-                <constraint firstAttribute="trailing" secondItem="NGF-qY-cNl" secondAttribute="trailing" id="koh-Z5-xVD"/>
+                <constraint firstItem="HEA-SW-BrC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="-100" id="cDd-Sx-ZRg"/>
+                <constraint firstAttribute="bottom" secondItem="21g-rT-QKM" secondAttribute="bottom" constant="10" id="ctl-YV-lgG"/>
+                <constraint firstAttribute="trailing" secondItem="NGF-qY-cNl" secondAttribute="trailing" constant="8" id="koh-Z5-xVD"/>
                 <constraint firstAttribute="centerX" secondItem="id5-b8-9y4" secondAttribute="centerX" id="qGZ-hH-Pvy"/>
+                <constraint firstAttribute="bottom" secondItem="HEA-SW-BrC" secondAttribute="bottom" constant="4" id="xuH-qr-JHo"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -215,12 +251,12 @@
         <image name="facebook_share_on" width="44" height="44"/>
         <image name="insegram_share" width="44" height="44"/>
         <image name="insegram_share_on" width="44" height="44"/>
-        <image name="keep" width="109" height="44"/>
-        <image name="keep_it" width="23" height="23"/>
+        <image name="keep_background" width="144" height="44"/>
+        <image name="keep_icon" width="36" height="36"/>
         <image name="more_share" width="44" height="44"/>
         <image name="more_share_on" width="44" height="44"/>
-        <image name="share" width="253" height="44"/>
-        <image name="share_it" width="20" height="20"/>
+        <image name="share_background" width="144" height="44"/>
+        <image name="share_icon" width="36" height="36"/>
         <image name="tumbler_share" width="44" height="44"/>
         <image name="tumbler_share_on" width="44" height="44"/>
         <image name="twitter_share" width="44" height="44"/>

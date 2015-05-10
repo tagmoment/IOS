@@ -19,6 +19,8 @@ protocol SharingControllerDelegate : class{
 
 class SharingViewController: UIViewController, UITextFieldDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIDocumentInteractionControllerDelegate	{
 	
+	
+	let ClosedContraint = CGFloat(-100)
 	let CellIdent = "cellIdent"
 	let MaxLettersInTag = 15
 	let TagsDataSource = ["Love", "Christmas", "Happy", "Birthday", "Mama", "Me", "Whatttt", "Oh no", "try it!"]
@@ -29,20 +31,19 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 	var documentationInteractionController : UIDocumentInteractionController?
 	@IBOutlet weak var textField: UITextField!
 	@IBOutlet weak var shareButton: UIButton!
+	@IBOutlet weak var saveButtonBG: UIButton!
 	@IBOutlet weak var saveImageButton: UIButton!
 	@IBOutlet weak var buttonsHolder: UIView!
+	@IBOutlet weak var shareButtonBG: UIButton!
 	@IBOutlet weak var tagsHeightConstraint: NSLayoutConstraint!
 	@IBOutlet weak var tagsCollectionView: UICollectionView!
 	
+	@IBOutlet weak var saveBGConstraint: NSLayoutConstraint!
+	@IBOutlet weak var shareBGConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
 		self.textField.keyboardType = .ASCIICapable
-		var bgImage = shareButton.backgroundImageForState(UIControlState.Normal)
-		bgImage = bgImage?.resizableImageWithCapInsets(UIEdgeInsets(top: 0, left: 46, bottom: 0, right: 0))
-		shareButton.setBackgroundImage(bgImage, forState: UIControlState.Normal)
-		bgImage = saveImageButton.backgroundImageForState(UIControlState.Normal)
-		bgImage = bgImage?.resizableImageWithCapInsets(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 46))
-		saveImageButton.setBackgroundImage(bgImage, forState: UIControlState.Normal)
+		self.view.bringSubviewToFront(self.shareButton)
 		tagsCollectionView.registerNib(UINib(nibName: "TagsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: CellIdent)
 		
     }
@@ -269,30 +270,85 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 	
 	
 	// MARK: - Buttons Handling
-	@IBAction func pinButtonPressed(sender: AnyObject) {
-		if let delegate = self.sharingDelegate
-		{
-			delegate.retakeImageRequested()
-		}
-	}
-	
 	@IBAction func shareButtonPressed(sender: AnyObject) {
 		
-		if let delegate = self.sharingDelegate
+		if isShareButtonOpen()
 		{
-			NSNotificationCenter.defaultCenter().removeObserver(self)
-			delegate.textEditingDidEnd()
-			let url = delegate.imageForSharing()
-			documentationInteractionController = UIDocumentInteractionController(URL: url)
-			documentationInteractionController?.delegate = self
-			documentationInteractionController?.presentOptionsMenuFromRect(self.view.superview!.superview!.bounds, inView: self.view.superview!.superview!, animated: true)
-		
+			if let delegate = self.sharingDelegate
+			{
+				NSNotificationCenter.defaultCenter().removeObserver(self)
+				delegate.textEditingDidEnd()
+				let url = delegate.imageForSharing()
+				documentationInteractionController = UIDocumentInteractionController(URL: url)
+				documentationInteractionController?.delegate = self
+				documentationInteractionController?.presentOptionsMenuFromRect(self.view.superview!.superview!.bounds, inView: self.view.superview!.superview!, animated: true)
+				
+			}
+			return;
 		}
-
-	}
-	func documentInteractionControllerDidDismissOptionsMenu(controller: UIDocumentInteractionController) {
-		registerForNotifications()
+		
+		toggleShareButtonBgAnimation()
+		
 	}
 	
+	
+	@IBAction func pinButtonPressed(sender: AnyObject) {
+		
+		if isSaveButtonOpen()
+		{
+			if let delegate = self.sharingDelegate
+			{
+				delegate.retakeImageRequested()
+				
+			}
+			return;
+		}
+		
+		toggleSaveButtonBgAnimation()
+		
+		
+		
+	}
+	
+	private func toggleSaveButtonBgAnimation()
+	{
+		let title = isSaveButtonOpen() ? "" : "Keep It"
+		self.saveBGConstraint.constant = isSaveButtonOpen() ? ClosedContraint : 0
+		self.saveButtonBG.setTitle(title, forState: .Normal)
+		UIView.animateWithDuration(0.2, animations: { () -> Void in
+			self.saveButtonBG.superview?.layoutIfNeeded()
+			
+		})
+	}
+	
+	private func toggleShareButtonBgAnimation()
+	{
+		let title = isShareButtonOpen() ? "" : "Share It"
+		self.shareBGConstraint.constant = isShareButtonOpen() ? ClosedContraint : 0
+		
+		self.shareButtonBG.setTitle(title, forState: .Normal)
+		UIView.animateWithDuration(0.2, animations: { () -> Void in
+			self.shareButtonBG.superview?.layoutIfNeeded()
+			
+		})
+	}
+
+	
+	
+	func documentInteractionControllerDidDismissOptionsMenu(controller: UIDocumentInteractionController) {
+		registerForNotifications()
+		toggleShareButtonBgAnimation()
+	}
+	
+	
+	private func isSaveButtonOpen() -> Bool
+	{
+		return self.saveBGConstraint.constant == 0
+	}
+	
+	private func isShareButtonOpen() -> Bool
+	{
+		return self.shareBGConstraint.constant == 0
+	}
 
 }
