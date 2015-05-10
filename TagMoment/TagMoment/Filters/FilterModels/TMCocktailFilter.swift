@@ -16,6 +16,7 @@ class TMCocktailFilter : TMAlphaFilterBase{
 	{
 		super.init()
 		self.iconName = "Cocktail"
+		self.displayName = "Cocktail"
 	}
 	
 

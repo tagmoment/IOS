@@ -23,5 +23,6 @@ class TMMusicFilter : TMAlphaFilterBase{
 	{
 		super.init()
 		self.iconName = "Music"
+		self.displayName = "bpm"
 	}
 }

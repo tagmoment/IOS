@@ -63,7 +63,7 @@
                         <action selector="jumperButtonPressed:" destination="-1" eventType="touchUpInside" id="Anm-60-cw3"/>
                     </connections>
                 </button>
-                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="opacity_button_50" translatesAutoresizingMaskIntoConstraints="NO" id="NVa-kF-Z1w">
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="opacity_button_50" translatesAutoresizingMaskIntoConstraints="NO" id="NVa-kF-Z1w">
                     <rect key="frame" x="279" y="94.5" width="42" height="42"/>
                 </imageView>
             </subviews>

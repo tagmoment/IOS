@@ -151,18 +151,9 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 		
 		var imageName = filterModel.iconName
 		var imageOn = imageName + "_on"
-		var imageOff = imageName + "_off"
-		
-		if cell.selected
-		{
-			cell.iconImageView.image = UIImage(named: imageOn)
-		}
-		else
-		{
-			cell.iconImageView.image = UIImage(named: imageOff)
-		}
-	
-		
+		cell.iconImageView.image = UIImage(named: imageOn)
+		cell.iconImageView.alpha = cell.selected ? 1.0 : 0.3
+		cell.filterName.text = filterModel.displayName
 		return cell
 	}
 	
@@ -170,12 +161,10 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 		
 		var filterModel = TMFilterFactory.getFilters()[indexPath.item]
 		
-		var imageName = filterModel.iconName
-		var imageOn = imageName + "_on"
-		var cell = collectionView.cellForItemAtIndexPath(indexPath) as? FilterCollectionViewCell
+		let cell = collectionView.cellForItemAtIndexPath(indexPath) as? FilterCollectionViewCell
 		if (cell != nil)
 		{
-			cell!.iconImageView.image = UIImage(named: imageOn)
+			cell!.iconImageView.alpha = 1.0
 		}
 
 		
@@ -199,17 +188,13 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 	}
 	
 	func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
-		var filterModel = TMFilterFactory.getFilters()[indexPath.item]
-		
-		var imageName = filterModel.iconName
-		var imageOff = imageName + "_off"
-		
-		var cell = collectionView.cellForItemAtIndexPath(indexPath)
+		let filterModel = TMFilterFactory.getFilters()[indexPath.item]
+		let cell = collectionView.cellForItemAtIndexPath(indexPath)
 		
 		if (cell != nil)
 		{
-			var casted = cell as! FilterCollectionViewCell
-			casted.iconImageView.image = UIImage(named: imageOff)
+			let casted = cell as! FilterCollectionViewCell
+			casted.iconImageView.alpha = 0.3
 		}
 		
 	}

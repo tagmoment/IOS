@@ -24,6 +24,7 @@ class TMGamerFilter : TMAlphaFilterBase{
 	{
 		super.init()
 		self.iconName = "Gamer"
+		self.displayName = "pixel"
 	}
 	
 	override func applyFilterValue(value : Float)

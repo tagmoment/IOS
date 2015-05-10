@@ -15,6 +15,7 @@ class TMSunsetFilter : TMFilterBase{
 	{
 		super.init()
 		self.iconName = "Sunset"
+		self.displayName = "Chilled"
 	}
 	
 }

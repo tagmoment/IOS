@@ -23,5 +23,6 @@ class TMVintageFilter : TMAlphaFilterBase{
 	{
 		super.init()
 		self.iconName = "Vintage"
+		self.displayName = "Antique"
 	}
 }

@@ -23,5 +23,6 @@ class TMLoveFilter : TMAlphaFilterBase{
 	{
 		super.init()
 		self.iconName = "Love"
+		self.displayName = "feelings"
 	}
 }

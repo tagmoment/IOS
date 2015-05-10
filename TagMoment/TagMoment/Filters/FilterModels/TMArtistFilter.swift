@@ -19,7 +19,7 @@ class TMArtistFilter : TMAlphaFilterBase{
 	{
 		super.init()
 		self.iconName = "Artist"
-		
+		self.displayName = "Concept"
 	}
 	
 }

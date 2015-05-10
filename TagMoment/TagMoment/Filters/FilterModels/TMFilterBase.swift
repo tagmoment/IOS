@@ -4,6 +4,7 @@ import CoreImage
 
 class TMFilterBase{
 	var iconName : String
+	var displayName : String
 	var filtersProtected : [CIFilter] {
 		get{
 			return []
@@ -28,6 +29,7 @@ class TMFilterBase{
 	init()
 	{
 		iconName = ""
+		displayName = ""
 	}
 	
 

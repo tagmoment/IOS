@@ -25,5 +25,6 @@ class TMTravelFilter : TMAlphaFilterBase{
 	{
 		super.init()
 		self.iconName = "Travel"
+		self.displayName = "Take Off"
 	}
 }

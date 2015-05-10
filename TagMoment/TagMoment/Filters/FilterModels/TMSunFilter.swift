@@ -14,6 +14,7 @@ class TMSunFilter: TMFilterBase {
 	{
 		super.init()
 		self.iconName = "Sun"
+		self.displayName = "No Filter"
 	}
 	
 	override func supportsChangingValues() -> Bool {

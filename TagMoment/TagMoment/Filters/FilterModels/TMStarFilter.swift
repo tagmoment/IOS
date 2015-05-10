@@ -26,6 +26,7 @@ class TMStarFilter : TMAlphaFilterBase{
 	{
 		super.init()
 		self.iconName = "Star"
+		self.displayName = "Wish"
 	}
 	
 	override func applyFilterValue(value : Float)
