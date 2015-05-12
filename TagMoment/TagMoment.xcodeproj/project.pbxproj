@@ -27,6 +27,7 @@
 		F14C270A1AC9E86700C19968 /* TMSunFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14C27091AC9E86700C19968 /* TMSunFilter.swift */; };
 		F156B4281A5C918600B1E0EA /* TMMaskCasual.swift in Sources */ = {isa = PBXBuildFile; fileRef = F156B4271A5C918600B1E0EA /* TMMaskCasual.swift */; };
 		F15AD4131B029A1700D18472 /* TMTopHalfCircleMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15AD4121B029A1700D18472 /* TMTopHalfCircleMask.swift */; };
+		F15AD4151B029D4000D18472 /* TMBottomHalfCircleMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15AD4141B029D4000D18472 /* TMBottomHalfCircleMask.swift */; };
 		F1604C701A574CC40055C721 /* image1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F1604C6E1A574CC40055C721 /* image1.jpeg */; };
 		F1604C711A574CC40055C721 /* image2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F1604C6F1A574CC40055C721 /* image2.jpeg */; };
 		F16112361AED7C3800A453C6 /* ClippingViewWithTouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16112351AED7C3800A453C6 /* ClippingViewWithTouch.swift */; };
@@ -122,6 +123,7 @@
 		F14C27091AC9E86700C19968 /* TMSunFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMSunFilter.swift; sourceTree = "<group>"; };
 		F156B4271A5C918600B1E0EA /* TMMaskCasual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMMaskCasual.swift; sourceTree = "<group>"; };
 		F15AD4121B029A1700D18472 /* TMTopHalfCircleMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMTopHalfCircleMask.swift; sourceTree = "<group>"; };
+		F15AD4141B029D4000D18472 /* TMBottomHalfCircleMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMBottomHalfCircleMask.swift; sourceTree = "<group>"; };
 		F1604C6E1A574CC40055C721 /* image1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image1.jpeg; sourceTree = "<group>"; };
 		F1604C6F1A574CC40055C721 /* image2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image2.jpeg; sourceTree = "<group>"; };
 		F16112351AED7C3800A453C6 /* ClippingViewWithTouch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClippingViewWithTouch.swift; sourceTree = "<group>"; };
@@ -420,6 +422,7 @@
 				F14A81441A58B31500B5D14F /* TMWaveMask.swift */,
 				F14A81461A58B52700B5D14F /* TMHeartMask.swift */,
 				F156B4271A5C918600B1E0EA /* TMMaskCasual.swift */,
+				F15AD4141B029D4000D18472 /* TMBottomHalfCircleMask.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -588,6 +591,7 @@
 				F175A12E1AD8370200760025 /* MainViewController.swift in Sources */,
 				F14C270A1AC9E86700C19968 /* TMSunFilter.swift in Sources */,
 				F156B4281A5C918600B1E0EA /* TMMaskCasual.swift in Sources */,
+				F15AD4151B029D4000D18472 /* TMBottomHalfCircleMask.swift in Sources */,
 				F19620C71A881BDE00DCFB85 /* TMTravelFilter.swift in Sources */,
 				F14A81451A58B31500B5D14F /* TMWaveMask.swift in Sources */,
 				F1A7B7731A58AF4B0033FE64 /* MaskCollectionViewCell.swift in Sources */,
