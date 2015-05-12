@@ -9,7 +9,7 @@
 import Foundation
 class TMTopHalfCircleMask : TMMask {
 	
-	let percentageOfWidth = 0.85
+	let percentageOfWidth = CGFloat(0.9)
 	var workingBounds : CGRect
 	
 	init(rect: CGRect){
@@ -26,7 +26,7 @@ class TMTopHalfCircleMask : TMMask {
 	}
 	
 	var cameraBounds : CGRect{
-		let currentWidth = self.workingBounds.width*0.97
+		let currentWidth = self.workingBounds.width*percentageOfWidth
 		let margin = (self.workingBounds.width - currentWidth)/2
 		return CGRect(x: margin, y: -currentWidth/2, width: currentWidth, height: currentWidth);
 	}
