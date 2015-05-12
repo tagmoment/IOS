@@ -22,14 +22,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="70" height="68"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wt9-la-LPz">
-                        <rect key="frame" x="18" y="15" width="35" height="35"/>
+                        <rect key="frame" x="18" y="11" width="35" height="35"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="35" id="10r-yE-WWh"/>
                             <constraint firstAttribute="height" constant="35" id="i55-xQ-GHu"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GAB-eI-chb">
-                        <rect key="frame" x="0.0" y="52" width="70" height="20"/>
+                        <rect key="frame" x="0.0" y="48" width="70" height="20"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="L7m-XE-R6h"/>
@@ -51,7 +51,7 @@
                 <constraint firstAttribute="trailing" secondItem="eE7-TR-k2h" secondAttribute="trailing" id="X7g-nE-KtS"/>
                 <constraint firstItem="GAB-eI-chb" firstAttribute="top" secondItem="Wt9-la-LPz" secondAttribute="bottom" constant="2" id="bhQ-LZ-lvJ"/>
                 <constraint firstItem="eE7-TR-k2h" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="vG8-Br-1Eg"/>
-                <constraint firstAttribute="bottom" secondItem="GAB-eI-chb" secondAttribute="bottom" constant="-4" id="yaH-Jf-26f"/>
+                <constraint firstAttribute="bottom" secondItem="GAB-eI-chb" secondAttribute="bottom" id="yaH-Jf-26f"/>
             </constraints>
             <size key="customSize" width="124" height="87"/>
             <variation key="default">
