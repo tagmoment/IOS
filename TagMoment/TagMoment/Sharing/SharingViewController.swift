@@ -19,12 +19,18 @@ protocol SharingControllerDelegate : class{
 
 class SharingViewController: UIViewController, UITextFieldDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIDocumentInteractionControllerDelegate	{
 	
-	
 	let ClosedContraint = CGFloat(-100)
 	let CellIdent = "cellIdent"
 	let MaxLettersInTag = 15
-	let TagsDataSource = ["Love", "Christmas", "Happy", "Birthday", "Mama", "Me", "Whatttt", "Oh no", "try it!"]
+	let TagsDataSourceWords = ["Love", "Christmas", "Happy", "Birthday", "Mama", "Me", "Whatttt", "Oh no", "try it!"]
+	
+	
+//	Left out side "\u{e40d}", "\u{e00e}", "\u{e405}"
+//	e40a e04a e443 e112v e105 e326 e058 e40e e214 e449 e034 e10e e425
 
+	
+	let TagsDataSourceeEmojis = ["\u{e20c}", "\u{e412}", "\u{e106}", "\u{e056}", "\u{e420}", "\u{e022}", "\u{e418}", "\u{e056}", "\u{e403}", "\u{e411}", "\u{e402}", "\u{e404}"]
+	var tagsDataSource : [NSString]!
 	var autoKeyboardWasOn = false
 	var keyboardWasShown = false
 	weak var sharingDelegate: SharingControllerDelegate?
@@ -42,7 +48,9 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 	@IBOutlet weak var shareBGConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
+		tagsDataSource = self.sortDataSource(TagsDataSourceWords, emojis: TagsDataSourceeEmojis)
 		self.textField.keyboardType = .ASCIICapable
+		
 		self.view.bringSubviewToFront(self.shareButton)
 		tagsCollectionView.registerNib(UINib(nibName: "TagsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: CellIdent)
 		
@@ -65,6 +73,7 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 		super.viewWillDisappear(animated)
 		NSNotificationCenter.defaultCenter().removeObserver(self)
 	}
+	
 	
 	private func registerForNotifications()
 	{
@@ -222,39 +231,68 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 	}
 	
 	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
-		return TagsDataSource.count
+		return tagsDataSource.count
 	}
 	
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+		
+		
 		var cell = collectionView.dequeueReusableCellWithReuseIdentifier(CellIdent, forIndexPath: indexPath) as! TagsCollectionViewCell
+		let selectedIndices = collectionView.indexPathsForSelectedItems()
+		var found = false
+		for index in selectedIndices as! [NSIndexPath]
+		{
+			if (index.row == indexPath.row)
+			{
+				found = true
+				break;
+			}
+			
+		}
+		
+		if (found)
+		{
+			cell.backgroundColor = UIColor.whiteColor()
+			cell.tagName.textColor = UIColor.blackColor()
+		}
+		else
+		{
+			cell.backgroundColor = UIColor.blackColor()
+			cell.tagName.textColor = UIColor.whiteColor()
+		}
 		
 		
-		cell.tagName.text = TagsDataSource[indexPath.item]
+		cell.tagName.text = tagsDataSource[indexPath.item] as String
 		return cell;
 		
 	}
 	func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
-		let cell = collectionView.cellForItemAtIndexPath(indexPath) as! TagsCollectionViewCell
-		cell.backgroundColor = UIColor.blackColor()
-		cell.tagName.textColor = UIColor.whiteColor()
+		let cell = collectionView.cellForItemAtIndexPath(indexPath)
+		if let tagCell = cell as? TagsCollectionViewCell
+		{
+			var result = NSAttributedString()
+			NSFontAttributeName
+			tagCell.backgroundColor = UIColor.blackColor()
+			tagCell.tagName.textColor = UIColor.whiteColor()
+		}
 	}
-	
+
 	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 		
-		self.textField.text = TagsDataSource[indexPath.item]
+		self.textField.text = tagsDataSource[indexPath.item] as String
 		let cell = collectionView.cellForItemAtIndexPath(indexPath) as! TagsCollectionViewCell
 		cell.backgroundColor = UIColor.whiteColor()
 		cell.tagName.textColor = UIColor.blackColor()
 		
 		if let delegate = self.sharingDelegate
 		{
-			delegate.updateUserInfoText(TagsDataSource[indexPath.item])
+			delegate.updateUserInfoText(tagsDataSource[indexPath.item] as String)
 		}
 	}
 	
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
 	{
-		var data = TagsDataSource[indexPath.item]
+		var data = tagsDataSource[indexPath.item]
 		let font = UIFont(name: "Giddyup Std", size: 25)
 		let attributes : [NSObject : AnyObject!] = [NSFontAttributeName : font]
 		
@@ -340,6 +378,27 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 		toggleShareButtonBgAnimation()
 	}
 	
+	private func sortDataSource(words :[String], emojis : [String]) ->[String]
+	{
+		let lowestCount = words.count >= emojis.count ?  emojis.count : words.count
+		
+		
+		var result = [String]()
+		var index = 0
+		for i in 0..<lowestCount
+		{
+			index++;
+			result.append(words[i])
+			result.append(emojis[i])
+		}
+		
+		println("i is \(index) and words.count is \(words.count)")
+		var arrayWithExtras = words.count >= emojis.count ? words : emojis
+		arrayWithExtras.removeRange(Range<Int>(start: 0, end: index))
+		result.extend(arrayWithExtras)
+		
+		return result;
+	}
 	
 	private func isSaveButtonOpen() -> Bool
 	{
