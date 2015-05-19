@@ -19,9 +19,8 @@ class TMStarMask: NSObject, TMMask {
 	{
 		let rectForOval = CGRect(x: 0, y: 0,width: bounds.width, height: bounds.width)
 		let starPath = StarMaskPathBuilder().starPath(x: rectForOval.midX, y: rectForOval.midY, radius: bounds.width/5, sides: 5, pointyness: CGFloat(2.5))
-		var somepath = UIBezierPath(CGPath: starPath)
 		
-		return somepath.CGPath
+		return starPath
 	}
 	
 	var cameraBounds : CGRect{
