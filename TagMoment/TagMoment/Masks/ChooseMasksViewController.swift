@@ -36,12 +36,13 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 		masksCarousel.pagingEnabled = true
 		self.masksViewModels = MaskFactory.getViewModels()
 		masksCarousel.reloadData()
+		masksCarousel.scrollToItemAtIndex(5, animated: false)
 		
     }
 
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
-		if let view = masksCarousel.itemViewAtIndex(0)
+		if let view = masksCarousel.itemViewAtIndex(5)
 		{
 			let subview = view as! MaskCollectionViewCell
 			subview.highlighted = true
@@ -49,8 +50,13 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 			self.masksChooseDelegate?.maskChosen(self.masksViewModels?[index].name!)
 		}
 		self.masksChooseDelegate?.maskChosen(self.masksViewModels?[masksCarousel.currentItemIndex].name!)
+		NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("scrollAnimation:"), userInfo: nil, repeats: false)
 	}
 	
+	@objc func scrollAnimation(sender : AnyObject!)
+	{
+		masksCarousel.scrollToItemAtIndex(0, duration: 2.5)
+	}
 	// MARK: - UICollectionView delegation & datasource
 	func numberOfItemsInCarousel(carousel: iCarousel!) -> Int {
 		if let count = self.masksViewModels?.count

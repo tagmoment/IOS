@@ -23,4 +23,21 @@ extension MainViewController
 		maskLayer.path = mask!.clippingPathWithRect(mask!.cameraBounds)
 		return (maskLayer,mask!.cameraBounds)
 	}
+	
+	func initBlurredOverLay(toView holder: UIView)
+	{
+		if let theClass: AnyClass = NSClassFromString("UIVisualEffectView") {
+			if !UIAccessibilityIsReduceTransparencyEnabled() {
+				let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+				blurredView = UIVisualEffectView(effect: blurEffect)
+//				blurredView?.alpha = 0.5
+				holder.pinSubViewToAllEdges(blurredView!);
+				
+			} else {
+				holder.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
+			}
+		} else {
+			holder.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
+		}
+	}
 }
