@@ -20,7 +20,6 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 
 	@IBOutlet weak var filterButtonsCollecionView: UICollectionView!
 	@IBOutlet weak var someSlider : UISlider!
-	@IBOutlet weak var disabledSlider : UIImageView!
 	
 	@IBOutlet weak var sliderCenterYConstraint : NSLayoutConstraint!
 	
@@ -173,12 +172,11 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 		if (filterModel.supportsChangingValues())
 		{
 			self.someSlider.hidden = false
-			self.disabledSlider.hidden = true
+			
 		}
 		else
 		{
 			self.workingImageView().image = self.workingImage()
-			self.disabledSlider.hidden = false
 			self.someSlider.hidden = true
 			
 		}
@@ -230,7 +228,6 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 		if (self.currentFilterModel.supportsChangingValues())
 		{
 			self.someSlider.hidden = false
-			self.disabledSlider.hidden = true
 			self.currentFilterModel.inputImage(self.currentCIImage)
 			
 		}
@@ -238,7 +235,6 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 		{
 			self.workingImageView().image = self.workingImage()
 			self.someSlider.hidden = true
-			self.disabledSlider.hidden = false
 		}
 		let tempSliderValue = self.someSlider.value
 		self.someSlider.value = lastSliderValue;
