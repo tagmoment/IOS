@@ -25,6 +25,8 @@
 		F14A81471A58B52700B5D14F /* TMHeartMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A81461A58B52700B5D14F /* TMHeartMask.swift */; };
 		F14C27081AC9E58800C19968 /* LeftAligned.m in Sources */ = {isa = PBXBuildFile; fileRef = F14C27071AC9E58800C19968 /* LeftAligned.m */; };
 		F14C270A1AC9E86700C19968 /* TMSunFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14C27091AC9E86700C19968 /* TMSunFilter.swift */; };
+		F14FDB071B0BD9C4002C4A5D /* TMStarMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14FDB061B0BD9C4002C4A5D /* TMStarMask.swift */; };
+		F14FDB091B0BDA07002C4A5D /* StarMaskPathBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14FDB081B0BDA07002C4A5D /* StarMaskPathBuilder.swift */; };
 		F156B4281A5C918600B1E0EA /* TMMaskCasual.swift in Sources */ = {isa = PBXBuildFile; fileRef = F156B4271A5C918600B1E0EA /* TMMaskCasual.swift */; };
 		F15AD4131B029A1700D18472 /* TMTopHalfCircleMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15AD4121B029A1700D18472 /* TMTopHalfCircleMask.swift */; };
 		F15AD4151B029D4000D18472 /* TMBottomHalfCircleMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15AD4141B029D4000D18472 /* TMBottomHalfCircleMask.swift */; };
@@ -122,6 +124,8 @@
 		F14C27061AC9E58800C19968 /* LeftAligned.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftAligned.h; sourceTree = "<group>"; };
 		F14C27071AC9E58800C19968 /* LeftAligned.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftAligned.m; sourceTree = "<group>"; };
 		F14C27091AC9E86700C19968 /* TMSunFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMSunFilter.swift; sourceTree = "<group>"; };
+		F14FDB061B0BD9C4002C4A5D /* TMStarMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMStarMask.swift; sourceTree = "<group>"; };
+		F14FDB081B0BDA07002C4A5D /* StarMaskPathBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarMaskPathBuilder.swift; sourceTree = "<group>"; };
 		F156B4271A5C918600B1E0EA /* TMMaskCasual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMMaskCasual.swift; sourceTree = "<group>"; };
 		F15AD4121B029A1700D18472 /* TMTopHalfCircleMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMTopHalfCircleMask.swift; sourceTree = "<group>"; };
 		F15AD4141B029D4000D18472 /* TMBottomHalfCircleMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMBottomHalfCircleMask.swift; sourceTree = "<group>"; };
@@ -426,6 +430,8 @@
 				F14A81461A58B52700B5D14F /* TMHeartMask.swift */,
 				F156B4271A5C918600B1E0EA /* TMMaskCasual.swift */,
 				F15AD4141B029D4000D18472 /* TMBottomHalfCircleMask.swift */,
+				F14FDB061B0BD9C4002C4A5D /* TMStarMask.swift */,
+				F14FDB081B0BDA07002C4A5D /* StarMaskPathBuilder.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -611,11 +617,13 @@
 				F101F1611A6B202D004849F1 /* SlidingView.swift in Sources */,
 				F175A1311AD850B800760025 /* FilterConstantParameter.swift in Sources */,
 				F101858F1A674120003F906E /* FilterCollectionViewCell.swift in Sources */,
+				F14FDB071B0BD9C4002C4A5D /* TMStarMask.swift in Sources */,
 				F1ECA3741A88157A0018EFA2 /* TMVintageFilter.swift in Sources */,
 				F16A45231A93930700230DAD /* TMFilterBase.swift in Sources */,
 				F19620C51A881B7300DCFB85 /* TMSurpriseFilter.swift in Sources */,
 				F1D4B6B31A880B3900396E25 /* TMCoffeeFilter.swift in Sources */,
 				F16112361AED7C3800A453C6 /* ClippingViewWithTouch.swift in Sources */,
+				F14FDB091B0BDA07002C4A5D /* StarMaskPathBuilder.swift in Sources */,
 				F175A1331AD859F500760025 /* TMAlphaFilterBase.swift in Sources */,
 				F10185961A67434F003F906E /* ViewLayoutUtils.swift in Sources */,
 				F175A1351AD85E6F00760025 /* TMGamerFilter.swift in Sources */,
