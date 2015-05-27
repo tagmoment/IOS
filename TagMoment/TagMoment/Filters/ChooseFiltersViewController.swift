@@ -152,7 +152,7 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 		var imageOn = imageName + "_on"
 		cell.iconImageView.image = UIImage(named: imageOn)
 		cell.iconImageView.alpha = cell.selected ? 1.0 : 0.3
-		cell.filterName.text = filterModel.displayName
+		cell.filterName.text = filterModel.displayName.lowercaseString
 		return cell
 	}
 	

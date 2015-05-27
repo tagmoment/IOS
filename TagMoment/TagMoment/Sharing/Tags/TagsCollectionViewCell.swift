@@ -13,7 +13,7 @@ class TagsCollectionViewCell: UICollectionViewCell {
 	@IBOutlet weak var tagName: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.layer.cornerRadius = self.frame.height/2
+        self.layer.cornerRadius = self.frame.height/2 - 1
     }
 	
 	

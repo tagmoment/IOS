@@ -345,8 +345,8 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		}
 		else
 		{
-			infoTopConstraint.constant = controlsContainerHeight - endFrame.height - 104
-			sharingController.tagsHeightConstraint.constant = 104
+			infoTopConstraint.constant = controlsContainerHeight - endFrame.height - 150
+			sharingController.tagsHeightConstraint.constant = 150
 			
 		}
 		
@@ -365,8 +365,31 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		else
 		{
 			self.userLabel.hidden = false
-			self.userLabel.text = newText
+			self.userLabel.attributedText =  fixBaselineForUserLabelText(newText, textBaselineOffset: -2, emojiBaselineOffset: -3)
+			self.sharingController.textField.attributedText = fixBaselineForUserLabelText(newText, textBaselineOffset: -2, emojiBaselineOffset: -4)
 		}
+	}
+	
+	private func fixBaselineForUserLabelText(text : String, textBaselineOffset : Int, emojiBaselineOffset : Int) -> NSAttributedString
+	{
+		let words = text.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+		var attrString = NSMutableAttributedString(string: text)
+		
+		let totalRange = NSRange(location: 0,length: count(text))
+		for word in words
+		{
+			let regex = NSRegularExpression(pattern: word, options: NSRegularExpressionOptions(0), error: nil)
+			regex?.enumerateMatchesInString(text, options: NSMatchingOptions(0), range: totalRange, usingBlock: { (checkingResult : NSTextCheckingResult!, matchingFlags: NSMatchingFlags, stop: UnsafeMutablePointer<ObjCBool>) -> Void in
+				
+				let subRange = checkingResult.rangeAtIndex(0)
+				let baselineValue = contains(self.sharingController.TagsDataSourceeEmojis, word) ? emojiBaselineOffset : textBaselineOffset
+
+				attrString.addAttribute(NSBaselineOffsetAttributeName, value: baselineValue, range: subRange)
+			})
+			
+		}
+		
+		return attrString
 	}
 	
 	func textEditingDidEnd() {

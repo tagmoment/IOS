@@ -302,7 +302,7 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 			context: nil)
 	
 		
-		return CGSize(width: ceil(size.width) + 30, height: 22)
+		return CGSize(width: ceil(size.width) + 42, height: 34)
 	}
 	
 	

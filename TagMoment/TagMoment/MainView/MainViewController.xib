@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -47,7 +47,10 @@
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#moment" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W4I-ty-ZYe" userLabel="tagMomentLabel">
-                    <rect key="frame" x="234" y="332" width="78" height="28"/>
+                    <rect key="frame" x="234" y="360" width="78" height="0.0"/>
+                    <constraints>
+                        <constraint firstAttribute="height" id="9Xy-f5-g4W"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="GiddyupStd" family="Giddyup Std" pointSize="28"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
@@ -65,16 +68,15 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hwp-Bm-Gjq" userLabel="userLabel">
-                    <rect key="frame" x="312" y="303" width="0.0" height="35"/>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hwp-Bm-Gjq" userLabel="userLabel" customClass="PaddedLabel" customModule="TagMoment" customModuleProvider="target">
+                    <rect key="frame" x="312" y="316" width="0.0" height="34"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                     <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.0"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="35" id="iqi-Ux-IqS"/>
+                        <constraint firstAttribute="height" constant="34" id="iqi-Ux-IqS"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="GiddyupStd" family="Giddyup Std" pointSize="28"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" name="GiddyupStd" family="Giddyup Std" pointSize="22"/>
                     <nil key="highlightedColor"/>
-                    <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.57999999999999996" colorSpace="calibratedRGB"/>
                     <size key="shadowOffset" width="0.0" height="0.0"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
@@ -106,7 +108,7 @@
                 <constraint firstItem="HAf-SR-1E8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hAr-jd-Qdz"/>
                 <constraint firstItem="gpi-ca-Rk4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="r04-au-x94"/>
                 <constraint firstItem="gpi-ca-Rk4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="yDX-4i-kDl"/>
-                <constraint firstItem="W4I-ty-ZYe" firstAttribute="top" secondItem="hwp-Bm-Gjq" secondAttribute="bottom" constant="-6" id="zsj-Kw-v3R"/>
+                <constraint firstItem="W4I-ty-ZYe" firstAttribute="top" secondItem="hwp-Bm-Gjq" secondAttribute="bottom" constant="10" id="zsj-Kw-v3R"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <variation key="default">
