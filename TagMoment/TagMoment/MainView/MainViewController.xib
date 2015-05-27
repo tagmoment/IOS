@@ -46,8 +46,8 @@
                     <rect key="frame" x="0.0" y="364" width="320" height="204"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#moment" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W4I-ty-ZYe" userLabel="tagMomentLabel">
-                    <rect key="frame" x="234" y="360" width="78" height="0.0"/>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W4I-ty-ZYe" userLabel="tagMomentLabel">
+                    <rect key="frame" x="312" y="360" width="0.0" height="0.0"/>
                     <constraints>
                         <constraint firstAttribute="height" id="9Xy-f5-g4W"/>
                     </constraints>

@@ -252,8 +252,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		UIGraphicsBeginImageContext(self.canvas.frame.size);
 		self.canvas.image?.drawInRect(self.canvas.bounds);
 		self.secondImageView.drawViewHierarchyInRect(self.secondImageView.frame, afterScreenUpdates: true)
-		self.userLabel.drawTextInRect(self.userLabel.frame)
-		self.logoLabel.drawTextInRect(self.logoLabel.frame)
+		self.userLabel.drawViewHierarchyInRect(self.userLabel.frame, afterScreenUpdates: true)
 		let newImage = UIGraphicsGetImageFromCurrentImageContext()
 		UIGraphicsEndImageContext();
 		return newImage;
@@ -361,6 +360,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		if newText.isEmpty
 		{
 			self.userLabel.hidden = true
+			self.userLabel.attributedText = nil
 		}
 		else
 		{
