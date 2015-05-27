@@ -9,6 +9,7 @@
 import UIKit
 
 
+
 protocol ChooseMasksControllerDelegate : class{
 	func maskChosen(name : String?)
 	func captureButtonPressed()
@@ -16,6 +17,8 @@ protocol ChooseMasksControllerDelegate : class{
 }
 
 class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouselDelegate{
+	
+	static var didMasksScroll = false
 	
 	let CellIdent = "CellIdent"
 
@@ -36,21 +39,25 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 		masksCarousel.pagingEnabled = true
 		self.masksViewModels = MaskFactory.getViewModels()
 		masksCarousel.reloadData()
-		masksCarousel.scrollToItemAtIndex(5, animated: false)
 		
+		let startIndex = ChooseMasksViewController.didMasksScroll ? 0 : 5
+		masksCarousel.scrollToItemAtIndex(startIndex, animated: false)
     }
 
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
-		if let view = masksCarousel.itemViewAtIndex(5)
+		if let view = masksCarousel.itemViewAtIndex(masksCarousel.currentItemIndex)
 		{
 			let subview = view as! MaskCollectionViewCell
 			subview.highlighted = true
-			let index = masksCarousel.indexOfItemView(view)
-			self.masksChooseDelegate?.maskChosen(self.masksViewModels?[index].name!)
+			self.masksChooseDelegate?.maskChosen(self.masksViewModels?[masksCarousel.currentItemIndex].name!)
 		}
-		self.masksChooseDelegate?.maskChosen(self.masksViewModels?[masksCarousel.currentItemIndex].name!)
-		NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("scrollAnimation:"), userInfo: nil, repeats: false)
+		
+		if !ChooseMasksViewController.didMasksScroll
+		{
+			ChooseMasksViewController.didMasksScroll = true
+			NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("scrollAnimation:"), userInfo: nil, repeats: false)
+		}
 	}
 	
 	@objc func scrollAnimation(sender : AnyObject!)
