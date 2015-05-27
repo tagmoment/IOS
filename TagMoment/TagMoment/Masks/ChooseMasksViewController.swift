@@ -19,6 +19,7 @@ protocol ChooseMasksControllerDelegate : class{
 class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouselDelegate{
 	
 	static var didMasksScroll = false
+	static var lastMaskIndex = 0
 	
 	let CellIdent = "CellIdent"
 
@@ -40,7 +41,7 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 		self.masksViewModels = MaskFactory.getViewModels()
 		masksCarousel.reloadData()
 		
-		let startIndex = ChooseMasksViewController.didMasksScroll ? 0 : 5
+		let startIndex = ChooseMasksViewController.didMasksScroll ? ChooseMasksViewController.lastMaskIndex : 5
 		masksCarousel.scrollToItemAtIndex(startIndex, animated: false)
     }
 
@@ -98,6 +99,7 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 	}
 	
 	func carouselCurrentItemIndexDidChange(carousel: iCarousel!) {
+		
 		for view in carousel.visibleItemViews
 		{
 			let subview = view as! MaskCollectionViewCell
@@ -108,6 +110,7 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 			let subview = view as! MaskCollectionViewCell
 			subview.highlighted = true
 			let index = masksCarousel.indexOfItemView(view)
+			ChooseMasksViewController.lastMaskIndex = index
 			self.masksChooseDelegate?.maskChosen(self.masksViewModels?[index].name!)
 		}
 		
