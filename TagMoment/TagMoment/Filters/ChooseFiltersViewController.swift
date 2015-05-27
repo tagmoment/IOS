@@ -182,8 +182,11 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 		}
 		self.someSlider.value = 1.0;
 		sliderValueChanged(self.someSlider)
-		
+		scrollToMoreVisibleCellsIfNeeded()
+
 	}
+	
+	
 	
 	func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
 		let filterModel = TMFilterFactory.getFilters()[indexPath.item]
@@ -195,6 +198,24 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 			casted.iconImageView.alpha = 0.3
 		}
 		
+	}
+	
+	private func scrollToMoreVisibleCellsIfNeeded()
+	{
+		let selected = self.filterButtonsCollecionView.indexPathsForSelectedItems()
+		let indexPath = selected[0] as! NSIndexPath
+		let cell = self.filterButtonsCollecionView.cellForItemAtIndexPath(indexPath)
+		
+		if (cell!.frame.origin.x - self.filterButtonsCollecionView.contentOffset.x < 0)
+		{
+			var indexPathItem = indexPath.item == 0 ? indexPath.item : indexPath.item - 1
+			self.filterButtonsCollecionView.scrollToItemAtIndexPath(NSIndexPath(forItem: indexPathItem, inSection: indexPath.section), atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
+		}
+		else if (cell!.frame.maxX > self.filterButtonsCollecionView.contentOffset.x + self.filterButtonsCollecionView.frame.width)
+		{
+			var indexPathItem = indexPath.item == TMFilterFactory.getFilters().count - 1 ? indexPath.item : indexPath.item + 1
+			self.filterButtonsCollecionView.scrollToItemAtIndexPath(NSIndexPath(forItem: indexPathItem, inSection: indexPath.section), atScrollPosition: UICollectionViewScrollPosition.Right, animated: true)
+		}
 	}
 	
 	func saveCurrentState()

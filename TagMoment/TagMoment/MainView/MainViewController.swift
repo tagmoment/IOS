@@ -209,7 +209,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	
 	func changeSingleCaptureBehaviour()
 	{
-		if (!isOnFirstStage())
+		if (!isOnFirstStage() && self.masksViewController != nil)
 		{
 			if (self.masksViewController.maskAllowsSecondCapture())
 			{
