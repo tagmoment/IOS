@@ -41,6 +41,6 @@ class SlidingButton: UIView {
 	override func layoutSubviews() {
 		super.layoutSubviews()
 		background.frame = self.bounds
-		slidingImage.frame = CGRect(
+//		slidingImage.frame = CGRect(
 	}
 }
