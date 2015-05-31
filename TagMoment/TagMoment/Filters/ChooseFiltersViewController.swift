@@ -206,15 +206,18 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 		let indexPath = selected[0] as! NSIndexPath
 		let cell = self.filterButtonsCollecionView.cellForItemAtIndexPath(indexPath)
 		
-		if (cell!.frame.origin.x - self.filterButtonsCollecionView.contentOffset.x < 0)
+		if (cell != nil)
 		{
-			var indexPathItem = indexPath.item == 0 ? indexPath.item : indexPath.item - 1
-			self.filterButtonsCollecionView.scrollToItemAtIndexPath(NSIndexPath(forItem: indexPathItem, inSection: indexPath.section), atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
-		}
-		else if (cell!.frame.maxX > self.filterButtonsCollecionView.contentOffset.x + self.filterButtonsCollecionView.frame.width)
-		{
-			var indexPathItem = indexPath.item == TMFilterFactory.getFilters().count - 1 ? indexPath.item : indexPath.item + 1
-			self.filterButtonsCollecionView.scrollToItemAtIndexPath(NSIndexPath(forItem: indexPathItem, inSection: indexPath.section), atScrollPosition: UICollectionViewScrollPosition.Right, animated: true)
+			if (cell!.frame.origin.x - self.filterButtonsCollecionView.contentOffset.x < 0)
+			{
+				var indexPathItem = indexPath.item == 0 ? indexPath.item : indexPath.item - 1
+				self.filterButtonsCollecionView.scrollToItemAtIndexPath(NSIndexPath(forItem: indexPathItem, inSection: indexPath.section), atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
+			}
+			else if (cell!.frame.maxX > self.filterButtonsCollecionView.contentOffset.x + self.filterButtonsCollecionView.frame.width)
+			{
+				var indexPathItem = indexPath.item == TMFilterFactory.getFilters().count - 1 ? indexPath.item : indexPath.item + 1
+				self.filterButtonsCollecionView.scrollToItemAtIndexPath(NSIndexPath(forItem: indexPathItem, inSection: indexPath.section), atScrollPosition: UICollectionViewScrollPosition.Right, animated: true)
+			}
 		}
 	}
 	
