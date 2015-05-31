@@ -32,6 +32,7 @@
 		F15AD4131B029A1700D18472 /* TMTopHalfCircleMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15AD4121B029A1700D18472 /* TMTopHalfCircleMask.swift */; };
 		F15AD4151B029D4000D18472 /* TMBottomHalfCircleMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15AD4141B029D4000D18472 /* TMBottomHalfCircleMask.swift */; };
 		F15AD4171B029E4200D18472 /* TMDiamondMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15AD4161B029E4200D18472 /* TMDiamondMask.swift */; };
+		F15F398E1B1BB260002ADAAF /* SlidingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15F398D1B1BB260002ADAAF /* SlidingButton.swift */; };
 		F1604C701A574CC40055C721 /* image1.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F1604C6E1A574CC40055C721 /* image1.jpeg */; };
 		F1604C711A574CC40055C721 /* image2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = F1604C6F1A574CC40055C721 /* image2.jpeg */; };
 		F16112361AED7C3800A453C6 /* ClippingViewWithTouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16112351AED7C3800A453C6 /* ClippingViewWithTouch.swift */; };
@@ -133,6 +134,7 @@
 		F15AD4121B029A1700D18472 /* TMTopHalfCircleMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMTopHalfCircleMask.swift; sourceTree = "<group>"; };
 		F15AD4141B029D4000D18472 /* TMBottomHalfCircleMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMBottomHalfCircleMask.swift; sourceTree = "<group>"; };
 		F15AD4161B029E4200D18472 /* TMDiamondMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMDiamondMask.swift; sourceTree = "<group>"; };
+		F15F398D1B1BB260002ADAAF /* SlidingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingButton.swift; sourceTree = "<group>"; };
 		F1604C6E1A574CC40055C721 /* image1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image1.jpeg; sourceTree = "<group>"; };
 		F1604C6F1A574CC40055C721 /* image2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image2.jpeg; sourceTree = "<group>"; };
 		F16112351AED7C3800A453C6 /* ClippingViewWithTouch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClippingViewWithTouch.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				F17A416C1AB477930074E5F5 /* TMTextField.swift */,
 				F16112351AED7C3800A453C6 /* ClippingViewWithTouch.swift */,
 				F161782D1B16525C00444D9E /* PaddedLabel.swift */,
+				F15F398D1B1BB260002ADAAF /* SlidingButton.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -642,6 +645,7 @@
 				F175A1331AD859F500760025 /* TMAlphaFilterBase.swift in Sources */,
 				F10185961A67434F003F906E /* ViewLayoutUtils.swift in Sources */,
 				F175A1351AD85E6F00760025 /* TMGamerFilter.swift in Sources */,
+				F15F398E1B1BB260002ADAAF /* SlidingButton.swift in Sources */,
 				F1D4B6AF1A8809AD00396E25 /* TMSunsetFilter.swift in Sources */,
 				F1DDA81F1AD99D730005DEDD /* MainViewController+SmallScreen.swift in Sources */,
 				F109CE9E1A56F8770011CA55 /* AppDelegate.swift in Sources */,
