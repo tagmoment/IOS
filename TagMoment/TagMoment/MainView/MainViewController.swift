@@ -93,10 +93,34 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	func croppedImageDidPress(sender: AnyObject)
 	{
 		let tapRecog = sender as! UITapGestureRecognizer
+		
+		
 		if (filtersViewController != nil)
 		{
-			var value = (self.secondImageView === tapRecog.view)
+			let value = (self.secondImageView === tapRecog.view)
 			filtersViewController.changeJumperSelectionState(toState: value)
+		}
+		else if (masksViewController != nil)
+		{
+			if (!isOnFirstStage() && tapRecog.view == self.canvas)
+			{
+				return;
+			}
+			
+			let innerViewTouched = (self.secondImageView === tapRecog.view && self.frontCamSessionView != nil) ? self.secondImageView : self.canvas
+			
+			
+			let point = tapRecog.locationInView(innerViewTouched)
+			let focus = CircleRectView(frame: CGRect(x: 0,y: 0,width: 50,height: 50))
+			focus.center = point
+			if innerViewTouched === self.secondImageView
+			{
+				focus.dashedLineColor = UIColor(red: 210/255, green: 105/255, blue: 30/255, alpha: 1.0)
+			}
+			innerViewTouched.addSubview(focus)
+			focus.animateDisappearance()
+			let layerHolder = frontCamSessionView ?? backCamSessionView
+			sessionService.focus(innerViewTouched === self.secondImageView, layerHolder: layerHolder!, touchPoint: point)
 		}
 	}
 	
@@ -180,7 +204,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	
 	
 	private func addVideoLayer(toView host: UIView){
-		var captureVideoPreviewLayer = sessionService.initializeSessionForCaptureLayer()
+		let captureVideoPreviewLayer = sessionService.initializeSessionForCaptureLayer()
 		captureVideoPreviewLayer.frame = host.bounds
 		host.layer.addSublayer(captureVideoPreviewLayer)
 		

@@ -43,6 +43,7 @@
 		F168646B1B1CEB8A007B61A1 /* VisualEffectsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F168646A1B1CEB8A007B61A1 /* VisualEffectsUtil.swift */; };
 		F16864721B1CF3CF007B61A1 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16864701B1CF3CF007B61A1 /* FeedbackViewController.swift */; };
 		F16864731B1CF3CF007B61A1 /* FeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F16864711B1CF3CF007B61A1 /* FeedbackViewController.xib */; };
+		F16864751B1D01B2007B61A1 /* CircleRectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16864741B1D01B2007B61A1 /* CircleRectView.swift */; };
 		F16A45231A93930700230DAD /* TMFilterBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16A45221A93930700230DAD /* TMFilterBase.swift */; };
 		F16D27761A9A712B0000F759 /* SharingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16D27741A9A712B0000F759 /* SharingViewController.swift */; };
 		F16D27771A9A712B0000F759 /* SharingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F16D27751A9A712B0000F759 /* SharingViewController.xib */; };
@@ -151,6 +152,7 @@
 		F168646A1B1CEB8A007B61A1 /* VisualEffectsUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualEffectsUtil.swift; sourceTree = "<group>"; };
 		F16864701B1CF3CF007B61A1 /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		F16864711B1CF3CF007B61A1 /* FeedbackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedbackViewController.xib; sourceTree = "<group>"; };
+		F16864741B1D01B2007B61A1 /* CircleRectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleRectView.swift; sourceTree = "<group>"; };
 		F16A45221A93930700230DAD /* TMFilterBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMFilterBase.swift; sourceTree = "<group>"; };
 		F16D27741A9A712B0000F759 /* SharingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharingViewController.swift; sourceTree = "<group>"; };
 		F16D27751A9A712B0000F759 /* SharingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SharingViewController.xib; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				F16112351AED7C3800A453C6 /* ClippingViewWithTouch.swift */,
 				F161782D1B16525C00444D9E /* PaddedLabel.swift */,
 				F15F398D1B1BB260002ADAAF /* SlidingButton.swift */,
+				F16864741B1D01B2007B61A1 /* CircleRectView.swift */,
 			);
 			path = Controls;
 			sourceTree = "<group>";
@@ -640,6 +643,7 @@
 				F175A12E1AD8370200760025 /* MainViewController.swift in Sources */,
 				F14C270A1AC9E86700C19968 /* TMSunFilter.swift in Sources */,
 				F156B4281A5C918600B1E0EA /* TMMaskCasual.swift in Sources */,
+				F16864751B1D01B2007B61A1 /* CircleRectView.swift in Sources */,
 				F168646B1B1CEB8A007B61A1 /* VisualEffectsUtil.swift in Sources */,
 				F15AD4151B029D4000D18472 /* TMBottomHalfCircleMask.swift in Sources */,
 				F19620C71A881BDE00DCFB85 /* TMTravelFilter.swift in Sources */,

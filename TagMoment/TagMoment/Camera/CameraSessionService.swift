@@ -126,6 +126,25 @@ class CameraSessionService : NSObject{
 		self.captureSession?.addOutput(self.stillImageOutputRef);
 		self.captureSession?.startRunning()
 	}
+	func focus(isFrontCamera : Bool, layerHolder : UIView, touchPoint : CGPoint)
+	{
+		let device = isFrontCamera ? frontCamera : backCamera
+		let captureLayer = layerHolder.layer.sublayers[0] as! AVCaptureVideoPreviewLayer
+		let convertedPoint = captureLayer.captureDevicePointOfInterestForPoint(touchPoint)
+		
+		if (device!.isFocusModeSupported(AVCaptureFocusMode.AutoFocus) && device!.focusPointOfInterestSupported)
+		{
+			var error = NSErrorPointer()
+			device!.lockForConfiguration(error)
+			if (error == nil)
+			{
+				device!.focusPointOfInterest = convertedPoint
+				device!.focusMode = AVCaptureFocusMode.AutoFocus
+				device!.unlockForConfiguration()
+			}
+		}
+		
+	}
 	
 	func captureImage(#endBlock: (UIImage?, NSError!) -> Void){
 		var videoConnection : AVCaptureConnection?
@@ -195,4 +214,6 @@ class CameraSessionService : NSObject{
 			}
 		}
 	}
+	
+
 }
