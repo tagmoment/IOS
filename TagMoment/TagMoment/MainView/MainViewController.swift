@@ -85,7 +85,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		infobarHolder.pinSubViewToAllEdges(navigationView)
 		navigationView.viewDelegate = self
 		changeMasksCarouselPositionIfNeeded()
-		initBlurredOverLay(toView: secondImageView)
+		blurredView = VisualEffectsUtil.initBlurredOverLay(UIBlurEffectStyle.Light, toView: secondImageView)
 		canvas.layer.masksToBounds = true
 		
     }
@@ -319,7 +319,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		self.frontCamSessionView = nil
 		self.backCamSessionView?.removeFromSuperview()
 		self.backCamSessionView = nil
-		self.initBlurredOverLay(toView: self.secondImageView)
+		blurredView = VisualEffectsUtil.initBlurredOverLay(UIBlurEffectStyle.Light, toView: self.secondImageView)
 		startSessionOnBackCam()
 		if (masksViewController == nil)
 		{

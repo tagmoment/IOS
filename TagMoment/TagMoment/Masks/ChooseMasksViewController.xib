@@ -37,6 +37,9 @@
                     </state>
                     <state key="selected" image="settingsicon_on"/>
                     <state key="highlighted" image="settingsicon_on"/>
+                    <connections>
+                        <action selector="menuButtonPressed:" destination="-1" eventType="touchUpInside" id="BV8-B3-4x6"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5b-la-WW7" userLabel="capture_button">
                     <rect key="frame" x="113" y="17" width="95" height="95"/>

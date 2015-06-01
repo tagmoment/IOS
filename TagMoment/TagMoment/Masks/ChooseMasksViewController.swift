@@ -164,4 +164,11 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 	{
 		captureButtonCenterYConstraint.constant = 0
 	}
+	
+	// MARK: - Menu handling
+	@IBAction func menuButtonPressed(sender: AnyObject) {
+		let menuCont = MenuViewController(nibName: "MenuViewController", bundle: nil)
+		UIApplication.sharedApplication().delegate?.window!?.rootViewController!.presentViewController(menuCont, animated: true, completion: nil)
+		}
+	
 }
