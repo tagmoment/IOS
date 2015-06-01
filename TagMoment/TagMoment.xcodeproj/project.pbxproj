@@ -41,6 +41,8 @@
 		F16864671B1CDFF8007B61A1 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F16864651B1CDFF8007B61A1 /* MenuViewController.xib */; };
 		F16864691B1CE2BD007B61A1 /* MainViewController+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16864681B1CE2BD007B61A1 /* MainViewController+Menu.swift */; };
 		F168646B1B1CEB8A007B61A1 /* VisualEffectsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = F168646A1B1CEB8A007B61A1 /* VisualEffectsUtil.swift */; };
+		F16864721B1CF3CF007B61A1 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16864701B1CF3CF007B61A1 /* FeedbackViewController.swift */; };
+		F16864731B1CF3CF007B61A1 /* FeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F16864711B1CF3CF007B61A1 /* FeedbackViewController.xib */; };
 		F16A45231A93930700230DAD /* TMFilterBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16A45221A93930700230DAD /* TMFilterBase.swift */; };
 		F16D27761A9A712B0000F759 /* SharingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16D27741A9A712B0000F759 /* SharingViewController.swift */; };
 		F16D27771A9A712B0000F759 /* SharingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F16D27751A9A712B0000F759 /* SharingViewController.xib */; };
@@ -147,6 +149,8 @@
 		F16864651B1CDFF8007B61A1 /* MenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuViewController.xib; sourceTree = "<group>"; };
 		F16864681B1CE2BD007B61A1 /* MainViewController+Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainViewController+Menu.swift"; sourceTree = "<group>"; };
 		F168646A1B1CEB8A007B61A1 /* VisualEffectsUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualEffectsUtil.swift; sourceTree = "<group>"; };
+		F16864701B1CF3CF007B61A1 /* FeedbackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
+		F16864711B1CF3CF007B61A1 /* FeedbackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedbackViewController.xib; sourceTree = "<group>"; };
 		F16A45221A93930700230DAD /* TMFilterBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMFilterBase.swift; sourceTree = "<group>"; };
 		F16D27741A9A712B0000F759 /* SharingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharingViewController.swift; sourceTree = "<group>"; };
 		F16D27751A9A712B0000F759 /* SharingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SharingViewController.xib; sourceTree = "<group>"; };
@@ -385,6 +389,8 @@
 			children = (
 				F16864641B1CDFF8007B61A1 /* MenuViewController.swift */,
 				F16864651B1CDFF8007B61A1 /* MenuViewController.xib */,
+				F16864701B1CF3CF007B61A1 /* FeedbackViewController.swift */,
+				F16864711B1CF3CF007B61A1 /* FeedbackViewController.xib */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -598,6 +604,7 @@
 				F1DDA8231AD9AD890005DEDD /* SmallScreenSharingButtonsView.xib in Resources */,
 				F176726A1AA515BF00588865 /* upload-dsym.sh in Resources */,
 				F1604C701A574CC40055C721 /* image1.jpeg in Resources */,
+				F16864731B1CF3CF007B61A1 /* FeedbackViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -638,6 +645,7 @@
 				F19620C71A881BDE00DCFB85 /* TMTravelFilter.swift in Sources */,
 				F14A81451A58B31500B5D14F /* TMWaveMask.swift in Sources */,
 				F1A7B7731A58AF4B0033FE64 /* MaskCollectionViewCell.swift in Sources */,
+				F16864721B1CF3CF007B61A1 /* FeedbackViewController.swift in Sources */,
 				F1B4ECE41A88072400C11FEF /* TMFilterInterface.swift in Sources */,
 				F1DDA8211AD9AD610005DEDD /* SmallScreenSharingButtonsView.swift in Sources */,
 				F1D4B6B11A880A8300396E25 /* TMCocktailFilter.swift in Sources */,

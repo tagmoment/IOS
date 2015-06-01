@@ -29,6 +29,15 @@ class MenuViewController: UIViewController {
 		self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
 	}
 	
+	@IBAction func feedbackButtonPressed(sender: AnyObject) {
+		let presentor = self.presentingViewController
+		presentor?.dismissViewControllerAnimated(true, completion: { () -> Void in
+				let feedbackCont = FeedbackViewController(nibName: "FeedbackViewController", bundle: nil)
+			UIApplication.sharedApplication().delegate?.window!?.rootViewController!.presentViewController(feedbackCont, animated: true, completion: nil)
+			})
+		
+	}
+	
 	deinit
 	{
 		NSNotificationCenter.defaultCenter().removeObserver(self)
