@@ -218,6 +218,38 @@ class TakeImageNavBar: UIView {
 		
 	}
 	
+	func takingPhotoFromAlbumAppearance(animated: Bool)
+	{
+		if (animated)
+		{
+			UIView.animateWithDuration(0.5, animations: { () -> Void in
+				self.rightButton.alpha = 0.0
+				self.middleButton.alpha = 0.0
+				self.backButton.alpha = 0.0
+				}, completion: { (finished) -> Void in
+					self.rightButton.setTitle("Next", forState: UIControlState.Normal)
+					self.rightButton.setImage(nil, forState: UIControlState.Normal)
+					self.backButton.setTitle("Cancel", forState: UIControlState.Normal)
+					self.backButton.setImage(nil, forState: UIControlState.Normal)
+					UIView.animateWithDuration(0.5, animations: { () -> Void in
+						self.rightButton.alpha = 1.0
+						self.backButton.alpha = 1.0
+						
+					})
+			})
+		}
+		else
+		{
+			self.zeroFlashState()
+			restoreMiddleButton()
+			self.rightButton.alpha = 1.0
+			self.middleButton.alpha = 1.0
+			
+		}
+		
+		
+	}
+	
 	private func toggleFlashState()
 	{
 		var newFlashState = (currentFlashState.rawValue + 1)%flashStateImages.count

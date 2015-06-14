@@ -33,7 +33,22 @@ extension UIView{
 		var constraint = NSLayoutConstraint(item: subview, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 0.0)
 		self.addConstraint(constraint)
 		
-		constraint = NSLayoutConstraint(item: subview, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
+		pinToBothEdges(subview)
+	}
+	
+	func pinSubViewToBottom(subview : UIView, heightContraint : CGFloat){
+		subview.setTranslatesAutoresizingMaskIntoConstraints(false)
+		self.addSubview(subview)
+		
+		var constraint = NSLayoutConstraint(item: subview, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0.0)
+		self.addConstraint(constraint)
+		
+		pinToBothEdges(subview)
+	}
+	
+	private func pinToBothEdges(subview: UIView)
+	{
+		var constraint = NSLayoutConstraint(item: subview, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
 		self.addConstraint(constraint)
 		
 		constraint = NSLayoutConstraint(item: subview, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)

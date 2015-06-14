@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CameraRollViewController" customModule="TagMoment" customModuleProvider="target">
+            <connections>
+                <outlet property="collectionView" destination="XQM-AQ-Mtg" id="8pv-a1-ajx"/>
+                <outlet property="sliderView" destination="n64-1k-cky" id="C5t-e7-ZYY"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n64-1k-cky">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="22"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="grab_gray copy" translatesAutoresizingMaskIntoConstraints="NO" id="Wes-hM-0z3">
+                            <rect key="frame" x="270" y="6" width="60" height="10"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="centerX" secondItem="Wes-hM-0z3" secondAttribute="centerX" id="DIe-an-e3Q"/>
+                        <constraint firstAttribute="centerY" secondItem="Wes-hM-0z3" secondAttribute="centerY" id="Yss-UO-Cwm"/>
+                        <constraint firstAttribute="height" constant="22" id="je2-nE-MXS"/>
+                    </constraints>
+                </view>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="XQM-AQ-Mtg">
+                    <rect key="frame" x="0.0" y="22" width="600" height="578"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="2" id="ZP4-Ti-5Aa" customClass="CameraRollCollectionViewLayout" customModule="TagMoment" customModuleProvider="target">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="mXr-by-Zhu"/>
+                        <outlet property="delegate" destination="-1" id="bvT-6c-iQ0"/>
+                    </connections>
+                </collectionView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="XQM-AQ-Mtg" firstAttribute="top" secondItem="n64-1k-cky" secondAttribute="bottom" id="81d-9t-LA0"/>
+                <constraint firstAttribute="trailing" secondItem="n64-1k-cky" secondAttribute="trailing" id="GvB-Tp-R86"/>
+                <constraint firstAttribute="trailing" secondItem="XQM-AQ-Mtg" secondAttribute="trailing" id="NdL-Cx-NZN"/>
+                <constraint firstItem="n64-1k-cky" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="SNc-3W-5K5"/>
+                <constraint firstAttribute="bottom" secondItem="XQM-AQ-Mtg" secondAttribute="bottom" id="d2C-ci-Ri8"/>
+                <constraint firstItem="XQM-AQ-Mtg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dfI-93-1rO"/>
+                <constraint firstItem="n64-1k-cky" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="icm-EA-RYs"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="grab_gray copy" width="60" height="10"/>
+    </resources>
+</document>

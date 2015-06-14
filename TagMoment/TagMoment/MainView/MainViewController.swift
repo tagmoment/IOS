@@ -9,6 +9,9 @@
 import UIKit
 import AVFoundation
 
+let ImageFromCameraChosenNotificationName = "ImageFromCameraChosenNotificationName"
+let ImageFromCameraNotificationKey = "Image"
+
 enum FlashState: Int{
 	case Off
 	case On
@@ -34,7 +37,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	var sessionService : CameraSessionService!
 	
 	var blurredView : UIView?
-	
+	var workingImageView : UIImageView?
 	var initialized = false
 	var controlsContainerHeight : CGFloat = CGFloat(0)
 	
@@ -64,6 +67,8 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		workingImageView = canvas
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("imageFromCameraChosenNotification:"), name: ImageFromCameraChosenNotificationName, object: nil)
 		masksViewController = ChooseMasksViewController(nibName: "ChooseMasksViewController", bundle: nil)
 		controlContainer.addViewWithConstraints(masksViewController.view, toTheRight: true)
 		
@@ -89,6 +94,11 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		canvas.layer.masksToBounds = true
 		
     }
+	
+	deinit
+	{
+		NSNotificationCenter.defaultCenter().removeObserver(self)
+	}
 	
 	func croppedImageDidPress(sender: AnyObject)
 	{
@@ -146,6 +156,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	
 	func initStageTwo()
 	{
+		workingImageView = secondImageView
 		changeSingleCaptureBehaviour()
 	}
 	
@@ -296,6 +307,45 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	
 	func nextStageRequested() {
 		
+		for cont in self.childViewControllers
+		{
+			if cont is CameraRollViewController
+			{
+				closeCameraRoll(cont as! CameraRollViewController, completion: { () -> Void in
+					self.navigationView.showLeftButton(true)
+					
+					if (self.blurredView != nil)
+					{
+						self.blurredView!.removeFromSuperview()
+						self.blurredView = nil
+					}
+					
+					if (!self.isOnSecondStage() && self.masksViewController.maskAllowsSecondCapture())
+					{
+						
+						
+						self.switchCamButtonPressed()
+						self.initStageTwo()
+					}
+					else
+					{
+						self.sessionService.stopCurrentSession()
+						self.backCamSessionView?.removeFromSuperview()
+						self.backCamSessionView = nil
+						self.frontCamSessionView?.removeFromSuperview()
+						self.frontCamSessionView = nil
+						self.initStageThree()
+						
+						
+					}
+
+				})
+				return;
+			}
+			
+		}
+		
+		
 		if (self.masksViewController != nil)
 		{
 			initStageThree()
@@ -324,7 +374,39 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		})
 	}
 	
+	private func closeCameraRoll(cameraRollCont : CameraRollViewController, completion : (() -> ())?)
+	{
+		
+		cameraRollCont.heightConstraint.constant = 22
+		self.navigationView.takingImageStageAppearance(true)
+		UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+			self.view.layoutIfNeeded()
+			}, completion: { (finished : Bool) -> Void in
+				
+				cameraRollCont.view.removeFromSuperview()
+				cameraRollCont.removeFromParentViewController()
+				if (completion != nil)
+				{
+					completion!()
+				}
+				
+		})
+
+	}
+	
 	func retakeImageRequested() {
+		for cont in self.childViewControllers
+		{
+			if cont is CameraRollViewController
+			{
+				closeCameraRoll(cont as! CameraRollViewController, completion: nil)
+				workingImageView!.image = nil
+				startSessionOnBackCam()
+				return;
+			}
+			
+		}
+		
 		if (self.infoTopConstraint.constant != 0)
 		{
 			self.infoTopConstraint.constant = 0
@@ -356,6 +438,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		}
 		self.masksViewController.takeButton.enabled = true
 		self.masksViewController.switchCamButton.enabled = true
+		workingImageView = canvas
 		
 		
 	}
@@ -504,6 +587,11 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			self.backCamSessionView = nil
 			startSessionOnFrontCam()
 		}
+		
+		if (self.backCamSessionView == nil && self.frontCamSessionView == nil)
+		{
+			startSessionOnBackCam()
+		}
 	}
 	
 	private func isOnFirstStage() -> Bool{
@@ -523,17 +611,44 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			let newImage = ImageProcessingUtil.imageFromVideoView(viewToOperateOn, originalImage: image!, shouldMirrorImage: self.frontCamSessionView != nil)
 			println("image width is \(image!.size.width) and height \(image!.size.height)")
 			
-			println("canvas width is \(newImage.size.width) and canvas height \(newImage.size.height)")
-			if (self.canvas.image == nil)
-			{
-				
-				self.canvas.image =	 newImage//Populating first stage
-			}
-			else
-			{
-				self.secondImageView.image = newImage
-			}
+			println("newImage width is \(newImage.size.width) and canvas height \(newImage.size.height)")
+			self.populateCanvasWithImage(newImage)
 		}
+	}
+	func imageFromCameraChosenNotification(notif : NSNotification)
+	{
+		let image = notif.userInfo?[ImageFromCameraNotificationKey] as! UIImage
+		
+		processImageFromPhotoAlbum(image)
+	}
+	
+	private func processImageFromPhotoAlbum(image: UIImage?) {
+		if (image != nil)
+		{
+			println("image width is \(image!.size.width) and height \(image!.size.height)")
+			let newImage = ImageProcessingUtil.imageByScalingAndCroppingForSize(image!, viewSize: workingImageView!.frame.size)
+			println("newImage width is \(newImage.size.width) and canvas height \(newImage.size.height)")
+			
+			self.populateCanvasWithImage(newImage)
+			sessionService.stopCurrentSession()
+			
+			if (self.frontCamSessionView != nil)
+			{
+				self.frontCamSessionView.removeFromSuperview()
+				self.frontCamSessionView = nil
+			}
+			else if (self.backCamSessionView != nil)
+			{
+				self.backCamSessionView.removeFromSuperview()
+				self.backCamSessionView = nil
+			}
+
+		}
+	}
+	
+	private func populateCanvasWithImage(image : UIImage)
+	{
+		workingImageView!.image = image
 	}
 	
 }
