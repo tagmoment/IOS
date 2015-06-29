@@ -12,7 +12,7 @@ import AssetsLibrary
 class CameraRollViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
 	
 	
-	
+	let VelocityThreshold = CGFloat(700)
 	let assetLibrary = ALAssetsLibrary()
 	var groups : [ALAssetsGroup] = []
 	var assetsUrls : [NSURL!] = []
@@ -59,10 +59,11 @@ class CameraRollViewController: UIViewController, UICollectionViewDataSource, UI
 	private func endSlidingDrawerMovementWithVelocity(velocity : CGPoint)
 	{
 		
-//		println(" \(velocity.y)")
+		println("velocty y is:  \(velocity.y)")
+		let velocityY = abs(velocity.y) > VelocityThreshold ? velocity.y : velocity.y > 0 ? VelocityThreshold : -VelocityThreshold
 		let targetHeight = velocity.y > 0 ? minHeight : maxHeight
 		let distanceToCover = abs(heightConstraint.constant - targetHeight)
-		let duration : NSTimeInterval = abs(distanceToCover/velocity.y).native
+		let duration : NSTimeInterval = NSTimeInterval(abs(distanceToCover/velocityY))
 		heightConstraint.constant = targetHeight
 		UIView.animateWithDuration(duration, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
 			self.view.superview?.layoutIfNeeded()

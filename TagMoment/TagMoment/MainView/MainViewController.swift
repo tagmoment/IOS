@@ -112,6 +112,11 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		}
 		else if (masksViewController != nil)
 		{
+			if (frontCamSessionView == nil && backCamSessionView == nil)
+			{
+				return;
+			}
+			
 			if (!isOnFirstStage() && tapRecog.view == self.canvas)
 			{
 				return;
@@ -401,7 +406,11 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			{
 				closeCameraRoll(cont as! CameraRollViewController, completion: nil)
 				workingImageView!.image = nil
-				startSessionOnBackCam()
+				if (self.backCamSessionView == nil && self.frontCamSessionView == nil)
+				{
+					startSessionOnBackCam()
+				}
+				
 				return;
 			}
 			
