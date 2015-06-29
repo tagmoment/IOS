@@ -21,6 +21,7 @@ let FlashStateKey = "FlashStateKey"
 
 class TakeImageNavBar: UIView {
 	
+	let DefaultAppearanceAnimationTime = 0.4
 	
 	weak var viewDelegate : NavBarDelegate?
 	
@@ -113,30 +114,22 @@ class TakeImageNavBar: UIView {
 		return FlashState.Auto
 	}
 	
-	func showLeftButton(animated: Bool)
+	
+	
+	func showLeftButton(show: Bool, animated: Bool)
 	{
-		if animated
-		{
-			UIView.animateWithDuration(0.5, animations: { () -> Void in
-				self.backButton.alpha = 1.0
-			})
-		}else
-		{
-			self.backButton.alpha = 1.0
-		}
+		self.showButton(self.backButton, show: show, animated: animated)
 	}
 	
-	func hideLeftButton(animated: Bool)
+	func showRightButton(show: Bool, animated: Bool)
 	{
-		if animated
-		{
-			UIView.animateWithDuration(0.5, animations: { () -> Void in
-				self.backButton.alpha = 0.0
-			})
-		}else
-		{
-			self.backButton.alpha = 0.0
-		}
+		self.showButton(self.rightButton, show: show, animated: animated)
+	}
+	
+	func showMiddleButton(show: Bool, animated: Bool)
+	{
+		
+		self.showButton(self.middleButton, show: show, animated: animated)
 	}
 	
 	func hideMasksButton(animated: Bool)
@@ -152,102 +145,39 @@ class TakeImageNavBar: UIView {
 		}
 	}
 
-	
-	func editingStageAppearance(animated: Bool)
+	private func showButton(view : UIView, show : Bool, animated : Bool)
 	{
+		let alpha : CGFloat = show ? 1.0 : 0.0
+		
+		if alpha == view.alpha { return }
+		
 		if animated
 		{
-			
-			UIView.animateWithDuration(0.5, animations: { () -> Void in
-				self.rightButton.alpha = 0.0
-				self.middleButton.alpha = 0.0
-			}, completion: { (finished) -> Void in
-				self.rightButton.setTitle("Next", forState: UIControlState.Normal)
-				self.rightButton.setImage(nil, forState: UIControlState.Normal)
-				UIView.animateWithDuration(0.5, animations: { () -> Void in
-					self.rightButton.alpha = 1.0
-					if let delegate = self.viewDelegate
-					{
-						delegate.editingStageWillAppear()
-					}
-				})
+			UIView.animateWithDuration(DefaultAppearanceAnimationTime, animations: { () -> Void in
+				view.alpha = alpha
 			})
-			
 		}else
 		{
-			self.rightButton.setTitle("Next", forState: UIControlState.Normal)
-			self.rightButton.setImage(nil, forState: UIControlState.Normal)
-			self.rightButton.alpha = 1.0
-			self.middleButton.alpha = 0.0
-			
+			view.alpha = alpha
 		}
 	}
 	
-	func takingImageStageAppearance(animated: Bool)
+	func applyNextButtonAppearanceToRightButton()
 	{
-		self.hideLeftButton(animated)
-		if (self.rightButton.titleForState(UIControlState.Normal) == nil)
-		{
-			return
-		}
-		
-		if (animated)
-		{
-			UIView.animateWithDuration(0.5, animations: { () -> Void in
-				self.rightButton.alpha = 0.0
-				self.middleButton.alpha = 0.0
-				}, completion: { (finished) -> Void in
-					self.zeroFlashState()
-					self.restoreMiddleButton()
-					UIView.animateWithDuration(0.5, animations: { () -> Void in
-						self.rightButton.alpha = 1.0
-						self.middleButton.alpha = 1.0
-						self.changeMasksButton.alpha = 1.0
-					})
-			})
-		}
-		else
-		{
-			self.zeroFlashState()
-			restoreMiddleButton()
-			self.rightButton.alpha = 1.0
-			self.middleButton.alpha = 1.0
-			
-		}
-		
-		
+		self.rightButton.setTitle("Next", forState: UIControlState.Normal)
+		self.rightButton.setImage(nil, forState: UIControlState.Normal)
 	}
 	
-	func takingPhotoFromAlbumAppearance(animated: Bool)
+	func applyCancelButtonAppearanceToBackButton()
 	{
-		if (animated)
-		{
-			UIView.animateWithDuration(0.5, animations: { () -> Void in
-				self.rightButton.alpha = 0.0
-				self.middleButton.alpha = 0.0
-				self.backButton.alpha = 0.0
-				}, completion: { (finished) -> Void in
-					self.rightButton.setTitle("Next", forState: UIControlState.Normal)
-					self.rightButton.setImage(nil, forState: UIControlState.Normal)
-					self.backButton.setTitle("Cancel", forState: UIControlState.Normal)
-					self.backButton.setImage(nil, forState: UIControlState.Normal)
-					UIView.animateWithDuration(0.5, animations: { () -> Void in
-						self.rightButton.alpha = 1.0
-						self.backButton.alpha = 1.0
-						
-					})
-			})
-		}
-		else
-		{
-			self.zeroFlashState()
-			restoreMiddleButton()
-			self.rightButton.alpha = 1.0
-			self.middleButton.alpha = 1.0
-			
-		}
-		
-		
+		self.backButton.setTitle("Cancel", forState: UIControlState.Normal)
+		self.backButton.setImage(nil, forState: UIControlState.Normal)
+	}
+	
+	func applyRetakeButtonAppearanceToBackButton()
+	{
+		self.backButton.setTitle("Retake", forState: UIControlState.Normal)
+		self.backButton.setImage(nil, forState: UIControlState.Normal)
 	}
 	
 	private func toggleFlashState()
@@ -259,7 +189,7 @@ class TakeImageNavBar: UIView {
 		NSNotificationCenter.defaultCenter().postNotificationName(FlashChangedNotification, object: nil, userInfo: [FlashStateKey : newFlashState])
 	}
 	
-	private func zeroFlashState()
+	func zeroFlashState()
 	{
 		currentFlashState = FlashState.Auto
 		self.rightButton.setTitle(nil, forState: UIControlState.Normal)

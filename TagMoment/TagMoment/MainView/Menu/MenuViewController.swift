@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+
 class MenuViewController: UIViewController {
 	
 	override func viewDidLoad() {
@@ -31,9 +33,7 @@ class MenuViewController: UIViewController {
 		let presentor = self.presentingViewController
 		presentor?.dismissViewControllerAnimated(true, completion: { () -> Void in
 			let cameraRollCont = CameraRollViewController(nibName: "CameraRollViewController", bundle: nil)
-			
-			
-			self.applyCameraRollConstraints(cameraRollCont)
+			self.addCameraRollController(cameraRollCont)
 			
 		})
 
@@ -53,19 +53,12 @@ class MenuViewController: UIViewController {
 		
 	}
 	
-	private func applyCameraRollConstraints(toController : CameraRollViewController)
+	private func addCameraRollController(toController : CameraRollViewController)
 	{
 		let mainController = UIApplication.sharedApplication().delegate?.window!?.rootViewController! as! MainViewController
-		
-		
-		mainController.view.pinSubViewToBottom(toController.view, heightContraint: 0.0)
-		let heightContraint = NSLayoutConstraint(item: toController.view, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 22.0)
-		toController.view.addConstraint(heightContraint)
-		toController.heightConstraint = heightContraint
+		toController.originalHeight = mainController.masksViewController.view.frame.height
+		toController.addToView(mainController.view)
 		mainController.addChildViewController(toController)
-		mainController.navigationView.takingPhotoFromAlbumAppearance(true)
-		
-		
 	}
 	
 	deinit

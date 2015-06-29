@@ -9,8 +9,15 @@
 import UIKit
 import AVFoundation
 
+// MARK: - Notifications Declarations
 let ImageFromCameraChosenNotificationName = "ImageFromCameraChosenNotificationName"
 let ImageFromCameraNotificationKey = "Image"
+
+let CameraRollWillAppearNotificationName = "CameraRollWillAppearNotificationName"
+let CameraRollDidDisappearNotificationName = "CameraRollDidDisappearNotificationName"
+let CameraRollWillDisappearNotificationName = "CameraRollWillDisappearNotificationName"
+let CameraRollDidSelectImageNotificationName = "CameraRollDidSelectImageNotificationName"
+
 
 enum FlashState: Int{
 	case Off
@@ -35,6 +42,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	var originalImageSecondary : UIImage?
 	
 	var sessionService : CameraSessionService!
+	let viewChoreographer : ViewChoreographer = ViewChoreographer()
 	
 	var blurredView : UIView?
 	var workingImageView : UIImageView?
@@ -62,6 +70,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	
 	private func commonInit() {
 		sessionService = CameraSessionService()
+		viewChoreographer.mainViewController = self
 	}
 	
 	
@@ -177,7 +186,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		controlContainer.addViewWithConstraints(filtersViewController.view, toTheRight: true)
 		changeFiltersLayoutIfNeeded()
 		controlContainer.animateEnteringView()
-		navigationView.editingStageAppearance(true)
+		viewChoreographer.editingStageAppearance(true)
 		masksViewController = nil;
 		
 	}
@@ -253,14 +262,14 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		{
 			if (self.masksViewController.maskAllowsSecondCapture())
 			{
-				self.navigationView.takingImageStageAppearance(false)
+				self.viewChoreographer.takingImageStageAppearance(false)
 				self.masksViewController.takeButton.enabled = true
 				self.masksViewController.switchCamButton.enabled = true
-				self.navigationView.showLeftButton(false)
+				
 			}
 			else
 			{
-				self.navigationView.editingStageAppearance(false)
+				self.viewChoreographer.editingStageAppearance(false)
 				self.masksViewController.takeButton.enabled = false
 				self.masksViewController.switchCamButton.enabled = false
 			}
@@ -316,9 +325,9 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		{
 			if cont is CameraRollViewController
 			{
-				closeCameraRoll(cont as! CameraRollViewController, completion: { () -> Void in
-					self.navigationView.showLeftButton(true)
-					
+				closeCameraRoll(cont as! CameraRollViewController)
+//					self.navigationView.showLeftButton(true, animated: true)
+				
 					if (self.blurredView != nil)
 					{
 						self.blurredView!.removeFromSuperview()
@@ -327,7 +336,6 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 					
 					if (!self.isOnSecondStage() && self.masksViewController.maskAllowsSecondCapture())
 					{
-						
 						
 						self.switchCamButtonPressed()
 						self.initStageTwo()
@@ -344,7 +352,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 						
 					}
 
-				})
+				
 				return;
 			}
 			
@@ -379,24 +387,10 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		})
 	}
 	
-	private func closeCameraRoll(cameraRollCont : CameraRollViewController, completion : (() -> ())?)
+	private func closeCameraRoll(cameraRollCont : CameraRollViewController)
 	{
 		
-		cameraRollCont.heightConstraint.constant = 22
-		self.navigationView.takingImageStageAppearance(true)
-		UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
-			self.view.layoutIfNeeded()
-			}, completion: { (finished : Bool) -> Void in
-				
-				cameraRollCont.view.removeFromSuperview()
-				cameraRollCont.removeFromParentViewController()
-				if (completion != nil)
-				{
-					completion!()
-				}
-				
-		})
-
+		cameraRollCont.closeView()
 	}
 	
 	func retakeImageRequested() {
@@ -404,8 +398,9 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		{
 			if cont is CameraRollViewController
 			{
-				closeCameraRoll(cont as! CameraRollViewController, completion: nil)
 				workingImageView!.image = nil
+				closeCameraRoll(cont as! CameraRollViewController)
+				
 				if (self.backCamSessionView == nil && self.frontCamSessionView == nil)
 				{
 					startSessionOnBackCam()
@@ -426,9 +421,10 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		self.logoLabel.hidden = true
 		self.userLabel.hidden = true
 		self.userLabel.text = ""
-		self.navigationView.takingImageStageAppearance(true)
+		
 		self.canvas.image = nil
 		self.secondImageView.image = nil
+		self.viewChoreographer.takingImageStageAppearance(true)
 		sessionService.stopCurrentSession()
 		self.frontCamSessionView?.removeFromSuperview()
 		self.frontCamSessionView = nil
@@ -537,8 +533,6 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			if (image != nil)
 			{
 				self.processImage(image)
-				self.navigationView.showLeftButton(true)
-				
 				if (self.blurredView != nil)
 				{
 					self.blurredView!.removeFromSuperview()
@@ -599,16 +593,16 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		
 		if (self.backCamSessionView == nil && self.frontCamSessionView == nil)
 		{
-			startSessionOnBackCam()
+			startSessionOnFrontCam()
 		}
 	}
 	
-	private func isOnFirstStage() -> Bool{
+	func isOnFirstStage() -> Bool{
 		return (self.canvas.image == nil)
 	}
 	
 	
-	private func isOnSecondStage() -> Bool{
+	func isOnSecondStage() -> Bool{
 		return (self.secondImageView.image != nil)
 	}
 	

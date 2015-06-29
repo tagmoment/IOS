@@ -11,8 +11,8 @@ import AssetsLibrary
 
 class CameraRollViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
 	
-	
-	let VelocityThreshold = CGFloat(700)
+	let MinimumHeight : CGFloat = 22
+	let VelocityThreshold : CGFloat = 700
 	let assetLibrary = ALAssetsLibrary()
 	var groups : [ALAssetsGroup] = []
 	var assetsUrls : [NSURL!] = []
@@ -79,7 +79,7 @@ class CameraRollViewController: UIViewController, UICollectionViewDataSource, UI
 			
 			if let group = assetGroup
 			{
-				group.enumerateAssetsUsingBlock({ (assetResult : ALAsset!, index: Int, stop: UnsafeMutablePointer<ObjCBool>) -> Void in
+				group.enumerateAssetsWithOptions(NSEnumerationOptions.Reverse, usingBlock : { (assetResult : ALAsset!, index: Int, stop: UnsafeMutablePointer<ObjCBool>) -> Void in
 					
 					if let asset = assetResult
 					{
@@ -105,8 +105,6 @@ class CameraRollViewController: UIViewController, UICollectionViewDataSource, UI
 	
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
-		let mainController = UIApplication.sharedApplication().delegate?.window!?.rootViewController! as! MainViewController
-		originalHeight = mainController.masksViewController.view.frame.height
 		self.heightConstraint.constant = originalHeight
 		UIView.animateWithDuration(0.3		, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
 			self.view.superview?.layoutIfNeeded()
@@ -140,7 +138,28 @@ class CameraRollViewController: UIViewController, UICollectionViewDataSource, UI
 			}) { (error : NSError!) -> Void in
 				print("There was an error")
 		}
-
-
+	}
+	func addToView(superview : UIView)
+	{
+		NSNotificationCenter.defaultCenter().postNotificationName(CameraRollWillAppearNotificationName, object: nil)
+		superview.pinSubViewToBottom(self.view, heightContraint: 0.0)
+		let heightContraint = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 22.0)
+		self.view.addConstraint(heightContraint)
+		self.heightConstraint = heightContraint
+		
+	}
+	
+	func closeView()
+	{
+		NSNotificationCenter.defaultCenter().postNotificationName(CameraRollWillDisappearNotificationName, object: nil)
+		self.heightConstraint.constant = MinimumHeight
+		UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+			self.view.superview?.layoutIfNeeded()
+			}, completion: { (finished : Bool) -> Void in
+				
+				self.view.removeFromSuperview()
+				self.removeFromParentViewController()
+				
+		})
 	}
 }

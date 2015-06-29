@@ -92,6 +92,7 @@
 		F1B190FA1AAE4DDB0001B86E /* Array+Shuffle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B190F91AAE4DDB0001B86E /* Array+Shuffle.swift */; };
 		F1B4ECE41A88072400C11FEF /* TMFilterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B4ECE31A88072400C11FEF /* TMFilterInterface.swift */; };
 		F1B4ECE61A88082B00C11FEF /* TMArtistFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B4ECE51A88082B00C11FEF /* TMArtistFilter.swift */; };
+		F1C3226F1B41D1F800091FB9 /* ViewChoreographer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C3226E1B41D1F800091FB9 /* ViewChoreographer.swift */; };
 		F1CC18341A97911300DB77F2 /* TakeImageNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CC18331A97911300DB77F2 /* TakeImageNavBar.swift */; };
 		F1D4B6AF1A8809AD00396E25 /* TMSunsetFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D4B6AE1A8809AD00396E25 /* TMSunsetFilter.swift */; };
 		F1D4B6B11A880A8300396E25 /* TMCocktailFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D4B6B01A880A8300396E25 /* TMCocktailFilter.swift */; };
@@ -210,6 +211,7 @@
 		F1B190F91AAE4DDB0001B86E /* Array+Shuffle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Shuffle.swift"; sourceTree = "<group>"; };
 		F1B4ECE31A88072400C11FEF /* TMFilterInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMFilterInterface.swift; sourceTree = "<group>"; };
 		F1B4ECE51A88082B00C11FEF /* TMArtistFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMArtistFilter.swift; sourceTree = "<group>"; };
+		F1C3226E1B41D1F800091FB9 /* ViewChoreographer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewChoreographer.swift; sourceTree = "<group>"; };
 		F1CC18331A97911300DB77F2 /* TakeImageNavBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakeImageNavBar.swift; sourceTree = "<group>"; };
 		F1D4B6AE1A8809AD00396E25 /* TMSunsetFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMSunsetFilter.swift; sourceTree = "<group>"; };
 		F1D4B6B01A880A8300396E25 /* TMCocktailFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMCocktailFilter.swift; sourceTree = "<group>"; };
@@ -423,6 +425,7 @@
 				F1AE759A1AFAB3BC00A8335B /* MainViewController+MasksHandling.swift */,
 				F1AE759C1AFAB65900A8335B /* MainViewController+CameraViews.swift */,
 				F16864681B1CE2BD007B61A1 /* MainViewController+Menu.swift */,
+				F1C3226E1B41D1F800091FB9 /* ViewChoreographer.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -680,6 +683,7 @@
 				F1A7B7661A585E180033FE64 /* MaskFactory.swift in Sources */,
 				F1A7B7621A585DF80033FE64 /* TMMask.swift in Sources */,
 				F1A7B7611A585DF80033FE64 /* TMHorizontalRectMask.swift in Sources */,
+				F1C3226F1B41D1F800091FB9 /* ViewChoreographer.swift in Sources */,
 				F101F1611A6B202D004849F1 /* SlidingView.swift in Sources */,
 				F175A1311AD850B800760025 /* FilterConstantParameter.swift in Sources */,
 				F101858F1A674120003F906E /* FilterCollectionViewCell.swift in Sources */,
