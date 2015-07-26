@@ -10,14 +10,17 @@ import UIKit
 
 class TMTextField: UITextField {
 	override func placeholderRectForBounds(bounds: CGRect) -> CGRect {
-		return CGRectMake(0.0, 4.0, bounds.width, bounds.height - 4.0)
+		let rect =  self.rightViewRectForBounds(bounds)
+		return CGRectMake(bounds.origin.x + CGRectGetWidth(rect)/2, bounds.origin.y, bounds.width, bounds.height)
 	}
 	
 	override func textRectForBounds(bounds: CGRect) -> CGRect {
-		return CGRectMake(0.0, 4.0, bounds.width, bounds.height - 4.0)
+		let rect =  self.rightViewRectForBounds(bounds)
+		return CGRectMake(bounds.origin.x + CGRectGetWidth(rect)/2, bounds.origin.y, bounds.width, bounds.height)
 	}
 	
 	override func editingRectForBounds(bounds: CGRect) -> CGRect {
-		return CGRectMake(0.0, 4.0, bounds.width, bounds.height - 4.0)
+		let rect =  self.rightViewRectForBounds(bounds)
+		return CGRectMake(bounds.origin.x + CGRectGetWidth(rect)/2, bounds.origin.y, bounds.width, bounds.height)
 	}
 }

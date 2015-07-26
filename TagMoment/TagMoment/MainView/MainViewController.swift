@@ -477,8 +477,10 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		else
 		{
 			self.userLabel.hidden = false
-			self.userLabel.attributedText =  fixBaselineForUserLabelText(newText, textBaselineOffset: -2, emojiBaselineOffset: -3)
-			self.sharingController.textField.attributedText = fixBaselineForUserLabelText(newText, textBaselineOffset: -2, emojiBaselineOffset: -4)
+			self.userLabel.text = newText
+			self.sharingController.textField.text = newText
+//			self.userLabel.attributedText =  fixBaselineForUserLabelText(newText, textBaselineOffset: -2, emojiBaselineOffset: -3)
+//			self.sharingController.textField.attributedText = fixBaselineForUserLabelText(newText, textBaselineOffset: -2, emojiBaselineOffset: -4)
 		}
 	}
 	

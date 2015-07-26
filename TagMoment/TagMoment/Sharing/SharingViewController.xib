@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="GiddyupStd.ttf">
-            <string>GiddyupStd</string>
+        <mutableArray key="Raleway-Regular.ttf">
+            <string>Raleway</string>
+            <string>Raleway</string>
+            <string>Raleway</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -54,6 +56,7 @@
                         <constraint firstAttribute="width" constant="32" id="Bjf-gV-tcU"/>
                         <constraint firstAttribute="height" constant="32" id="O08-Sx-qqS"/>
                     </constraints>
+                    <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="18"/>
                     <state key="normal" image="keep_icon">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -80,7 +83,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="niY-L9-U6D"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="GiddyupStd" family="Giddyup Std" pointSize="34"/>
+                    <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="20"/>
                     <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="done"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="Tmf-Gq-vxp"/>
@@ -213,6 +216,7 @@
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kGx-GW-XOC" userLabel="shareImageBG">
                     <rect key="frame" x="556" y="230" width="144" height="44"/>
+                    <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="18"/>
                     <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="35" maxY="0.0"/>
                     <state key="normal" backgroundImage="share_background">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>

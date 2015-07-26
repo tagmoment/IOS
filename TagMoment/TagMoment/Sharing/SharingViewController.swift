@@ -293,16 +293,16 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
 	{
 		var data = tagsDataSource[indexPath.item]
-		let font = UIFont(name: "Giddyup Std", size: 25)
+		let font = UIFont(name: "Raleway", size: 17)
 		let attributes : [NSObject : AnyObject!] = [NSFontAttributeName : font]
 		
-		let size = data.boundingRectWithSize(CGSize(width: 9999, height: 22),
+		let size = data.boundingRectWithSize(CGSize(width: 9999, height: 26),
 			options: NSStringDrawingOptions.UsesLineFragmentOrigin,
 			attributes: attributes,
 			context: nil)
 	
 		
-		return CGSize(width: ceil(size.width) + 42, height: 34)
+		return CGSize(width: ceil(size.width) + 34, height: 34)
 	}
 	
 	
