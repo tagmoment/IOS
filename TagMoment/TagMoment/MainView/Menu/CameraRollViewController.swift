@@ -9,34 +9,60 @@
 import UIKit
 import AssetsLibrary
 
-class CameraRollViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
+class CameraRollViewController: UIViewController, UIGestureRecognizerDelegate{
 	
 	let MinimumHeight : CGFloat = 22
 	let VelocityThreshold : CGFloat = 700
 	let assetLibrary = ALAssetsLibrary()
+	
 	var groups : [ALAssetsGroup] = []
-	var assetsUrls : [NSURL!] = []
+	var assetsUrls = [ALAssetsGroup : [NSURL]]()
 	
 	var heightConstraint : NSLayoutConstraint!
 	var minHeight : CGFloat = 0
 	var maxHeight : CGFloat = 0
 	var originalHeight : CGFloat!
 	
-	@IBOutlet weak var collectionView: UICollectionView!
+	var navCont : UINavigationController!
 	@IBOutlet weak var sliderView: UIView!
 
 	let CellReuseIdent = "reuseIdent"
 	
     override func viewDidLoad() {
+		
         super.viewDidLoad()
-		collectionView.registerNib(UINib(nibName: "CameraRollCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: CellReuseIdent)
-		loadImages()
+		self.view.clipsToBounds = true
 		let panRecog = UIPanGestureRecognizer(target: self, action: Selector("sliderDidPan:"))
+		panRecog.delegate = self;
 		self.sliderView.addGestureRecognizer(panRecog)
 		let mainController = UIApplication.sharedApplication().delegate?.window!?.rootViewController! as! MainViewController
 		minHeight = mainController.masksViewController.view.frame.height
 		maxHeight = mainController.view.frame.height - mainController.infobarHolder.frame.height
+		
+		prepareNavigation()
+		loadImages()
     }
+	
+	private func prepareNavigation()
+	{
+		let albumsContainerController = AlbumCoverCollectionViewController(nibName: "AlbumCoverCollectionViewController", bundle: nil)
+		navCont = UINavigationController(rootViewController: albumsContainerController)
+		navCont.view.frame = CGRect(x: 0, y: -navCont.navigationBar.frame.size.height + CGRectGetHeight(self.sliderView.frame), width: CGRectGetWidth(self.sliderView.frame), height: CGRectGetHeight(self.view.frame) + navCont.navigationBar.frame.size.height - CGRectGetHeight(self.sliderView.frame))
+		self.view.addSubview(navCont.view!)
+		navCont.navigationBar.barStyle = UIBarStyle.Black
+		albumsContainerController.assetLibrary = self.assetLibrary
+		albumsContainerController.title = "Phone Albums"
+		var albumCont = AlbumContentsCollectionViewController(nibName: "AlbumContentsCollectionViewController", bundle: nil)
+		albumCont.assetLibrary = self.assetLibrary
+		navCont.pushViewController(albumCont, animated: false)
+		navCont.navigationBar.tintColor = UIColor.whiteColor()
+		self.view.bringSubviewToFront(self.sliderView)
+		
+	}
+	
+	func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+		return self.navCont.viewControllers.count != 1
+	}
 	
 	func sliderDidPan(sender: AnyObject!)
 	{
@@ -44,6 +70,13 @@ class CameraRollViewController: UIViewController, UICollectionViewDataSource, UI
 		
 		switch (panGest.state)
 		{
+		case .Began:
+			if (heightConstraint.constant == self.maxHeight)
+			{
+				self.hideNavigationBar()
+			}
+			
+			
 		case .Changed:
 			
 			heightConstraint.constant = min(maxHeight, max(minHeight,originalHeight - panGest.translationInView(self.view).y))
@@ -69,8 +102,26 @@ class CameraRollViewController: UIViewController, UICollectionViewDataSource, UI
 			self.view.superview?.layoutIfNeeded()
 			}, completion: { (finished: Bool) -> Void in
 				self.originalHeight = self.heightConstraint.constant
+				if (targetHeight == self.maxHeight)
+				{
+					self.showNavigationBar()
+				}
 		})
 		
+	}
+	
+	func showNavigationBar()
+	{
+		UIView.animateWithDuration(0.2, animations: { () -> Void in
+			self.navCont.view.frame = CGRect(x: 0, y: CGRectGetHeight(self.sliderView.frame), width: CGRectGetWidth(self.sliderView.frame), height: CGRectGetHeight(self.view.frame) - CGRectGetHeight(self.sliderView.frame))
+		})
+	}
+	
+	func hideNavigationBar()
+	{
+		UIView.animateWithDuration(0.3, animations: { () -> Void in
+			self.navCont.view.frame = CGRect(x: 0, y: -self.navCont.navigationBar.frame.size.height + CGRectGetHeight(self.sliderView.frame), width: CGRectGetWidth(self.sliderView.frame), height: CGRectGetHeight(self.view.frame) + self.navCont.navigationBar.frame.size.height - CGRectGetHeight(self.sliderView.frame))
+		})
 	}
 	
 	private func loadImages()
@@ -79,28 +130,53 @@ class CameraRollViewController: UIViewController, UICollectionViewDataSource, UI
 			
 			if let group = assetGroup
 			{
+				var assetsUrlsForGroup = [NSURL]()
 				group.enumerateAssetsWithOptions(NSEnumerationOptions.Reverse, usingBlock : { (assetResult : ALAsset!, index: Int, stop: UnsafeMutablePointer<ObjCBool>) -> Void in
+					
 					
 					if let asset = assetResult
 					{
 						if (asset.valueForProperty(ALAssetPropertyType) as! String == ALAssetTypePhoto)
 						{
-							self.assetsUrls.append(asset.defaultRepresentation().url())
+							assetsUrlsForGroup.append(asset.defaultRepresentation().url())
+//							self.assetsUrls.append(asset.defaultRepresentation().url())
 						}
 					}
 					else
 					{
 						print("finished")
-						self.collectionView.reloadData()
 					}
 					
 				})
-				self.groups.append(group)
+				let groupName = group.valueForProperty(ALAssetsGroupPropertyName) as! String
+				println("\(groupName)")
+				if (assetsUrlsForGroup.count != 0)
+				{
+					self.assetsUrls[group] = assetsUrlsForGroup
+					self.groups.append(group)
+					
+					if (groupName == "Camera Roll")
+					{
+						let albumCont = self.navCont.topViewController as! AlbumContentsCollectionViewController
+						albumCont.assetsUrls = assetsUrlsForGroup
+						albumCont.collectionView?.reloadData()
+						albumCont.title = groupName
+					}
+					
+					let albumCoversCont = self.navCont.viewControllers[0] as! AlbumCoverCollectionViewController
+					albumCoversCont.groups = self.groups
+					albumCoversCont.assetsUrls = self.assetsUrls
+					albumCoversCont.collectionView?.reloadData()
+
+				}
 			}
 			
 			}) { (error : NSError!) -> Void in
 				print("we have an error")
 		}
+		println("here")
+		
+
 	}
 	
 	override func viewDidAppear(animated: Bool) {
@@ -111,34 +187,6 @@ class CameraRollViewController: UIViewController, UICollectionViewDataSource, UI
 		}, completion: nil)
 	}
 	
-	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return assetsUrls.count
-	}
-	/* Mark -: CollectionViewDelegation and Datasource */
-	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-		let cell = collectionView.dequeueReusableCellWithReuseIdentifier(CellReuseIdent, forIndexPath: indexPath) as! CameraRollCollectionViewCell
-		let url = assetsUrls[indexPath.item]
-		assetLibrary.assetForURL(url, resultBlock: { (asset : ALAsset!) -> Void in
-			let thumbnail = UIImage(CGImage:asset.thumbnail().takeUnretainedValue())
-			cell.imageview.image = thumbnail
-			}) { (error : NSError!) -> Void in
-			print("There was an error")
-		}
-		return cell;
-		
-	}
-	
-	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-		let url = assetsUrls[indexPath.item]
-		assetLibrary.assetForURL(url, resultBlock: { (asset : ALAsset!) -> Void in
-			let rep = asset.defaultRepresentation()
-			let fullImage = UIImage(CGImage: rep.fullResolutionImage().takeUnretainedValue(), scale: CGFloat(rep.scale()), orientation: UIImageOrientation(rawValue: rep.orientation().rawValue)! )
-//			let fullImage = UIImage(CGImage:asset.defaultRepresentation().fullResolutionImage().takeUnretainedValue())
-			NSNotificationCenter.defaultCenter().postNotificationName(ImageFromCameraChosenNotificationName, object: nil, userInfo: [ImageFromCameraNotificationKey : fullImage!])
-			}) { (error : NSError!) -> Void in
-				print("There was an error")
-		}
-	}
 	func addToView(superview : UIView)
 	{
 		NSNotificationCenter.defaultCenter().postNotificationName(CameraRollWillAppearNotificationName, object: nil)

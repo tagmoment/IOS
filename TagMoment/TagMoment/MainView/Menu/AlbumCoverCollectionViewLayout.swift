@@ -1,15 +1,14 @@
 //
-//  CameraRollCollectionViewLayout.swift
+//  AlbumCoverCollectionViewLayout.swift
 //  TagMoment
 //
-//  Created by Tomer Hershkowitz on 6/13/15.
+//  Created by Tomer Hershkowitz on 7/27/15.
 //  Copyright (c) 2015 TagMoment. All rights reserved.
 //
 
 import UIKit
 
-class CameraRollCollectionViewLayout: UICollectionViewFlowLayout {
-	
+class AlbumCoverCollectionViewLayout: UICollectionViewFlowLayout {
 	let borderWidth : CGFloat = 1.0
 	
 	override init()
@@ -25,11 +24,9 @@ class CameraRollCollectionViewLayout: UICollectionViewFlowLayout {
 	
 	private func commonInit()
 	{
-		let width = floor(UIScreen.mainScreen().bounds.width/3) - CGFloat(2*borderWidth)
+		let width = floor(UIScreen.mainScreen().bounds.width/2) - borderWidth
 		self.itemSize = CGSize(width: width, height: width)
 		self.minimumInteritemSpacing = 1.0
 		self.minimumLineSpacing = borderWidth
 	}
-	
-	
 }
