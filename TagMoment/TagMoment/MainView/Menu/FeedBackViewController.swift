@@ -10,7 +10,7 @@ import UIKit
 import MessageUI
 
 let DislikeAlertMessage = "We Want to Make You Happy! Please Tell Us More About Your Experience"
-let LikeMessage = "Wow! Thank You for Your Positive Feedback. Care to rate us in the App Store?"
+let LikeMessage = "Thank You for Your Positive Feedback. Please Rate Us On The App Store"
 let RateUsTitle = "Rate Us"
 let WriteUsTitle = "Write Us"
 let NotNowTitle = "Not Now"
@@ -37,7 +37,7 @@ class FeedbackViewController: UIViewController, UIAlertViewDelegate, MFMailCompo
 	}
 	
 	@IBAction func likeButtonPressed(sender: AnyObject) {
-		alertView = UIAlertView(title: nil, message: DislikeAlertMessage, delegate: self, cancelButtonTitle: RateUsTitle)
+		alertView = UIAlertView(title: nil, message: LikeMessage, delegate: self, cancelButtonTitle: RateUsTitle)
 		alertView?.addButtonWithTitle(NotNowTitle)
 		alertView?.show()
 	}
