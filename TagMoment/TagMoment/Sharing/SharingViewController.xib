@@ -33,12 +33,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HEA-SW-BrC" userLabel="saveImageBG">
-                    <rect key="frame" x="-100" y="230" width="144" height="44"/>
+                    <rect key="frame" x="0.0" y="230" width="144" height="44"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="199" id="Pt6-Mn-nAX"/>
                     </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                     <inset key="titleEdgeInsets" minX="40" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    <state key="normal" backgroundImage="keep_background">
+                    <state key="normal" title="Keep It" backgroundImage="keep_background">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <variation key="default">
@@ -62,19 +63,6 @@
                     </state>
                     <connections>
                         <action selector="pinButtonPressed:" destination="-1" eventType="touchUpInside" id="wXc-ON-omw"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NGF-qY-cNl" userLabel="sharebutton">
-                    <rect key="frame" x="560" y="236" width="32" height="32"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="32" id="25T-x1-wkO"/>
-                        <constraint firstAttribute="width" constant="32" id="ZdU-lG-D6s"/>
-                    </constraints>
-                    <state key="normal" image="share_icon">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="shareButtonPressed:" destination="-1" eventType="touchUpInside" id="3Pv-lg-tTz"/>
                     </connections>
                 </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="#moment" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="aas-bg-iX7" customClass="TMTextField" customModule="TagMoment" customModuleProvider="target">
@@ -215,14 +203,27 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kGx-GW-XOC" userLabel="shareImageBG">
-                    <rect key="frame" x="556" y="230" width="144" height="44"/>
+                    <rect key="frame" x="456" y="230" width="144" height="44"/>
                     <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="18"/>
                     <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="35" maxY="0.0"/>
-                    <state key="normal" backgroundImage="share_background">
+                    <state key="normal" title="Share It" backgroundImage="share_background">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="shareButtonPressed:" destination="-1" eventType="touchUpInside" id="8WD-sb-Q8d"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NGF-qY-cNl" userLabel="sharebutton">
+                    <rect key="frame" x="560" y="236" width="32" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="25T-x1-wkO"/>
+                        <constraint firstAttribute="width" constant="32" id="ZdU-lG-D6s"/>
+                    </constraints>
+                    <state key="normal" title="&quot;Share It&quot;" image="share_icon">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="shareButtonPressed:" destination="-1" eventType="touchUpInside" id="3Pv-lg-tTz"/>
                     </connections>
                 </button>
             </subviews>
@@ -237,9 +238,9 @@
                 <constraint firstItem="21g-rT-QKM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="GZK-JX-ln0"/>
                 <constraint firstAttribute="trailing" secondItem="yGn-q6-e7R" secondAttribute="trailing" id="GeK-NK-xt0"/>
                 <constraint firstItem="yGn-q6-e7R" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="H3g-4z-IAr"/>
-                <constraint firstAttribute="trailing" secondItem="kGx-GW-XOC" secondAttribute="trailing" constant="-100" id="Nc4-W4-3oc"/>
+                <constraint firstAttribute="trailing" secondItem="kGx-GW-XOC" secondAttribute="trailing" id="Nc4-W4-3oc"/>
                 <constraint firstAttribute="trailing" secondItem="aas-bg-iX7" secondAttribute="trailing" id="Yj1-8i-8D4"/>
-                <constraint firstItem="HEA-SW-BrC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="-100" id="cDd-Sx-ZRg"/>
+                <constraint firstItem="HEA-SW-BrC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cDd-Sx-ZRg"/>
                 <constraint firstAttribute="bottom" secondItem="21g-rT-QKM" secondAttribute="bottom" constant="10" id="ctl-YV-lgG"/>
                 <constraint firstAttribute="trailing" secondItem="NGF-qY-cNl" secondAttribute="trailing" constant="8" id="koh-Z5-xVD"/>
                 <constraint firstAttribute="centerX" secondItem="id5-b8-9y4" secondAttribute="centerX" id="qGZ-hH-Pvy"/>

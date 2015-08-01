@@ -49,10 +49,7 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
         super.viewDidLoad()
 		tagsDataSource = self.sortDataSource(TagsDataSourceWords, emojis: TagTextProvider.emojisContainer)
 		self.textField.keyboardType = .ASCIICapable
-		
-		self.view.bringSubviewToFront(self.shareButton)
 		tagsCollectionView.registerNib(UINib(nibName: "TagsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: CellIdent)
-		
     }
 
 	override func viewWillAppear(animated: Bool) {
