@@ -36,8 +36,16 @@ class AlbumCoverCollectionViewController: UICollectionViewController {
 		
 		let url = urls![0]
 		assetLibrary.assetForURL(url, resultBlock: { (asset : ALAsset!) -> Void in
-			let thumbnail = UIImage(CGImage:asset.thumbnail().takeUnretainedValue())
-			cell.imageview.image = thumbnail
+			if (asset != nil && asset.thumbnail() != nil)
+			{
+				let thumbnail = UIImage(CGImage:asset.thumbnail().takeUnretainedValue())
+				if (cell.imageview != nil)
+				{
+					cell.imageview.image = thumbnail
+				}
+			}
+			
+			
 			}) { (error : NSError!) -> Void in
 				print("There was an error")
 		}

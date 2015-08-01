@@ -83,6 +83,7 @@
 		F1A142171A93FC8F001D63C6 /* FilterImageParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A142161A93FC8F001D63C6 /* FilterImageParameter.swift */; };
 		F1A142191A93FD5B001D63C6 /* FilterParameterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A142181A93FD5B001D63C6 /* FilterParameterProtocol.swift */; };
 		F1A1421B1A940073001D63C6 /* FilterVectorParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A1421A1A940073001D63C6 /* FilterVectorParameter.swift */; };
+		F1A6AD741B66C7E4000B1EB4 /* TagTextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A6AD731B66C7E4000B1EB4 /* TagTextProvider.swift */; };
 		F1A7B7611A585DF80033FE64 /* TMHorizontalRectMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A7B75D1A585DF80033FE64 /* TMHorizontalRectMask.swift */; };
 		F1A7B7621A585DF80033FE64 /* TMMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A7B75E1A585DF80033FE64 /* TMMask.swift */; };
 		F1A7B7631A585DF80033FE64 /* TMTraingleMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A7B75F1A585DF80033FE64 /* TMTraingleMask.swift */; };
@@ -208,6 +209,7 @@
 		F1A142161A93FC8F001D63C6 /* FilterImageParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterImageParameter.swift; sourceTree = "<group>"; };
 		F1A142181A93FD5B001D63C6 /* FilterParameterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterParameterProtocol.swift; sourceTree = "<group>"; };
 		F1A1421A1A940073001D63C6 /* FilterVectorParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterVectorParameter.swift; sourceTree = "<group>"; };
+		F1A6AD731B66C7E4000B1EB4 /* TagTextProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagTextProvider.swift; sourceTree = "<group>"; };
 		F1A7B75D1A585DF80033FE64 /* TMHorizontalRectMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMHorizontalRectMask.swift; sourceTree = "<group>"; };
 		F1A7B75E1A585DF80033FE64 /* TMMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMMask.swift; sourceTree = "<group>"; };
 		F1A7B75F1A585DF80033FE64 /* TMTraingleMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMTraingleMask.swift; sourceTree = "<group>"; };
@@ -543,6 +545,7 @@
 				F1EC479A1ABDFE3700081CDF /* TagsCollectionViewCell.xib */,
 				F14C27061AC9E58800C19968 /* LeftAligned.h */,
 				F14C27071AC9E58800C19968 /* LeftAligned.m */,
+				F1A6AD731B66C7E4000B1EB4 /* TagTextProvider.swift */,
 			);
 			path = Tags;
 			sourceTree = "<group>";
@@ -702,6 +705,7 @@
 				F14CF92C1B2C38C400178461 /* CameraRollViewController.swift in Sources */,
 				F19620C11A881A8800DCFB85 /* TMMusicFilter.swift in Sources */,
 				F15AD4171B029E4200D18472 /* TMDiamondMask.swift in Sources */,
+				F1A6AD741B66C7E4000B1EB4 /* TagTextProvider.swift in Sources */,
 				F1A7B7661A585E180033FE64 /* MaskFactory.swift in Sources */,
 				F1A7B7621A585DF80033FE64 /* TMMask.swift in Sources */,
 				F1A7B7611A585DF80033FE64 /* TMHorizontalRectMask.swift in Sources */,

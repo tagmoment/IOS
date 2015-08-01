@@ -29,7 +29,6 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 //	e40a e04a e443 e112v e105 e326 e058 e40e e214 e449 e034 e10e e425
 
 	
-	let TagsDataSourceeEmojis = ["\u{e20c}", "\u{e412}", "\u{e106}", "\u{e056}", "\u{e420}", "\u{e022}", "\u{e418}", "\u{e056}", "\u{e403}", "\u{e411}", "\u{e402}", "\u{e404}"]
 	var tagsDataSource : [NSString]!
 	var autoKeyboardWasOn = false
 	var keyboardWasShown = false
@@ -48,7 +47,7 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 	@IBOutlet weak var shareBGConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
-		tagsDataSource = self.sortDataSource(TagsDataSourceWords, emojis: TagsDataSourceeEmojis)
+		tagsDataSource = self.sortDataSource(TagsDataSourceWords, emojis: TagTextProvider.emojisContainer)
 		self.textField.keyboardType = .ASCIICapable
 		
 		self.view.bringSubviewToFront(self.shareButton)
@@ -137,12 +136,24 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 		notifyDelegateOnChangedText()
 	}
 	
-	func notifyDelegateOnChangedText()
+	func notifyDelegateOnChangedText(input : String = "")
 	{
 		if let delegate = self.sharingDelegate
 		{
-			textField.text = textField.text.stringByReplacingOccurrencesOfString(" ", withString: "", options: nil, range: nil)
-			delegate.updateUserInfoText(textField.text)
+			
+			var returnVal = input
+			if (returnVal.isEmpty)
+			{
+				textField.text = TagTextProvider.removeSpaces(textField.text)
+				returnVal = textField.text
+			}
+			else
+			{
+				returnVal = TagTextProvider.fixEmojiSpaceIfNeeded(input, currentString: textField.text)
+				textField.text = returnVal
+			}
+			
+			delegate.updateUserInfoText(TagTextProvider.addAllHashtags(returnVal))
 		}
 	}
 	
@@ -279,14 +290,13 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 
 	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 		
-		self.textField.text = tagsDataSource[indexPath.item] as String
 		let cell = collectionView.cellForItemAtIndexPath(indexPath) as! TagsCollectionViewCell
 		cell.backgroundColor = UIColor.whiteColor()
 		cell.tagName.textColor = UIColor.blackColor()
 		
 		if let delegate = self.sharingDelegate
 		{
-			delegate.updateUserInfoText(tagsDataSource[indexPath.item] as String)
+			notifyDelegateOnChangedText(input: tagsDataSource[indexPath.item] as String)
 		}
 	}
 	
