@@ -126,6 +126,7 @@ class CameraRollViewController: UIViewController, UIGestureRecognizerDelegate{
 	
 	private func loadImages()
 	{
+		var maxGroupCount = 0
 		assetLibrary.enumerateGroupsWithTypes(ALAssetsGroupAll, usingBlock: { (assetGroup : ALAssetsGroup!, stop : UnsafeMutablePointer<ObjCBool>) -> Void in
 			
 			if let group = assetGroup
@@ -155,8 +156,9 @@ class CameraRollViewController: UIViewController, UIGestureRecognizerDelegate{
 					self.assetsUrls[group] = assetsUrlsForGroup
 					self.groups.append(group)
 					
-					if (groupName == "Camera Roll")
+					if assetsUrlsForGroup.count > maxGroupCount
 					{
+						maxGroupCount = assetsUrlsForGroup.count
 						let albumCont = self.navCont.topViewController as! AlbumContentsCollectionViewController
 						albumCont.assetsUrls = assetsUrlsForGroup
 						albumCont.collectionView?.reloadData()
