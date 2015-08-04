@@ -45,11 +45,16 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 	
 	@IBOutlet weak var saveBGConstraint: NSLayoutConstraint!
 	@IBOutlet weak var shareBGConstraint: NSLayoutConstraint!
+	
+	var chosenEmojiIndex : NSIndexPath?
+	var chosenWordIndex : NSIndexPath?
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		tagsDataSource = self.sortDataSource(TagsDataSourceWords, emojis: TagTextProvider.emojisContainer)
 		self.textField.keyboardType = .ASCIICapable
 		tagsCollectionView.registerNib(UINib(nibName: "TagsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: CellIdent)
+		tagsCollectionView.allowsMultipleSelection = true
     }
 
 	override func viewWillAppear(animated: Bool) {
@@ -137,16 +142,20 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 	{
 		if let delegate = self.sharingDelegate
 		{
-			
+			println("input: \(input)")
 			var returnVal = input
 			if (returnVal.isEmpty)
 			{
+				println("11returnVal: \(returnVal)")
 				textField.text = TagTextProvider.removeSpaces(textField.text)
 				returnVal = textField.text
+				println("22returnVal: \(returnVal)")
 			}
 			else
 			{
-				returnVal = TagTextProvider.fixEmojiSpaceIfNeeded(input, currentString: textField.text)
+//				returnVal = TagTextProvider.fixEmojiSpaceIfNeeded(input, currentString: textField.text)
+				returnVal = TagTextProvider.addTextByRules(input, currentString: textField.text, hasEmoji: self.chosenEmojiIndex != nil, hasWord: self.chosenWordIndex != nil)
+				println("returnVal: \(returnVal), textField: \(textField.text)")
 				textField.text = returnVal
 			}
 			
@@ -274,6 +283,32 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 		return cell;
 		
 	}
+	
+	func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+		let cell = collectionView.cellForItemAtIndexPath(indexPath)
+		if let tagCell = cell as? TagsCollectionViewCell
+		{
+			let string = tagsDataSource[indexPath.item]
+			let isWord = indexPath.item % 2 == 0 ? true : false
+			if (self.chosenWordIndex != nil && isWord)
+			{
+				self.tagsCollectionView.deselectItemAtIndexPath(self.chosenWordIndex, animated: true)
+				self.collectionView(self.tagsCollectionView, didDeselectItemAtIndexPath: self.chosenWordIndex!)
+			}
+			
+			if (self.chosenEmojiIndex != nil && !isWord)
+			{
+				self.tagsCollectionView.deselectItemAtIndexPath(self.chosenEmojiIndex, animated: true)
+				self.collectionView(self.tagsCollectionView, didDeselectItemAtIndexPath: self.chosenEmojiIndex!)
+			}
+			
+			self.chosenWordIndex = isWord ? indexPath : self.chosenWordIndex
+			self.chosenEmojiIndex = !isWord ? indexPath : self.chosenEmojiIndex
+		}
+		
+		return true
+	}
+	
 	func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
 		let cell = collectionView.cellForItemAtIndexPath(indexPath)
 		if let tagCell = cell as? TagsCollectionViewCell
@@ -416,5 +451,7 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 	{
 		return self.shareBGConstraint.constant == 0
 	}
+	
+	
 
 }
