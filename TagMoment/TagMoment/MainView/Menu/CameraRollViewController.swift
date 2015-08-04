@@ -127,20 +127,25 @@ class CameraRollViewController: UIViewController, UIGestureRecognizerDelegate{
 	private func loadImages()
 	{
 		var maxGroupCount = 0
-		assetLibrary.enumerateGroupsWithTypes(ALAssetsGroupAll, usingBlock: { (assetGroup : ALAssetsGroup!, stop : UnsafeMutablePointer<ObjCBool>) -> Void in
+		ALAssetsLibrary.disableSharedPhotoStreamsSupport()
+		assetLibrary.enumerateGroupsWithTypes(ALAssetsGroupAlbum | ALAssetsGroupSavedPhotos, usingBlock: { (assetGroup : ALAssetsGroup!, stop : UnsafeMutablePointer<ObjCBool>) -> Void in
 			
 			if let group = assetGroup
 			{
 				var assetsUrlsForGroup = [NSURL]()
 				group.enumerateAssetsWithOptions(NSEnumerationOptions.Reverse, usingBlock : { (assetResult : ALAsset!, index: Int, stop: UnsafeMutablePointer<ObjCBool>) -> Void in
 					
-					
 					if let asset = assetResult
 					{
+						
 						if (asset.valueForProperty(ALAssetPropertyType) as! String == ALAssetTypePhoto)
 						{
-							assetsUrlsForGroup.append(asset.defaultRepresentation().url())
-//							self.assetsUrls.append(asset.defaultRepresentation().url())
+							
+							if let defaultRep = asset.defaultRepresentation()
+							{
+								assetsUrlsForGroup.append(defaultRep.url())
+							}
+							
 						}
 					}
 					else
