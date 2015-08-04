@@ -17,17 +17,15 @@ protocol SharingControllerDelegate : class{
 	
 }
 
-class SharingViewController: UIViewController, UITextFieldDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIDocumentInteractionControllerDelegate	{
+class SharingViewController: UIViewController, TMTextFieldDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIDocumentInteractionControllerDelegate	{
 	
 	let ClosedContraint = CGFloat(-100)
 	let CellIdent = "cellIdent"
 	let MaxLettersInTag = 15
-	let TagsDataSourceWords = ["Love", "Christmas", "Happy", "Birthday", "Mama", "Me", "Whatttt", "Oh no", "try it!"]
 	
 	
-//	Left out side "\u{e40d}", "\u{e00e}", "\u{e405}"
-//	e40a e04a e443 e112v e105 e326 e058 e40e e214 e449 e034 e10e e425
-
+//	Left out side
+//	
 	
 	var tagsDataSource : [NSString]!
 	var autoKeyboardWasOn = false
@@ -51,7 +49,7 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		tagsDataSource = self.sortDataSource(TagsDataSourceWords, emojis: TagTextProvider.emojisContainer)
+		tagsDataSource = self.sortDataSource(TagTextProvider.TagsDataSourceWords, emojis: TagTextProvider.emojisContainer)
 		self.textField.keyboardType = .ASCIICapable
 		tagsCollectionView.registerNib(UINib(nibName: "TagsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: CellIdent)
 		tagsCollectionView.allowsMultipleSelection = true
@@ -108,6 +106,11 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 	func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
 		
 		
+		if let range = string.rangeOfCharacterFromSet(NSCharacterSet.whitespaceCharacterSet())
+		{
+			return false
+		}
+		
 		if (textField.text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) >= MaxLettersInTag && !string.isEmpty)
 		{
 			return false
@@ -128,14 +131,57 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 		}
 		
 		
-		deselectItems()
 		
-		return true
+		notifyDelegateOnChangedText(input: string)
+		if (self.chosenWordIndex != nil && !string.isEmpty)
+		{
+			self.tagsCollectionView.deselectItemAtIndexPath(self.chosenWordIndex, animated: true)
+			self.collectionView(self.tagsCollectionView, didDeselectItemAtIndexPath: self.chosenWordIndex!)
+			self.chosenWordIndex = nil
+			TagTextProvider.currentWord = ""
+			
+		}
+		
+		return string.isEmpty
 	}
 	
 	func textFieldDidChangeText(notif: NSNotification)
 	{
 		notifyDelegateOnChangedText()
+	}
+	
+	func deleteBackwardsDetected() {
+		if (self.chosenWordIndex != nil && self.chosenEmojiIndex != nil)
+		{
+			
+			if let range = self.textField.text.rangeOfString(TagTextProvider.currentWord)
+			{
+				if (distance(self.textField.text.startIndex, range.startIndex) != 0)
+				{
+					
+					self.tagsCollectionView.deselectItemAtIndexPath(self.chosenWordIndex, animated: true)
+					self.collectionView(self.tagsCollectionView, didDeselectItemAtIndexPath: self.chosenWordIndex!)
+					self.chosenWordIndex = nil
+					TagTextProvider.currentWord = ""
+				}
+				else
+				{
+					self.tagsCollectionView.deselectItemAtIndexPath(self.chosenEmojiIndex, animated: true)
+					self.collectionView(self.tagsCollectionView, didDeselectItemAtIndexPath: self.chosenEmojiIndex!)
+					self.chosenEmojiIndex = nil
+					TagTextProvider.currentEmoji = ""
+
+				}
+			}
+		}
+		else
+		{
+			deselectItems()
+			self.chosenWordIndex = nil
+			TagTextProvider.currentWord = ""
+			self.chosenEmojiIndex = nil
+			TagTextProvider.currentEmoji = ""
+		}
 	}
 	
 	func notifyDelegateOnChangedText(input : String = "")
@@ -147,7 +193,7 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 			if (returnVal.isEmpty)
 			{
 				println("11returnVal: \(returnVal)")
-				textField.text = TagTextProvider.removeSpaces(textField.text)
+				textField.text = textField.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 				returnVal = textField.text
 				println("22returnVal: \(returnVal)")
 			}
@@ -172,16 +218,30 @@ class SharingViewController: UIViewController, UITextFieldDelegate, UICollection
 	func textFieldShouldClear(textField: UITextField) -> Bool
 	{
 		deselectItems()
+		self.chosenWordIndex = nil
+		TagTextProvider.currentWord = ""
+		self.chosenEmojiIndex = nil
+		TagTextProvider.currentEmoji = ""
+		TagTextProvider.currentTyping = ""
+		
 		return true
 	}
 	
 	func deselectItems()
 	{
 		let indices = self.tagsCollectionView.indexPathsForSelectedItems()
-		if (indices.count != 0)
+		if indices.count != 0
 		{
-			self.tagsCollectionView.deselectItemAtIndexPath(indices[0] as? NSIndexPath, animated: false)
-			self.collectionView(self.tagsCollectionView, didDeselectItemAtIndexPath: indices[0] as! NSIndexPath)
+			if let indicesArray = indices as? [NSIndexPath]
+			{
+				for indexPath in indicesArray
+				{
+					self.tagsCollectionView.deselectItemAtIndexPath(indexPath, animated: true)
+					self.collectionView(self.tagsCollectionView, didDeselectItemAtIndexPath: indexPath)
+				}
+			}
+			
+			
 		}
 	}
 	
