@@ -198,7 +198,6 @@
 		F17A416C1AB477930074E5F5 /* TMTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMTextField.swift; sourceTree = "<group>"; };
 		F17A416F1AB47FAC0074E5F5 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		F17A41701AB47FAC0074E5F5 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
-		F17A41731AB480070074E5F5 /* iCarousel-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "iCarousel-Bridging-Header.h"; sourceTree = "<group>"; };
 		F19620C01A881A8800DCFB85 /* TMMusicFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMMusicFilter.swift; sourceTree = "<group>"; };
 		F19620C21A881B0800DCFB85 /* TMStarFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMStarFilter.swift; sourceTree = "<group>"; };
 		F19620C41A881B7300DCFB85 /* TMSurpriseFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMSurpriseFilter.swift; sourceTree = "<group>"; };
@@ -346,7 +345,6 @@
 		F109CE9B1A56F8770011CA55 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F17A41731AB480070074E5F5 /* iCarousel-Bridging-Header.h */,
 				F109CE9C1A56F8770011CA55 /* Info.plist */,
 				F17672751AA5195F00588865 /* TestFairy-Bridging-Header.h */,
 			);
