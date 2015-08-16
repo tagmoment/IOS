@@ -9,12 +9,14 @@
 import Foundation
 
 class TagTextProvider {
-	static var currentEmojiStringIndex = 0
-	static var currentWordStringIndex = 0
+	static var currentEmojiStringIndex = NSNotFound
+	static var currentWordStringIndex = NSNotFound
+	static var currentTypingStringIndex = NSNotFound
 	
-	static var currentWord = ""
-	static var currentEmoji = ""
-	static var currentTyping = ""
+	static var currentWord : String? = nil
+	static var currentEmoji : String? = nil
+	static var currentTyping : String? = nil
+	static var currentString : String? = nil
 	
 	
 	static var emojisContainer = ["\u{e20c}", "\u{e412}", "\u{e106}", "\u{e056}", "\u{e420}", "\u{e022}", "\u{e418}", "\u{e056}", "\u{e403}", "\u{e411}", "\u{e402}", "\u{e404}", "\u{e40d}", "\u{e00e}", "\u{e405}", "\u{e40a}", "\u{e04a}", "\u{e443}", "\u{e112}", "\u{e105}", "\u{e326}", "\u{e058}", "\u{e40e}", "\u{e214}", "\u{e449}", "\u{e034}", "\u{e10e}"]
@@ -51,85 +53,87 @@ class TagTextProvider {
 		return resultString
 	}
 	
-	class func addTextByRules(input : String,currentString : String,  hasEmoji : Bool, hasWord : Bool) -> String
+	class func addTextByRules(input : String) -> String
 	{
 		let isInputEmoji = contains(self.emojisContainer, input)
 		let isInputSavedWord = contains(self.TagsDataSourceWords, input)
-		if currentString.isEmpty
+		
+		if currentString == nil
 		{
 			self.currentEmoji = isInputEmoji ? input : self.currentEmoji
+			currentEmojiStringIndex = isInputEmoji ? 0 : currentEmojiStringIndex
+			
 			self.currentWord = isInputSavedWord ? input : self.currentWord
-			return input
+			currentWordStringIndex = isInputSavedWord ? 0 : currentWordStringIndex
+			
+			self.currentTyping = !isInputEmoji && !isInputSavedWord ? input : self.currentTyping
+			currentTypingStringIndex = !isInputEmoji && !isInputSavedWord ? 0 : self.currentTypingStringIndex
+			currentString = input
+			return currentString!
 		}
 		
-		
-		
-		if !hasWord && !hasEmoji
+		if (isInputEmoji)
 		{
-			return currentString + input
+			if (self.currentEmoji != nil)
+			{
+				currentString = currentString?.stringByReplacingOccurrencesOfString(self.currentEmoji!, withString: input)
+				currentEmoji = input
+				return currentString!
+			}
+			
+			currentEmoji = input
+			currentString = currentString! + " " + currentEmoji!
+			return currentString!
 		}
 		
-		
-		if (hasWord && isInputSavedWord)
+		if (isInputSavedWord)
 		{
-			let oldVal = self.currentWord
+			if (self.currentTyping != nil)
+			{
+				self.currentString = currentString?.stringByReplacingOccurrencesOfString(self.currentTyping!, withString: input)
+				self.currentWord = input
+				self.currentTyping = nil
+				return self.currentString!
+			}
+			
+			if (self.currentWord != nil)
+			{
+				self.currentString = currentString?.stringByReplacingOccurrencesOfString(self.currentWord!, withString: input)
+				self.currentWord = input
+				return self.currentString!
+			}
+			
+			
 			self.currentWord = input
-			if (oldVal.isEmpty) //We have an emoji
+			self.currentString = self.currentString! + " " + self.currentWord!
+			return self.currentString!
+		}
+		
+		if (!isInputEmoji && !isInputSavedWord)
+		{
+			if (self.currentWord != nil)
 			{
-				if self.currentTyping.isEmpty
-				{
-					return hasEmoji ? currentString + " " + input : input
-				}
-				else
-				{
-					let oldTypingVal = self.currentTyping
-					self.currentTyping = ""
-					return currentString.stringByReplacingOccurrencesOfString(oldTypingVal, withString: input)
-				}
+				self.currentString = currentString?.stringByReplacingOccurrencesOfString(self.currentWord!, withString: input)
+				self.currentTyping = input
+				self.currentWord = nil
+				return self.currentString!
+			}
+			
+			if (self.currentTyping != nil)
+			{
+				let temp = self.currentTyping! + input
+				self.currentString = currentString?.stringByReplacingOccurrencesOfString(self.currentTyping!, withString: temp)
+				self.currentTyping = temp
 				
+				return self.currentString!
 			}
 			
-			return currentString.stringByReplacingOccurrencesOfString(oldVal, withString: input)
+			self.currentTyping = input
+			self.currentString = self.currentString! + " " + self.currentTyping!
+			return self.currentString!
 		}
 		
-		if (!isInputSavedWord && !isInputEmoji)
-		{
-			if self.currentWord.isEmpty
-			{
-				if let range = currentString.rangeOfString(self.currentEmoji)
-				{
-					if (distance(currentString.startIndex, range.startIndex) != 0)
-					{
-						self.currentTyping += input
-						return self.currentTyping + " " + self.currentEmoji
-					}
-					else
-					{
-						self.currentTyping += input
-						return self.currentEmoji  + " " + self.currentTyping
-					}
-				}
-					
-				return currentString + input
-			}
-			
-			return currentString.stringByReplacingOccurrencesOfString(self.currentWord, withString: input)
-		}
-		
-		if (hasEmoji && isInputEmoji)
-		{
-			let oldVal = self.currentEmoji
-			self.currentEmoji = input
-			if (oldVal.isEmpty) //We have an emoji
-			{
-				return currentString + " " + input
-			}
-			
-			return currentString.stringByReplacingOccurrencesOfString(oldVal, withString: input)
-		}
-		
-		return "rule miss"
-		
+		return "PB"
 	}
 	
 	class func fixEmojiSpaceIfNeeded(newString: String, currentString: String) -> String
@@ -164,6 +168,67 @@ class TagTextProvider {
 		
 		return resultString + " " + newString
 		
+	}
+	
+	class func handleDeletion()
+	{
+		if (self.isCurrentCharSetSecondWord(currentWord))
+		{
+			if let word = currentWord
+			{
+				currentWord = nil
+				if (count(word) == 1)
+				{
+					
+					currentTyping = nil
+					return;
+				}
+				
+				currentTyping = word.substringToIndex(advance(word.startIndex, count(word) - 1));
+				return;
+			}
+		}
+		
+		if (self.isCurrentCharSetSecondWord(currentTyping))
+		{
+			
+			if let typing = currentTyping
+			{
+				if (count(typing) == 1)
+				{
+					currentTyping = nil
+					return;
+				}
+				
+				currentTyping = typing.substringToIndex(advance(typing.startIndex, count(typing) - 1));
+			}
+
+		}
+		
+		
+		
+	}
+	
+	class func isCurrentCharSetSecondWord(input : String!) -> Bool
+	{
+		if (input != nil)
+		{
+			let words = currentString!.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+			if (words.count == 1)
+			{
+				return true
+			}
+			
+			if let range = self.currentString!.rangeOfString(input!)
+			{
+				if (distance(self.currentString!.startIndex, range.startIndex) != 0)
+				{
+					return true
+				}
+			}
+		}
+		
+		return false
 	}
 	
 	

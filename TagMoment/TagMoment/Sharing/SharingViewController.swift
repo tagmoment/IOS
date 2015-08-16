@@ -130,15 +130,18 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 			autoKeyboardWasOn = true
 		}
 		
+		if !string.isEmpty
+		{
+			notifyDelegateOnChangedText(input: string)
+		}
 		
 		
-		notifyDelegateOnChangedText(input: string)
 		if (self.chosenWordIndex != nil && !string.isEmpty)
 		{
 			self.tagsCollectionView.deselectItemAtIndexPath(self.chosenWordIndex, animated: true)
 			self.collectionView(self.tagsCollectionView, didDeselectItemAtIndexPath: self.chosenWordIndex!)
 			self.chosenWordIndex = nil
-			TagTextProvider.currentWord = ""
+			
 			
 		}
 		
@@ -151,37 +154,24 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 	}
 	
 	func deleteBackwardsDetected() {
-		if (self.chosenWordIndex != nil && self.chosenEmojiIndex != nil)
+		if (TagTextProvider.isCurrentCharSetSecondWord(TagTextProvider.currentEmoji))
 		{
-			
-			if let range = self.textField.text.rangeOfString(TagTextProvider.currentWord)
-			{
-				if (distance(self.textField.text.startIndex, range.startIndex) != 0)
-				{
-					
-					self.tagsCollectionView.deselectItemAtIndexPath(self.chosenWordIndex, animated: true)
-					self.collectionView(self.tagsCollectionView, didDeselectItemAtIndexPath: self.chosenWordIndex!)
-					self.chosenWordIndex = nil
-					TagTextProvider.currentWord = ""
-				}
-				else
-				{
-					self.tagsCollectionView.deselectItemAtIndexPath(self.chosenEmojiIndex, animated: true)
-					self.collectionView(self.tagsCollectionView, didDeselectItemAtIndexPath: self.chosenEmojiIndex!)
-					self.chosenEmojiIndex = nil
-					TagTextProvider.currentEmoji = ""
-
-				}
-			}
-		}
-		else
-		{
-			deselectItems()
-			self.chosenWordIndex = nil
-			TagTextProvider.currentWord = ""
+			self.tagsCollectionView.deselectItemAtIndexPath(self.chosenEmojiIndex, animated: true)
+			self.collectionView(self.tagsCollectionView, didDeselectItemAtIndexPath: self.chosenEmojiIndex!)
 			self.chosenEmojiIndex = nil
-			TagTextProvider.currentEmoji = ""
+			TagTextProvider.currentEmoji = nil
+			return;
 		}
+		
+		if (TagTextProvider.isCurrentCharSetSecondWord(TagTextProvider.currentWord))
+		{
+			self.tagsCollectionView.deselectItemAtIndexPath(self.chosenWordIndex, animated: true)
+			self.collectionView(self.tagsCollectionView, didDeselectItemAtIndexPath: self.chosenWordIndex!)
+			self.chosenWordIndex = nil
+			//					TagTextProvider.currentWord = nil
+			return;
+		}
+		
 	}
 	
 	func notifyDelegateOnChangedText(input : String = "")
@@ -192,16 +182,17 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 			var returnVal = input
 			if (returnVal.isEmpty)
 			{
-				println("11returnVal: \(returnVal)")
 				textField.text = textField.text.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
 				returnVal = textField.text
-				println("22returnVal: \(returnVal)")
+				TagTextProvider.handleDeletion()
+				TagTextProvider.currentString = returnVal.isEmpty ? nil : returnVal
+				println("22returnVal: \(returnVal), textField: \(textField.text), currentString: \(TagTextProvider.currentString), currentTyping: \(TagTextProvider.currentTyping)")
 			}
 			else
 			{
 //				returnVal = TagTextProvider.fixEmojiSpaceIfNeeded(input, currentString: textField.text)
-				returnVal = TagTextProvider.addTextByRules(input, currentString: textField.text, hasEmoji: self.chosenEmojiIndex != nil, hasWord: self.chosenWordIndex != nil)
-				println("returnVal: \(returnVal), textField: \(textField.text)")
+				returnVal = TagTextProvider.addTextByRules(input)
+				println("returnVal: \(returnVal), textField: \(textField.text), currentString: \(TagTextProvider.currentString), currentTyping: \(TagTextProvider.currentTyping)")
 				textField.text = returnVal
 			}
 			
@@ -219,10 +210,11 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 	{
 		deselectItems()
 		self.chosenWordIndex = nil
-		TagTextProvider.currentWord = ""
+		TagTextProvider.currentWord = nil
 		self.chosenEmojiIndex = nil
-		TagTextProvider.currentEmoji = ""
-		TagTextProvider.currentTyping = ""
+		TagTextProvider.currentEmoji = nil
+		TagTextProvider.currentTyping = nil
+			
 		
 		return true
 	}
@@ -367,6 +359,21 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 		}
 		
 		return true
+	}
+	
+	func collectionView(collectionView: UICollectionView, shouldDeselectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+		var result = true
+		if let emojiIndexPath = self.chosenEmojiIndex
+		{
+			result = result && !(emojiIndexPath.item == indexPath.item)
+		}
+		
+		if let wordIndexPath = self.chosenWordIndex
+		{
+			result = result && !(wordIndexPath.item == indexPath.item)
+		}
+		
+		return result;
 	}
 	
 	func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
