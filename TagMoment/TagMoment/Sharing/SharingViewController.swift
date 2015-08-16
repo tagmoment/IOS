@@ -178,7 +178,6 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 	{
 		if let delegate = self.sharingDelegate
 		{
-			println("input: \(input)")
 			var returnVal = input
 			if (returnVal.isEmpty)
 			{
@@ -186,13 +185,10 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 				returnVal = textField.text
 				TagTextProvider.handleDeletion()
 				TagTextProvider.currentString = returnVal.isEmpty ? nil : returnVal
-				println("22returnVal: \(returnVal), textField: \(textField.text), currentString: \(TagTextProvider.currentString), currentTyping: \(TagTextProvider.currentTyping)")
 			}
 			else
 			{
-//				returnVal = TagTextProvider.fixEmojiSpaceIfNeeded(input, currentString: textField.text)
 				returnVal = TagTextProvider.addTextByRules(input)
-				println("returnVal: \(returnVal), textField: \(textField.text), currentString: \(TagTextProvider.currentString), currentTyping: \(TagTextProvider.currentTyping)")
 				textField.text = returnVal
 			}
 			
@@ -501,7 +497,6 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 			result.append(emojis[i])
 		}
 		
-		println("i is \(index) and words.count is \(words.count)")
 		var arrayWithExtras = words.count >= emojis.count ? words : emojis
 		arrayWithExtras.removeRange(Range<Int>(start: 0, end: index))
 		result.extend(arrayWithExtras)

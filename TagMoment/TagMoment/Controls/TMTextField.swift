@@ -38,4 +38,14 @@ class TMTextField: UITextField {
 		}
 		super.deleteBackward()
 	}
+	
+	override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
+		UIMenuController.sharedMenuController().menuVisible = false
+		return false;
+	}
+	
+	override func caretRectForPosition(position: UITextPosition!) -> CGRect {
+		return super.caretRectForPosition(self.endOfDocument)
+	}
+	
 }
