@@ -111,7 +111,9 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 			return false
 		}
 		
-		if (textField.text.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) >= MaxLettersInTag && !string.isEmpty)
+		let MaxLettersAllowed = TagTextProvider.currentEmoji != nil ? MaxLettersInTag + 2 : MaxLettersInTag
+		
+		if (count(textField.text) >= MaxLettersAllowed && !string.isEmpty && TagTextProvider.currentWord == nil)
 		{
 			return false
 			
