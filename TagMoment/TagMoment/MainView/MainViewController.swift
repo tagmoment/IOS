@@ -285,7 +285,14 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		let documentsDirectory = paths[0] as! String
 		let imagePath = documentsDirectory + "/ShareMe.png"
 		
-		if !imageData.writeToFile(imagePath, atomically: false)
+		let filemanager = NSFileManager.defaultManager()
+		var error : NSError?
+		if (filemanager.fileExistsAtPath(imagePath))
+		{
+			
+			filemanager.removeItemAtPath(imagePath, error: &error)
+		}
+		if !imageData.writeToFile(imagePath, options: NSDataWritingOptions.DataWritingFileProtectionNone, error: &error)
 		{
 			print("Failed to cache image data to disk")
 		}

@@ -103,6 +103,9 @@
                             </state>
                             <state key="selected" image="whatsapp_share_on"/>
                             <state key="highlighted" image="whatsapp_share_on"/>
+                            <connections>
+                                <action selector="whatsappShareRequested:" destination="-1" eventType="touchUpInside" id="f7O-BK-bHR"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CkO-hn-IF4">
                             <rect key="frame" x="90" y="66" width="50" height="50"/>
@@ -139,6 +142,9 @@
                             </state>
                             <state key="selected" image="twitter_share_on"/>
                             <state key="highlighted" image="twitter_share_on"/>
+                            <connections>
+                                <action selector="twitterShareRequested:" destination="-1" eventType="touchUpInside" id="CBO-hf-jVJ"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="31H-6P-2mU">
                             <rect key="frame" x="90" y="0.0" width="50" height="50"/>
@@ -151,6 +157,9 @@
                             </state>
                             <state key="selected" image="facebook_share_on"/>
                             <state key="highlighted" image="facebook_share_on"/>
+                            <connections>
+                                <action selector="facebookShareRequested:" destination="-1" eventType="touchUpInside" id="YpK-SU-Q8Z"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
