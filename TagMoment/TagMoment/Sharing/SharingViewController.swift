@@ -435,7 +435,7 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 			return;
 		}
 		
-		toggleShareButtonBgAnimation()
+//		toggleShareButtonBgAnimation()
 		
 	}
 	
@@ -452,40 +452,40 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 			return;
 		}
 		
-		toggleSaveButtonBgAnimation()
+//		toggleSaveButtonBgAnimation()
 		
 		
 		
 	}
 	
-	private func toggleSaveButtonBgAnimation()
-	{
-		let title = isSaveButtonOpen() ? "" : "Keep It"
-		self.saveBGConstraint.constant = isSaveButtonOpen() ? ClosedContraint : 0
-		self.saveButtonBG.setTitle(title, forState: .Normal)
-		UIView.animateWithDuration(0.2, animations: { () -> Void in
-			self.saveButtonBG.superview?.layoutIfNeeded()
-			
-		})
-	}
+//	private func toggleSaveButtonBgAnimation()
+//	{
+//		let title = isSaveButtonOpen() ? "" : "Keep It"
+//		self.saveBGConstraint.constant = isSaveButtonOpen() ? ClosedContraint : 0
+//		self.saveButtonBG.setTitle(title, forState: .Normal)
+//		UIView.animateWithDuration(0.2, animations: { () -> Void in
+//			self.saveButtonBG.superview?.layoutIfNeeded()
+//			
+//		})
+//	}
 	
-	private func toggleShareButtonBgAnimation()
-	{
-		let title = isShareButtonOpen() ? "" : "Share It"
-		self.shareBGConstraint.constant = isShareButtonOpen() ? ClosedContraint : 0
-		
-		self.shareButtonBG.setTitle(title, forState: .Normal)
-		UIView.animateWithDuration(0.2, animations: { () -> Void in
-			self.shareButtonBG.superview?.layoutIfNeeded()
-			
-		})
-	}
+//	private func toggleShareButtonBgAnimation()
+//	{
+//		let title = isShareButtonOpen() ? "" : "Share It"
+//		self.shareBGConstraint.constant = isShareButtonOpen() ? ClosedContraint : 0
+//		
+//		self.shareButtonBG.setTitle(title, forState: .Normal)
+//		UIView.animateWithDuration(0.2, animations: { () -> Void in
+//			self.shareButtonBG.superview?.layoutIfNeeded()
+//			
+//		})
+//	}
 
 	
 	
 	func documentInteractionControllerDidDismissOptionsMenu(controller: UIDocumentInteractionController) {
 		registerForNotifications()
-		toggleShareButtonBgAnimation()
+//		toggleShareButtonBgAnimation()
 	}
 	
 	private func sortDataSource(words :[String], emojis : [String]) ->[String]
