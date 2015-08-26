@@ -565,5 +565,5 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 			UIApplication.sharedApplication().delegate?.window??.rootViewController?.presentViewController(mySLComposerSheet, animated: true, completion: nil)
 		}
 	}
-
+	
 }

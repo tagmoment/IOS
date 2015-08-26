@@ -20,6 +20,7 @@
 		F10F63681A97927A00EDCAE3 /* NavbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F10F63671A97927A00EDCAE3 /* NavbarView.xib */; };
 		F11647861A880BC10094BEF4 /* TMFireFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11647851A880BC10094BEF4 /* TMFireFilter.swift */; };
 		F137FDD01A648CEF007B40B3 /* CameraSessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F137FDCF1A648CEF007B40B3 /* CameraSessionService.swift */; };
+		F13CC8E31B8B92A50095497A /* PayloadHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CC8E21B8B92A50095497A /* PayloadHolder.swift */; };
 		F14A81431A58B0B300B5D14F /* TMCircleMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A81421A58B0B300B5D14F /* TMCircleMask.swift */; };
 		F14A81451A58B31500B5D14F /* TMWaveMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A81441A58B31500B5D14F /* TMWaveMask.swift */; };
 		F14A81471A58B52700B5D14F /* TMHeartMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A81461A58B52700B5D14F /* TMHeartMask.swift */; };
@@ -141,6 +142,7 @@
 		F10F63671A97927A00EDCAE3 /* NavbarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NavbarView.xib; sourceTree = "<group>"; };
 		F11647851A880BC10094BEF4 /* TMFireFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMFireFilter.swift; sourceTree = "<group>"; };
 		F137FDCF1A648CEF007B40B3 /* CameraSessionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraSessionService.swift; sourceTree = "<group>"; };
+		F13CC8E21B8B92A50095497A /* PayloadHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayloadHolder.swift; sourceTree = "<group>"; };
 		F14A81421A58B0B300B5D14F /* TMCircleMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMCircleMask.swift; sourceTree = "<group>"; };
 		F14A81441A58B31500B5D14F /* TMWaveMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMWaveMask.swift; sourceTree = "<group>"; };
 		F14A81461A58B52700B5D14F /* TMHeartMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMHeartMask.swift; sourceTree = "<group>"; };
@@ -444,6 +446,7 @@
 				F1AE759C1AFAB65900A8335B /* MainViewController+CameraViews.swift */,
 				F16864681B1CE2BD007B61A1 /* MainViewController+Menu.swift */,
 				F1C3226E1B41D1F800091FB9 /* ViewChoreographer.swift */,
+				F13CC8E21B8B92A50095497A /* PayloadHolder.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -693,6 +696,7 @@
 				F15AD4151B029D4000D18472 /* TMBottomHalfCircleMask.swift in Sources */,
 				F19620C71A881BDE00DCFB85 /* TMTravelFilter.swift in Sources */,
 				F14A81451A58B31500B5D14F /* TMWaveMask.swift in Sources */,
+				F13CC8E31B8B92A50095497A /* PayloadHolder.swift in Sources */,
 				F1A7B7731A58AF4B0033FE64 /* MaskCollectionViewCell.swift in Sources */,
 				F16864721B1CF3CF007B61A1 /* FeedbackViewController.swift in Sources */,
 				F1B4ECE41A88072400C11FEF /* TMFilterInterface.swift in Sources */,

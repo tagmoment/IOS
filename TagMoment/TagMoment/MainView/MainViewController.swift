@@ -58,6 +58,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	
 	
 	
+	
 	required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
 		super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
 		commonInit()
@@ -238,7 +239,6 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	func maskChosen(name: String?) {
 		if (name != nil){
 			let maskLayerAndBounds = maskLayerAndBoundsForMaskName(name)
-			
 			self.changeSingleCaptureBehaviour()
 			UIView.animateWithDuration(0.10, animations: { () -> Void in
 				self.secondImageView.alpha = 0.0
@@ -305,14 +305,20 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	
 	func imageForCaching() -> UIImage
 	{
-		UIGraphicsBeginImageContext(self.canvas.frame.size);
-		self.canvas.image?.drawInRect(self.canvas.bounds);
-		self.secondImageView.drawViewHierarchyInRect(self.secondImageView.frame, afterScreenUpdates: true)
-		self.userLabel.drawViewHierarchyInRect(self.userLabel.frame, afterScreenUpdates: true)
+		let newBounds = CGRect(x: 0, y: 0, width: self.canvas.frame.size.width*2, height: self.canvas.frame.size.height*2)
+		let newBoundsForLabel = CGRect(x: self.userLabel.frame.origin.x, y: self.canvas.frame.size.height*2 - 28.0 - self.userLabel.frame.size.height*2, width: self.userLabel.frame.size.width*2, height: self.userLabel.frame.size.height*2)
+		let newBoundsForMaskView = CGRect(x: self.secondImageView.frame.origin.x*2, y: self.secondImageView.frame.origin.y*2 , width: self.secondImageView.frame.size.width*2, height: self.secondImageView.frame.size.height*2)
+		UIGraphicsBeginImageContextWithOptions(newBounds.size, true, UIScreen.mainScreen().scale)
+		self.canvas.image?.drawInRect(newBounds);
+		self.secondImageView.drawViewHierarchyInRect(newBoundsForMaskView, afterScreenUpdates: true)
+		
+		self.userLabel.drawViewHierarchyInRect(newBoundsForLabel, afterScreenUpdates: true)
 		let newImage = UIGraphicsGetImageFromCurrentImageContext()
 		UIGraphicsEndImageContext();
+		println("newImage size \(newImage.size)")
 		return newImage;
 	}
+	
 	
 	// MARK: - Filters delegation
 	func workingImage(outerImage : Bool) -> UIImage {
@@ -621,8 +627,9 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			
 			let newImage = ImageProcessingUtil.imageFromVideoView(viewToOperateOn, originalImage: image!, shouldMirrorImage: self.frontCamSessionView != nil)
 			println("image width is \(image!.size.width) and height \(image!.size.height)")
-			
 			println("newImage width is \(newImage.size.width) and canvas height \(newImage.size.height)")
+			
+			
 			self.populateCanvasWithImage(newImage)
 		}
 	}
@@ -639,7 +646,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			println("image width is \(image!.size.width) and height \(image!.size.height)")
 			let newImage = ImageProcessingUtil.imageByScalingAndCroppingForSize(image!, viewSize: workingImageView!.frame.size)
 			println("newImage width is \(newImage.size.width) and canvas height \(newImage.size.height)")
-			
+
 			self.populateCanvasWithImage(newImage)
 			sessionService.stopCurrentSession()
 			
@@ -659,6 +666,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	
 	private func populateCanvasWithImage(image : UIImage)
 	{
+		
 		workingImageView!.image = image
 	}
 	

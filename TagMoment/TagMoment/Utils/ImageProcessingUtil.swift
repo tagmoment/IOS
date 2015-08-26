@@ -102,39 +102,39 @@ class ImageProcessingUtil: NSObject {
 		return newImage
 	}
 	
-	class func imageFromAlbum(workingView: UIView, originalImage: UIImage, shouldMirrorImage: Bool) -> UIImage
-	{
-		
-		var originalSize = originalImage.size
-		var workingSize = workingView.frame.size
-		workingSize.height *= 2
-		workingSize.width *= 2
-		if (UIDeviceOrientationIsPortrait(UIDevice.currentDevice().orientation))
-		{
-			var temp = originalSize.width
-			originalSize.width = originalSize.height
-			originalSize.height = temp
-			
-			temp = workingSize.width
-			workingSize.width = workingSize.height
-			workingSize.height = temp
-		}
-		
-		
-		// metaRect is fractional, that's why we multiply here
-//		var cropRect = CGRect(x: outputRect.origin.x * originalSize.width, y: outputRect.origin.y * originalSize.height, width:outputRect.size.width * originalSize.width, height: outputRect.size.height * originalSize.height)
+//	class func imageFromAlbum(workingView: UIView, originalImage: UIImage, shouldMirrorImage: Bool) -> UIImage
+//	{
 //		
-//		cropRect = CGRectIntegral(cropRect);
-		
-		let orientation = originalImage.imageOrientation
-		
-//		let cropCGImage = CGImageCreateWithImageInRect(originalImage.CGImage, cropRect);
-//		workingSize.width = min(workingSize.width,cropRect.width)
-//		workingSize.height = min(workingSize.height,cropRect.height)
-		let imageOrientation = shouldMirrorImage ?  UIImageOrientation.LeftMirrored : orientation
-		//		return UIImage(CGImage: cropCGImage)!;
-		return UIImage(CGImage: ImageProcessingUtil.resizeCGImage(originalImage.CGImage, toWidth: workingSize.width, toHeight: workingSize.height), scale: 1.0, orientation: imageOrientation)!
-	}
+//		var originalSize = originalImage.size
+//		var workingSize = workingView.frame.size
+//		workingSize.height *= 2
+//		workingSize.width *= 2
+//		if (UIDeviceOrientationIsPortrait(UIDevice.currentDevice().orientation))
+//		{
+//			var temp = originalSize.width
+//			originalSize.width = originalSize.height
+//			originalSize.height = temp
+//			
+//			temp = workingSize.width
+//			workingSize.width = workingSize.height
+//			workingSize.height = temp
+//		}
+//		
+//		
+//		// metaRect is fractional, that's why we multiply here
+////		var cropRect = CGRect(x: outputRect.origin.x * originalSize.width, y: outputRect.origin.y * originalSize.height, width:outputRect.size.width * originalSize.width, height: outputRect.size.height * originalSize.height)
+////		
+////		cropRect = CGRectIntegral(cropRect);
+//		
+//		let orientation = originalImage.imageOrientation
+//		
+////		let cropCGImage = CGImageCreateWithImageInRect(originalImage.CGImage, cropRect);
+////		workingSize.width = min(workingSize.width,cropRect.width)
+////		workingSize.height = min(workingSize.height,cropRect.height)
+//		let imageOrientation = shouldMirrorImage ?  UIImageOrientation.LeftMirrored : orientation
+//		//		return UIImage(CGImage: cropCGImage)!;
+//		return UIImage(CGImage: ImageProcessingUtil.resizeCGImage(originalImage.CGImage, toWidth: workingSize.width, toHeight: workingSize.height), scale: 1.0, orientation: imageOrientation)!
+//	}
 	
 	class func resizeCGImage(cgimage : CGImage, toWidth : CGFloat, toHeight: CGFloat) -> CGImage
 	{
@@ -142,6 +142,13 @@ class ImageProcessingUtil: NSObject {
 		let context = CGBitmapContextCreate(nil, Int(toWidth), Int(toHeight), CGImageGetBitsPerComponent(cgimage), CGImageGetBytesPerRow(cgimage), colorSpace, CGImageGetBitmapInfo(cgimage))
 		CGContextDrawImage(context, CGRect(x: 0, y: 0, width: toWidth, height: toHeight), cgimage)
 		return CGBitmapContextCreateImage(context)
+	}
+	
+	
+	class func minSizeFromSize(size : CGSize) -> CGSize
+	{
+		let minScaledDimension = min(size.width, size.height)/UIScreen.mainScreen().scale
+		return CGSize(width: minScaledDimension, height: minScaledDimension)
 	}
 	
 	class func blurImage(source: UIImage) -> UIImage{
