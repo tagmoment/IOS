@@ -87,8 +87,8 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 		}
 		
 		var maskModel = self.masksViewModels![index]
-		cell.maskImage.image = UIImage(named: maskModel.name!.lowercaseString + "_off")
-		cell.maskImage.highlightedImage = UIImage(named: maskModel.name!.lowercaseString + "_on")
+		cell.maskImage.image = UIImage(named: maskModel.name!.lowercaseString)
+//		cell.maskImage.highlightedImage = UIImage(named: maskModel.name!.lowercaseString + "_on")
 		cell.maskName.text = maskModel.name
 	
 		return cell;
@@ -127,17 +127,7 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 	}
 	
 	@IBAction func takeButtonPressed(sender: AnyObject) {
-		UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
-					self.takeButton.layer.transform = CATransform3DMakeRotation(CGFloat(M_PI), 0, 0, 1)
-					}, completion: {(Bool) -> () in
-						UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
-							self.takeButton.layer.transform = CATransform3DMakeRotation(CGFloat(M_PI*2), 0, 0, 1)
-							}, completion: {(Bool) -> Void in
-								self.takeButton.layer.transform = CATransform3DIdentity
-							}
-						)
-					}
-		)
+	
 		if (self.masksChooseDelegate != nil)
 		{
 			self.masksChooseDelegate?.captureButtonPressed()
@@ -167,8 +157,18 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 	
 	// MARK: - Menu handling
 	@IBAction func menuButtonPressed(sender: AnyObject) {
-		let menuCont = MenuViewController(nibName: "MenuViewController", bundle: nil)
-		UIApplication.sharedApplication().delegate?.window!?.rootViewController!.presentViewController(menuCont, animated: true, completion: nil)
-		}
+
+		let cameraRollCont = CameraRollViewController(nibName: "CameraRollViewController", bundle: nil)
+		self.addCameraRollController(cameraRollCont)
+			
+	}
+	
+	private func addCameraRollController(toController : CameraRollViewController)
+	{
+		let mainController = UIApplication.sharedApplication().delegate?.window!?.rootViewController! as! MainViewController
+		toController.originalHeight = mainController.masksViewController.view.frame.height
+		toController.addToView(mainController.view)
+		mainController.addChildViewController(toController)
+	}
 	
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="df4-gF-7id" customClass="iCarousel">
-                    <rect key="frame" x="0.0" y="136" width="320" height="68"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="68" id="bHQ-0W-pzf"/>
@@ -31,36 +31,42 @@
                     </connections>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2A-Qz-l4B" userLabel="settings_button">
-                    <rect key="frame" x="30" y="39" width="50" height="50"/>
-                    <state key="normal" image="settingsicon_off">
+                    <rect key="frame" x="30" y="106" width="50" height="50"/>
+                    <state key="normal" image="camerarolliconoff">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <state key="selected" image="settingsicon_on"/>
-                    <state key="highlighted" image="settingsicon_on"/>
+                    <state key="selected" image="camerarolliconon"/>
+                    <state key="highlighted" image="camerarolliconon"/>
                     <connections>
                         <action selector="menuButtonPressed:" destination="-1" eventType="touchUpInside" id="BV8-B3-4x6"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5b-la-WW7" userLabel="capture_button">
-                    <rect key="frame" x="113" y="17" width="95" height="95"/>
+                    <rect key="frame" x="113" y="84" width="95" height="95"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="95" id="KfH-Mi-axO"/>
                         <constraint firstAttribute="width" constant="95" id="L2S-jx-xJx"/>
                     </constraints>
-                    <state key="normal" backgroundImage="capturebutton">
+                    <state key="normal" backgroundImage="capturebutton_off">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <state key="highlighted" backgroundImage="capturebutton_on"/>
                     <connections>
                         <action selector="takeButtonPressed:" destination="-1" eventType="touchUpInside" id="INf-gl-Lu0"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WEf-Ca-DjX" userLabel="switchcam button">
-                    <rect key="frame" x="249" y="44" width="41" height="41"/>
-                    <state key="normal" image="frontbackicon_off">
+                    <rect key="frame" x="240" y="107" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="hZ2-9O-2Ai"/>
+                        <constraint firstAttribute="width" constant="50" id="zaj-4Q-qPI"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="frontbackicon_off">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <state key="selected" image="frontbackicon_on"/>
+                    <state key="selected" backgroundImage="frontbackicon_on"/>
+                    <state key="highlighted" backgroundImage="frontbackicon_on"/>
                     <connections>
                         <action selector="switchCamButtonPressed:" destination="-1" eventType="touchUpInside" id="Txb-bv-v8a"/>
                     </connections>
@@ -71,22 +77,29 @@
                 <constraint firstAttribute="trailing" secondItem="df4-gF-7id" secondAttribute="trailing" id="AGe-oV-YCf"/>
                 <constraint firstItem="df4-gF-7id" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="FZP-eh-0Dd"/>
                 <constraint firstAttribute="trailing" secondItem="WEf-Ca-DjX" secondAttribute="trailing" constant="30" id="LM4-dj-bE3"/>
-                <constraint firstAttribute="centerY" secondItem="h5b-la-WW7" secondAttribute="centerY" constant="38" id="cT0-j1-4G2"/>
+                <constraint firstAttribute="centerY" secondItem="h5b-la-WW7" secondAttribute="centerY" constant="-30" id="cT0-j1-4G2"/>
                 <constraint firstItem="K2A-Qz-l4B" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="ema-5V-sKR"/>
                 <constraint firstAttribute="bottom" secondItem="df4-gF-7id" secondAttribute="bottom" id="fIn-gu-wIk"/>
                 <constraint firstItem="h5b-la-WW7" firstAttribute="centerY" secondItem="K2A-Qz-l4B" secondAttribute="centerY" id="gUB-xi-R4T"/>
+                <constraint firstItem="df4-gF-7id" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="iPw-1Y-DAz"/>
                 <constraint firstItem="WEf-Ca-DjX" firstAttribute="centerY" secondItem="h5b-la-WW7" secondAttribute="centerY" id="iZm-2v-Jkn"/>
                 <constraint firstAttribute="centerX" secondItem="h5b-la-WW7" secondAttribute="centerX" id="rcH-kL-Jca"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="fIn-gu-wIk"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="168" y="706"/>
         </view>
     </objects>
     <resources>
-        <image name="capturebutton" width="95" height="95"/>
+        <image name="camerarolliconoff" width="50" height="50"/>
+        <image name="camerarolliconon" width="50" height="50"/>
+        <image name="capturebutton_off" width="95" height="95"/>
+        <image name="capturebutton_on" width="95" height="95"/>
         <image name="frontbackicon_off" width="41" height="41"/>
         <image name="frontbackicon_on" width="41" height="41"/>
-        <image name="settingsicon_off" width="50" height="50"/>
-        <image name="settingsicon_on" width="50" height="50"/>
     </resources>
 </document>

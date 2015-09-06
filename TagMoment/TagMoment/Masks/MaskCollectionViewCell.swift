@@ -19,5 +19,18 @@ class MaskCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+	
+	override var highlighted: Bool {
+		willSet(newValue) {
+			if newValue
+			{
+				self.alpha = 1.0
+			}
+			else
+			{
+				self.alpha = 0.4
+			}
+		}
+	}
 
 }
