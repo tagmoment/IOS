@@ -446,6 +446,9 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 		{
 			if let delegate = self.sharingDelegate
 			{
+				TagTextProvider.clear()
+				chosenEmojiIndex = nil
+				chosenWordIndex = nil
 				delegate.retakeImageRequested()
 				
 			}

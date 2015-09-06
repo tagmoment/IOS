@@ -231,5 +231,17 @@ class TagTextProvider {
 		return false
 	}
 	
+	class func clear()
+	{
+		currentEmojiStringIndex = NSNotFound
+		currentWordStringIndex = NSNotFound
+		currentTypingStringIndex = NSNotFound
+		
+		currentWord = nil
+		currentEmoji = nil
+		currentTyping = nil
+		currentString = nil
+	}
+	
 	
 }
