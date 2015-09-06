@@ -48,7 +48,8 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 		{
 			self.jumperButton.setImage(UIImage(named: maskViewModel.getJumperImageName() + "2"), forState: UIControlState.Selected)
 		}
-		self.someSlider.setThumbImage(UIImage(named: "opacity_button_50"), forState: .Normal)
+		self.applySliderVisuals()
+		
 		currentCIImage = CIImage(CGImage: self.workingImage().CGImage)
 		currentContext = CIContext(options:nil)
 		
@@ -219,6 +220,26 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 				self.filterButtonsCollecionView.scrollToItemAtIndexPath(NSIndexPath(forItem: indexPathItem, inSection: indexPath.section), atScrollPosition: UICollectionViewScrollPosition.Right, animated: true)
 			}
 		}
+	}
+	
+	private func applySliderVisuals()
+	{
+		let minImage = self.sliderImageWithColor(UIColor.whiteColor())
+		self.someSlider.setMinimumTrackImage(minImage, forState: .Normal)
+		let maxImage = self.sliderImageWithColor(UIColor.darkGrayColor())
+		self.someSlider.setMaximumTrackImage(maxImage, forState: .Normal)
+		self.someSlider.setThumbImage(UIImage(named: "opacity_button_50"), forState: .Normal)
+	}
+	
+	private func sliderImageWithColor(color: UIColor) -> UIImage
+	{
+		let rect = CGRect(x: 0,y: 0,width: 1,height: 1)
+		UIGraphicsBeginImageContextWithOptions(rect.size, false, 0);
+		color.setFill()
+		UIRectFill(rect);
+		let image = UIGraphicsGetImageFromCurrentImageContext();
+		UIGraphicsEndImageContext();
+		return image;
 	}
 	
 	func saveCurrentState()
