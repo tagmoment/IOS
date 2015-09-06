@@ -31,7 +31,7 @@ class ViewChoreographer : NSObject
 	
 	func cameraRollWillDisappear(notification : NSNotification)
 	{
-		if !self.mainViewController!.isOnSecondStage()
+		if !self.mainViewController!.isOnSecondStage() && self.mainViewController!.masksViewController.maskAllowsSecondCapture() || self.mainViewController!.canvas.image == nil
 		{
 			self.takingImageStageAppearance(true)
 		}
