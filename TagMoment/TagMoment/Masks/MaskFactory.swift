@@ -5,7 +5,7 @@ import UIKit
 
 
 struct MaskFactory {
-	static var MASKS = ["moment", "bubble", "casual", "nameit", "diamond", "u&me", "waves", "joy", "flat", "up", "xoxo", "star"]
+	static var MASKS = ["moment","xoxo", "diamond", "star", "bubble", "nameit", "flat", "u&me", "waves", "joy", "up", "casual"]
 		
 	static func getViewModels() -> [TMMaskViewModel]
 	{
