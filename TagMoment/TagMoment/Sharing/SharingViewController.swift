@@ -521,30 +521,30 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 	{
 		return self.shareBGConstraint.constant == 0
 	}
+	@IBAction func instagramShareRequested(sender: AnyObject) {
+		let annotation = ["InstagramCaption" : TagTextProvider.addAllHashtags(self.textField.text)]
+
+		nonNativeShareRequestedWithPath(FileHandlingService.InstagrameFilePath(),  UTI: "com.instagram.exclusivegram", annotation : annotation)
+	}
 	
 	@IBAction func whatsappShareRequested(sender: AnyObject) {
-		return
+		
+		nonNativeShareRequestedWithPath(FileHandlingService.WhatsappFilePath(), UTI: "net.whatsapp.image")
+	}
+	
+	private func nonNativeShareRequestedWithPath(imagePath : String, UTI : String, annotation : [String : String]? = nil)
+	{
 		if let delegate = self.sharingDelegate
 		{
 			delegate.textEditingDidEnd()
-			let fileManager = NSFileManager.defaultManager()
-			var error : NSError?
-			let url = delegate.imageForSharing()
-
-			let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true);
-			let documentsDirectory = paths[0] as! String
-			let whatsappImagePath = documentsDirectory + "/ShareMe.wai"
-			if (fileManager.fileExistsAtPath(whatsappImagePath))
-			{
-				fileManager.removeItemAtPath(whatsappImagePath, error: &error)
-			}
-			fileManager.copyItemAtPath(url.absoluteString!, toPath: whatsappImagePath, error: &error)
 			NSNotificationCenter.defaultCenter().removeObserver(self)
-			documentationInteractionController = UIDocumentInteractionController(URL: NSURL(fileURLWithPath: whatsappImagePath)!)
-			documentationInteractionController?.UTI = "net.whatsapp.image"
+
+			documentationInteractionController = UIDocumentInteractionController(URL: NSURL(fileURLWithPath: "file://" + imagePath)!)
+			documentationInteractionController?.UTI = UTI
+			documentationInteractionController?.annotation = annotation
 			documentationInteractionController?.delegate = self
 			documentationInteractionController?.presentOpenInMenuFromRect(self.view.superview!.superview!.bounds, inView: self.view.superview!.superview!, animated: true)
-			
+
 		}
 	}
 	

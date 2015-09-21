@@ -75,6 +75,7 @@
 		F17A416D1AB477930074E5F5 /* TMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17A416C1AB477930074E5F5 /* TMTextField.swift */; };
 		F17A41711AB47FAC0074E5F5 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = F17A41701AB47FAC0074E5F5 /* iCarousel.m */; };
 		F19128BB1BB0908000CAFECD /* TWImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F19128BA1BB0908000CAFECD /* TWImageScrollView.m */; };
+		F19128BD1BB09F6900CAFECD /* FileHandlingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19128BC1BB09F6900CAFECD /* FileHandlingService.swift */; };
 		F19620C11A881A8800DCFB85 /* TMMusicFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19620C01A881A8800DCFB85 /* TMMusicFilter.swift */; };
 		F19620C31A881B0800DCFB85 /* TMStarFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19620C21A881B0800DCFB85 /* TMStarFilter.swift */; };
 		F19620C51A881B7300DCFB85 /* TMSurpriseFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19620C41A881B7300DCFB85 /* TMSurpriseFilter.swift */; };
@@ -204,6 +205,7 @@
 		F17A41701AB47FAC0074E5F5 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		F19128B91BB0908000CAFECD /* TWImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWImageScrollView.h; sourceTree = "<group>"; };
 		F19128BA1BB0908000CAFECD /* TWImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWImageScrollView.m; sourceTree = "<group>"; };
+		F19128BC1BB09F6900CAFECD /* FileHandlingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileHandlingService.swift; sourceTree = "<group>"; };
 		F19620C01A881A8800DCFB85 /* TMMusicFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMMusicFilter.swift; sourceTree = "<group>"; };
 		F19620C21A881B0800DCFB85 /* TMStarFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMStarFilter.swift; sourceTree = "<group>"; };
 		F19620C41A881B7300DCFB85 /* TMSurpriseFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMSurpriseFilter.swift; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 				F10185941A67434F003F906E /* ViewLayoutUtils.swift */,
 				F1B190F91AAE4DDB0001B86E /* Array+Shuffle.swift */,
 				F168646A1B1CEB8A007B61A1 /* VisualEffectsUtil.swift */,
+				F19128BC1BB09F6900CAFECD /* FileHandlingService.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -760,6 +763,7 @@
 				F172CF0D1B65820B006839EB /* AlbumCoverCollectionViewController.swift in Sources */,
 				F1A7B7711A58AF4B0033FE64 /* ChooseMasksViewController.swift in Sources */,
 				F1AE759B1AFAB3BC00A8335B /* MainViewController+MasksHandling.swift in Sources */,
+				F19128BD1BB09F6900CAFECD /* FileHandlingService.swift in Sources */,
 				F1A7B7681A5893010033FE64 /* TMMaskViewModel.swift in Sources */,
 				F101858C1A673E4D003F906E /* ChooseFiltersViewController.swift in Sources */,
 				F19620C31A881B0800DCFB85 /* TMStarFilter.swift in Sources */,

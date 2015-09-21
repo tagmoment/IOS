@@ -27,7 +27,7 @@ enum FlashState: Int{
 
 class MainViewController: UIViewController, ChooseMasksControllerDelegate, ChooseFiltesControllerDelegate, NavBarDelegate, SharingControllerDelegate, UIGestureRecognizerDelegate{
 	
-	let CachedImagePathKey = "cachedImagePathKey"
+	
 	
 	var masksViewController : ChooseMasksViewController!
 	var filtersViewController : ChooseFiltersViewController!
@@ -288,29 +288,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	
 	func saveTempImage()
 	{
-		
-		let imageData = UIImagePNGRepresentation(imageForCaching())
-		
-		let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true);
-		let documentsDirectory = paths[0] as! String
-		let imagePath = documentsDirectory + "/ShareMe.png"
-		
-		let filemanager = NSFileManager.defaultManager()
-		var error : NSError?
-		if (filemanager.fileExistsAtPath(imagePath))
-		{
-			
-			filemanager.removeItemAtPath(imagePath, error: &error)
-		}
-		if !imageData.writeToFile(imagePath, options: NSDataWritingOptions.DataWritingFileProtectionNone, error: &error)
-		{
-			print("Failed to cache image data to disk")
-		}
-		else
-		{
-			NSUserDefaults.standardUserDefaults().setObject(imagePath, forKey: CachedImagePathKey)
-			print("the cachedImagedPath is %@",imagePath)
-		}
+		FileHandlingService.SaveImageToSources(imageForCaching());
 	}
 	
 	func imageForCaching() -> UIImage
@@ -321,7 +299,6 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		UIGraphicsBeginImageContextWithOptions(newBounds.size, true, UIScreen.mainScreen().scale)
 		self.canvas.image?.drawInRect(newBounds);
 		self.secondImageView.drawViewHierarchyInRect(newBoundsForMaskView, afterScreenUpdates: true)
-		
 		self.userLabel.drawViewHierarchyInRect(newBoundsForLabel, afterScreenUpdates: true)
 		let newImage = UIGraphicsGetImageFromCurrentImageContext()
 		UIGraphicsEndImageContext();
