@@ -74,6 +74,7 @@
 		F17672741AA515FA00588865 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F17672731AA515FA00588865 /* OpenGLES.framework */; };
 		F17A416D1AB477930074E5F5 /* TMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17A416C1AB477930074E5F5 /* TMTextField.swift */; };
 		F17A41711AB47FAC0074E5F5 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = F17A41701AB47FAC0074E5F5 /* iCarousel.m */; };
+		F19128BB1BB0908000CAFECD /* TWImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F19128BA1BB0908000CAFECD /* TWImageScrollView.m */; };
 		F19620C11A881A8800DCFB85 /* TMMusicFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19620C01A881A8800DCFB85 /* TMMusicFilter.swift */; };
 		F19620C31A881B0800DCFB85 /* TMStarFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19620C21A881B0800DCFB85 /* TMStarFilter.swift */; };
 		F19620C51A881B7300DCFB85 /* TMSurpriseFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19620C41A881B7300DCFB85 /* TMSurpriseFilter.swift */; };
@@ -105,6 +106,7 @@
 		F1D4B6AF1A8809AD00396E25 /* TMSunsetFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D4B6AE1A8809AD00396E25 /* TMSunsetFilter.swift */; };
 		F1D4B6B11A880A8300396E25 /* TMCocktailFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D4B6B01A880A8300396E25 /* TMCocktailFilter.swift */; };
 		F1D4B6B31A880B3900396E25 /* TMCoffeeFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D4B6B21A880B3900396E25 /* TMCoffeeFilter.swift */; };
+		F1D5C4E91BAF358D0075EFE2 /* MainViewController+ImageZoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D5C4E81BAF358D0075EFE2 /* MainViewController+ImageZoom.swift */; };
 		F1DDA81F1AD99D730005DEDD /* MainViewController+SmallScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DDA81E1AD99D730005DEDD /* MainViewController+SmallScreen.swift */; };
 		F1DDA8211AD9AD610005DEDD /* SmallScreenSharingButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DDA8201AD9AD610005DEDD /* SmallScreenSharingButtonsView.swift */; };
 		F1DDA8231AD9AD890005DEDD /* SmallScreenSharingButtonsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1DDA8221AD9AD890005DEDD /* SmallScreenSharingButtonsView.xib */; };
@@ -200,6 +202,8 @@
 		F17A416C1AB477930074E5F5 /* TMTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMTextField.swift; sourceTree = "<group>"; };
 		F17A416F1AB47FAC0074E5F5 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		F17A41701AB47FAC0074E5F5 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
+		F19128B91BB0908000CAFECD /* TWImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWImageScrollView.h; sourceTree = "<group>"; };
+		F19128BA1BB0908000CAFECD /* TWImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWImageScrollView.m; sourceTree = "<group>"; };
 		F19620C01A881A8800DCFB85 /* TMMusicFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMMusicFilter.swift; sourceTree = "<group>"; };
 		F19620C21A881B0800DCFB85 /* TMStarFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMStarFilter.swift; sourceTree = "<group>"; };
 		F19620C41A881B7300DCFB85 /* TMSurpriseFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMSurpriseFilter.swift; sourceTree = "<group>"; };
@@ -231,6 +235,7 @@
 		F1D4B6AE1A8809AD00396E25 /* TMSunsetFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMSunsetFilter.swift; sourceTree = "<group>"; };
 		F1D4B6B01A880A8300396E25 /* TMCocktailFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMCocktailFilter.swift; sourceTree = "<group>"; };
 		F1D4B6B21A880B3900396E25 /* TMCoffeeFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMCoffeeFilter.swift; sourceTree = "<group>"; };
+		F1D5C4E81BAF358D0075EFE2 /* MainViewController+ImageZoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainViewController+ImageZoom.swift"; sourceTree = "<group>"; };
 		F1DDA81E1AD99D730005DEDD /* MainViewController+SmallScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainViewController+SmallScreen.swift"; sourceTree = "<group>"; };
 		F1DDA8201AD9AD610005DEDD /* SmallScreenSharingButtonsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SmallScreenSharingButtonsView.swift; path = TagMoment/Sharing/SmallScreenSharingButtonsView.swift; sourceTree = SOURCE_ROOT; };
 		F1DDA8221AD9AD890005DEDD /* SmallScreenSharingButtonsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmallScreenSharingButtonsView.xib; sourceTree = "<group>"; };
@@ -290,6 +295,7 @@
 		F101F15F1A6B191B004849F1 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				F19128B81BB0908000CAFECD /* TWImageScrollView */,
 				F101F1601A6B202D004849F1 /* SlidingView.swift */,
 				F1CC18331A97911300DB77F2 /* TakeImageNavBar.swift */,
 				F10F63671A97927A00EDCAE3 /* NavbarView.xib */,
@@ -445,6 +451,7 @@
 				F1AE759A1AFAB3BC00A8335B /* MainViewController+MasksHandling.swift */,
 				F1AE759C1AFAB65900A8335B /* MainViewController+CameraViews.swift */,
 				F16864681B1CE2BD007B61A1 /* MainViewController+Menu.swift */,
+				F1D5C4E81BAF358D0075EFE2 /* MainViewController+ImageZoom.swift */,
 				F1C3226E1B41D1F800091FB9 /* ViewChoreographer.swift */,
 				F13CC8E21B8B92A50095497A /* PayloadHolder.swift */,
 			);
@@ -477,6 +484,15 @@
 				F17A41701AB47FAC0074E5F5 /* iCarousel.m */,
 			);
 			path = iCarousel;
+			sourceTree = "<group>";
+		};
+		F19128B81BB0908000CAFECD /* TWImageScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				F19128B91BB0908000CAFECD /* TWImageScrollView.h */,
+				F19128BA1BB0908000CAFECD /* TWImageScrollView.m */,
+			);
+			path = TWImageScrollView;
 			sourceTree = "<group>";
 		};
 		F1A142131A93FC81001D63C6 /* FilterParameters */ = {
@@ -676,6 +692,7 @@
 				F14C27081AC9E58800C19968 /* LeftAligned.m in Sources */,
 				F17A416D1AB477930074E5F5 /* TMTextField.swift in Sources */,
 				F1A7B7641A585DF80033FE64 /* TMVerticalRectMask.swift in Sources */,
+				F19128BB1BB0908000CAFECD /* TWImageScrollView.m in Sources */,
 				F1ECA3781A88167A0018EFA2 /* TMLoveFilter.swift in Sources */,
 				F16864661B1CDFF8007B61A1 /* MenuViewController.swift in Sources */,
 				F14A81431A58B0B300B5D14F /* TMCircleMask.swift in Sources */,
@@ -726,6 +743,7 @@
 				F175A1331AD859F500760025 /* TMAlphaFilterBase.swift in Sources */,
 				F10185961A67434F003F906E /* ViewLayoutUtils.swift in Sources */,
 				F175A1351AD85E6F00760025 /* TMGamerFilter.swift in Sources */,
+				F1D5C4E91BAF358D0075EFE2 /* MainViewController+ImageZoom.swift in Sources */,
 				F15F398E1B1BB260002ADAAF /* SlidingButton.swift in Sources */,
 				F1D4B6AF1A8809AD00396E25 /* TMSunsetFilter.swift in Sources */,
 				F1DDA81F1AD99D730005DEDD /* MainViewController+SmallScreen.swift in Sources */,
@@ -855,6 +873,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Tomer Hershkovitz (RA43GHR95U)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tomer Hershkovitz (RA43GHR95U)";
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -882,6 +901,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Tomer Hershkovitz";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tomer Hershkovitz";
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,

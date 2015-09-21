@@ -25,7 +25,7 @@ enum FlashState: Int{
 	case Auto
 }
 
-class MainViewController: UIViewController, ChooseMasksControllerDelegate, ChooseFiltesControllerDelegate, NavBarDelegate, SharingControllerDelegate{
+class MainViewController: UIViewController, ChooseMasksControllerDelegate, ChooseFiltesControllerDelegate, NavBarDelegate, SharingControllerDelegate, UIGestureRecognizerDelegate{
 	
 	let CachedImagePathKey = "cachedImagePathKey"
 	
@@ -35,6 +35,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	var navigationView : TakeImageNavBar!
 	
 	var secondImageView : ClippingViewWithTouch!
+	
 	var frontCamSessionView : UIView!
 	var backCamSessionView : UIView!
 	
@@ -48,6 +49,10 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	var workingImageView : UIImageView?
 	var initialized = false
 	var controlsContainerHeight : CGFloat = CGFloat(0)
+	
+	var canvasZoomControl : TWImageScrollView?
+	var secondZoomControl : TWImageScrollView?
+	var workingZoomControl : TWImageScrollView?
 	
 	@IBOutlet weak var logoLabel: UILabel!
 	@IBOutlet weak var userLabel: UILabel!
@@ -88,9 +93,11 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		secondImageView.userInteractionEnabled = true
 		var tapRecog = UITapGestureRecognizer()
 		tapRecog.addTarget(self, action: "croppedImageDidPress:")
+		tapRecog.delegate = self
 		secondImageView.addGestureRecognizer(tapRecog)
 		tapRecog = UITapGestureRecognizer()
 		tapRecog.addTarget(self, action: "croppedImageDidPress:")
+		tapRecog.delegate = self
 		canvas.addGestureRecognizer(tapRecog)
 		secondImageView.contentMode = UIViewContentMode.ScaleAspectFill
 		secondImageView.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
@@ -109,7 +116,10 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	{
 		NSNotificationCenter.defaultCenter().removeObserver(self)
 	}
-	
+	//MARK - Gesture Handling
+	func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+		return self.canvasZoomControl == nil
+	}
 	func croppedImageDidPress(sender: AnyObject)
 	{
 		let tapRecog = sender as! UITapGestureRecognizer
@@ -338,6 +348,8 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		{
 			if cont is CameraRollViewController
 			{
+				
+				takeImageFromCameraRoll(true)
 				closeCameraRoll(cont as! CameraRollViewController)
 //					self.navigationView.showLeftButton(true, animated: true)
 				
@@ -412,6 +424,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			if cont is CameraRollViewController
 			{
 				workingImageView!.image = nil
+				self.cancelZoomOperation()
 				closeCameraRoll(cont as! CameraRollViewController)
 				
 				if (self.backCamSessionView == nil && self.frontCamSessionView == nil)
@@ -636,11 +649,11 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	func imageFromCameraChosenNotification(notif : NSNotification)
 	{
 		let image = notif.userInfo?[ImageFromCameraNotificationKey] as! UIImage
-		
-		processImageFromPhotoAlbum(image)
+		prepareZoomControlWithImage(image)
+//		processImageFromPhotoAlbum(image)
 	}
 	
-	private func processImageFromPhotoAlbum(image: UIImage?) {
+	public func processImageFromPhotoAlbum(image: UIImage?) {
 		if (image != nil)
 		{
 			println("image width is \(image!.size.width) and height \(image!.size.height)")

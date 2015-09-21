@@ -12,5 +12,6 @@
 #import "TestFairy.h"
 #import "iCarousel.h"
 #import "LeftAligned.h"
+#import "TWImageScrollView.h"
 
 #endif
