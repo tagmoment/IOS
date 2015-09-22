@@ -204,20 +204,45 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 	private func scrollToMoreVisibleCellsIfNeeded()
 	{
 		let selected = self.filterButtonsCollecionView.indexPathsForSelectedItems()
-		let indexPath = selected[0] as! NSIndexPath
-		let cell = self.filterButtonsCollecionView.cellForItemAtIndexPath(indexPath)
+		var indexPath = selected[0] as! NSIndexPath
+		if (indexPath.item == 0)
+		{
+			self.filterButtonsCollecionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
+			return;
+		}
+		else if (indexPath.item == TMFilterFactory.getFilters().count - 1)
+		{
+			self.filterButtonsCollecionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.Right, animated: true)
+			return;
+		}
 		
+		var cell = self.filterButtonsCollecionView.cellForItemAtIndexPath(indexPath)
 		if (cell != nil)
 		{
-			if (cell!.frame.origin.x - self.filterButtonsCollecionView.contentOffset.x < 0)
+			var scrollPos : UICollectionViewScrollPosition
+			if (cell!.center.x < (self.filterButtonsCollecionView.contentOffset.x + self.filterButtonsCollecionView.frame.width/2)) //Left side
 			{
-				var indexPathItem = indexPath.item == 0 ? indexPath.item : indexPath.item - 1
-				self.filterButtonsCollecionView.scrollToItemAtIndexPath(NSIndexPath(forItem: indexPathItem, inSection: indexPath.section), atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
+				indexPath = NSIndexPath(forItem: indexPath.item - 1, inSection: indexPath.section)
+				scrollPos = .Left
+				
 			}
-			else if (cell!.frame.maxX > self.filterButtonsCollecionView.contentOffset.x + self.filterButtonsCollecionView.frame.width)
+			else
 			{
-				var indexPathItem = indexPath.item == TMFilterFactory.getFilters().count - 1 ? indexPath.item : indexPath.item + 1
-				self.filterButtonsCollecionView.scrollToItemAtIndexPath(NSIndexPath(forItem: indexPathItem, inSection: indexPath.section), atScrollPosition: UICollectionViewScrollPosition.Right, animated: true)
+				indexPath = NSIndexPath(forItem: indexPath.item + 1, inSection: indexPath.section)
+				scrollPos = .Right
+			}
+			
+			var cell = self.filterButtonsCollecionView.cellForItemAtIndexPath(indexPath)
+			if (cell == nil)
+			{
+				self.filterButtonsCollecionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: scrollPos, animated: true)
+				return;
+			}
+			
+			if (cell!.frame.origin.x < self.filterButtonsCollecionView.contentOffset.x) ||
+			(cell!.frame.maxX > self.filterButtonsCollecionView.contentOffset.x + self.filterButtonsCollecionView.frame.width)
+			{
+				self.filterButtonsCollecionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: scrollPos, animated: true)
 			}
 		}
 	}
