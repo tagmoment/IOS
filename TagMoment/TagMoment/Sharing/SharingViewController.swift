@@ -543,7 +543,7 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 			documentationInteractionController?.UTI = UTI
 			documentationInteractionController?.annotation = annotation
 			documentationInteractionController?.delegate = self
-			documentationInteractionController?.presentOpenInMenuFromRect(self.view.superview!.superview!.bounds, inView: self.view.superview!.superview!, animated: true)
+			documentationInteractionController?.presentOptionsMenuFromRect(self.view.superview!.superview!.bounds, inView: self.view.superview!.superview!, animated: true)
 
 		}
 	}

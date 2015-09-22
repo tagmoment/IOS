@@ -67,6 +67,12 @@
                     </state>
                     <state key="selected" backgroundImage="frontbackicon_on"/>
                     <state key="highlighted" backgroundImage="frontbackicon_on"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="hZ2-9O-2Ai"/>
+                            <exclude reference="zaj-4Q-qPI"/>
+                        </mask>
+                    </variation>
                     <connections>
                         <action selector="switchCamButtonPressed:" destination="-1" eventType="touchUpInside" id="Txb-bv-v8a"/>
                     </connections>
@@ -99,7 +105,7 @@
         <image name="camerarolliconon" width="50" height="50"/>
         <image name="capturebutton_off" width="95" height="95"/>
         <image name="capturebutton_on" width="95" height="95"/>
-        <image name="frontbackicon_off" width="41" height="41"/>
-        <image name="frontbackicon_on" width="41" height="41"/>
+        <image name="frontbackicon_off" width="50" height="50"/>
+        <image name="frontbackicon_on" width="50" height="50"/>
     </resources>
 </document>
