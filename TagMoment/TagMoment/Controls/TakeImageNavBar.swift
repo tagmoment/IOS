@@ -170,8 +170,8 @@ class TakeImageNavBar: UIView {
 	
 	func applyCancelButtonAppearanceToBackButton()
 	{
-		self.backButton.setTitle("Cancel", forState: UIControlState.Normal)
-		self.backButton.setImage(nil, forState: UIControlState.Normal)
+		self.backButton.setTitle("", forState: UIControlState.Normal)
+		self.backButton.setImage(UIImage(named: "menu_close"), forState: UIControlState.Normal)
 	}
 	
 	func applyRetakeButtonAppearanceToBackButton()
