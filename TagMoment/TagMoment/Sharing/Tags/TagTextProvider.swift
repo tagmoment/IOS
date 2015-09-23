@@ -19,11 +19,12 @@ class TagTextProvider {
 	static var currentString : String? = nil
 	
 	
-	static var emojisContainer = ["\u{e20c}", "\u{e412}", "\u{e106}", "\u{e056}", "\u{e420}", "\u{e022}", "\u{e418}", "\u{e056}", "\u{e403}", "\u{e411}", "\u{e402}", "\u{e404}", "\u{e40d}", "\u{e00e}", "\u{e405}", "\u{e40a}", "\u{e04a}", "\u{e443}", "\u{e112}", "\u{e105}", "\u{e326}", "\u{e058}", "\u{e40e}", "\u{e214}", "\u{e449}", "\u{e034}"]
+	static var emojisContainer = ["\u{e20c}", "\u{e412}", "\u{e106}", "\u{e056}", "\u{e420}", "\u{e022}", "\u{e418}", "\u{e056}", "\u{e403}", "\u{e411}", "\u{e402}", "\u{e404}", "\u{e40d}", "\u{e00e}", "\u{e405}", "\u{e40a}", "\u{e04a}", "\u{e443}", "\u{e112}", "\u{e105}", "\u{e326}", "\u{e058}", "\u{e40e}", "\u{e214}", "\u{e449}", "\u{e034}", "\u{e10e}",
+		"\u{e425}", "\u{e415}", "\u{e41f}", "\u{e42a}", "\u{e42b}", "\u{e015}" , "\u{e018}", "\u{e31c}", "\u{e013}", "\u{e312}",
+		"\u{e11d}", "\u{e048}", ] /*"\u{e057}"]*/
 
 	
-	static var TagsDataSourceWords = ["love", "me", "cute", "photooftheday","happy","beautiful", "selfie", "girl", "picoftheday",
-		"smile","friends","fun","fashion","summer","food","amazing","swag","style","family","life","lol","pretty","sun","art","cool","funny","music"]/*,"eyes","night","beach","sky"]*/
+	static var TagsDataSourceWords = ["love", "menow", "cute", "photooftheday","happy","beautiful", "selfie", "girl", "picoftheday", "smile"," friends", "fun","fashion", "summer","food","amazing", "swag","style","family","life","lol", "pretty","sun","art","cool","funny","music","eyes","night", "beach","sky", "nice", "home", "lovit", "i", "dog", "tattoo", "good", "best"]
 	
 	class func removeSpaces(inputString : String) -> String
 	{
@@ -53,8 +54,9 @@ class TagTextProvider {
 		return resultString
 	}
 	
-	class func addTextByRules(input : String) -> String
+	class func addTextByRules(string : String) -> String
 	{
+		let input = removeSpaces(string)
 		let isInputEmoji = contains(self.emojisContainer, input)
 		let isInputSavedWord = contains(self.TagsDataSourceWords, input)
 		
@@ -241,6 +243,24 @@ class TagTextProvider {
 		currentEmoji = nil
 		currentTyping = nil
 		currentString = nil
+	}
+	
+	class func isReplacementStringAllowd(string : String) -> Bool
+	{
+		var allowedCharSet = NSCharacterSet.alphanumericCharacterSet().mutableCopy() as! NSMutableCharacterSet
+		allowedCharSet.addCharactersInString("_")
+		if let range = string.rangeOfCharacterFromSet(allowedCharSet)
+		{
+			if (currentTyping == nil && string.toInt() != nil)
+			{
+				return false
+			}
+			
+			return true
+			
+		}
+		
+		return string.isEmpty //For back space.
 	}
 	
 	

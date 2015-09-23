@@ -108,19 +108,20 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 	// MARK: - Textfield handling
 	func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
 		
+		let noSpaceString = TagTextProvider.removeSpaces(string)
 		
-		if let range = string.rangeOfCharacterFromSet(NSCharacterSet.whitespaceCharacterSet())
+		if !(TagTextProvider.isReplacementStringAllowd(noSpaceString))
 		{
 			return false
 		}
 		
 		let MaxLettersAllowed = TagTextProvider.currentEmoji != nil ? MaxLettersInTag + 2 : MaxLettersInTag
 		
-		if (count(textField.text) >= MaxLettersAllowed && !string.isEmpty && TagTextProvider.currentWord == nil)
+		if (count(textField.text + noSpaceString) >= MaxLettersAllowed && !noSpaceString.isEmpty && TagTextProvider.currentWord == nil)
 		{
 			return false
 			
-		}else if(string == " ")
+		}else if(noSpaceString == " ")
 		{
 			if autoKeyboardWasOn == true
 			{
@@ -135,7 +136,7 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 			autoKeyboardWasOn = true
 		}
 		
-		if !string.isEmpty
+		if !noSpaceString.isEmpty
 		{
 			notifyDelegateOnChangedText(input: string)
 		}
