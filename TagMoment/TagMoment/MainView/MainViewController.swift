@@ -18,13 +18,6 @@ let CameraRollDidDisappearNotificationName = "CameraRollDidDisappearNotification
 let CameraRollWillDisappearNotificationName = "CameraRollWillDisappearNotificationName"
 let CameraRollDidSelectImageNotificationName = "CameraRollDidSelectImageNotificationName"
 
-
-enum FlashState: Int{
-	case Off
-	case On
-	case Auto
-}
-
 class MainViewController: UIViewController, ChooseMasksControllerDelegate, ChooseFiltesControllerDelegate, NavBarDelegate, SharingControllerDelegate, UIGestureRecognizerDelegate{
 	
 	
@@ -53,6 +46,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	var canvasZoomControl : TWImageScrollView?
 	var secondZoomControl : TWImageScrollView?
 	var workingZoomControl : TWImageScrollView?
+	var timerHandler : TimerHandler?
 	
 	@IBOutlet weak var logoLabel: UILabel!
 	@IBOutlet weak var userLabel: UILabel!
@@ -524,6 +518,27 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		initStageThree()
 #else
 	
+	
+		if timerHandler == nil && navigationView.timerState() != TimerState.Off
+		{
+			timerHandler = TimerHandler()
+		timerHandler?.applyCountDownEffectWithCount(self.navigationView.timerState().rawValue, onView: self.canvas)
+			return
+			
+		}
+		else if (timerHandler != nil)
+		{
+			let wasCounting = timerHandler?.counting
+			timerHandler?.cancelTimer()
+			timerHandler = nil
+			
+			if (wasCounting == true)
+			{
+				return
+			}
+			
+		}
+	
 		makeSnapshotEffect()
 		UIApplication.sharedApplication().beginIgnoringInteractionEvents()
 		sessionService.captureImage { (image: UIImage?, error: NSError!) -> Void in
@@ -569,7 +584,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	private func makeSnapshotEffect()
 	{
 		let effectView = UIView(frame: self.canvas.bounds)
-		effectView.backgroundColor = UIColor.blackColor()
+		effectView.backgroundColor = UIColor.whiteColor()
 		effectView.alpha = 1.0
 		let superview = isOnFirstStage() ? self.canvas : self.secondImageView
 		superview.addSubview(effectView)
@@ -630,7 +645,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 //		processImageFromPhotoAlbum(image)
 	}
 	
-	public func processImageFromPhotoAlbum(image: UIImage?) {
+	func processImageFromPhotoAlbum(image: UIImage?) {
 		if (image != nil)
 		{
 			println("image width is \(image!.size.width) and height \(image!.size.height)")

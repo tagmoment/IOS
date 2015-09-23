@@ -7,6 +7,19 @@
 //
 
 import UIKit
+
+enum FlashState: Int{
+	case Off
+	case On
+	case Auto
+}
+
+enum TimerState: Int{
+	case Off = 0
+	case Three = 3
+	case Five = 5
+}
+
 protocol NavBarDelegate : class
 {
 	func retakeImageRequested()
@@ -35,7 +48,10 @@ class TakeImageNavBar: UIView {
 	
 	@IBOutlet weak var changeMasksButton: UIButton!
 	var currentFlashState = FlashState.Auto
+	var currentTimerIndex = 0
 	var flashStateImages = ["flash_off", "flash_on", "flash_auto"]
+	var timerStateImages = [("timericon_off", TimerState.Off), ("timericon_3sec", TimerState.Three), ("timericon_5sec", TimerState.Five)]
+	
 	
 	override func awakeFromNib() {
 		self.backButton.alpha = 0.0
@@ -55,7 +71,7 @@ class TakeImageNavBar: UIView {
 	
 	@IBAction func middleButtonPressed(sender: AnyObject)
 	{
-		
+		toggleTimerState()
 	}
 	
 	@IBAction func rightButtonPressed(sender: AnyObject)
@@ -103,11 +119,17 @@ class TakeImageNavBar: UIView {
 			{
 				jumper?.removeFromSuperview()
 			}
-			self.middleButton.setImage(UIImage(named: "timericon_off"), forState: UIControlState.Normal)
+			currentTimerIndex = 0
+			self.middleButton.setImage(UIImage(named: timerStateImages[currentTimerIndex].0), forState: UIControlState.Normal)
 		}
 		
 	}
 	
+	
+	func timerState() -> TimerState
+	{
+		return timerStateImages[currentTimerIndex].1
+	}
 	
 	func flashState() -> FlashState
 	{
@@ -170,8 +192,8 @@ class TakeImageNavBar: UIView {
 	
 	func applyCancelButtonAppearanceToBackButton()
 	{
-		self.backButton.setTitle("", forState: UIControlState.Normal)
-		self.backButton.setImage(UIImage(named: "menu_close"), forState: UIControlState.Normal)
+		self.backButton.setTitle("Cancel", forState: UIControlState.Normal)
+		self.backButton.setImage(nil, forState: UIControlState.Normal)
 	}
 	
 	func applyRetakeButtonAppearanceToBackButton()
@@ -187,6 +209,14 @@ class TakeImageNavBar: UIView {
 		self.rightButton.setImage(flashImage, forState: UIControlState.Normal)
 		currentFlashState = FlashState(rawValue: newFlashState)!
 		NSNotificationCenter.defaultCenter().postNotificationName(FlashChangedNotification, object: nil, userInfo: [FlashStateKey : newFlashState])
+	}
+	
+	private func toggleTimerState()
+	{
+		currentTimerIndex = (currentTimerIndex + 1)%timerStateImages.count
+		let timerImage = UIImage(named: timerStateImages[currentTimerIndex].0)
+		self.middleButton.setImage(timerImage, forState: UIControlState.Normal)
+		
 	}
 	
 	func zeroFlashState()

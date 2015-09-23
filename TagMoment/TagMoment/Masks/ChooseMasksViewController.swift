@@ -160,6 +160,8 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 	private func addCameraRollController(toController : CameraRollViewController)
 	{
 		let mainController = UIApplication.sharedApplication().delegate?.window!?.rootViewController! as! MainViewController
+		mainController.timerHandler?.cancelTimer()
+		mainController.timerHandler = nil
 		toController.originalHeight = mainController.masksViewController.view.frame.height
 		toController.addToView(mainController.view)
 		mainController.addChildViewController(toController)
