@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChooseMasksViewController" customModule="TagMoment" customModuleProvider="target">
@@ -21,6 +21,7 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="df4-gF-7id" customClass="iCarousel">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
+                    <animations/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="68" id="bHQ-0W-pzf"/>
@@ -32,6 +33,11 @@
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2A-Qz-l4B" userLabel="settings_button">
                     <rect key="frame" x="30" y="106" width="50" height="50"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="Aie-PR-yqy"/>
+                        <constraint firstAttribute="height" constant="50" id="j2X-FP-DQG"/>
+                    </constraints>
                     <state key="normal" image="camerarolliconoff">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -43,6 +49,7 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5b-la-WW7" userLabel="capture_button">
                     <rect key="frame" x="113" y="84" width="95" height="95"/>
+                    <animations/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="95" id="KfH-Mi-axO"/>
@@ -58,8 +65,11 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WEf-Ca-DjX" userLabel="switchcam button">
                     <rect key="frame" x="240" y="107" width="50" height="50"/>
+                    <animations/>
                     <constraints>
+                        <constraint firstAttribute="height" constant="50" id="3os-X6-YZB"/>
                         <constraint firstAttribute="height" constant="50" id="hZ2-9O-2Ai"/>
+                        <constraint firstAttribute="width" constant="50" id="oOe-km-nK3"/>
                         <constraint firstAttribute="width" constant="50" id="zaj-4Q-qPI"/>
                     </constraints>
                     <state key="normal" backgroundImage="frontbackicon_off">
@@ -78,6 +88,7 @@
                     </connections>
                 </button>
             </subviews>
+            <animations/>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="df4-gF-7id" secondAttribute="trailing" id="AGe-oV-YCf"/>

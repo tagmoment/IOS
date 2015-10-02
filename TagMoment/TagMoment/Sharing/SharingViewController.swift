@@ -160,7 +160,7 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 	}
 	
 	func deleteBackwardsDetected() {
-		if (TagTextProvider.isCurrentCharSetSecondWord(TagTextProvider.currentEmoji))
+		if (self.chosenEmojiIndex != nil &&  TagTextProvider.isCurrentCharSetSecondWord(TagTextProvider.currentEmoji))
 		{
 			self.tagsCollectionView.deselectItemAtIndexPath(self.chosenEmojiIndex, animated: true)
 			self.collectionView(self.tagsCollectionView, didDeselectItemAtIndexPath: self.chosenEmojiIndex!)
@@ -169,12 +169,11 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 			return;
 		}
 		
-		if (TagTextProvider.isCurrentCharSetSecondWord(TagTextProvider.currentWord))
+		if (self.chosenWordIndex != nil && TagTextProvider.isCurrentCharSetSecondWord(TagTextProvider.currentWord))
 		{
 			self.tagsCollectionView.deselectItemAtIndexPath(self.chosenWordIndex, animated: true)
 			self.collectionView(self.tagsCollectionView, didDeselectItemAtIndexPath: self.chosenWordIndex!)
 			self.chosenWordIndex = nil
-			//					TagTextProvider.currentWord = nil
 			return;
 		}
 		
