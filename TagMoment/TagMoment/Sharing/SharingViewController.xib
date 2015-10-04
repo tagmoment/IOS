@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Raleway-Regular.ttf">
@@ -34,6 +34,7 @@
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HEA-SW-BrC" userLabel="saveImageBG">
                     <rect key="frame" x="0.0" y="230" width="144" height="44"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="199" id="Pt6-Mn-nAX"/>
                     </constraints>
@@ -53,6 +54,7 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="21g-rT-QKM" userLabel="saveImage">
                     <rect key="frame" x="8" y="236" width="32" height="32"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="width" constant="32" id="Bjf-gV-tcU"/>
                         <constraint firstAttribute="height" constant="32" id="O08-Sx-qqS"/>
@@ -67,6 +69,7 @@
                 </button>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="#moment" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="aas-bg-iX7" customClass="TMTextField" customModule="TagMoment" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                    <animations/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="niY-L9-U6D"/>
@@ -82,6 +85,7 @@
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="se8-qG-QNa">
                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            <animations/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="50" id="3YY-fN-BbM"/>
                                 <constraint firstAttribute="height" constant="50" id="WqZ-2k-xyo"/>
@@ -97,6 +101,7 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zfA-Oh-Zxz">
                             <rect key="frame" x="0.0" y="66" width="50" height="50"/>
+                            <animations/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="QjE-Y0-AXR"/>
                                 <constraint firstAttribute="width" constant="50" id="nh2-jQ-MBP"/>
@@ -112,6 +117,7 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CkO-hn-IF4">
                             <rect key="frame" x="90" y="66" width="50" height="50"/>
+                            <animations/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="50" id="Xwz-ON-SXX"/>
                                 <constraint firstAttribute="height" constant="50" id="odE-xo-JCM"/>
@@ -124,6 +130,7 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LuF-xL-T2f">
                             <rect key="frame" x="180" y="66" width="50" height="50"/>
+                            <animations/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="50" id="9Cd-EJ-wew"/>
                                 <constraint firstAttribute="height" constant="50" id="UJe-pb-Xm2"/>
@@ -136,6 +143,7 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cW3-O0-mFk">
                             <rect key="frame" x="180" y="0.0" width="50" height="50"/>
+                            <animations/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="Wq2-kD-RkY"/>
                                 <constraint firstAttribute="width" constant="50" id="Y0a-sq-eQ0"/>
@@ -151,6 +159,7 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="31H-6P-2mU">
                             <rect key="frame" x="90" y="0.0" width="50" height="50"/>
+                            <animations/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="50" id="MG5-tH-TBF"/>
                                 <constraint firstAttribute="height" constant="50" id="zlQ-Le-1Gc"/>
@@ -165,6 +174,7 @@
                             </connections>
                         </button>
                     </subviews>
+                    <animations/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="31H-6P-2mU" firstAttribute="top" secondItem="id5-b8-9y4" secondAttribute="top" id="1up-xK-h78"/>
@@ -190,6 +200,7 @@
                     <subviews>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Fu5-p9-pIr">
                             <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                            <animations/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="100" id="xnh-Xe-cGr"/>
@@ -206,6 +217,7 @@
                             </connections>
                         </collectionView>
                     </subviews>
+                    <animations/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="Fu5-p9-pIr" firstAttribute="top" secondItem="yGn-q6-e7R" secondAttribute="top" id="2kq-6L-vtI"/>
@@ -216,6 +228,7 @@
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kGx-GW-XOC" userLabel="shareImageBG">
                     <rect key="frame" x="456" y="230" width="144" height="44"/>
+                    <animations/>
                     <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="18"/>
                     <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="35" maxY="0.0"/>
                     <state key="normal" title="Share It" backgroundImage="share_background">
@@ -227,6 +240,7 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NGF-qY-cNl" userLabel="sharebutton">
                     <rect key="frame" x="560" y="236" width="32" height="32"/>
+                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="32" id="25T-x1-wkO"/>
                         <constraint firstAttribute="width" constant="32" id="ZdU-lG-D6s"/>
@@ -239,6 +253,7 @@
                     </connections>
                 </button>
             </subviews>
+            <animations/>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="kGx-GW-XOC" secondAttribute="bottom" constant="4" id="3IS-rz-O0P"/>

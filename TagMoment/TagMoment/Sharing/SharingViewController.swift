@@ -275,7 +275,7 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 	}
 	func animateButtonEntrance()
 	{
-		var shuffled = self.buttonsHolder.subviews.shuffled()
+		var shuffled = self.buttonsHolder.subviews.shuffle()
 		for i in 0..<shuffled.count
 		{
 			let view = shuffled[i]

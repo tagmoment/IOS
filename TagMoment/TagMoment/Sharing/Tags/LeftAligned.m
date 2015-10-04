@@ -13,11 +13,16 @@ const NSInteger kMaxCellSpacing = 3;
 @implementation LeftAligned
 
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect {
-	NSArray* attributesToReturn = [super layoutAttributesForElementsInRect:rect];
-	for (UICollectionViewLayoutAttributes* attributes in attributesToReturn) {
+	
+	NSArray* attributesOrig = [[super layoutAttributesForElementsInRect:rect] copy];
+	NSMutableArray* attributesToReturn = [NSMutableArray arrayWithCapacity:[attributesOrig count]];
+	
+	for (UICollectionViewLayoutAttributes* attributes in attributesOrig) {
 		if (nil == attributes.representedElementKind) {
-			NSIndexPath* indexPath = attributes.indexPath;
-			attributes.frame = [self layoutAttributesForItemAtIndexPath:indexPath].frame;
+			UICollectionViewLayoutAttributes* attrib = [attributes copy];
+			NSIndexPath* indexPath = attrib.indexPath;
+			attrib.frame = [self layoutAttributesForItemAtIndexPath:indexPath].frame;
+			[attributesToReturn addObject:attrib];
 		}
 	}
 	return attributesToReturn;
@@ -25,7 +30,7 @@ const NSInteger kMaxCellSpacing = 3;
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath {
 	UICollectionViewLayoutAttributes* currentItemAttributes =
-	[super layoutAttributesForItemAtIndexPath:indexPath];
+	[[super layoutAttributesForItemAtIndexPath:indexPath] copy];
 	
 	UIEdgeInsets sectionInset = [(UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout sectionInset];
 	
