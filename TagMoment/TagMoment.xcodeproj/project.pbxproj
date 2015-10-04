@@ -625,7 +625,9 @@
 		F109CE901A56F8770011CA55 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = TagMoment;
 				TargetAttributes = {
 					F109CE971A56F8770011CA55 = {
@@ -823,6 +825,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -902,6 +905,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/TagMoment/Externals/TestFairy",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)/TagMoment/Externals/TestFairy";
@@ -930,6 +934,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/TagMoment/Externals/TestFairy",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)/TagMoment/Externals/TestFairy";
@@ -951,6 +956,7 @@
 				);
 				INFOPLIST_FILE = TagMomentTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "TagMoment.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TagMoment.app/TagMoment";
 			};
@@ -966,6 +972,7 @@
 				);
 				INFOPLIST_FILE = TagMomentTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "TagMoment.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TagMoment.app/TagMoment";
 			};

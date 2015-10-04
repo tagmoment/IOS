@@ -33,11 +33,11 @@ class TMHeartMask: NSObject, TMMask {
 	
 	class func bezierHeartShapePathWithWidth(width: CGFloat, center: CGPoint) -> UIBezierPath{
 		let w = width
-		let h = width
+//		let h = width
 		let radiusConst = CGFloat(40.0)
 		let radius = w - center.x - radiusConst
 //		let y = center.y + 20
-		var path = UIBezierPath()
+		let path = UIBezierPath()
 		path.addArcWithCenter(CGPoint(x: center.x + radiusConst,y: radius), radius: radius, startAngle: TMHeartMask.toRadians(40), endAngle: TMHeartMask.toRadians(210), clockwise: false)
 		
 		path.addArcWithCenter(CGPoint(x: center.x - radiusConst,y: radius), radius: radius, startAngle: TMHeartMask.toRadians(-30), endAngle: TMHeartMask.toRadians(140), clockwise: false)

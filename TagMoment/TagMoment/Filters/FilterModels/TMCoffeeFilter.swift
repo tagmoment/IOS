@@ -7,7 +7,7 @@ class TMCoffeeFilter : TMFilterBase{
 	override var filtersProtected : [CIFilter] {
 		get
 		{
-			return [CIFilter(name: "CIWhitePointAdjust"), CIFilter(name: "CIVibrance")]
+			return [CIFilter(name: "CIWhitePointAdjust")!, CIFilter(name: "CIVibrance")!]
 		}
 	}
 	

@@ -14,7 +14,7 @@ class TMGamerFilter : TMAlphaFilterBase{
 		get
 		{
 			var filters = super.filtersProtected
-			filters.insert(CIFilter(name: "CIUnsharpMask"), atIndex: 0)
+			filters.insert(CIFilter(name: "CIUnsharpMask")!, atIndex: 0)
 			return filters
 			
 		}
@@ -29,7 +29,7 @@ class TMGamerFilter : TMAlphaFilterBase{
 	
 	override func applyFilterValue(value : Float)
 	{
-		let defaultParams = self.constantParams[self.filters[0].name()];
+		let defaultParams = self.constantParams[self.filters[0].name];
 		for param in defaultParams!
 		{
 			self.filters[0].setValue(param.normalizedValueFromPercent(value), forKey: param.key)
@@ -44,7 +44,7 @@ class TMGamerFilter : TMAlphaFilterBase{
 		var colorControlsfilterParams = [FilterParameterProtocol]()
 		colorControlsfilterParams.append(FilterConstantParameter(key: "inputRadius", constant: Float(2.0)))
 		colorControlsfilterParams.append(FilterConstantParameter(key: "inputIntensity", constant: Float(6.5)))
-		outParams.updateValue(colorControlsfilterParams, forKey: self.filters[0].name())
+		outParams.updateValue(colorControlsfilterParams, forKey: self.filters[0].name)
 	}
 	
 }

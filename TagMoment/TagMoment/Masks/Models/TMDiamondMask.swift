@@ -20,7 +20,7 @@ class TMDiamondMask :  TMMask {
 	
 	func clippingPathWithRect(bounds : CGRect) -> CGPath
 	{
-		var path = UIBezierPath()
+		let path = UIBezierPath()
 		path.moveToPoint(CGPoint(x: bounds.width/2, y: 0))
 		path.addLineToPoint(CGPoint(x: 0, y: bounds.height/2))
 		path.addLineToPoint(CGPoint(x: bounds.width/2, y: bounds.height))

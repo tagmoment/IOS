@@ -52,7 +52,7 @@ class CameraRollViewController: UIViewController, UIGestureRecognizerDelegate{
 		navCont.navigationBar.barStyle = UIBarStyle.Black
 		albumsContainerController.assetLibrary = self.assetLibrary
 		albumsContainerController.title = "Phone Albums"
-		var albumCont = AlbumContentsCollectionViewController(nibName: "AlbumContentsCollectionViewController", bundle: nil)
+		let albumCont = AlbumContentsCollectionViewController(nibName: "AlbumContentsCollectionViewController", bundle: nil)
 		albumCont.assetLibrary = self.assetLibrary
 		navCont.pushViewController(albumCont, animated: false)
 		navCont.navigationBar.tintColor = UIColor.whiteColor()
@@ -85,14 +85,14 @@ class CameraRollViewController: UIViewController, UIGestureRecognizerDelegate{
 			originalHeight = heightConstraint.constant
 			self.endSlidingDrawerMovementWithVelocity(panGest.velocityInView(self.view))
 		default:
-			println(" \(panGest.state.rawValue)")
+			print(" \(panGest.state.rawValue)")
 		}
 	}
 	
 	private func endSlidingDrawerMovementWithVelocity(velocity : CGPoint)
 	{
 		
-		println("velocty y is:  \(velocity.y)")
+		print("velocty y is:  \(velocity.y)")
 		let velocityY = abs(velocity.y) > VelocityThreshold ? velocity.y : velocity.y > 0 ? VelocityThreshold : -VelocityThreshold
 		let targetHeight = velocity.y > 0 ? minHeight : maxHeight
 		let distanceToCover = abs(heightConstraint.constant - targetHeight)
@@ -150,12 +150,12 @@ class CameraRollViewController: UIViewController, UIGestureRecognizerDelegate{
 					}
 					else
 					{
-						print("finished")
+						print("finished", terminator: "")
 					}
 					
 				})
 				let groupName = group.valueForProperty(ALAssetsGroupPropertyName) as! String
-				println("\(groupName)")
+				print("\(groupName)")
 				if (assetsUrlsForGroup.count != 0)
 				{
 					self.assetsUrls[group] = assetsUrlsForGroup
@@ -179,9 +179,9 @@ class CameraRollViewController: UIViewController, UIGestureRecognizerDelegate{
 			}
 			
 			}) { (error : NSError!) -> Void in
-				print("we have an error")
+				print("we have an error", terminator: "")
 		}
-		println("here")
+		print("here")
 		
 
 	}

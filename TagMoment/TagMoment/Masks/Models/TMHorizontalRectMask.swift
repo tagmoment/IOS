@@ -17,7 +17,7 @@ class TMHorizontalRectMask: TMMask {
 	
 	func clippingPathWithRect(bounds : CGRect) -> CGPath
 	{
-		var somepath = UIBezierPath(rect: CGRect(x: 0.0, y: workingBounds.maxY/2, width: workingBounds.maxX, height: workingBounds.maxY/2))
+		let somepath = UIBezierPath(rect: CGRect(x: 0.0, y: workingBounds.maxY/2, width: workingBounds.maxX, height: workingBounds.maxY/2))
 		
 		return somepath.CGPath
 	}

@@ -14,7 +14,7 @@ class TMStarFilter : TMAlphaFilterBase{
 		get
 		{
 			var filters = super.filtersProtected
-			filters.insert(CIFilter(name: "CIColorControls"), atIndex: 0)
+			filters.insert(CIFilter(name: "CIColorControls")!, atIndex: 0)
 			return filters
 
 		}
@@ -31,7 +31,7 @@ class TMStarFilter : TMAlphaFilterBase{
 	
 	override func applyFilterValue(value : Float)
 	{
-		let defaultParams = self.constantParams[self.filters[0].name()];
+		let defaultParams = self.constantParams[self.filters[0].name];
 		for param in defaultParams!
 		{
 			self.filters[0].setValue(param.normalizedValueFromPercent(value), forKey: param.key)
@@ -47,7 +47,7 @@ class TMStarFilter : TMAlphaFilterBase{
 		colorControlsfilterParams.append(FilterConstantParameter(key: "inputSaturation", constant: Float(0.64)))
 		colorControlsfilterParams.append(FilterConstantParameter(key: "inputBrightness", constant: Float(0.2)))
 		colorControlsfilterParams.append(FilterConstantParameter(key: "inputContrast", constant: Float(1.88)))
-		outParams.updateValue(colorControlsfilterParams, forKey: self.filters[0].name())
+		outParams.updateValue(colorControlsfilterParams, forKey: self.filters[0].name)
 	}
 	
 }

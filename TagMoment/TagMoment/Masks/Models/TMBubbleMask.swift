@@ -18,7 +18,7 @@ class TMBubbleMask: NSObject, TMMask {
 	{
 		let scaleFactor = CGFloat(0.08)
 		let controlScaleFactor = CGFloat(0.1333)
-		var path = UIBezierPath()
+		let path = UIBezierPath()
 		let relativeRect = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height)
 		path.addArcWithCenter(CGPoint(x: relativeRect.midX - relativeRect.width*scaleFactor  ,y: relativeRect.midY), radius: relativeRect.width/2 - relativeRect.width*scaleFactor*2, startAngle: TMHeartMask.toRadians(0), endAngle: TMHeartMask.toRadians(100), clockwise: false)
 		

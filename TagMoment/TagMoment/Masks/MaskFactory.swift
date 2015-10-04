@@ -22,7 +22,7 @@ struct MaskFactory {
 		
 		var masks = [TMMask]()
 		for name in MASKS{
-			masks.append(maskForName(name,rect: CGRect.zeroRect)!)
+			masks.append(maskForName(name,rect: CGRect.zero)!)
 		}
 		return masks
 	}

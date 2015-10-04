@@ -13,7 +13,7 @@ extension MainViewController
 
 	func takeImageFromCameraRoll(removeView : Bool)
 	{
-		var zoomControl = self.canvasZoomControl ?? self.secondZoomControl
+		let zoomControl = self.canvasZoomControl ?? self.secondZoomControl
 		if (zoomControl != nil)
 		{
 			let image = zoomControl!.capture()
@@ -33,7 +33,7 @@ extension MainViewController
 	
 	func cancelZoomOperation()
 	{
-		var zoomControl = self.canvasZoomControl ?? self.secondZoomControl
+		let zoomControl = self.canvasZoomControl ?? self.secondZoomControl
 		zoomControl?.removeFromSuperview()
 		self.canvasZoomControl = nil
 		self.secondZoomControl = nil

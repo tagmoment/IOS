@@ -8,21 +8,35 @@
 
 import Foundation
 
+enum TagMomentBlurEffect : Int{
+	
+	case ExtraLight
+	case Light
+	case Dark
+
+}
+
 class VisualEffectsUtil
 {
-	static func initBlurredOverLay(effectStyle: UIBlurEffectStyle, toView holder: UIView) -> UIView?
+	static func initBlurredOverLay(effectStyle: TagMomentBlurEffect, toView holder: UIView? = nil) -> UIView?
 	{
-		if let theClass: AnyClass = NSClassFromString("UIVisualEffectView") {
+		
+		if #available(iOS 8.0, *) {
 			if !UIAccessibilityIsReduceTransparencyEnabled() {
-				let blurEffect = UIBlurEffect(style: effectStyle)
-				let blurredView = UIVisualEffectView(effect: blurEffect)
-				holder.pinSubViewToAllEdges(blurredView);
-				return blurredView
-			} else {
-				holder.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
+				let blurEffect = UIBlurEffect(style: UIBlurEffectStyle(rawValue: effectStyle.rawValue)!)
+    				let blurredView = UIVisualEffectView(effect: blurEffect)
+					if let view = holder
+					{
+						view.pinSubViewToAllEdges(blurredView);
+					}
+				
+    				return blurredView
+			} else if let view = holder{
+				
+				view.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
 			}
-		} else {
-			holder.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
+		} else if let view = holder {
+			view.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
 		}
 		
 		return nil;

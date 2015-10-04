@@ -31,11 +31,11 @@ class StarMaskPathBuilder
 		return points
 	}
 	
-	func starPath(#x:CGFloat, y:CGFloat, radius:CGFloat, sides:Int,pointyness:CGFloat) -> CGPathRef {
+	func starPath(x x:CGFloat, y:CGFloat, radius:CGFloat, sides:Int,pointyness:CGFloat) -> CGPathRef {
 		let adjustment = 360/sides/2
 		let path = CGPathCreateMutable()
 		let points = polygonPointArray(sides,x: x,y: y,radius: radius, adjustment: CGFloat(-adjustment/2))
-		var cpg = points[0]
+		let cpg = points[0]
 		let points2 = polygonPointArray(sides,x: x,y: y,radius: radius*pointyness,adjustment:CGFloat(adjustment/2))
 		var i = 0
 		CGPathMoveToPoint(path, nil, cpg.x, cpg.y)

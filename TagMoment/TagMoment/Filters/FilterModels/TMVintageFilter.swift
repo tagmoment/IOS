@@ -14,7 +14,7 @@ class TMVintageFilter : TMAlphaFilterBase{
 		get
 		{
 			var filters = super.filtersProtected
-			filters.insert(CIFilter(name: "CIPhotoEffectTonal"), atIndex: 0)
+			filters.insert(CIFilter(name: "CIPhotoEffectTonal")!, atIndex: 0)
 			return filters
 		}
 	}

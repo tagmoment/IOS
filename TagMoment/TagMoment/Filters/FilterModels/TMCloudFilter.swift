@@ -13,7 +13,7 @@ class TMCloudFilter : TMFilterBase{
 	override var filtersProtected : [CIFilter] {
 		get
 		{
-			return [CIFilter(name: "CIPixellate")]
+			return [CIFilter(name: "CIPixellate")!]
 		}
 	}
 	

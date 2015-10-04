@@ -22,7 +22,7 @@ class CameraSessionService : NSObject{
 	{
 		super.init()
 		
-		NSNotificationCenter.defaultCenter().addObserverForName(FlashChangedNotification, object: nil, queue: nil) { (notif: NSNotification!) -> Void in
+		NSNotificationCenter.defaultCenter().addObserverForName(FlashChangedNotification, object: nil, queue: nil) { (notif: NSNotification) -> Void in
 			let dictObject : AnyObject? = notif.userInfo?[FlashStateKey]
 			if let newState = dictObject as? FlashState.RawValue
 			{
@@ -43,7 +43,7 @@ class CameraSessionService : NSObject{
 		self.captureSession = AVCaptureSession()
 		self.captureSession?.sessionPreset = AVCaptureSessionPresetPhoto;
 		
-		var captureVideoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+		let captureVideoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
 		
 		captureVideoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
 		
@@ -58,11 +58,17 @@ class CameraSessionService : NSObject{
 		}
 		
 		var err : NSError? = nil
-		var input : AnyObject! = AVCaptureDeviceInput.deviceInputWithDevice(frontCamera , error: &err)
+		var input : AnyObject!
+		do {
+			input = try AVCaptureDeviceInput(device: frontCamera)
+		} catch let error as NSError {
+			err = error
+			input = nil
+		}
 		
 		if (input != nil) {
 			if let error = err {
-				println("ERROR: trying to open camera:" + error.localizedDescription)
+				print("ERROR: trying to open camera:" + error.localizedDescription)
 				
 			}
 		}
@@ -78,11 +84,17 @@ class CameraSessionService : NSObject{
 		
 		
 		var err : NSError? = nil
-		var input : AnyObject! = AVCaptureDeviceInput.deviceInputWithDevice(backCamera, error: &err)
+		var input : AnyObject!
+		do {
+			input = try AVCaptureDeviceInput(device: backCamera)
+		} catch let error as NSError {
+			err = error
+			input = nil
+		}
 		
 		if (input != nil) {
 			if let error = err {
-				println("ERROR: trying to open camera:" + error.localizedDescription)
+				print("ERROR: trying to open camera:" + error.localizedDescription)
 
 			}
 		}
@@ -98,7 +110,10 @@ class CameraSessionService : NSObject{
 			if (device.isFlashModeSupported(newFlashState) != false)
 			{
 				self.captureSession?.beginConfiguration()
-				device.lockForConfiguration(nil)
+				do {
+					try device.lockForConfiguration()
+				} catch _ {
+				}
 				device.flashMode = newFlashState
 				device.unlockForConfiguration()
 				self.captureSession?.commitConfiguration()
@@ -118,7 +133,7 @@ class CameraSessionService : NSObject{
 	}
 	
 	
-	private func startRunningSession(#input : AVCaptureInput)
+	private func startRunningSession(input input : AVCaptureInput)
 	{
 		self.captureSession?.addInput(input)
 		flashStateChanged(AVCaptureFlashMode(rawValue: self.flashState.rawValue)!)
@@ -129,13 +144,17 @@ class CameraSessionService : NSObject{
 	func focus(isFrontCamera : Bool, layerHolder : UIView, touchPoint : CGPoint)
 	{
 		let device = isFrontCamera ? frontCamera : backCamera
-		let captureLayer = layerHolder.layer.sublayers[0] as! AVCaptureVideoPreviewLayer
+		let captureLayer = layerHolder.layer.sublayers![0] as! AVCaptureVideoPreviewLayer
 		let convertedPoint = captureLayer.captureDevicePointOfInterestForPoint(touchPoint)
 		
 		if (device!.isFocusModeSupported(AVCaptureFocusMode.AutoFocus) && device!.focusPointOfInterestSupported)
 		{
-			var error = NSErrorPointer()
-			device!.lockForConfiguration(error)
+			let error = NSErrorPointer()
+			do {
+				try device!.lockForConfiguration()
+			} catch let error1 as NSError {
+				error.memory = error1
+			}
 			if (error == nil)
 			{
 				device!.focusPointOfInterest = convertedPoint
@@ -146,9 +165,9 @@ class CameraSessionService : NSObject{
 		
 	}
 	
-	func captureImage(#endBlock: (UIImage?, NSError!) -> Void){
+	func captureImage(endBlock endBlock: (UIImage?, NSError!) -> Void){
 		var videoConnection : AVCaptureConnection?
-		var connectionsArray = self.stillImageOutputRef!.connections as! [AVCaptureConnection]
+		let connectionsArray = self.stillImageOutputRef!.connections as! [AVCaptureConnection]
 		
 		for connection in connectionsArray {
 			
@@ -172,8 +191,8 @@ class CameraSessionService : NSObject{
 			
 			if (buffer != nil)
 			{
-				var imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer)
-				var image = UIImage(data: imageData)
+				let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer)
+				let image = UIImage(data: imageData)
 				endBlock(image, error)
 			}
 		})
@@ -186,7 +205,7 @@ class CameraSessionService : NSObject{
 		}
 		
 		self.stillImageOutputRef = AVCaptureStillImageOutput()
-		var outputSettings = [ AVVideoCodecKey : AVVideoCodecJPEG]
+		let outputSettings = [ AVVideoCodecKey : AVVideoCodecJPEG]
 		self.stillImageOutputRef?.outputSettings = outputSettings
 		
 		
@@ -194,19 +213,19 @@ class CameraSessionService : NSObject{
 	
 	
 	private func initCameras() {
-		var devices = AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo)
+		let devices = AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo)
 		for device in devices {
 			
-			println("Device name: " + device.localizedName!!)
+			print("Device name: " + device.localizedName!!)
 			
 			if (device.hasMediaType(AVMediaTypeVideo)) {
 				
 				if (device.position == AVCaptureDevicePosition.Back) {
-					println("Device position : back")
+					print("Device position : back")
 					backCamera = device as? AVCaptureDevice
 				}
 				else if (device.position == AVCaptureDevicePosition.Front){
-					println("Device position : front")
+					print("Device position : front")
 					frontCamera = device as? AVCaptureDevice
 				}
 				

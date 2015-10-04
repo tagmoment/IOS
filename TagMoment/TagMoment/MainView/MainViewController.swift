@@ -63,7 +63,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		commonInit()
 	}
 
-	required init(coder aDecoder: NSCoder) {
+	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 		commonInit()
 	}
@@ -94,14 +94,14 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		tapRecog.delegate = self
 		canvas.addGestureRecognizer(tapRecog)
 		secondImageView.contentMode = UIViewContentMode.ScaleAspectFill
-		secondImageView.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
+		secondImageView.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight];
 		secondImageView.frame = canvas.bounds;
 		canvas.addSubview(secondImageView);
 		navigationView = NSBundle.mainBundle().loadNibNamed("NavbarView", owner: nil, options: nil)[0] as! TakeImageNavBar
 		infobarHolder.pinSubViewToAllEdges(navigationView)
 		navigationView.viewDelegate = self
 		changeMasksCarouselPositionIfNeeded()
-		blurredView = VisualEffectsUtil.initBlurredOverLay(UIBlurEffectStyle.Light, toView: secondImageView)
+		blurredView = VisualEffectsUtil.initBlurredOverLay(TagMomentBlurEffect.Light, toView: secondImageView)
 		canvas.layer.masksToBounds = true
 		
     }
@@ -167,7 +167,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	{
 #if (arch(i386) || arch(x86_64)) && os(iOS)
 
-		print("In smulator stage 1")
+		print("In smulator stage 1", terminator: "")
 #else
 		startSessionOnBackCam()
 #endif
@@ -211,7 +211,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	}
 	
 	private func createSessionView() -> UIView {
-		var sessionView = UIView()
+		let sessionView = UIView()
 		if (self.isOnFirstStage())
 		{
 			canvas.pinSubViewToAllEdges(sessionView)
@@ -296,7 +296,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		self.userLabel.drawViewHierarchyInRect(newBoundsForLabel, afterScreenUpdates: true)
 		let newImage = UIGraphicsGetImageFromCurrentImageContext()
 		UIGraphicsEndImageContext();
-		println("newImage size \(newImage.size)")
+		print("newImage size \(newImage.size)")
 		return newImage;
 	}
 	
@@ -427,7 +427,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		self.frontCamSessionView = nil
 		self.backCamSessionView?.removeFromSuperview()
 		self.backCamSessionView = nil
-		blurredView = VisualEffectsUtil.initBlurredOverLay(UIBlurEffectStyle.Light, toView: self.secondImageView)
+		blurredView = VisualEffectsUtil.initBlurredOverLay(TagMomentBlurEffect.Light, toView: self.secondImageView)
 		startSessionOnBackCam()
 		if (masksViewController == nil)
 		{
@@ -508,7 +508,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	
 	func imageForSharing() -> NSURL {
 		let path = NSUserDefaults.standardUserDefaults().objectForKey(CachedImagePathKey) as! String
-		return NSURL(fileURLWithPath: path)!
+		return NSURL(fileURLWithPath: path)
 	}
 	
 	func captureButtonPressed() {
@@ -631,8 +631,8 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			let viewToOperateOn = self.backCamSessionView == nil ? self.frontCamSessionView : self.backCamSessionView
 			
 			let newImage = ImageProcessingUtil.imageFromVideoView(viewToOperateOn, originalImage: image!, shouldMirrorImage: self.frontCamSessionView != nil)
-			println("image width is \(image!.size.width) and height \(image!.size.height)")
-			println("newImage width is \(newImage.size.width) and canvas height \(newImage.size.height)")
+			print("image width is \(image!.size.width) and height \(image!.size.height)")
+			print("newImage width is \(newImage.size.width) and canvas height \(newImage.size.height)")
 			
 			
 			self.populateCanvasWithImage(newImage)
@@ -648,9 +648,9 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	func processImageFromPhotoAlbum(image: UIImage?) {
 		if (image != nil)
 		{
-			println("image width is \(image!.size.width) and height \(image!.size.height)")
+			print("image width is \(image!.size.width) and height \(image!.size.height)")
 			let newImage = ImageProcessingUtil.imageByScalingAndCroppingForSize(image!, viewSize: workingImageView!.frame.size)
-			println("newImage width is \(newImage.size.width) and canvas height \(newImage.size.height)")
+			print("newImage width is \(newImage.size.width) and canvas height \(newImage.size.height)")
 
 			self.populateCanvasWithImage(newImage)
 			sessionService.stopCurrentSession()

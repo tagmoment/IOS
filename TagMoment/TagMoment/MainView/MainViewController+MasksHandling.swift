@@ -24,7 +24,7 @@ extension MainViewController
 		}
 		
 		let mask = MaskFactory.maskForName(name!, rect: workingRect)
-		var maskLayer = CAShapeLayer()
+		let maskLayer = CAShapeLayer()
 		maskLayer.path = mask!.clippingPathWithRect(mask!.cameraBounds)
 		return (maskLayer,mask!.cameraBounds)
 	}

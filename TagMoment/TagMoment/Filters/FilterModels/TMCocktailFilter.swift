@@ -7,7 +7,7 @@ class TMCocktailFilter : TMAlphaFilterBase{
 		get
 		{
 			var filters = super.filtersProtected
-			filters.insert(CIFilter(name: "CIPhotoEffectProcess"), atIndex: 0)
+			filters.insert(CIFilter(name: "CIPhotoEffectProcess")!, atIndex: 0)
 			return filters
 		}
 	}

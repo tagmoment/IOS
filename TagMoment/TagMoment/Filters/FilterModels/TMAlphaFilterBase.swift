@@ -13,8 +13,8 @@ class TMAlphaFilterBase : TMFilterBase
 	override var filtersProtected : [CIFilter] {
 		get
 		{
-			return [CIFilter(name: "CIColorMatrix"),
-				CIFilter(name: "CISourceOverCompositing")]
+			return [CIFilter(name: "CIColorMatrix")!,
+				CIFilter(name: "CISourceOverCompositing")!]
 		}
 	}
 //	var ColorMatrix = CIFilter(name: "CIColorMatrix")

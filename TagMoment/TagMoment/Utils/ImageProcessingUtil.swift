@@ -13,7 +13,7 @@ class ImageProcessingUtil: NSObject {
 	
 	class func imageFromVideoView(workingView: UIView, originalImage: UIImage, shouldMirrorImage: Bool) -> UIImage
 	{
-		let layer: AVCaptureVideoPreviewLayer = workingView.layer.sublayers[0] as! AVCaptureVideoPreviewLayer
+		let layer: AVCaptureVideoPreviewLayer = workingView.layer.sublayers![0] as! AVCaptureVideoPreviewLayer
 		
 		let outputRect = layer.metadataOutputRectOfInterestForRect(workingView.bounds)
 		var originalSize = originalImage.size
@@ -44,7 +44,7 @@ class ImageProcessingUtil: NSObject {
 		workingSize.height = min(workingSize.height,cropRect.height)
 		let imageOrientation = shouldMirrorImage ?  UIImageOrientation.LeftMirrored : orientation
 //		return UIImage(CGImage: cropCGImage)!;
-		return UIImage(CGImage: ImageProcessingUtil.resizeCGImage(cropCGImage, toWidth: workingSize.width, toHeight: workingSize.height), scale: 1.0, orientation: imageOrientation)!
+		return UIImage(CGImage: ImageProcessingUtil.resizeCGImage(cropCGImage!, toWidth: workingSize.width, toHeight: workingSize.height), scale: 1.0, orientation: imageOrientation)
 	}
 	
 	
@@ -93,7 +93,7 @@ class ImageProcessingUtil: NSObject {
 		
 		if (newImage == nil)
 		{
-			println("could not scale image")
+			print("could not scale image")
 		}
 		
 		//pop the context to get back to the default
@@ -139,9 +139,9 @@ class ImageProcessingUtil: NSObject {
 	class func resizeCGImage(cgimage : CGImage, toWidth : CGFloat, toHeight: CGFloat) -> CGImage
 	{
 		let colorSpace = CGImageGetColorSpace(cgimage)
-		let context = CGBitmapContextCreate(nil, Int(toWidth), Int(toHeight), CGImageGetBitsPerComponent(cgimage), CGImageGetBytesPerRow(cgimage), colorSpace, CGImageGetBitmapInfo(cgimage))
+		let context = CGBitmapContextCreate(nil, Int(toWidth), Int(toHeight), CGImageGetBitsPerComponent(cgimage), CGImageGetBytesPerRow(cgimage), colorSpace, CGImageGetBitmapInfo(cgimage).rawValue)
 		CGContextDrawImage(context, CGRect(x: 0, y: 0, width: toWidth, height: toHeight), cgimage)
-		return CGBitmapContextCreateImage(context)
+		return CGBitmapContextCreateImage(context)!
 	}
 	
 	

@@ -15,7 +15,7 @@ class TMLoveFilter : TMAlphaFilterBase{
 		get
 		{
 			var filters = super.filtersProtected
-			filters.insert(CIFilter(name: "CILinearToSRGBToneCurve"), atIndex: 0)
+			filters.insert(CIFilter(name: "CILinearToSRGBToneCurve")!, atIndex: 0)
 			return filters
 		}
 	}

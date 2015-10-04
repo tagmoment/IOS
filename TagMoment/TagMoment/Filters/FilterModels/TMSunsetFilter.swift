@@ -7,7 +7,7 @@ class TMSunsetFilter : TMFilterBase{
 	override var filtersProtected : [CIFilter] {
 		get
 		{
-			return [CIFilter(name: "CIVibrance")]
+			return [CIFilter(name: "CIVibrance")!]
 		}
 	}
 	

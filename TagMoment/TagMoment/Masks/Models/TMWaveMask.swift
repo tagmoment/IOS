@@ -17,7 +17,7 @@ class TMWaveMask: NSObject, TMMask {
 	
 	func clippingPathWithRect(bounds : CGRect) -> CGPath
 	{
-		var path = UIBezierPath()
+		let path = UIBezierPath()
 		path.moveToPoint(CGPoint(x: self.workingBounds.width/2, y: 0))
 		path.addQuadCurveToPoint(CGPoint(x: self.workingBounds.width/2, y: self.workingBounds.height/2),
 			controlPoint: CGPoint(x: self.workingBounds.width/4, y: self.workingBounds.height/4))

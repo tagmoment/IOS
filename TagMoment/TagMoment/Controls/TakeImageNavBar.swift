@@ -100,7 +100,7 @@ class TakeImageNavBar: UIView {
 	func replicateJumperButtonToMiddleButton(jumper : UIButton)
 	{
 		self.middleButton.setImage(nil, forState: UIControlState.Normal)
-		jumper.removeConstraints(jumper.constraints())
+		jumper.removeConstraints(jumper.constraints)
 		jumper.tag = 1222
 		self.middleButtonHeightConstraint.constant = 34
 		self.middleButtonWidthConstraint.constant = 34
@@ -204,7 +204,7 @@ class TakeImageNavBar: UIView {
 	
 	private func toggleFlashState()
 	{
-		var newFlashState = (currentFlashState.rawValue + 1)%flashStateImages.count
+		let newFlashState = (currentFlashState.rawValue + 1)%flashStateImages.count
 		let flashImage = UIImage(named: flashStateImages[newFlashState])
 		self.rightButton.setImage(flashImage, forState: UIControlState.Normal)
 		currentFlashState = FlashState(rawValue: newFlashState)!

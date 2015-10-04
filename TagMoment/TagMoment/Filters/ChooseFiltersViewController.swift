@@ -50,7 +50,7 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 		}
 		self.applySliderVisuals()
 		
-		currentCIImage = CIImage(CGImage: self.workingImage().CGImage)
+		currentCIImage = CIImage(CGImage: self.workingImage().CGImage!)
 		currentContext = CIContext(options:nil)
 		
 		
@@ -82,7 +82,7 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 	}
 	
 	@IBAction func sliderValueChanged(sender: AnyObject) {
-		var slider : UISlider = sender as! UISlider
+		let slider : UISlider = sender as! UISlider
 		let sliderValue = slider.value
 		
 		slider.thumbTintColor = UIColor(white: CGFloat (sliderValue*0.7 + 0.3) , alpha: 1.0);
@@ -90,7 +90,7 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 		let outputImage = currentFilterModel.outputImage()
 		if (outputImage != nil)
 		{
-			let cgimg = currentContext.createCGImage(outputImage, fromRect: outputImage.extent())
+			let cgimg = currentContext.createCGImage(outputImage, fromRect: outputImage.extent)
 			
 			let newImage = UIImage(CGImage: cgimg, scale: UIScreen.mainScreen().scale, orientation: self.workingImage().imageOrientation)
 			
@@ -114,7 +114,7 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 	
 	@IBAction func jumperButtonPressed(sender: AnyObject) {
 		self.jumperButton.selected = !self.jumperButton.selected
-		currentCIImage = CIImage(CGImage: self.workingImage().CGImage)
+		currentCIImage = CIImage(CGImage: self.workingImage().CGImage!)
 		currentContext = CIContext(options:nil)
 		if (self.lastFilterModel == nil)
 		{
@@ -145,12 +145,12 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 	}
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
 		
-		var cell = filterButtonsCollecionView.dequeueReusableCellWithReuseIdentifier(CellIdent, forIndexPath: indexPath) as! FilterCollectionViewCell
+		let cell = filterButtonsCollecionView.dequeueReusableCellWithReuseIdentifier(CellIdent, forIndexPath: indexPath) as! FilterCollectionViewCell
 		
-		var filterModel = TMFilterFactory.getFilters()[indexPath.item]
+		let filterModel = TMFilterFactory.getFilters()[indexPath.item]
 		
-		var imageName = filterModel.iconName
-		var imageOn = imageName + "_on"
+		let imageName = filterModel.iconName
+		let imageOn = imageName + "_on"
 		cell.iconImageView.image = UIImage(named: imageOn)
 		cell.iconImageView.alpha = cell.selected ? 1.0 : 0.3
 		cell.filterName.text = filterModel.displayName.lowercaseString
@@ -159,7 +159,7 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 	
 	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
 		
-		var filterModel = TMFilterFactory.getFilters()[indexPath.item]
+		let filterModel = TMFilterFactory.getFilters()[indexPath.item]
 		
 		let cell = collectionView.cellForItemAtIndexPath(indexPath) as? FilterCollectionViewCell
 		if (cell != nil)
@@ -190,7 +190,7 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 	
 	
 	func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
-		let filterModel = TMFilterFactory.getFilters()[indexPath.item]
+		
 		let cell = collectionView.cellForItemAtIndexPath(indexPath)
 		
 		if (cell != nil)
@@ -204,7 +204,7 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 	private func scrollToMoreVisibleCellsIfNeeded()
 	{
 		let selected = self.filterButtonsCollecionView.indexPathsForSelectedItems()
-		var indexPath = selected[0] as! NSIndexPath
+		var indexPath = selected![0]
 		if (indexPath.item == 0)
 		{
 			self.filterButtonsCollecionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
@@ -216,7 +216,7 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 			return;
 		}
 		
-		var cell = self.filterButtonsCollecionView.cellForItemAtIndexPath(indexPath)
+		let cell = self.filterButtonsCollecionView.cellForItemAtIndexPath(indexPath)
 		if (cell != nil)
 		{
 			var scrollPos : UICollectionViewScrollPosition
@@ -232,7 +232,7 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 				scrollPos = .Right
 			}
 			
-			var cell = self.filterButtonsCollecionView.cellForItemAtIndexPath(indexPath)
+			let cell = self.filterButtonsCollecionView.cellForItemAtIndexPath(indexPath)
 			if (cell == nil)
 			{
 				self.filterButtonsCollecionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: scrollPos, animated: true)
@@ -271,21 +271,21 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 	{
 		lastFilterModel = currentFilterModel
 		lastSliderValue = self.someSlider.value
-		lastSelectedIndex = self.filterButtonsCollecionView.indexPathsForSelectedItems()[0].item
+		lastSelectedIndex = self.filterButtonsCollecionView.indexPathsForSelectedItems()![0].item
 
 	}
 	
 	func restoreFilterState()
 	{
-		let tempIndex = self.filterButtonsCollecionView.indexPathsForSelectedItems()[0].item
+		let tempIndex = self.filterButtonsCollecionView.indexPathsForSelectedItems()![0].item
 		self.filterButtonsCollecionView.deselectItemAtIndexPath(NSIndexPath(forItem: tempIndex, inSection: 0), animated: false)
 		self.collectionView(self.filterButtonsCollecionView, didDeselectItemAtIndexPath: NSIndexPath(forItem: tempIndex, inSection: 0))
 		self.filterButtonsCollecionView.selectItemAtIndexPath(NSIndexPath(forItem: lastSelectedIndex, inSection: 0), animated: false, scrollPosition: UICollectionViewScrollPosition.CenteredHorizontally)
-		var filterModel = TMFilterFactory.getFilters()[lastSelectedIndex]
+		let filterModel = TMFilterFactory.getFilters()[lastSelectedIndex]
 		
-		var imageName = filterModel.iconName
-		var imageOn = imageName + "_on"
-		var cell = self.filterButtonsCollecionView.cellForItemAtIndexPath(NSIndexPath(forItem: lastSelectedIndex, inSection: 0)) as? FilterCollectionViewCell
+		let imageName = filterModel.iconName
+		let imageOn = imageName + "_on"
+		let cell = self.filterButtonsCollecionView.cellForItemAtIndexPath(NSIndexPath(forItem: lastSelectedIndex, inSection: 0)) as? FilterCollectionViewCell
 		if (cell != nil)
 		{
 			cell!.iconImageView.image = UIImage(named: imageOn)

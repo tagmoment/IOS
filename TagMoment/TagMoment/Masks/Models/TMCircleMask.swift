@@ -17,8 +17,8 @@ class TMCircleMask: NSObject, TMMask {
 	
 	func clippingPathWithRect(bounds : CGRect) -> CGPath
 	{
-		var rectForOval = CGRect(x: 0, y: 0,width: bounds.width, height: bounds.width)
-		var somepath = UIBezierPath(ovalInRect: rectForOval)
+		let rectForOval = CGRect(x: 0, y: 0,width: bounds.width, height: bounds.width)
+		let somepath = UIBezierPath(ovalInRect: rectForOval)
 		
 		return somepath.CGPath
 	}

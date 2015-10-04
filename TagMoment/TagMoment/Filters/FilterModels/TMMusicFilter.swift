@@ -15,7 +15,7 @@ class TMMusicFilter : TMAlphaFilterBase{
 		get
 		{
 			var filters = super.filtersProtected
-			filters.insert(CIFilter(name: "CIPhotoEffectInstant"), atIndex: 0)
+			filters.insert(CIFilter(name: "CIPhotoEffectInstant")!, atIndex: 0)
 			return filters
 		}
 	}

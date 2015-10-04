@@ -37,13 +37,13 @@ class SlidingView: UIView {
 		UIView.animateWithDuration(1.0, delay: 0,usingSpringWithDamping: 0.6, initialSpringVelocity: 6, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
 				for constraint in self.leftConstraints
 				{
-					var val = constraint.constant - self.frame.width
+					let val = constraint.constant - self.frame.width
 					constraint.constant = val
 				}
 				self.layoutIfNeeded()
 			}) { (finished: Bool) -> Void in
 			
-				var subview = self.subviews[0] as! UIView
+				let subview = self.subviews[0] 
 				subview.removeFromSuperview()
 				self.leftConstraints.removeAtIndex(0)
 		}
@@ -58,13 +58,13 @@ class SlidingView: UIView {
 		UIView.animateWithDuration(1.0, delay: 0,usingSpringWithDamping: 0.6, initialSpringVelocity: 6, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
 			for constraint in self.leftConstraints
 			{
-				var val = constraint.constant + self.frame.width
+				let val = constraint.constant + self.frame.width
 				constraint.constant = val
 			}
 			self.layoutIfNeeded()
 			}) { (finished: Bool) -> Void in
 				
-				var subview = self.subviews[0] as! UIView
+				let subview = self.subviews[0] 
 				subview.removeFromSuperview()
 				self.leftConstraints.removeAtIndex(0)
 		}

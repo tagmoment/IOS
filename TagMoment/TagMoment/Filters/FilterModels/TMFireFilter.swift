@@ -6,7 +6,7 @@ class TMFireFilter : TMFilterBase{
 	override var filtersProtected : [CIFilter] {
 		get
 		{
-			return [CIFilter(name: "CIExposureAdjust")]
+			return [CIFilter(name: "CIExposureAdjust")!]
 		}
 	}
 	

@@ -15,7 +15,7 @@ class TMSurpriseFilter : TMFilterBase{
 	{
 		get
 		{
-			return [CIFilter(name: "CIPhotoEffectChrome"), CIFilter(name: "CIVignette")]
+			return [CIFilter(name: "CIPhotoEffectChrome")!, CIFilter(name: "CIVignette")!]
 		}
 	}
 

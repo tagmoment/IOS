@@ -47,7 +47,7 @@ class AlbumCoverCollectionViewController: UICollectionViewController {
 			
 			
 			}) { (error : NSError!) -> Void in
-				print("There was an error")
+				print("There was an error", terminator: "")
 		}
 		
 		cell.albumName.text = group.valueForProperty(ALAssetsGroupPropertyName) as? String
@@ -57,7 +57,7 @@ class AlbumCoverCollectionViewController: UICollectionViewController {
 	}
 	
 	override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-		var albumCont = AlbumContentsCollectionViewController(nibName: "AlbumContentsCollectionViewController", bundle: nil)
+		let albumCont = AlbumContentsCollectionViewController(nibName: "AlbumContentsCollectionViewController", bundle: nil)
 		albumCont.assetLibrary = self.assetLibrary
 		let group = groups[indexPath.item]
 		albumCont.assetsUrls =  assetsUrls[group]

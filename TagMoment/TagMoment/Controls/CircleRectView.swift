@@ -11,7 +11,7 @@ import UIKit
 class CircleRectView: UIView {
 
 	var dashedLineColor : UIColor!
-	required init(coder aDecoder: NSCoder) {
+	required init?(coder aDecoder: NSCoder) {
 		super.init(coder: aDecoder)
 		self.commonInit()
 	}
@@ -42,7 +42,7 @@ class CircleRectView: UIView {
 	override func layoutSubviews() {
 		super.layoutSubviews()
 		
-		let borderLayer = self.layer.sublayers[0] as! CAShapeLayer
+		let borderLayer = self.layer.sublayers![0] as! CAShapeLayer
 		if (dashedLineColor != nil)
 		{
 			borderLayer.strokeColor = dashedLineColor.CGColor

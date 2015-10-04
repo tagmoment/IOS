@@ -15,7 +15,7 @@ extension MainViewController
 		let sessionView = self.secondImageView.viewWithTag(1000)
 		if let holder = sessionView
 		{
-			let captureVideoLayer = holder.layer.sublayers[0] as! AVCaptureVideoPreviewLayer
+			let captureVideoLayer = holder.layer.sublayers![0] as! AVCaptureVideoPreviewLayer
 			captureVideoLayer.frame = newFrame
 		}
 	}

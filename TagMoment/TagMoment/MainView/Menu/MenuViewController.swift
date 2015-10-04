@@ -14,7 +14,7 @@ class MenuViewController: UIViewController {
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
-		let blurredView = VisualEffectsUtil.initBlurredOverLay(UIBlurEffectStyle.ExtraLight, toView: self.view)
+		let blurredView = VisualEffectsUtil.initBlurredOverLay(TagMomentBlurEffect.ExtraLight, toView: self.view)
 		if (blurredView != nil)
 		{
 			self.view.sendSubviewToBack(blurredView!)

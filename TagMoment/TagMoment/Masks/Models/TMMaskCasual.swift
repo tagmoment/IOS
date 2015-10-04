@@ -25,7 +25,7 @@ class TMMaskCasual: TMMask {
 	}
 	
 	func createViewModel() -> TMMaskViewModel{
-		var viewModel = TMMaskViewModel(name: "casual")
+		let viewModel = TMMaskViewModel(name: "casual")
 		viewModel.hasOneCapture = true;
 		return viewModel
 	}

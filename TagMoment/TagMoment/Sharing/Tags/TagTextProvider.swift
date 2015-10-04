@@ -57,8 +57,8 @@ class TagTextProvider {
 	class func addTextByRules(string : String) -> String
 	{
 		let input = removeSpaces(string)
-		let isInputEmoji = contains(self.emojisContainer, input)
-		let isInputSavedWord = contains(self.TagsDataSourceWords, input)
+		let isInputEmoji = self.emojisContainer.contains(input)
+		let isInputSavedWord = self.TagsDataSourceWords.contains(input)
 		
 		if currentString == nil
 		{
@@ -149,7 +149,7 @@ class TagTextProvider {
 		for word in words
 		{
 			
-			if (contains(self.emojisContainer, word))
+			if (self.emojisContainer.contains(word))
 			{
 				foundEmoji = true
 			}
@@ -159,10 +159,10 @@ class TagTextProvider {
 		
 		if (foundEmoji)
 		{
-			return contains(self.emojisContainer, newString) ? resultString : resultString + " " + newString
+			return self.emojisContainer.contains(newString) ? resultString : resultString + " " + newString
 		}
 		
-		if (!contains(self.emojisContainer, newString) || currentString.isEmpty)
+		if (!self.emojisContainer.contains(newString) || currentString.isEmpty)
 		{
 			return newString
 		}
@@ -179,14 +179,14 @@ class TagTextProvider {
 			if let word = currentWord
 			{
 				currentWord = nil
-				if (count(word) == 1)
+				if (word.characters.count == 1)
 				{
 					
 					currentTyping = nil
 					return;
 				}
 				
-				currentTyping = word.substringToIndex(advance(word.startIndex, count(word) - 1));
+				currentTyping = word.substringToIndex(word.startIndex.advancedBy(word.characters.count - 1));
 				return;
 			}
 		}
@@ -196,13 +196,13 @@ class TagTextProvider {
 			
 			if let typing = currentTyping
 			{
-				if (count(typing) == 1)
+				if (typing.characters.count == 1)
 				{
 					currentTyping = nil
 					return;
 				}
 				
-				currentTyping = typing.substringToIndex(advance(typing.startIndex, count(typing) - 1));
+				currentTyping = typing.substringToIndex(typing.startIndex.advancedBy(typing.characters.count - 1));
 			}
 
 		}
@@ -223,7 +223,7 @@ class TagTextProvider {
 			
 			if let range = self.currentString!.rangeOfString(input!)
 			{
-				if (distance(self.currentString!.startIndex, range.startIndex) != 0)
+				if (self.currentString!.startIndex.distanceTo(range.startIndex) != 0)
 				{
 					return true
 				}
@@ -247,11 +247,11 @@ class TagTextProvider {
 	
 	class func isReplacementStringAllowd(string : String) -> Bool
 	{
-		var allowedCharSet = NSCharacterSet.alphanumericCharacterSet().mutableCopy() as! NSMutableCharacterSet
+		let allowedCharSet = NSCharacterSet.alphanumericCharacterSet().mutableCopy() as! NSMutableCharacterSet
 		allowedCharSet.addCharactersInString("_")
-		if let range = string.rangeOfCharacterFromSet(allowedCharSet)
+		if string.rangeOfCharacterFromSet(allowedCharSet) != nil
 		{
-			if (currentTyping == nil && string.toInt() != nil)
+			if (currentTyping == nil && Int(string) != nil)
 			{
 				return false
 			}

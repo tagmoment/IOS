@@ -38,7 +38,7 @@ class TMFilterBase{
 		for filter in filters
 		{
 			
-			let name = filter.name()
+			let name = filter.name
 			
 			
 			let params = self.parameters[name]
@@ -88,18 +88,18 @@ class TMFilterBase{
 	{
 		for filter in filters
 		{
-			println("working on filter " + filter.name());
-			var inputNames = (filter.inputKeys() as! [String]).filter { (parameterName) -> Bool in
+			print("working on filter " + filter.name);
+			let inputNames = (filter.inputKeys ).filter { (parameterName) -> Bool in
 				return (parameterName as String) != "inputImage"
 			}
 			
-			let attributes = filter.attributes()!
+			let attributes = filter.attributes
 			
 			let filterParams = inputNames.map { (inputName: String) -> FilterParameterProtocol in
 				let attribute = attributes[inputName] as! [String : AnyObject]
 				// strip "input" from the start of the parameter name to make it more presentation-friendly
-				println("working on attribue " + inputName);
-				println("attribute \(attribute)" )
+				print("working on attribue " + inputName);
+				print("attribute \(attribute)" )
 				let classType = attribute[kCIAttributeClass] as! String
 				if (classType == "CIColor")
 				{
@@ -119,7 +119,7 @@ class TMFilterBase{
 				}
 			}
 			
-			outParams.updateValue(filterParams, forKey: filter.name())
+			outParams.updateValue(filterParams, forKey: filter.name)
 		}
 	}
 	

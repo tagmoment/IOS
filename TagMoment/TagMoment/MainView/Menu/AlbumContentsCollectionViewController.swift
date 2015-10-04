@@ -22,7 +22,7 @@ class AlbumContentsCollectionViewController: UICollectionViewController {
 		
 		
 		let backButtonImage = UIImage(named:"back_arrow_white");
-		let backButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+		let backButton = UIButton(type: UIButtonType.Custom)
 		backButton.setImage(backButtonImage, forState: UIControlState.Normal)
 		
 		backButton.frame = CGRect(x: 0, y: 0, width: backButtonImage!.size.width, height: backButtonImage!.size.height);
@@ -50,7 +50,7 @@ class AlbumContentsCollectionViewController: UICollectionViewController {
 			let thumbnail = UIImage(CGImage:asset.thumbnail().takeUnretainedValue())
 			cell.imageview.image = thumbnail
 			}) { (error : NSError!) -> Void in
-				print("There was an error")
+				print("There was an error", terminator: "")
 		}
 		cell.shouldColorSelection = true
 		cell.numberOfPhotos.hidden = true
@@ -65,9 +65,9 @@ class AlbumContentsCollectionViewController: UICollectionViewController {
 			let rep = asset.defaultRepresentation()
 			let fullImage = UIImage(CGImage: rep.fullResolutionImage().takeUnretainedValue(), scale: CGFloat(rep.scale()), orientation: UIImageOrientation(rawValue: rep.orientation().rawValue)! )
 			//			let fullImage = UIImage(CGImage:asset.defaultRepresentation().fullResolutionImage().takeUnretainedValue())
-			NSNotificationCenter.defaultCenter().postNotificationName(ImageFromCameraChosenNotificationName, object: nil, userInfo: [ImageFromCameraNotificationKey : fullImage!])
+			NSNotificationCenter.defaultCenter().postNotificationName(ImageFromCameraChosenNotificationName, object: nil, userInfo: [ImageFromCameraNotificationKey : fullImage])
 			}) { (error : NSError!) -> Void in
-				print("There was an error")
+				print("There was an error", terminator: "")
 		}
 	}
 	

@@ -80,7 +80,7 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 			cell = view as! MaskCollectionViewCell
 		}
 		
-		var maskModel = self.masksViewModels![index]
+		let maskModel = self.masksViewModels![index]
 		cell.maskImage.image = UIImage(named: maskModel.name!.lowercaseString)
 //		cell.maskImage.highlightedImage = UIImage(named: maskModel.name!.lowercaseString + "_on")
 		cell.maskName.text = maskModel.name

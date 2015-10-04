@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 extension UIView{
 	func pinSubViewToAllEdges(subview : UIView){
-		subview.setTranslatesAutoresizingMaskIntoConstraints(false)
+		subview.translatesAutoresizingMaskIntoConstraints = false
 		self.addSubview(subview)
 		
 		var constraint = NSLayoutConstraint(item: subview, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 0.0)
@@ -27,20 +27,20 @@ extension UIView{
 	}
 	
 	func pinSubViewToTop(subview : UIView, heightContraint : CGFloat){
-		subview.setTranslatesAutoresizingMaskIntoConstraints(false)
+		subview.translatesAutoresizingMaskIntoConstraints = false
 		self.addSubview(subview)
 		
-		var constraint = NSLayoutConstraint(item: subview, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 0.0)
+		let constraint = NSLayoutConstraint(item: subview, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 0.0)
 		self.addConstraint(constraint)
 		
 		pinToBothEdges(subview)
 	}
 	
 	func pinSubViewToBottom(subview : UIView, heightContraint : CGFloat){
-		subview.setTranslatesAutoresizingMaskIntoConstraints(false)
+		subview.translatesAutoresizingMaskIntoConstraints = false
 		self.addSubview(subview)
 		
-		var constraint = NSLayoutConstraint(item: subview, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0.0)
+		let constraint = NSLayoutConstraint(item: subview, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0.0)
 		self.addConstraint(constraint)
 		
 		pinToBothEdges(subview)
@@ -59,7 +59,7 @@ extension UIView{
 		return self.pinSubViewWithWidth(subview, leftConstraintVal: 0.0)
 	}
 	func pinSubViewWithWidth(subview : UIView, leftConstraintVal : CGFloat) -> NSLayoutConstraint {
-		subview.setTranslatesAutoresizingMaskIntoConstraints(false)
+		subview.translatesAutoresizingMaskIntoConstraints = false
 		self.addSubview(subview)
 		
 //		var constraint = NSLayoutConstraint(item: subview, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 0.0)

@@ -44,7 +44,7 @@ class TMTextField: UITextField {
 		return false;
 	}
 	
-	override func caretRectForPosition(position: UITextPosition!) -> CGRect {
+	override func caretRectForPosition(position: UITextPosition) -> CGRect {
 		return super.caretRectForPosition(self.endOfDocument)
 	}
 	

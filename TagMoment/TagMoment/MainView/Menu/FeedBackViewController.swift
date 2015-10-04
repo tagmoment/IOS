@@ -71,16 +71,16 @@ class FeedbackViewController: UIViewController, UIAlertViewDelegate, MFMailCompo
 	}
 	
 	// MARK: - MFMailComposeViewControllerDelegate
-	func mailComposeController(controller:MFMailComposeViewController, didFinishWithResult result:MFMailComposeResult, error:NSError) {
-		switch result.value {
-		case MFMailComposeResultCancelled.value:
+	func mailComposeController(controller:MFMailComposeViewController, didFinishWithResult result:MFMailComposeResult, error:NSError?) {
+		switch result.rawValue {
+		case MFMailComposeResultCancelled.rawValue:
 			NSLog("Mail cancelled")
-		case MFMailComposeResultSaved.value:
+		case MFMailComposeResultSaved.rawValue:
 			NSLog("Mail saved")
-		case MFMailComposeResultSent.value:
+		case MFMailComposeResultSent.rawValue:
 			NSLog("Mail sent")
-		case MFMailComposeResultFailed.value:
-			NSLog("Mail sent failure: %@", [error.localizedDescription])
+		case MFMailComposeResultFailed.rawValue:
+			NSLog("Mail sent failure: %@", [error!.localizedDescription])
 		default:
 			break
 		}
