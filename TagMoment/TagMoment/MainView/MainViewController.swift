@@ -18,7 +18,7 @@ let CameraRollDidDisappearNotificationName = "CameraRollDidDisappearNotification
 let CameraRollWillDisappearNotificationName = "CameraRollWillDisappearNotificationName"
 let CameraRollDidSelectImageNotificationName = "CameraRollDidSelectImageNotificationName"
 
-class MainViewController: UIViewController, ChooseMasksControllerDelegate, ChooseFiltesControllerDelegate, NavBarDelegate, SharingControllerDelegate, UIGestureRecognizerDelegate{
+class MainViewController: UIViewController, ChooseMasksControllerDelegate, ChooseFiltesControllerDelegate, NavBarDelegate, SharingControllerDelegate, UIGestureRecognizerDelegate, UIAlertViewDelegate{
 	
 	
 	
@@ -184,7 +184,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		removeMasksIfNeeded()
 		originalImageCanvas = self.canvas.image?.copy() as? UIImage
 		originalImageSecondary = self.secondImageView.image?.copy() as? UIImage
-		filtersViewController = ChooseFiltersViewController(nibName: "ChooseFiltersViewController", bundle: nil)
+		filtersViewController = ChooseFiltersViewController(nibName: "ChooseFiltersViewController", bundle: nil, restoreState: false)
 		filtersViewController.maskViewModel = masksViewController.getSelectedViewModel()
 		filtersViewController.filtersChooseDelegate = self
 		
@@ -361,6 +361,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		}
 		else
 		{
+			self.filtersViewController.persistState()
 			sharingRequested()
 		}
 	}
@@ -373,14 +374,15 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		controlContainer.addViewWithConstraints(sharingController.view, toTheRight: true)
 		changeSharingLayoutIfNeeded()
 		controlContainer.animateEnteringView()
-		infoTopConstraint.constant = -infobarHolder.frame.height
+//		infoTopConstraint.constant = -infobarHolder.frame.height
 		logoLabel.hidden = false
-		logoLabel.alpha = 0.0
-		UIView .animateWithDuration(0.5, animations: { () -> Void in
-			
-			self.view.layoutIfNeeded()
-			self.logoLabel.alpha = 1.0
-		})
+		viewChoreographer.sharingStageAppearance(true)
+//		logoLabel.alpha = 0.0
+//		UIView .animateWithDuration(0.5, animations: { () -> Void in
+//			
+//			self.view.layoutIfNeeded()
+//			self.logoLabel.alpha = 1.0
+//		})
 	}
 	
 	private func closeCameraRoll(cameraRollCont : CameraRollViewController)
@@ -388,6 +390,19 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		
 		cameraRollCont.closeView()
 	}
+	
+	func backButtonRequested()
+	{
+		filtersViewController = ChooseFiltersViewController(nibName: "ChooseFiltersViewController", bundle: nil, restoreState: true)
+//		filtersViewController.maskViewModel = masksViewController.getSelectedViewModel()
+		filtersViewController.filtersChooseDelegate = self
+		
+		controlContainer.addViewWithConstraints(filtersViewController.view, toTheRight: false)
+		changeFiltersLayoutIfNeeded()
+		controlContainer.animateExitingView()
+		viewChoreographer.editingStageAppearance(true)
+	}
+	
 	
 	func retakeImageRequested() {
 		for cont in self.childViewControllers
@@ -407,6 +422,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			}
 			
 		}
+		
 		
 		if (self.infoTopConstraint.constant != 0)
 		{
@@ -444,11 +460,40 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		
 		
 	}
+	
+	func doneButtonPressed() {
+		let alertViewMessage = "Do you want to save the new moment to your phone album?"
+		
+		let view = UIAlertView(title: "", message: alertViewMessage, delegate: self, cancelButtonTitle: "Cancel", otherButtonTitles: "Save", "No")
+		
+		view.show()
+		
+	}
+	
+	
+	//MARK: - AlertViewDelegation
+	func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int)
+	{
+		switch buttonIndex
+		{
+			case 1:
+				let imageToSave = imageForCaching()
+				UIImageWriteToSavedPhotosAlbum(imageToSave, nil, nil, nil)
+			self.retakeImageRequested()
+			case 2:
+				self.retakeImageRequested()
+			default:
+				print("Cancelling")
+		}
+		
+		
+	}
+	
 	//MARK: - SharingControllerDelegate
 	func taggingKeyboardWillChange(animationTime: Double, endFrame: CGRect) {
 		if endFrame.origin.y == self.view.frame.height
 		{
-			infoTopConstraint.constant = -infobarHolder.frame.height
+			infoTopConstraint.constant = 0
 			sharingController.tagsHeightConstraint.constant = 0
 		}
 		else

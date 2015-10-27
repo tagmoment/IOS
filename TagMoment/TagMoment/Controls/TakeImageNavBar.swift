@@ -23,9 +23,12 @@ enum TimerState: Int{
 protocol NavBarDelegate : class
 {
 	func retakeImageRequested()
+	func backButtonRequested()
+	func doneButtonPressed()
 	func nextStageRequested()
 	func maskButtonPressed()
 	func editingStageWillAppear()
+	
 	
 }
 
@@ -65,7 +68,15 @@ class TakeImageNavBar: UIView {
 	{
 		if let delegate = viewDelegate
 		{
-			delegate.retakeImageRequested()
+			if (self.backButton.currentTitle == "Back")
+			{
+				delegate.backButtonRequested()
+			}
+			else
+			{
+				delegate.retakeImageRequested()
+			}
+			
 		}
 	}
 	
@@ -79,6 +90,13 @@ class TakeImageNavBar: UIView {
 		if (rightButton.titleForState(UIControlState.Normal) == nil) //flash button
 		{
 			toggleFlashState()
+		}
+		else if (rightButton.currentTitle == "Done")
+		{
+			if let delegate = viewDelegate
+			{
+				delegate.doneButtonPressed()
+			}
 		}
 		else
 		{
@@ -188,6 +206,14 @@ class TakeImageNavBar: UIView {
 	{
 		self.rightButton.setTitle("Next", forState: UIControlState.Normal)
 		self.rightButton.setImage(nil, forState: UIControlState.Normal)
+		self.rightButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+	}
+	
+	func applyDoneButtonAppearanceToRightButton()
+	{
+		self.rightButton.setTitle("Done", forState: UIControlState.Normal)
+		self.rightButton.setImage(nil, forState: UIControlState.Normal)
+		self.rightButton.setTitleColor(UIColor(red: 255.0/255.0, green: 107.0/255.0, blue: 106.0/255.0, alpha: 1.0), forState: UIControlState.Normal)
 	}
 	
 	func applyCancelButtonAppearanceToBackButton()
@@ -201,6 +227,13 @@ class TakeImageNavBar: UIView {
 		self.backButton.setTitle("Retake", forState: UIControlState.Normal)
 		self.backButton.setImage(nil, forState: UIControlState.Normal)
 	}
+	
+	func applyBackAppearanceToBackButton()
+	{
+		self.backButton.setTitle("Back", forState: UIControlState.Normal)
+		self.backButton.setImage(nil, forState: UIControlState.Normal)
+	}
+	
 	
 	private func toggleFlashState()
 	{

@@ -36,6 +36,19 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 	@IBOutlet var jumperButton: UIButton!
 	var maskViewModel: TMMaskViewModel!
 	
+	init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?, restoreState : Bool) {
+		super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+		if restoreState == true
+		{
+			self.restorePersistantState()
+		}
+		
+	}
+
+	required init?(coder aDecoder: NSCoder) {
+	    super.init(coder: aDecoder)
+	}
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		filterButtonsCollecionView.registerNib(UINib(nibName: "FilterCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: CellIdent)
@@ -266,6 +279,32 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 		UIGraphicsEndImageContext();
 		return image;
 	}
+	
+	let maskViewModelKey = "maskViewModelKey"
+	
+	func persistState()
+	{
+		let defaults = NSUserDefaults.standardUserDefaults()
+		defaults.setObject(NSKeyedArchiver.archivedDataWithRootObject(self.maskViewModel), forKey: maskViewModelKey)
+		
+	}
+	
+	func restorePersistantState()
+	{
+		let defaults = NSUserDefaults.standardUserDefaults()
+		if let data = defaults.objectForKey(maskViewModelKey) as? NSData
+		{
+			let unarc = NSKeyedUnarchiver(forReadingWithData: data)
+			self.maskViewModel = unarc.decodeObjectForKey("root") as! TMMaskViewModel
+		}
+	}
+	
+	func clearPersistantState()
+	{
+		let defaults = NSUserDefaults.standardUserDefaults()
+		defaults.removeObjectForKey(maskViewModelKey)
+	}
+	
 	
 	func saveCurrentState()
 	{

@@ -51,8 +51,6 @@ class SlidingView: UIView {
 	
 	func animateExitingView()
 	{
-		
-		
 		self.layoutIfNeeded()
 		
 		UIView.animateWithDuration(1.0, delay: 0,usingSpringWithDamping: 0.6, initialSpringVelocity: 6, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in

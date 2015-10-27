@@ -36,17 +36,12 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 	weak var sharingDelegate: SharingControllerDelegate?
 	var documentationInteractionController : UIDocumentInteractionController?
 	@IBOutlet weak var textField: UITextField!
-	@IBOutlet weak var shareButton: UIButton!
-	@IBOutlet weak var saveButtonBG: UIButton!
-	@IBOutlet weak var saveImageButton: UIButton!
-	@IBOutlet weak var buttonsHolder: UIView!
-	@IBOutlet weak var shareButtonBG: UIButton!
 	@IBOutlet weak var tagsHeightConstraint: NSLayoutConstraint!
 	@IBOutlet weak var tagsCollectionView: UICollectionView!
 	
-	@IBOutlet weak var saveBGConstraint: NSLayoutConstraint!
-	@IBOutlet weak var shareBGConstraint: NSLayoutConstraint!
-	
+	@IBOutlet weak var facebook_share_button: UIButton!
+	@IBOutlet weak var twitter_share_button: UIButton!
+	@IBOutlet weak var more_share_button: UIButton!
 	var chosenEmojiIndex : NSIndexPath?
 	var chosenWordIndex : NSIndexPath?
 	
@@ -241,18 +236,9 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 		let newButtonsHolder = NSBundle.mainBundle().loadNibNamed("SmallScreenSharingButtonsView", owner: nil, options: nil)[0] as! UIView
 		
 		
-		self.buttonsHolder.removeFromSuperview()
 		newButtonsHolder.translatesAutoresizingMaskIntoConstraints = false
 		self.view.addSubview(newButtonsHolder)
-		self.buttonsHolder = newButtonsHolder
-		var constraint = NSLayoutConstraint(item: newButtonsHolder, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.shareButton, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 0)
-		self.view.addConstraint(constraint)
-		constraint = NSLayoutConstraint(item: newButtonsHolder, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0)
-		self.view.addConstraint(constraint)
-		constraint = NSLayoutConstraint(item: newButtonsHolder, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0)
-		self.view.addConstraint(constraint)
-		constraint = NSLayoutConstraint(item: newButtonsHolder, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 72)
-		self.view.addConstraint(constraint)
+//		self.buttonsHolder = newButtonsHolder
 		
 	}
 	
@@ -260,7 +246,7 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 	
 	func prepareSocialButtonsAnimationState()
 	{
-		for view in self.buttonsHolder.subviews 
+		for view in [self.facebook_share_button, self.twitter_share_button, self.more_share_button]
 		{
 			view.layer.transform = CATransform3DMakeScale(0.01, 0.01, 1)
 			view.hidden = true
@@ -275,7 +261,7 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 	}
 	func animateButtonEntrance()
 	{
-		var shuffled = self.buttonsHolder.subviews.shuffle()
+		var shuffled = [self.facebook_share_button, self.twitter_share_button, self.more_share_button]
 		for i in 0..<shuffled.count
 		{
 			let view = shuffled[i]
@@ -412,8 +398,7 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 	// MARK: - Buttons Handling
 	@IBAction func shareButtonPressed(sender: AnyObject) {
 		
-		if isShareButtonOpen()
-		{
+		
 			if let delegate = self.sharingDelegate
 			{
 				NSNotificationCenter.defaultCenter().removeObserver(self)
@@ -425,17 +410,13 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 				
 			}
 			return;
-		}
-		
-//		toggleShareButtonBgAnimation()
 		
 	}
 	
 	
 	@IBAction func pinButtonPressed(sender: AnyObject) {
 		
-		if isSaveButtonOpen()
-		{
+		
 			if let delegate = self.sharingDelegate
 			{
 				TagTextProvider.clear()
@@ -445,37 +426,11 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 				
 			}
 			return;
-		}
 		
-//		toggleSaveButtonBgAnimation()
 		
 		
 		
 	}
-	
-//	private func toggleSaveButtonBgAnimation()
-//	{
-//		let title = isSaveButtonOpen() ? "" : "Keep It"
-//		self.saveBGConstraint.constant = isSaveButtonOpen() ? ClosedContraint : 0
-//		self.saveButtonBG.setTitle(title, forState: .Normal)
-//		UIView.animateWithDuration(0.2, animations: { () -> Void in
-//			self.saveButtonBG.superview?.layoutIfNeeded()
-//			
-//		})
-//	}
-	
-//	private func toggleShareButtonBgAnimation()
-//	{
-//		let title = isShareButtonOpen() ? "" : "Share It"
-//		self.shareBGConstraint.constant = isShareButtonOpen() ? ClosedContraint : 0
-//		
-//		self.shareButtonBG.setTitle(title, forState: .Normal)
-//		UIView.animateWithDuration(0.2, animations: { () -> Void in
-//			self.shareButtonBG.superview?.layoutIfNeeded()
-//			
-//		})
-//	}
-
 	
 	
 	func documentInteractionControllerDidDismissOptionsMenu(controller: UIDocumentInteractionController) {
@@ -502,27 +457,6 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 		result.appendContentsOf(arrayWithExtras)
 		
 		return result;
-	}
-	
-	private func isSaveButtonOpen() -> Bool
-	{
-		return self.saveBGConstraint.constant == 0
-	}
-	
-	private func isShareButtonOpen() -> Bool
-	{
-		return self.shareBGConstraint.constant == 0
-	}
-	@IBAction func instagramShareRequested(sender: AnyObject) {
-		let text = self.textField.text != nil ? self.textField.text! : ""
-		let annotation = ["InstagramCaption" : TagTextProvider.addAllHashtags(text)]
-
-		nonNativeShareRequestedWithPath(FileHandlingService.InstagrameFilePath(),  UTI: "com.instagram.exclusivegram", annotation : annotation)
-	}
-	
-	@IBAction func whatsappShareRequested(sender: AnyObject) {
-		
-		nonNativeShareRequestedWithPath(FileHandlingService.WhatsappFilePath(), UTI: "net.whatsapp.image")
 	}
 	
 	private func nonNativeShareRequestedWithPath(imagePath : String, UTI : String, annotation : [String : String]? = nil)

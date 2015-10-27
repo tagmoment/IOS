@@ -113,6 +113,36 @@ class ViewChoreographer : NSObject
 			
 		}
 	}
+	
+	func sharingStageAppearance(animated: Bool)
+	{
+		let navbar = mainViewController?.navigationView
+		
+		if animated
+		{
+			
+			UIView.animateWithDuration(0.5, animations: { () -> Void in
+				navbar?.showLeftButton(false, animated: false)
+				navbar?.showRightButton(false, animated: false)
+				navbar?.showMiddleButton(false, animated: false)
+				}, completion: { (finished) -> Void in
+					navbar?.applyDoneButtonAppearanceToRightButton()
+					navbar?.applyBackAppearanceToBackButton()
+					UIView.animateWithDuration(0.5, animations: { () -> Void in
+						navbar?.showRightButton(true, animated: true)
+						navbar?.showLeftButton(true, animated: true)
+					})
+			})
+			
+		}else
+		{
+			navbar?.applyDoneButtonAppearanceToRightButton()
+			navbar?.applyBackAppearanceToBackButton()
+			navbar?.showRightButton(true, animated: false)
+			navbar?.showMiddleButton(false, animated: false)
+			
+		}
+	}
 
 	
 	private func takingPhotoFromAlbumAppearance(animated: Bool)
