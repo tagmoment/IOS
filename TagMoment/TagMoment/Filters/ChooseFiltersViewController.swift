@@ -32,6 +32,9 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 	var lastFilterModel : TMFilterBase!
 	var lastSelectedIndex : NSInteger = 0
 	var lastSliderValue : Float = 0.0
+	var persistedIndex = 0
+	var persistedSliderValue : Float = 0.0
+	var persistedJumperState = false
 	
 	@IBOutlet var jumperButton: UIButton!
 	var maskViewModel: TMMaskViewModel!
@@ -62,7 +65,7 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 			self.jumperButton.setImage(UIImage(named: maskViewModel.getJumperImageName() + "2"), forState: UIControlState.Selected)
 		}
 		self.applySliderVisuals()
-		
+		self.jumperButton.selected = self.persistedJumperState
 		currentCIImage = CIImage(CGImage: self.workingImage().CGImage!)
 		currentContext = CIContext(options:nil)
 		
@@ -71,8 +74,14 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 	
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
-		self.filterButtonsCollecionView.selectItemAtIndexPath(NSIndexPath(forItem: 0, inSection: 0), animated: false, scrollPosition: UICollectionViewScrollPosition.CenteredHorizontally)
-		self.collectionView(self.filterButtonsCollecionView, didSelectItemAtIndexPath: NSIndexPath(forItem: 0, inSection: 0))
+		self.filterButtonsCollecionView.selectItemAtIndexPath(NSIndexPath(forItem: self.persistedIndex, inSection: 0), animated: false, scrollPosition: UICollectionViewScrollPosition.CenteredHorizontally)
+		self.collectionView(self.filterButtonsCollecionView, didSelectItemAtIndexPath: NSIndexPath(forItem: self.persistedIndex, inSection: 0))
+		if (self.someSlider.value != self.persistedSliderValue)
+		{
+			self.someSlider.value = self.persistedSliderValue;
+			sliderValueChanged(self.someSlider)
+		}
+		
 	}
 	func workingImage() -> UIImage!
 	{
@@ -280,31 +289,23 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 		return image;
 	}
 	
-	let maskViewModelKey = "maskViewModelKey"
-	
 	func persistState()
 	{
-		let defaults = NSUserDefaults.standardUserDefaults()
-		defaults.setObject(NSKeyedArchiver.archivedDataWithRootObject(self.maskViewModel), forKey: maskViewModelKey)
-		
+		let currentIndex = self.filterButtonsCollecionView.indexPathsForSelectedItems()![0].item
+		FilterStateRepository.persistFilters((mask: self.maskViewModel, currentIndex: currentIndex, otherIndex: lastSelectedIndex, currentSliderValue: self.someSlider.value, otherSliderValue: self.lastSliderValue, jumperSelected: self.jumperButton.selected))
 	}
 	
 	func restorePersistantState()
 	{
-		let defaults = NSUserDefaults.standardUserDefaults()
-		if let data = defaults.objectForKey(maskViewModelKey) as? NSData
-		{
-			let unarc = NSKeyedUnarchiver(forReadingWithData: data)
-			self.maskViewModel = unarc.decodeObjectForKey("root") as! TMMaskViewModel
-		}
+		let payload = FilterStateRepository.restoreFilters()
+		self.maskViewModel = payload.mask
+		self.persistedIndex = payload.currentIndex
+		self.lastSelectedIndex = payload.otherIndex
+		self.persistedSliderValue = payload.currentSliderValue
+		self.lastSliderValue = payload.otherSliderValue
+		self.persistedJumperState = payload.jumperSelected
+		self.lastFilterModel = TMFilterFactory.getFilters()[self.lastSelectedIndex]
 	}
-	
-	func clearPersistantState()
-	{
-		let defaults = NSUserDefaults.standardUserDefaults()
-		defaults.removeObjectForKey(maskViewModelKey)
-	}
-	
 	
 	func saveCurrentState()
 	{

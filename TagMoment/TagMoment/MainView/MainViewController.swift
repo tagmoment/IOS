@@ -78,6 +78,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
         super.viewDidLoad()
 		workingImageView = canvas
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("imageFromCameraChosenNotification:"), name: ImageFromCameraChosenNotificationName, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("applicationWillTerminate:"), name: UIApplicationWillTerminateNotification, object: nil)
 		masksViewController = ChooseMasksViewController(nibName: "ChooseMasksViewController", bundle: nil)
 		controlContainer.addViewWithConstraints(masksViewController.view, toTheRight: true)
 		
@@ -393,8 +394,14 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	
 	func backButtonRequested()
 	{
+		if (sharingController != nil)
+		{
+			sharingController.clearState()
+		}
+		self.logoLabel.hidden = true
+		self.userLabel.hidden = true
+		self.userLabel.text = ""
 		filtersViewController = ChooseFiltersViewController(nibName: "ChooseFiltersViewController", bundle: nil, restoreState: true)
-//		filtersViewController.maskViewModel = masksViewController.getSelectedViewModel()
 		filtersViewController.filtersChooseDelegate = self
 		
 		controlContainer.addViewWithConstraints(filtersViewController.view, toTheRight: false)
@@ -423,6 +430,12 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			
 		}
 		
+		if (sharingController != nil)
+		{
+			sharingController.clearState()
+		}
+		
+		FilterStateRepository.clearFiltersState()
 		
 		if (self.infoTopConstraint.constant != 0)
 		{
@@ -688,6 +701,11 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		let image = notif.userInfo?[ImageFromCameraNotificationKey] as! UIImage
 		prepareZoomControlWithImage(image)
 //		processImageFromPhotoAlbum(image)
+	}
+	
+	func applicationWillTerminate(notif : NSNotification)
+	{
+		FilterStateRepository.clearFiltersState()
 	}
 	
 	func processImageFromPhotoAlbum(image: UIImage?) {

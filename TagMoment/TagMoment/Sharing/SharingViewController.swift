@@ -413,24 +413,13 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 		
 	}
 	
-	
-	@IBAction func pinButtonPressed(sender: AnyObject) {
-		
-		
-			if let delegate = self.sharingDelegate
-			{
-				TagTextProvider.clear()
-				chosenEmojiIndex = nil
-				chosenWordIndex = nil
-				delegate.retakeImageRequested()
-				
-			}
-			return;
-		
-		
-		
-		
+	func clearState()
+	{
+		TagTextProvider.clear()
+		chosenEmojiIndex = nil
+		chosenWordIndex = nil
 	}
+	
 	
 	
 	func documentInteractionControllerDidDismissOptionsMenu(controller: UIDocumentInteractionController) {
