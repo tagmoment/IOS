@@ -1,123 +1,101 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <mutableArray key="Raleway-Regular.ttf">
-            <string>Raleway</string>
-            <string>Raleway</string>
-            <string>Raleway</string>
-        </mutableArray>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MenuViewController" customModule="TagMoment" customModuleProvider="target">
             <connections>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="container" destination="i5M-Pr-FkT" id="FB0-0P-5Q6"/>
+                <outlet property="containerHeightConstraint" destination="Aza-au-402" id="gEz-8s-Sz8"/>
+                <outlet property="view" destination="1aA-sa-azk" id="tjg-rH-ZI0"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+        <view autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" id="1aA-sa-azk">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5GO-4g-H5w">
-                    <rect key="frame" x="185" y="107" width="44" height="44"/>
+                <view clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i5M-Pr-FkT">
+                    <rect key="frame" x="0.0" y="352" width="600" height="248"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i6z-Ed-10U" userLabel="invite_btn">
+                            <rect key="frame" x="275" y="99.5" width="50" height="50"/>
+                            <animations/>
+                            <state key="normal" image="invitefriend_off"/>
+                            <state key="selected" image="invitefriend_on"/>
+                            <state key="highlighted" image="invitefriend_on"/>
+                            <connections>
+                                <action selector="inviteFriendsPressed:" destination="-1" eventType="touchUpInside" id="91n-KH-rYM"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X1g-zx-gCJ" userLabel="ourstory_btn">
+                            <rect key="frame" x="24" y="99" width="50" height="50"/>
+                            <animations/>
+                            <state key="normal" image="ourstory_off"/>
+                            <state key="selected" image="ourstory_on"/>
+                            <state key="highlighted" image="ourstory_on"/>
+                            <connections>
+                                <action selector="ourStoryPressed:" destination="-1" eventType="touchUpInside" id="vJ3-1y-hUf"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="03e-qO-aG4" userLabel="feedback_btn">
+                            <rect key="frame" x="526" y="99" width="50" height="50"/>
+                            <animations/>
+                            <state key="normal" image="feedback_off"/>
+                            <state key="selected" image="feedback_on"/>
+                            <state key="highlighted" image="feedback_on"/>
+                            <connections>
+                                <action selector="feedbackPressed:" destination="-1" eventType="touchUpInside" id="68J-Dz-fqB"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="trq-zt-8e2">
+                            <rect key="frame" x="10" y="188" width="50" height="50"/>
+                            <animations/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="PbI-cF-pCj"/>
+                                <constraint firstAttribute="height" constant="50" id="jCq-V0-jDw"/>
+                            </constraints>
+                            <state key="normal" image="menu_close"/>
+                            <connections>
+                                <action selector="closePressed:" destination="-1" eventType="touchUpInside" id="O1r-hr-Gif"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <animations/>
+                    <color key="backgroundColor" red="0.13725490196078433" green="0.13725490196078433" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="44" id="LdK-Yw-G19"/>
-                        <constraint firstAttribute="width" constant="44" id="iuR-Hc-8aw"/>
+                        <constraint firstAttribute="trailing" secondItem="03e-qO-aG4" secondAttribute="trailing" constant="24" id="8BU-Qb-dvy"/>
+                        <constraint firstItem="X1g-zx-gCJ" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="9mX-hu-FzF"/>
+                        <constraint firstAttribute="height" constant="248" id="Aza-au-402"/>
+                        <constraint firstItem="i6z-Ed-10U" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="SRV-7Z-QRq"/>
+                        <constraint firstItem="03e-qO-aG4" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="TtG-8w-mtO"/>
+                        <constraint firstItem="trq-zt-8e2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="u0T-1F-ZYE"/>
+                        <constraint firstItem="X1g-zx-gCJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="24" id="vli-QT-Sy7"/>
+                        <constraint firstAttribute="bottom" secondItem="trq-zt-8e2" secondAttribute="bottom" constant="10" id="wFa-la-wFX"/>
+                        <constraint firstItem="i6z-Ed-10U" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="zeT-qe-MsF"/>
                     </constraints>
-                    <state key="normal" image="camera_roll_icon">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="cameraRollButtonPressed:" destination="-1" eventType="touchUpInside" id="cMT-zA-QPH"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybE-51-OOx">
-                    <rect key="frame" x="185" y="239" width="44" height="44"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="44" id="59y-sA-CUl"/>
-                        <constraint firstAttribute="height" constant="44" id="zgF-ga-Otx"/>
-                    </constraints>
-                    <state key="normal" image="settings_icon">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBN-PY-M4g">
-                    <rect key="frame" x="185" y="366" width="44" height="44"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="44" id="AkM-YJ-HfW"/>
-                        <constraint firstAttribute="width" constant="44" id="uRG-bH-JjR"/>
-                    </constraints>
-                    <state key="normal" image="feedback_icon">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="feedbackButtonPressed:" destination="-1" eventType="touchUpInside" id="gzW-js-0Pa"/>
-                    </connections>
-                </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Camera Roll" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Th-ev-aOk">
-                    <rect key="frame" x="157" y="164" width="99" height="21.5"/>
-                    <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="18"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Feedback" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WKn-6d-fNq">
-                    <rect key="frame" x="167" y="418" width="80" height="21.5"/>
-                    <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="18"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HpP-Da-2KH">
-                    <rect key="frame" x="185" y="649" width="44" height="44"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="44" id="T52-Ba-ZxV"/>
-                        <constraint firstAttribute="width" constant="44" id="iQc-Ga-Wgb"/>
-                    </constraints>
-                    <state key="normal" image="close_icon">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="closeButtonPressed:" destination="-1" eventType="touchUpInside" id="tLS-41-9FT"/>
-                    </connections>
-                </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Dm-AC-9Mp">
-                    <rect key="frame" x="174" y="291" width="66.5" height="21.5"/>
-                    <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="18"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                </view>
             </subviews>
+            <animations/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="HpP-Da-2KH" secondAttribute="bottom" constant="43" id="4l4-VK-dex"/>
-                <constraint firstItem="ybE-51-OOx" firstAttribute="top" secondItem="9Th-ev-aOk" secondAttribute="bottom" constant="54" id="6Yc-hD-MrF"/>
-                <constraint firstAttribute="centerX" secondItem="5GO-4g-H5w" secondAttribute="centerX" id="71E-zo-4av"/>
-                <constraint firstAttribute="centerX" secondItem="SBN-PY-M4g" secondAttribute="centerX" id="98W-jf-fdC"/>
-                <constraint firstAttribute="centerX" secondItem="6Dm-AC-9Mp" secondAttribute="centerX" id="Dkr-Wg-3xO"/>
-                <constraint firstItem="6Dm-AC-9Mp" firstAttribute="top" secondItem="ybE-51-OOx" secondAttribute="bottom" constant="7.5" id="GNw-Kg-Dtf"/>
-                <constraint firstAttribute="centerX" secondItem="HpP-Da-2KH" secondAttribute="centerX" id="P7u-8N-ubD"/>
-                <constraint firstItem="9Th-ev-aOk" firstAttribute="top" secondItem="5GO-4g-H5w" secondAttribute="bottom" constant="13" id="SHC-xd-h18"/>
-                <constraint firstAttribute="centerX" secondItem="9Th-ev-aOk" secondAttribute="centerX" id="Xk7-ps-Rxq"/>
-                <constraint firstItem="WKn-6d-fNq" firstAttribute="top" secondItem="SBN-PY-M4g" secondAttribute="bottom" constant="7.5" id="bP7-Jf-DIY"/>
-                <constraint firstItem="5GO-4g-H5w" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="107" id="bZd-w4-Zwt"/>
-                <constraint firstItem="SBN-PY-M4g" firstAttribute="top" secondItem="6Dm-AC-9Mp" secondAttribute="bottom" constant="54" id="hqh-0I-x1a"/>
-                <constraint firstAttribute="centerX" secondItem="WKn-6d-fNq" secondAttribute="centerX" id="oWq-uH-fEb"/>
-                <constraint firstAttribute="centerX" secondItem="ybE-51-OOx" secondAttribute="centerX" id="uQg-bI-N23"/>
+                <constraint firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="LmQ-NP-AIQ"/>
+                <constraint firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="VXY-6N-SWs"/>
+                <constraint firstItem="i5M-Pr-FkT" firstAttribute="leading" secondItem="1aA-sa-azk" secondAttribute="leading" id="kJY-Rj-0Q7"/>
             </constraints>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
     <resources>
-        <image name="camera_roll_icon" width="30" height="29"/>
-        <image name="close_icon" width="25" height="25"/>
-        <image name="feedback_icon" width="33" height="30"/>
-        <image name="settings_icon" width="32" height="30"/>
+        <image name="feedback_off" width="50" height="50"/>
+        <image name="feedback_on" width="50" height="50"/>
+        <image name="invitefriend_off" width="50" height="50"/>
+        <image name="invitefriend_on" width="50" height="50"/>
+        <image name="menu_close" width="17" height="18"/>
+        <image name="ourstory_off" width="50" height="50"/>
+        <image name="ourstory_on" width="50" height="50"/>
     </resources>
 </document>

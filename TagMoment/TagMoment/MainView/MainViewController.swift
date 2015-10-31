@@ -18,6 +18,11 @@ let CameraRollDidDisappearNotificationName = "CameraRollDidDisappearNotification
 let CameraRollWillDisappearNotificationName = "CameraRollWillDisappearNotificationName"
 let CameraRollDidSelectImageNotificationName = "CameraRollDidSelectImageNotificationName"
 
+let MenuWillDisappearNotificationName = "MenuWillDisappearNotificationName"
+let MenuDidDisappearNotificationName = "MenuDidDisappearNotificationName"
+let MenuDidAppearNotificationName = "MenuDidAppearNotificationName"
+let MenuWillAppearNotificationName = "MenuWillAppearNotificationName"
+
 class MainViewController: UIViewController, ChooseMasksControllerDelegate, ChooseFiltesControllerDelegate, NavBarDelegate, SharingControllerDelegate, UIGestureRecognizerDelegate, UIAlertViewDelegate{
 	
 	

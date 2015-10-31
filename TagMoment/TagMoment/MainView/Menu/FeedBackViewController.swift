@@ -16,19 +16,19 @@ let WriteUsTitle = "Write Us"
 let NotNowTitle = "Not Now"
 let TagMomentTeamMail = "team@tagmoment.me"
 
-class FeedbackViewController: UIViewController, UIAlertViewDelegate, MFMailComposeViewControllerDelegate {
+protocol FeedbackViewControllerDelegate : class{
+	func backPressed()
+}
+
+class FeedbackViewController: UIViewController, UIAlertViewDelegate, MFMailComposeViewControllerDelegate{
 
 	var alertView : UIAlertView?
-	
+	weak var feedbackDelegate: FeedbackViewControllerDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-
-	@IBAction func closedButtonPressed(sender: AnyObject) {
-		self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
-	}
 	
 	@IBAction func dislikeButtonPressed(sender: AnyObject) {
 		alertView = UIAlertView(title: nil, message: DislikeAlertMessage, delegate: self, cancelButtonTitle: WriteUsTitle)
@@ -36,6 +36,12 @@ class FeedbackViewController: UIViewController, UIAlertViewDelegate, MFMailCompo
 		alertView?.show()
 	}
 	
+	@IBAction func backButtonPressed(sender: AnyObject) {
+		if let delegate = self.feedbackDelegate
+		{
+			delegate.backPressed()
+		}
+	}
 	@IBAction func likeButtonPressed(sender: AnyObject) {
 		alertView = UIAlertView(title: nil, message: LikeMessage, delegate: self, cancelButtonTitle: RateUsTitle)
 		alertView?.addButtonWithTitle(NotNowTitle)

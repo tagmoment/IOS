@@ -150,11 +150,22 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 	}
 	
 	// MARK: - Menu handling
-	@IBAction func menuButtonPressed(sender: AnyObject) {
+	@IBAction func cameraRollButtonPressed(sender: AnyObject) {
 
 		let cameraRollCont = CameraRollViewController(nibName: "CameraRollViewController", bundle: nil)
 		self.addCameraRollController(cameraRollCont)
 			
+	}
+	
+	@IBAction func menuButtonPressed(sender: AnyObject) {
+		let menuCont = MenuViewController(nibName: "MenuViewController", bundle: nil)
+		let mainController = UIApplication.sharedApplication().delegate?.window!?.rootViewController! as! MainViewController
+		mainController.timerHandler?.cancelTimer()
+		mainController.timerHandler = nil
+		menuCont.containerHeight = self.view.frame.height
+		menuCont.addToView(mainController.view)
+		mainController.addChildViewController(menuCont)
+		
 	}
 	
 	private func addCameraRollController(toController : CameraRollViewController)
@@ -162,7 +173,7 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 		let mainController = UIApplication.sharedApplication().delegate?.window!?.rootViewController! as! MainViewController
 		mainController.timerHandler?.cancelTimer()
 		mainController.timerHandler = nil
-		toController.originalHeight = mainController.masksViewController.view.frame.height
+		toController.originalHeight = self.view.frame.height
 		toController.addToView(mainController.view)
 		mainController.addChildViewController(toController)
 	}

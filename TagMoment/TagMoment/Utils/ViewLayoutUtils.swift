@@ -36,14 +36,15 @@ extension UIView{
 		pinToBothEdges(subview)
 	}
 	
-	func pinSubViewToBottom(subview : UIView, heightContraint : CGFloat){
+	func pinSubViewToBottom(subview : UIView, heightContraint : CGFloat = 0) -> NSLayoutConstraint{
 		subview.translatesAutoresizingMaskIntoConstraints = false
 		self.addSubview(subview)
 		
-		let constraint = NSLayoutConstraint(item: subview, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0.0)
+		let constraint = NSLayoutConstraint(item: subview, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: heightContraint)
 		self.addConstraint(constraint)
 		
 		pinToBothEdges(subview)
+		return constraint;
 	}
 	
 	private func pinToBothEdges(subview: UIView)

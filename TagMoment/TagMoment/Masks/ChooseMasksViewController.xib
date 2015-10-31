@@ -31,7 +31,7 @@
                         <outlet property="delegate" destination="-1" id="8zt-vL-24a"/>
                     </connections>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2A-Qz-l4B" userLabel="settings_button">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2A-Qz-l4B" userLabel="choose_images_button">
                     <rect key="frame" x="30" y="106" width="50" height="50"/>
                     <animations/>
                     <constraints>
@@ -44,7 +44,7 @@
                     <state key="selected" image="camerarolliconon"/>
                     <state key="highlighted" image="camerarolliconon"/>
                     <connections>
-                        <action selector="menuButtonPressed:" destination="-1" eventType="touchUpInside" id="BV8-B3-4x6"/>
+                        <action selector="cameraRollButtonPressed:" destination="-1" eventType="touchUpInside" id="TDX-3D-PYe"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h5b-la-WW7" userLabel="capture_button">
@@ -87,12 +87,23 @@
                         <action selector="switchCamButtonPressed:" destination="-1" eventType="touchUpInside" id="Txb-bv-v8a"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aXi-fO-by2" userLabel="menu_button">
+                    <rect key="frame" x="8" y="162" width="34" height="34"/>
+                    <animations/>
+                    <state key="normal" image="settingsicon_off"/>
+                    <state key="selected" image="settingsicon_on"/>
+                    <state key="highlighted" image="settingsicon_on"/>
+                    <connections>
+                        <action selector="menuButtonPressed:" destination="-1" eventType="touchUpInside" id="mFz-Du-jzn"/>
+                    </connections>
+                </button>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="df4-gF-7id" secondAttribute="trailing" id="AGe-oV-YCf"/>
                 <constraint firstItem="df4-gF-7id" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="FZP-eh-0Dd"/>
+                <constraint firstItem="aXi-fO-by2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="FuV-vs-J9S"/>
                 <constraint firstAttribute="trailing" secondItem="WEf-Ca-DjX" secondAttribute="trailing" constant="30" id="LM4-dj-bE3"/>
                 <constraint firstAttribute="centerY" secondItem="h5b-la-WW7" secondAttribute="centerY" constant="-30" id="cT0-j1-4G2"/>
                 <constraint firstItem="K2A-Qz-l4B" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="ema-5V-sKR"/>
@@ -100,6 +111,7 @@
                 <constraint firstItem="h5b-la-WW7" firstAttribute="centerY" secondItem="K2A-Qz-l4B" secondAttribute="centerY" id="gUB-xi-R4T"/>
                 <constraint firstItem="df4-gF-7id" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="iPw-1Y-DAz"/>
                 <constraint firstItem="WEf-Ca-DjX" firstAttribute="centerY" secondItem="h5b-la-WW7" secondAttribute="centerY" id="iZm-2v-Jkn"/>
+                <constraint firstAttribute="bottom" secondItem="aXi-fO-by2" secondAttribute="bottom" constant="8" id="p1x-Ds-cDR"/>
                 <constraint firstAttribute="centerX" secondItem="h5b-la-WW7" secondAttribute="centerX" id="rcH-kL-Jca"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -118,5 +130,7 @@
         <image name="capturebutton_on" width="95" height="95"/>
         <image name="frontbackicon_off" width="50" height="50"/>
         <image name="frontbackicon_on" width="50" height="50"/>
+        <image name="settingsicon_off" width="34" height="34"/>
+        <image name="settingsicon_on" width="34" height="34"/>
     </resources>
 </document>

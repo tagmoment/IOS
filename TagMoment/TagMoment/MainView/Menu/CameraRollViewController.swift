@@ -197,7 +197,7 @@ class CameraRollViewController: UIViewController, UIGestureRecognizerDelegate{
 	func addToView(superview : UIView)
 	{
 		NSNotificationCenter.defaultCenter().postNotificationName(CameraRollWillAppearNotificationName, object: nil)
-		superview.pinSubViewToBottom(self.view, heightContraint: 0.0)
+		superview.pinSubViewToBottom(self.view)
 		let heightContraint = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 22.0)
 		self.view.addConstraint(heightContraint)
 		self.heightConstraint = heightContraint

@@ -20,6 +20,8 @@ class ViewChoreographer : NSObject
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("cameraRollWillAppear:"), name: CameraRollWillAppearNotificationName, object: nil)
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("cameraRollWillDisappear:"), name: CameraRollWillDisappearNotificationName, object: nil)
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("cameraRollDidSelectImage:"), name: ImageFromCameraChosenNotificationName, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("menuWillAppear:"), name: MenuWillAppearNotificationName, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("menuWillDisppear:"), name: MenuWillDisappearNotificationName, object: nil)
 		
 	}
 	
@@ -43,6 +45,14 @@ class ViewChoreographer : NSObject
 		self.takingPhotoFromAlbumAppearance(true)
 	}
 	
+	func menuWillAppear(notification : NSNotification)
+	{
+		self.dimButtons(false)
+	}
+	func menuWillDisppear(notification : NSNotification)
+	{
+		self.dimButtons(true)
+	}
 	func takingImageStageAppearance(animated: Bool)
 	{
 		let navbar = mainViewController?.navigationView
@@ -79,6 +89,17 @@ class ViewChoreographer : NSObject
 		}
 		
 		
+	}
+	
+	private func dimButtons(restore : Bool)
+	{
+		let value : CGFloat = restore ? 1.0 : 0.5
+		let navbar = mainViewController?.navigationView
+		UIView.animateWithDuration(0.3, animations: { () -> Void in
+			navbar?.backButton.alpha = value
+			navbar?.rightButton.alpha = value
+			navbar?.middleButton.alpha = value
+			}, completion:  nil )
 	}
 	
 	func editingStageAppearance(animated: Bool)
