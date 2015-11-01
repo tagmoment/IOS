@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LeftAligned : UICollectionViewFlowLayout
-
+@interface LeftAligned : UICollectionViewLayout
+@property (nonatomic, weak) id<UICollectionViewDelegateFlowLayout> delegate;
 @end

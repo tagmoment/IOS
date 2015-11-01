@@ -13,6 +13,8 @@ class TagsCollectionViewCell: UICollectionViewCell {
 	@IBOutlet weak var tagName: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+		self.layer.shouldRasterize = true;
+		self.layer.rasterizationScale = UIScreen.mainScreen().scale
         self.layer.cornerRadius = self.frame.height/2 - 1
     }
 	

@@ -51,6 +51,8 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 		self.textField.keyboardType = .ASCIICapable
 		tagsCollectionView.registerNib(UINib(nibName: "TagsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: CellIdent)
 		tagsCollectionView.allowsMultipleSelection = true
+		let leftAlignedLayout = tagsCollectionView.collectionViewLayout as! LeftAligned
+		leftAlignedLayout.delegate = self
     }
 
 	override func viewWillAppear(animated: Bool) {
@@ -380,6 +382,10 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 	
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
 	{
+		if (indexPath.item % 2 != 0)
+		{
+			return CGSize(width: 56, height: 34)
+		}
 		let data = tagsDataSource[indexPath.item]
 		let font = UIFont(name: "Raleway", size: 17)
 		let attributes : [String : AnyObject!] = [NSFontAttributeName : font]
@@ -389,7 +395,6 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 			attributes: attributes,
 			context: nil)
 	
-		
 		return CGSize(width: ceil(size.width) + 34, height: 34)
 	}
 	
