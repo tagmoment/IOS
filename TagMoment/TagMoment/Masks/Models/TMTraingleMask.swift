@@ -29,7 +29,7 @@ class TMTraingleMask: TMMask {
 	}
 	
 	func createViewModel() -> TMMaskViewModel{
-		return TMMaskViewModel(name: "nameit")
+		return TMMaskViewModel(name: "diagonal")
 	}
 
 }
