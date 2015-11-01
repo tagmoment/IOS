@@ -4,6 +4,13 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Raleway-Regular.ttf">
+            <string>Raleway</string>
+            <string>Raleway</string>
+            <string>Raleway</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MenuViewController" customModule="TagMoment" customModuleProvider="target">
             <connections>
@@ -20,37 +27,71 @@
                 <view clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i5M-Pr-FkT">
                     <rect key="frame" x="0.0" y="352" width="600" height="248"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i6z-Ed-10U" userLabel="invite_btn">
-                            <rect key="frame" x="275" y="99.5" width="50" height="50"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iAA-fM-Pid">
+                            <rect key="frame" x="260.5" y="86" width="79.5" height="76.5"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i6z-Ed-10U" userLabel="invite_btn">
+                                    <rect key="frame" x="14.5" y="0.0" width="50" height="50"/>
+                                    <animations/>
+                                    <state key="normal" image="invitefriend_off"/>
+                                    <state key="selected" image="invitefriend_on"/>
+                                    <state key="highlighted" image="invitefriend_on"/>
+                                    <connections>
+                                        <action selector="inviteFriendsPressed:" destination="-1" eventType="touchUpInside" id="91n-KH-rYM"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invite Friend" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gwa-4B-4Xh">
+                                    <rect key="frame" x="0.0" y="60" width="79.5" height="16.5"/>
+                                    <animations/>
+                                    <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="14"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
                             <animations/>
-                            <state key="normal" image="invitefriend_off"/>
-                            <state key="selected" image="invitefriend_on"/>
-                            <state key="highlighted" image="invitefriend_on"/>
-                            <connections>
-                                <action selector="inviteFriendsPressed:" destination="-1" eventType="touchUpInside" id="91n-KH-rYM"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X1g-zx-gCJ" userLabel="ourstory_btn">
-                            <rect key="frame" x="24" y="99" width="50" height="50"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="gwa-4B-4Xh" firstAttribute="leading" secondItem="iAA-fM-Pid" secondAttribute="leading" id="EGg-Zh-WOm"/>
+                                <constraint firstAttribute="trailing" secondItem="gwa-4B-4Xh" secondAttribute="trailing" id="RUf-2d-Ry1"/>
+                                <constraint firstItem="gwa-4B-4Xh" firstAttribute="top" secondItem="i6z-Ed-10U" secondAttribute="bottom" constant="10" id="ZDy-MA-lrb"/>
+                                <constraint firstAttribute="bottom" secondItem="gwa-4B-4Xh" secondAttribute="bottom" id="gqS-UY-OV8"/>
+                                <constraint firstItem="i6z-Ed-10U" firstAttribute="centerX" secondItem="iAA-fM-Pid" secondAttribute="centerX" id="pRE-Qx-24N"/>
+                                <constraint firstItem="i6z-Ed-10U" firstAttribute="top" secondItem="iAA-fM-Pid" secondAttribute="top" id="tIf-d4-ahG"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="trP-wh-CyU">
+                            <rect key="frame" x="30" y="86" width="61" height="76.5"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X1g-zx-gCJ" userLabel="ourstory_btn">
+                                    <rect key="frame" x="5" y="0.0" width="50" height="50"/>
+                                    <animations/>
+                                    <state key="normal" image="ourstory_off"/>
+                                    <state key="selected" image="ourstory_on"/>
+                                    <state key="highlighted" image="ourstory_on"/>
+                                    <connections>
+                                        <action selector="ourStoryPressed:" destination="-1" eventType="touchUpInside" id="vJ3-1y-hUf"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Our Story" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cqO-Me-Ebh">
+                                    <rect key="frame" x="0.0" y="60" width="61" height="16.5"/>
+                                    <animations/>
+                                    <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="14"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
                             <animations/>
-                            <state key="normal" image="ourstory_off"/>
-                            <state key="selected" image="ourstory_on"/>
-                            <state key="highlighted" image="ourstory_on"/>
-                            <connections>
-                                <action selector="ourStoryPressed:" destination="-1" eventType="touchUpInside" id="vJ3-1y-hUf"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="03e-qO-aG4" userLabel="feedback_btn">
-                            <rect key="frame" x="526" y="99" width="50" height="50"/>
-                            <animations/>
-                            <state key="normal" image="feedback_off"/>
-                            <state key="selected" image="feedback_on"/>
-                            <state key="highlighted" image="feedback_on"/>
-                            <connections>
-                                <action selector="feedbackPressed:" destination="-1" eventType="touchUpInside" id="68J-Dz-fqB"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="trq-zt-8e2">
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="X1g-zx-gCJ" firstAttribute="top" secondItem="trP-wh-CyU" secondAttribute="top" id="BYo-Cl-1Td"/>
+                                <constraint firstAttribute="trailing" secondItem="cqO-Me-Ebh" secondAttribute="trailing" id="Bb5-jq-9Ld"/>
+                                <constraint firstItem="cqO-Me-Ebh" firstAttribute="top" secondItem="X1g-zx-gCJ" secondAttribute="bottom" constant="10" id="E7G-6w-BBS"/>
+                                <constraint firstItem="cqO-Me-Ebh" firstAttribute="leading" secondItem="trP-wh-CyU" secondAttribute="leading" id="XaQ-fB-6S3"/>
+                                <constraint firstItem="X1g-zx-gCJ" firstAttribute="centerX" secondItem="trP-wh-CyU" secondAttribute="centerX" id="edX-ci-hzk"/>
+                                <constraint firstAttribute="bottom" secondItem="cqO-Me-Ebh" secondAttribute="bottom" id="qhc-C3-liO"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="trq-zt-8e2" userLabel="close_button">
                             <rect key="frame" x="10" y="188" width="50" height="50"/>
                             <animations/>
                             <constraints>
@@ -62,19 +103,51 @@
                                 <action selector="closePressed:" destination="-1" eventType="touchUpInside" id="O1r-hr-Gif"/>
                             </connections>
                         </button>
+                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4xV-e7-ZUj">
+                            <rect key="frame" x="504.5" y="87" width="65" height="76"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="03e-qO-aG4" userLabel="feedback_btn">
+                                    <rect key="frame" x="8" y="0.0" width="50" height="50"/>
+                                    <animations/>
+                                    <state key="normal" image="feedback_off"/>
+                                    <state key="selected" image="feedback_on"/>
+                                    <state key="highlighted" image="feedback_on"/>
+                                    <connections>
+                                        <action selector="feedbackPressed:" destination="-1" eventType="touchUpInside" id="68J-Dz-fqB"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OAy-1B-ZHG">
+                                    <rect key="frame" x="0.0" y="60" width="65" height="16.5"/>
+                                    <animations/>
+                                    <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="14"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <animations/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="03e-qO-aG4" firstAttribute="centerX" secondItem="4xV-e7-ZUj" secondAttribute="centerX" id="0mu-hP-wm2"/>
+                                <constraint firstAttribute="bottom" secondItem="OAy-1B-ZHG" secondAttribute="bottom" id="FqL-PO-8WF"/>
+                                <constraint firstItem="03e-qO-aG4" firstAttribute="top" secondItem="4xV-e7-ZUj" secondAttribute="top" id="FvW-ey-4eg"/>
+                                <constraint firstAttribute="trailing" secondItem="OAy-1B-ZHG" secondAttribute="trailing" id="HFT-98-frv"/>
+                                <constraint firstItem="OAy-1B-ZHG" firstAttribute="leading" secondItem="4xV-e7-ZUj" secondAttribute="leading" id="Han-mh-2La"/>
+                                <constraint firstItem="OAy-1B-ZHG" firstAttribute="top" secondItem="03e-qO-aG4" secondAttribute="bottom" constant="10" id="ehj-oh-dM8"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <animations/>
                     <color key="backgroundColor" red="0.13725490196078433" green="0.13725490196078433" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="03e-qO-aG4" secondAttribute="trailing" constant="24" id="8BU-Qb-dvy"/>
-                        <constraint firstItem="X1g-zx-gCJ" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="9mX-hu-FzF"/>
+                        <constraint firstItem="trP-wh-CyU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="97X-dq-Lhy"/>
                         <constraint firstAttribute="height" constant="248" id="Aza-au-402"/>
-                        <constraint firstItem="i6z-Ed-10U" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="SRV-7Z-QRq"/>
-                        <constraint firstItem="03e-qO-aG4" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="TtG-8w-mtO"/>
+                        <constraint firstAttribute="trailing" secondItem="4xV-e7-ZUj" secondAttribute="trailing" constant="30" id="GN4-D4-pzG"/>
+                        <constraint firstItem="iAA-fM-Pid" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Knh-EA-K4Z"/>
+                        <constraint firstItem="trP-wh-CyU" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="O1M-DB-QN3"/>
+                        <constraint firstItem="iAA-fM-Pid" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="bm5-4z-hus"/>
+                        <constraint firstItem="4xV-e7-ZUj" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="tIq-8y-DXt"/>
                         <constraint firstItem="trq-zt-8e2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="u0T-1F-ZYE"/>
-                        <constraint firstItem="X1g-zx-gCJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="24" id="vli-QT-Sy7"/>
                         <constraint firstAttribute="bottom" secondItem="trq-zt-8e2" secondAttribute="bottom" constant="10" id="wFa-la-wFX"/>
-                        <constraint firstItem="i6z-Ed-10U" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="zeT-qe-MsF"/>
                     </constraints>
                 </view>
             </subviews>
