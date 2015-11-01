@@ -31,7 +31,7 @@ class TMBubbleMask: NSObject, TMMask {
 	
 	var cameraBounds : CGRect{
 		
-		return CGRect(x: 0 , y: 0, width: self.workingBounds.width/2, height: self.workingBounds.width/2);
+		return CGRect(x: 0 , y: 0, width: self.workingBounds.width/2 + 20, height: self.workingBounds.width/2 + 20);
 //		return self.workingBounds
 	}
 	
