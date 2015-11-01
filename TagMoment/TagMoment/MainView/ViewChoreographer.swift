@@ -96,7 +96,11 @@ class ViewChoreographer : NSObject
 		let value : CGFloat = restore ? 1.0 : 0.5
 		let navbar = mainViewController?.navigationView
 		UIView.animateWithDuration(0.3, animations: { () -> Void in
-			navbar?.backButton.alpha = value
+			if navbar?.backButton.alpha != 0.0
+			{
+				navbar?.backButton.alpha = value
+			}
+			
 			navbar?.rightButton.alpha = value
 			navbar?.middleButton.alpha = value
 			}, completion:  nil )
