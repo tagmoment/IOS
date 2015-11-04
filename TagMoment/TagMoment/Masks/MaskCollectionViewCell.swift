@@ -14,7 +14,10 @@ class MaskCollectionViewCell: UICollectionViewCell {
 	@IBOutlet weak var labelHeightConstraint: NSLayoutConstraint!
 	@IBOutlet weak var maskImage: UIImageView!
 	
+	@IBOutlet weak var lockIcon: UIImageView!
+	
 	@IBOutlet weak var maskName: UILabel!
+	
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

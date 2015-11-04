@@ -82,6 +82,7 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 		
 		let maskModel = self.masksViewModels![index]
 		cell.maskImage.image = UIImage(named: maskModel.name!.lowercaseString)
+		cell.lockIcon.hidden = !maskModel.locked
 //		cell.maskImage.highlightedImage = UIImage(named: maskModel.name!.lowercaseString + "_on")
 		cell.maskName.text = maskModel.name
 	
@@ -176,6 +177,24 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 		toController.originalHeight = self.view.frame.height
 		toController.addToView(mainController.view)
 		mainController.addChildViewController(toController)
+	}
+	
+	func getLockedViewForUnlocking(maskViewModel : TMMaskViewModel) -> MaskCollectionViewCell?
+	{
+		
+		maskViewModel.locked = false
+		let maskIndex = self.masksViewModels?.indexOf(maskViewModel)
+		for view in masksCarousel.visibleItemViews
+		{
+			let index = masksCarousel.indexOfItemView(view as! UIView)
+			if (index == maskIndex)
+			{
+				return view as? MaskCollectionViewCell
+			}
+		}
+		
+		return nil
+		
 	}
 	
 }

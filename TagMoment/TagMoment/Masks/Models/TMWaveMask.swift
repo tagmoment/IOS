@@ -12,6 +12,7 @@ class TMWaveMask: NSObject, TMMask {
 	var workingBounds : CGRect
 	
 	init(rect: CGRect){
+		
 		self.workingBounds = rect
 	}
 	
@@ -34,6 +35,9 @@ class TMWaveMask: NSObject, TMMask {
 	}
 	
 	func createViewModel() -> TMMaskViewModel{
-		return TMMaskViewModel(name: "waves")
+		let viewModel = TMMaskViewModel(name: "waves")
+		viewModel.maskProductId = "tagmoment_mask_waves"
+		viewModel.locked = !InAppPurchaseRepo.isProductBought(viewModel.maskProductId)
+		return viewModel
 	}
 }

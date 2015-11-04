@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F10067521BE9428E00D00827 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F10067511BE9428E00D00827 /* StoreKit.framework */; };
 		F101858C1A673E4D003F906E /* ChooseFiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F101858A1A673E4D003F906E /* ChooseFiltersViewController.swift */; };
 		F101858D1A673E4D003F906E /* ChooseFiltersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F101858B1A673E4D003F906E /* ChooseFiltersViewController.xib */; };
 		F101858F1A674120003F906E /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F101858E1A674120003F906E /* FilterCollectionViewCell.swift */; };
@@ -106,6 +107,8 @@
 		F1B1C4671BB32CF600A9CDC2 /* TimerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B1C4661BB32CF600A9CDC2 /* TimerHandler.swift */; };
 		F1B4ECE41A88072400C11FEF /* TMFilterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B4ECE31A88072400C11FEF /* TMFilterInterface.swift */; };
 		F1B4ECE61A88082B00C11FEF /* TMArtistFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B4ECE51A88082B00C11FEF /* TMArtistFilter.swift */; };
+		F1B677E51BEA6C060033583E /* InAppPurchaseDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B677E41BEA6C060033583E /* InAppPurchaseDataProvider.swift */; };
+		F1B677E71BEAC95F0033583E /* InAppPurchaseRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B677E61BEAC95F0033583E /* InAppPurchaseRepo.swift */; };
 		F1C3226F1B41D1F800091FB9 /* ViewChoreographer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C3226E1B41D1F800091FB9 /* ViewChoreographer.swift */; };
 		F1CC18341A97911300DB77F2 /* TakeImageNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CC18331A97911300DB77F2 /* TakeImageNavBar.swift */; };
 		F1D4B6AF1A8809AD00396E25 /* TMSunsetFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D4B6AE1A8809AD00396E25 /* TMSunsetFilter.swift */; };
@@ -132,6 +135,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F10067511BE9428E00D00827 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		F101858A1A673E4D003F906E /* ChooseFiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseFiltersViewController.swift; sourceTree = "<group>"; };
 		F101858B1A673E4D003F906E /* ChooseFiltersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseFiltersViewController.xib; sourceTree = "<group>"; };
 		F101858E1A674120003F906E /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -240,6 +244,8 @@
 		F1B1C4661BB32CF600A9CDC2 /* TimerHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerHandler.swift; sourceTree = "<group>"; };
 		F1B4ECE31A88072400C11FEF /* TMFilterInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMFilterInterface.swift; sourceTree = "<group>"; };
 		F1B4ECE51A88082B00C11FEF /* TMArtistFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMArtistFilter.swift; sourceTree = "<group>"; };
+		F1B677E41BEA6C060033583E /* InAppPurchaseDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppPurchaseDataProvider.swift; sourceTree = "<group>"; };
+		F1B677E61BEAC95F0033583E /* InAppPurchaseRepo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppPurchaseRepo.swift; sourceTree = "<group>"; };
 		F1C3226E1B41D1F800091FB9 /* ViewChoreographer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewChoreographer.swift; sourceTree = "<group>"; };
 		F1CC18331A97911300DB77F2 /* TakeImageNavBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakeImageNavBar.swift; sourceTree = "<group>"; };
 		F1D4B6AE1A8809AD00396E25 /* TMSunsetFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMSunsetFilter.swift; sourceTree = "<group>"; };
@@ -261,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F17672741AA515FA00588865 /* OpenGLES.framework in Frameworks */,
+				F10067521BE9428E00D00827 /* StoreKit.framework in Frameworks */,
 				F17672721AA515F200588865 /* SystemConfiguration.framework in Frameworks */,
 				F17672701AA515E900588865 /* AVFoundation.framework in Frameworks */,
 				F176726E1AA515E200588865 /* CoreMedia.framework in Frameworks */,
@@ -300,6 +307,8 @@
 				F1B190F91AAE4DDB0001B86E /* Array+Shuffle.swift */,
 				F168646A1B1CEB8A007B61A1 /* VisualEffectsUtil.swift */,
 				F19128BC1BB09F6900CAFECD /* FileHandlingService.swift */,
+				F1B677E41BEA6C060033583E /* InAppPurchaseDataProvider.swift */,
+				F1B677E61BEAC95F0033583E /* InAppPurchaseRepo.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -323,6 +332,7 @@
 		F109CE8F1A56F8770011CA55 = {
 			isa = PBXGroup;
 			children = (
+				F10067511BE9428E00D00827 /* StoreKit.framework */,
 				F17672731AA515FA00588865 /* OpenGLES.framework */,
 				F17672711AA515F200588865 /* SystemConfiguration.framework */,
 				F176726F1AA515E900588865 /* AVFoundation.framework */,
@@ -641,7 +651,12 @@
 				TargetAttributes = {
 					F109CE971A56F8770011CA55 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = 46DWPR6488;
+						DevelopmentTeam = 9YCJ4U2PS4;
+						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
+						};
 					};
 					F109CEAE1A56F8770011CA55 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -784,6 +799,7 @@
 				F1B4ECE61A88082B00C11FEF /* TMArtistFilter.swift in Sources */,
 				F137FDD01A648CEF007B40B3 /* CameraSessionService.swift in Sources */,
 				F14A81471A58B52700B5D14F /* TMHeartMask.swift in Sources */,
+				F1B677E71BEAC95F0033583E /* InAppPurchaseRepo.swift in Sources */,
 				F11647861A880BC10094BEF4 /* TMFireFilter.swift in Sources */,
 				F17A41711AB47FAC0074E5F5 /* iCarousel.m in Sources */,
 				F172CF0D1B65820B006839EB /* AlbumCoverCollectionViewController.swift in Sources */,
@@ -794,6 +810,7 @@
 				F101858C1A673E4D003F906E /* ChooseFiltersViewController.swift in Sources */,
 				F19620C31A881B0800DCFB85 /* TMStarFilter.swift in Sources */,
 				F1A142151A93FC81001D63C6 /* FilterScalarParameter.swift in Sources */,
+				F1B677E51BEA6C060033583E /* InAppPurchaseDataProvider.swift in Sources */,
 				F1A1421B1A940073001D63C6 /* FilterVectorParameter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -904,7 +921,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Tomer Hershkovitz (RA43GHR95U)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Tomer Hershkovitz (RA43GHR95U)";
 				ENABLE_BITCODE = NO;
 				ENABLE_TESTABILITY = NO;
@@ -935,7 +952,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Tomer Hershkovitz";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Tomer Hershkovitz";
 				ENABLE_BITCODE = NO;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;

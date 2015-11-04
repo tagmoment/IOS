@@ -36,7 +36,10 @@ class TMBubbleMask: NSObject, TMMask {
 	}
 	
 	func createViewModel() -> TMMaskViewModel{
-		return TMMaskViewModel(name: "bubble")
+		let viewModel = TMMaskViewModel(name: "bubble")
+		viewModel.maskProductId = "tagmoment_mask_bubble"
+		viewModel.locked = !InAppPurchaseRepo.isProductBought(viewModel.maskProductId)
+		return viewModel
 	}
 	
 	func toRadians(angle: CGFloat) -> CGFloat{

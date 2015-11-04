@@ -23,9 +23,9 @@ let MenuDidDisappearNotificationName = "MenuDidDisappearNotificationName"
 let MenuDidAppearNotificationName = "MenuDidAppearNotificationName"
 let MenuWillAppearNotificationName = "MenuWillAppearNotificationName"
 
-class MainViewController: UIViewController, ChooseMasksControllerDelegate, ChooseFiltesControllerDelegate, NavBarDelegate, SharingControllerDelegate, UIGestureRecognizerDelegate, UIAlertViewDelegate{
+class MainViewController: UIViewController, ChooseMasksControllerDelegate, ChooseFiltesControllerDelegate, NavBarDelegate, SharingControllerDelegate, InAppPurchaseDelegate, UIGestureRecognizerDelegate, UIAlertViewDelegate{
 	
-	
+	var inAppPurchaseDataProvider = InAppPurchaseDataProvider()
 	
 	var masksViewController : ChooseMasksViewController!
 	var filtersViewController : ChooseFiltersViewController!
@@ -76,6 +76,8 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	private func commonInit() {
 		sessionService = CameraSessionService()
 		viewChoreographer.mainViewController = self
+		inAppPurchaseDataProvider.delegate = self
+		inAppPurchaseDataProvider.fetchProducts()
 	}
 	
 	
@@ -538,32 +540,9 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		{
 			self.userLabel.hidden = false
 			self.userLabel.text = newText
-//			self.userLabel.attributedText =  fixBaselineForUserLabelText(newText, textBaselineOffset: -2, emojiBaselineOffset: -3)
-//			self.sharingController.textField.attributedText = fixBaselineForUserLabelText(newText, textBaselineOffset: -2, emojiBaselineOffset: -4)
+
 		}
 	}
-	
-//	private func fixBaselineForUserLabelText(text : String, textBaselineOffset : Int, emojiBaselineOffset : Int) -> NSAttributedString
-//	{
-//		let words = text.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-//		var attrString = NSMutableAttributedString(string: text)
-//		
-//		let totalRange = NSRange(location: 0,length: count(text))
-//		for word in words
-//		{
-//			let regex = NSRegularExpression(pattern: word, options: NSRegularExpressionOptions(0), error: nil)
-//			regex?.enumerateMatchesInString(text, options: NSMatchingOptions(0), range: totalRange, usingBlock: { (checkingResult : NSTextCheckingResult!, matchingFlags: NSMatchingFlags, stop: UnsafeMutablePointer<ObjCBool>) -> Void in
-//				
-//				let subRange = checkingResult.rangeAtIndex(0)
-//				let baselineValue = contains(self.sharingController.TagsDataSourceeEmojis, word) ? emojiBaselineOffset : textBaselineOffset
-//
-//				attrString.addAttribute(NSBaselineOffsetAttributeName, value: baselineValue, range: subRange)
-//			})
-//			
-//		}
-//		
-//		return attrString
-//	}
 	
 	func textEditingDidEnd() {
 		saveTempImage()
@@ -581,7 +560,11 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		initStageThree()
 #else
 	
-	
+		if (!isOnFirstStage() && self.masksViewController.getSelectedViewModel().locked == true)
+		{
+			inAppPurchaseDataProvider.showMessageForMask(self.masksViewController.getSelectedViewModel(), presentingViewController: self) 
+			return;
+		}
 		if timerHandler == nil && navigationView.timerState() != TimerState.Off
 		{
 			timerHandler = TimerHandler()
@@ -741,6 +724,32 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	{
 		
 		workingImageView!.image = image
+	}
+	
+	func maskPurchaseComplete(maskViewModel: TMMaskViewModel) {
+		
+		InAppPurchaseRepo.addProductId(maskViewModel.maskProductId)
+		guard let cell = self.masksViewController.getLockedViewForUnlocking(maskViewModel) else {
+			return;
+		}
+		
+		cell.lockIcon.hidden = true;
+		let newImageView = UIImageView(image: cell.lockIcon.image)
+		newImageView.frame = self.view.convertRect(cell.lockIcon.frame, fromView: cell)
+		self.view.addSubview(newImageView)
+		UIView.animateWithDuration(0.5, animations: { () -> Void in
+			newImageView.transform = CGAffineTransformMakeScale(3, 3)
+			newImageView.alpha = 0.0
+			}) { (finished: Bool) -> Void in
+				newImageView.removeFromSuperview()
+		}
+		
+		
+		
+	}
+	
+	func maskPurchaseFailed(maskViewModel: TMMaskViewModel) {
+		
 	}
 	
 }

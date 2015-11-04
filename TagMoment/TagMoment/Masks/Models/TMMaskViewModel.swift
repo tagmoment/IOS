@@ -9,6 +9,8 @@
 import UIKit
 
 class TMMaskViewModel: NSObject, NSCoding {
+	var maskProductId = ""
+	var locked = false
 	var name: String?
 	var hasOneCapture : Bool
 	

@@ -30,6 +30,14 @@
                             <constraint firstAttribute="height" constant="35" id="i55-xQ-GHu"/>
                         </constraints>
                     </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock" translatesAutoresizingMaskIntoConstraints="NO" id="bHC-CK-wJP" userLabel="lock_icon">
+                        <rect key="frame" x="36" y="11" width="17" height="25"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="17" id="uH9-db-Kbi"/>
+                            <constraint firstAttribute="height" constant="25" id="wBS-SC-02E"/>
+                        </constraints>
+                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GAB-eI-chb">
                         <rect key="frame" x="0.0" y="48" width="70" height="20"/>
                         <animations/>
@@ -53,10 +61,12 @@
                 <constraint firstAttribute="centerX" secondItem="Wt9-la-LPz" secondAttribute="centerX" id="NGr-s0-2Bn"/>
                 <constraint firstItem="GAB-eI-chb" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="RcR-4V-22g"/>
                 <constraint firstItem="GAB-eI-chb" firstAttribute="top" secondItem="eE7-TR-k2h" secondAttribute="bottom" id="Rh8-OE-9O6"/>
+                <constraint firstItem="bHC-CK-wJP" firstAttribute="trailing" secondItem="Wt9-la-LPz" secondAttribute="trailing" id="Vdv-vj-52j"/>
                 <constraint firstAttribute="trailing" secondItem="eE7-TR-k2h" secondAttribute="trailing" id="X7g-nE-KtS"/>
                 <constraint firstItem="GAB-eI-chb" firstAttribute="top" secondItem="Wt9-la-LPz" secondAttribute="bottom" constant="2" id="bhQ-LZ-lvJ"/>
                 <constraint firstItem="eE7-TR-k2h" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="vG8-Br-1Eg"/>
                 <constraint firstAttribute="bottom" secondItem="GAB-eI-chb" secondAttribute="bottom" id="yaH-Jf-26f"/>
+                <constraint firstItem="bHC-CK-wJP" firstAttribute="top" secondItem="Wt9-la-LPz" secondAttribute="top" id="zty-DD-qbv"/>
             </constraints>
             <size key="customSize" width="124" height="87"/>
             <variation key="default">
@@ -66,6 +76,7 @@
             </variation>
             <connections>
                 <outlet property="labelHeightConstraint" destination="L7m-XE-R6h" id="Ta7-s9-uk3"/>
+                <outlet property="lockIcon" destination="bHC-CK-wJP" id="j50-IM-tR7"/>
                 <outlet property="maskImage" destination="Wt9-la-LPz" id="j3z-Dv-ZoT"/>
                 <outlet property="maskName" destination="GAB-eI-chb" id="1Kg-ox-vld"/>
             </connections>
@@ -73,6 +84,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="lock" width="17" height="22"/>
         <image name="mask_background" width="70" height="68"/>
     </resources>
 </document>
