@@ -93,11 +93,15 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 
 		secondImageView = ClippingViewWithTouch()
 		secondImageView.userInteractionEnabled = true
-		var tapRecog = UITapGestureRecognizer()
+		var tapRecog = UILongPressGestureRecognizer()
+		tapRecog.minimumPressDuration = 0
+		tapRecog.allowableMovement = 100
 		tapRecog.addTarget(self, action: "croppedImageDidPress:")
 		tapRecog.delegate = self
 		secondImageView.addGestureRecognizer(tapRecog)
-		tapRecog = UITapGestureRecognizer()
+		tapRecog = UILongPressGestureRecognizer()
+		tapRecog.minimumPressDuration = 0
+		tapRecog.allowableMovement = 100
 		tapRecog.addTarget(self, action: "croppedImageDidPress:")
 		tapRecog.delegate = self
 		canvas.addGestureRecognizer(tapRecog)
@@ -122,11 +126,31 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
 		return self.canvasZoomControl == nil
 	}
+
+	
 	func croppedImageDidPress(sender: AnyObject)
 	{
-		let tapRecog = sender as! UITapGestureRecognizer
+		let tapRecog = sender as! UILongPressGestureRecognizer
 		
+		if (tapRecog.state == UIGestureRecognizerState.Began)
+		{
+			if (filtersViewController != nil)
+			{
+				let value = (self.secondImageView === tapRecog.view)
+				
+				if value == filtersViewController.jumperButton.selected
+				{
+					filtersViewController.changeSliderValueTo(0)
+				}
+				
+			}
+			return
+		}
 		
+		if (tapRecog.state != UIGestureRecognizerState.Ended && tapRecog.state != UIGestureRecognizerState.Cancelled)
+		{
+			return
+		}
 		if (filtersViewController != nil)
 		{
 			let value = (self.secondImageView === tapRecog.view)

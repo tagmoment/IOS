@@ -35,6 +35,7 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 	var persistedSliderValue : Float = 0.0
 	var persistedJumperState = false
 	
+	var sliderValueBefore : Float = 0.0
 	@IBOutlet var jumperButton: UIButton!
 	var maskViewModel: TMMaskViewModel!
 	
@@ -131,6 +132,22 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 		{
 			self.jumperButtonPressed(self.jumperButton)
 		}
+		else
+		{
+			self.changeSliderValueTo(self.sliderValueBefore)
+		}
+	}
+	
+	func changeSliderValueTo(value : Float)
+	{
+		if (value == 0)
+		{
+			self.sliderValueBefore = self.someSlider.value
+			
+		}
+		
+		self.someSlider.value = value
+		self.sliderValueChanged(self.someSlider)
 	}
 	
 	@IBAction func jumperButtonPressed(sender: AnyObject) {
