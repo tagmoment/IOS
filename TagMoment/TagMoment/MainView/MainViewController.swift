@@ -483,12 +483,24 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	}
 	
 	func doneButtonPressed() {
-		let alertViewMessage = "Do you want to save the new moment to your phone album?"
 		
-		let view = UIAlertView(title: "", message: alertViewMessage, delegate: self, cancelButtonTitle: "Cancel", otherButtonTitles: "Save", "No")
+		if (SettingsHelper.shouldPrompt())
+		{
+			let alertViewMessage = "Do you want to save the new moment to your phone album?"
+			
+			let view = UIAlertView(title: "", message: alertViewMessage, delegate: self, cancelButtonTitle: "Cancel", otherButtonTitles: "Save", "No")
+			
+			view.show()
+			return;
+		}
 		
-		view.show()
+		if (SettingsHelper.shouldSaveToCameraRoll())
+		{
+			let imageToSave = imageForCaching()
+			UIImageWriteToSavedPhotosAlbum(imageToSave, nil, nil, nil)
+		}
 		
+		self.retakeImageRequested()
 	}
 	
 	
@@ -498,10 +510,13 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		switch buttonIndex
 		{
 			case 1:
+				SettingsHelper.saveToCameraRollSaveState()
 				let imageToSave = imageForCaching()
 				UIImageWriteToSavedPhotosAlbum(imageToSave, nil, nil, nil)
+				
 			self.retakeImageRequested()
 			case 2:
+				SettingsHelper.neverSaveToCameraRollSameState()
 				self.retakeImageRequested()
 			default:
 				print("Cancelling")
