@@ -351,6 +351,11 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		{
 			if cont is CameraRollViewController
 			{
+				if (!isOnFirstStage() && self.masksViewController.getSelectedViewModel().locked == true)
+				{
+					inAppPurchaseDataProvider.showMessageForMask(self.masksViewController.getSelectedViewModel(), presentingViewController: self)
+					return;
+				}
 				
 				takeImageFromCameraRoll(true)
 				closeCameraRoll(cont as! CameraRollViewController)
