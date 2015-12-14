@@ -54,7 +54,15 @@ class AlbumContentsCollectionViewController: UICollectionViewController {
 		}
 		cell.shouldColorSelection = true
 		cell.numberOfPhotos.hidden = true
-		cell.blurredView.hidden = true
+		if cell.blurredView != nil
+		{
+			cell.blurredView.hidden = true
+		}
+		else
+		{
+			cell.albumName.hidden = true
+		}
+		
 		return cell;
 		
 	}

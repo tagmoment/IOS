@@ -64,6 +64,7 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 	
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
+		
 		animateButtonEntrance()
 	}
 	
@@ -235,19 +236,18 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 	
 	func prepareForSmallScreenLayout()
 	{
-		let newButtonsHolder = NSBundle.mainBundle().loadNibNamed("SmallScreenSharingButtonsView", owner: nil, options: nil)[0] as! UIView
-		
-		
-		newButtonsHolder.translatesAutoresizingMaskIntoConstraints = false
-		self.view.addSubview(newButtonsHolder)
-//		self.buttonsHolder = newButtonsHolder
-		
+		self.view.layoutIfNeeded()
 	}
 	
 	// MARK: - Animations
 	
 	func prepareSocialButtonsAnimationState()
 	{
+		if MainViewController.isSmallestScreen()
+		{
+			return;
+		}
+		
 		for view in [self.facebook_share_button, self.twitter_share_button, self.more_share_button]
 		{
 			view.layer.transform = CATransform3DMakeScale(0.01, 0.01, 1)
@@ -263,6 +263,11 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 	}
 	func animateButtonEntrance()
 	{
+		if MainViewController.isSmallestScreen()
+		{
+			return;
+		}
+
 		var shuffled = [self.facebook_share_button, self.twitter_share_button, self.more_share_button]
 		for i in 0..<shuffled.count
 		{

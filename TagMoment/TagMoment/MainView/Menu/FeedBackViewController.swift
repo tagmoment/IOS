@@ -21,7 +21,7 @@ protocol FeedbackViewControllerDelegate : class{
 }
 
 class FeedbackViewController: UIViewController, UIAlertViewDelegate, MFMailComposeViewControllerDelegate{
-
+	@IBOutlet weak var backButton: UIButton!
 	var alertView : UIAlertView?
 	weak var feedbackDelegate: FeedbackViewControllerDelegate?
     override func viewDidLoad() {
@@ -60,6 +60,15 @@ class FeedbackViewController: UIViewController, UIAlertViewDelegate, MFMailCompo
 		self.presentViewController(mc, animated: true, completion: nil)
 	}
 	
+	
+	func prepareForSmallScreen()
+	{
+		if MainViewController.isSmallestScreen()
+		{
+			self.backButton.hidden = true
+		}
+		
+	}
 	// MARK: - UIAlertViewDelegate
 	func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
 		let title = alertView.buttonTitleAtIndex(buttonIndex)

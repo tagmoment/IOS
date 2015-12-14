@@ -23,7 +23,6 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 	
 	@IBOutlet weak var sliderCenterYConstraint : NSLayoutConstraint!
 	
-	@IBOutlet weak var disabledSliderCenterYConstraint : NSLayoutConstraint!
 	weak var filtersChooseDelegate: ChooseFiltesControllerDelegate?
 	
 	var currentContext : CIContext!
@@ -155,7 +154,6 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 	func prepareForSmallScreenLayout()
 	{
 		self.jumperButton.removeFromSuperview()
-		self.disabledSliderCenterYConstraint.constant = 35
 		self.sliderCenterYConstraint.constant = 35
 	}
 	

@@ -11,13 +11,13 @@ extension MainViewController
 {
 	func changeMasksCarouselPositionIfNeeded()
 	{
-		if isSmallestScreen()
+		if MainViewController.isSmallestScreen()
 		{
 			masksViewController.masksCarousel.removeFromSuperview()
 			
 			self.canvas.pinSubViewToTop(masksViewController.masksCarousel, heightContraint: 88)
 			self.canvas.bringSubviewToFront(masksViewController.masksCarousel)
-			masksViewController.centerTakeImageButton()
+			masksViewController.prepareForSmallScreenLayout()
 			self.navigationView.changeMasksButton.selected = true
 			turnOffMasks(true)
 		}
@@ -25,7 +25,7 @@ extension MainViewController
 	
 	func changeFiltersLayoutIfNeeded()
 	{
-		if isSmallestScreen()
+		if MainViewController.isSmallestScreen()
 		{
 			filtersViewController.prepareForSmallScreenLayout()
 			
@@ -34,16 +34,16 @@ extension MainViewController
 	
 	func changeSharingLayoutIfNeeded()
 	{
-		if isSmallestScreen()
+		if MainViewController.isSmallestScreen()
 		{
 			sharingController.prepareForSmallScreenLayout()
 			
 		}
 	}
-	
+
 	func forwardMasksToFrontIfNeeded()
 	{
-		if isSmallestScreen()
+		if MainViewController.isSmallestScreen()
 		{
 			if (masksViewController != nil)
 			{
@@ -55,7 +55,7 @@ extension MainViewController
 	
 	func changeNavigationViewForFiltersIfNeeded()
 	{
-		if isSmallestScreen()
+		if MainViewController.isSmallestScreen()
 		{
 			self.navigationView.replicateJumperButtonToMiddleButton(filtersViewController.jumperButton)
 		}
@@ -63,7 +63,7 @@ extension MainViewController
 	
 	func turnOffMasks(delay: Bool)
 	{
-		UIView.animateWithDuration(0.7, delay: delay ? 1.0 : 0.0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
+		UIView.animateWithDuration(0.3, delay: delay ? 1.0 : 0.0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
 			
 			self.masksViewController.masksCarousel.alpha = 0.0
 			}, completion: { (finished : Bool) -> Void in
@@ -73,7 +73,7 @@ extension MainViewController
 	
 	func turnOnMasks()
 	{
-		UIView.animateWithDuration(0.7, delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
+		UIView.animateWithDuration(0.3, delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
 			
 			self.masksViewController.masksCarousel.alpha = 1.0
 			}, completion: nil)
@@ -81,7 +81,7 @@ extension MainViewController
 	
 	func removeMasksIfNeeded()
 	{
-		if isSmallestScreen()
+		if MainViewController.isSmallestScreen()
 		{
 			self.turnOffMasks(false)
 			navigationView.hideMasksButton(true)
@@ -107,7 +107,7 @@ extension MainViewController
 	}
 	
 	// MARK: - Private
-	private func isSmallestScreen() -> Bool
+	class func isSmallestScreen() -> Bool
 	{
 		return UIScreen.mainScreen().bounds.height <= 480
 	}

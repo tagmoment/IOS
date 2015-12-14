@@ -376,7 +376,8 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	
 	func sharingRequested() {
 		
-		sharingController = SharingViewController(nibName: "SharingViewController", bundle: nil)
+		let xibName = MainViewController.isSmallestScreen() ? "SmallScreenSharingViewController" : "SharingViewController"
+		sharingController = SharingViewController(nibName: xibName, bundle: nil)
 		sharingController.sharingDelegate = self
 		controlsContainerHeight = controlContainer.frame.height;
 		controlContainer.addViewWithConstraints(sharingController.view, toTheRight: true)

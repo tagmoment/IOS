@@ -34,7 +34,7 @@ class TMHeartMask: NSObject, TMMask {
 	class func bezierHeartShapePathWithWidth(width: CGFloat, center: CGPoint) -> UIBezierPath{
 		let w = width
 //		let h = width
-		let radiusConst = CGFloat(40.0)
+		let radiusConst = width > 170.0 ? CGFloat(40.0) : CGFloat(35.0)
 		let radius = w - center.x - radiusConst
 //		let y = center.y + 20
 		let path = UIBezierPath()

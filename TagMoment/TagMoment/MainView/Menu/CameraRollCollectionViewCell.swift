@@ -36,9 +36,13 @@ class CameraRollCollectionViewCell: UICollectionViewCell {
 	
 	override func layoutSubviews() {
 		super.layoutSubviews()
-		self.blurredView.frame = CGRect(x: 0,y: self.frame.size.height - 40.0, width: self.frame.size.width, height: 40.0)
-		self.albumName.frame = self.blurredView.bounds
-	}
+		if self.blurredView != nil
+		{
+			self.blurredView.frame = CGRect(x: 0,y: self.frame.size.height - 40.0, width: self.frame.size.width, height: 40.0)
+			self.albumName.frame = self.blurredView.bounds
+
+		}
+			}
 	
 	
 	

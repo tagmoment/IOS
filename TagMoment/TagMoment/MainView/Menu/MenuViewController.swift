@@ -10,8 +10,11 @@ import UIKit
 
 class MenuViewController: UIViewController, FeedbackViewControllerDelegate, UIGestureRecognizerDelegate{
 
+	@IBOutlet weak var closeButton: UIButton!
 	@IBOutlet weak var container: UIView!
+	@IBOutlet weak var closeButtonLeftConstraint: NSLayoutConstraint!
 	@IBOutlet weak var containerHeightConstraint: NSLayoutConstraint!
+	@IBOutlet weak var closeButtonBottomConstraint: NSLayoutConstraint!
 	weak var bottomConstraint: NSLayoutConstraint!
 	
 	var containerHeight : CGFloat = 0
@@ -85,6 +88,7 @@ class MenuViewController: UIViewController, FeedbackViewControllerDelegate, UIGe
 			}, completion: { (done: Bool) -> Void in
 				feedBackCont.view.alpha = 0.0
 				self.container.pinSubViewToAllEdges(feedBackCont.view)
+				feedBackCont.prepareForSmallScreen()
 				UIView.animateWithDuration(0.3, animations: { () -> Void in
 					feedBackCont.view.alpha = 1.0
 				})
@@ -104,7 +108,14 @@ class MenuViewController: UIViewController, FeedbackViewControllerDelegate, UIGe
 	}
 	
 	
-	
+	func prepareForSmallScreen()
+	{
+		if MainViewController.isSmallestScreen()
+		{
+			self.closeButton.hidden = true
+		}
+		
+	}
 	
 	private func closeView(completion : ((Bool) -> Void)?)
 	{
@@ -122,4 +133,6 @@ class MenuViewController: UIViewController, FeedbackViewControllerDelegate, UIGe
 		self.view.addConstraint(heightContraint)
 		containerHeightConstraint.constant = containerHeight
 	}
+	
+	
 }

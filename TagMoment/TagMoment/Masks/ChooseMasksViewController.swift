@@ -20,6 +20,10 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 	
 	static var lastMaskIndex = 0
 	
+	@IBOutlet weak var menuButton: UIButton!
+	@IBOutlet weak var chooseFromCameraRollButton: UIButton!
+	@IBOutlet weak var menuButtonBottomConstraint: NSLayoutConstraint!
+	@IBOutlet weak var menuButtonLeftConstraint: NSLayoutConstraint!
 	let CellIdent = "CellIdent"
 
 	@IBOutlet var masksCarousel: iCarousel!
@@ -145,9 +149,13 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 		return !getSelectedViewModel().hasOneCapture
 	}
 
-	func centerTakeImageButton()
+	func prepareForSmallScreenLayout()
 	{
-		captureButtonCenterYConstraint.constant = 0
+		self.view.removeConstraint(self.menuButtonLeftConstraint)
+		let xCenterConstraint = NSLayoutConstraint(item: self.menuButton, attribute: .CenterX, relatedBy: .Equal, toItem: self.chooseFromCameraRollButton, attribute: .CenterX, multiplier: 1.0, constant: 0)
+		self.view.addConstraint(xCenterConstraint)
+		self.menuButtonBottomConstraint.constant = -self.menuButton.frame.height/2
+		self.captureButtonCenterYConstraint.constant = 0
 	}
 	
 	// MARK: - Menu handling
@@ -163,8 +171,10 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 		let mainController = UIApplication.sharedApplication().delegate?.window!?.rootViewController! as! MainViewController
 		mainController.timerHandler?.cancelTimer()
 		mainController.timerHandler = nil
+		
 		menuCont.containerHeight = self.view.frame.height
 		menuCont.addToView(mainController.view)
+		menuCont.prepareForSmallScreen()
 		mainController.addChildViewController(menuCont)
 		
 	}
