@@ -12,6 +12,7 @@ import StoreKit
 protocol InAppPurchaseDelegate : class
 {
 	func maskPurchaseComplete(maskViewModel : TMMaskViewModel)
+	func masksLockedViewModels() -> [TMMaskViewModel]!
 	func maskPurchaseFailed(maskViewModel : TMMaskViewModel)
 }
 
@@ -19,7 +20,7 @@ class InAppPurchaseDataProvider: NSObject , SKProductsRequestDelegate, SKPayment
 	
 	weak var delegate: InAppPurchaseDelegate?
 	var transactionInProgress = false
-	let productIds = ["tagmoment_mask_bubble", "tagmoment_mask_star", "tagmoment_mask_waves"]
+	let productIds = ["tagmoment_mask_bubble_1", "tagmoment_mask_star_1", "tagmoment_mask_waves_1"]
 	var productsArray: Array<SKProduct!> = []
 	var currentPurchasedViewModel : TMMaskViewModel?
 	
@@ -50,8 +51,10 @@ class InAppPurchaseDataProvider: NSObject , SKProductsRequestDelegate, SKPayment
 				productsArray.append(product)
 			}
 			
-			/* Delegation success */
+
 		}
+			
+		
 		else {
 			print("There are no products.")
 		}
@@ -82,10 +85,19 @@ class InAppPurchaseDataProvider: NSObject , SKProductsRequestDelegate, SKPayment
 		
 	}
 	
+	func restorePayments()
+	{
+		SKPaymentQueue.defaultQueue().restoreCompletedTransactions()
+	}
 	
 	func showFailedPurchaseMessage()
 	{
 		
+	}
+	
+	func paymentQueueRestoreCompletedTransactionsFinished(queue: SKPaymentQueue)
+	{
+		print("some")
 	}
 	
 	func paymentQueue(queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]){
@@ -94,12 +106,19 @@ class InAppPurchaseDataProvider: NSObject , SKProductsRequestDelegate, SKPayment
 		{
 			switch transaction.transactionState {
 			case SKPaymentTransactionState.Purchased:
+				fallthrough
+			case SKPaymentTransactionState.Restored:
 				print("Transaction completed successfully.")
 				SKPaymentQueue.defaultQueue().finishTransaction(transaction)
 				transactionInProgress = false
 				if let delegate = self.delegate
 				{
-					delegate.maskPurchaseComplete(self.currentPurchasedViewModel!)
+					let viewModels = delegate.masksLockedViewModels()
+					let mask = viewModels.filter { (mask : TMMaskViewModel!) -> Bool in
+						return mask.maskProductId == transaction.payment.productIdentifier
+					}
+
+					delegate.maskPurchaseComplete(mask[0])
 				}
 				UIApplication.sharedApplication().endIgnoringInteractionEvents()
 				

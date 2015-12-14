@@ -37,7 +37,7 @@ class TMBubbleMask: NSObject, TMMask {
 	
 	func createViewModel() -> TMMaskViewModel{
 		let viewModel = TMMaskViewModel(name: "bubble")
-		viewModel.maskProductId = "tagmoment_mask_bubble"
+		viewModel.maskProductId = "tagmoment_mask_bubble_1"
 		viewModel.locked = !InAppPurchaseRepo.isProductBought(viewModel.maskProductId)
 		return viewModel
 	}

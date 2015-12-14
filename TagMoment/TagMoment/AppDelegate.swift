@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 	}
 
 	func applicationWillTerminate(application: UIApplication) {
-		InAppPurchaseRepo.clear()
+//		InAppPurchaseRepo.clear()
 	}
 
 	

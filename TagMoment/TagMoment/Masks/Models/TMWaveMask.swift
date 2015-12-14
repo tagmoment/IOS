@@ -36,7 +36,7 @@ class TMWaveMask: NSObject, TMMask {
 	
 	func createViewModel() -> TMMaskViewModel{
 		let viewModel = TMMaskViewModel(name: "waves")
-		viewModel.maskProductId = "tagmoment_mask_waves"
+		viewModel.maskProductId = "tagmoment_mask_waves_1"
 		viewModel.locked = !InAppPurchaseRepo.isProductBought(viewModel.maskProductId)
 		return viewModel
 	}

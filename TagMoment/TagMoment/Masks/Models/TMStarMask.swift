@@ -31,7 +31,7 @@ class TMStarMask: NSObject, TMMask {
 	func createViewModel() -> TMMaskViewModel{
 		
 		let viewModel = TMMaskViewModel(name: "star")
-		viewModel.maskProductId = "tagmoment_mask_star"
+		viewModel.maskProductId = "tagmoment_mask_star_1"
 		viewModel.locked = !InAppPurchaseRepo.isProductBought(viewModel.maskProductId)
 		return viewModel
 	}

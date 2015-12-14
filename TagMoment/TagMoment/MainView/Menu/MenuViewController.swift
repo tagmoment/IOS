@@ -45,6 +45,10 @@ class MenuViewController: UIViewController, FeedbackViewControllerDelegate, UIGe
 		return true
 	}
 	
+	@IBAction func restoreInAppPurchaseRequested(sender: AnyObject) {
+		let mainController = UIApplication.sharedApplication().delegate?.window!?.rootViewController! as! MainViewController
+		mainController.inAppPurchaseDataProvider.restorePayments()
+	}
 	func backPressed() {
 		let controller = self.childViewControllers[0]
 		controller.removeFromParentViewController()
@@ -70,7 +74,7 @@ class MenuViewController: UIViewController, FeedbackViewControllerDelegate, UIGe
 	}
 	
 	@IBAction func inviteFriendsPressed(sender: AnyObject) {
-		let message = "Stop to take pictures and start capturing your moments! Get the tag moment app: <Some link>"
+		let message = "Easily and creatively be a part of your pictures and capture your life moments. Download for free: https://itunes.apple.com/us/app/tagmoment-front-back-photography/id1055459044"
 		let activityViewController = UIActivityViewController(activityItems: [message], applicationActivities: nil)
 		self.presentViewController(activityViewController, animated: true, completion: nil)
 	}

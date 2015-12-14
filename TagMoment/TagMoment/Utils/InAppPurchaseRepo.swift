@@ -26,6 +26,7 @@ class InAppPurchaseRepo: NSObject {
 		
 		savedObject?.append(productId)
 		NSUserDefaults.standardUserDefaults().setObject(savedObject, forKey: PurchasedItemsKey)
+		NSUserDefaults.standardUserDefaults().synchronize()
 	}
 	
 	class func getProductsIds() -> [String]?

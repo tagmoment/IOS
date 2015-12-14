@@ -771,6 +771,19 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		workingImageView!.image = image
 	}
 	
+	
+	func masksLockedViewModels() -> [TMMaskViewModel]!
+	{
+		if (self.masksViewController != nil)
+		{
+			return self.masksViewController.masksViewModels?.filter({ (mask : TMMaskViewModel!) -> Bool  in
+				return mask.locked
+			})
+		}
+		
+		return nil;
+	}
+	
 	func maskPurchaseComplete(maskViewModel: TMMaskViewModel) {
 		
 		InAppPurchaseRepo.addProductId(maskViewModel.maskProductId)

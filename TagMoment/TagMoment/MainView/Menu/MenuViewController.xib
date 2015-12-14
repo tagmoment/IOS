@@ -59,7 +59,7 @@
                                 <constraint firstItem="i6z-Ed-10U" firstAttribute="top" secondItem="iAA-fM-Pid" secondAttribute="top" id="tIf-d4-ahG"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="trP-wh-CyU">
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="trP-wh-CyU">
                             <rect key="frame" x="30" y="86" width="61" height="76.5"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X1g-zx-gCJ" userLabel="ourstory_btn">
@@ -128,14 +128,24 @@
                                 <constraint firstItem="OAy-1B-ZHG" firstAttribute="top" secondItem="03e-qO-aG4" secondAttribute="bottom" constant="10" id="ehj-oh-dM8"/>
                             </constraints>
                         </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hsy-NN-y30">
+                            <rect key="frame" x="184" y="40" width="232" height="29"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="Restore Previous In-App Purchases."/>
+                            <connections>
+                                <action selector="restoreInAppPurchaseRequested:" destination="-1" eventType="touchUpInside" id="g59-4j-uZA"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.13725490196078433" green="0.13725490196078433" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="trP-wh-CyU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="97X-dq-Lhy"/>
                         <constraint firstAttribute="height" constant="248" id="Aza-au-402"/>
+                        <constraint firstItem="hsy-NN-y30" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Bwg-Mc-55x"/>
                         <constraint firstAttribute="trailing" secondItem="4xV-e7-ZUj" secondAttribute="trailing" constant="30" id="GN4-D4-pzG"/>
                         <constraint firstItem="iAA-fM-Pid" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Knh-EA-K4Z"/>
                         <constraint firstItem="trP-wh-CyU" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="O1M-DB-QN3"/>
+                        <constraint firstItem="iAA-fM-Pid" firstAttribute="top" secondItem="hsy-NN-y30" secondAttribute="bottom" constant="17" id="Pne-QK-w2m"/>
                         <constraint firstItem="iAA-fM-Pid" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="bm5-4z-hus"/>
                         <constraint firstItem="4xV-e7-ZUj" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="tIq-8y-DXt"/>
                         <constraint firstItem="trq-zt-8e2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="u0T-1F-ZYE"/>
