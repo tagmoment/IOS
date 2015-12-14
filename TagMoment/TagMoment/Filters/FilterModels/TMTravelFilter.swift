@@ -15,7 +15,7 @@ class TMTravelFilter : TMAlphaFilterBase{
 		get
 		{
 			var filters = super.filtersProtected
-			filters.insert(CIFilter(name: "CIPhotoEffectFade")!, atIndex: 0)
+			filters.insert(CIFilter(name: "CISepiaTone")!, atIndex: 0)
 			return filters
 		}
 		
