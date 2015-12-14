@@ -490,7 +490,7 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 			let text = self.textField.text != nil ? self.textField.text! : ""
 
 			let mySLComposerSheet = SLComposeViewController(forServiceType: type)
-			mySLComposerSheet.setInitialText(TagTextProvider.addAllHashtags(text))
+			mySLComposerSheet.setInitialText(TagTextProvider.addAllHashtags(text) + " #tagmoment")
 			mySLComposerSheet.addImage(self.sharingDelegate!.imageForCaching())
 			mySLComposerSheet.completionHandler = nil
 			UIApplication.sharedApplication().delegate?.window??.rootViewController?.presentViewController(mySLComposerSheet, animated: true, completion: nil)
