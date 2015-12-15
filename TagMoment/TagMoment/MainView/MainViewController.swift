@@ -790,7 +790,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		if (self.masksViewController != nil)
 		{
 			return self.masksViewController.masksViewModels?.filter({ (mask : TMMaskViewModel!) -> Bool  in
-				return mask.locked
+				return mask.locked == true
 			})
 		}
 		

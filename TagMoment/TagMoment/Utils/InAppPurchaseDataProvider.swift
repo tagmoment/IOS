@@ -97,7 +97,7 @@ class InAppPurchaseDataProvider: NSObject , SKProductsRequestDelegate, SKPayment
 	
 	func paymentQueueRestoreCompletedTransactionsFinished(queue: SKPaymentQueue)
 	{
-		print("some")
+		print("Restore queue finished")
 	}
 	
 	func paymentQueue(queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]){
@@ -117,8 +117,11 @@ class InAppPurchaseDataProvider: NSObject , SKProductsRequestDelegate, SKPayment
 					let mask = viewModels.filter { (mask : TMMaskViewModel!) -> Bool in
 						return mask.maskProductId == transaction.payment.productIdentifier
 					}
-
-					delegate.maskPurchaseComplete(mask[0])
+					if (mask.count != 0)
+					{
+						delegate.maskPurchaseComplete(mask[0])
+					}
+					
 				}
 				UIApplication.sharedApplication().endIgnoringInteractionEvents()
 				
