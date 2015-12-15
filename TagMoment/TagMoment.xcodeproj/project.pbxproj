@@ -948,6 +948,7 @@
 				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)/TagMoment/Externals/TestFairy";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/TagMoment/TestFairy-Bridging-Header.h";
 				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "$(SRCROOT)/TagMoment/TestFairy-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -977,6 +978,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)/TagMoment/Externals/TestFairy";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/TagMoment/TestFairy-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
