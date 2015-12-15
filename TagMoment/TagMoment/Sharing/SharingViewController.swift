@@ -265,7 +265,8 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 	{
 		if MainViewController.isSmallestScreen()
 		{
-			return;
+			self.performSelector(Selector("buttonsAnimationComplete"), withObject: nil, afterDelay: 1.0)
+			return
 		}
 
 		var shuffled = [self.facebook_share_button, self.twitter_share_button, self.more_share_button]
@@ -277,13 +278,18 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 			UIView.animateWithDuration(0.5, delay: delay ,usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
 				view.layer.transform = CATransform3DIdentity
 				}, completion: { (finished: Bool) -> Void in
-					if !self.keyboardWasShown
-					{
-						self.keyboardWasShown = true
-						self.textField.becomeFirstResponder()
-					}
+					self.buttonsAnimationComplete()
 			})
 			
+		}
+	}
+	
+	func buttonsAnimationComplete()
+	{
+		if !self.keyboardWasShown
+		{
+			self.keyboardWasShown = true
+			self.textField.becomeFirstResponder()
 		}
 	}
 	// MARK: - Collection view delegation

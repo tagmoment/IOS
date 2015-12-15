@@ -151,10 +151,9 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 
 	func prepareForSmallScreenLayout()
 	{
-		self.view.removeConstraint(self.menuButtonLeftConstraint)
-		let xCenterConstraint = NSLayoutConstraint(item: self.menuButton, attribute: .CenterX, relatedBy: .Equal, toItem: self.chooseFromCameraRollButton, attribute: .CenterX, multiplier: 1.0, constant: 0)
-		self.view.addConstraint(xCenterConstraint)
-		self.menuButtonBottomConstraint.constant = -self.menuButton.frame.height/2
+		self.menuButtonLeftConstraint.constant = 5.0
+
+		self.menuButtonBottomConstraint.constant = -self.menuButton.frame.height/2 + 10
 		self.captureButtonCenterYConstraint.constant = 0
 	}
 	

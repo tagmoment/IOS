@@ -70,8 +70,8 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cho-SC-Xhi" userLabel="twitter_button">
                     <rect key="frame" x="135" y="54" width="50" height="50"/>
                     <state key="normal" image="round_twitter_share"/>
-                    <state key="selected" image="round_more_share_on"/>
-                    <state key="highlighted" image="round_more_share_on"/>
+                    <state key="selected" image="round_twitter_share_on"/>
+                    <state key="highlighted" image="round_twitter_share_on"/>
                     <connections>
                         <action selector="twitterShareRequested:" destination="-1" eventType="touchUpInside" id="Mtk-fk-Omg"/>
                     </connections>
@@ -86,8 +86,8 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nsQ-2J-vGk" userLabel="more_button">
-                    <rect key="frame" x="235" y="54" width="50" height="50"/>
-                    <state key="normal" image="round_more_share"/>
+                    <rect key="frame" x="235" y="57" width="45" height="44"/>
+                    <state key="normal" image="more_share"/>
                     <state key="selected" image="round_more_share_on"/>
                     <state key="highlighted" image="round_more_share_on"/>
                     <connections>
@@ -116,10 +116,11 @@
         </view>
     </objects>
     <resources>
+        <image name="more_share" width="45" height="44"/>
         <image name="round_facebook_share" width="50" height="50"/>
         <image name="round_facebook_share_on" width="50" height="50"/>
-        <image name="round_more_share" width="50" height="50"/>
         <image name="round_more_share_on" width="50" height="50"/>
         <image name="round_twitter_share" width="50" height="50"/>
+        <image name="round_twitter_share_on" width="50" height="50"/>
     </resources>
 </document>

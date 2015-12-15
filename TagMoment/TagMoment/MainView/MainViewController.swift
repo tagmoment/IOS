@@ -95,13 +95,13 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		secondImageView.userInteractionEnabled = true
 		var tapRecog = UILongPressGestureRecognizer()
 		tapRecog.minimumPressDuration = 0
-		tapRecog.allowableMovement = 100
+		tapRecog.allowableMovement = 20
 		tapRecog.addTarget(self, action: "croppedImageDidPress:")
 		tapRecog.delegate = self
 		secondImageView.addGestureRecognizer(tapRecog)
 		tapRecog = UILongPressGestureRecognizer()
 		tapRecog.minimumPressDuration = 0
-		tapRecog.allowableMovement = 100
+		tapRecog.allowableMovement = 20
 		tapRecog.addTarget(self, action: "croppedImageDidPress:")
 		tapRecog.delegate = self
 		canvas.addGestureRecognizer(tapRecog)
@@ -124,6 +124,19 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	}
 	//MARK - Gesture Handling
 	func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+		
+		
+		if self.masksViewController != nil && self.canvas != nil && MainViewController.isSmallestScreen()
+		{
+			let touchPoint = touch.locationInView(self.canvas)
+			let frame = self.masksViewController.masksCarousel.frame
+			if (CGRectContainsPoint(frame, touchPoint))
+			{
+				return false;
+			}
+		}
+		
+
 		return self.canvasZoomControl == nil
 	}
 
