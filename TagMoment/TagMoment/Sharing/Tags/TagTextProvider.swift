@@ -28,9 +28,9 @@ class TagTextProvider {
 
 	
 	static var TagsDataSourceWords = ["love", "menow", "cute", "photooftheday","happy","beautiful", "selfie", "girl", "picoftheday", "smile"," friends", "fun","fashion", "summer","food","amazing", "swag","style","family","life","lol", "pretty","sun","art","cool","funny","music","eyes","night", "beach","sky", "nice", "home", "lovit", "dog", "tattoo", "good", "best", "blessed",
-		"peace", "boyfriend", "she", "snow", "christmas", "sweet", "yummy", "school",
+		"peace", "boyfriend", "she", /*"snow", "christmas", "sweet", "yummy", "school",
 		"sea", "coffee", "sunset", "sunshine", "cat", "light", "dark", "work", "haha",
-		"party", "crazy", "laugh", "excited" ]
+		"party", "crazy", "laugh", "excited"*/ ]
 	
 	class func removeSpaces(inputString : String) -> String
 	{

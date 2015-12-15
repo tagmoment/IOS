@@ -59,7 +59,7 @@ const NSInteger RowsInset = 20.0f;
 		currentSize = [self.delegate collectionView:self.collectionView layout:self sizeForItemAtIndexPath:indexPath];
 		NSValue* val = [NSValue valueWithCGSize:currentSize];
 		[self.sizesCache addObject:val];
-		if (i % 2 == 0)
+		if ([self.delegate shouldBeFirstItemAtIndexPath:indexPath] && i%2 ==0)
 		{
 			width+=currentSize.width;
 			if (i != numberOfCells - 1)
@@ -117,11 +117,12 @@ const NSInteger RowsInset = 20.0f;
 		return;
 	}
 	
-	NSIndexPath* previousIndexPath = [NSIndexPath indexPathForItem:indexPath.item-2 inSection:indexPath.section];
+	NSInteger indexModifier = [self.delegate shouldBeFirstItemAtIndexPath:indexPath] ? 2 : 1;
+	NSIndexPath* previousIndexPath = [NSIndexPath indexPathForItem:indexPath.item- indexModifier  inSection:indexPath.section];
 	CGRect previousFrame = [self rectForIndex:previousIndexPath.item];
 	CGFloat previousFrameRightPoint = previousFrame.origin.x + previousFrame.size.width + kMaxCellSpacing;
 	size = [self.sizesCache[indexPath.item] CGSizeValue];
-	CGFloat originY = indexPath.item % 2 == 0 ? VerticalInset : VerticalInset*2 + previousFrame.size.height;
+	CGFloat originY = [self.delegate shouldBeFirstItemAtIndexPath:indexPath] && indexPath.item %2 ==0 ? VerticalInset : VerticalInset*2 + previousFrame.size.height;
 	
 	frame = CGRectMake(previousFrameRightPoint, originY, size.width, previousFrame.size.height);
 

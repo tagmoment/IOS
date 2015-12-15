@@ -20,7 +20,7 @@ protocol SharingControllerDelegate : class{
 	
 }
 
-class SharingViewController: UIViewController, TMTextFieldDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIDocumentInteractionControllerDelegate	{
+class SharingViewController: UIViewController, TMTextFieldDelegate, UICollectionViewDataSource, LeftAlignedCollectionViewDelegate, UIDocumentInteractionControllerDelegate	{
 	
 	let ClosedContraint = CGFloat(-100)
 	let CellIdent = "cellIdent"
@@ -31,6 +31,7 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 //	
 	
 	var tagsDataSource : [NSString]!
+	var extraDataEmojis : [NSString]!
 	var autoKeyboardWasOn = false
 	var keyboardWasShown = false
 	weak var sharingDelegate: SharingControllerDelegate?
@@ -293,12 +294,22 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 		}
 	}
 	// MARK: - Collection view delegation
+	func shouldBeFirstItemAtIndexPath(indexPath: NSIndexPath!) -> Bool {
+		if (indexPath.row < tagsDataSource.count)
+		{
+			return true
+		}
+		
+		return false;
+	}
+	
+	
 	func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
 		return 1
 	}
 	
 	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
-		return tagsDataSource.count
+		return tagsDataSource.count + extraDataEmojis.count;
 	}
 	
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -331,8 +342,16 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 			cell.tagName.textColor = UIColor.whiteColor()
 		}
 		
-		
-		cell.tagName.text = tagsDataSource[indexPath.item] as String
+		var value : NSString
+		if (indexPath.item < self.tagsDataSource.count)
+		{
+			value = tagsDataSource[indexPath.item]
+		}
+		else
+		{
+			value = extraDataEmojis[indexPath.item - self.tagsDataSource.count]
+		}
+		cell.tagName.text = value as String
 		return cell;
 		
 	}
@@ -387,8 +406,19 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 		let cell = collectionView.cellForItemAtIndexPath(indexPath) as! TagsCollectionViewCell
 		cell.backgroundColor = UIColor.whiteColor()
 		cell.tagName.textColor = UIColor.blackColor()
+		var value : NSString
+		if (indexPath.item < self.tagsDataSource.count)
+		{
+			value = tagsDataSource[indexPath.item]
+		}
+		else
+		{
+			value = extraDataEmojis[indexPath.item - self.tagsDataSource.count]
+		}
+
 		
-		notifyDelegateOnChangedText(tagsDataSource[indexPath.item] as String)
+		
+		notifyDelegateOnChangedText(value as String)
 	}
 	
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
@@ -397,7 +427,18 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 		{
 			return CGSize(width: 56, height: 34)
 		}
-		let data = tagsDataSource[indexPath.item]
+		
+		var data : NSString
+		if (indexPath.item < self.tagsDataSource.count)
+		{
+			data = tagsDataSource[indexPath.item]
+		}
+		else
+		{
+			data = extraDataEmojis[indexPath.item - self.tagsDataSource.count]
+		}
+		
+
 		let font = UIFont(name: "Raleway", size: 17)
 		let attributes : [String : AnyObject!] = [NSFontAttributeName : font]
 		
@@ -458,8 +499,10 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 		}
 		
 		var arrayWithExtras = words.count >= emojis.count ? words : emojis
+		
 		arrayWithExtras.removeRange(Range<Int>(start: 0, end: index))
-		result.appendContentsOf(arrayWithExtras)
+		self.extraDataEmojis = arrayWithExtras;
+//		result.appendContentsOf(arrayWithExtras)
 		
 		return result;
 	}

@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol LeftAlignedCollectionViewDelegate <UICollectionViewDelegateFlowLayout>
+- (BOOL)shouldBeFirstItemAtIndexPath:(NSIndexPath*)indexPath;
+@end
+
+
 @interface LeftAligned : UICollectionViewLayout
-@property (nonatomic, weak) id<UICollectionViewDelegateFlowLayout> delegate;
+@property (nonatomic, weak) id<LeftAlignedCollectionViewDelegate> delegate;
 @end
