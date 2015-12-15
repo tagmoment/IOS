@@ -7,7 +7,6 @@
     <customFonts key="customFonts">
         <mutableArray key="Raleway-Regular.ttf">
             <string>Raleway</string>
-            <string>Raleway</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -21,17 +20,52 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About #Moment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhG-af-jWc">
-                    <rect key="frame" x="20" y="20" width="560" height="20"/>
-                    <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="17"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alof of text about us... Plesae give me the text :)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p52-vy-dt0">
-                    <rect key="frame" x="20" y="60" width="560" height="20"/>
-                    <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="17"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RHl-pI-iJO">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About #Moment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhG-af-jWc">
+                            <rect key="frame" x="20" y="10" width="560" height="20"/>
+                            <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p52-vy-dt0">
+                            <rect key="frame" x="20" y="50" width="560" height="654"/>
+                            <mutableString key="text">Our Story: 
+Hey There! 
+Thank you for downloading the TagMoment app.
+TagMoment is a front and back camera app to capture your moments with awesome designed templates. A combination of you and what you see with filters and hashtags that creates a wonderful collage photo to share, or simply keep it to remember. 
+The world brings us some beautiful moments, beautiful frames. So why not taking those colors and use it as a background for our pictures to create a real moment with our reaction to share or keep.
+TagMoment it’s the only app that brings new experience into your smartphone cameras and lets you easily and creatively be a part of your pictures and capture your life moments.
+We hope you’ll enjoy it as we do ☺
+
+Will be great to hear from you, please contact us at -
+Team@tagmoment.me
+
+App Features
+# Use collection of designed templates (we like to call it Masks) located in a scrolling bar.
+
+# Capture a moment with a photo you already have by using the camera roll feature.
+
+# Easily and creatively edit by filters each part of the moment in separate. 
+
+# Define your moment by choosing hashtag from the hashtags bar or type one of your own.
+
+# Instantly share your moments on Instagram, Facebook, Twitter and other social networks.</mutableString>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="nhG-af-jWc" firstAttribute="leading" secondItem="RHl-pI-iJO" secondAttribute="leading" constant="20" id="13v-9L-MIP"/>
+                        <constraint firstAttribute="bottom" secondItem="p52-vy-dt0" secondAttribute="bottom" constant="50" id="EV9-AC-Wvy"/>
+                        <constraint firstAttribute="trailing" secondItem="p52-vy-dt0" secondAttribute="trailing" constant="20" id="Szb-rL-K0P"/>
+                        <constraint firstItem="p52-vy-dt0" firstAttribute="leading" secondItem="RHl-pI-iJO" secondAttribute="leading" constant="20" id="WZu-lm-D6j"/>
+                        <constraint firstItem="nhG-af-jWc" firstAttribute="top" secondItem="RHl-pI-iJO" secondAttribute="top" constant="10" id="exG-Qc-KVa"/>
+                        <constraint firstItem="p52-vy-dt0" firstAttribute="top" secondItem="nhG-af-jWc" secondAttribute="bottom" constant="20" id="gXj-Ab-Cyi"/>
+                        <constraint firstAttribute="trailing" secondItem="nhG-af-jWc" secondAttribute="trailing" constant="20" id="tg3-NV-6Qq"/>
+                    </constraints>
+                </scrollView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mtk-8A-osn">
                     <rect key="frame" x="278.5" y="536" width="44" height="44"/>
                     <constraints>
@@ -46,22 +80,16 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="nhG-af-jWc" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="41b-sV-jKQ"/>
-                <constraint firstItem="nhG-af-jWc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="6bn-Gf-Et9"/>
-                <constraint firstItem="p52-vy-dt0" firstAttribute="top" secondItem="nhG-af-jWc" secondAttribute="top" id="F62-h3-tyg"/>
                 <constraint firstItem="mtk-8A-osn" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="JND-16-B01"/>
+                <constraint firstItem="RHl-pI-iJO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="M6G-Mi-LIx"/>
+                <constraint firstItem="nhG-af-jWc" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="OmG-Ch-mhm"/>
+                <constraint firstAttribute="trailing" secondItem="RHl-pI-iJO" secondAttribute="trailing" id="SED-mw-aIY"/>
                 <constraint firstAttribute="bottom" secondItem="mtk-8A-osn" secondAttribute="bottom" constant="20" id="TBC-0J-8KM"/>
-                <constraint firstAttribute="trailing" secondItem="nhG-af-jWc" secondAttribute="trailing" constant="20" id="gJM-z0-TKy"/>
-                <constraint firstItem="p52-vy-dt0" firstAttribute="leading" secondItem="nhG-af-jWc" secondAttribute="leading" id="oNO-uc-IMa"/>
-                <constraint firstItem="p52-vy-dt0" firstAttribute="top" secondItem="nhG-af-jWc" secondAttribute="bottom" constant="20" id="sul-17-yWH"/>
-                <constraint firstItem="p52-vy-dt0" firstAttribute="trailing" secondItem="nhG-af-jWc" secondAttribute="trailing" id="uvn-NU-ngP"/>
+                <constraint firstItem="RHl-pI-iJO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cJw-Dz-sy6"/>
+                <constraint firstAttribute="bottom" secondItem="RHl-pI-iJO" secondAttribute="bottom" id="eH8-73-z51"/>
+                <constraint firstAttribute="trailing" secondItem="nhG-af-jWc" secondAttribute="trailing" constant="20" id="gD8-po-rai"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="F62-h3-tyg"/>
-                </mask>
-            </variation>
         </view>
     </objects>
     <resources>

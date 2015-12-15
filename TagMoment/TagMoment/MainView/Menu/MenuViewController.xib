@@ -59,7 +59,7 @@
                                 <constraint firstItem="i6z-Ed-10U" firstAttribute="top" secondItem="iAA-fM-Pid" secondAttribute="top" id="tIf-d4-ahG"/>
                             </constraints>
                         </view>
-                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="trP-wh-CyU">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="trP-wh-CyU">
                             <rect key="frame" x="30" y="86" width="61" height="76.5"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X1g-zx-gCJ" userLabel="ourstory_btn">

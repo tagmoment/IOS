@@ -19,6 +19,13 @@ class AboutUsViewController: UIViewController {
 		{
 			self.view.sendSubviewToBack(blurredView!)
 		}
+		
+		if MainViewController.isSmallestScreen()
+		{
+			self.view.backgroundColor = UIColor(white: 0.7, alpha: 0.8)
+		}
+		
+		
     }
 
 	override func viewDidAppear(animated: Bool) {
