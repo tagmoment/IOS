@@ -171,7 +171,7 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 		mainController.timerHandler?.cancelTimer()
 		mainController.timerHandler = nil
 		
-		menuCont.containerHeight = self.view.frame.height
+		menuCont.containerHeight = MainViewController.isSmallestScreen() ? self.view.frame.height + 100 :  self.view.frame.height
 		menuCont.addToView(mainController.view)
 		menuCont.prepareForSmallScreen()
 		mainController.addChildViewController(menuCont)

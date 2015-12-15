@@ -131,6 +131,7 @@ class MenuViewController: UIViewController, FeedbackViewControllerDelegate, UIGe
 	
 	func addToView(superview : UIView)
 	{
+		
 		NSNotificationCenter.defaultCenter().postNotificationName(MenuWillAppearNotificationName, object: nil)
 		self.bottomConstraint = superview.pinSubViewToBottom(self.view, heightContraint: containerHeight)
 		let heightContraint = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: superview.frame.height)

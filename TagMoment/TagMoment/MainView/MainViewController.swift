@@ -137,7 +137,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		}
 		
 
-		return self.canvasZoomControl == nil
+		return self.canvasZoomControl == nil && self.secondZoomControl == nil
 	}
 
 	
