@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-		SettingsHelper.registerSettingsIfNeeded()
+		
 		TestFairy.begin("008e0e4a9e585f7bb42687114d30b36e864c2a4b")
 		UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.Fade)
 		self.window = UIWindow(frame: UIScreen .mainScreen().bounds)
@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 	}
 
 	func applicationDidBecomeActive(application: UIApplication) {
-		// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+		SettingsHelper.registerSettingsIfNeeded()
 	}
 
 	func applicationWillTerminate(application: UIApplication) {
