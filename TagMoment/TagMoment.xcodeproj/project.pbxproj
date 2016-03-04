@@ -654,7 +654,7 @@
 				TargetAttributes = {
 					F109CE971A56F8770011CA55 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = 9YCJ4U2PS4;
+						DevelopmentTeam = 28QG4TZNKL;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 1;
@@ -942,7 +942,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/TagMoment/Externals/TestFairy",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ttgy.tagmoment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)/TagMoment/Externals/TestFairy";
@@ -972,7 +972,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/TagMoment/Externals/TestFairy",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ttgy.tagmoment;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_INCLUDE_PATHS = "$(PROJECT_DIR)/TagMoment/Externals/TestFairy";

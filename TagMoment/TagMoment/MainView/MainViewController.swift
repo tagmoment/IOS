@@ -244,15 +244,24 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 
 	func startSessionOnBackCam()
 	{
-		backCamSessionView = createSessionView()
-		backCamSessionView.hidden = false;
-		sessionService.startSessionOnBackCamera()
+		#if (arch(i386) || arch(x86_64)) && os(iOS)
+			print("Moved here");
+		#else
+			backCamSessionView = createSessionView()
+			backCamSessionView.hidden = false;
+			sessionService.startSessionOnBackCamera()
+		#endif
+		
 	}
 	
 	func startSessionOnFrontCam()
 	{
+		#if (arch(i386) || arch(x86_64)) && os(iOS)
+		print("Moved here");
+		#else
 		frontCamSessionView = createSessionView()
 		sessionService.startSessionOnFrontCamera()
+		#endif
 	}
 	
 	private func createSessionView() -> UIView {
