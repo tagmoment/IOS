@@ -74,7 +74,7 @@ class FeedbackViewController: UIViewController, UIAlertViewDelegate, MFMailCompo
 		let title = alertView.buttonTitleAtIndex(buttonIndex)
 		if title == RateUsTitle
 		{
-			let appUrl = NSURL(string: "itms-apps://itunes.apple.com/app/id1055459044")
+			let appUrl = NSURL(string: "itms-apps://itunes.apple.com/app/id1090349311")
 			UIApplication.sharedApplication().openURL(appUrl!)
 		}
 		else if title == WriteUsTitle
