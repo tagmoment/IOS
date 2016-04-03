@@ -149,18 +149,17 @@ class CameraSessionService : NSObject{
 		
 		if (device!.isFocusModeSupported(AVCaptureFocusMode.AutoFocus) && device!.focusPointOfInterestSupported)
 		{
-			let error = NSErrorPointer()
 			do {
 				try device!.lockForConfiguration()
-			} catch let error1 as NSError {
-				error.memory = error1
+			} catch _ as NSError {
+				print("There was an error with locking the device for configuration")
+				return;
+				
 			}
-			if (error == nil)
-			{
-				device!.focusPointOfInterest = convertedPoint
-				device!.focusMode = AVCaptureFocusMode.AutoFocus
-				device!.unlockForConfiguration()
-			}
+			
+			device!.focusPointOfInterest = convertedPoint
+			device!.focusMode = AVCaptureFocusMode.AutoFocus
+			device!.unlockForConfiguration()
 		}
 		
 	}

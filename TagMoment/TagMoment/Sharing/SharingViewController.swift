@@ -78,8 +78,8 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 	
 	private func registerForNotifications()
 	{
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleKeyboardNotification:", name: UIKeyboardWillChangeFrameNotification, object: nil)
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: "textFieldDidChangeText:", name: UITextFieldTextDidChangeNotification, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SharingViewController.handleKeyboardNotification(_:)), name: UIKeyboardWillChangeFrameNotification, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SharingViewController.textFieldDidChangeText(_:)), name: UITextFieldTextDidChangeNotification, object: nil)
 		
 	}
 	func handleKeyboardNotification(notif: NSNotification)
@@ -266,7 +266,7 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 	{
 		if MainViewController.isSmallestScreen()
 		{
-			self.performSelector(Selector("buttonsAnimationComplete"), withObject: nil, afterDelay: 1.0)
+			self.performSelector(#selector(SharingViewController.buttonsAnimationComplete), withObject: nil, afterDelay: 1.0)
 			return
 		}
 
@@ -493,14 +493,14 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 		var index = 0
 		for i in 0..<lowestCount
 		{
-			index++;
+			index += 1;
 			result.append(words[i])
 			result.append(emojis[i])
 		}
 		
 		var arrayWithExtras = words.count >= emojis.count ? words : emojis
 		
-		arrayWithExtras.removeRange(Range<Int>(start: 0, end: index))
+		arrayWithExtras.removeRange(0..<index)
 		self.extraDataEmojis = arrayWithExtras;
 //		result.appendContentsOf(arrayWithExtras)
 		

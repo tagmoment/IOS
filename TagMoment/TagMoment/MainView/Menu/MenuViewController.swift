@@ -21,7 +21,7 @@ class MenuViewController: UIViewController, FeedbackViewControllerDelegate, UIGe
     override func viewDidLoad() {
         super.viewDidLoad()
 		containerHeightConstraint.constant = containerHeight
-        let tapGesture = UITapGestureRecognizer(target: self, action: Selector("closePressed:"))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(MenuViewController.closePressed(_:)))
 		tapGesture.delegate = self
 		self.view.addGestureRecognizer(tapGesture)
 		self.view.userInteractionEnabled = true

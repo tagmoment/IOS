@@ -28,7 +28,7 @@ class TimerHandler : NSObject{
 		imageView.tag = count
 		numberImageView = imageView
 		view.pinSubViewToAllEdges(numberImageView!)
-		timer = NSTimer.scheduledTimerWithTimeInterval(0.8, target: self, selector: Selector("timerInterval:"), userInfo: nil, repeats: false)
+		timer = NSTimer.scheduledTimerWithTimeInterval(0.8, target: self, selector: #selector(TimerHandler.timerInterval(_:)), userInfo: nil, repeats: false)
 		
 		
 	}
@@ -41,7 +41,7 @@ class TimerHandler : NSObject{
 	}
 	func timerInterval(sender : AnyObject!)
 	{
-		numberImageView!.tag--;
+		numberImageView!.tag -= 1;
 		timer?.invalidate()
 		timer = nil
 		if numberImageView!.tag == 0
@@ -57,7 +57,7 @@ class TimerHandler : NSObject{
 		
 		let numberImage = UIImage(named: "\(numberImageView!.tag)")
 		numberImageView?.image = numberImage
-		timer = NSTimer.scheduledTimerWithTimeInterval(0.8, target: self, selector: Selector("timerInterval:"), userInfo: nil, repeats: false)
+		timer = NSTimer.scheduledTimerWithTimeInterval(0.8, target: self, selector: #selector(TimerHandler.timerInterval(_:)), userInfo: nil, repeats: false)
 	}
 	
 	

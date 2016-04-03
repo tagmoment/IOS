@@ -32,7 +32,7 @@ class CameraRollViewController: UIViewController, UIGestureRecognizerDelegate{
 		
         super.viewDidLoad()
 		self.view.clipsToBounds = true
-		let panRecog = UIPanGestureRecognizer(target: self, action: Selector("sliderDidPan:"))
+		let panRecog = UIPanGestureRecognizer(target: self, action: #selector(CameraRollViewController.sliderDidPan(_:)))
 		panRecog.delegate = self;
 		self.sliderView.addGestureRecognizer(panRecog)
 		let mainController = UIApplication.sharedApplication().delegate?.window!?.rootViewController! as! MainViewController

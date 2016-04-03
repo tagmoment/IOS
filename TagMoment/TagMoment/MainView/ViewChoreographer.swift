@@ -17,11 +17,11 @@ class ViewChoreographer : NSObject
 	override init()
 	{
 		super.init()
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("cameraRollWillAppear:"), name: CameraRollWillAppearNotificationName, object: nil)
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("cameraRollWillDisappear:"), name: CameraRollWillDisappearNotificationName, object: nil)
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("cameraRollDidSelectImage:"), name: ImageFromCameraChosenNotificationName, object: nil)
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("menuWillAppear:"), name: MenuWillAppearNotificationName, object: nil)
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("menuWillDisppear:"), name: MenuWillDisappearNotificationName, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewChoreographer.cameraRollWillAppear(_:)), name: CameraRollWillAppearNotificationName, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewChoreographer.cameraRollWillDisappear(_:)), name: CameraRollWillDisappearNotificationName, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewChoreographer.cameraRollDidSelectImage(_:)), name: ImageFromCameraChosenNotificationName, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewChoreographer.menuWillAppear(_:)), name: MenuWillAppearNotificationName, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewChoreographer.menuWillDisppear(_:)), name: MenuWillDisappearNotificationName, object: nil)
 		
 	}
 	

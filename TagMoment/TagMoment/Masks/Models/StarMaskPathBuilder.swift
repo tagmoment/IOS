@@ -26,7 +26,7 @@ class StarMaskPathBuilder
 			let xpo = cx - r * cos(angle * CGFloat(i)+degree2radian(adjustment))
 			let ypo = cy - r * sin(angle * CGFloat(i)+degree2radian(adjustment))
 			points.append(CGPoint(x: xpo, y: ypo))
-			i--;
+			i -= 1;
 		}
 		return points
 	}
@@ -42,7 +42,7 @@ class StarMaskPathBuilder
 		for p in points {
 			CGPathAddLineToPoint(path, nil, points2[i].x, points2[i].y)
 			CGPathAddLineToPoint(path, nil, p.x, p.y)
-			i++
+			i += 1
 		}
 		CGPathCloseSubpath(path)
 		return path

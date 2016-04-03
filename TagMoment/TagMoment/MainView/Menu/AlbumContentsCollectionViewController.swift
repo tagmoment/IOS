@@ -26,7 +26,7 @@ class AlbumContentsCollectionViewController: UICollectionViewController {
 		backButton.setImage(backButtonImage, forState: UIControlState.Normal)
 		
 		backButton.frame = CGRect(x: 0, y: 0, width: backButtonImage!.size.width, height: backButtonImage!.size.height);
-		backButton.addTarget(self, action: Selector("popViewController"), forControlEvents: UIControlEvents.TouchUpInside)
+		backButton.addTarget(self, action: #selector(AlbumContentsCollectionViewController.popViewController), forControlEvents: UIControlEvents.TouchUpInside)
 		
 		let backBarButtonItem = UIBarButtonItem(customView:backButton);
 		self.navigationItem.leftBarButtonItem = backBarButtonItem;

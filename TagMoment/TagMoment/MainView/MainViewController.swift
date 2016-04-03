@@ -84,8 +84,8 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
     override func viewDidLoad() {
         super.viewDidLoad()
 		workingImageView = canvas
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("imageFromCameraChosenNotification:"), name: ImageFromCameraChosenNotificationName, object: nil)
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("applicationWillTerminate:"), name: UIApplicationWillTerminateNotification, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainViewController.imageFromCameraChosenNotification(_:)), name: ImageFromCameraChosenNotificationName, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(UIApplicationDelegate.applicationWillTerminate(_:)), name: UIApplicationWillTerminateNotification, object: nil)
 		masksViewController = ChooseMasksViewController(nibName: "ChooseMasksViewController", bundle: nil)
 		controlContainer.addViewWithConstraints(masksViewController.view, toTheRight: true)
 		
@@ -96,13 +96,13 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		var tapRecog = UILongPressGestureRecognizer()
 		tapRecog.minimumPressDuration = 0
 		tapRecog.allowableMovement = 20
-		tapRecog.addTarget(self, action: "croppedImageDidPress:")
+		tapRecog.addTarget(self, action: #selector(MainViewController.croppedImageDidPress(_:)))
 		tapRecog.delegate = self
 		secondImageView.addGestureRecognizer(tapRecog)
 		tapRecog = UILongPressGestureRecognizer()
 		tapRecog.minimumPressDuration = 0
 		tapRecog.allowableMovement = 20
-		tapRecog.addTarget(self, action: "croppedImageDidPress:")
+		tapRecog.addTarget(self, action: #selector(MainViewController.croppedImageDidPress(_:)))
 		tapRecog.delegate = self
 		canvas.addGestureRecognizer(tapRecog)
 		secondImageView.contentMode = UIViewContentMode.ScaleAspectFill
