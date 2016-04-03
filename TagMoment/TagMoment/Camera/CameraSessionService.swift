@@ -52,54 +52,85 @@ class CameraSessionService : NSObject{
 	}
 	
 	func startSessionOnFrontCamera() {
-		if (frontCamera == nil)
+		initCameras()
+		checkForCameraPermissions(continueSessionOnDevice, device: frontCamera)
+	}
+	
+	func startSessionOnBackCamera() {
+		initCameras()
+		checkForCameraPermissions(continueSessionOnDevice, device: backCamera)
+	}
+	
+	func continueSessionOnDevice(device : AVCaptureDevice?)
+	{
+		if (device == nil)
 		{
-			initCameras()
+			print("ERROR: trying to open camera")
+			return
 		}
 		
 		var err : NSError? = nil
 		var input : AnyObject!
 		do {
-			input = try AVCaptureDeviceInput(device: frontCamera)
+			input = try AVCaptureDeviceInput(device: device)
 		} catch let error as NSError {
 			err = error
 			input = nil
 		}
 		
-		if (input != nil) {
+		if (input == nil) {
 			if let error = err {
 				print("ERROR: trying to open camera:" + error.localizedDescription)
 				
 			}
+			return
 		}
 		
 		self.startRunningSession(input: input as! AVCaptureInput)
 	}
 	
-	func startSessionOnBackCamera() {
-		if (backCamera == nil)
-		{
-			initCameras()
+	func checkForCameraPermissions(successfulCallback : (AVCaptureDevice?) -> Void, device : AVCaptureDevice?)
+	{
+		let CameraAuthStatus = AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo)
+		switch CameraAuthStatus {
+			case .Authorized:
+				successfulCallback(device)
+			case .Restricted:
+				fallthrough
+			case .Denied:
+				self.showAlertRequestingCameraPermission()
+			case .NotDetermined:
+			AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: { (granted :Bool) -> Void in
+				if granted == true
+				{
+					dispatch_async(dispatch_get_main_queue()) {
+						successfulCallback(device)
+					}
+				
+				}
+				else
+				{
+					dispatch_async(dispatch_get_main_queue()) {
+						self.showAlertRequestingCameraPermission()
+					}
+				}
+			});
 		}
-		
-		
-		var err : NSError? = nil
-		var input : AnyObject!
-		do {
-			input = try AVCaptureDeviceInput(device: backCamera)
-		} catch let error as NSError {
-			err = error
-			input = nil
+	}
+	
+	func showAlertRequestingCameraPermission()
+	{
+		if #available(iOS 8.0, *) {
+			let alert = UIAlertController(title: "IMPORTANT", message: "This app requires Camera permissions", preferredStyle: UIAlertControllerStyle.Alert)
+			alert.addAction(UIAlertAction(title: "Settings", style: .Cancel) { alert in
+				UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
+				})
+			let mainController = UIApplication.sharedApplication().delegate?.window!?.rootViewController! as! MainViewController
+			mainController.presentViewController(alert, animated: true, completion: nil)
+			
+		} else {
+			// Fallback on earlier versions
 		}
-		
-		if (input != nil) {
-			if let error = err {
-				print("ERROR: trying to open camera:" + error.localizedDescription)
-
-			}
-		}
-		
-		self.startRunningSession(input: input as! AVCaptureInput)
 		
 	}
 	
@@ -166,22 +197,33 @@ class CameraSessionService : NSObject{
 	
 	func captureImage(endBlock endBlock: (UIImage?, NSError!) -> Void){
 		var videoConnection : AVCaptureConnection?
-		let connectionsArray = self.stillImageOutputRef!.connections as! [AVCaptureConnection]
 		
-		for connection in connectionsArray {
-			
-			for port in connection.inputPorts {
+		let connectionsArray = self.stillImageOutputRef?.connections as? [AVCaptureConnection]
+		
+		if let connectionsArray = connectionsArray
+		{
+			for connection in connectionsArray {
 				
-				if (port.mediaType == AVMediaTypeVideo) {
-					videoConnection = connection;
+				for port in connection.inputPorts {
+					
+					if (port.mediaType == AVMediaTypeVideo) {
+						videoConnection = connection;
+						break;
+					}
+				}
+				
+				if (videoConnection != nil) {
 					break;
 				}
-			}
-			
-			if (videoConnection != nil) {
-				break;
-			}
 		}
+		
+		}
+		
+		if (videoConnection == nil)
+		{
+			return
+		}
+		
 		self.stillImageOutputRef?.captureStillImageAsynchronouslyFromConnection(videoConnection, completionHandler: { (buffer: CMSampleBuffer! , error: NSError! ) -> Void in
 			if (error != nil)
 			{
@@ -219,11 +261,11 @@ class CameraSessionService : NSObject{
 			
 			if (device.hasMediaType(AVMediaTypeVideo)) {
 				
-				if (device.position == AVCaptureDevicePosition.Back) {
+				if (device.position == AVCaptureDevicePosition.Back && backCamera == nil) {
 					print("Device position : back")
 					backCamera = device as? AVCaptureDevice
 				}
-				else if (device.position == AVCaptureDevicePosition.Front){
+				else if (device.position == AVCaptureDevicePosition.Front && frontCamera == nil){
 					print("Device position : front")
 					frontCamera = device as? AVCaptureDevice
 				}
