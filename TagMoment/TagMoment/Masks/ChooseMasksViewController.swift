@@ -68,8 +68,16 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 	func handleRemoveProductsNotification()
 	{
 		self.masksViewModels = self.masksViewModels?.filter({ (viewModel : TMMaskViewModel) -> Bool in
+			if viewModel.locked
+			{
+				if let index = MaskFactory.MASKS.indexOf(viewModel.name!)
+				{
+					MaskFactory.MASKS.removeAtIndex(index)
+				}
+			}
 			return !viewModel.locked
 		})
+		
 		
 		masksCarousel.reloadData()
 	}
