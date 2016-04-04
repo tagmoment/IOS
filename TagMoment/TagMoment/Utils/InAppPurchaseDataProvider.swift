@@ -9,6 +9,8 @@
 import UIKit
 import StoreKit
 
+let RemoveLockedProductsNotificationName = "RemoveLockedProductsNotificationName"
+
 protocol InAppPurchaseDelegate : class
 {
 	func maskPurchaseComplete(maskViewModel : TMMaskViewModel)
@@ -50,14 +52,23 @@ class InAppPurchaseDataProvider: NSObject , SKProductsRequestDelegate, SKPayment
 			for product in response.products {
 				productsArray.append(product)
 			}
-			
-
 		}
 			
 		
 		else {
 			print("There are no products.")
 		}
+	}
+	
+	func request(request: SKRequest, didFailWithError error: NSError)
+	{
+		print(error)
+		postRemoveLockedProducts()
+	}
+	
+	func postRemoveLockedProducts()
+	{
+		NSNotificationCenter.defaultCenter().postNotificationName(RemoveLockedProductsNotificationName, object: nil)
 	}
 	
 	func showMessageForMask(maskViewModel : TMMaskViewModel, presentingViewController : UIViewController)
@@ -73,8 +84,15 @@ class InAppPurchaseDataProvider: NSObject , SKProductsRequestDelegate, SKPayment
 			return;
 		}
 		
+		
 		let product = productsArray.filter { (product : SKProduct!) -> Bool in
 			return maskViewModel.maskProductId == product.productIdentifier
+		}
+		
+		guard product.count != 0 else
+		{
+			print("There was no match between product from store and masks.")
+			return;
 		}
 		
 		UIApplication.sharedApplication().beginIgnoringInteractionEvents()
@@ -84,6 +102,8 @@ class InAppPurchaseDataProvider: NSObject , SKProductsRequestDelegate, SKPayment
 		self.transactionInProgress = true
 		
 	}
+	
+	
 	
 	func restorePayments()
 	{
@@ -123,7 +143,10 @@ class InAppPurchaseDataProvider: NSObject , SKProductsRequestDelegate, SKPayment
 					}
 					
 				}
-				UIApplication.sharedApplication().endIgnoringInteractionEvents()
+				if UIApplication.sharedApplication().isIgnoringInteractionEvents()
+				{
+					UIApplication.sharedApplication().endIgnoringInteractionEvents()
+				}
 				
 				
 				
@@ -136,7 +159,10 @@ class InAppPurchaseDataProvider: NSObject , SKProductsRequestDelegate, SKPayment
 					delegate.maskPurchaseFailed(self.currentPurchasedViewModel!)
 				}
 				
-				UIApplication.sharedApplication().endIgnoringInteractionEvents()
+				if UIApplication.sharedApplication().isIgnoringInteractionEvents()
+				{
+					UIApplication.sharedApplication().endIgnoringInteractionEvents()
+				}
 				
 			default:
 				print(transaction.transactionState.rawValue)

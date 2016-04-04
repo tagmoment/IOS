@@ -37,12 +37,18 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 	
 	var masksViewModels : [TMMaskViewModel]?
 	
+	deinit
+	{
+		NSNotificationCenter.defaultCenter().removeObserver(self)
+	}
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 		masksCarousel.type = .Linear
 		masksCarousel.pagingEnabled = true
-		self.masksViewModels = MaskFactory.getViewModels()
-		masksCarousel.reloadData()
+		loadMasks()
+		
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleRemoveProductsNotification), name: RemoveLockedProductsNotificationName, object: nil)
 		
 		let startIndex = ChooseMasksViewController.lastMaskIndex
 		masksCarousel.scrollToItemAtIndex(startIndex, animated: false)
@@ -57,6 +63,21 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 			carouselCurrentItemIndexDidChange(masksCarousel)
 //			self.masksChooseDelegate?.maskChosen(self.masksViewModels?[masksCarousel.currentItemIndex].name!)
 		}
+	}
+	
+	func handleRemoveProductsNotification()
+	{
+		self.masksViewModels = self.masksViewModels?.filter({ (viewModel : TMMaskViewModel) -> Bool in
+			return !viewModel.locked
+		})
+		
+		masksCarousel.reloadData()
+	}
+	
+	func loadMasks()
+	{
+		self.masksViewModels = MaskFactory.getViewModels()
+		masksCarousel.reloadData()
 	}
 	
 	@objc func scrollAnimation(sender : AnyObject!)
@@ -87,7 +108,6 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 		let maskModel = self.masksViewModels![index]
 		cell.maskImage.image = UIImage(named: maskModel.name!.lowercaseString)
 		cell.lockIcon.hidden = !maskModel.locked
-//		cell.maskImage.highlightedImage = UIImage(named: maskModel.name!.lowercaseString + "_on")
 		cell.maskName.text = maskModel.name
 	
 		return cell;

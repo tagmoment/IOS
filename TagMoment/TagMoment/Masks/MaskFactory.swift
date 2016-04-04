@@ -18,6 +18,7 @@ struct MaskFactory {
 		return masksViewModels
 	}
 	
+	
 	static func getMasks() -> [TMMask]{
 		
 		var masks = [TMMask]()
