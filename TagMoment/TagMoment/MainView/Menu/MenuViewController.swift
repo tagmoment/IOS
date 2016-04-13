@@ -28,6 +28,7 @@ class MenuViewController: UIViewController, FeedbackViewControllerDelegate, UIGe
     }
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
+		GoogleAnalyticsReporter.ReportPageView("Menu View");
 		self.bottomConstraint.constant = 0
 		UIView.animateWithDuration(0.3		, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
 			self.view.superview?.layoutIfNeeded()

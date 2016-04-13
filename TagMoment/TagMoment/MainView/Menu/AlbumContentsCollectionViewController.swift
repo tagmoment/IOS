@@ -18,6 +18,8 @@ class AlbumContentsCollectionViewController: UICollectionViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
+		GoogleAnalyticsReporter.ReportPageView("Album Contents View")
+
 		self.collectionView!.registerNib(UINib(nibName: "CameraRollCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: AlbumContentReuse)
 		
 		

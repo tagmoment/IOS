@@ -103,6 +103,8 @@
 		F1A7B7731A58AF4B0033FE64 /* MaskCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A7B76F1A58AF4B0033FE64 /* MaskCollectionViewCell.swift */; };
 		F1A7B7741A58AF4B0033FE64 /* MaskCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1A7B7701A58AF4B0033FE64 /* MaskCollectionViewCell.xib */; };
 		F1AA60421CBEC322000F614F /* GoogleAnalyticsReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AA60411CBEC322000F614F /* GoogleAnalyticsReporter.swift */; };
+		F1AA60441CBECAB8000F614F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F1AA60431CBECAB8000F614F /* GoogleService-Info.plist */; };
+		F1AA60461CBED7A9000F614F /* MainViewController+Reporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AA60451CBED7A9000F614F /* MainViewController+Reporting.swift */; };
 		F1AE759B1AFAB3BC00A8335B /* MainViewController+MasksHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AE759A1AFAB3BC00A8335B /* MainViewController+MasksHandling.swift */; };
 		F1AE759D1AFAB65900A8335B /* MainViewController+CameraViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AE759C1AFAB65900A8335B /* MainViewController+CameraViews.swift */; };
 		F1B190FA1AAE4DDB0001B86E /* Array+Shuffle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B190F91AAE4DDB0001B86E /* Array+Shuffle.swift */; };
@@ -245,6 +247,8 @@
 		F1A7B76F1A58AF4B0033FE64 /* MaskCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaskCollectionViewCell.swift; sourceTree = "<group>"; };
 		F1A7B7701A58AF4B0033FE64 /* MaskCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MaskCollectionViewCell.xib; sourceTree = "<group>"; };
 		F1AA60411CBEC322000F614F /* GoogleAnalyticsReporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleAnalyticsReporter.swift; sourceTree = "<group>"; };
+		F1AA60431CBECAB8000F614F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F1AA60451CBED7A9000F614F /* MainViewController+Reporting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainViewController+Reporting.swift"; sourceTree = "<group>"; };
 		F1AE759A1AFAB3BC00A8335B /* MainViewController+MasksHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainViewController+MasksHandling.swift"; sourceTree = "<group>"; };
 		F1AE759C1AFAB65900A8335B /* MainViewController+CameraViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MainViewController+CameraViews.swift"; sourceTree = "<group>"; };
 		F1B190F91AAE4DDB0001B86E /* Array+Shuffle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Shuffle.swift"; sourceTree = "<group>"; };
@@ -405,6 +409,7 @@
 		F109CE9B1A56F8770011CA55 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F1AA60431CBECAB8000F614F /* GoogleService-Info.plist */,
 				F109CE9C1A56F8770011CA55 /* Info.plist */,
 				F17672751AA5195F00588865 /* TestFairy-Bridging-Header.h */,
 				F1D381B81C1F5C180042C62B /* Settings.bundle */,
@@ -509,6 +514,7 @@
 				F1D5C4E81BAF358D0075EFE2 /* MainViewController+ImageZoom.swift */,
 				F1C3226E1B41D1F800091FB9 /* ViewChoreographer.swift */,
 				F13CC8E21B8B92A50095497A /* PayloadHolder.swift */,
+				F1AA60451CBED7A9000F614F /* MainViewController+Reporting.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -738,6 +744,7 @@
 				F1EC479C1ABDFE3700081CDF /* TagsCollectionViewCell.xib in Resources */,
 				F1604C711A574CC40055C721 /* image2.jpeg in Resources */,
 				F109CEA71A56F8770011CA55 /* Images.xcassets in Resources */,
+				F1AA60441CBECAB8000F614F /* GoogleService-Info.plist in Resources */,
 				F1A7B7741A58AF4B0033FE64 /* MaskCollectionViewCell.xib in Resources */,
 				F1D381B71C1F53210042C62B /* SmallScreenSharingViewController.xib in Resources */,
 				F176726A1AA515BF00588865 /* upload-dsym.sh in Resources */,
@@ -828,6 +835,7 @@
 				F1D381BB1C1F5F920042C62B /* SettingsHelper.swift in Sources */,
 				F16D27761A9A712B0000F759 /* SharingViewController.swift in Sources */,
 				F14CF9301B2C3D0000178461 /* CameraRollCollectionViewCell.swift in Sources */,
+				F1AA60461CBED7A9000F614F /* MainViewController+Reporting.swift in Sources */,
 				F14FDB0B1B0BDDBD002C4A5D /* TMBubbleMask.swift in Sources */,
 				F175A12E1AD8370200760025 /* MainViewController.swift in Sources */,
 				F14C270A1AC9E86700C19968 /* TMSunFilter.swift in Sources */,

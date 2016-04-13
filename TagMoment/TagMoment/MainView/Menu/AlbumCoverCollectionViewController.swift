@@ -24,6 +24,11 @@ class AlbumCoverCollectionViewController: UICollectionViewController {
 		self.collectionView!.registerNib(UINib(nibName: "CameraRollCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: AlbomCoverReuseIndent)
 	}
 	
+	override func viewDidAppear(animated: Bool) {
+		super.viewDidAppear(animated)
+		GoogleAnalyticsReporter.ReportPageView("Album Covers View")
+
+	}
 	override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return groups != nil ? groups.count : 0
 	}

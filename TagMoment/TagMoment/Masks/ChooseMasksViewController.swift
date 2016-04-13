@@ -56,6 +56,8 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
+		GoogleAnalyticsReporter.ReportPageView("Choose Masks View")
+
 		if let view = masksCarousel.itemViewAtIndex(masksCarousel.currentItemIndex)
 		{
 			let subview = view as! MaskCollectionViewCell
@@ -155,6 +157,7 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 	
 	@IBAction func takeButtonPressed(sender: AnyObject) {
 	
+		
 		if (self.masksChooseDelegate != nil)
 		{
 			self.masksChooseDelegate?.captureButtonPressed()

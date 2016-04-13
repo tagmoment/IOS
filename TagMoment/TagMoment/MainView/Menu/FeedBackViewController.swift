@@ -24,11 +24,11 @@ class FeedbackViewController: UIViewController, UIAlertViewDelegate, MFMailCompo
 	@IBOutlet weak var backButton: UIButton!
 	var alertView : UIAlertView?
 	weak var feedbackDelegate: FeedbackViewControllerDelegate?
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+	
+	override func viewDidAppear(animated: Bool) {
+		super.viewDidAppear(animated)
+		GoogleAnalyticsReporter.ReportPageView("FeedBack View")
+	}
 	
 	@IBAction func dislikeButtonPressed(sender: AnyObject) {
 		alertView = UIAlertView(title: nil, message: DislikeAlertMessage, delegate: self, cancelButtonTitle: WriteUsTitle)

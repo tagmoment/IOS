@@ -43,6 +43,16 @@ class CameraRollViewController: UIViewController, UIGestureRecognizerDelegate{
 		loadImages()
     }
 	
+	override func viewDidAppear(animated: Bool) {
+		super.viewDidAppear(animated)
+		GoogleAnalyticsReporter.ReportPageView("Camera Roll View")
+		self.heightConstraint.constant = originalHeight
+		UIView.animateWithDuration(0.3		, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+			self.view.superview?.layoutIfNeeded()
+			}, completion: nil)
+	}
+
+	
 	private func prepareNavigation()
 	{
 		let albumsContainerController = AlbumCoverCollectionViewController(nibName: "AlbumCoverCollectionViewController", bundle: nil)
@@ -184,14 +194,6 @@ class CameraRollViewController: UIViewController, UIGestureRecognizerDelegate{
 		print("here")
 		
 
-	}
-	
-	override func viewDidAppear(animated: Bool) {
-		super.viewDidAppear(animated)
-		self.heightConstraint.constant = originalHeight
-		UIView.animateWithDuration(0.3		, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
-			self.view.superview?.layoutIfNeeded()
-		}, completion: nil)
 	}
 	
 	func addToView(superview : UIView)

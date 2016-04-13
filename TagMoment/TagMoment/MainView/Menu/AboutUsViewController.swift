@@ -30,6 +30,8 @@ class AboutUsViewController: UIViewController {
 
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
+		GoogleAnalyticsReporter.ReportPageView("AboutUs View");
+
 		self.bottomConstraint.constant = 0
 		UIView.animateWithDuration(0.5, animations: { () -> Void in
 			self.view.superview?.layoutIfNeeded()

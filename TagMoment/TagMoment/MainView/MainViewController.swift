@@ -200,6 +200,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
+		GoogleAnalyticsReporter.ReportPageView("Main View");
 		if (!initialized)
 		{
 			initialized = true
@@ -621,6 +622,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	}
 	
 	func captureButtonPressed() {
+		self.reportCameraCapture(self.isOnFirstStage())
 #if (arch(i386) || arch(x86_64)) && os(iOS)
 		canvas.image = UIImage(named: "image1.jpeg")
 		secondImageView.image = UIImage(named: "image2.jpeg")
@@ -632,6 +634,8 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			inAppPurchaseDataProvider.showMessageForMask(self.masksViewController.getSelectedViewModel(), presentingViewController: self) 
 			return;
 		}
+	
+	
 		if timerHandler == nil && navigationView.timerState() != TimerState.Off
 		{
 			timerHandler = TimerHandler()

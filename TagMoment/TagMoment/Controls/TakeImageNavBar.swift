@@ -149,11 +149,6 @@ class TakeImageNavBar: UIView {
 		return timerStateImages[currentTimerIndex].1
 	}
 	
-	func flashState() -> FlashState
-	{
-		return FlashState.Auto
-	}
-	
 	
 	
 	func showLeftButton(show: Bool, animated: Bool)

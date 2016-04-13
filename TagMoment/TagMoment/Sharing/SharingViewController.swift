@@ -65,7 +65,7 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 	
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
-		
+		GoogleAnalyticsReporter.ReportPageView("Sharing View");
 		animateButtonEntrance()
 	}
 	

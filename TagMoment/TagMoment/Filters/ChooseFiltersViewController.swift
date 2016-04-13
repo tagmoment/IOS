@@ -74,6 +74,7 @@ class ChooseFiltersViewController: UIViewController, UICollectionViewDelegate, U
 	
 	override func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
+		GoogleAnalyticsReporter.ReportPageView("Choose Filters View")
 		self.filterButtonsCollecionView.selectItemAtIndexPath(NSIndexPath(forItem: self.persistedIndex, inSection: 0), animated: false, scrollPosition: UICollectionViewScrollPosition.CenteredHorizontally)
 		self.collectionView(self.filterButtonsCollecionView, didSelectItemAtIndexPath: NSIndexPath(forItem: self.persistedIndex, inSection: 0))
 		if (self.someSlider.value != self.persistedSliderValue)
