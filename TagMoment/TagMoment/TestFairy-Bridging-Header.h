@@ -13,5 +13,6 @@
 #import "iCarousel.h"
 #import "LeftAligned.h"
 #import "TWImageScrollView.h"
+#import <Google/Analytics.h>
 
 #endif

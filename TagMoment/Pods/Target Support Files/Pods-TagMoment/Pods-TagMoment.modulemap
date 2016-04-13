@@ -1,0 +1,6 @@
+framework module Pods_TagMoment {
+  umbrella header "Pods-TagMoment-umbrella.h"
+
+  export *
+  module * { export * }
+}

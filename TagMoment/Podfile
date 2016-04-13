@@ -1,0 +1,12 @@
+platform :ios, ‘7.1’
+
+use_frameworks!
+
+target 'TagMoment' do
+pod 'Google/Analytics'
+end
+
+target 'TagMomentTests' do
+
+end
+
