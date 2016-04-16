@@ -23,7 +23,7 @@
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RHl-pI-iJO">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About #Moment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhG-af-jWc">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About #moment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhG-af-jWc">
                             <rect key="frame" x="20" y="10" width="560" height="20"/>
                             <fontDescription key="fontDescription" name="Raleway" family="Raleway" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -31,8 +31,8 @@
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p52-vy-dt0">
                             <rect key="frame" x="20" y="50" width="560" height="654"/>
-                            <string key="text">Our Story: 
-Hey There! 
+                            <mutableString key="text">Hey There! 
+
 Thank you for downloading the TagMoment app.
 TagMoment is a front and back camera app to capture your moments with awesome designed templates. A combination of you and what you see with filters and hashtags that creates a wonderful collage photo to share, or simply keep it to remember. 
 The world brings us some beautiful moments, beautiful frames. So why not taking those colors and use it as a background for our pictures to create a real moment with our reaction to share or keep.
@@ -51,7 +51,7 @@ App Features
 
 # Define your moment by choosing hashtag from the hashtags bar or type one of your own.
 
-# Instantly share your moments on Instagram, Facebook, Twitter and other social networks.</string>
+# Instantly share your moments on Instagram, Facebook, Twitter and other social networks.</mutableString>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                             <nil key="highlightedColor"/>
                         </label>
