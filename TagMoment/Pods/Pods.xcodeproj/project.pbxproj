@@ -10,7 +10,7 @@
 	<string>46</string>
 	<key>objects</key>
 	<dict>
-		<key>029E8B68484526C3BE6D2306CDC58876</key>
+		<key>021F3A0875126C13D4D1F34296D76C84</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -19,11 +19,18 @@
 			<key>lastKnownFileType</key>
 			<string>archive.ar</string>
 			<key>name</key>
-			<string>libGTM_DebugUtils_external.a</string>
+			<string>libGTM_NSDictionary+URLArguments_external.a</string>
 			<key>path</key>
-			<string>Libraries/libGTM_DebugUtils_external.a</string>
+			<string>Libraries/libGTM_NSDictionary+URLArguments_external.a</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
+		</dict>
+		<key>0310ED596365469604881825A49121B1</key>
+		<dict>
+			<key>fileRef</key>
+			<string>A44969121C463C2A10EE71AF8BBC9AB7</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
 		</dict>
 		<key>03CA91998D6773EC5D02B3DB87B8353E</key>
 		<dict>
@@ -106,7 +113,7 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>07A0C769A837375BBE2BF8B10E7B8D6A</key>
+		<key>087754B28888BE549BFF99379A1825F9</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -115,11 +122,24 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>GGLContext.h</string>
+			<string>GGLConfiguration.h</string>
 			<key>path</key>
-			<string>Headers/GGLCore/Public/GGLContext.h</string>
+			<string>Headers/GGLCore/Public/GGLConfiguration.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
+		</dict>
+		<key>0B070334E929981A511B4126D6557EF6</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>4594671DE12296F0125A81917826294A</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
 		</dict>
 		<key>0B57334D6C23DADAA4F7D802A5760EB2</key>
 		<dict>
@@ -194,27 +214,44 @@
 			<key>name</key>
 			<string>Debug</string>
 		</dict>
-		<key>0D3E786B712E2A055480819E7DFAC142</key>
+		<key>0B9C096657C4C2BF5C6E8C1424067413</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GAIEcommerceFields.h</string>
+			<string>text.xcconfig</string>
 			<key>path</key>
-			<string>Headers/Public/GAIEcommerceFields.h</string>
+			<string>JPSVolumeButtonHandler.xcconfig</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>17A59B176913122B7ED476F4E2AAB0B8</key>
+		<key>0CE44B823149D7A0D54C9D0FC8CFA9DC</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>EE1E4B8ECFB7B36B94F07EA639F4F82B</string>
-				<string>A35BA297742A3E5E9E2E81324A17189F</string>
+				<string>ABB783F7D4064576634D5E7408026288</string>
+				<string>FB27AC01BD688113AAE7062D97DF0986</string>
+				<string>0B9C096657C4C2BF5C6E8C1424067413</string>
+				<string>7015D9487A6C752EE03A263AD371540B</string>
+				<string>D0B26B0BE9A5818054740A63A65D08D0</string>
+				<string>FEDA9E1FE846BD0EAB41B4ED732433E6</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Support Files</string>
+			<key>path</key>
+			<string>../Target Support Files/JPSVolumeButtonHandler</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>113FAF46B0E065B50236296B475A14FA</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>752AB6D6860CB4916119E8858EBD0BCC</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -223,22 +260,34 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>1EC4790E1FA673FB778C7ABC0B13678A</key>
+		<key>115EF155388F4748783F47BA3D2E0953</key>
 		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
+			<key>buildConfigurations</key>
+			<array>
+				<string>C785E37E9093A3196F16C9A8A25AC7A9</string>
+				<string>758B458517D7D0814A83583BD13DA66D</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
 			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>122DA2E5084A4393C29BE363C764795C</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>FD3B48CA4E3EC9F8EE53514B10808E7F</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
 			<key>name</key>
-			<string>AppInvite-Module.h</string>
-			<key>path</key>
-			<string>Headers/ModuleHeaders/AppInvite-Module.h</string>
+			<string>Frameworks</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>27D1BAF110521429D7645D5457218232</key>
+		<key>14C2AB1A0D15AD091F57016869FFB4BF</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -253,7 +302,66 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>27DCB7922FD00F1C78940EA2C767B327</key>
+		<key>16903F7F2F333CDAB08FFB09E219E5BF</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GGLContext.h</string>
+			<key>path</key>
+			<string>Headers/GGLCore/Public/GGLContext.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>17189EAC3D06EF13C121D01CCBAEA8CD</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GAITrackedViewController.h</string>
+			<key>path</key>
+			<string>Headers/Public/GAITrackedViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>17A409BEA5EFF3E6925A0FF13A50E8D7</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>26CA3C756A33EC63F052E5F6AA60FB6E</string>
+				<string>2B1E6D14F30F482874F8DB2055C6F56B</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>1A62CEC78C431E65EB41401C9FD803F4</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>SignIn-Module.h</string>
+			<key>path</key>
+			<string>Headers/ModuleHeaders/SignIn-Module.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1D5895D473312769376E0EDEAFDBE1AB</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -262,66 +370,203 @@
 			<key>lastKnownFileType</key>
 			<string>archive.ar</string>
 			<key>name</key>
-			<string>libGTM_iPhone_external.a</string>
+			<string>libGTM_NSStringXML_external.a</string>
 			<key>path</key>
-			<string>Libraries/libGTM_iPhone_external.a</string>
+			<string>Libraries/libGTM_NSStringXML_external.a</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>28C086A42FACEDE7E6E0540FBF8DA5D9</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>archive.ar</string>
-			<key>name</key>
-			<string>libGTM_NSData+zlib_external.a</string>
-			<key>path</key>
-			<string>Libraries/libGTM_NSData+zlib_external.a</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>29227970B6C90F3EE62BE6282F49D2AE</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>archive.ar</string>
-			<key>name</key>
-			<string>libGTM_NSScannerJSON_external.a</string>
-			<key>path</key>
-			<string>Libraries/libGTM_NSScannerJSON_external.a</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>2B406FDE949FCADA584B72E8821FE471</key>
+		<key>1EFE3D4D834F6B83376BF4707ABBAD4E</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>928A6AA3059242DB550C61E482CCC489</string>
-				<string>9450ECCCD415A9881BB3606E61421ED3</string>
-				<string>0D3E786B712E2A055480819E7DFAC142</string>
-				<string>6850B748FE140ED4BA566DAB166194BE</string>
-				<string>A33C4F723CCAFC08352A51CFEE7C53BE</string>
-				<string>FB13BEF6AD503A0D46EC61D891B483ED</string>
-				<string>27D1BAF110521429D7645D5457218232</string>
-				<string>852BBCD04F3D998CD5A47C919DBBF35E</string>
-				<string>EC7D18F4359501F9C15A0D6CE7EFE22A</string>
-				<string>E3889EEF1D02A0C09E66875B74ECE6D8</string>
-				<string>E97EDF2F27A40E9442A03C07CBF75671</string>
+				<string>7616F18E98DFE8ECC56DAD44AA18AEE9</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
 			<key>name</key>
-			<string>GoogleAnalytics</string>
-			<key>path</key>
-			<string>GoogleAnalytics</string>
+			<string>Frameworks</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
+		</dict>
+		<key>202BE199FF1FF7660A0A43BF9519EC72</key>
+		<dict>
+			<key>fileRef</key>
+			<string>8FD593837FF556BAA3FDED076181552B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>21B8809332627F87AF4E3F2F035FAA44</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>archive.ar</string>
+			<key>name</key>
+			<string>libGSDK_Overload_external.a</string>
+			<key>path</key>
+			<string>Libraries/libGSDK_Overload_external.a</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>22ED4ADCB2CDCED600CA52BCD197C49A</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GMRConfiguration.h</string>
+			<key>path</key>
+			<string>Headers/GGLCore/Public/GMRConfiguration.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>25A55DC9D4897CC94D0CA6006555297A</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>JPSVolumeButtonHandler.h</string>
+			<key>path</key>
+			<string>JPSVolumeButtonHandler/JPSVolumeButtonHandler.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>26CA3C756A33EC63F052E5F6AA60FB6E</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>0B9C096657C4C2BF5C6E8C1424067413</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>CURRENT_PROJECT_VERSION</key>
+				<string>1</string>
+				<key>DEFINES_MODULE</key>
+				<string>YES</string>
+				<key>DYLIB_COMPATIBILITY_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_CURRENT_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_INSTALL_NAME_BASE</key>
+				<string>@rpath</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Target Support Files/JPSVolumeButtonHandler/JPSVolumeButtonHandler-prefix.pch</string>
+				<key>INFOPLIST_FILE</key>
+				<string>Target Support Files/JPSVolumeButtonHandler/Info.plist</string>
+				<key>INSTALL_PATH</key>
+				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>7.1</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>@executable_path/Frameworks</string>
+					<string>@loader_path/Frameworks</string>
+				</array>
+				<key>MODULEMAP_FILE</key>
+				<string>Target Support Files/JPSVolumeButtonHandler/JPSVolumeButtonHandler.modulemap</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>YES</string>
+				<key>PRODUCT_NAME</key>
+				<string>JPSVolumeButtonHandler</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>VERSIONING_SYSTEM</key>
+				<string>apple-generic</string>
+				<key>VERSION_INFO_PREFIX</key>
+				<string></string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>2B1E6D14F30F482874F8DB2055C6F56B</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>0B9C096657C4C2BF5C6E8C1424067413</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>CURRENT_PROJECT_VERSION</key>
+				<string>1</string>
+				<key>DEFINES_MODULE</key>
+				<string>YES</string>
+				<key>DYLIB_COMPATIBILITY_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_CURRENT_VERSION</key>
+				<string>1</string>
+				<key>DYLIB_INSTALL_NAME_BASE</key>
+				<string>@rpath</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Target Support Files/JPSVolumeButtonHandler/JPSVolumeButtonHandler-prefix.pch</string>
+				<key>INFOPLIST_FILE</key>
+				<string>Target Support Files/JPSVolumeButtonHandler/Info.plist</string>
+				<key>INSTALL_PATH</key>
+				<string>$(LOCAL_LIBRARY_DIR)/Frameworks</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>7.1</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<array>
+					<string>$(inherited)</string>
+					<string>@executable_path/Frameworks</string>
+					<string>@loader_path/Frameworks</string>
+				</array>
+				<key>MODULEMAP_FILE</key>
+				<string>Target Support Files/JPSVolumeButtonHandler/JPSVolumeButtonHandler.modulemap</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>NO</string>
+				<key>PRODUCT_NAME</key>
+				<string>JPSVolumeButtonHandler</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1,2</string>
+				<key>VERSIONING_SYSTEM</key>
+				<string>apple-generic</string>
+				<key>VERSION_INFO_PREFIX</key>
+				<string></string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>2C1C4FB836A031B540805369655C234D</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>202BE199FF1FF7660A0A43BF9519EC72</string>
+				<string>3FD75BAFA8D1FABB9A1F710DB7A66B81</string>
+				<string>34C770D5DAF0E131D8C353139C414C92</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
 		</dict>
 		<key>2D8E8EC45A3A1A1D94AE762CB5028504</key>
 		<dict>
@@ -337,78 +582,7 @@
 			<key>isa</key>
 			<string>XCConfigurationList</string>
 		</dict>
-		<key>310FE9FD8C272FCA2F08DE88C98B30F3</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text</string>
-			<key>path</key>
-			<string>Pods-TagMoment-acknowledgements.markdown</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3217C6308C660CF2CDB3F75A1F9608D4</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>archive.ar</string>
-			<key>name</key>
-			<string>libGTM_NSStringHTML_external.a</string>
-			<key>path</key>
-			<string>Libraries/libGTM_NSStringHTML_external.a</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3B24B49C3B79C5C60273AE177DC66FFD</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>C7DA2E3BB8AF5F7AC968168156A86EF1</string>
-				<string>45F90A8B807DAAF7BEA65FEFC57EB90F</string>
-				<string>9CD8D376FF83B97F02DF44A3948FA0A4</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Analytics</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3E4E89230EF59BC255123B67864ACF77</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>Foundation.framework</string>
-			<key>path</key>
-			<string>Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework</string>
-			<key>sourceTree</key>
-			<string>DEVELOPER_DIR</string>
-		</dict>
-		<key>449FD5319C4B997FB0D1E44CB12CC4ED</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>archive.ar</string>
-			<key>name</key>
-			<string>libGTM_AddressBook_external.a</string>
-			<key>path</key>
-			<string>Libraries/libGTM_AddressBook_external.a</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>45F90A8B807DAAF7BEA65FEFC57EB90F</key>
+		<key>2FBD3B65EED5D7EC8015E66B23B468F2</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -423,6 +597,123 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>310FE9FD8C272FCA2F08DE88C98B30F3</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text</string>
+			<key>path</key>
+			<string>Pods-TagMoment-acknowledgements.markdown</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>33674476BC9CAF33729A0C2AFD7226F3</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GAIEcommerceProductAction.h</string>
+			<key>path</key>
+			<string>Headers/Public/GAIEcommerceProductAction.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>34C770D5DAF0E131D8C353139C414C92</key>
+		<dict>
+			<key>fileRef</key>
+			<string>B4BAC00A16FC5D03F3DF0E27891CD050</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>3753B485862C9646F1B225857AF6A808</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>C256E83D511CD155B0028B59F8FF1D80</string>
+				<string>555A87101740B7298C9FD96003E48ABD</string>
+				<string>C28B0ED07B6128EA62FC94355CCF6B68</string>
+				<string>AE58D6BEC7076704F167B988A30AA316</string>
+				<string>8044280EFE2E9F2BD8FA3FB30A753819</string>
+				<string>9CBF180E9CE4394A3D65E7B4CD0EA71D</string>
+				<string>087754B28888BE549BFF99379A1825F9</string>
+				<string>16903F7F2F333CDAB08FFB09E219E5BF</string>
+				<string>938C7E1C290AB6D06E2DA1A56388F738</string>
+				<string>22ED4ADCB2CDCED600CA52BCD197C49A</string>
+				<string>1A62CEC78C431E65EB41401C9FD803F4</string>
+				<string>8381920D605754FE9BC15AEB54DB32BF</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Core</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>3FD75BAFA8D1FABB9A1F710DB7A66B81</key>
+		<dict>
+			<key>fileRef</key>
+			<string>725E26D5DB175379A622285C024A4393</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>420B14D36AA0916F1A5ACD2924CA89F3</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>83615672855E46E5245235D72A0A505D</string>
+				<string>515FC47A8F57EFD3A77D8CA271E60E91</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>425471F61787FA055894EE50B6099333</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>7B3D2308325627BEAEE639DFAEF3BC19</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>GoogleUtilities</string>
+			<key>path</key>
+			<string>GoogleUtilities</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>454A1EA11AE735A3537F3FE285049B78</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GAILogger.h</string>
+			<key>path</key>
+			<string>Headers/Public/GAILogger.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>4594671DE12296F0125A81917826294A</key>
+		<dict>
+			<key>fileRef</key>
+			<string>725E26D5DB175379A622285C024A4393</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
 		<key>4BAF21FE0C79DD8692143160785717FA</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -436,32 +727,70 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>4F4A4F4B852F43A898EC10950D93414F</key>
+		<key>4BDF68B14903C0ADA88DE415AE1B627D</key>
 		<dict>
-			<key>children</key>
-			<array>
-				<string>449FD5319C4B997FB0D1E44CB12CC4ED</string>
-				<string>6673F117675AAA98FA42075E728013D9</string>
-				<string>029E8B68484526C3BE6D2306CDC58876</string>
-				<string>EA27FE43514AAA829A25E1F8E41C1DBA</string>
-				<string>27DCB7922FD00F1C78940EA2C767B327</string>
-				<string>CDD630339659AEF58D3529123E593395</string>
-				<string>28C086A42FACEDE7E6E0540FBF8DA5D9</string>
-				<string>FEBBAF7ED4F9C56C38B22AAE1AE2A27C</string>
-				<string>29227970B6C90F3EE62BE6282F49D2AE</string>
-				<string>3217C6308C660CF2CDB3F75A1F9608D4</string>
-				<string>A586AE067FE232854BC1D91DF1756D97</string>
-				<string>F9DD87C6547C973C385E307E5C0A023A</string>
-				<string>DD73575A0A497C2F41D5A37CD6C61901</string>
-				<string>AC1E6E0B98B6842C0369FC23D092B094</string>
-				<string>773C55ADC3EFD4B872369349506B57BB</string>
-				<string>AA740A2D09221FB87456A058B3DDB0C4</string>
-				<string>DED0FB18C89EA81D8D9D0EA3E26B5ACF</string>
-			</array>
+			<key>fileRef</key>
+			<string>7015D9487A6C752EE03A263AD371540B</string>
 			<key>isa</key>
-			<string>PBXGroup</string>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>4DF9AF31176F27374C673192FDF2F043</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>archive.ar</string>
 			<key>name</key>
-			<string>Frameworks</string>
+			<string>libGTM_StringEncoding_external.a</string>
+			<key>path</key>
+			<string>Libraries/libGTM_StringEncoding_external.a</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>515FC47A8F57EFD3A77D8CA271E60E91</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>archive.ar</string>
+			<key>name</key>
+			<string>libGTMSessionFetcher_full_external.a</string>
+			<key>path</key>
+			<string>Libraries/libGTMSessionFetcher_full_external.a</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>52FBCDFF8E064FB220FDB3C979A3BB4D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>archive.ar</string>
+			<key>name</key>
+			<string>libGTM_NSScannerJSON_external.a</string>
+			<key>path</key>
+			<string>Libraries/libGTM_NSScannerJSON_external.a</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>532F6E67ED88F52AE4F2B69B24F78874</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>archive.ar</string>
+			<key>name</key>
+			<string>libGTM_NSData+zlib_external.a</string>
+			<key>path</key>
+			<string>Libraries/libGTM_NSData+zlib_external.a</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -489,31 +818,7 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>60D57FA395CEAB24AC4F23A3B473FDC5</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>798220ACFE51A0AA5ADAE734BD41A6B8</string>
-				<string>75CCB2DDF87EF0580146D57721DCEF42</string>
-				<string>1EC4790E1FA673FB778C7ABC0B13678A</string>
-				<string>C732E516F3B18FC07005BC95EF1EAD17</string>
-				<string>CC09B53297568EF4DF9A6D88F0E1D2F5</string>
-				<string>8B0E1636DF3C5D33B301C9134B676446</string>
-				<string>B9D3617014BCFA1A57074906FC0F49CC</string>
-				<string>07A0C769A837375BBE2BF8B10E7B8D6A</string>
-				<string>78BD0D1C018CCC1C09862E9F2504F136</string>
-				<string>FEF2C6481BFEF27B6E061043F66FD2B1</string>
-				<string>95D4B1A47B980426619B625BAD800ED6</string>
-				<string>67F53C3FA6E66D9E957C3660F74D07A3</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Core</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>6673F117675AAA98FA42075E728013D9</key>
+		<key>550D9B1A0AA4E06B41A31376215453AA</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -522,96 +827,13 @@
 			<key>lastKnownFileType</key>
 			<string>archive.ar</string>
 			<key>name</key>
-			<string>libGTM_core_external.a</string>
+			<string>libGTM_KVO_external.a</string>
 			<key>path</key>
-			<string>Libraries/libGTM_core_external.a</string>
+			<string>Libraries/libGTM_KVO_external.a</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>67B967475421D5FB77F99498E1D16313</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>920A64A0ED0441E73354C0D61CD52EB3</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>67F53C3FA6E66D9E957C3660F74D07A3</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>E40E6377146AAFD32595FF48B10EA505</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>6850B748FE140ED4BA566DAB166194BE</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GAIEcommerceProduct.h</string>
-			<key>path</key>
-			<string>Headers/Public/GAIEcommerceProduct.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>69A0F5C07199DA64F55BA5EEF3C5F283</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>archive.ar</string>
-			<key>name</key>
-			<string>libGGLAnalytics.a</string>
-			<key>path</key>
-			<string>Libraries/libGGLAnalytics.a</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>6FEA11DA2EF809D3D6B3EC38C16DEFDA</key>
-		<dict>
-			<key>fileRef</key>
-			<string>0621189D6FB21453B6DAE66322029745</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>742D458A38ABFB24AB75689C34650825</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>75CCB2DDF87EF0580146D57721DCEF42</key>
+		<key>555A87101740B7298C9FD96003E48ABD</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -626,369 +848,7 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>773C55ADC3EFD4B872369349506B57BB</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>archive.ar</string>
-			<key>name</key>
-			<string>libGTM_SystemVersion_external.a</string>
-			<key>path</key>
-			<string>Libraries/libGTM_SystemVersion_external.a</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>78BD0D1C018CCC1C09862E9F2504F136</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GGLErrorCode.h</string>
-			<key>path</key>
-			<string>Headers/GGLCore/Public/GGLErrorCode.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>798220ACFE51A0AA5ADAE734BD41A6B8</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>AdMob-Module.h</string>
-			<key>path</key>
-			<string>Headers/ModuleHeaders/AdMob-Module.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7B889C39DF533CBBFF9ABD5FA5CBBEE0</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>BAE4DE44591C7FEC166BFE136FD18201</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>7DB346D0F39D3F0E887471402A8071AB</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>BA6428E9F66FD5A23C0A2E06ED26CD2F</string>
-				<string>BC3CA7F9E30CC8F7E2DD044DD34432FC</string>
-				<string>BA30C8070E85288ED6FF503707EF6CC4</string>
-				<string>E9A65EC5F483BDDDA717331A2D5E1DDD</string>
-				<string>B14270F79AEF6F6287D60FF59AF548B6</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>83365636D0FF95BE050E54801F645F58</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>Pods-TagMoment.release.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>852BBCD04F3D998CD5A47C919DBBF35E</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GAILogger.h</string>
-			<key>path</key>
-			<string>Headers/Public/GAILogger.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>85538942E84925B53B40BDE7F5B9331F</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.script.sh</string>
-			<key>path</key>
-			<string>Pods-TagMoment-resources.sh</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>8B0E1636DF3C5D33B301C9134B676446</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>Core-Module.h</string>
-			<key>path</key>
-			<string>Headers/ModuleHeaders/Core-Module.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>8BFDC45237EAE2389157B236C5BE7E2C</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F46E31899A3A84799BF90B53B7AD2972</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>8F90DBFD8C349CFF196C62A5CEE33A8F</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>archive.ar</string>
-			<key>name</key>
-			<string>libGoogleAnalytics.a</string>
-			<key>path</key>
-			<string>Libraries/libGoogleAnalytics.a</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>920A64A0ED0441E73354C0D61CD52EB3</key>
-		<dict>
-			<key>fileRef</key>
-			<string>A44969121C463C2A10EE71AF8BBC9AB7</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>928A6AA3059242DB550C61E482CCC489</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GAI.h</string>
-			<key>path</key>
-			<string>Headers/Public/GAI.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>9450ECCCD415A9881BB3606E61421ED3</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GAIDictionaryBuilder.h</string>
-			<key>path</key>
-			<string>Headers/Public/GAIDictionaryBuilder.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>94FD3D5C2E0CFBE88C70F88551A6F30F</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>CFBD783B5E74C440922F60D6686154A5</string>
-				<string>B1B19FF91FA10495FD7B2649462507E2</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>95D4B1A47B980426619B625BAD800ED6</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>SignIn-Module.h</string>
-			<key>path</key>
-			<string>Headers/ModuleHeaders/SignIn-Module.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>9C4670AD688254C8E11D921757EC7A0F</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Pods-TagMoment-acknowledgements.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>9CD8D376FF83B97F02DF44A3948FA0A4</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>69A0F5C07199DA64F55BA5EEF3C5F283</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>9DA8C757F05DCAAB0DF8B61C1360AFBF</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>17A59B176913122B7ED476F4E2AAB0B8</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>GoogleNetworkingUtilities</string>
-			<key>path</key>
-			<string>GoogleNetworkingUtilities</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>9EEFE07A97A21323AD53EA9F1A32802F</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>94FD3D5C2E0CFBE88C70F88551A6F30F</string>
-			<key>buildPhases</key>
-			<array>
-				<string>67B967475421D5FB77F99498E1D16313</string>
-				<string>7B889C39DF533CBBFF9ABD5FA5CBBEE0</string>
-				<string>BF4456FB2BAA7D817779E3399041307B</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>Pods-TagMoment</string>
-			<key>productName</key>
-			<string>Pods-TagMoment</string>
-			<key>productReference</key>
-			<string>AB00B2D7CFA7DD5E6DDCA874EA68DCD0</string>
-			<key>productType</key>
-			<string>com.apple.product-type.framework</string>
-		</dict>
-		<key>A33C4F723CCAFC08352A51CFEE7C53BE</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GAIEcommerceProductAction.h</string>
-			<key>path</key>
-			<string>Headers/Public/GAIEcommerceProductAction.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A35BA297742A3E5E9E2E81324A17189F</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>archive.ar</string>
-			<key>name</key>
-			<string>libGTMSessionFetcher_full_external.a</string>
-			<key>path</key>
-			<string>Libraries/libGTMSessionFetcher_full_external.a</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A44969121C463C2A10EE71AF8BBC9AB7</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>Pods-TagMoment-dummy.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A586AE067FE232854BC1D91DF1756D97</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>archive.ar</string>
-			<key>name</key>
-			<string>libGTM_NSStringXML_external.a</string>
-			<key>path</key>
-			<string>Libraries/libGTM_NSStringXML_external.a</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>AA740A2D09221FB87456A058B3DDB0C4</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>archive.ar</string>
-			<key>name</key>
-			<string>libGTM_UIFont+LineHeight_external.a</string>
-			<key>path</key>
-			<string>Libraries/libGTM_UIFont+LineHeight_external.a</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>AB00B2D7CFA7DD5E6DDCA874EA68DCD0</key>
+		<key>5594721A1BEB4A73E0431622BBFDA35D</key>
 		<dict>
 			<key>explicitFileType</key>
 			<string>wrapper.framework</string>
@@ -1003,7 +863,7 @@
 			<key>sourceTree</key>
 			<string>BUILT_PRODUCTS_DIR</string>
 		</dict>
-		<key>AC1E6E0B98B6842C0369FC23D092B094</key>
+		<key>5696BE415259411215C76D857967A5AB</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1012,26 +872,209 @@
 			<key>lastKnownFileType</key>
 			<string>archive.ar</string>
 			<key>name</key>
-			<string>libGTM_StringEncoding_external.a</string>
+			<string>libGTM_RoundedRectPath_external.a</string>
 			<key>path</key>
-			<string>Libraries/libGTM_StringEncoding_external.a</string>
+			<string>Libraries/libGTM_RoundedRectPath_external.a</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>B14270F79AEF6F6287D60FF59AF548B6</key>
+		<key>587DCDA692747E460685413E3DDAF622</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>D41D8CD98F00B204E9800998ECF8427E</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>D8FDC08BF6F0664C2AE587B7F015C2E7</string>
+			<key>remoteInfo</key>
+			<string>JPSVolumeButtonHandler</string>
+		</dict>
+		<key>5B0B0D23648068EBC25DED976164F101</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>archive.ar</string>
+			<key>name</key>
+			<string>libGTMStackTrace_external.a</string>
+			<key>path</key>
+			<string>Libraries/libGTMStackTrace_external.a</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>5E71C02A8596AFFA42986B5C2EF0540E</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GAITracker.h</string>
+			<key>path</key>
+			<string>Headers/Public/GAITracker.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>63021FCD3F709152675BD589DB73E2E0</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>7CD33BFC9295C556964F14A93C54952B</string>
+			</array>
+			<key>isa</key>
+			<string>PBXHeadersBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>63F85731B4C1FB34F348B26985CD67F2</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>archive.ar</string>
+			<key>name</key>
+			<string>libGGLCore.a</string>
+			<key>path</key>
+			<string>Libraries/libGGLCore.a</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>64D553398286DE881DDC9BEED92E9B28</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>5409C806F5D10A82CECB73DAEF7E12D6</string>
+				<string>77550AC57DFF910273B339559401E082</string>
+				<string>5594721A1BEB4A73E0431622BBFDA35D</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
 			<key>name</key>
-			<string>Targets Support Files</string>
+			<string>Products</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>B1B19FF91FA10495FD7B2649462507E2</key>
+		<key>68D85092E85CE1ABCA15AC74927CD3EC</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>8EE6B05A8382F058CFEE523B2615E2F2</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6C0234692FF7717C8E539C33D62C3DAD</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>archive.ar</string>
+			<key>name</key>
+			<string>libGTM_AddressBook_external.a</string>
+			<key>path</key>
+			<string>Libraries/libGTM_AddressBook_external.a</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6E3CED6AD9CC069B824FFD27A048D99C</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>C6766BBDB8CEB27CF2ADAD7D7A958AF5</string>
+				<string>AA928BEB8CA262F15AF05C9742AF2492</string>
+			</array>
+			<key>isa</key>
+			<string>PBXHeadersBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>7015D9487A6C752EE03A263AD371540B</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>JPSVolumeButtonHandler-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>725E26D5DB175379A622285C024A4393</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>Foundation.framework</string>
+			<key>path</key>
+			<string>Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework</string>
+			<key>sourceTree</key>
+			<string>DEVELOPER_DIR</string>
+		</dict>
+		<key>742D458A38ABFB24AB75689C34650825</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>74B5089972ADCF47C7B642FA1D6FEB6A</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GAI.h</string>
+			<key>path</key>
+			<string>Headers/Public/GAI.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>752AB6D6860CB4916119E8858EBD0BCC</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>archive.ar</string>
+			<key>name</key>
+			<string>libGGLAnalytics.a</string>
+			<key>path</key>
+			<string>Libraries/libGGLAnalytics.a</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>758B458517D7D0814A83583BD13DA66D</key>
 		<dict>
 			<key>baseConfigurationReference</key>
 			<string>83365636D0FF95BE050E54801F645F58</string>
@@ -1093,7 +1136,172 @@
 			<key>name</key>
 			<string>Release</string>
 		</dict>
-		<key>B9D3617014BCFA1A57074906FC0F49CC</key>
+		<key>7602D3EFC8EBF6DF5746A88EA315732D</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>78ED340F8F49A4FD258BD0CBE6A6DA1B</string>
+				<string>B4A81C22DD63BA2BA0A1A7AFD99F1AA2</string>
+				<string>C077E414DE55C2CD2A364FCD518BAAEB</string>
+				<string>960E38148157B979A5F4917AA40466A5</string>
+				<string>F8C8BE06135E2EEEE1AC53B69332641B</string>
+				<string>425471F61787FA055894EE50B6099333</string>
+				<string>AAC891304F707AF5B4F0C31B655DEE89</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7616F18E98DFE8ECC56DAD44AA18AEE9</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>archive.ar</string>
+			<key>name</key>
+			<string>libProtocolBuffers_external.a</string>
+			<key>path</key>
+			<string>Libraries/libProtocolBuffers_external.a</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>77550AC57DFF910273B339559401E082</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.framework</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>JPSVolumeButtonHandler.framework</string>
+			<key>path</key>
+			<string>JPSVolumeButtonHandler.framework</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>77A04125D96DBC6582C007F907089DBB</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>archive.ar</string>
+			<key>name</key>
+			<string>libGTM_core_external.a</string>
+			<key>path</key>
+			<string>Libraries/libGTM_core_external.a</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>78ED340F8F49A4FD258BD0CBE6A6DA1B</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>99B73948DD0382EECF2B10580A5A123A</string>
+				<string>3753B485862C9646F1B225857AF6A808</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Google</string>
+			<key>path</key>
+			<string>Google</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7B3D2308325627BEAEE639DFAEF3BC19</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>6C0234692FF7717C8E539C33D62C3DAD</string>
+				<string>77A04125D96DBC6582C007F907089DBB</string>
+				<string>DF368A8CBD93B2F9FEDA8A30B597F9AF</string>
+				<string>F35A394618940B0B9E3D818D3572A4CC</string>
+				<string>C441A349747BB04E3DF18F206C262F5A</string>
+				<string>550D9B1A0AA4E06B41A31376215453AA</string>
+				<string>532F6E67ED88F52AE4F2B69B24F78874</string>
+				<string>021F3A0875126C13D4D1F34296D76C84</string>
+				<string>52FBCDFF8E064FB220FDB3C979A3BB4D</string>
+				<string>89D6BD8F3C2B7FFB397FCCDB4C84DA17</string>
+				<string>1D5895D473312769376E0EDEAFDBE1AB</string>
+				<string>FDA84D12A5DE718D0958078FFA9468CB</string>
+				<string>5696BE415259411215C76D857967A5AB</string>
+				<string>4DF9AF31176F27374C673192FDF2F043</string>
+				<string>C3F402D74706D1196A0D27B53CE86810</string>
+				<string>A4DB4542621335AA293D7CD405F664F2</string>
+				<string>5B0B0D23648068EBC25DED976164F101</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Frameworks</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7CD33BFC9295C556964F14A93C54952B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>0621189D6FB21453B6DAE66322029745</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>7DB346D0F39D3F0E887471402A8071AB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>BA6428E9F66FD5A23C0A2E06ED26CD2F</string>
+				<string>122DA2E5084A4393C29BE363C764795C</string>
+				<string>7602D3EFC8EBF6DF5746A88EA315732D</string>
+				<string>64D553398286DE881DDC9BEED92E9B28</string>
+				<string>B14270F79AEF6F6287D60FF59AF548B6</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>7E9CCCB3ED00B5BBBD1FE632E83BA083</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>115EF155388F4748783F47BA3D2E0953</string>
+			<key>buildPhases</key>
+			<array>
+				<string>D0226C1D95F11F70803324B594795703</string>
+				<string>0B070334E929981A511B4126D6557EF6</string>
+				<string>63021FCD3F709152675BD589DB73E2E0</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>E690D6055A50E6D5CC7E2757A55AD012</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>Pods-TagMoment</string>
+			<key>productName</key>
+			<string>Pods-TagMoment</string>
+			<key>productReference</key>
+			<string>5594721A1BEB4A73E0431622BBFDA35D</string>
+			<key>productType</key>
+			<string>com.apple.product-type.framework</string>
+		</dict>
+		<key>8044280EFE2E9F2BD8FA3FB30A753819</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1102,29 +1310,356 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>GGLConfiguration.h</string>
+			<string>Core.h</string>
 			<key>path</key>
-			<string>Headers/GGLCore/Public/GGLConfiguration.h</string>
+			<string>Headers/GGLCore/Public/Core.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>BA30C8070E85288ED6FF503707EF6CC4</key>
+		<key>83365636D0FF95BE050E54801F645F58</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>Pods-TagMoment.release.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>83615672855E46E5245235D72A0A505D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>archive.ar</string>
+			<key>name</key>
+			<string>libGTMSessionFetcher_core_external.a</string>
+			<key>path</key>
+			<string>Libraries/libGTMSessionFetcher_core_external.a</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8381920D605754FE9BC15AEB54DB32BF</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>D87029D2B67F147B97412BC51430D98F</string>
-				<string>2B406FDE949FCADA584B72E8821FE471</string>
-				<string>BFAC7AD5B989E129EC232DB026B7033D</string>
-				<string>9DA8C757F05DCAAB0DF8B61C1360AFBF</string>
-				<string>DAD026D89AAF31DB9BBC29057738C710</string>
-				<string>BBBE2B8544C96AE144C84EACCB6E53D3</string>
+				<string>63F85731B4C1FB34F348B26985CD67F2</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
 			<key>name</key>
-			<string>Pods</string>
+			<string>Frameworks</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
+		</dict>
+		<key>85538942E84925B53B40BDE7F5B9331F</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.script.sh</string>
+			<key>path</key>
+			<string>Pods-TagMoment-resources.sh</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>86772AFA6A7B161935D9309C939D8DBD</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GAIEcommerceProduct.h</string>
+			<key>path</key>
+			<string>Headers/Public/GAIEcommerceProduct.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>89D6BD8F3C2B7FFB397FCCDB4C84DA17</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>archive.ar</string>
+			<key>name</key>
+			<string>libGTM_NSStringHTML_external.a</string>
+			<key>path</key>
+			<string>Libraries/libGTM_NSStringHTML_external.a</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8EE6B05A8382F058CFEE523B2615E2F2</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>archive.ar</string>
+			<key>name</key>
+			<string>libGoogleAnalytics.a</string>
+			<key>path</key>
+			<string>Libraries/libGoogleAnalytics.a</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8FD593837FF556BAA3FDED076181552B</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>AVFoundation.framework</string>
+			<key>path</key>
+			<string>Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/AVFoundation.framework</string>
+			<key>sourceTree</key>
+			<string>DEVELOPER_DIR</string>
+		</dict>
+		<key>938C7E1C290AB6D06E2DA1A56388F738</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GGLErrorCode.h</string>
+			<key>path</key>
+			<string>Headers/GGLCore/Public/GGLErrorCode.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>960E38148157B979A5F4917AA40466A5</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>420B14D36AA0916F1A5ACD2924CA89F3</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>GoogleNetworkingUtilities</string>
+			<key>path</key>
+			<string>GoogleNetworkingUtilities</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9681841A025BABC138D0CFEB86752D79</key>
+		<dict>
+			<key>fileRef</key>
+			<string>9D1C4CF15D8EE0E20A14504A6BD5369A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>99B73948DD0382EECF2B10580A5A123A</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>C474304C5B56B40B094FFEF42A656AF2</string>
+				<string>2FBD3B65EED5D7EC8015E66B23B468F2</string>
+				<string>113FAF46B0E065B50236296B475A14FA</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Analytics</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9C4670AD688254C8E11D921757EC7A0F</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Pods-TagMoment-acknowledgements.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9CBF180E9CE4394A3D65E7B4CD0EA71D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>Core-Module.h</string>
+			<key>path</key>
+			<string>Headers/ModuleHeaders/Core-Module.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>9D1C4CF15D8EE0E20A14504A6BD5369A</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>JPSVolumeButtonHandler.m</string>
+			<key>path</key>
+			<string>JPSVolumeButtonHandler/JPSVolumeButtonHandler.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A44969121C463C2A10EE71AF8BBC9AB7</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>Pods-TagMoment-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>A4DB4542621335AA293D7CD405F664F2</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>archive.ar</string>
+			<key>name</key>
+			<string>libGTM_UIFont+LineHeight_external.a</string>
+			<key>path</key>
+			<string>Libraries/libGTM_UIFont+LineHeight_external.a</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AA928BEB8CA262F15AF05C9742AF2492</key>
+		<dict>
+			<key>fileRef</key>
+			<string>25A55DC9D4897CC94D0CA6006555297A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>AAC891304F707AF5B4F0C31B655DEE89</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>25A55DC9D4897CC94D0CA6006555297A</string>
+				<string>9D1C4CF15D8EE0E20A14504A6BD5369A</string>
+				<string>0CE44B823149D7A0D54C9D0FC8CFA9DC</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>JPSVolumeButtonHandler</string>
+			<key>path</key>
+			<string>JPSVolumeButtonHandler</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>ABB783F7D4064576634D5E7408026288</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>AE58D6BEC7076704F167B988A30AA316</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>CloudMessaging-Module.h</string>
+			<key>path</key>
+			<string>Headers/ModuleHeaders/CloudMessaging-Module.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B14270F79AEF6F6287D60FF59AF548B6</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>5409C806F5D10A82CECB73DAEF7E12D6</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Targets Support Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B4A81C22DD63BA2BA0A1A7AFD99F1AA2</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>74B5089972ADCF47C7B642FA1D6FEB6A</string>
+				<string>FCFCCD414CB8CE33E61BE75924C6A01E</string>
+				<string>E762A0FB6C73566B52D0DD11378CCB15</string>
+				<string>86772AFA6A7B161935D9309C939D8DBD</string>
+				<string>33674476BC9CAF33729A0C2AFD7226F3</string>
+				<string>C2DE4AB6DF600828CC05389FBDA179E7</string>
+				<string>14C2AB1A0D15AD091F57016869FFB4BF</string>
+				<string>454A1EA11AE735A3537F3FE285049B78</string>
+				<string>17189EAC3D06EF13C121D01CCBAEA8CD</string>
+				<string>5E71C02A8596AFFA42986B5C2EF0540E</string>
+				<string>68D85092E85CE1ABCA15AC74927CD3EC</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>GoogleAnalytics</string>
+			<key>path</key>
+			<string>GoogleAnalytics</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>B4BAC00A16FC5D03F3DF0E27891CD050</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>wrapper.framework</string>
+			<key>name</key>
+			<string>MediaPlayer.framework</string>
+			<key>path</key>
+			<string>Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/MediaPlayer.framework</string>
+			<key>sourceTree</key>
+			<string>DEVELOPER_DIR</string>
 		</dict>
 		<key>BA6428E9F66FD5A23C0A2E06ED26CD2F</key>
 		<dict>
@@ -1143,41 +1678,6 @@
 			<key>xcLanguageSpecificationIdentifier</key>
 			<string>xcode.lang.ruby</string>
 		</dict>
-		<key>BAE4DE44591C7FEC166BFE136FD18201</key>
-		<dict>
-			<key>fileRef</key>
-			<string>3E4E89230EF59BC255123B67864ACF77</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>BBBE2B8544C96AE144C84EACCB6E53D3</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>4F4A4F4B852F43A898EC10950D93414F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>GoogleUtilities</string>
-			<key>path</key>
-			<string>GoogleUtilities</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>BC3CA7F9E30CC8F7E2DD044DD34432FC</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>BF6342C8B29F4CEEA088EFF7AB4DE362</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>BD108FD95E8A1A50EBA2CD041E7B83D2</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -1191,37 +1691,24 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>BF4456FB2BAA7D817779E3399041307B</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>6FEA11DA2EF809D3D6B3EC38C16DEFDA</string>
-			</array>
-			<key>isa</key>
-			<string>PBXHeadersBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>BF6342C8B29F4CEEA088EFF7AB4DE362</key>
+		<key>BD58B9B4E61ED81DD0738E2742C53F00</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>3E4E89230EF59BC255123B67864ACF77</string>
+				<string>21B8809332627F87AF4E3F2F035FAA44</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
 			<key>name</key>
-			<string>iOS</string>
+			<string>Frameworks</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>BFAC7AD5B989E129EC232DB026B7033D</key>
+		<key>C077E414DE55C2CD2A364FCD518BAAEB</key>
 		<dict>
 			<key>children</key>
 			<array>
-				<string>8BFDC45237EAE2389157B236C5BE7E2C</string>
+				<string>1EFE3D4D834F6B83376BF4707ABBAD4E</string>
 			</array>
 			<key>isa</key>
 			<string>PBXGroup</string>
@@ -1232,7 +1719,7 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>C732E516F3B18FC07005BC95EF1EAD17</key>
+		<key>C256E83D511CD155B0028B59F8FF1D80</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1241,13 +1728,73 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>CloudMessaging-Module.h</string>
+			<string>AdMob-Module.h</string>
 			<key>path</key>
-			<string>Headers/ModuleHeaders/CloudMessaging-Module.h</string>
+			<string>Headers/ModuleHeaders/AdMob-Module.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>C7DA2E3BB8AF5F7AC968168156A86EF1</key>
+		<key>C28B0ED07B6128EA62FC94355CCF6B68</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>AppInvite-Module.h</string>
+			<key>path</key>
+			<string>Headers/ModuleHeaders/AppInvite-Module.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>C2DE4AB6DF600828CC05389FBDA179E7</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GAIEcommercePromotion.h</string>
+			<key>path</key>
+			<string>Headers/Public/GAIEcommercePromotion.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>C3F402D74706D1196A0D27B53CE86810</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>archive.ar</string>
+			<key>name</key>
+			<string>libGTM_SystemVersion_external.a</string>
+			<key>path</key>
+			<string>Libraries/libGTM_SystemVersion_external.a</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>C441A349747BB04E3DF18F206C262F5A</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>archive.ar</string>
+			<key>name</key>
+			<string>libGTM_iPhone_external.a</string>
+			<key>path</key>
+			<string>Libraries/libGTM_iPhone_external.a</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>C474304C5B56B40B094FFEF42A656AF2</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1262,37 +1809,21 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>CC09B53297568EF4DF9A6D88F0E1D2F5</key>
+		<key>C6766BBDB8CEB27CF2ADAD7D7A958AF5</key>
 		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
+			<key>fileRef</key>
+			<string>FEDA9E1FE846BD0EAB41B4ED732433E6</string>
 			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>Core.h</string>
-			<key>path</key>
-			<string>Headers/GGLCore/Public/Core.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
 		</dict>
-		<key>CDD630339659AEF58D3529123E593395</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>archive.ar</string>
-			<key>name</key>
-			<string>libGTM_KVO_external.a</string>
-			<key>path</key>
-			<string>Libraries/libGTM_KVO_external.a</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>CFBD783B5E74C440922F60D6686154A5</key>
+		<key>C785E37E9093A3196F16C9A8A25AC7A9</key>
 		<dict>
 			<key>baseConfigurationReference</key>
 			<string>4BAF21FE0C79DD8692143160785717FA</string>
@@ -1354,6 +1885,32 @@
 			<key>name</key>
 			<string>Debug</string>
 		</dict>
+		<key>D0226C1D95F11F70803324B594795703</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>0310ED596365469604881825A49121B1</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>D0B26B0BE9A5818054740A63A65D08D0</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>JPSVolumeButtonHandler-prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
 		<key>D41D8CD98F00B204E9800998ECF8427E</key>
 		<dict>
 			<key>attributes</key>
@@ -1380,7 +1937,7 @@
 			<key>mainGroup</key>
 			<string>7DB346D0F39D3F0E887471402A8071AB</string>
 			<key>productRefGroup</key>
-			<string>E9A65EC5F483BDDDA717331A2D5E1DDD</string>
+			<string>64D553398286DE881DDC9BEED92E9B28</string>
 			<key>projectDirPath</key>
 			<string></string>
 			<key>projectReferences</key>
@@ -1389,41 +1946,36 @@
 			<string></string>
 			<key>targets</key>
 			<array>
-				<string>9EEFE07A97A21323AD53EA9F1A32802F</string>
+				<string>D8FDC08BF6F0664C2AE587B7F015C2E7</string>
+				<string>7E9CCCB3ED00B5BBBD1FE632E83BA083</string>
 			</array>
 		</dict>
-		<key>D87029D2B67F147B97412BC51430D98F</key>
+		<key>D8FDC08BF6F0664C2AE587B7F015C2E7</key>
 		<dict>
-			<key>children</key>
+			<key>buildConfigurationList</key>
+			<string>17A409BEA5EFF3E6925A0FF13A50E8D7</string>
+			<key>buildPhases</key>
 			<array>
-				<string>3B24B49C3B79C5C60273AE177DC66FFD</string>
-				<string>60D57FA395CEAB24AC4F23A3B473FDC5</string>
+				<string>E32BA1A4A305E6656E25E69E092B261C</string>
+				<string>2C1C4FB836A031B540805369655C234D</string>
+				<string>6E3CED6AD9CC069B824FFD27A048D99C</string>
 			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
 			<key>isa</key>
-			<string>PBXGroup</string>
+			<string>PBXNativeTarget</string>
 			<key>name</key>
-			<string>Google</string>
-			<key>path</key>
-			<string>Google</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
+			<string>JPSVolumeButtonHandler</string>
+			<key>productName</key>
+			<string>JPSVolumeButtonHandler</string>
+			<key>productReference</key>
+			<string>77550AC57DFF910273B339559401E082</string>
+			<key>productType</key>
+			<string>com.apple.product-type.framework</string>
 		</dict>
-		<key>DAD026D89AAF31DB9BBC29057738C710</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F396E22C5CEAF16F9723974E4749FF4E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>GoogleSymbolUtilities</string>
-			<key>path</key>
-			<string>GoogleSymbolUtilities</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>DD73575A0A497C2F41D5A37CD6C61901</key>
+		<key>DF368A8CBD93B2F9FEDA8A30B597F9AF</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1432,28 +1984,38 @@
 			<key>lastKnownFileType</key>
 			<string>archive.ar</string>
 			<key>name</key>
-			<string>libGTM_RoundedRectPath_external.a</string>
+			<string>libGTM_DebugUtils_external.a</string>
 			<key>path</key>
-			<string>Libraries/libGTM_RoundedRectPath_external.a</string>
+			<string>Libraries/libGTM_DebugUtils_external.a</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>DED0FB18C89EA81D8D9D0EA3E26B5ACF</key>
+		<key>E32BA1A4A305E6656E25E69E092B261C</key>
 		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>4BDF68B14903C0ADA88DE415AE1B627D</string>
+				<string>9681841A025BABC138D0CFEB86752D79</string>
+			</array>
 			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>archive.ar</string>
-			<key>name</key>
-			<string>libGTMStackTrace_external.a</string>
-			<key>path</key>
-			<string>Libraries/libGTMStackTrace_external.a</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
 		</dict>
-		<key>E3889EEF1D02A0C09E66875B74ECE6D8</key>
+		<key>E690D6055A50E6D5CC7E2757A55AD012</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>name</key>
+			<string>JPSVolumeButtonHandler</string>
+			<key>target</key>
+			<string>D8FDC08BF6F0664C2AE587B7F015C2E7</string>
+			<key>targetProxy</key>
+			<string>587DCDA692747E460685413E3DDAF622</string>
+		</dict>
+		<key>E762A0FB6C73566B52D0DD11378CCB15</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1462,69 +2024,13 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>GAITracker.h</string>
+			<string>GAIEcommerceFields.h</string>
 			<key>path</key>
-			<string>Headers/Public/GAITracker.h</string>
+			<string>Headers/Public/GAIEcommerceFields.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>E40E6377146AAFD32595FF48B10EA505</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>archive.ar</string>
-			<key>name</key>
-			<string>libGGLCore.a</string>
-			<key>path</key>
-			<string>Libraries/libGGLCore.a</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E40F15CB2E3FF6A1FCFB9B30A4B53250</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>archive.ar</string>
-			<key>name</key>
-			<string>libGSDK_Overload_external.a</string>
-			<key>path</key>
-			<string>Libraries/libGSDK_Overload_external.a</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E97EDF2F27A40E9442A03C07CBF75671</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>8F90DBFD8C349CFF196C62A5CEE33A8F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>E9A65EC5F483BDDDA717331A2D5E1DDD</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>AB00B2D7CFA7DD5E6DDCA874EA68DCD0</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Products</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>EA27FE43514AAA829A25E1F8E41C1DBA</key>
+		<key>F35A394618940B0B9E3D818D3572A4CC</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1539,64 +2045,6 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>EC7D18F4359501F9C15A0D6CE7EFE22A</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GAITrackedViewController.h</string>
-			<key>path</key>
-			<string>Headers/Public/GAITrackedViewController.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>EE1E4B8ECFB7B36B94F07EA639F4F82B</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>archive.ar</string>
-			<key>name</key>
-			<string>libGTMSessionFetcher_core_external.a</string>
-			<key>path</key>
-			<string>Libraries/libGTMSessionFetcher_core_external.a</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F396E22C5CEAF16F9723974E4749FF4E</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>E40F15CB2E3FF6A1FCFB9B30A4B53250</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F46E31899A3A84799BF90B53B7AD2972</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>archive.ar</string>
-			<key>name</key>
-			<string>libProtocolBuffers_external.a</string>
-			<key>path</key>
-			<string>Libraries/libProtocolBuffers_external.a</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
 		<key>F4F77B82F0FBF283B00A99E6AC80DE42</key>
 		<dict>
 			<key>includeInIndex</key>
@@ -1608,7 +2056,63 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>F9DD87C6547C973C385E307E5C0A023A</key>
+		<key>F8C8BE06135E2EEEE1AC53B69332641B</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>BD58B9B4E61ED81DD0738E2742C53F00</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>GoogleSymbolUtilities</string>
+			<key>path</key>
+			<string>GoogleSymbolUtilities</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FB27AC01BD688113AAE7062D97DF0986</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>JPSVolumeButtonHandler.modulemap</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FCFCCD414CB8CE33E61BE75924C6A01E</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>GAIDictionaryBuilder.h</string>
+			<key>path</key>
+			<string>Headers/Public/GAIDictionaryBuilder.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FD3B48CA4E3EC9F8EE53514B10808E7F</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>8FD593837FF556BAA3FDED076181552B</string>
+				<string>725E26D5DB175379A622285C024A4393</string>
+				<string>B4BAC00A16FC5D03F3DF0E27891CD050</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>iOS</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>FDA84D12A5DE718D0958078FFA9468CB</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1623,7 +2127,7 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>FB13BEF6AD503A0D46EC61D891B483ED</key>
+		<key>FEDA9E1FE846BD0EAB41B4ED732433E6</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -1631,40 +2135,8 @@
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GAIEcommercePromotion.h</string>
 			<key>path</key>
-			<string>Headers/Public/GAIEcommercePromotion.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>FEBBAF7ED4F9C56C38B22AAE1AE2A27C</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>archive.ar</string>
-			<key>name</key>
-			<string>libGTM_NSDictionary+URLArguments_external.a</string>
-			<key>path</key>
-			<string>Libraries/libGTM_NSDictionary+URLArguments_external.a</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>FEF2C6481BFEF27B6E061043F66FD2B1</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>name</key>
-			<string>GMRConfiguration.h</string>
-			<key>path</key>
-			<string>Headers/GGLCore/Public/GMRConfiguration.h</string>
+			<string>JPSVolumeButtonHandler-umbrella.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>

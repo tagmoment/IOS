@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import JPSVolumeButtonHandler
 
 // MARK: - Notifications Declarations
 let ImageFromCameraChosenNotificationName = "ImageFromCameraChosenNotificationName"
@@ -51,7 +52,9 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	var canvasZoomControl : TWImageScrollView?
 	var secondZoomControl : TWImageScrollView?
 	var workingZoomControl : TWImageScrollView?
+	
 	var timerHandler : TimerHandler?
+	var volumeButtonsHandler : JPSVolumeButtonHandler?
 	
 	@IBOutlet weak var logoLabel: UILabel!
 	@IBOutlet weak var userLabel: UILabel!
@@ -78,6 +81,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		viewChoreographer.mainViewController = self
 		inAppPurchaseDataProvider.delegate = self
 		inAppPurchaseDataProvider.fetchProducts()
+		self.startObservingVolumeChange()
 	}
 	
 	
@@ -86,6 +90,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		workingImageView = canvas
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainViewController.imageFromCameraChosenNotification(_:)), name: ImageFromCameraChosenNotificationName, object: nil)
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(UIApplicationDelegate.applicationWillTerminate(_:)), name: UIApplicationWillTerminateNotification, object: nil)
+		
 		masksViewController = ChooseMasksViewController(nibName: "ChooseMasksViewController", bundle: nil)
 		controlContainer.addViewWithConstraints(masksViewController.view, toTheRight: true)
 		

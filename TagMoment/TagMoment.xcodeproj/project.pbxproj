@@ -23,6 +23,7 @@
 		F11647861A880BC10094BEF4 /* TMFireFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11647851A880BC10094BEF4 /* TMFireFilter.swift */; };
 		F137FDD01A648CEF007B40B3 /* CameraSessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F137FDCF1A648CEF007B40B3 /* CameraSessionService.swift */; };
 		F13CC8E31B8B92A50095497A /* PayloadHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F13CC8E21B8B92A50095497A /* PayloadHolder.swift */; };
+		F14678F01CC2D00300F603E3 /* VolumeButtonsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14678EF1CC2D00300F603E3 /* VolumeButtonsHandler.swift */; };
 		F14A81431A58B0B300B5D14F /* TMCircleMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A81421A58B0B300B5D14F /* TMCircleMask.swift */; };
 		F14A81451A58B31500B5D14F /* TMWaveMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A81441A58B31500B5D14F /* TMWaveMask.swift */; };
 		F14A81471A58B52700B5D14F /* TMHeartMask.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A81461A58B52700B5D14F /* TMHeartMask.swift */; };
@@ -162,6 +163,7 @@
 		F11647851A880BC10094BEF4 /* TMFireFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMFireFilter.swift; sourceTree = "<group>"; };
 		F137FDCF1A648CEF007B40B3 /* CameraSessionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraSessionService.swift; sourceTree = "<group>"; };
 		F13CC8E21B8B92A50095497A /* PayloadHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayloadHolder.swift; sourceTree = "<group>"; };
+		F14678EF1CC2D00300F603E3 /* VolumeButtonsHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VolumeButtonsHandler.swift; sourceTree = "<group>"; };
 		F14A81421A58B0B300B5D14F /* TMCircleMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMCircleMask.swift; sourceTree = "<group>"; };
 		F14A81441A58B31500B5D14F /* TMWaveMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMWaveMask.swift; sourceTree = "<group>"; };
 		F14A81461A58B52700B5D14F /* TMHeartMask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMHeartMask.swift; sourceTree = "<group>"; };
@@ -442,6 +444,14 @@
 			path = Camera;
 			sourceTree = "<group>";
 		};
+		F14678EE1CC2CFEC00F603E3 /* VolumeButtonHandler */ = {
+			isa = PBXGroup;
+			children = (
+				F14678EF1CC2D00300F603E3 /* VolumeButtonsHandler.swift */,
+			);
+			path = VolumeButtonHandler;
+			sourceTree = "<group>";
+		};
 		F15AA38E1A99432E0045BFD3 /* Sharing */ = {
 			isa = PBXGroup;
 			children = (
@@ -503,6 +513,7 @@
 		F175A12B1AD8370200760025 /* MainView */ = {
 			isa = PBXGroup;
 			children = (
+				F14678EE1CC2CFEC00F603E3 /* VolumeButtonHandler */,
 				F1B1C4651BB32C2100A9CDC2 /* Timer */,
 				F161782F1B166FA400444D9E /* Menu */,
 				F175A12C1AD8370200760025 /* MainViewController.swift */,
@@ -842,6 +853,7 @@
 				F156B4281A5C918600B1E0EA /* TMMaskCasual.swift in Sources */,
 				F16864751B1D01B2007B61A1 /* CircleRectView.swift in Sources */,
 				F168646B1B1CEB8A007B61A1 /* VisualEffectsUtil.swift in Sources */,
+				F14678F01CC2D00300F603E3 /* VolumeButtonsHandler.swift in Sources */,
 				F172CF091B657B61006839EB /* AlbumContentsCollectionViewController.swift in Sources */,
 				F15AD4151B029D4000D18472 /* TMBottomHalfCircleMask.swift in Sources */,
 				F19620C71A881BDE00DCFB85 /* TMTravelFilter.swift in Sources */,

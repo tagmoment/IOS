@@ -49,7 +49,8 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 		loadMasks()
 		
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleRemoveProductsNotification), name: RemoveLockedProductsNotificationName, object: nil)
-		
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleVolumeButtonPressedNotification), name: TMVolumeUpButtonPressedNotificationName, object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleVolumeButtonPressedNotification), name: TMVolumeDownButtonPressedNotificationName, object: nil)
 		let startIndex = ChooseMasksViewController.lastMaskIndex
 		masksCarousel.scrollToItemAtIndex(startIndex, animated: false)
     }
@@ -82,6 +83,11 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 		
 		
 		masksCarousel.reloadData()
+	}
+	
+	func handleVolumeButtonPressedNotification()
+	{
+		self.takeButtonPressed(nil)
 	}
 	
 	func loadMasks()
@@ -155,7 +161,7 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 		return value;
 	}
 	
-	@IBAction func takeButtonPressed(sender: AnyObject) {
+	@IBAction func takeButtonPressed(sender: AnyObject?) {
 	
 		
 		if (self.masksChooseDelegate != nil)

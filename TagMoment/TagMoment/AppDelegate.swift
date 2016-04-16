@@ -35,8 +35,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 		gai.trackUncaughtExceptions = true  // report uncaught exceptions
 		gai.logger.logLevel = GAILogLevel.Verbose  // remove before app release
 	}
-
-	
-
 }
 

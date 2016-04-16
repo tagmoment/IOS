@@ -15,9 +15,11 @@ PODS:
   - GoogleSymbolUtilities (1.1.0)
   - GoogleUtilities (1.2.0):
     - GoogleSymbolUtilities (~> 1.0)
+  - JPSVolumeButtonHandler (1.0.0)
 
 DEPENDENCIES:
   - Google/Analytics
+  - JPSVolumeButtonHandler
 
 SPEC CHECKSUMS:
   Google: 61379f0072bc561a7e174d23a6cbe41bd6d8599c
@@ -26,5 +28,6 @@ SPEC CHECKSUMS:
   GoogleNetworkingUtilities: ec1e9911aca811eb18b7144394fee6168b607785
   GoogleSymbolUtilities: eb3965ea12710569c7b80db198a39e39b18613f7
   GoogleUtilities: 85f8ad6b251544286a97163133d042ec95f889c5
+  JPSVolumeButtonHandler: b056ec5c574fbd75a0637c527e25fe0197ec1648
 
 COCOAPODS: 0.39.0

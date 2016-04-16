@@ -4,6 +4,7 @@ use_frameworks!
 
 target 'TagMoment' do
 pod 'Google/Analytics'
+pod 'JPSVolumeButtonHandler'
 end
 
 target 'TagMomentTests' do
