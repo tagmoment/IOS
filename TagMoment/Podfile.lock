@@ -1,4 +1,5 @@
 PODS:
+  - DeviceKit (0.3.2)
   - Google/Analytics (2.0.3):
     - Google/Core
     - GoogleAnalytics (~> 3.12)
@@ -18,10 +19,12 @@ PODS:
   - JPSVolumeButtonHandler (1.0.0)
 
 DEPENDENCIES:
+  - DeviceKit
   - Google/Analytics
   - JPSVolumeButtonHandler
 
 SPEC CHECKSUMS:
+  DeviceKit: 79182140c0aa8daaf4f4b3920e0b079f5fa9db79
   Google: 61379f0072bc561a7e174d23a6cbe41bd6d8599c
   GoogleAnalytics: 9be1afdb8deeac4bb5f13ca7f7d3b9db2a1f43dc
   GoogleInterchangeUtilities: 427382e42d8a340038bec37c6fdfd316e14b5fa2

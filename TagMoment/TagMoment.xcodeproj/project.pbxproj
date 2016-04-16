@@ -1036,7 +1036,7 @@
 					"$(PROJECT_DIR)/TagMoment/Externals/TestFairy",
 				);
 				INFOPLIST_FILE = TagMoment/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1067,7 +1067,7 @@
 					"$(PROJECT_DIR)/TagMoment/Externals/TestFairy",
 				);
 				INFOPLIST_FILE = TagMoment/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

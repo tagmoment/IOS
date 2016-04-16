@@ -8,6 +8,7 @@
 
 import UIKit
 import MessageUI
+import DeviceKit
 
 let DislikeAlertMessage = "We Want to Make You Happy! Please Tell Us More About Your Experience"
 let LikeMessage = "Thank You for Your Positive Feedback. Please Rate Us On The App Store"
@@ -56,8 +57,16 @@ class FeedbackViewController: UIViewController, UIAlertViewDelegate, MFMailCompo
 		mc.mailComposeDelegate = self
 		mc.setSubject(emailTitle)
 		mc.setToRecipients(toRecipents)
-		
+		mc.setMessageBody(self.messageBody(), isHTML: false)
 		self.presentViewController(mc, animated: true, completion: nil)
+	}
+	
+	private func messageBody() -> String
+	{
+		let device = Device()
+		let appVersionString: String = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as! String
+
+		return ("Hi,\n I'm using \(device) on iOS \(device.systemVersion) with app version \(appVersionString)...\n")
 	}
 	
 	

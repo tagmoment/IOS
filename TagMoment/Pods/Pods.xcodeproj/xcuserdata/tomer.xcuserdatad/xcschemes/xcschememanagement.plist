@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>DeviceKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>JPSVolumeButtonHandler.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>7E9CCCB3ED00B5BBBD1FE632E83BA083</key>
+		<key>D8FDC08BF6F0664C2AE587B7F015C2E7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D8FDC08BF6F0664C2AE587B7F015C2E7</key>
+		<key>EF78824223C74AA13AE655CD2ACF32A3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FF075912262DAFAE3626F6642F022DE8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
