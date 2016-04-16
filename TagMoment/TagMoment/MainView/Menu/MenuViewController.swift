@@ -75,7 +75,7 @@ class MenuViewController: UIViewController, FeedbackViewControllerDelegate, UIGe
 	}
 	
 	@IBAction func inviteFriendsPressed(sender: AnyObject) {
-		let message = "Easily and creatively be a part of your pictures and capture your life moments. Download for free: https://itunes.apple.com/us/app/tagmoment-front-back-photography/id1055459044"
+		let message = "Easily and creatively be a part of your pictures and capture your life moments. Download for free: https://itunes.apple.com/us/app/tagmoment-front-back-photography/id1090349311"
 		let activityViewController = UIActivityViewController(activityItems: [message], applicationActivities: nil)
 		self.presentViewController(activityViewController, animated: true, completion: nil)
 	}
