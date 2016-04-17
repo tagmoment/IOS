@@ -55,6 +55,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	
 	var timerHandler : TimerHandler?
 	var volumeButtonsHandler : JPSVolumeButtonHandler?
+	var capturingImage : Bool = false
 	
 	@IBOutlet weak var logoLabel: UILabel!
 	@IBOutlet weak var userLabel: UILabel!
@@ -627,7 +628,12 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	}
 	
 	func captureButtonPressed() {
-		self.reportCameraCapture(self.isOnFirstStage())
+		if (self.capturingImage)
+		{
+			return;
+		}
+		
+		
 #if (arch(i386) || arch(x86_64)) && os(iOS)
 		canvas.image = UIImage(named: "image1.jpeg")
 		secondImageView.image = UIImage(named: "image2.jpeg")
@@ -661,13 +667,17 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			
 		}
 	
+		self.capturingImage = true
+		self.reportCameraCapture(self.isOnFirstStage())
+
 		makeSnapshotEffect()
 		UIApplication.sharedApplication().beginIgnoringInteractionEvents()
 		sessionService.captureImage { (image: UIImage?, error: NSError!) -> Void in
 			UIApplication.sharedApplication().endIgnoringInteractionEvents()
 			if (error != nil)
 			{
-				/* print error message */
+				print("\(error)")
+				self.capturingImage = false;
 				return
 			}
 			
@@ -699,6 +709,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 					
 				}
 			}
+			self.capturingImage = false;
 		}
 #endif
 	}
