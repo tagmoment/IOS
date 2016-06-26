@@ -24,15 +24,25 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-TagMomentTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>D8FDC08BF6F0664C2AE587B7F015C2E7</key>
+		<key>0A826CD28B8C8814EE5C0EE53844DAA4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E9E3442CA87B912AE241F42112C224A9</key>
+		<key>7CAE735DC7CC4BB2FAA4270FE402C39B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D8FDC08BF6F0664C2AE587B7F015C2E7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -82,14 +82,3 @@ strip_invalid_archs() {
   fi
 }
 
-
-if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/Cloudinary/Cloudinary.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/DeviceKit/DeviceKit.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/JPSVolumeButtonHandler/JPSVolumeButtonHandler.framework"
-fi
-if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "$BUILT_PRODUCTS_DIR/Cloudinary/Cloudinary.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/DeviceKit/DeviceKit.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/JPSVolumeButtonHandler/JPSVolumeButtonHandler.framework"
-fi
