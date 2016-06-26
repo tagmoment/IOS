@@ -13,6 +13,7 @@
 #import "iCarousel.h"
 #import "LeftAligned.h"
 #import "TWImageScrollView.h"
+#import “Cloudinary/Cloudinary.h”
 #import <JPSVolumeButtonHandler/JPSVolumeButtonHandler.h>
 #import <Google/Analytics.h>
 

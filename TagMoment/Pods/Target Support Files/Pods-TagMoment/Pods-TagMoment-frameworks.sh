@@ -84,10 +84,12 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-TagMoment/Cloudinary.framework"
   install_framework "Pods-TagMoment/DeviceKit.framework"
   install_framework "Pods-TagMoment/JPSVolumeButtonHandler.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-TagMoment/Cloudinary.framework"
   install_framework "Pods-TagMoment/DeviceKit.framework"
   install_framework "Pods-TagMoment/JPSVolumeButtonHandler.framework"
 fi

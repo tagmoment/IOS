@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '5ACDDA3BDF9DBCC506E91E6B'
+               BlueprintIdentifier = '3E1FD5033DC61519C0E0EEB8'
                BlueprintName = 'JPSVolumeButtonHandler'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'JPSVolumeButtonHandler.framework'>

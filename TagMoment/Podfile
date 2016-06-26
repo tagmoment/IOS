@@ -6,6 +6,7 @@ target 'TagMoment' do
 pod 'Google/Analytics'
 pod 'JPSVolumeButtonHandler'
 pod 'DeviceKit'
+pod 'Cloudinary'
 end
 
 target 'TagMomentTests' do
