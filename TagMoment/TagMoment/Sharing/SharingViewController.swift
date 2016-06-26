@@ -22,6 +22,7 @@ protocol SharingControllerDelegate : class{
 
 class SharingViewController: UIViewController, TMTextFieldDelegate, UICollectionViewDataSource, LeftAlignedCollectionViewDelegate, UIDocumentInteractionControllerDelegate	{
 	
+	var imageShared = false
 	let ClosedContraint = CGFloat(-100)
 	let CellIdent = "cellIdent"
 	let MaxLettersInTag = 15
@@ -470,6 +471,10 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 		
 	}
 	
+	func documentInteractionController(controller: UIDocumentInteractionController, didEndSendingToApplication application: String?) {
+		uploadImageWithPath(self.sharingDelegate?.imageForSharing().absoluteString)
+	}
+	
 	func clearState()
 	{
 		TagTextProvider.clear()
@@ -507,22 +512,6 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 		return result;
 	}
 	
-	private func nonNativeShareRequestedWithPath(imagePath : String, UTI : String, annotation : [String : String]? = nil)
-	{
-		if let delegate = self.sharingDelegate
-		{
-			delegate.textEditingDidEnd()
-			NSNotificationCenter.defaultCenter().removeObserver(self)
-
-			documentationInteractionController = UIDocumentInteractionController(URL: NSURL(fileURLWithPath: "file://" + imagePath))
-			documentationInteractionController?.UTI = UTI
-			documentationInteractionController?.annotation = annotation
-			documentationInteractionController?.delegate = self
-			documentationInteractionController?.presentOptionsMenuFromRect(self.view.superview!.superview!.bounds, inView: self.view.superview!.superview!, animated: true)
-
-		}
-	}
-	
 	@IBAction func facebookShareRequested(sender: AnyObject) {
 		self.shareTo(SLServiceTypeFacebook);
 	}
@@ -541,8 +530,27 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 			let mySLComposerSheet = SLComposeViewController(forServiceType: type)
 			mySLComposerSheet.setInitialText(TagTextProvider.addAllHashtags(text) + " #tagmoment")
 			mySLComposerSheet.addImage(self.sharingDelegate!.imageForCaching())
-			mySLComposerSheet.completionHandler = nil
+			mySLComposerSheet.completionHandler = {(result : SLComposeViewControllerResult) -> Void in
+				if result == .Done
+				{
+					self.uploadImageWithPath(self.sharingDelegate?.imageForSharing().absoluteString)
+				}
+					
+			}
 			UIApplication.sharedApplication().delegate?.window??.rootViewController?.presentViewController(mySLComposerSheet, animated: true, completion: nil)
+		}
+	}
+	
+	private func uploadImageWithPath(path : String?)
+	{
+		if imageShared == true
+		{
+			return
+		}
+		if let path = path
+		{
+			imageShared = true
+			ImageUploadService.SharedInstance().uploadImageWithURI(path)
 		}
 	}
 	

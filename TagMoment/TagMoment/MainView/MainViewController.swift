@@ -542,8 +542,13 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	
 	func doneButtonPressed() {
 		
+		if self.sharingController != nil && self.sharingController.imageShared != true
+		{
+		ImageUploadService.SharedInstance().uploadImageWithURI(imageForSharing().absoluteString)
+		}
 		if (SettingsHelper.shouldPrompt())
 		{
+			
 			let alertViewMessage = "Do you want to save the new moment to your phone album?"
 			
 			let view = UIAlertView(title: "", message: alertViewMessage, delegate: self, cancelButtonTitle: "Cancel", otherButtonTitles: "Save", "No")
