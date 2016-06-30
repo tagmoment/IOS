@@ -20,25 +20,20 @@ class VisualEffectsUtil
 {
 	static func initBlurredOverLay(effectStyle: TagMomentBlurEffect, toView holder: UIView? = nil) -> UIView?
 	{
-		
-		if #available(iOS 8.0, *) {
-			if !UIAccessibilityIsReduceTransparencyEnabled() {
-				let blurEffect = UIBlurEffect(style: UIBlurEffectStyle(rawValue: effectStyle.rawValue)!)
-    				let blurredView = UIVisualEffectView(effect: blurEffect)
-					if let view = holder
-					{
-						view.pinSubViewToAllEdges(blurredView);
-					}
-				
-    				return blurredView
-			} else if let view = holder{
-				
-				view.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
+		if !UIAccessibilityIsReduceTransparencyEnabled() {
+			let blurEffect = UIBlurEffect(style: UIBlurEffectStyle(rawValue: effectStyle.rawValue)!)
+			let blurredView = UIVisualEffectView(effect: blurEffect)
+			if let view = holder
+			{
+				view.pinSubViewToAllEdges(blurredView);
 			}
-		} else if let view = holder {
+			
+			return blurredView
+			
+		} else if let view = holder{
+				
 			view.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
 		}
-		
-		return nil;
+		return nil
 	}
 }

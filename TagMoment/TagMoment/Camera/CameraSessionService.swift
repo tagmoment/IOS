@@ -120,18 +120,12 @@ class CameraSessionService : NSObject{
 	
 	func showAlertRequestingCameraPermission()
 	{
-		if #available(iOS 8.0, *) {
-			let alert = UIAlertController(title: "IMPORTANT", message: "This app requires Camera permissions", preferredStyle: UIAlertControllerStyle.Alert)
-			alert.addAction(UIAlertAction(title: "Settings", style: .Cancel) { alert in
+		let alert = UIAlertController(title: "IMPORTANT", message: "This app requires Camera permissions", preferredStyle: UIAlertControllerStyle.Alert)
+		alert.addAction(UIAlertAction(title: "Settings", style: .Cancel) { alert in
 				UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
 				})
-			let mainController = UIApplication.sharedApplication().delegate?.window!?.rootViewController! as! MainViewController
+		let mainController = UIApplication.sharedApplication().delegate?.window!?.rootViewController! as! MainViewController
 			mainController.presentViewController(alert, animated: true, completion: nil)
-			
-		} else {
-			// Fallback on earlier versions
-		}
-		
 	}
 	
 	func flashStateChanged(newFlashState : AVCaptureFlashMode)

@@ -48,26 +48,16 @@ class CameraRollCollectionViewCell: UICollectionViewCell {
 	
     override func awakeFromNib() {
         super.awakeFromNib()
-		if #available(iOS 8.0, *) {
-		    if let blurView = VisualEffectsUtil.initBlurredOverLay(TagMomentBlurEffect.Dark) as? UIVisualEffectView
-    		{
-    			self.blurredView = blurView
+		if let blurView = VisualEffectsUtil.initBlurredOverLay(TagMomentBlurEffect.Dark) as? UIVisualEffectView
+		{
+			self.blurredView = blurView
+			self.blurredView.autoresizingMask = UIViewAutoresizing.None
     			
-    			self.blurredView.autoresizingMask = UIViewAutoresizing.None
-    			
-    			self.albumName.removeFromSuperview()
-    			blurView.contentView.addSubview(albumName)
-    			self.addSubview(blurredView)
-    			self.bringSubviewToFront(albumName)
+			self.albumName.removeFromSuperview()
+			blurView.contentView.addSubview(albumName)
+			self.addSubview(blurredView)
+			self.bringSubviewToFront(albumName)
     
-    		}
 		}
-		else {
-		    // Fallback on earlier versions
-		}
-//		holder.backgroundColor = UIColor(white: 0.0, alpha: 0.5)
 	}
-	
-	
-
 }
