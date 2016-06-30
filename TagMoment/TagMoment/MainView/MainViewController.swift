@@ -542,9 +542,10 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	
 	func doneButtonPressed() {
 		
-		if self.sharingController != nil && self.sharingController.imageShared != true
+		if self.sharingController != nil
 		{
-		ImageUploadService.SharedInstance().uploadImageWithURI(imageForSharing().absoluteString)
+			self.sharingController.uploadImage()
+			self.sharingController.imageShared = false;
 		}
 		if (SettingsHelper.shouldPrompt())
 		{

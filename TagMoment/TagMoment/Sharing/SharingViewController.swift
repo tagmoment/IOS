@@ -472,7 +472,7 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 	}
 	
 	func documentInteractionController(controller: UIDocumentInteractionController, didEndSendingToApplication application: String?) {
-		uploadImageWithPath(self.sharingDelegate?.imageForSharing().absoluteString)
+		uploadImage()
 	}
 	
 	func clearState()
@@ -533,7 +533,7 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 			mySLComposerSheet.completionHandler = {(result : SLComposeViewControllerResult) -> Void in
 				if result == .Done
 				{
-					self.uploadImageWithPath(self.sharingDelegate?.imageForSharing().absoluteString)
+					self.uploadImage()
 				}
 					
 			}
@@ -541,17 +541,16 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 		}
 	}
 	
-	private func uploadImageWithPath(path : String?)
+	func uploadImage()
 	{
 		if imageShared == true
 		{
 			return
 		}
-		if let path = path
-		{
-			imageShared = true
-			ImageUploadService.SharedInstance().uploadImageWithURI(path)
-		}
+		
+		imageShared = true
+		let image = self.sharingDelegate?.imageForCaching()
+		ImageUploadService.sharedInstance().uploadImage(image)
 	}
 	
 }

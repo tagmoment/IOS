@@ -80,6 +80,7 @@
 		F17672741AA515FA00588865 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F17672731AA515FA00588865 /* OpenGLES.framework */; };
 		F17A416D1AB477930074E5F5 /* TMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17A416C1AB477930074E5F5 /* TMTextField.swift */; };
 		F17A41711AB47FAC0074E5F5 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = F17A41701AB47FAC0074E5F5 /* iCarousel.m */; };
+		F18875A51D20530700D01A4C /* ImageUploadService.m in Sources */ = {isa = PBXBuildFile; fileRef = F18875A41D20530700D01A4C /* ImageUploadService.m */; };
 		F19128BB1BB0908000CAFECD /* TWImageScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F19128BA1BB0908000CAFECD /* TWImageScrollView.m */; };
 		F19128BD1BB09F6900CAFECD /* FileHandlingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19128BC1BB09F6900CAFECD /* FileHandlingService.swift */; };
 		F19620C11A881A8800DCFB85 /* TMMusicFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19620C01A881A8800DCFB85 /* TMMusicFilter.swift */; };
@@ -114,8 +115,6 @@
 		F1B4ECE61A88082B00C11FEF /* TMArtistFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B4ECE51A88082B00C11FEF /* TMArtistFilter.swift */; };
 		F1B677E51BEA6C060033583E /* InAppPurchaseDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B677E41BEA6C060033583E /* InAppPurchaseDataProvider.swift */; };
 		F1B677E71BEAC95F0033583E /* InAppPurchaseRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B677E61BEAC95F0033583E /* InAppPurchaseRepo.swift */; };
-		F1BF766A1D204C270087D2E8 /* 3rdPartyDefs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BF76691D204C270087D2E8 /* 3rdPartyDefs.swift */; };
-		F1BF766E1D204C380087D2E8 /* ImageUploadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BF766D1D204C380087D2E8 /* ImageUploadService.swift */; };
 		F1C3226F1B41D1F800091FB9 /* ViewChoreographer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C3226E1B41D1F800091FB9 /* ViewChoreographer.swift */; };
 		F1CC18341A97911300DB77F2 /* TakeImageNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CC18331A97911300DB77F2 /* TakeImageNavBar.swift */; };
 		F1D381B71C1F53210042C62B /* SmallScreenSharingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1D381B61C1F53210042C62B /* SmallScreenSharingViewController.xib */; };
@@ -230,6 +229,8 @@
 		F17A416C1AB477930074E5F5 /* TMTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMTextField.swift; sourceTree = "<group>"; };
 		F17A416F1AB47FAC0074E5F5 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		F17A41701AB47FAC0074E5F5 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
+		F18875A31D20530700D01A4C /* ImageUploadService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUploadService.h; sourceTree = "<group>"; };
+		F18875A41D20530700D01A4C /* ImageUploadService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUploadService.m; sourceTree = "<group>"; };
 		F19128B91BB0908000CAFECD /* TWImageScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWImageScrollView.h; sourceTree = "<group>"; };
 		F19128BA1BB0908000CAFECD /* TWImageScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWImageScrollView.m; sourceTree = "<group>"; };
 		F19128BC1BB09F6900CAFECD /* FileHandlingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileHandlingService.swift; sourceTree = "<group>"; };
@@ -265,8 +266,6 @@
 		F1B4ECE51A88082B00C11FEF /* TMArtistFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMArtistFilter.swift; sourceTree = "<group>"; };
 		F1B677E41BEA6C060033583E /* InAppPurchaseDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppPurchaseDataProvider.swift; sourceTree = "<group>"; };
 		F1B677E61BEAC95F0033583E /* InAppPurchaseRepo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppPurchaseRepo.swift; sourceTree = "<group>"; };
-		F1BF76691D204C270087D2E8 /* 3rdPartyDefs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = 3rdPartyDefs.swift; sourceTree = "<group>"; };
-		F1BF766D1D204C380087D2E8 /* ImageUploadService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUploadService.swift; sourceTree = "<group>"; };
 		F1C3226E1B41D1F800091FB9 /* ViewChoreographer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewChoreographer.swift; sourceTree = "<group>"; };
 		F1CC18331A97911300DB77F2 /* TakeImageNavBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakeImageNavBar.swift; sourceTree = "<group>"; };
 		F1D381B61C1F53210042C62B /* SmallScreenSharingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmallScreenSharingViewController.xib; sourceTree = "<group>"; };
@@ -546,7 +545,6 @@
 		F17672641AA515BF00588865 /* Externals */ = {
 			isa = PBXGroup;
 			children = (
-				F1BF76691D204C270087D2E8 /* 3rdPartyDefs.swift */,
 				F17A416E1AB47FAC0074E5F5 /* iCarousel */,
 				F17672651AA515BF00588865 /* TestFairy */,
 			);
@@ -660,7 +658,8 @@
 		F1BF766C1D204C380087D2E8 /* ImageUpload */ = {
 			isa = PBXGroup;
 			children = (
-				F1BF766D1D204C380087D2E8 /* ImageUploadService.swift */,
+				F18875A31D20530700D01A4C /* ImageUploadService.h */,
+				F18875A41D20530700D01A4C /* ImageUploadService.m */,
 			);
 			path = ImageUpload;
 			sourceTree = "<group>";
@@ -913,7 +912,6 @@
 				F17A416D1AB477930074E5F5 /* TMTextField.swift in Sources */,
 				F1A7B7641A585DF80033FE64 /* TMVerticalRectMask.swift in Sources */,
 				F19128BB1BB0908000CAFECD /* TWImageScrollView.m in Sources */,
-				F1BF766E1D204C380087D2E8 /* ImageUploadService.swift in Sources */,
 				F1ECA3781A88167A0018EFA2 /* TMLoveFilter.swift in Sources */,
 				F14A81431A58B0B300B5D14F /* TMCircleMask.swift in Sources */,
 				F19620CB1A881D3E00DCFB85 /* TMFilterFactory.swift in Sources */,
@@ -924,7 +922,6 @@
 				F16864691B1CE2BD007B61A1 /* MainViewController+Menu.swift in Sources */,
 				F1D381BB1C1F5F920042C62B /* SettingsHelper.swift in Sources */,
 				F16D27761A9A712B0000F759 /* SharingViewController.swift in Sources */,
-				F1BF766A1D204C270087D2E8 /* 3rdPartyDefs.swift in Sources */,
 				F14CF9301B2C3D0000178461 /* CameraRollCollectionViewCell.swift in Sources */,
 				F1AA60461CBED7A9000F614F /* MainViewController+Reporting.swift in Sources */,
 				F14FDB0B1B0BDDBD002C4A5D /* TMBubbleMask.swift in Sources */,
@@ -972,6 +969,7 @@
 				F1D4B6AF1A8809AD00396E25 /* TMSunsetFilter.swift in Sources */,
 				F1DDA81F1AD99D730005DEDD /* MainViewController+SmallScreen.swift in Sources */,
 				F109CE9E1A56F8770011CA55 /* AppDelegate.swift in Sources */,
+				F18875A51D20530700D01A4C /* ImageUploadService.m in Sources */,
 				F10185951A67434F003F906E /* ImageProcessingUtil.swift in Sources */,
 				F19620C91A881C5200DCFB85 /* TMCloudFilter.swift in Sources */,
 				F17541BF1BE40494004D2E40 /* FilterStateRepository.swift in Sources */,

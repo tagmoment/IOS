@@ -27,7 +27,7 @@ class TagTextProvider {
 		"\u{e33a}", "\u{e34b}", "\u{e252}", "\u{e13e}", "\u{e502}"]
 
 	
-	static var TagsDataSourceWords = ["love", "menow", "cute", "photooftheday","happy","beautiful", "selfie", "girl", "picoftheday", "smile"," friends", "fun","fashion", "summer","food","amazing", "swag","style","family","life","lol", "pretty","sun","art","cool","funny","music","eyes","night", "beach","sky", "nice", "home", "lovit", "dog", "tattoo", "good", "best", "blessed",
+	static var TagsDataSourceWords = ["CPT", "love", "menow", "cute", "photooftheday","happy","beautiful", "selfie", "girl", "picoftheday", "smile"," friends", "fun","fashion", "summer","food","amazing", "swag","style","family","life","lol", "pretty","sun","art","cool","funny","music","eyes","night", "beach","sky", "nice", "home", "lovit", "dog", "tattoo", "good", "best", "blessed",
 		"peace", "boyfriend", "she", /*"snow", "christmas", "sweet", "yummy", "school",
 		"sea", "coffee", "sunset", "sunshine", "cat", "light", "dark", "work", "haha",
 		"party", "crazy", "laugh", "excited"*/ ]
