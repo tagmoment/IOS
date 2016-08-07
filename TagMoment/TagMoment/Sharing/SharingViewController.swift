@@ -50,7 +50,7 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
     override func viewDidLoad() {
         super.viewDidLoad()
 		tagsDataSource = self.sortDataSource(TagTextProvider.TagsDataSourceWords, emojis: TagTextProvider.emojisContainer)
-		self.textField.keyboardType = .ASCIICapable
+//		self.textField.keyboardType = .ASCIICapable
 		tagsCollectionView.registerNib(UINib(nibName: "TagsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: CellIdent)
 		tagsCollectionView.allowsMultipleSelection = true
 		let leftAlignedLayout = tagsCollectionView.collectionViewLayout as! LeftAligned

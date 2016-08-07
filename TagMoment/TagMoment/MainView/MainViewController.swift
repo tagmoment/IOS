@@ -42,7 +42,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	var originalImageSecondary : UIImage?
 	
 	var sessionService : CameraSessionService!
-	let viewChoreographer : ViewChoreographer = ViewChoreographer()
+	let viewChoreographer = ViewChoreographer()
 	
 	var blurredView : UIView?
 	var workingImageView : UIImageView?
@@ -56,6 +56,9 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	var timerHandler : TimerHandler?
 	var volumeButtonsHandler : JPSVolumeButtonHandler?
 	var capturingImage : Bool = false
+	let imageService = PhotosLibraryService()
+
+	
 	
 	@IBOutlet weak var logoLabel: UILabel!
 	@IBOutlet weak var userLabel: UILabel!
@@ -547,6 +550,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			self.sharingController.uploadImage()
 			self.sharingController.imageShared = false;
 		}
+		
 		if (SettingsHelper.shouldPrompt())
 		{
 			
@@ -561,7 +565,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		if (SettingsHelper.shouldSaveToCameraRoll())
 		{
 			let imageToSave = imageForCaching()
-			UIImageWriteToSavedPhotosAlbum(imageToSave, nil, nil, nil)
+			self.imageService.saveImageToAlbum(imageToSave)
 		}
 		
 		self.retakeImageRequested()
@@ -576,7 +580,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			case 1:
 				SettingsHelper.saveToCameraRollSaveState()
 				let imageToSave = imageForCaching()
-				UIImageWriteToSavedPhotosAlbum(imageToSave, nil, nil, nil)
+				self.imageService.saveImageToAlbum(imageToSave)
 				
 			self.retakeImageRequested()
 			case 2:

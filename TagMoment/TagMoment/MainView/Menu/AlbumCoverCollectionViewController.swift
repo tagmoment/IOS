@@ -9,7 +9,7 @@
 import UIKit
 import AssetsLibrary
 
-let AlbomCoverReuseIndent = "Cell"
+let AlbumCoverReuseIndent = "Cell"
 
 class AlbumCoverCollectionViewController: UICollectionViewController {
 	var groups : [ALAssetsGroup]!
@@ -21,7 +21,7 @@ class AlbumCoverCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-		self.collectionView!.registerNib(UINib(nibName: "CameraRollCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: AlbomCoverReuseIndent)
+		self.collectionView!.registerNib(UINib(nibName: "CameraRollCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: AlbumCoverReuseIndent)
 	}
 	
 	override func viewDidAppear(animated: Bool) {
@@ -34,7 +34,7 @@ class AlbumCoverCollectionViewController: UICollectionViewController {
 	}
 	/* Mark -: CollectionViewDelegation and Datasource */
 	override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-		let cell = collectionView.dequeueReusableCellWithReuseIdentifier(AlbomCoverReuseIndent, forIndexPath: indexPath) as! CameraRollCollectionViewCell
+		let cell = collectionView.dequeueReusableCellWithReuseIdentifier(AlbumCoverReuseIndent, forIndexPath: indexPath) as! CameraRollCollectionViewCell
 		
 		let group = groups[indexPath.item]
 		let urls = assetsUrls[group]

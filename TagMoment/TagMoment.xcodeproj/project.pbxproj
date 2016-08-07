@@ -117,6 +117,7 @@
 		F1B677E71BEAC95F0033583E /* InAppPurchaseRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1B677E61BEAC95F0033583E /* InAppPurchaseRepo.swift */; };
 		F1C3226F1B41D1F800091FB9 /* ViewChoreographer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1C3226E1B41D1F800091FB9 /* ViewChoreographer.swift */; };
 		F1CC18341A97911300DB77F2 /* TakeImageNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CC18331A97911300DB77F2 /* TakeImageNavBar.swift */; };
+		F1D03D5A1D4FBEC900F4F046 /* PhotosLibraryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D03D591D4FBEC900F4F046 /* PhotosLibraryService.swift */; };
 		F1D381B71C1F53210042C62B /* SmallScreenSharingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1D381B61C1F53210042C62B /* SmallScreenSharingViewController.xib */; };
 		F1D381B91C1F5C180042C62B /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F1D381B81C1F5C180042C62B /* Settings.bundle */; };
 		F1D381BB1C1F5F920042C62B /* SettingsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1D381BA1C1F5F920042C62B /* SettingsHelper.swift */; };
@@ -268,6 +269,7 @@
 		F1B677E61BEAC95F0033583E /* InAppPurchaseRepo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InAppPurchaseRepo.swift; sourceTree = "<group>"; };
 		F1C3226E1B41D1F800091FB9 /* ViewChoreographer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewChoreographer.swift; sourceTree = "<group>"; };
 		F1CC18331A97911300DB77F2 /* TakeImageNavBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakeImageNavBar.swift; sourceTree = "<group>"; };
+		F1D03D591D4FBEC900F4F046 /* PhotosLibraryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosLibraryService.swift; sourceTree = "<group>"; };
 		F1D381B61C1F53210042C62B /* SmallScreenSharingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmallScreenSharingViewController.xib; sourceTree = "<group>"; };
 		F1D381B81C1F5C180042C62B /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		F1D381BA1C1F5F920042C62B /* SettingsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsHelper.swift; sourceTree = "<group>"; };
@@ -354,6 +356,7 @@
 				F1B677E61BEAC95F0033583E /* InAppPurchaseRepo.swift */,
 				F1D381BA1C1F5F920042C62B /* SettingsHelper.swift */,
 				F1AA60411CBEC322000F614F /* GoogleAnalyticsReporter.swift */,
+				F1D03D591D4FBEC900F4F046 /* PhotosLibraryService.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -920,6 +923,7 @@
 				F17541C21BE4C033004D2E40 /* MenuViewController.swift in Sources */,
 				F1AE759D1AFAB65900A8335B /* MainViewController+CameraViews.swift in Sources */,
 				F16864691B1CE2BD007B61A1 /* MainViewController+Menu.swift in Sources */,
+				F1D03D5A1D4FBEC900F4F046 /* PhotosLibraryService.swift in Sources */,
 				F1D381BB1C1F5F920042C62B /* SettingsHelper.swift in Sources */,
 				F16D27761A9A712B0000F759 /* SharingViewController.swift in Sources */,
 				F14CF9301B2C3D0000178461 /* CameraRollCollectionViewCell.swift in Sources */,
