@@ -14,6 +14,7 @@
 #import "LeftAligned.h"
 #import "TWImageScrollView.h"
 #import "ImageUploadService.h"
+#import "NSString+Content.h"
 #import <Google/Analytics.h>
 #import <JPSVolumeButtonHandler/JPSVolumeButtonHandler.h>
 

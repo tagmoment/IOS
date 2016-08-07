@@ -130,6 +130,7 @@
 		F1EC479C1ABDFE3700081CDF /* TagsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F1EC479A1ABDFE3700081CDF /* TagsCollectionViewCell.xib */; };
 		F1ECA3741A88157A0018EFA2 /* TMVintageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECA3731A88157A0018EFA2 /* TMVintageFilter.swift */; };
 		F1ECA3781A88167A0018EFA2 /* TMLoveFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECA3771A88167A0018EFA2 /* TMLoveFilter.swift */; };
+		F1FE8E171D57CB8F009AF62F /* NSString+Content.m in Sources */ = {isa = PBXBuildFile; fileRef = F1FE8E161D57CB8F009AF62F /* NSString+Content.m */; };
 		FCC3193A05B2B7F0DE44F759 /* Pods_TagMomentTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4CB02848E72FFDE2B76FE80 /* Pods_TagMomentTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -282,6 +283,8 @@
 		F1EC479A1ABDFE3700081CDF /* TagsCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagsCollectionViewCell.xib; sourceTree = "<group>"; };
 		F1ECA3731A88157A0018EFA2 /* TMVintageFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMVintageFilter.swift; sourceTree = "<group>"; };
 		F1ECA3771A88167A0018EFA2 /* TMLoveFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TMLoveFilter.swift; sourceTree = "<group>"; };
+		F1FE8E151D57CB8F009AF62F /* NSString+Content.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Content.h"; sourceTree = "<group>"; };
+		F1FE8E161D57CB8F009AF62F /* NSString+Content.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Content.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -347,6 +350,8 @@
 		F10185921A67434F003F906E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				F1FE8E151D57CB8F009AF62F /* NSString+Content.h */,
+				F1FE8E161D57CB8F009AF62F /* NSString+Content.m */,
 				F10185931A67434F003F906E /* ImageProcessingUtil.swift */,
 				F10185941A67434F003F906E /* ViewLayoutUtils.swift */,
 				F1B190F91AAE4DDB0001B86E /* Array+Shuffle.swift */,
@@ -928,6 +933,7 @@
 				F16D27761A9A712B0000F759 /* SharingViewController.swift in Sources */,
 				F14CF9301B2C3D0000178461 /* CameraRollCollectionViewCell.swift in Sources */,
 				F1AA60461CBED7A9000F614F /* MainViewController+Reporting.swift in Sources */,
+				F1FE8E171D57CB8F009AF62F /* NSString+Content.m in Sources */,
 				F14FDB0B1B0BDDBD002C4A5D /* TMBubbleMask.swift in Sources */,
 				F175A12E1AD8370200760025 /* MainViewController.swift in Sources */,
 				F14C270A1AC9E86700C19968 /* TMSunFilter.swift in Sources */,

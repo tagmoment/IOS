@@ -151,8 +151,12 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 			self.tagsCollectionView.deselectItemAtIndexPath(self.chosenWordIndex!, animated: true)
 			self.collectionView(self.tagsCollectionView, didDeselectItemAtIndexPath: self.chosenWordIndex!)
 			self.chosenWordIndex = nil
-			
-			
+		}
+		else if (self.chosenEmojiIndex != nil && !string.isEmpty)
+		{
+			self.tagsCollectionView.deselectItemAtIndexPath(self.chosenEmojiIndex!, animated: true)
+			self.collectionView(self.tagsCollectionView, didDeselectItemAtIndexPath: self.chosenEmojiIndex!)
+			self.chosenEmojiIndex = nil
 		}
 		
 		return string.isEmpty

@@ -63,7 +63,7 @@ class TagTextProvider {
 	class func addTextByRules(string : String) -> String
 	{
 		let input = removeSpaces(string)
-		let isInputEmoji = self.emojisContainer.contains(input)
+		let isInputEmoji = self.emojisContainer.contains(input) || NSString(string: input).hasEmojis()
 		let isInputSavedWord = self.TagsDataSourceWords.contains(input)
 		
 		if currentString == nil
@@ -255,6 +255,12 @@ class TagTextProvider {
 	{
 		let allowedCharSet = NSCharacterSet.alphanumericCharacterSet().mutableCopy() as! NSMutableCharacterSet
 		allowedCharSet.addCharactersInString("_")
+		
+		if NSString(string: string).hasEmojis()
+		{
+			return true
+		}
+		
 		if string.rangeOfCharacterFromSet(allowedCharSet) != nil
 		{
 			if (currentTyping == nil && Int(string) != nil)
