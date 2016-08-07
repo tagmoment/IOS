@@ -41,6 +41,7 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 	@IBOutlet weak var tagsHeightConstraint: NSLayoutConstraint!
 	@IBOutlet weak var tagsCollectionView: UICollectionView!
 	
+	@IBOutlet weak var tagsCenterConstraint: NSLayoutConstraint!
 	@IBOutlet weak var facebook_share_button: UIButton!
 	@IBOutlet weak var twitter_share_button: UIButton!
 	@IBOutlet weak var more_share_button: UIButton!
@@ -245,10 +246,6 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 	
 	func prepareSocialButtonsAnimationState()
 	{
-		if MainViewController.isSmallestScreen()
-		{
-			return;
-		}
 		
 		for view in [self.facebook_share_button, self.twitter_share_button, self.more_share_button]
 		{
@@ -265,12 +262,6 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 	}
 	func animateButtonEntrance()
 	{
-		if MainViewController.isSmallestScreen()
-		{
-			self.performSelector(#selector(SharingViewController.buttonsAnimationComplete), withObject: nil, afterDelay: 1.0)
-			return
-		}
-
 		var shuffled = [self.facebook_share_button, self.twitter_share_button, self.more_share_button]
 		for i in 0..<shuffled.count
 		{
@@ -279,21 +270,11 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 			view.hidden = false
 			UIView.animateWithDuration(0.5, delay: delay ,usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
 				view.layer.transform = CATransform3DIdentity
-				}, completion: { (finished: Bool) -> Void in
-					self.buttonsAnimationComplete()
-			})
+				}, completion: nil)
 			
 		}
 	}
 	
-	func buttonsAnimationComplete()
-	{
-		if !self.keyboardWasShown
-		{
-			self.keyboardWasShown = true
-			self.textField.becomeFirstResponder()
-		}
-	}
 	// MARK: - Collection view delegation
 	func shouldBeFirstItemAtIndexPath(indexPath: NSIndexPath!) -> Bool {
 		if (indexPath.row < tagsDataSource.count)

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Raleway-Regular.ttf">
@@ -14,6 +14,7 @@
             <connections>
                 <outlet property="facebook_share_button" destination="D3Z-hb-5fr" id="Q0k-5x-gPH"/>
                 <outlet property="more_share_button" destination="nsQ-2J-vGk" id="V4M-k0-6wV"/>
+                <outlet property="tagsCenterConstraint" destination="LwN-Gw-Z2Y" id="lBR-V2-EBJ"/>
                 <outlet property="tagsCollectionView" destination="BXH-UQ-s7S" id="Bfr-vL-9pF"/>
                 <outlet property="tagsHeightConstraint" destination="LAc-gh-T89" id="Wgq-Gt-gGh"/>
                 <outlet property="textField" destination="0EY-A0-T0A" id="Hry-SW-X9u"/>
@@ -23,7 +24,7 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="fxR-kE-jfn">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="114"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="116"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="#moment" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="0EY-A0-T0A" customClass="TMTextField" customModule="TagMoment" customModuleProvider="target">
@@ -39,10 +40,10 @@
                     </connections>
                 </textField>
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q4j-gm-qj4">
-                    <rect key="frame" x="0.0" y="44" width="320" height="0.0"/>
+                    <rect key="frame" x="0.0" y="44" width="320" height="4"/>
                     <subviews>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="BXH-UQ-s7S">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                            <rect key="frame" x="0.0" y="-48" width="320" height="100"/>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="100" id="hFW-cd-H2q"/>
@@ -62,65 +63,101 @@
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="BXH-UQ-s7S" firstAttribute="leading" secondItem="q4j-gm-qj4" secondAttribute="leading" id="3dd-uf-2vq"/>
-                        <constraint firstAttribute="height" id="LAc-gh-T89"/>
-                        <constraint firstItem="BXH-UQ-s7S" firstAttribute="top" secondItem="q4j-gm-qj4" secondAttribute="top" id="SQT-ba-3WJ"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" id="LAc-gh-T89"/>
+                        <constraint firstItem="BXH-UQ-s7S" firstAttribute="centerY" secondItem="q4j-gm-qj4" secondAttribute="centerY" id="LwN-Gw-Z2Y"/>
                         <constraint firstAttribute="trailing" secondItem="BXH-UQ-s7S" secondAttribute="trailing" id="ut9-P6-zf9"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cho-SC-Xhi" userLabel="twitter_button">
-                    <rect key="frame" x="135" y="54" width="50" height="50"/>
-                    <state key="normal" image="round_twitter_share"/>
-                    <state key="selected" image="round_twitter_share_on"/>
-                    <state key="highlighted" image="round_twitter_share_on"/>
-                    <connections>
-                        <action selector="twitterShareRequested:" destination="-1" eventType="touchUpInside" id="Mtk-fk-Omg"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D3Z-hb-5fr" userLabel="facebook_button">
-                    <rect key="frame" x="35" y="54" width="50" height="50"/>
-                    <state key="normal" image="round_facebook_share"/>
-                    <state key="selected" image="round_facebook_share_on"/>
-                    <state key="highlighted" image="round_facebook_share_on"/>
-                    <connections>
-                        <action selector="facebookShareRequested:" destination="-1" eventType="touchUpInside" id="ooZ-GF-RF4"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nsQ-2J-vGk" userLabel="more_button">
-                    <rect key="frame" x="235" y="57" width="45" height="44"/>
-                    <state key="normal" image="more_share"/>
-                    <state key="selected" image="round_more_share_on"/>
-                    <state key="highlighted" image="round_more_share_on"/>
-                    <connections>
-                        <action selector="shareButtonPressed:" destination="-1" eventType="touchUpInside" id="llR-Ri-KcI"/>
-                    </connections>
-                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o6o-L1-XjI" userLabel="buttonsHolder">
+                    <rect key="frame" x="0.0" y="48" width="320" height="68"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cho-SC-Xhi" userLabel="twitter_button">
+                            <rect key="frame" x="138" y="12" width="44" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="44" id="16z-ey-ggM"/>
+                                <constraint firstAttribute="width" constant="44" id="CLm-gw-Tbf"/>
+                                <constraint firstAttribute="height" constant="44" id="Lyy-tm-oRh"/>
+                                <constraint firstAttribute="height" constant="44" id="Wk3-nF-gyn"/>
+                            </constraints>
+                            <state key="normal" image="twitter_share_on"/>
+                            <state key="selected" image="twitter_share_on"/>
+                            <state key="highlighted" image="twitter_share_on"/>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="16z-ey-ggM"/>
+                                    <exclude reference="Lyy-tm-oRh"/>
+                                </mask>
+                            </variation>
+                            <connections>
+                                <action selector="twitterShareRequested:" destination="-1" eventType="touchUpInside" id="Mtk-fk-Omg"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D3Z-hb-5fr" userLabel="facebook_button">
+                            <rect key="frame" x="72" y="12" width="44" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="44" id="c11-x4-9ZN"/>
+                                <constraint firstAttribute="height" constant="44" id="tsh-vd-ePp"/>
+                            </constraints>
+                            <state key="normal" image="facebook_share_on"/>
+                            <state key="selected" image="facebook_share_on"/>
+                            <state key="highlighted" image="facebook_share_on"/>
+                            <connections>
+                                <action selector="facebookShareRequested:" destination="-1" eventType="touchUpInside" id="ooZ-GF-RF4"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nsQ-2J-vGk" userLabel="more_button">
+                            <rect key="frame" x="204" y="12" width="44" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="44" id="phS-eq-Jhj"/>
+                                <constraint firstAttribute="height" constant="44" id="r3F-Qs-gLS"/>
+                            </constraints>
+                            <state key="normal" image="share_more"/>
+                            <state key="selected" image="share_more"/>
+                            <state key="highlighted" image="share_more"/>
+                            <connections>
+                                <action selector="shareButtonPressed:" destination="-1" eventType="touchUpInside" id="llR-Ri-KcI"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="nsQ-2J-vGk" firstAttribute="centerY" secondItem="Cho-SC-Xhi" secondAttribute="centerY" id="FAu-76-g2b"/>
+                        <constraint firstItem="Cho-SC-Xhi" firstAttribute="centerY" secondItem="o6o-L1-XjI" secondAttribute="centerY" id="GRU-1f-PdX"/>
+                        <constraint firstItem="D3Z-hb-5fr" firstAttribute="leading" secondItem="o6o-L1-XjI" secondAttribute="leading" constant="72" id="Nty-62-DKK"/>
+                        <constraint firstAttribute="height" constant="68" id="Wj1-AV-2Hj"/>
+                        <constraint firstAttribute="trailing" secondItem="nsQ-2J-vGk" secondAttribute="trailing" constant="72" id="lkG-zq-qKD"/>
+                        <constraint firstItem="nsQ-2J-vGk" firstAttribute="leading" secondItem="o6o-L1-XjI" secondAttribute="leading" constant="137" id="o3K-zO-2et"/>
+                        <constraint firstItem="D3Z-hb-5fr" firstAttribute="centerY" secondItem="Cho-SC-Xhi" secondAttribute="centerY" id="pYv-YT-KaJ"/>
+                        <constraint firstItem="Cho-SC-Xhi" firstAttribute="centerX" secondItem="o6o-L1-XjI" secondAttribute="centerX" id="yjN-Xq-E1o"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="o3K-zO-2et"/>
+                        </mask>
+                    </variation>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="q4j-gm-qj4" firstAttribute="top" secondItem="0EY-A0-T0A" secondAttribute="bottom" id="46j-H3-IDp"/>
                 <constraint firstItem="0EY-A0-T0A" firstAttribute="top" secondItem="fxR-kE-jfn" secondAttribute="top" id="JiH-gE-1DU"/>
-                <constraint firstItem="D3Z-hb-5fr" firstAttribute="centerY" secondItem="Cho-SC-Xhi" secondAttribute="centerY" id="PGI-ZP-CMl"/>
-                <constraint firstItem="nsQ-2J-vGk" firstAttribute="leading" secondItem="Cho-SC-Xhi" secondAttribute="trailing" constant="50" id="UmX-tE-5hk"/>
                 <constraint firstAttribute="trailing" secondItem="0EY-A0-T0A" secondAttribute="trailing" id="cDh-Vs-wST"/>
-                <constraint firstItem="Cho-SC-Xhi" firstAttribute="centerX" secondItem="fxR-kE-jfn" secondAttribute="centerX" id="cIR-Kt-uib"/>
-                <constraint firstItem="Cho-SC-Xhi" firstAttribute="leading" secondItem="D3Z-hb-5fr" secondAttribute="trailing" constant="50" id="kWf-DD-sm5"/>
-                <constraint firstItem="Cho-SC-Xhi" firstAttribute="top" secondItem="q4j-gm-qj4" secondAttribute="bottom" constant="10" id="kzo-cV-n5h"/>
                 <constraint firstAttribute="trailing" secondItem="q4j-gm-qj4" secondAttribute="trailing" id="oy3-HL-Z6E"/>
-                <constraint firstItem="nsQ-2J-vGk" firstAttribute="centerY" secondItem="Cho-SC-Xhi" secondAttribute="centerY" id="qDG-qb-8lR"/>
+                <constraint firstItem="o6o-L1-XjI" firstAttribute="top" secondItem="q4j-gm-qj4" secondAttribute="bottom" id="pMP-1Z-w9E"/>
+                <constraint firstItem="o6o-L1-XjI" firstAttribute="leading" secondItem="fxR-kE-jfn" secondAttribute="leading" id="r7S-mB-frv"/>
+                <constraint firstAttribute="trailing" secondItem="o6o-L1-XjI" secondAttribute="trailing" id="rI1-fm-umt"/>
                 <constraint firstItem="0EY-A0-T0A" firstAttribute="leading" secondItem="fxR-kE-jfn" secondAttribute="leading" id="uea-QF-Urv"/>
+                <constraint firstAttribute="bottom" secondItem="o6o-L1-XjI" secondAttribute="bottom" id="v60-2H-XMl"/>
                 <constraint firstItem="q4j-gm-qj4" firstAttribute="leading" secondItem="fxR-kE-jfn" secondAttribute="leading" id="wja-g2-GXO"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="327" y="45"/>
+            <point key="canvasLocation" x="200" y="50"/>
         </view>
     </objects>
     <resources>
-        <image name="more_share" width="45" height="44"/>
-        <image name="round_facebook_share" width="50" height="50"/>
-        <image name="round_facebook_share_on" width="50" height="50"/>
-        <image name="round_more_share_on" width="50" height="50"/>
-        <image name="round_twitter_share" width="50" height="50"/>
-        <image name="round_twitter_share_on" width="50" height="50"/>
+        <image name="facebook_share_on" width="44" height="44"/>
+        <image name="share_more" width="44" height="44"/>
+        <image name="twitter_share_on" width="44" height="44"/>
     </resources>
 </document>

@@ -436,23 +436,27 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	}
 	
 	func sharingRequested() {
-		
-		let xibName = MainViewController.isSmallestScreen() ? "SmallScreenSharingViewController" : "SharingViewController"
+		let xibName = "SmallScreenSharingViewController"
 		sharingController = SharingViewController(nibName: xibName, bundle: nil)
 		sharingController.sharingDelegate = self
 		controlsContainerHeight = controlContainer.frame.height;
 		controlContainer.addViewWithConstraints(sharingController.view, toTheRight: true)
+		if !MainViewController.isSmallestScreen()
+		{
+			sharingController.tagsHeightConstraint.constant = controlsContainerHeight - 68 - 44;
+		}
+		else
+		{
+			sharingController.tagsCollectionView.superview!.removeConstraint(sharingController.tagsCenterConstraint)
+			let constraint = NSLayoutConstraint(item: sharingController.tagsCollectionView, attribute: .Top, relatedBy: .Equal, toItem: sharingController.tagsCollectionView.superview, attribute: .Top, multiplier: 1, constant: 0)
+			sharingController.tagsCollectionView.superview?.addConstraint(constraint)
+		}
+		
 		changeSharingLayoutIfNeeded()
 		controlContainer.animateEnteringView()
-//		infoTopConstraint.constant = -infobarHolder.frame.height
 		logoLabel.hidden = false
 		viewChoreographer.sharingStageAppearance(true)
-//		logoLabel.alpha = 0.0
-//		UIView .animateWithDuration(0.5, animations: { () -> Void in
-//			
-//			self.view.layoutIfNeeded()
-//			self.logoLabel.alpha = 1.0
-//		})
+
 	}
 	
 	private func closeCameraRoll(cameraRollCont : CameraRollViewController)
@@ -598,12 +602,22 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		if endFrame.origin.y == self.view.frame.height
 		{
 			infoTopConstraint.constant = 0
-			sharingController.tagsHeightConstraint.constant = 0
+			if (MainViewController.isSmallestScreen())
+			{
+				sharingController.tagsHeightConstraint.constant = 2
+			}
 		}
 		else
 		{
-			infoTopConstraint.constant = controlsContainerHeight - endFrame.height - 150
-			sharingController.tagsHeightConstraint.constant = 150
+			if (MainViewController.isSmallestScreen())
+			{
+				infoTopConstraint.constant = controlsContainerHeight - endFrame.height - 150
+				sharingController.tagsHeightConstraint.constant = 150
+			}
+			else
+			{
+				infoTopConstraint.constant = controlsContainerHeight - 44 - endFrame.height
+			}
 			
 		}
 		

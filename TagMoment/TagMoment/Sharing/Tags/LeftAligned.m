@@ -11,6 +11,7 @@
 const NSInteger kMaxCellSpacing = 3;
 const NSInteger HorizontalInset = 10.0f;
 const NSInteger VerticalInset = 10.0f;
+const NSInteger ItemInset = 10.0f;
 const NSInteger RowsInset = 20.0f;
 @interface LeftAligned ()
 @property (nonatomic, strong) NSMutableDictionary* framesCache;
@@ -112,7 +113,7 @@ const NSInteger RowsInset = 20.0f;
 	if (indexPath.item == 1)
 	{
 		size = [self.sizesCache[1] CGSizeValue];
-		frame = CGRectMake(HorizontalInset, VerticalInset*2 + size.height, size.width, size.height);
+		frame = CGRectMake(HorizontalInset, VerticalInset + ItemInset + size.height, size.width, size.height);
 		[self addRectToCache:frame withIndex:indexPath.item];
 		return;
 	}
@@ -122,7 +123,7 @@ const NSInteger RowsInset = 20.0f;
 	CGRect previousFrame = [self rectForIndex:previousIndexPath.item];
 	CGFloat previousFrameRightPoint = previousFrame.origin.x + previousFrame.size.width + kMaxCellSpacing;
 	size = [self.sizesCache[indexPath.item] CGSizeValue];
-	CGFloat originY = [self.delegate shouldBeFirstItemAtIndexPath:indexPath] && indexPath.item %2 ==0 ? VerticalInset : VerticalInset*2 + previousFrame.size.height;
+	CGFloat originY = [self.delegate shouldBeFirstItemAtIndexPath:indexPath] && indexPath.item %2 ==0 ? VerticalInset : VerticalInset + ItemInset + previousFrame.size.height;
 	
 	frame = CGRectMake(previousFrameRightPoint, originY, size.width, previousFrame.size.height);
 
