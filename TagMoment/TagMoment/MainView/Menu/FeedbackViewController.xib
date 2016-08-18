@@ -45,7 +45,7 @@
                         <action selector="backButtonPressed:" destination="-1" eventType="touchUpInside" id="adZ-NX-WXC"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What do you think about #moment ?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pFf-4Z-R7w">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What do you think about Tagmoment ?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pFf-4Z-R7w">
                     <rect key="frame" x="221" y="10" width="158.5" height="43"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="158.5" id="yoV-LM-DQo"/>

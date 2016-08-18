@@ -51,7 +51,7 @@ class FeedbackViewController: UIViewController, UIAlertViewDelegate, MFMailCompo
 	
 	func composeMail()
 	{
-		let emailTitle = "Dear #moment Team"
+		let emailTitle = "Dear Tagmoment Team"
 		let toRecipents = [TagMomentTeamMail]
 		let mc: MFMailComposeViewController = MFMailComposeViewController()
 		mc.mailComposeDelegate = self
