@@ -340,12 +340,18 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 	
 	func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
 		
+		if (!self.textField.isFirstResponder())
+		{
+			self.textField.becomeFirstResponder()
+		}
+		
 		let isWord = indexPath.item % 2 == 0 ? true : false
 		if (self.chosenWordIndex != nil && isWord)
 		{
 			self.tagsCollectionView.deselectItemAtIndexPath(self.chosenWordIndex!, animated: true)
 			self.collectionView(self.tagsCollectionView, didDeselectItemAtIndexPath: self.chosenWordIndex!)
 		}
+		
 			
 		if (self.chosenEmojiIndex != nil && !isWord)
 		{

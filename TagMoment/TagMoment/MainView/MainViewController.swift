@@ -606,6 +606,10 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			{
 				sharingController.tagsHeightConstraint.constant = 2
 			}
+			else
+			{
+				sharingController.tagsCenterConstraint.constant = 0
+			}
 		}
 		else
 		{
@@ -616,7 +620,8 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			}
 			else
 			{
-				infoTopConstraint.constant = controlsContainerHeight - 44 - endFrame.height
+				infoTopConstraint.constant = controlsContainerHeight - 144 - endFrame.height
+				sharingController.tagsCenterConstraint.constant = -100
 			}
 			
 		}
