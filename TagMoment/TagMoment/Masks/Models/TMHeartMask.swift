@@ -15,8 +15,8 @@ class TMHeartMask: NSObject, TMMask {
 		self.workingBounds = rect
 	}
 	
-	func clippingPathWithRect(bounds: CGRect) -> CGPath {
-		return TMHeartMask.bezierHeartShapePathWithWidth(bounds.width, center: CGPoint(x: bounds.width/2, y: bounds.height/2)).CGPath
+	func clippingPathWithRect(_ bounds: CGRect) -> CGPath {
+		return TMHeartMask.bezierHeartShapePathWithWidth(bounds.width, center: CGPoint(x: bounds.width/2, y: bounds.height/2)).cgPath
 	}
 	var cameraBounds : CGRect{
 		return CGRect(x: self.workingBounds.width/4, y: self.workingBounds.height/2 - 15, width: self.workingBounds.width/2, height: self.workingBounds.width/2)
@@ -27,22 +27,22 @@ class TMHeartMask: NSObject, TMMask {
 	}
 	
 	
-	class func toRadians(angle: CGFloat) -> CGFloat{
+	class func toRadians(_ angle: CGFloat) -> CGFloat{
 		return angle*CGFloat(M_PI)/CGFloat(180.0);
 	}
 	
-	class func bezierHeartShapePathWithWidth(width: CGFloat, center: CGPoint) -> UIBezierPath{
+	class func bezierHeartShapePathWithWidth(_ width: CGFloat, center: CGPoint) -> UIBezierPath{
 		let w = width
 //		let h = width
 		let radiusConst = width > 170.0 ? CGFloat(40.0) : CGFloat(35.0)
 		let radius = w - center.x - radiusConst
 //		let y = center.y + 20
 		let path = UIBezierPath()
-		path.addArcWithCenter(CGPoint(x: center.x + radiusConst,y: radius), radius: radius, startAngle: TMHeartMask.toRadians(40), endAngle: TMHeartMask.toRadians(210), clockwise: false)
+		path.addArc(withCenter: CGPoint(x: center.x + radiusConst,y: radius), radius: radius, startAngle: TMHeartMask.toRadians(40), endAngle: TMHeartMask.toRadians(210), clockwise: false)
 		
-		path.addArcWithCenter(CGPoint(x: center.x - radiusConst,y: radius), radius: radius, startAngle: TMHeartMask.toRadians(-30), endAngle: TMHeartMask.toRadians(140), clockwise: false)
-		path.addLineToPoint(CGPoint(x: center.x, y: width))
-		path.closePath()
+		path.addArc(withCenter: CGPoint(x: center.x - radiusConst,y: radius), radius: radius, startAngle: TMHeartMask.toRadians(-30), endAngle: TMHeartMask.toRadians(140), clockwise: false)
+		path.addLine(to: CGPoint(x: center.x, y: width))
+		path.close()
 		return path
 	}
 	

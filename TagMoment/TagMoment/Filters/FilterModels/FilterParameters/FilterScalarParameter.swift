@@ -1,8 +1,7 @@
 
-import Foundation
-
 class FilterScalarParameter : FilterParameterProtocol
 {
+
 	var key : String
 	let minValue : Float?
 	let maxValue : Float?
@@ -14,17 +13,17 @@ class FilterScalarParameter : FilterParameterProtocol
 		self.key = key
 	}
 	
-	func normalizedValueFromPercent(percent : Float) -> AnyObject
+	func normalizedValueFromPercent(_ percent : Float) -> AnyObject
 	{
 		if let min = minValue{
 			if let max = maxValue
 			{
 				let range = max	- min
 				let value = percent*range
-				return value+min
+				return value+min as AnyObject
 			}
 		}
 		
-		return 0
+		return 0 as AnyObject
 	}
 }

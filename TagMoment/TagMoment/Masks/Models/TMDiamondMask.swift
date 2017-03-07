@@ -18,16 +18,16 @@ class TMDiamondMask :  TMMask {
 		self.workingBounds = rect
 	}
 	
-	func clippingPathWithRect(bounds : CGRect) -> CGPath
+	func clippingPathWithRect(_ bounds : CGRect) -> CGPath
 	{
 		let path = UIBezierPath()
-		path.moveToPoint(CGPoint(x: bounds.width/2, y: 0))
-		path.addLineToPoint(CGPoint(x: 0, y: bounds.height/2))
-		path.addLineToPoint(CGPoint(x: bounds.width/2, y: bounds.height))
-		path.addLineToPoint(CGPoint(x: bounds.width, y: bounds.height/2))
-		path.closePath()
+		path.move(to: CGPoint(x: bounds.width/2, y: 0))
+		path.addLine(to: CGPoint(x: 0, y: bounds.height/2))
+		path.addLine(to: CGPoint(x: bounds.width/2, y: bounds.height))
+		path.addLine(to: CGPoint(x: bounds.width, y: bounds.height/2))
+		path.close()
 		
-		return path.CGPath
+		return path.cgPath
 	}
 	
 	var cameraBounds : CGRect{

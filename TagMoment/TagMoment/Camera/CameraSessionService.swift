@@ -16,14 +16,14 @@ class CameraSessionService : NSObject{
 	var frontCamera : AVCaptureDevice?
 	var backCamera : AVCaptureDevice?
 	
-	var flashState = FlashState.Auto
+	var flashState = FlashState.auto
 	
 	override init()
 	{
 		super.init()
 		
-		NSNotificationCenter.defaultCenter().addObserverForName(FlashChangedNotification, object: nil, queue: nil) { (notif: NSNotification) -> Void in
-			let dictObject : AnyObject? = notif.userInfo?[FlashStateKey]
+		NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: FlashChangedNotification), object: nil, queue: nil) { (notif: Notification) -> Void in
+			let dictObject : AnyObject? = notif.userInfo?[FlashStateKey] as AnyObject?
 			if let newState = dictObject as? FlashState.RawValue
 			{
 				self.flashState = FlashState(rawValue: newState)!
@@ -35,7 +35,7 @@ class CameraSessionService : NSObject{
 	
 	deinit
 	{
-		NSNotificationCenter.defaultCenter().removeObserver(self)
+		NotificationCenter.default.removeObserver(self)
 	}
 	
 	func initializeSessionForCaptureLayer() -> AVCaptureVideoPreviewLayer {
@@ -45,9 +45,9 @@ class CameraSessionService : NSObject{
 		
 		let captureVideoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
 		
-		captureVideoPreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+		captureVideoPreviewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill;
 		
-		return captureVideoPreviewLayer;
+		return captureVideoPreviewLayer!;
 		
 	}
 	
@@ -61,7 +61,7 @@ class CameraSessionService : NSObject{
 		checkForCameraPermissions(continueSessionOnDevice, device: backCamera)
 	}
 	
-	func continueSessionOnDevice(device : AVCaptureDevice?)
+	func continueSessionOnDevice(_ device : AVCaptureDevice?)
 	{
 		if (device == nil)
 		{
@@ -89,28 +89,28 @@ class CameraSessionService : NSObject{
 		self.startRunningSession(input: input as! AVCaptureInput)
 	}
 	
-	func checkForCameraPermissions(successfulCallback : (AVCaptureDevice?) -> Void, device : AVCaptureDevice?)
+	func checkForCameraPermissions(_ successfulCallback : @escaping (AVCaptureDevice?) -> Void, device : AVCaptureDevice?)
 	{
-		let CameraAuthStatus = AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo)
+		let CameraAuthStatus = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
 		switch CameraAuthStatus {
-			case .Authorized:
+			case .authorized:
 				successfulCallback(device)
-			case .Restricted:
+			case .restricted:
 				fallthrough
-			case .Denied:
+			case .denied:
 				self.showAlertRequestingCameraPermission()
-			case .NotDetermined:
-			AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo, completionHandler: { (granted :Bool) -> Void in
+			case .notDetermined:
+			AVCaptureDevice.requestAccess(forMediaType: AVMediaTypeVideo, completionHandler: { (granted :Bool) -> Void in
 				if granted == true
 				{
-					dispatch_async(dispatch_get_main_queue()) {
+					DispatchQueue.main.async {
 						successfulCallback(device)
 					}
 				
 				}
 				else
 				{
-					dispatch_async(dispatch_get_main_queue()) {
+					DispatchQueue.main.async {
 						self.showAlertRequestingCameraPermission()
 					}
 				}
@@ -120,15 +120,15 @@ class CameraSessionService : NSObject{
 	
 	func showAlertRequestingCameraPermission()
 	{
-		let alert = UIAlertController(title: "IMPORTANT", message: "This app requires Camera permissions", preferredStyle: UIAlertControllerStyle.Alert)
-		alert.addAction(UIAlertAction(title: "Settings", style: .Cancel) { alert in
-				UIApplication.sharedApplication().openURL(NSURL(string: UIApplicationOpenSettingsURLString)!)
+		let alert = UIAlertController(title: "IMPORTANT", message: "This app requires Camera permissions", preferredStyle: UIAlertControllerStyle.alert)
+		alert.addAction(UIAlertAction(title: "Settings", style: .cancel) { alert in
+				UIApplication.shared.openURL(URL(string: UIApplicationOpenSettingsURLString)!)
 				})
-		let mainController = UIApplication.sharedApplication().delegate?.window!?.rootViewController! as! MainViewController
-			mainController.presentViewController(alert, animated: true, completion: nil)
+		let mainController = UIApplication.shared.delegate?.window!?.rootViewController! as! MainViewController
+			mainController.present(alert, animated: true, completion: nil)
 	}
 	
-	func flashStateChanged(newFlashState : AVCaptureFlashMode)
+	func flashStateChanged(_ newFlashState : AVCaptureFlashMode)
 	{
 		if let device = self.backCamera
 		{
@@ -152,13 +152,13 @@ class CameraSessionService : NSObject{
 		cleanup()
 	}
 	
-	private func cleanup () {
+	fileprivate func cleanup () {
 		self.stillImageOutputRef = nil
 		self.captureSession = nil
 	}
 	
 	
-	private func startRunningSession(input input : AVCaptureInput)
+	fileprivate func startRunningSession(input : AVCaptureInput)
 	{
 		self.captureSession?.addInput(input)
 		flashStateChanged(AVCaptureFlashMode(rawValue: self.flashState.rawValue)!)
@@ -166,13 +166,13 @@ class CameraSessionService : NSObject{
 		self.captureSession?.addOutput(self.stillImageOutputRef);
 		self.captureSession?.startRunning()
 	}
-	func focus(isFrontCamera : Bool, layerHolder : UIView, touchPoint : CGPoint)
+	func focus(_ isFrontCamera : Bool, layerHolder : UIView, touchPoint : CGPoint)
 	{
 		let device = isFrontCamera ? frontCamera : backCamera
 		let captureLayer = layerHolder.layer.sublayers![0] as! AVCaptureVideoPreviewLayer
-		let convertedPoint = captureLayer.captureDevicePointOfInterestForPoint(touchPoint)
+		let convertedPoint = captureLayer.captureDevicePointOfInterest(for: touchPoint)
 		
-		if (device!.isFocusModeSupported(AVCaptureFocusMode.AutoFocus) && device!.focusPointOfInterestSupported)
+		if (device!.isFocusModeSupported(AVCaptureFocusMode.autoFocus) && device!.isFocusPointOfInterestSupported)
 		{
 			do {
 				try device!.lockForConfiguration()
@@ -183,13 +183,13 @@ class CameraSessionService : NSObject{
 			}
 			
 			device!.focusPointOfInterest = convertedPoint
-			device!.focusMode = AVCaptureFocusMode.AutoFocus
+			device!.focusMode = AVCaptureFocusMode.autoFocus
 			device!.unlockForConfiguration()
 		}
 		
 	}
 	
-	func captureImage(endBlock endBlock: (UIImage?, NSError!) -> Void){
+	func captureImage(endBlock: @escaping (UIImage?, Error?) -> Void){
 		var videoConnection : AVCaptureConnection?
 		
 		let connectionsArray = self.stillImageOutputRef?.connections as? [AVCaptureConnection]
@@ -200,7 +200,7 @@ class CameraSessionService : NSObject{
 				
 				for port in connection.inputPorts {
 					
-					if (port.mediaType == AVMediaTypeVideo) {
+					if ((port as AnyObject).mediaType == AVMediaTypeVideo) {
 						videoConnection = connection;
 						break;
 					}
@@ -218,7 +218,7 @@ class CameraSessionService : NSObject{
 			return
 		}
 		
-		self.stillImageOutputRef?.captureStillImageAsynchronouslyFromConnection(videoConnection, completionHandler: { (buffer: CMSampleBuffer! , error: NSError! ) -> Void in
+		self.stillImageOutputRef?.captureStillImageAsynchronously(from: videoConnection, completionHandler: { (buffer: CMSampleBuffer? , error: Error? ) -> Void in
 			if (error != nil)
 			{
 				endBlock(nil, error)
@@ -227,13 +227,13 @@ class CameraSessionService : NSObject{
 			if (buffer != nil)
 			{
 				let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(buffer)
-				let image = UIImage(data: imageData)
+				let image = UIImage(data: imageData!)
 				endBlock(image, error)
 			}
 		})
 	}
 	
-	private func prepareOutput(){
+	fileprivate func prepareOutput(){
 		if (self.stillImageOutputRef != nil)
 		{
 			return
@@ -247,19 +247,19 @@ class CameraSessionService : NSObject{
 	}
 	
 	
-	private func initCameras() {
-		let devices = AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo)
-		for device in devices {
+	fileprivate func initCameras() {
+		let devices = AVCaptureDevice.devices(withMediaType: AVMediaTypeVideo)
+		for device in devices! {
 			
-			print("Device name: " + device.localizedName!!)
+			print("Device name: " + (device as AnyObject).localizedName!!)
 			
-			if (device.hasMediaType(AVMediaTypeVideo)) {
+			if ((device as AnyObject).hasMediaType(AVMediaTypeVideo)) {
 				
-				if (device.position == AVCaptureDevicePosition.Back && backCamera == nil) {
+				if ((device as AnyObject).position == AVCaptureDevicePosition.back && backCamera == nil) {
 					print("Device position : back")
 					backCamera = device as? AVCaptureDevice
 				}
-				else if (device.position == AVCaptureDevicePosition.Front && frontCamera == nil){
+				else if ((device as AnyObject).position == AVCaptureDevicePosition.front && frontCamera == nil){
 					print("Device position : front")
 					frontCamera = device as? AVCaptureDevice
 				}

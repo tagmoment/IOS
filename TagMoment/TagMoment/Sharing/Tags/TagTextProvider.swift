@@ -32,14 +32,14 @@ class TagTextProvider {
 		"sea", "coffee", "sunset", "sunshine", "cat", "light", "dark", "work", "haha",
 		"party", "crazy", "laugh", "excited"*/ ]
 	
-	class func removeSpaces(inputString : String) -> String
+	class func removeSpaces(_ inputString : String) -> String
 	{
-		return inputString.stringByReplacingOccurrencesOfString(" ", withString: "")
+		return inputString.replacingOccurrences(of: " ", with: "")
 	}
 	
-	class func addHashTagIfNeeded(inputString : String) -> String
+	class func addHashTagIfNeeded(_ inputString : String) -> String
 	{
-		if ((inputString.rangeOfString("#")) != nil || inputString.isEmpty)
+		if ((inputString.range(of: "#")) != nil || inputString.isEmpty)
 		{
 			return inputString
 		}
@@ -47,11 +47,11 @@ class TagTextProvider {
 		return "#" + inputString
 	}
 	
-	class func addAllHashtags(inputString : String) -> String
+	class func addAllHashtags(_ inputString : String) -> String
 	{
 		var resultString = ""
 
-		let words = inputString.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+		let words = inputString.components(separatedBy: CharacterSet.whitespaces)
 		for word in words
 		{
 			resultString += resultString.isEmpty ? addHashTagIfNeeded(word) : " " + addHashTagIfNeeded(word)
@@ -60,7 +60,7 @@ class TagTextProvider {
 		return resultString
 	}
 	
-	class func addTextByRules(string : String) -> String
+	class func addTextByRules(_ string : String) -> String
 	{
 		let input = removeSpaces(string)
 		let isInputEmoji = self.emojisContainer.contains(input)
@@ -84,7 +84,7 @@ class TagTextProvider {
 		{
 			if (self.currentEmoji != nil)
 			{
-				currentString = currentString?.stringByReplacingOccurrencesOfString(self.currentEmoji!, withString: input)
+				currentString = currentString?.replacingOccurrences(of: self.currentEmoji!, with: input)
 				currentEmoji = input
 				return currentString!
 			}
@@ -98,7 +98,7 @@ class TagTextProvider {
 		{
 			if (self.currentTyping != nil)
 			{
-				self.currentString = currentString?.stringByReplacingOccurrencesOfString(self.currentTyping!, withString: input)
+				self.currentString = currentString?.replacingOccurrences(of: self.currentTyping!, with: input)
 				self.currentWord = input
 				self.currentTyping = nil
 				return self.currentString!
@@ -106,7 +106,7 @@ class TagTextProvider {
 			
 			if (self.currentWord != nil)
 			{
-				self.currentString = currentString?.stringByReplacingOccurrencesOfString(self.currentWord!, withString: input)
+				self.currentString = currentString?.replacingOccurrences(of: self.currentWord!, with: input)
 				self.currentWord = input
 				return self.currentString!
 			}
@@ -121,7 +121,7 @@ class TagTextProvider {
 		{
 			if (self.currentWord != nil)
 			{
-				self.currentString = currentString?.stringByReplacingOccurrencesOfString(self.currentWord!, withString: input)
+				self.currentString = currentString?.replacingOccurrences(of: self.currentWord!, with: input)
 				self.currentTyping = input
 				self.currentWord = nil
 				return self.currentString!
@@ -130,7 +130,7 @@ class TagTextProvider {
 			if (self.currentTyping != nil)
 			{
 				let temp = self.currentTyping! + input
-				self.currentString = currentString?.stringByReplacingOccurrencesOfString(self.currentTyping!, withString: temp)
+				self.currentString = currentString?.replacingOccurrences(of: self.currentTyping!, with: temp)
 				self.currentTyping = temp
 				
 				return self.currentString!
@@ -144,13 +144,13 @@ class TagTextProvider {
 		return "PB"
 	}
 	
-	class func fixEmojiSpaceIfNeeded(newString: String, currentString: String) -> String
+	class func fixEmojiSpaceIfNeeded(_ newString: String, currentString: String) -> String
 	{
 		
 		
 		var resultString = ""
 		var foundEmoji = false
-		let words = currentString.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+		let words = currentString.components(separatedBy: CharacterSet.whitespaces)
 		
 		for word in words
 		{
@@ -192,7 +192,7 @@ class TagTextProvider {
 					return;
 				}
 				
-				currentTyping = word.substringToIndex(word.startIndex.advancedBy(word.characters.count - 1));
+				currentTyping = word.substring(to: word.characters.index(word.startIndex, offsetBy: word.characters.count - 1));
 				return;
 			}
 		}
@@ -208,7 +208,7 @@ class TagTextProvider {
 					return;
 				}
 				
-				currentTyping = typing.substringToIndex(typing.startIndex.advancedBy(typing.characters.count - 1));
+				currentTyping = typing.substring(to: typing.characters.index(typing.startIndex, offsetBy: typing.characters.count - 1));
 			}
 
 		}
@@ -217,19 +217,19 @@ class TagTextProvider {
 		
 	}
 	
-	class func isCurrentCharSetSecondWord(input : String!) -> Bool
+	class func isCurrentCharSetSecondWord(_ input : String!) -> Bool
 	{
 		if (input != nil)
 		{
-			let words = currentString!.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+			let words = currentString!.components(separatedBy: CharacterSet.whitespaces)
 			if (words.count == 1)
 			{
 				return true
 			}
 			
-			if let range = self.currentString!.rangeOfString(input!)
+			if let range = self.currentString!.range(of: input!)
 			{
-				if (self.currentString!.startIndex.distanceTo(range.startIndex) != 0)
+				if (self.currentString!.characters.distance(from: self.currentString!.startIndex, to: range.lowerBound) != 0)
 				{
 					return true
 				}
@@ -251,11 +251,11 @@ class TagTextProvider {
 		currentString = nil
 	}
 	
-	class func isReplacementStringAllowd(string : String) -> Bool
+	class func isReplacementStringAllowd(_ string : String) -> Bool
 	{
-		let allowedCharSet = NSCharacterSet.alphanumericCharacterSet().mutableCopy() as! NSMutableCharacterSet
-		allowedCharSet.addCharactersInString("_")
-		if string.rangeOfCharacterFromSet(allowedCharSet) != nil
+		let allowedCharSet = (CharacterSet.alphanumerics as NSCharacterSet).mutableCopy() as! NSMutableCharacterSet
+		allowedCharSet.addCharacters(in: "_")
+		if string.rangeOfCharacter(from: allowedCharSet as CharacterSet) != nil
 		{
 			if (currentTyping == nil && Int(string) != nil)
 			{

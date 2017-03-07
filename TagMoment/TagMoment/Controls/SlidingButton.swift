@@ -9,8 +9,8 @@
 import UIKit
 enum SlidingButtonSide
 {
-	case Right
-	case Left
+	case right
+	case left
 }
 
 
@@ -34,7 +34,7 @@ class SlidingButton: UIView {
 		background = UIImageView()
 	}
 	
-	override func intrinsicContentSize() -> CGSize {
+	override var intrinsicContentSize : CGSize {
 		return background!.image!.size
 	}
 	

@@ -11,16 +11,16 @@ import AVFoundation
 
 class ImageProcessingUtil: NSObject {
 	
-	class func imageFromVideoView(workingView: UIView, originalImage: UIImage, shouldMirrorImage: Bool) -> UIImage
+	class func imageFromVideoView(_ workingView: UIView, originalImage: UIImage, shouldMirrorImage: Bool) -> UIImage
 	{
 		let layer: AVCaptureVideoPreviewLayer = workingView.layer.sublayers![0] as! AVCaptureVideoPreviewLayer
 		
-		let outputRect = layer.metadataOutputRectOfInterestForRect(workingView.bounds)
+		let outputRect = layer.metadataOutputRectOfInterest(for: workingView.bounds)
 		var originalSize = originalImage.size
 		var workingSize = workingView.frame.size
 		workingSize.height *= 2
 		workingSize.width *= 2
-		if (UIDeviceOrientationIsPortrait(UIDevice.currentDevice().orientation))
+		if (UIDeviceOrientationIsPortrait(UIDevice.current.orientation))
 		{
 			var temp = originalSize.width
 			originalSize.width = originalSize.height
@@ -35,20 +35,20 @@ class ImageProcessingUtil: NSObject {
 		// metaRect is fractional, that's why we multiply here
 		var cropRect = CGRect(x: outputRect.origin.x * originalSize.width, y: outputRect.origin.y * originalSize.height, width:outputRect.size.width * originalSize.width, height: outputRect.size.height * originalSize.height)
 		
-		cropRect = CGRectIntegral(cropRect);
+		cropRect = cropRect.integral;
 		
 		let orientation = originalImage.imageOrientation
 
-		let cropCGImage = CGImageCreateWithImageInRect(originalImage.CGImage, cropRect);
+		let cropCGImage = originalImage.cgImage?.cropping(to: cropRect);
 		workingSize.width = min(workingSize.width,cropRect.width)
 		workingSize.height = min(workingSize.height,cropRect.height)
-		let imageOrientation = shouldMirrorImage ?  UIImageOrientation.LeftMirrored : orientation
+		let imageOrientation = shouldMirrorImage ?  UIImageOrientation.leftMirrored : orientation
 //		return UIImage(CGImage: cropCGImage)!;
-		return UIImage(CGImage: ImageProcessingUtil.resizeCGImage(cropCGImage!, toWidth: workingSize.width, toHeight: workingSize.height), scale: 1.0, orientation: imageOrientation)
+		return UIImage(cgImage: ImageProcessingUtil.resizeCGImage(cropCGImage!, toWidth: workingSize.width, toHeight: workingSize.height), scale: 1.0, orientation: imageOrientation)
 	}
 	
 	
-	class func imageByScalingAndCroppingForSize(originalImage: UIImage, viewSize : CGSize) -> UIImage
+	class func imageByScalingAndCroppingForSize(_ originalImage: UIImage, viewSize : CGSize) -> UIImage
 	{
 		let targetSize = CGSize(width: viewSize.width*2, height: viewSize.height*2)
 		let imageSize = originalImage.size
@@ -57,7 +57,7 @@ class ImageProcessingUtil: NSObject {
 		var scaledWidth : CGFloat = targetSize.width
 		var thumbnailPoint = CGPoint(x: 0.0,y: 0.0)
 		
-		if (!CGSizeEqualToSize(imageSize, targetSize))
+		if (!imageSize.equalTo(targetSize))
 		{
 			let widthFactor = targetSize.width / imageSize.width;
 			let heightFactor = targetSize.height / imageSize.height;
@@ -81,12 +81,12 @@ class ImageProcessingUtil: NSObject {
 		
 		UIGraphicsBeginImageContext(targetSize); // this will crop
 		
-		var thumbnailRect = CGRectZero;
+		var thumbnailRect = CGRect.zero;
 		thumbnailRect.origin = thumbnailPoint;
 		thumbnailRect.size.width  = scaledWidth;
 		thumbnailRect.size.height = scaledHeight;
 		
-		originalImage.drawInRect(thumbnailRect)
+		originalImage.draw(in: thumbnailRect)
 		
 		
 		let newImage = UIGraphicsGetImageFromCurrentImageContext();
@@ -99,7 +99,7 @@ class ImageProcessingUtil: NSObject {
 		//pop the context to get back to the default
 		UIGraphicsEndImageContext()
 		
-		return newImage
+		return newImage!
 	}
 	
 //	class func imageFromAlbum(workingView: UIView, originalImage: UIImage, shouldMirrorImage: Bool) -> UIImage
@@ -136,22 +136,22 @@ class ImageProcessingUtil: NSObject {
 //		return UIImage(CGImage: ImageProcessingUtil.resizeCGImage(originalImage.CGImage, toWidth: workingSize.width, toHeight: workingSize.height), scale: 1.0, orientation: imageOrientation)!
 //	}
 	
-	class func resizeCGImage(cgimage : CGImage, toWidth : CGFloat, toHeight: CGFloat) -> CGImage
+	class func resizeCGImage(_ cgimage : CGImage, toWidth : CGFloat, toHeight: CGFloat) -> CGImage
 	{
-		let colorSpace = CGImageGetColorSpace(cgimage)
-		let context = CGBitmapContextCreate(nil, Int(toWidth), Int(toHeight), CGImageGetBitsPerComponent(cgimage), CGImageGetBytesPerRow(cgimage), colorSpace, CGImageGetBitmapInfo(cgimage).rawValue)
-		CGContextDrawImage(context, CGRect(x: 0, y: 0, width: toWidth, height: toHeight), cgimage)
-		return CGBitmapContextCreateImage(context)!
+		let colorSpace = cgimage.colorSpace
+		let context = CGContext(data: nil, width: Int(toWidth), height: Int(toHeight), bitsPerComponent: cgimage.bitsPerComponent, bytesPerRow: cgimage.bytesPerRow, space: colorSpace!, bitmapInfo: cgimage.bitmapInfo.rawValue)
+		context?.draw(cgimage, in: CGRect(x: 0, y: 0, width: toWidth, height: toHeight))
+		return context!.makeImage()!
 	}
 	
 	
-	class func minSizeFromSize(size : CGSize) -> CGSize
+	class func minSizeFromSize(_ size : CGSize) -> CGSize
 	{
-		let minScaledDimension = min(size.width, size.height)/UIScreen.mainScreen().scale
+		let minScaledDimension = min(size.width, size.height)/UIScreen.main.scale
 		return CGSize(width: minScaledDimension, height: minScaledDimension)
 	}
 	
-	class func blurImage(source: UIImage) -> UIImage{
+	class func blurImage(_ source: UIImage) -> UIImage{
 		
 //		var context = CIContext(options: nil)
 //		let inputImage = CIImage(image: source)

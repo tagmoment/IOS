@@ -26,11 +26,11 @@ class CircleRectView: UIView {
 		let borderLayer = CAShapeLayer()
 		if (dashedLineColor != nil)
 		{
-			borderLayer.strokeColor = dashedLineColor.CGColor
+			borderLayer.strokeColor = dashedLineColor.cgColor
 		}
 		else
 		{
-			borderLayer.strokeColor = UIColor(red: 255.0/255.0, green: 215.0/255.0, blue: 0/255.0, alpha: 1).CGColor
+			borderLayer.strokeColor = UIColor(red: 255.0/255.0, green: 215.0/255.0, blue: 0/255.0, alpha: 1).cgColor
 		}
 		
 		borderLayer.lineWidth = 3
@@ -45,9 +45,9 @@ class CircleRectView: UIView {
 		let borderLayer = self.layer.sublayers![0] as! CAShapeLayer
 		if (dashedLineColor != nil)
 		{
-			borderLayer.strokeColor = dashedLineColor.CGColor
+			borderLayer.strokeColor = dashedLineColor.cgColor
 		}
-		borderLayer.path = UIBezierPath(ovalInRect: self.bounds).CGPath
+		borderLayer.path = UIBezierPath(ovalIn: self.bounds).cgPath
 		borderLayer.frame = self.bounds;
 	}
 	
@@ -56,11 +56,11 @@ class CircleRectView: UIView {
 		let animation = CABasicAnimation(keyPath: "transform.rotation.z")
 		animation.toValue = M_PI * 2.0 * 4
 		animation.duration = 5.0;
-		animation.cumulative = true;
+		animation.isCumulative = true;
 		animation.repeatCount = HUGE
-		self.layer.addAnimation(animation, forKey: "rotationAnimation")
+		self.layer.add(animation, forKey: "rotationAnimation")
 		
-		UIView.animateWithDuration(2.0, animations: { () -> Void in
+		UIView.animate(withDuration: 2.0, animations: { () -> Void in
 			self.layer.transform = CATransform3DMakeScale(0.3 ,0.3 , 1.0)
 			self.alpha = 0.0
 				

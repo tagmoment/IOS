@@ -33,7 +33,7 @@ class TMFilterBase{
 	}
 	
 
-	func applyFilterValue(value : Float)
+	func applyFilterValue(_ value : Float)
 	{
 		for filter in filters
 		{
@@ -84,7 +84,7 @@ class TMFilterBase{
 		return self.filters[filters.count - 1].outputImage
 	}
 	
-	func createFilterParameters(inout outParams : [String : [FilterParameterProtocol]])
+	func createFilterParameters(_ outParams : inout [String : [FilterParameterProtocol]])
 	{
 		for filter in filters
 		{
@@ -123,11 +123,11 @@ class TMFilterBase{
 		}
 	}
 	
-	func createConstantFilterParameters(inout outParams : [String : [FilterParameterProtocol]])
+	func createConstantFilterParameters(_ outParams : inout [String : [FilterParameterProtocol]])
 	{
 	}
 	
-	func inputImage(inputImage : CIImage!)
+	func inputImage(_ inputImage : CIImage!)
 	{
 		if (self.filters.count != 0)
 		{

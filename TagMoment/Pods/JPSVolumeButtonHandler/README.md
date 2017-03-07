@@ -31,6 +31,22 @@ self.volumeButtonHandler = [JPSVolumeButtonHandler volumeButtonHandlerWithUpBloc
 }];
 ```
 
+To enbable/disable the handler:
+
+```objective-c
+// Start
+[self.volumeButtonHandler startHandler:YES]; 
+// Stop
+[self.volumeButtonHandler stopHandler];
+```
+
+To change audio session category (by default AVAudioSessionCategoryPlayAndRecord):
+
+```objective-c
+// Set category
+self.volumeButtonHandler.sessionCategory = AVAudioSessionCategoryAmbient; 
+```
+
 ## License
 
 This project is under the MIT license.

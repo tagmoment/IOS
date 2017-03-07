@@ -14,10 +14,10 @@ class AboutUsViewController: UIViewController {
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		let blurredView = VisualEffectsUtil.initBlurredOverLay(TagMomentBlurEffect.ExtraLight, toView: self.view)
+		let blurredView = VisualEffectsUtil.initBlurredOverLay(TagMomentBlurEffect.extraLight, toView: self.view)
 		if (blurredView != nil)
 		{
-			self.view.sendSubviewToBack(blurredView!)
+			self.view.sendSubview(toBack: blurredView!)
 		}
 		
 		if MainViewController.isSmallestScreen()
@@ -28,19 +28,19 @@ class AboutUsViewController: UIViewController {
 		
     }
 
-	override func viewDidAppear(animated: Bool) {
+	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		GoogleAnalyticsReporter.ReportPageView("AboutUs View");
 
 		self.bottomConstraint.constant = 0
-		UIView.animateWithDuration(0.5, animations: { () -> Void in
+		UIView.animate(withDuration: 0.5, animations: { () -> Void in
 			self.view.superview?.layoutIfNeeded()
 		})
 		
 	}
-	@IBAction func closePressed(sender: AnyObject) {
+	@IBAction func closePressed(_ sender: AnyObject) {
 		self.bottomConstraint.constant = self.view.superview!.frame.height
-		UIView.animateWithDuration(0.5, animations: { () -> Void in
+		UIView.animate(withDuration: 0.5, animations: { () -> Void in
 			self.view.superview?.layoutIfNeeded()
 			}, completion: { (done: Bool) -> Void in
 				self.removeFromParentViewController()
@@ -48,10 +48,10 @@ class AboutUsViewController: UIViewController {
 		})
 	}
 	
-	func addToView(superview : UIView)
+	func addToView(_ superview : UIView)
 	{
 		self.bottomConstraint = superview.pinSubViewToBottom(self.view, heightContraint: superview.frame.height)
-		let heightContraint = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: superview.frame.height)
+		let heightContraint = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1.0, constant: superview.frame.height)
 		self.view.addConstraint(heightContraint)
 	}
 }

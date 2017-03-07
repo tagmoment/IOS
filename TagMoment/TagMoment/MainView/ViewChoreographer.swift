@@ -17,21 +17,21 @@ class ViewChoreographer : NSObject
 	override init()
 	{
 		super.init()
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewChoreographer.cameraRollWillAppear(_:)), name: CameraRollWillAppearNotificationName, object: nil)
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewChoreographer.cameraRollWillDisappear(_:)), name: CameraRollWillDisappearNotificationName, object: nil)
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewChoreographer.cameraRollDidSelectImage(_:)), name: ImageFromCameraChosenNotificationName, object: nil)
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewChoreographer.menuWillAppear(_:)), name: MenuWillAppearNotificationName, object: nil)
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewChoreographer.menuWillDisppear(_:)), name: MenuWillDisappearNotificationName, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(ViewChoreographer.cameraRollWillAppear(_:)), name: NSNotification.Name(rawValue: CameraRollWillAppearNotificationName), object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(ViewChoreographer.cameraRollWillDisappear(_:)), name: NSNotification.Name(rawValue: CameraRollWillDisappearNotificationName), object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(ViewChoreographer.cameraRollDidSelectImage(_:)), name: NSNotification.Name(rawValue: ImageFromCameraChosenNotificationName), object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(ViewChoreographer.menuWillAppear(_:)), name: NSNotification.Name(rawValue: MenuWillAppearNotificationName), object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(ViewChoreographer.menuWillDisppear(_:)), name: NSNotification.Name(rawValue: MenuWillDisappearNotificationName), object: nil)
 		
 	}
 	
-	func cameraRollDidSelectImage(notification : NSNotification)
+	func cameraRollDidSelectImage(_ notification : Notification)
 	{
 		
 		mainViewController?.navigationView?.showRightButton(true, animated: true)
 	}
 	
-	func cameraRollWillDisappear(notification : NSNotification)
+	func cameraRollWillDisappear(_ notification : Notification)
 	{
 		if !self.mainViewController!.isOnSecondStage() && self.mainViewController!.masksViewController.maskAllowsSecondCapture() || self.mainViewController!.canvas.image == nil
 		{
@@ -40,26 +40,26 @@ class ViewChoreographer : NSObject
 	
 	}
 	
-	func cameraRollWillAppear(notification : NSNotification)
+	func cameraRollWillAppear(_ notification : Notification)
 	{
 		self.takingPhotoFromAlbumAppearance(true)
 	}
 	
-	func menuWillAppear(notification : NSNotification)
+	func menuWillAppear(_ notification : Notification)
 	{
 		self.dimButtons(false)
 	}
-	func menuWillDisppear(notification : NSNotification)
+	func menuWillDisppear(_ notification : Notification)
 	{
 		self.dimButtons(true)
 	}
-	func takingImageStageAppearance(animated: Bool)
+	func takingImageStageAppearance(_ animated: Bool)
 	{
 		let navbar = mainViewController?.navigationView
 		
 		if (animated)
 		{
-			UIView.animateWithDuration(0.5, animations: { () -> Void in
+			UIView.animate(withDuration: 0.5, animations: { () -> Void in
 				navbar?.showRightButton(false, animated: false)
 				navbar?.showMiddleButton(false, animated: false)
 				navbar?.showLeftButton(false, animated: false)
@@ -67,7 +67,7 @@ class ViewChoreographer : NSObject
 					navbar?.applyRetakeButtonAppearanceToBackButton()
 					navbar?.zeroFlashState()
 					navbar?.restoreMiddleButton()
-					UIView.animateWithDuration(0.5, animations: { () -> Void in
+					UIView.animate(withDuration: 0.5, animations: { () -> Void in
 						if !self.mainViewController!.isOnFirstStage()
 						{
 							navbar?.showLeftButton(true, animated: true)
@@ -91,11 +91,11 @@ class ViewChoreographer : NSObject
 		
 	}
 	
-	private func dimButtons(restore : Bool)
+	fileprivate func dimButtons(_ restore : Bool)
 	{
 		let value : CGFloat = restore ? 1.0 : 0.5
 		let navbar = mainViewController?.navigationView
-		UIView.animateWithDuration(0.3, animations: { () -> Void in
+		UIView.animate(withDuration: 0.3, animations: { () -> Void in
 			if navbar?.backButton.alpha != 0.0
 			{
 				navbar?.backButton.alpha = value
@@ -106,21 +106,21 @@ class ViewChoreographer : NSObject
 			}, completion:  nil )
 	}
 	
-	func editingStageAppearance(animated: Bool)
+	func editingStageAppearance(_ animated: Bool)
 	{
 		let navbar = mainViewController?.navigationView
 		
 		if animated
 		{
 			
-			UIView.animateWithDuration(0.5, animations: { () -> Void in
+			UIView.animate(withDuration: 0.5, animations: { () -> Void in
 				navbar?.showLeftButton(false, animated: false)
 				navbar?.showRightButton(false, animated: false)
 				navbar?.showMiddleButton(false, animated: false)
 				}, completion: { (finished) -> Void in
 					navbar?.applyNextButtonAppearanceToRightButton()
 					navbar?.applyRetakeButtonAppearanceToBackButton()
-					UIView.animateWithDuration(0.5, animations: { () -> Void in
+					UIView.animate(withDuration: 0.5, animations: { () -> Void in
 						navbar?.showRightButton(true, animated: true)
 						navbar?.showLeftButton(true, animated: true)
 						if let delegate = navbar?.viewDelegate
@@ -139,21 +139,21 @@ class ViewChoreographer : NSObject
 		}
 	}
 	
-	func sharingStageAppearance(animated: Bool)
+	func sharingStageAppearance(_ animated: Bool)
 	{
 		let navbar = mainViewController?.navigationView
 		
 		if animated
 		{
 			
-			UIView.animateWithDuration(0.5, animations: { () -> Void in
+			UIView.animate(withDuration: 0.5, animations: { () -> Void in
 				navbar?.showLeftButton(false, animated: false)
 				navbar?.showRightButton(false, animated: false)
 				navbar?.showMiddleButton(false, animated: false)
 				}, completion: { (finished) -> Void in
 					navbar?.applyDoneButtonAppearanceToRightButton()
 					navbar?.applyBackAppearanceToBackButton()
-					UIView.animateWithDuration(0.5, animations: { () -> Void in
+					UIView.animate(withDuration: 0.5, animations: { () -> Void in
 						navbar?.showRightButton(true, animated: true)
 						navbar?.showLeftButton(true, animated: true)
 					})
@@ -170,7 +170,7 @@ class ViewChoreographer : NSObject
 	}
 
 	
-	private func takingPhotoFromAlbumAppearance(animated: Bool)
+	fileprivate func takingPhotoFromAlbumAppearance(_ animated: Bool)
 	{
 		let navbar = mainViewController?.navigationView
 		
@@ -178,14 +178,14 @@ class ViewChoreographer : NSObject
 		if (animated)
 		{
 			
-			UIView.animateWithDuration(0.5, animations: { () -> Void in
+			UIView.animate(withDuration: 0.5, animations: { () -> Void in
 				navbar?.showRightButton(false, animated: false)
 				navbar?.showMiddleButton(false, animated: false)
 				navbar?.showLeftButton(false, animated: false)
 				}, completion: { (finished) -> Void in
 					navbar?.applyNextButtonAppearanceToRightButton()
 					navbar?.applyCancelButtonAppearanceToBackButton()
-					UIView.animateWithDuration(0.5, animations: { () -> Void in
+					UIView.animate(withDuration: 0.5, animations: { () -> Void in
 //						navbar?.showRightButton(true, animated: true)
 						navbar?.showLeftButton(true, animated: true)
 						
@@ -206,7 +206,7 @@ class ViewChoreographer : NSObject
 	
 	deinit
 	{
-		NSNotificationCenter.defaultCenter().removeObserver(self)
+		NotificationCenter.default.removeObserver(self)
 	}
 	
 }

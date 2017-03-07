@@ -22,9 +22,9 @@ class AlbumCoverCollectionViewLayout: UICollectionViewFlowLayout {
 		commonInit()
 	}
 	
-	private func commonInit()
+	fileprivate func commonInit()
 	{
-		let width = floor(UIScreen.mainScreen().bounds.width/2) - borderWidth
+		let width = floor(UIScreen.main.bounds.width/2) - borderWidth
 		self.itemSize = CGSize(width: width, height: width)
 		self.minimumInteritemSpacing = 1.0
 		self.minimumLineSpacing = borderWidth

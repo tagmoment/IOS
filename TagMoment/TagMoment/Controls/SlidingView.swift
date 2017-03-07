@@ -13,7 +13,7 @@ class SlidingView: UIView {
 	
 	var leftConstraints : [NSLayoutConstraint] = []
 	
-	func addViewWithConstraints(subview : UIView!, toTheRight : Bool){
+	func addViewWithConstraints(_ subview : UIView!, toTheRight : Bool){
 		if (subview == nil)
 		{
 			return;
@@ -34,7 +34,7 @@ class SlidingView: UIView {
 		
 		self.layoutIfNeeded()
 		
-		UIView.animateWithDuration(1.0, delay: 0,usingSpringWithDamping: 0.6, initialSpringVelocity: 6, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
+		UIView.animate(withDuration: 1.0, delay: 0,usingSpringWithDamping: 0.6, initialSpringVelocity: 6, options: UIViewAnimationOptions.curveEaseIn, animations: { () -> Void in
 				for constraint in self.leftConstraints
 				{
 					let val = constraint.constant - self.frame.width
@@ -45,7 +45,7 @@ class SlidingView: UIView {
 			
 				let subview = self.subviews[0] 
 				subview.removeFromSuperview()
-				self.leftConstraints.removeAtIndex(0)
+				self.leftConstraints.remove(at: 0)
 		}
 	}
 	
@@ -53,7 +53,7 @@ class SlidingView: UIView {
 	{
 		self.layoutIfNeeded()
 		
-		UIView.animateWithDuration(1.0, delay: 0,usingSpringWithDamping: 0.6, initialSpringVelocity: 6, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
+		UIView.animate(withDuration: 1.0, delay: 0,usingSpringWithDamping: 0.6, initialSpringVelocity: 6, options: UIViewAnimationOptions.curveEaseIn, animations: { () -> Void in
 			for constraint in self.leftConstraints
 			{
 				let val = constraint.constant + self.frame.width
@@ -64,7 +64,7 @@ class SlidingView: UIView {
 				
 				let subview = self.subviews[0] 
 				subview.removeFromSuperview()
-				self.leftConstraints.removeAtIndex(0)
+				self.leftConstraints.remove(at: 0)
 		}
 	}
 

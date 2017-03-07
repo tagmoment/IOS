@@ -9,15 +9,15 @@
 import UIKit
 
 enum FlashState: Int{
-	case Off
-	case On
-	case Auto
+	case off
+	case on
+	case auto
 }
 
 enum TimerState: Int{
-	case Off = 0
-	case Three = 3
-	case Five = 5
+	case off = 0
+	case three = 3
+	case five = 5
 }
 
 protocol NavBarDelegate : class
@@ -50,21 +50,21 @@ class TakeImageNavBar: UIView {
 	@IBOutlet weak var middleButton: UIButton!
 	
 	@IBOutlet weak var changeMasksButton: UIButton!
-	var currentFlashState = FlashState.Auto
+	var currentFlashState = FlashState.auto
 	var currentTimerIndex = 0
 	var flashStateImages = ["flash_off", "flash_on", "flash_auto"]
-	var timerStateImages = [("timericon_off", TimerState.Off), ("timericon_3sec", TimerState.Three), ("timericon_5sec", TimerState.Five)]
+	var timerStateImages = [("timericon_off", TimerState.off), ("timericon_3sec", TimerState.three), ("timericon_5sec", TimerState.five)]
 	
 	
 	override func awakeFromNib() {
 		self.backButton.alpha = 0.0
-		if (UIScreen.mainScreen().bounds.height > 480)
+		if (UIScreen.main.bounds.height > 480)
 		{
-			self.changeMasksButton.hidden = true
+			self.changeMasksButton.isHidden = true
 		}
 	}
 	
-	@IBAction func backButtonPressed(sender: AnyObject)
+	@IBAction func backButtonPressed(_ sender: AnyObject)
 	{
 		if let delegate = viewDelegate
 		{
@@ -80,14 +80,14 @@ class TakeImageNavBar: UIView {
 		}
 	}
 	
-	@IBAction func middleButtonPressed(sender: AnyObject)
+	@IBAction func middleButtonPressed(_ sender: AnyObject)
 	{
 		toggleTimerState()
 	}
 	
-	@IBAction func rightButtonPressed(sender: AnyObject)
+	@IBAction func rightButtonPressed(_ sender: AnyObject)
 	{
-		if (rightButton.titleForState(UIControlState.Normal) == nil) //flash button
+		if (rightButton.title(for: UIControlState()) == nil) //flash button
 		{
 			toggleFlashState()
 		}
@@ -107,23 +107,23 @@ class TakeImageNavBar: UIView {
 		}
 	}
 	
-	@IBAction func maskButtonPressed(sender: AnyObject) {
-		self.changeMasksButton.selected = !self.changeMasksButton.selected
+	@IBAction func maskButtonPressed(_ sender: AnyObject) {
+		self.changeMasksButton.isSelected = !self.changeMasksButton.isSelected
 		if let delegate = viewDelegate
 		{
 			delegate.maskButtonPressed()
 		}
 	}
 	
-	func replicateJumperButtonToMiddleButton(jumper : UIButton)
+	func replicateJumperButtonToMiddleButton(_ jumper : UIButton)
 	{
-		self.middleButton.setImage(nil, forState: UIControlState.Normal)
+		self.middleButton.setImage(nil, for: UIControlState())
 		jumper.removeConstraints(jumper.constraints)
 		jumper.tag = 1222
 		self.middleButtonHeightConstraint.constant = 34
 		self.middleButtonWidthConstraint.constant = 34
 		self.middleButton.pinSubViewToAllEdges(jumper)
-		UIView.animateWithDuration(0.5, animations: { () -> Void in
+		UIView.animate(withDuration: 0.5, animations: { () -> Void in
 			self.middleButton.alpha = 1.0
 		})
 	}
@@ -138,7 +138,7 @@ class TakeImageNavBar: UIView {
 				jumper?.removeFromSuperview()
 			}
 			currentTimerIndex = 0
-			self.middleButton.setImage(UIImage(named: timerStateImages[currentTimerIndex].0), forState: UIControlState.Normal)
+			self.middleButton.setImage(UIImage(named: timerStateImages[currentTimerIndex].0), for: UIControlState())
 		}
 		
 	}
@@ -151,27 +151,27 @@ class TakeImageNavBar: UIView {
 	
 	
 	
-	func showLeftButton(show: Bool, animated: Bool)
+	func showLeftButton(_ show: Bool, animated: Bool)
 	{
 		self.showButton(self.backButton, show: show, animated: animated)
 	}
 	
-	func showRightButton(show: Bool, animated: Bool)
+	func showRightButton(_ show: Bool, animated: Bool)
 	{
 		self.showButton(self.rightButton, show: show, animated: animated)
 	}
 	
-	func showMiddleButton(show: Bool, animated: Bool)
+	func showMiddleButton(_ show: Bool, animated: Bool)
 	{
 		
 		self.showButton(self.middleButton, show: show, animated: animated)
 	}
 	
-	func hideMasksButton(animated: Bool)
+	func hideMasksButton(_ animated: Bool)
 	{
 		if animated
 		{
-			UIView.animateWithDuration(0.5, animations: { () -> Void in
+			UIView.animate(withDuration: 0.5, animations: { () -> Void in
 				self.changeMasksButton.alpha = 0.0
 			})
 		}else
@@ -180,7 +180,7 @@ class TakeImageNavBar: UIView {
 		}
 	}
 
-	private func showButton(view : UIView, show : Bool, animated : Bool)
+	fileprivate func showButton(_ view : UIView, show : Bool, animated : Bool)
 	{
 		let alpha : CGFloat = show ? 1.0 : 0.0
 		
@@ -188,7 +188,7 @@ class TakeImageNavBar: UIView {
 		
 		if animated
 		{
-			UIView.animateWithDuration(DefaultAppearanceAnimationTime, animations: { () -> Void in
+			UIView.animate(withDuration: DefaultAppearanceAnimationTime, animations: { () -> Void in
 				view.alpha = alpha
 			})
 		}else
@@ -199,60 +199,60 @@ class TakeImageNavBar: UIView {
 	
 	func applyNextButtonAppearanceToRightButton()
 	{
-		self.rightButton.setTitle("Next", forState: UIControlState.Normal)
-		self.rightButton.setImage(nil, forState: UIControlState.Normal)
-		self.rightButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+		self.rightButton.setTitle("Next", for: UIControlState())
+		self.rightButton.setImage(nil, for: UIControlState())
+		self.rightButton.setTitleColor(UIColor.white, for: UIControlState())
 	}
 	
 	func applyDoneButtonAppearanceToRightButton()
 	{
-		self.rightButton.setTitle("Done", forState: UIControlState.Normal)
-		self.rightButton.setImage(nil, forState: UIControlState.Normal)
-		self.rightButton.setTitleColor(UIColor(red: 255.0/255.0, green: 107.0/255.0, blue: 106.0/255.0, alpha: 1.0), forState: UIControlState.Normal)
+		self.rightButton.setTitle("Done", for: UIControlState())
+		self.rightButton.setImage(nil, for: UIControlState())
+		self.rightButton.setTitleColor(UIColor(red: 255.0/255.0, green: 107.0/255.0, blue: 106.0/255.0, alpha: 1.0), for: UIControlState())
 	}
 	
 	func applyCancelButtonAppearanceToBackButton()
 	{
-		self.backButton.setTitle("Cancel", forState: UIControlState.Normal)
-		self.backButton.setImage(nil, forState: UIControlState.Normal)
+		self.backButton.setTitle("Cancel", for: UIControlState())
+		self.backButton.setImage(nil, for: UIControlState())
 	}
 	
 	func applyRetakeButtonAppearanceToBackButton()
 	{
-		self.backButton.setTitle("Retake", forState: UIControlState.Normal)
-		self.backButton.setImage(nil, forState: UIControlState.Normal)
+		self.backButton.setTitle("Retake", for: UIControlState())
+		self.backButton.setImage(nil, for: UIControlState())
 	}
 	
 	func applyBackAppearanceToBackButton()
 	{
-		self.backButton.setTitle("Back", forState: UIControlState.Normal)
-		self.backButton.setImage(nil, forState: UIControlState.Normal)
+		self.backButton.setTitle("Back", for: UIControlState())
+		self.backButton.setImage(nil, for: UIControlState())
 	}
 	
 	
-	private func toggleFlashState()
+	fileprivate func toggleFlashState()
 	{
 		let newFlashState = (currentFlashState.rawValue + 1)%flashStateImages.count
 		let flashImage = UIImage(named: flashStateImages[newFlashState])
-		self.rightButton.setImage(flashImage, forState: UIControlState.Normal)
+		self.rightButton.setImage(flashImage, for: UIControlState())
 		currentFlashState = FlashState(rawValue: newFlashState)!
-		NSNotificationCenter.defaultCenter().postNotificationName(FlashChangedNotification, object: nil, userInfo: [FlashStateKey : newFlashState])
+		NotificationCenter.default.post(name: Notification.Name(rawValue: FlashChangedNotification), object: nil, userInfo: [FlashStateKey : newFlashState])
 	}
 	
-	private func toggleTimerState()
+	fileprivate func toggleTimerState()
 	{
 		currentTimerIndex = (currentTimerIndex + 1)%timerStateImages.count
 		let timerImage = UIImage(named: timerStateImages[currentTimerIndex].0)
-		self.middleButton.setImage(timerImage, forState: UIControlState.Normal)
+		self.middleButton.setImage(timerImage, for: UIControlState())
 		
 	}
 	
 	func zeroFlashState()
 	{
-		currentFlashState = FlashState.Auto
-		self.rightButton.setTitle(nil, forState: UIControlState.Normal)
-		self.rightButton.setImage(UIImage(named: "flash_auto"), forState: UIControlState.Normal)
-		NSNotificationCenter.defaultCenter().postNotificationName(FlashChangedNotification, object: nil, userInfo: [FlashStateKey : currentFlashState.rawValue])
+		currentFlashState = FlashState.auto
+		self.rightButton.setTitle(nil, for: UIControlState())
+		self.rightButton.setImage(UIImage(named: "flash_auto"), for: UIControlState())
+		NotificationCenter.default.post(name: Notification.Name(rawValue: FlashChangedNotification), object: nil, userInfo: [FlashStateKey : currentFlashState.rawValue])
 	}
 	
 }

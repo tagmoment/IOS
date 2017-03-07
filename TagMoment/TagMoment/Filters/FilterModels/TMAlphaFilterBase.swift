@@ -19,12 +19,12 @@ class TMAlphaFilterBase : TMFilterBase
 	}
 //	var ColorMatrix = CIFilter(name: "CIColorMatrix")
 //	var Compositor =
-	override func inputImage(inputImage: CIImage!) {
+	override func inputImage(_ inputImage: CIImage!) {
 		super.inputImage(inputImage)
 		self.filters[2].setValue(inputImage, forKey: kCIInputBackgroundImageKey)
 	}
 	
-	override func applyFilterValue(value : Float)
+	override func applyFilterValue(_ value : Float)
 	{
 		self.filters[1].setDefaults()
 		self.filters[1].setValue(CIVector(x: CGFloat(0), y: CGFloat(0), z: CGFloat(0), w: CGFloat(value)), forKey: "inputAVector");

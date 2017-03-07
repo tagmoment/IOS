@@ -16,7 +16,7 @@ class CameraRollViewController: UIViewController, UIGestureRecognizerDelegate{
 	let assetLibrary = ALAssetsLibrary()
 	
 	var groups : [ALAssetsGroup] = []
-	var assetsUrls = [ALAssetsGroup : [NSURL]]()
+	var assetsUrls = [ALAssetsGroup : [URL]]()
 	
 	var heightConstraint : NSLayoutConstraint!
 	var minHeight : CGFloat = 0
@@ -35,7 +35,7 @@ class CameraRollViewController: UIViewController, UIGestureRecognizerDelegate{
 		let panRecog = UIPanGestureRecognizer(target: self, action: #selector(CameraRollViewController.sliderDidPan(_:)))
 		panRecog.delegate = self;
 		self.sliderView.addGestureRecognizer(panRecog)
-		let mainController = UIApplication.sharedApplication().delegate?.window!?.rootViewController! as! MainViewController
+		let mainController = UIApplication.shared.delegate?.window!?.rootViewController! as! MainViewController
 		minHeight = mainController.masksViewController.view.frame.height
 		maxHeight = mainController.view.frame.height - mainController.infobarHolder.frame.height
 		
@@ -43,72 +43,72 @@ class CameraRollViewController: UIViewController, UIGestureRecognizerDelegate{
 		loadImages()
     }
 	
-	override func viewDidAppear(animated: Bool) {
+	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		GoogleAnalyticsReporter.ReportPageView("Camera Roll View")
 		self.heightConstraint.constant = originalHeight
-		UIView.animateWithDuration(0.3		, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+		UIView.animate(withDuration: 0.3		, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: { () -> Void in
 			self.view.superview?.layoutIfNeeded()
 			}, completion: nil)
 	}
 
 	
-	private func prepareNavigation()
+	fileprivate func prepareNavigation()
 	{
 		let albumsContainerController = AlbumCoverCollectionViewController(nibName: "AlbumCoverCollectionViewController", bundle: nil)
 		navCont = UINavigationController(rootViewController: albumsContainerController)
-		navCont.view.frame = CGRect(x: 0, y: -navCont.navigationBar.frame.size.height + CGRectGetHeight(self.sliderView.frame), width: CGRectGetWidth(self.sliderView.frame), height: CGRectGetHeight(self.view.frame) + navCont.navigationBar.frame.size.height - CGRectGetHeight(self.sliderView.frame))
+		navCont.view.frame = CGRect(x: 0, y: -navCont.navigationBar.frame.size.height + self.sliderView.frame.height, width: self.sliderView.frame.width, height: self.view.frame.height + navCont.navigationBar.frame.size.height - self.sliderView.frame.height)
 		self.view.addSubview(navCont.view!)
-		navCont.navigationBar.barStyle = UIBarStyle.Black
+		navCont.navigationBar.barStyle = UIBarStyle.black
 		albumsContainerController.assetLibrary = self.assetLibrary
 		albumsContainerController.title = "Phone Albums"
 		let albumCont = AlbumContentsCollectionViewController(nibName: "AlbumContentsCollectionViewController", bundle: nil)
 		albumCont.assetLibrary = self.assetLibrary
 		navCont.pushViewController(albumCont, animated: false)
-		navCont.navigationBar.tintColor = UIColor.whiteColor()
-		self.view.bringSubviewToFront(self.sliderView)
+		navCont.navigationBar.tintColor = UIColor.white
+		self.view.bringSubview(toFront: self.sliderView)
 		
 	}
 	
-	func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+	func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
 		return self.navCont.viewControllers.count != 1
 	}
 	
-	func sliderDidPan(sender: AnyObject!)
+	func sliderDidPan(_ sender: AnyObject!)
 	{
 		let panGest = sender as! UIPanGestureRecognizer
 		
 		switch (panGest.state)
 		{
-		case .Began:
+		case .began:
 			if (heightConstraint.constant == self.maxHeight)
 			{
 				self.hideNavigationBar()
 			}
 			
 			
-		case .Changed:
+		case .changed:
 			
-			heightConstraint.constant = min(maxHeight, max(minHeight,originalHeight - panGest.translationInView(self.view).y))
+			heightConstraint.constant = min(maxHeight, max(minHeight,originalHeight - panGest.translation(in: self.view).y))
 			
-		case .Ended:
+		case .ended:
 			originalHeight = heightConstraint.constant
-			self.endSlidingDrawerMovementWithVelocity(panGest.velocityInView(self.view))
+			self.endSlidingDrawerMovementWithVelocity(panGest.velocity(in: self.view))
 		default:
 			print(" \(panGest.state.rawValue)")
 		}
 	}
 	
-	private func endSlidingDrawerMovementWithVelocity(velocity : CGPoint)
+	fileprivate func endSlidingDrawerMovementWithVelocity(_ velocity : CGPoint)
 	{
 		
 		print("velocty y is:  \(velocity.y)")
 		let velocityY = abs(velocity.y) > VelocityThreshold ? velocity.y : velocity.y > 0 ? VelocityThreshold : -VelocityThreshold
 		let targetHeight = velocity.y > 0 ? minHeight : maxHeight
 		let distanceToCover = abs(heightConstraint.constant - targetHeight)
-		let duration : NSTimeInterval = NSTimeInterval(abs(distanceToCover/velocityY))
+		let duration : TimeInterval = TimeInterval(abs(distanceToCover/velocityY))
 		heightConstraint.constant = targetHeight
-		UIView.animateWithDuration(duration, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+		UIView.animate(withDuration: duration, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: { () -> Void in
 			self.view.superview?.layoutIfNeeded()
 			}, completion: { (finished: Bool) -> Void in
 				self.originalHeight = self.heightConstraint.constant
@@ -122,33 +122,33 @@ class CameraRollViewController: UIViewController, UIGestureRecognizerDelegate{
 	
 	func showNavigationBar()
 	{
-		UIView.animateWithDuration(0.2, animations: { () -> Void in
-			self.navCont.view.frame = CGRect(x: 0, y: CGRectGetHeight(self.sliderView.frame), width: CGRectGetWidth(self.sliderView.frame), height: CGRectGetHeight(self.view.frame) - CGRectGetHeight(self.sliderView.frame))
+		UIView.animate(withDuration: 0.2, animations: { () -> Void in
+			self.navCont.view.frame = CGRect(x: 0, y: self.sliderView.frame.height, width: self.sliderView.frame.width, height: self.view.frame.height - self.sliderView.frame.height)
 		})
 	}
 	
 	func hideNavigationBar()
 	{
-		UIView.animateWithDuration(0.3, animations: { () -> Void in
-			self.navCont.view.frame = CGRect(x: 0, y: -self.navCont.navigationBar.frame.size.height + CGRectGetHeight(self.sliderView.frame), width: CGRectGetWidth(self.sliderView.frame), height: CGRectGetHeight(self.view.frame) + self.navCont.navigationBar.frame.size.height - CGRectGetHeight(self.sliderView.frame))
+		UIView.animate(withDuration: 0.3, animations: { () -> Void in
+			self.navCont.view.frame = CGRect(x: 0, y: -self.navCont.navigationBar.frame.size.height + self.sliderView.frame.height, width: self.sliderView.frame.width, height: self.view.frame.height + self.navCont.navigationBar.frame.size.height - self.sliderView.frame.height)
 		})
 	}
 	
-	private func loadImages()
+	fileprivate func loadImages()
 	{
 		var maxGroupCount = 0
 		ALAssetsLibrary.disableSharedPhotoStreamsSupport()
-		assetLibrary.enumerateGroupsWithTypes(ALAssetsGroupAlbum | ALAssetsGroupSavedPhotos, usingBlock: { (assetGroup : ALAssetsGroup!, stop : UnsafeMutablePointer<ObjCBool>) -> Void in
+		assetLibrary.enumerateGroupsWithTypes(ALAssetsGroupAlbum | ALAssetsGroupSavedPhotos, usingBlock: { (assetGroup, stop) -> Void in
 			
 			if let group = assetGroup
 			{
-				var assetsUrlsForGroup = [NSURL]()
-				group.enumerateAssetsWithOptions(NSEnumerationOptions.Reverse, usingBlock : { (assetResult : ALAsset!, index: Int, stop: UnsafeMutablePointer<ObjCBool>) -> Void in
+				var assetsUrlsForGroup = [URL]()
+				group.enumerateAssets(options: NSEnumerationOptions.reverse, using : { (assetResult, index, stop) -> Void in
 					
 					if let asset = assetResult
 					{
 						
-						if (asset.valueForProperty(ALAssetPropertyType) as! String == ALAssetTypePhoto)
+						if (asset.value(forProperty: ALAssetPropertyType) as! String == ALAssetTypePhoto)
 						{
 							
 							if let defaultRep = asset.defaultRepresentation()
@@ -164,7 +164,7 @@ class CameraRollViewController: UIViewController, UIGestureRecognizerDelegate{
 					}
 					
 				})
-				let groupName = group.valueForProperty(ALAssetsGroupPropertyName) as! String
+				let groupName = group.value(forProperty: ALAssetsGroupPropertyName) as! String
 				print("\(groupName)")
 				if (assetsUrlsForGroup.count != 0)
 				{
@@ -188,7 +188,7 @@ class CameraRollViewController: UIViewController, UIGestureRecognizerDelegate{
 				}
 			}
 			
-			}) { (error : NSError!) -> Void in
+			}) { (error) -> Void in
 				print("we have an error", terminator: "")
 		}
 		print("here")
@@ -196,11 +196,11 @@ class CameraRollViewController: UIViewController, UIGestureRecognizerDelegate{
 
 	}
 	
-	func addToView(superview : UIView)
+	func addToView(_ superview : UIView)
 	{
-		NSNotificationCenter.defaultCenter().postNotificationName(CameraRollWillAppearNotificationName, object: nil)
-		superview.pinSubViewToBottom(self.view)
-		let heightContraint = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 22.0)
+		NotificationCenter.default.post(name: Notification.Name(rawValue: CameraRollWillAppearNotificationName), object: nil)
+		_ = superview.pinSubViewToBottom(self.view)
+		let heightContraint = NSLayoutConstraint(item: self.view, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1.0, constant: 22.0)
 		self.view.addConstraint(heightContraint)
 		self.heightConstraint = heightContraint
 		
@@ -208,9 +208,9 @@ class CameraRollViewController: UIViewController, UIGestureRecognizerDelegate{
 	
 	func closeView()
 	{
-		NSNotificationCenter.defaultCenter().postNotificationName(CameraRollWillDisappearNotificationName, object: nil)
+		NotificationCenter.default.post(name: Notification.Name(rawValue: CameraRollWillDisappearNotificationName), object: nil)
 		self.heightConstraint.constant = MinimumHeight
-		UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+		UIView.animate(withDuration: 0.3, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: { () -> Void in
 			self.view.superview?.layoutIfNeeded()
 			}, completion: { (finished : Bool) -> Void in
 				

@@ -18,7 +18,7 @@ class FilterVectorParameter : FilterParameterProtocol
 		self.key = key
 	}
 	
-	func normalizedValueFromPercent(percent : Float) -> AnyObject
+	func normalizedValueFromPercent(_ percent : Float) -> AnyObject
 	{
 //		return CIVector(x: CGFloat(320*percent), y: CGFloat(320*percent))
 		return CIVector(x: CGFloat(150), y: CGFloat(150))

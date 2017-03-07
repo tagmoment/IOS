@@ -10,15 +10,15 @@ import Foundation
 
 enum TagMomentBlurEffect : Int{
 	
-	case ExtraLight
-	case Light
-	case Dark
+	case extraLight
+	case light
+	case dark
 
 }
 
 class VisualEffectsUtil
 {
-	static func initBlurredOverLay(effectStyle: TagMomentBlurEffect, toView holder: UIView? = nil) -> UIView?
+	static func initBlurredOverLay(_ effectStyle: TagMomentBlurEffect, toView holder: UIView? = nil) -> UIView?
 	{
 		if !UIAccessibilityIsReduceTransparencyEnabled() {
 			let blurEffect = UIBlurEffect(style: UIBlurEffectStyle(rawValue: effectStyle.rawValue)!)

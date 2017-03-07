@@ -1,24 +1,23 @@
 PODS:
   - Cloudinary (1.0.15)
-  - DeviceKit (0.3.2)
-  - FirebaseAnalytics (3.2.0):
+  - DeviceKit (1.0.1)
+  - FirebaseAnalytics (3.7.0):
+    - FirebaseCore (~> 3.5)
     - FirebaseInstanceID (~> 1.0)
-    - GoogleInterchangeUtilities (~> 1.2)
-    - GoogleSymbolUtilities (~> 1.1)
-    - GoogleUtilities (~> 1.3)
-  - FirebaseInstanceID (1.0.6)
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseCore (3.5.1):
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseInstanceID (1.0.9)
   - Google/Analytics (3.0.3):
     - Google/Core
     - GoogleAnalytics (~> 3.12)
   - Google/Core (3.0.3):
     - FirebaseAnalytics (~> 3.2)
-  - GoogleAnalytics (3.14.0)
-  - GoogleInterchangeUtilities (1.2.1):
-    - GoogleSymbolUtilities (~> 1.0)
-  - GoogleSymbolUtilities (1.1.1)
-  - GoogleUtilities (1.3.1):
-    - GoogleSymbolUtilities (~> 1.0)
-  - JPSVolumeButtonHandler (1.0.1)
+  - GoogleAnalytics (3.17.0)
+  - GoogleToolboxForMac/Defines (2.1.1)
+  - GoogleToolboxForMac/NSData+zlib (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+  - JPSVolumeButtonHandler (1.0.3)
 
 DEPENDENCIES:
   - Cloudinary
@@ -28,16 +27,15 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Cloudinary: f80af4565ec08c521d5e58cb56d9fbe1e4595e40
-  DeviceKit: 79182140c0aa8daaf4f4b3920e0b079f5fa9db79
-  FirebaseAnalytics: 6f75b04e6bfb8e0b6e9ef298e04c24eea3b13863
-  FirebaseInstanceID: d014d574053a2fe84478f12f7bae96979e7051bb
+  DeviceKit: 461e525867e48e725f41699c1cab3100df1258ff
+  FirebaseAnalytics: 0d1b7d81d5021155be37702a94ba1ec16d45365d
+  FirebaseCore: 225d40532489835a034b8f4e2c9c87fbf4f615a2
+  FirebaseInstanceID: 2d0518b1378fe9d685ef40cbdd63d2fdc1125339
   Google: 813c467362eabc11385f5a5cc9ad0cb651a58f4e
-  GoogleAnalytics: 9be1afdb8deeac4bb5f13ca7f7d3b9db2a1f43dc
-  GoogleInterchangeUtilities: def8415a862effc67d549d5b5b0b9c7a2f97d4de
-  GoogleSymbolUtilities: 33117db1b5f290c6fbf259585e4885b4c84b98d7
-  GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
-  JPSVolumeButtonHandler: 20f474cf94fc7c21be8db572ecdf9aaffb20a738
+  GoogleAnalytics: f42cc53a87a51fe94334821868d9c8481ff47a7b
+  GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
+  JPSVolumeButtonHandler: 2fc1b1f98b4e5e741688c0fcffc4808bdf81a424
 
 PODFILE CHECKSUM: 47e583e5f00b585b01ef1d2c106363b6e453d15b
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.2.0

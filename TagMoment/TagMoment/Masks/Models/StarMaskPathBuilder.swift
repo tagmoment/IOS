@@ -10,12 +10,12 @@ import UIKit
 
 class StarMaskPathBuilder
 {
-	func degree2radian(a:CGFloat)->CGFloat {
+	func degree2radian(_ a:CGFloat)->CGFloat {
 		let b = CGFloat(M_PI) * a/180
 		return b
 	}
 	
-	func polygonPointArray(sides:Int,x:CGFloat,y:CGFloat,radius:CGFloat,adjustment:CGFloat=0)->[CGPoint] {
+	func polygonPointArray(_ sides:Int,x:CGFloat,y:CGFloat,radius:CGFloat,adjustment:CGFloat=0)->[CGPoint] {
 		let angle = degree2radian(360/CGFloat(sides))
 		let cx = x // x origin
 		let cy = y // y origin
@@ -31,20 +31,20 @@ class StarMaskPathBuilder
 		return points
 	}
 	
-	func starPath(x x:CGFloat, y:CGFloat, radius:CGFloat, sides:Int,pointyness:CGFloat) -> CGPathRef {
+	func starPath(x:CGFloat, y:CGFloat, radius:CGFloat, sides:Int,pointyness:CGFloat) -> CGPath {
 		let adjustment = 360/sides/2
-		let path = CGPathCreateMutable()
+		let path = CGMutablePath()
 		let points = polygonPointArray(sides,x: x,y: y,radius: radius, adjustment: CGFloat(-adjustment/2))
 		let cpg = points[0]
 		let points2 = polygonPointArray(sides,x: x,y: y,radius: radius*pointyness,adjustment:CGFloat(adjustment/2))
 		var i = 0
-		CGPathMoveToPoint(path, nil, cpg.x, cpg.y)
+		path.move(to: cpg)
 		for p in points {
-			CGPathAddLineToPoint(path, nil, points2[i].x, points2[i].y)
-			CGPathAddLineToPoint(path, nil, p.x, p.y)
+			path.addLine(to: points2[i])
+			path.addLine(to: p)
 			i += 1
 		}
-		CGPathCloseSubpath(path)
+		path.closeSubpath()
 		return path
 	}
 }

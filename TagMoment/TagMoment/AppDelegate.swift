@@ -7,11 +7,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 	var window: UIWindow?
 
 
-	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 		self.initializeGoogleAnalytics()
 		TestFairy.begin("008e0e4a9e585f7bb42687114d30b36e864c2a4b")
-		UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: UIStatusBarAnimation.Fade)
-		self.window = UIWindow(frame: UIScreen .mainScreen().bounds)
+		UIApplication.shared.setStatusBarHidden(true, with: UIStatusBarAnimation.fade)
+		self.window = UIWindow(frame: UIScreen.main.bounds)
 		self.window!.rootViewController = MainViewController(nibName: "MainViewController",bundle: nil)
 		
 		self.window!.makeKeyAndVisible()
@@ -19,11 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 		return true
 	}
 
-	func applicationDidBecomeActive(application: UIApplication) {
+	func applicationDidBecomeActive(_ application: UIApplication) {
 		SettingsHelper.registerSettingsIfNeeded()
 	}
 	
-	private func initializeGoogleAnalytics()
+	fileprivate func initializeGoogleAnalytics()
 	{
 		// Configure tracker from GoogleService-Info.plist.
 		var configureError:NSError?
@@ -32,8 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 		
 		// Optional: configure GAI options.
 		let gai = GAI.sharedInstance()
-		gai.trackUncaughtExceptions = true  // report uncaught exceptions
-		gai.logger.logLevel = GAILogLevel.Verbose  // remove before app release
+		gai?.trackUncaughtExceptions = true  // report uncaught exceptions
+		gai?.logger.logLevel = GAILogLevel.verbose  // remove before app release
 	}
 }
 

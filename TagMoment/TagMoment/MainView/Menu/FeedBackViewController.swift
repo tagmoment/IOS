@@ -26,26 +26,26 @@ class FeedbackViewController: UIViewController, UIAlertViewDelegate, MFMailCompo
 	var alertView : UIAlertView?
 	weak var feedbackDelegate: FeedbackViewControllerDelegate?
 	
-	override func viewDidAppear(animated: Bool) {
+	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		GoogleAnalyticsReporter.ReportPageView("FeedBack View")
 	}
 	
-	@IBAction func dislikeButtonPressed(sender: AnyObject) {
+	@IBAction func dislikeButtonPressed(_ sender: AnyObject) {
 		alertView = UIAlertView(title: nil, message: DislikeAlertMessage, delegate: self, cancelButtonTitle: WriteUsTitle)
-		alertView?.addButtonWithTitle(NotNowTitle)
+		alertView?.addButton(withTitle: NotNowTitle)
 		alertView?.show()
 	}
 	
-	@IBAction func backButtonPressed(sender: AnyObject) {
+	@IBAction func backButtonPressed(_ sender: AnyObject) {
 		if let delegate = self.feedbackDelegate
 		{
 			delegate.backPressed()
 		}
 	}
-	@IBAction func likeButtonPressed(sender: AnyObject) {
+	@IBAction func likeButtonPressed(_ sender: AnyObject) {
 		alertView = UIAlertView(title: nil, message: LikeMessage, delegate: self, cancelButtonTitle: RateUsTitle)
-		alertView?.addButtonWithTitle(NotNowTitle)
+		alertView?.addButton(withTitle: NotNowTitle)
 		alertView?.show()
 	}
 	
@@ -58,13 +58,13 @@ class FeedbackViewController: UIViewController, UIAlertViewDelegate, MFMailCompo
 		mc.setSubject(emailTitle)
 		mc.setToRecipients(toRecipents)
 		mc.setMessageBody(self.messageBody(), isHTML: false)
-		self.presentViewController(mc, animated: true, completion: nil)
+		self.present(mc, animated: true, completion: nil)
 	}
 	
-	private func messageBody() -> String
+	fileprivate func messageBody() -> String
 	{
 		let device = Device()
-		let appVersionString: String = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as! String
+		let appVersionString: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
 
 		return ("Hi,\n I'm using \(device) on iOS \(device.systemVersion) with app version \(appVersionString)...\n")
 	}
@@ -74,17 +74,17 @@ class FeedbackViewController: UIViewController, UIAlertViewDelegate, MFMailCompo
 	{
 		if MainViewController.isSmallestScreen()
 		{
-			self.backButton.hidden = true
+			self.backButton.isHidden = true
 		}
 		
 	}
 	// MARK: - UIAlertViewDelegate
-	func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
-		let title = alertView.buttonTitleAtIndex(buttonIndex)
+	func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int) {
+		let title = alertView.buttonTitle(at: buttonIndex)
 		if title == RateUsTitle
 		{
-			let appUrl = NSURL(string: "itms-apps://itunes.apple.com/app/id1090349311")
-			UIApplication.sharedApplication().openURL(appUrl!)
+			let appUrl = URL(string: "itms-apps://itunes.apple.com/app/id1090349311")
+			UIApplication.shared.openURL(appUrl!)
 		}
 		else if title == WriteUsTitle
 		{
@@ -95,20 +95,20 @@ class FeedbackViewController: UIViewController, UIAlertViewDelegate, MFMailCompo
 	}
 	
 	// MARK: - MFMailComposeViewControllerDelegate
-	func mailComposeController(controller:MFMailComposeViewController, didFinishWithResult result:MFMailComposeResult, error:NSError?) {
+	func mailComposeController(_ controller:MFMailComposeViewController, didFinishWith result:MFMailComposeResult, error:Error?) {
 		switch result.rawValue {
-		case MFMailComposeResultCancelled.rawValue:
+		case MFMailComposeResult.cancelled.rawValue:
 			NSLog("Mail cancelled")
-		case MFMailComposeResultSaved.rawValue:
+		case MFMailComposeResult.saved.rawValue:
 			NSLog("Mail saved")
-		case MFMailComposeResultSent.rawValue:
+		case MFMailComposeResult.sent.rawValue:
 			NSLog("Mail sent")
-		case MFMailComposeResultFailed.rawValue:
+		case MFMailComposeResult.failed.rawValue:
 			NSLog("Mail sent failure: %@", [error!.localizedDescription])
 		default:
 			break
 		}
-		self.dismissViewControllerAnimated(true, completion: nil)
+		self.dismiss(animated: true, completion: nil)
 		
 	}
 	

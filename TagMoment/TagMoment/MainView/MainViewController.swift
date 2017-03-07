@@ -70,7 +70,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	
 	
 	
-	required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+	required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
 		super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
 		commonInit()
 	}
@@ -80,7 +80,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		commonInit()
 	}
 	
-	private func commonInit() {
+	fileprivate func commonInit() {
 		sessionService = CameraSessionService()
 		viewChoreographer.mainViewController = self
 		inAppPurchaseDataProvider.delegate = self
@@ -92,8 +92,8 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
     override func viewDidLoad() {
         super.viewDidLoad()
 		workingImageView = canvas
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainViewController.imageFromCameraChosenNotification(_:)), name: ImageFromCameraChosenNotificationName, object: nil)
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(UIApplicationDelegate.applicationWillTerminate(_:)), name: UIApplicationWillTerminateNotification, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.imageFromCameraChosenNotification(_:)), name: NSNotification.Name(rawValue: ImageFromCameraChosenNotificationName), object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(UIApplicationDelegate.applicationWillTerminate(_:)), name: NSNotification.Name.UIApplicationWillTerminate, object: nil)
 		
 		masksViewController = ChooseMasksViewController(nibName: "ChooseMasksViewController", bundle: nil)
 		controlContainer.addViewWithConstraints(masksViewController.view, toTheRight: true)
@@ -101,7 +101,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		masksViewController.masksChooseDelegate = self
 
 		secondImageView = ClippingViewWithTouch()
-		secondImageView.userInteractionEnabled = true
+		secondImageView.isUserInteractionEnabled = true
 		var tapRecog = UILongPressGestureRecognizer()
 		tapRecog.minimumPressDuration = 0
 		tapRecog.allowableMovement = 20
@@ -114,32 +114,32 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		tapRecog.addTarget(self, action: #selector(MainViewController.croppedImageDidPress(_:)))
 		tapRecog.delegate = self
 		canvas.addGestureRecognizer(tapRecog)
-		secondImageView.contentMode = UIViewContentMode.ScaleAspectFill
-		secondImageView.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleHeight];
+		secondImageView.contentMode = UIViewContentMode.scaleAspectFill
+		secondImageView.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight];
 		secondImageView.frame = canvas.bounds;
 		canvas.addSubview(secondImageView);
-		navigationView = NSBundle.mainBundle().loadNibNamed("NavbarView", owner: nil, options: nil)[0] as! TakeImageNavBar
+		navigationView = Bundle.main.loadNibNamed("NavbarView", owner: nil, options: nil)?[0] as! TakeImageNavBar
 		infobarHolder.pinSubViewToAllEdges(navigationView)
 		navigationView.viewDelegate = self
 		changeMasksCarouselPositionIfNeeded()
-		blurredView = VisualEffectsUtil.initBlurredOverLay(TagMomentBlurEffect.Light, toView: secondImageView)
+		blurredView = VisualEffectsUtil.initBlurredOverLay(TagMomentBlurEffect.light, toView: secondImageView)
 		canvas.layer.masksToBounds = true
 		
     }
 	
 	deinit
 	{
-		NSNotificationCenter.defaultCenter().removeObserver(self)
+		NotificationCenter.default.removeObserver(self)
 	}
 	//MARK - Gesture Handling
-	func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+	func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
 		
 		
 		if self.masksViewController != nil && self.canvas != nil && MainViewController.isSmallestScreen()
 		{
-			let touchPoint = touch.locationInView(self.canvas)
+			let touchPoint = touch.location(in: self.canvas)
 			let frame = self.masksViewController.masksCarousel.frame
-			if (CGRectContainsPoint(frame, touchPoint))
+			if (frame.contains(touchPoint))
 			{
 				return false;
 			}
@@ -150,17 +150,17 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	}
 
 	
-	func croppedImageDidPress(sender: AnyObject)
+	func croppedImageDidPress(_ sender: AnyObject)
 	{
 		let tapRecog = sender as! UILongPressGestureRecognizer
 		
-		if (tapRecog.state == UIGestureRecognizerState.Began)
+		if (tapRecog.state == UIGestureRecognizerState.began)
 		{
 			if (filtersViewController != nil)
 			{
 				let value = (self.secondImageView === tapRecog.view)
 				
-				if value == filtersViewController.jumperButton.selected
+				if value == filtersViewController.jumperButton.isSelected
 				{
 					filtersViewController.changeSliderValueTo(0)
 				}
@@ -169,7 +169,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			return
 		}
 		
-		if (tapRecog.state != UIGestureRecognizerState.Ended && tapRecog.state != UIGestureRecognizerState.Cancelled)
+		if (tapRecog.state != UIGestureRecognizerState.ended && tapRecog.state != UIGestureRecognizerState.cancelled)
 		{
 			return
 		}
@@ -193,21 +193,21 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			let innerViewTouched = (self.secondImageView === tapRecog.view && self.frontCamSessionView != nil) ? self.secondImageView : self.canvas
 			
 			
-			let point = tapRecog.locationInView(innerViewTouched)
+			let point = tapRecog.location(in: innerViewTouched)
 			let focus = CircleRectView(frame: CGRect(x: 0,y: 0,width: 50,height: 50))
 			focus.center = point
 			if innerViewTouched === self.secondImageView
 			{
 				focus.dashedLineColor = UIColor(red: 210/255, green: 105/255, blue: 30/255, alpha: 1.0)
 			}
-			innerViewTouched.addSubview(focus)
+			innerViewTouched?.addSubview(focus)
 			focus.animateDisappearance()
 			let layerHolder = frontCamSessionView ?? backCamSessionView
 			sessionService.focus(innerViewTouched === self.secondImageView, layerHolder: layerHolder!, touchPoint: point)
 		}
 	}
 	
-	override func viewDidAppear(animated: Bool) {
+	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		GoogleAnalyticsReporter.ReportPageView("Main View");
 		if (!initialized)
@@ -274,12 +274,12 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		#endif
 	}
 	
-	private func createSessionView() -> UIView {
+	fileprivate func createSessionView() -> UIView {
 		let sessionView = UIView()
 		if (self.isOnFirstStage())
 		{
 			canvas.pinSubViewToAllEdges(sessionView)
-			canvas.bringSubviewToFront(secondImageView)
+			canvas.bringSubview(toFront: secondImageView)
 			
 			sessionView.frame = canvas.bounds
 
@@ -297,18 +297,18 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	}
 	
 	
-	private func addVideoLayer(toView host: UIView){
+	fileprivate func addVideoLayer(toView host: UIView){
 		let captureVideoPreviewLayer = sessionService.initializeSessionForCaptureLayer()
 		captureVideoPreviewLayer.frame = host.bounds
 		host.layer.addSublayer(captureVideoPreviewLayer)
 		
 	}
 
-	func maskChosen(name: String?) {
+	func maskChosen(_ name: String?) {
 		if (name != nil){
 			let maskLayerAndBounds = maskLayerAndBoundsForMaskName(name)
 			self.changeSingleCaptureBehaviour()
-			UIView.animateWithDuration(0.10, animations: { () -> Void in
+			UIView.animate(withDuration: 0.10, animations: { () -> Void in
 				self.secondImageView.alpha = 0.0
 				}, completion: { (finished: Bool) -> Void in
 					if (finished)
@@ -316,7 +316,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 						self.secondImageView.frame = maskLayerAndBounds.1!
 						self.changeMaskViewFrame(self.secondImageView.bounds)
 						self.secondImageView.layer.mask = maskLayerAndBounds.0!
-						UIView.animateWithDuration(0.10, animations: { () -> Void in
+						UIView.animate(withDuration: 0.10, animations: { () -> Void in
 							self.secondImageView.alpha = 1.0
 						})
 					}
@@ -331,15 +331,15 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			if (self.masksViewController.maskAllowsSecondCapture())
 			{
 				self.viewChoreographer.takingImageStageAppearance(false)
-				self.masksViewController.takeButton.enabled = true
-				self.masksViewController.switchCamButton.enabled = true
+				self.masksViewController.takeButton.isEnabled = true
+				self.masksViewController.switchCamButton.isEnabled = true
 				
 			}
 			else
 			{
 				self.viewChoreographer.editingStageAppearance(false)
-				self.masksViewController.takeButton.enabled = false
-				self.masksViewController.switchCamButton.enabled = false
+				self.masksViewController.takeButton.isEnabled = false
+				self.masksViewController.switchCamButton.isEnabled = false
 			}
 		}
 	}
@@ -354,23 +354,23 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		let newBounds = CGRect(x: 0, y: 0, width: self.canvas.frame.size.width*2, height: self.canvas.frame.size.height*2)
 		let newBoundsForLabel = CGRect(x: self.userLabel.frame.origin.x, y: self.canvas.frame.size.height*2 - 28.0 - self.userLabel.frame.size.height*2, width: self.userLabel.frame.size.width*2, height: self.userLabel.frame.size.height*2)
 		let newBoundsForMaskView = CGRect(x: self.secondImageView.frame.origin.x*2, y: self.secondImageView.frame.origin.y*2 , width: self.secondImageView.frame.size.width*2, height: self.secondImageView.frame.size.height*2)
-		UIGraphicsBeginImageContextWithOptions(newBounds.size, true, UIScreen.mainScreen().scale)
-		self.canvas.image?.drawInRect(newBounds);
-		self.secondImageView.drawViewHierarchyInRect(newBoundsForMaskView, afterScreenUpdates: true)
-		self.userLabel.drawViewHierarchyInRect(newBoundsForLabel, afterScreenUpdates: true)
+		UIGraphicsBeginImageContextWithOptions(newBounds.size, true, UIScreen.main.scale)
+		self.canvas.image?.draw(in: newBounds);
+		self.secondImageView.drawHierarchy(in: newBoundsForMaskView, afterScreenUpdates: true)
+		self.userLabel.drawHierarchy(in: newBoundsForLabel, afterScreenUpdates: true)
 		let newImage = UIGraphicsGetImageFromCurrentImageContext()
 		UIGraphicsEndImageContext();
-		print("newImage size \(newImage.size)")
-		return newImage;
+		print("newImage size \(newImage?.size)")
+		return newImage!;
 	}
 	
 	
 	// MARK: - Filters delegation
-	func workingImage(outerImage : Bool) -> UIImage {
+	func workingImage(_ outerImage : Bool) -> UIImage {
 		return outerImage ? originalImageCanvas! : originalImageSecondary!
 	}
 	
-	func workingImageView(outerImage : Bool) -> UIImageView {
+	func workingImageView(_ outerImage : Bool) -> UIImageView {
 		return outerImage ? self.canvas : self.secondImageView
 	}
 	
@@ -448,18 +448,18 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		else
 		{
 			sharingController.tagsCollectionView.superview!.removeConstraint(sharingController.tagsCenterConstraint)
-			let constraint = NSLayoutConstraint(item: sharingController.tagsCollectionView, attribute: .Top, relatedBy: .Equal, toItem: sharingController.tagsCollectionView.superview, attribute: .Top, multiplier: 1, constant: 0)
+			let constraint = NSLayoutConstraint(item: sharingController.tagsCollectionView, attribute: .top, relatedBy: .equal, toItem: sharingController.tagsCollectionView.superview, attribute: .top, multiplier: 1, constant: 0)
 			sharingController.tagsCollectionView.superview?.addConstraint(constraint)
 		}
 		
 		changeSharingLayoutIfNeeded()
 		controlContainer.animateEnteringView()
-		logoLabel.hidden = false
+		logoLabel.isHidden = false
 		viewChoreographer.sharingStageAppearance(true)
 
 	}
 	
-	private func closeCameraRoll(cameraRollCont : CameraRollViewController)
+	fileprivate func closeCameraRoll(_ cameraRollCont : CameraRollViewController)
 	{
 		
 		cameraRollCont.closeView()
@@ -471,8 +471,8 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		{
 			sharingController.clearState()
 		}
-		self.logoLabel.hidden = true
-		self.userLabel.hidden = true
+		self.logoLabel.isHidden = true
+		self.userLabel.isHidden = true
 		self.userLabel.text = ""
 		filtersViewController = ChooseFiltersViewController(nibName: "ChooseFiltersViewController", bundle: nil, restoreState: true)
 		filtersViewController.filtersChooseDelegate = self
@@ -513,12 +513,12 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		if (self.infoTopConstraint.constant != 0)
 		{
 			self.infoTopConstraint.constant = 0
-			UIView.animateWithDuration(0.3, animations: { () -> Void in
+			UIView.animate(withDuration: 0.3, animations: { () -> Void in
 				self.view.layoutIfNeeded()
 			})
 		}
-		self.logoLabel.hidden = true
-		self.userLabel.hidden = true
+		self.logoLabel.isHidden = true
+		self.userLabel.isHidden = true
 		self.userLabel.text = ""
 		
 		self.canvas.image = nil
@@ -529,7 +529,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		self.frontCamSessionView = nil
 		self.backCamSessionView?.removeFromSuperview()
 		self.backCamSessionView = nil
-		blurredView = VisualEffectsUtil.initBlurredOverLay(TagMomentBlurEffect.Light, toView: self.secondImageView)
+		blurredView = VisualEffectsUtil.initBlurredOverLay(TagMomentBlurEffect.light, toView: self.secondImageView)
 		startSessionOnBackCam()
 		if (masksViewController == nil)
 		{
@@ -540,8 +540,8 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			controlContainer.animateExitingView()
 			filtersViewController = nil
 		}
-		self.masksViewController.takeButton.enabled = true
-		self.masksViewController.switchCamButton.enabled = true
+		self.masksViewController.takeButton.isEnabled = true
+		self.masksViewController.switchCamButton.isEnabled = true
 		workingImageView = canvas
 		
 		
@@ -577,7 +577,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	
 	
 	//MARK: - AlertViewDelegation
-	func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int)
+	func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int)
 	{
 		switch buttonIndex
 		{
@@ -598,7 +598,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 	}
 	
 	//MARK: - SharingControllerDelegate
-	func taggingKeyboardWillChange(animationTime: Double, endFrame: CGRect) {
+	func taggingKeyboardWillChange(_ animationTime: Double, endFrame: CGRect) {
 		if endFrame.origin.y == self.view.frame.height
 		{
 			infoTopConstraint.constant = 0
@@ -626,22 +626,22 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			
 		}
 		
-		UIView .animateWithDuration(animationTime, animations: { () -> Void in
+		UIView .animate(withDuration: animationTime, animations: { () -> Void in
 			
 			self.view.layoutIfNeeded()
 		})
 	}
 	
-	func updateUserInfoText(newText: String)
+	func updateUserInfoText(_ newText: String)
 	{
 		if newText.isEmpty
 		{
-			self.userLabel.hidden = true
+			self.userLabel.isHidden = true
 			self.userLabel.attributedText = nil
 		}
 		else
 		{
-			self.userLabel.hidden = false
+			self.userLabel.isHidden = false
 			self.userLabel.text = newText
 
 		}
@@ -651,9 +651,9 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		saveTempImage()
 	}
 	
-	func imageForSharing() -> NSURL {
-		let path = NSUserDefaults.standardUserDefaults().objectForKey(CachedImagePathKey) as! String
-		return NSURL(fileURLWithPath: path)
+	func imageForSharing() -> URL {
+		let path = UserDefaults.standard.object(forKey: CachedImagePathKey) as! String
+		return URL(fileURLWithPath: path)
 	}
 	
 	func captureButtonPressed() {
@@ -743,14 +743,14 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 #endif
 	}
 	
-	private func makeSnapshotEffect()
+	fileprivate func makeSnapshotEffect()
 	{
 		let effectView = UIView(frame: self.canvas.bounds)
-		effectView.backgroundColor = UIColor.whiteColor()
+		effectView.backgroundColor = UIColor.white
 		effectView.alpha = 1.0
 		let superview = isOnFirstStage() ? self.canvas : self.secondImageView
-		superview.addSubview(effectView)
-		UIView.animateWithDuration(0.1, animations: { () -> Void in
+		superview?.addSubview(effectView)
+		UIView.animate(withDuration: 0.1, animations: { () -> Void in
 			effectView.alpha = 0.0
 			}, completion: { (finished : Bool) -> Void in
 				effectView.removeFromSuperview()
@@ -787,12 +787,12 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		return (self.secondImageView.image != nil)
 	}
 	
-	private func processImage(image: UIImage?) {
+	fileprivate func processImage(_ image: UIImage?) {
 		if (image != nil)
 		{
 			let viewToOperateOn = self.backCamSessionView == nil ? self.frontCamSessionView : self.backCamSessionView
 			
-			let newImage = ImageProcessingUtil.imageFromVideoView(viewToOperateOn, originalImage: image!, shouldMirrorImage: self.frontCamSessionView != nil)
+			let newImage = ImageProcessingUtil.imageFromVideoView(viewToOperateOn!, originalImage: image!, shouldMirrorImage: self.frontCamSessionView != nil)
 			print("image width is \(image!.size.width) and height \(image!.size.height)")
 			print("newImage width is \(newImage.size.width) and canvas height \(newImage.size.height)")
 			
@@ -800,19 +800,19 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 			self.populateCanvasWithImage(newImage)
 		}
 	}
-	func imageFromCameraChosenNotification(notif : NSNotification)
+	func imageFromCameraChosenNotification(_ notif : Notification)
 	{
 		let image = notif.userInfo?[ImageFromCameraNotificationKey] as! UIImage
 		prepareZoomControlWithImage(image)
 //		processImageFromPhotoAlbum(image)
 	}
 	
-	func applicationWillTerminate(notif : NSNotification)
+	func applicationWillTerminate(_ notif : Notification)
 	{
 		FilterStateRepository.clearFiltersState()
 	}
 	
-	func processImageFromPhotoAlbum(image: UIImage?) {
+	func processImageFromPhotoAlbum(_ image: UIImage?) {
 		if (image != nil)
 		{
 			print("image width is \(image!.size.width) and height \(image!.size.height)")
@@ -836,7 +836,7 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		}
 	}
 	
-	private func populateCanvasWithImage(image : UIImage)
+	fileprivate func populateCanvasWithImage(_ image : UIImage)
 	{
 		
 		workingImageView!.image = image
@@ -855,29 +855,29 @@ class MainViewController: UIViewController, ChooseMasksControllerDelegate, Choos
 		return nil;
 	}
 	
-	func maskPurchaseComplete(maskViewModel: TMMaskViewModel) {
+	func maskPurchaseComplete(_ maskViewModel: TMMaskViewModel) {
 		
 		InAppPurchaseRepo.addProductId(maskViewModel.maskProductId)
 		guard let cell = self.masksViewController.getLockedViewForUnlocking(maskViewModel) else {
 			return;
 		}
 		
-		cell.lockIcon.hidden = true;
+		cell.lockIcon.isHidden = true;
 		let newImageView = UIImageView(image: cell.lockIcon.image)
-		newImageView.frame = self.view.convertRect(cell.lockIcon.frame, fromView: cell)
+		newImageView.frame = self.view.convert(cell.lockIcon.frame, from: cell)
 		self.view.addSubview(newImageView)
-		UIView.animateWithDuration(0.5, animations: { () -> Void in
-			newImageView.transform = CGAffineTransformMakeScale(3, 3)
+		UIView.animate(withDuration: 0.5, animations: { () -> Void in
+			newImageView.transform = CGAffineTransform(scaleX: 3, y: 3)
 			newImageView.alpha = 0.0
-			}) { (finished: Bool) -> Void in
+			}, completion: { (finished: Bool) -> Void in
 				newImageView.removeFromSuperview()
-		}
+		}) 
 		
 		
 		
 	}
 	
-	func maskPurchaseFailed(maskViewModel: TMMaskViewModel) {
+	func maskPurchaseFailed(_ maskViewModel: TMMaskViewModel) {
 		
 	}
 	

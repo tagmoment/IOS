@@ -16,9 +16,9 @@ extension MainViewController
 			masksViewController.masksCarousel.removeFromSuperview()
 			
 			self.canvas.pinSubViewToTop(masksViewController.masksCarousel, heightContraint: 88)
-			self.canvas.bringSubviewToFront(masksViewController.masksCarousel)
+			self.canvas.bringSubview(toFront: masksViewController.masksCarousel)
 			masksViewController.prepareForSmallScreenLayout()
-			self.navigationView.changeMasksButton.selected = true
+			self.navigationView.changeMasksButton.isSelected = true
 			turnOffMasks(true)
 		}
 	}
@@ -47,7 +47,7 @@ extension MainViewController
 		{
 			if (masksViewController != nil)
 			{
-				self.canvas.bringSubviewToFront(masksViewController.masksCarousel)
+				self.canvas.bringSubview(toFront: masksViewController.masksCarousel)
 			}
 			
 		}
@@ -61,19 +61,19 @@ extension MainViewController
 		}
 	}
 	
-	func turnOffMasks(delay: Bool)
+	func turnOffMasks(_ delay: Bool)
 	{
-		UIView.animateWithDuration(0.3, delay: delay ? 1.0 : 0.0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
+		UIView.animate(withDuration: 0.3, delay: delay ? 1.0 : 0.0, options: UIViewAnimationOptions.curveLinear, animations: { () -> Void in
 			
 			self.masksViewController.masksCarousel.alpha = 0.0
 			}, completion: { (finished : Bool) -> Void in
-				self.navigationView.changeMasksButton.selected = false
+				self.navigationView.changeMasksButton.isSelected = false
 		})
 	}
 	
 	func turnOnMasks()
 	{
-		UIView.animateWithDuration(0.3, delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
+		UIView.animate(withDuration: 0.3, delay: 0.0, options: UIViewAnimationOptions.curveLinear, animations: { () -> Void in
 			
 			self.masksViewController.masksCarousel.alpha = 1.0
 			}, completion: nil)
@@ -96,7 +96,7 @@ extension MainViewController
 	}
 	
 	func maskButtonPressed() {
-		if (navigationView.changeMasksButton.selected)
+		if (navigationView.changeMasksButton.isSelected)
 		{
 			self.turnOnMasks()
 		}
@@ -109,6 +109,6 @@ extension MainViewController
 	// MARK: - Private
 	class func isSmallestScreen() -> Bool
 	{
-		return UIScreen.mainScreen().bounds.height <= 480
+		return UIScreen.main.bounds.height <= 480
 	}
 }

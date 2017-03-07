@@ -9,14 +9,14 @@
 import Foundation
 extension MainViewController
 {
-	func maskLayerAndBoundsForMaskName(name: String?) -> (CAShapeLayer?, CGRect?)
+	func maskLayerAndBoundsForMaskName(_ name: String?) -> (CAShapeLayer?, CGRect?)
 	{
-		let workingRect = CGRect(x: 0.0, y: 0.0, width: UIScreen.mainScreen().bounds.width, height: UIScreen.mainScreen().bounds.width)
+		let workingRect = CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width)
 
 		return self.maskLayerAndBoundsForMaskName(name, andWorkingRect: workingRect)
 	}
 	
-	func maskLayerAndBoundsForMaskName(name: String?, andWorkingRect workingRect : CGRect ) -> (CAShapeLayer?, CGRect?)
+	func maskLayerAndBoundsForMaskName(_ name: String?, andWorkingRect workingRect : CGRect ) -> (CAShapeLayer?, CGRect?)
 	{
 		if name == nil
 		{

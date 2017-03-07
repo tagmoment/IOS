@@ -28,7 +28,7 @@ struct MaskFactory {
 		return masks
 	}
 	
-	static func maskForName(name: String,rect: CGRect) -> TMMask?{
+	static func maskForName(_ name: String,rect: CGRect) -> TMMask?{
 		switch name{
 			case "diagonal":
 				return TMTraingleMask(rect: rect)

@@ -6,7 +6,7 @@ class PayloadHolder {
 	var maskImage : UIImage?
 	var maskName : String?
 	
-	func cacheImage(image : UIImage)
+	func cacheImage(_ image : UIImage)
 	{
 		if canvasImage == nil
 		{

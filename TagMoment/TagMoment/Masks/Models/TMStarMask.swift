@@ -15,7 +15,7 @@ class TMStarMask: NSObject, TMMask {
 		self.workingBounds = rect
 	}
 	
-	func clippingPathWithRect(bounds : CGRect) -> CGPath
+	func clippingPathWithRect(_ bounds : CGRect) -> CGPath
 	{
 		let rectForOval = CGRect(x: 0, y: 0,width: bounds.width, height: bounds.width)
 		let starPath = StarMaskPathBuilder().starPath(x: rectForOval.midX, y: rectForOval.midY, radius: bounds.width/5, sides: 5, pointyness: CGFloat(2.5))

@@ -15,10 +15,10 @@ class TMVerticalRectMask: TMMask{
 		self.workingBounds = rect
 	}
 	
-	func clippingPathWithRect(bounds: CGRect) -> CGPath {
+	func clippingPathWithRect(_ bounds: CGRect) -> CGPath {
 		let somepath = UIBezierPath(rect: CGRect(x: workingBounds.maxX/2, y: 0 , width: workingBounds.maxX/2, height: workingBounds.height))
 		
-		return somepath.CGPath
+		return somepath.cgPath
 	}
 	var cameraBounds : CGRect{
 		return self.workingBounds;

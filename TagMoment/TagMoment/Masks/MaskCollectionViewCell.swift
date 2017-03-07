@@ -23,7 +23,7 @@ class MaskCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
 	
-	override var highlighted: Bool {
+	override var isHighlighted: Bool {
 		willSet(newValue) {
 			if newValue
 			{

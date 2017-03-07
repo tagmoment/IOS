@@ -13,9 +13,9 @@ let RemoveLockedProductsNotificationName = "RemoveLockedProductsNotificationName
 
 protocol InAppPurchaseDelegate : class
 {
-	func maskPurchaseComplete(maskViewModel : TMMaskViewModel)
+	func maskPurchaseComplete(_ maskViewModel : TMMaskViewModel)
 	func masksLockedViewModels() -> [TMMaskViewModel]!
-	func maskPurchaseFailed(maskViewModel : TMMaskViewModel)
+	func maskPurchaseFailed(_ maskViewModel : TMMaskViewModel)
 }
 
 class InAppPurchaseDataProvider: NSObject , SKProductsRequestDelegate, SKPaymentTransactionObserver {
@@ -23,12 +23,12 @@ class InAppPurchaseDataProvider: NSObject , SKProductsRequestDelegate, SKPayment
 	weak var delegate: InAppPurchaseDelegate?
 	var transactionInProgress = false
 	let productIds = ["tagmoment_mask_bubble_1", "tagmoment_mask_star_1", "tagmoment_mask_waves_1"]
-	var productsArray: Array<SKProduct!> = []
+	var productsArray: Array<SKProduct?> = []
 	var currentPurchasedViewModel : TMMaskViewModel?
 	
 	func fetchProducts()
 	{
-		SKPaymentQueue.defaultQueue().addTransactionObserver(self)
+		SKPaymentQueue.default().add(self)
 		if SKPaymentQueue.canMakePayments() {
 			let productIdentifiers = NSSet(array: productIds)
 			let productRequest = SKProductsRequest(productIdentifiers: productIdentifiers as! Set<String>)
@@ -42,7 +42,7 @@ class InAppPurchaseDataProvider: NSObject , SKProductsRequestDelegate, SKPayment
 		}
 	}
 	
-	func productsRequest(request: SKProductsRequest, didReceiveResponse response: SKProductsResponse)
+	func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse)
 	{
 		if response.invalidProductIdentifiers.count != 0 {
 			print(response.invalidProductIdentifiers.description)
@@ -60,7 +60,7 @@ class InAppPurchaseDataProvider: NSObject , SKProductsRequestDelegate, SKPayment
 		}
 	}
 	
-	func request(request: SKRequest, didFailWithError error: NSError)
+	func request(_ request: SKRequest, didFailWithError error: Error)
 	{
 		print(error)
 		postRemoveLockedProducts()
@@ -68,10 +68,10 @@ class InAppPurchaseDataProvider: NSObject , SKProductsRequestDelegate, SKPayment
 	
 	func postRemoveLockedProducts()
 	{
-		NSNotificationCenter.defaultCenter().postNotificationName(RemoveLockedProductsNotificationName, object: nil)
+		NotificationCenter.default.post(name: Notification.Name(rawValue: RemoveLockedProductsNotificationName), object: nil)
 	}
 	
-	func showMessageForMask(maskViewModel : TMMaskViewModel, presentingViewController : UIViewController)
+	func showMessageForMask(_ maskViewModel : TMMaskViewModel, presentingViewController : UIViewController)
 	{
 		guard transactionInProgress == false else
 		{
@@ -85,8 +85,8 @@ class InAppPurchaseDataProvider: NSObject , SKProductsRequestDelegate, SKPayment
 		}
 		
 		
-		let product = productsArray.filter { (product : SKProduct!) -> Bool in
-			return maskViewModel.maskProductId == product.productIdentifier
+		let product = productsArray.filter { (product) -> Bool in
+			return maskViewModel.maskProductId == product!.productIdentifier
 		}
 		
 		guard product.count != 0 else
@@ -95,10 +95,10 @@ class InAppPurchaseDataProvider: NSObject , SKProductsRequestDelegate, SKPayment
 			return;
 		}
 		
-		UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+		UIApplication.shared.beginIgnoringInteractionEvents()
 		self.currentPurchasedViewModel = maskViewModel
-		let payment = SKPayment(product: product[0])
-		SKPaymentQueue.defaultQueue().addPayment(payment)
+		let payment = SKPayment(product: product[0]!)
+		SKPaymentQueue.default().add(payment)
 		self.transactionInProgress = true
 		
 	}
@@ -107,7 +107,7 @@ class InAppPurchaseDataProvider: NSObject , SKProductsRequestDelegate, SKPayment
 	
 	func restorePayments()
 	{
-		SKPaymentQueue.defaultQueue().restoreCompletedTransactions()
+		SKPaymentQueue.default().restoreCompletedTransactions()
 	}
 	
 	func showFailedPurchaseMessage()
@@ -115,53 +115,53 @@ class InAppPurchaseDataProvider: NSObject , SKProductsRequestDelegate, SKPayment
 		
 	}
 	
-	func paymentQueueRestoreCompletedTransactionsFinished(queue: SKPaymentQueue)
+	func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue)
 	{
 		print("Restore queue finished")
 	}
 	
-	func paymentQueue(queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]){
+	func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]){
 		
 		for transaction in transactions
 		{
 			switch transaction.transactionState {
-			case SKPaymentTransactionState.Purchased:
+			case SKPaymentTransactionState.purchased:
 				fallthrough
-			case SKPaymentTransactionState.Restored:
+			case SKPaymentTransactionState.restored:
 				print("Transaction completed successfully.")
-				SKPaymentQueue.defaultQueue().finishTransaction(transaction)
+				SKPaymentQueue.default().finishTransaction(transaction)
 				transactionInProgress = false
 				if let delegate = self.delegate
 				{
 					let viewModels = delegate.masksLockedViewModels()
-					let mask = viewModels.filter { (mask : TMMaskViewModel!) -> Bool in
+					let mask = viewModels?.filter { (mask : TMMaskViewModel!) -> Bool in
 						return mask.maskProductId == transaction.payment.productIdentifier
 					}
-					if (mask.count != 0)
+					if (mask?.count != 0)
 					{
-						delegate.maskPurchaseComplete(mask[0])
+						delegate.maskPurchaseComplete((mask?[0])!)
 					}
 					
 				}
-				if UIApplication.sharedApplication().isIgnoringInteractionEvents()
+				if UIApplication.shared.isIgnoringInteractionEvents
 				{
-					UIApplication.sharedApplication().endIgnoringInteractionEvents()
+					UIApplication.shared.endIgnoringInteractionEvents()
 				}
 				
 				
 				
-			case SKPaymentTransactionState.Failed:
+			case SKPaymentTransactionState.failed:
 				print("Transaction Failed");
-				SKPaymentQueue.defaultQueue().finishTransaction(transaction)
+				SKPaymentQueue.default().finishTransaction(transaction)
 				transactionInProgress = false
 				if let delegate = self.delegate
 				{
 					delegate.maskPurchaseFailed(self.currentPurchasedViewModel!)
 				}
 				
-				if UIApplication.sharedApplication().isIgnoringInteractionEvents()
+				if UIApplication.shared.isIgnoringInteractionEvents
 				{
-					UIApplication.sharedApplication().endIgnoringInteractionEvents()
+					UIApplication.shared.endIgnoringInteractionEvents()
 				}
 				
 			default:
@@ -170,13 +170,13 @@ class InAppPurchaseDataProvider: NSObject , SKProductsRequestDelegate, SKPayment
 		}
 	}
 	
-	private func priceAsString(price : NSDecimalNumber, priceLocale : NSLocale) -> String
+	fileprivate func priceAsString(_ price : NSDecimalNumber, priceLocale : Locale) -> String
 	{
-		let formatter = NSNumberFormatter()
-		formatter.formatterBehavior = NSNumberFormatterBehavior.Behavior10_4
-		formatter.numberStyle = .CurrencyStyle
+		let formatter = NumberFormatter()
+		formatter.formatterBehavior = NumberFormatter.Behavior.behavior10_4
+		formatter.numberStyle = .currency
 		formatter.locale = priceLocale
 		
-		return formatter.stringFromNumber(price)!
+		return formatter.string(from: price)!
 	}
 }

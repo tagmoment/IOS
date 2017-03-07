@@ -10,7 +10,7 @@ import Foundation
 import AVFoundation
 extension MainViewController
 {
-	func changeMaskViewFrame(newFrame : CGRect)
+	func changeMaskViewFrame(_ newFrame : CGRect)
 	{
 		let sessionView = self.secondImageView.viewWithTag(1000)
 		if let holder = sessionView

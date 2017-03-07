@@ -11,7 +11,7 @@ import UIKit
 let PurchasedItemsKey = "PurchasedItemsKey"
 
 class InAppPurchaseRepo: NSObject {
-	class func addProductId(productId : String)
+	class func addProductId(_ productId : String)
 	{
 		var savedObject : [String]?
 		if let productIds = getProductsIds()
@@ -25,13 +25,13 @@ class InAppPurchaseRepo: NSObject {
 		}
 		
 		savedObject?.append(productId)
-		NSUserDefaults.standardUserDefaults().setObject(savedObject, forKey: PurchasedItemsKey)
-		NSUserDefaults.standardUserDefaults().synchronize()
+		UserDefaults.standard.set(savedObject, forKey: PurchasedItemsKey)
+		UserDefaults.standard.synchronize()
 	}
 	
 	class func getProductsIds() -> [String]?
 	{
-		if let productsIds = NSUserDefaults.standardUserDefaults().objectForKey(PurchasedItemsKey)
+		if let productsIds = UserDefaults.standard.object(forKey: PurchasedItemsKey)
 		{
 			return productsIds as? [String]
 		}
@@ -40,7 +40,7 @@ class InAppPurchaseRepo: NSObject {
 		
 	}
 	
-	class func isProductBought(productId : String) -> Bool
+	class func isProductBought(_ productId : String) -> Bool
 	{
 		guard let productIds = getProductsIds() else {
 			return false
@@ -51,6 +51,6 @@ class InAppPurchaseRepo: NSObject {
 	
 	class func clear()
 	{
-		NSUserDefaults.standardUserDefaults().removeObjectForKey(PurchasedItemsKey)
+		UserDefaults.standard.removeObject(forKey: PurchasedItemsKey)
 	}
 }

@@ -13,7 +13,7 @@ let AlbumCoverReuseIndent = "Cell"
 
 class AlbumCoverCollectionViewController: UICollectionViewController {
 	var groups : [ALAssetsGroup]!
-	var assetsUrls : [ALAssetsGroup : [NSURL]]!
+	var assetsUrls : [ALAssetsGroup : [URL]]!
 	
 	weak var assetLibrary : ALAssetsLibrary!
 	
@@ -21,29 +21,29 @@ class AlbumCoverCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-		self.collectionView!.registerNib(UINib(nibName: "CameraRollCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: AlbumCoverReuseIndent)
+		self.collectionView!.register(UINib(nibName: "CameraRollCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: AlbumCoverReuseIndent)
 	}
 	
-	override func viewDidAppear(animated: Bool) {
+	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		GoogleAnalyticsReporter.ReportPageView("Album Covers View")
 
 	}
-	override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return groups != nil ? groups.count : 0
 	}
 	/* Mark -: CollectionViewDelegation and Datasource */
-	override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-		let cell = collectionView.dequeueReusableCellWithReuseIdentifier(AlbumCoverReuseIndent, forIndexPath: indexPath) as! CameraRollCollectionViewCell
+	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AlbumCoverReuseIndent, for: indexPath) as! CameraRollCollectionViewCell
 		
 		let group = groups[indexPath.item]
 		let urls = assetsUrls[group]
 		
 		let url = urls![0]
-		assetLibrary.assetForURL(url, resultBlock: { (asset : ALAsset!) -> Void in
-			if (asset != nil && asset.thumbnail() != nil)
+		assetLibrary.asset(for: url, resultBlock: { (asset) -> Void in
+			if (asset != nil && asset!.thumbnail() != nil)
 			{
-				let thumbnail = UIImage(CGImage:asset.thumbnail().takeUnretainedValue())
+				let thumbnail = UIImage(cgImage:asset!.thumbnail().takeUnretainedValue())
 				if (cell.imageview != nil)
 				{
 					cell.imageview.image = thumbnail
@@ -51,23 +51,23 @@ class AlbumCoverCollectionViewController: UICollectionViewController {
 			}
 			
 			
-			}) { (error : NSError!) -> Void in
+			}) { (error) -> Void in
 				print("There was an error", terminator: "")
 		}
 		
-		cell.albumName.text = group.valueForProperty(ALAssetsGroupPropertyName) as? String
+		cell.albumName.text = group.value(forProperty: ALAssetsGroupPropertyName) as? String
 		cell.numberOfPhotos.text = "\(urls!.count)"
 		return cell;
 		
 	}
 	
-	override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		let albumCont = AlbumContentsCollectionViewController(nibName: "AlbumContentsCollectionViewController", bundle: nil)
 		albumCont.assetLibrary = self.assetLibrary
 		let group = groups[indexPath.item]
 		albumCont.assetsUrls =  assetsUrls[group]
 		albumCont.collectionView?.reloadData()
-		albumCont.title = group.valueForProperty(ALAssetsGroupPropertyName) as? String
+		albumCont.title = group.value(forProperty: ALAssetsGroupPropertyName) as? String
 		self.navigationController!.pushViewController(albumCont, animated: true)
 	}
 	

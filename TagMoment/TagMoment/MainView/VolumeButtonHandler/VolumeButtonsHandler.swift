@@ -18,7 +18,7 @@ extension MainViewController {
 	
 	func startObservingVolumeChange()
 	{
-		self.volumeButtonsHandler = JPSVolumeButtonHandler(upBlock: { 
+		self.volumeButtonsHandler = JPSVolumeButtonHandler(up: { 
 				self.handleVolumeUp()
 			}, downBlock: { 
 				self.handleVolumeDown()
@@ -35,8 +35,8 @@ extension MainViewController {
 		self.sendNotification(TMVolumeUpButtonPressedNotificationName)
 	}
 	
-	private func sendNotification(name : String)
+	fileprivate func sendNotification(_ name : String)
 	{
-		NSNotificationCenter.defaultCenter().postNotificationName(name , object: nil)
+		NotificationCenter.default.post(name: Notification.Name(rawValue: name) , object: nil)
 	}
 }

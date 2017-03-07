@@ -11,7 +11,7 @@ import Foundation
 extension MainViewController
 {
 
-	func takeImageFromCameraRoll(removeView : Bool)
+	func takeImageFromCameraRoll(_ removeView : Bool)
 	{
 		let zoomControl = self.canvasZoomControl ?? self.secondZoomControl
 		if (zoomControl != nil)
@@ -40,7 +40,7 @@ extension MainViewController
 		self.workingZoomControl = nil
 	}
 	
-	func prepareZoomControlWithImage(image : UIImage)
+	func prepareZoomControlWithImage(_ image : UIImage)
 	{
 		if self.isOnFirstStage() && self.canvasZoomControl == nil
 		{
@@ -48,8 +48,8 @@ extension MainViewController
 			self.canvasZoomControl!.backgroundColor = UIColor(white: 0.1, alpha: 1.0)
 			self.canvas.pinSubViewToAllEdges(self.canvasZoomControl!)
 			self.workingZoomControl = self.canvasZoomControl
-			self.canvas.sendSubviewToBack(self.canvasZoomControl!)
-			self.canvas.sendSubviewToBack(self.backCamSessionView ?? self.frontCamSessionView)
+			self.canvas.sendSubview(toBack: self.canvasZoomControl!)
+			self.canvas.sendSubview(toBack: self.backCamSessionView ?? self.frontCamSessionView)
 			
 		}
 		else if (self.canvasZoomControl == nil && self.secondZoomControl == nil)
@@ -58,11 +58,11 @@ extension MainViewController
 			self.secondZoomControl!.backgroundColor = UIColor(white: 0.1, alpha: 1.0)
 			self.secondImageView.pinSubViewToAllEdges(self.secondZoomControl!)
 			self.workingZoomControl = self.secondZoomControl
-			self.secondImageView.sendSubviewToBack(self.secondZoomControl!)
-			self.secondImageView.sendSubviewToBack(self.backCamSessionView ?? self.frontCamSessionView)
+			self.secondImageView.sendSubview(toBack: self.secondZoomControl!)
+			self.secondImageView.sendSubview(toBack: self.backCamSessionView ?? self.frontCamSessionView)
 		}
 		
-		self.workingZoomControl!.displayImage(image)
+		self.workingZoomControl!.display(image)
 	}
 	
 }

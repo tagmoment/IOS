@@ -14,7 +14,7 @@ class TMGamerFilter : TMAlphaFilterBase{
 		get
 		{
 			var filters = super.filtersProtected
-			filters.insert(CIFilter(name: "CIUnsharpMask")!, atIndex: 0)
+			filters.insert(CIFilter(name: "CIUnsharpMask")!, at: 0)
 			return filters
 			
 		}
@@ -27,7 +27,7 @@ class TMGamerFilter : TMAlphaFilterBase{
 		self.displayName = "pixel"
 	}
 	
-	override func applyFilterValue(value : Float)
+	override func applyFilterValue(_ value : Float)
 	{
 		let defaultParams = self.constantParams[self.filters[0].name];
 		for param in defaultParams!
@@ -39,11 +39,11 @@ class TMGamerFilter : TMAlphaFilterBase{
 		
 		
 	}
-	override func createConstantFilterParameters(inout outParams : [String : [FilterParameterProtocol]])
+	override func createConstantFilterParameters(_ outParams : inout [String : [FilterParameterProtocol]])
 	{
 		var colorControlsfilterParams = [FilterParameterProtocol]()
-		colorControlsfilterParams.append(FilterConstantParameter(key: "inputRadius", constant: Float(2.0)))
-		colorControlsfilterParams.append(FilterConstantParameter(key: "inputIntensity", constant: Float(6.5)))
+		colorControlsfilterParams.append(FilterConstantParameter(key: "inputRadius", constant: Float(2.0) as AnyObject))
+		colorControlsfilterParams.append(FilterConstantParameter(key: "inputIntensity", constant: Float(6.5) as AnyObject))
 		outParams.updateValue(colorControlsfilterParams, forKey: self.filters[0].name)
 	}
 	

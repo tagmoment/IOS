@@ -11,7 +11,7 @@ import UIKit
 
 
 protocol ChooseMasksControllerDelegate : class{
-	func maskChosen(name : String?)
+	func maskChosen(_ name : String?)
 	func captureButtonPressed()
 	func switchCamButtonPressed()
 }
@@ -39,30 +39,30 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 	
 	deinit
 	{
-		NSNotificationCenter.defaultCenter().removeObserver(self)
+		NotificationCenter.default.removeObserver(self)
 	}
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		masksCarousel.type = .Linear
-		masksCarousel.pagingEnabled = true
+		masksCarousel.type = .linear
+		masksCarousel.isPagingEnabled = true
 		loadMasks()
 		
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleRemoveProductsNotification), name: RemoveLockedProductsNotificationName, object: nil)
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleVolumeButtonPressedNotification), name: TMVolumeUpButtonPressedNotificationName, object: nil)
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(handleVolumeButtonPressedNotification), name: TMVolumeDownButtonPressedNotificationName, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(handleRemoveProductsNotification), name: NSNotification.Name(rawValue: RemoveLockedProductsNotificationName), object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(handleVolumeButtonPressedNotification), name: NSNotification.Name(rawValue: TMVolumeUpButtonPressedNotificationName), object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(handleVolumeButtonPressedNotification), name: NSNotification.Name(rawValue: TMVolumeDownButtonPressedNotificationName), object: nil)
 		let startIndex = ChooseMasksViewController.lastMaskIndex
-		masksCarousel.scrollToItemAtIndex(startIndex, animated: false)
+		masksCarousel.scrollToItem(at: startIndex, animated: false)
     }
 
-	override func viewDidAppear(animated: Bool) {
+	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		GoogleAnalyticsReporter.ReportPageView("Choose Masks View")
 
-		if let view = masksCarousel.itemViewAtIndex(masksCarousel.currentItemIndex)
+		if let view = masksCarousel.itemView(at: masksCarousel.currentItemIndex)
 		{
 			let subview = view as! MaskCollectionViewCell
-			subview.highlighted = true
+			subview.isHighlighted = true
 			carouselCurrentItemIndexDidChange(masksCarousel)
 //			self.masksChooseDelegate?.maskChosen(self.masksViewModels?[masksCarousel.currentItemIndex].name!)
 		}
@@ -73,9 +73,9 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 		self.masksViewModels = self.masksViewModels?.filter({ (viewModel : TMMaskViewModel) -> Bool in
 			if viewModel.locked
 			{
-				if let index = MaskFactory.MASKS.indexOf(viewModel.name!)
+				if let index = MaskFactory.MASKS.index(of: viewModel.name!)
 				{
-					MaskFactory.MASKS.removeAtIndex(index)
+					MaskFactory.MASKS.remove(at: index)
 				}
 			}
 			return !viewModel.locked
@@ -96,12 +96,12 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 		masksCarousel.reloadData()
 	}
 	
-	@objc func scrollAnimation(sender : AnyObject!)
+	@objc func scrollAnimation(_ sender : AnyObject!)
 	{
-		masksCarousel.scrollToItemAtIndex(0, duration: 2.5)
+		masksCarousel.scrollToItem(at: 0, duration: 2.5)
 	}
 	// MARK: - UICollectionView delegation & datasource
-	func numberOfItemsInCarousel(carousel: iCarousel!) -> Int {
+	func numberOfItems(in carousel: iCarousel!) -> Int {
 		if let count = self.masksViewModels?.count
 		{
 			return count;
@@ -109,12 +109,12 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 		return 0
 	}
 	
-	func carousel(carousel: iCarousel!, viewForItemAtIndex index: Int,reusingView view: UIView!) -> UIView!
+	func carousel(_ carousel: iCarousel!, viewForItemAt index: Int,reusing view: UIView!) -> UIView!
 	{
 		var cell : MaskCollectionViewCell;
 		if (view == nil)
 		{
-			cell = NSBundle.mainBundle().loadNibNamed("MaskCollectionViewCell", owner: nil, options: nil)[0] as! MaskCollectionViewCell
+			cell = Bundle.main.loadNibNamed("MaskCollectionViewCell", owner: nil, options: nil)?[0] as! MaskCollectionViewCell
 		}
 		else
 		{
@@ -122,29 +122,29 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 		}
 		
 		let maskModel = self.masksViewModels![index]
-		cell.maskImage.image = UIImage(named: maskModel.name!.lowercaseString)
-		cell.lockIcon.hidden = !maskModel.locked
+		cell.maskImage.image = UIImage(named: maskModel.name!.lowercased())
+		cell.lockIcon.isHidden = !maskModel.locked
 		cell.maskName.text = maskModel.name
 	
 		return cell;
 	}
 	
-	func carouselItemWidth(carousel: iCarousel!) -> CGFloat {
+	func carouselItemWidth(_ carousel: iCarousel!) -> CGFloat {
 		return CGFloat(70.0)
 	}
 	
-	func carouselCurrentItemIndexDidChange(carousel: iCarousel!) {
+	func carouselCurrentItemIndexDidChange(_ carousel: iCarousel!) {
 		
 		for view in carousel.visibleItemViews
 		{
 			let subview = view as! MaskCollectionViewCell
-			subview.highlighted = false;
+			subview.isHighlighted = false;
 		}
 		if let view = carousel.currentItemView
 		{
 			let subview = view as! MaskCollectionViewCell
-			subview.highlighted = true
-			let index = masksCarousel.indexOfItemView(view)
+			subview.isHighlighted = true
+			let index = masksCarousel.index(ofItemView: view)
 			ChooseMasksViewController.lastMaskIndex = index
 			self.masksChooseDelegate?.maskChosen(self.masksViewModels?[index].name!)
 		}
@@ -152,16 +152,16 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 		
 	}
 	
-	func carousel(carousel: iCarousel!, valueForOption option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
+	func carousel(_ carousel: iCarousel!, valueFor option: iCarouselOption, withDefault value: CGFloat) -> CGFloat {
 		
-		if option == .Spacing
+		if option == .spacing
 		{
 			return 1.05
 		}
 		return value;
 	}
 	
-	@IBAction func takeButtonPressed(sender: AnyObject?) {
+	@IBAction func takeButtonPressed(_ sender: AnyObject?) {
 	
 		
 		if (self.masksChooseDelegate != nil)
@@ -169,7 +169,7 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 			self.masksChooseDelegate?.captureButtonPressed()
 		}
 	}
-	@IBAction func switchCamButtonPressed(sender: AnyObject) {
+	@IBAction func switchCamButtonPressed(_ sender: AnyObject) {
 		if (self.masksChooseDelegate != nil)
 		{
 			self.masksChooseDelegate?.switchCamButtonPressed()
@@ -195,16 +195,16 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 	}
 	
 	// MARK: - Menu handling
-	@IBAction func cameraRollButtonPressed(sender: AnyObject) {
+	@IBAction func cameraRollButtonPressed(_ sender: AnyObject) {
 
 		let cameraRollCont = CameraRollViewController(nibName: "CameraRollViewController", bundle: nil)
 		self.addCameraRollController(cameraRollCont)
 			
 	}
 	
-	@IBAction func menuButtonPressed(sender: AnyObject) {
+	@IBAction func menuButtonPressed(_ sender: AnyObject) {
 		let menuCont = MenuViewController(nibName: "MenuViewController", bundle: nil)
-		let mainController = UIApplication.sharedApplication().delegate?.window!?.rootViewController! as! MainViewController
+		let mainController = UIApplication.shared.delegate?.window!?.rootViewController! as! MainViewController
 		mainController.timerHandler?.cancelTimer()
 		mainController.timerHandler = nil
 		
@@ -215,9 +215,9 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 		
 	}
 	
-	private func addCameraRollController(toController : CameraRollViewController)
+	fileprivate func addCameraRollController(_ toController : CameraRollViewController)
 	{
-		let mainController = UIApplication.sharedApplication().delegate?.window!?.rootViewController! as! MainViewController
+		let mainController = UIApplication.shared.delegate?.window!?.rootViewController! as! MainViewController
 		mainController.timerHandler?.cancelTimer()
 		mainController.timerHandler = nil
 		toController.originalHeight = self.view.frame.height
@@ -225,14 +225,14 @@ class ChooseMasksViewController: UIViewController, iCarouselDataSource, iCarouse
 		mainController.addChildViewController(toController)
 	}
 	
-	func getLockedViewForUnlocking(maskViewModel : TMMaskViewModel) -> MaskCollectionViewCell?
+	func getLockedViewForUnlocking(_ maskViewModel : TMMaskViewModel) -> MaskCollectionViewCell?
 	{
 		
 		maskViewModel.locked = false
-		let maskIndex = self.masksViewModels?.indexOf(maskViewModel)
+		let maskIndex = self.masksViewModels?.index(of: maskViewModel)
 		for view in masksCarousel.visibleItemViews
 		{
-			let index = masksCarousel.indexOfItemView(view as! UIView)
+			let index = masksCarousel.index(ofItemView: view as! UIView)
 			if (index == maskIndex)
 			{
 				return view as? MaskCollectionViewCell

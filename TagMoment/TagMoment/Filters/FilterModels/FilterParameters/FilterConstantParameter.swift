@@ -20,7 +20,7 @@ class FilterConstantParameter : FilterParameterProtocol
 		self.constant = constant
 	}
 	
-	func normalizedValueFromPercent(percent : Float) -> AnyObject
+	func normalizedValueFromPercent(_ percent : Float) -> AnyObject
 	{
 		return self.constant
 	}

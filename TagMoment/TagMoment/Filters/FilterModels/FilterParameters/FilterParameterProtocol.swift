@@ -12,6 +12,6 @@ protocol FilterParameterProtocol
 {
 	var key : String { get }
 	
-	func normalizedValueFromPercent(percent : Float) -> AnyObject
+	func normalizedValueFromPercent(_ percent : Float) -> AnyObject
 	
 }

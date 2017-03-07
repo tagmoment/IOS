@@ -27,13 +27,13 @@ class PaddedLabel: UILabel {
 	
 	func commonInit()
 	{
-		self.textAlignment = NSTextAlignment.Center
+		self.textAlignment = NSTextAlignment.center
 	}
 	
-	override func intrinsicContentSize() -> CGSize {
+	override var intrinsicContentSize : CGSize {
 		self.widthInset = self.widthInset ?? defaultWidthInset
 		self.heightInset = self.heightInset ?? defaultHeightInset
-		let contentSize = super.intrinsicContentSize()
+		let contentSize = super.intrinsicContentSize
 		return CGSize(width: contentSize.width + self.widthInset!*2, height: contentSize.height + self.heightInset!);
 	}
 	

@@ -5,67 +5,69 @@ let DefaultAlbumName = "TagMoment"
 
 protocol PhotosLibraryServiceDelegate
 {
-	func defaultAblumReceived(album : PHAssetCollection)
+	func defaultAblumReceived(_ album : PHAssetCollection)
 	
 }
 
 class PhotosLibraryService: NSObject {
-	private var assetCollectionPlaceholder : PHObjectPlaceholder?
-	private var imageToSave : UIImage!
+	fileprivate var assetCollectionPlaceholder : PHObjectPlaceholder?
+	fileprivate var imageToSave : UIImage!
 	
-	func saveImageToAlbum(image : UIImage)
+	func saveImageToAlbum(_ image : UIImage)
 	{
 		self.imageToSave = image;
 		getOrCreateAlbum()
 	}
 	
-	private func getOrCreateAlbum(){
+	fileprivate func getOrCreateAlbum(){
 
 		let fetchOptions = PHFetchOptions()
 		fetchOptions.predicate = NSPredicate(format: "title = %@", DefaultAlbumName)
-		let collection : PHFetchResult = PHAssetCollection.fetchAssetCollectionsWithType(.Album, subtype: .Any, options: fetchOptions)
+		let collection : PHFetchResult = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .any, options: fetchOptions)
 		//Check return value - If found, then get the first album out
-		if let _: AnyObject = collection.firstObject
+		if let firstObject : PHAssetCollection = collection.firstObject
 		{
-			self.defaultAblumReceived(collection.firstObject as! PHAssetCollection)
+			self.defaultAblumReceived(firstObject)
 		} else {
 			//If not found - Then create a new album
-			PHPhotoLibrary.sharedPhotoLibrary().performChanges({
-				let createAlbumRequest = PHAssetCollectionChangeRequest.creationRequestForAssetCollectionWithTitle(DefaultAlbumName)
+			PHPhotoLibrary.shared().performChanges({
+				let createAlbumRequest = PHAssetCollectionChangeRequest.creationRequestForAssetCollection(withTitle: DefaultAlbumName)
 				self.assetCollectionPlaceholder = createAlbumRequest.placeholderForCreatedAssetCollection
 				}, completionHandler: { success, error in
 					
 					if (success && self.assetCollectionPlaceholder != nil) {
 						
-						let collectionFetchResult = PHAssetCollection.fetchAssetCollectionsWithLocalIdentifiers([self.assetCollectionPlaceholder!.localIdentifier], options: nil)
+						let collectionFetchResult = PHAssetCollection.fetchAssetCollections(withLocalIdentifiers: [self.assetCollectionPlaceholder!.localIdentifier], options: nil)
 
-						let firstObject = collectionFetchResult.firstObject;
-						
-						self.defaultAblumReceived(firstObject as! PHAssetCollection)
+						if let firstObject : PHAssetCollection = collectionFetchResult.firstObject
+						{
+							self.defaultAblumReceived(firstObject)
+
+						}
 					}
 			})
 		}
 	}
 	
-	private func defaultAblumReceived(album : PHAssetCollection)
+	fileprivate func defaultAblumReceived(_ album : PHAssetCollection)
 	{
 		self.saveImage(self.imageToSave, toAlbum: album)
 	}
 
 	
-	private func saveImage(image : UIImage, toAlbum : PHAssetCollection){
-		PHPhotoLibrary.sharedPhotoLibrary().performChanges({
-			let assetRequest = PHAssetChangeRequest.creationRequestForAssetFromImage(image)
+	fileprivate func saveImage(_ image : UIImage, toAlbum : PHAssetCollection){
+		PHPhotoLibrary.shared().performChanges({
+			let assetRequest = PHAssetChangeRequest.creationRequestForAsset(from: image)
 			let assetPlaceholder = assetRequest.placeholderForCreatedAsset
-			let albumChangeRequest = PHAssetCollectionChangeRequest(forAssetCollection: toAlbum)
-			albumChangeRequest!.addAssets([assetPlaceholder!])
+			let albumChangeRequest = PHAssetCollectionChangeRequest(for: toAlbum)
+			albumChangeRequest!.addAssets([assetPlaceholder!] as NSArray)
 			}, completionHandler: { success, error in
 				print("added image to album")
 				self.cleanup()
 		})
 	}
 	
-	private func cleanup()
+	fileprivate func cleanup()
 	{
 		self.imageToSave = nil
 		self.assetCollectionPlaceholder = nil

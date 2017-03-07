@@ -10,10 +10,10 @@ import UIKit
 import Foundation
 import Social
 protocol SharingControllerDelegate : class{
-	func taggingKeyboardWillChange(animationTime : Double, endFrame: CGRect)
-	func updateUserInfoText(newText : String)
+	func taggingKeyboardWillChange(_ animationTime : Double, endFrame: CGRect)
+	func updateUserInfoText(_ newText : String)
 	func textEditingDidEnd()
-	func imageForSharing() -> NSURL
+	func imageForSharing() -> URL
 	func imageForCaching() -> UIImage
 	func retakeImageRequested()
 	
@@ -45,46 +45,46 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 	@IBOutlet weak var facebook_share_button: UIButton!
 	@IBOutlet weak var twitter_share_button: UIButton!
 	@IBOutlet weak var more_share_button: UIButton!
-	var chosenEmojiIndex : NSIndexPath?
-	var chosenWordIndex : NSIndexPath?
+	var chosenEmojiIndex : IndexPath?
+	var chosenWordIndex : IndexPath?
 	
     override func viewDidLoad() {
         super.viewDidLoad()
-		tagsDataSource = self.sortDataSource(TagTextProvider.TagsDataSourceWords, emojis: TagTextProvider.emojisContainer)
-		self.textField.keyboardType = .ASCIICapable
-		tagsCollectionView.registerNib(UINib(nibName: "TagsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: CellIdent)
+		tagsDataSource = self.sortDataSource(TagTextProvider.TagsDataSourceWords, emojis: TagTextProvider.emojisContainer) as [NSString]!
+		self.textField.keyboardType = .asciiCapable
+		tagsCollectionView.register(UINib(nibName: "TagsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: CellIdent)
 		tagsCollectionView.allowsMultipleSelection = true
 		let leftAlignedLayout = tagsCollectionView.collectionViewLayout as! LeftAligned
 		leftAlignedLayout.delegate = self
     }
 
-	override func viewWillAppear(animated: Bool) {
+	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		registerForNotifications()
 		prepareSocialButtonsAnimationState()
 		
 	}
 	
-	override func viewDidAppear(animated: Bool) {
+	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		GoogleAnalyticsReporter.ReportPageView("Sharing View");
 		animateButtonEntrance()
 	}
 	
 	
-	override func viewWillDisappear(animated: Bool) {
+	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
-		NSNotificationCenter.defaultCenter().removeObserver(self)
+		NotificationCenter.default.removeObserver(self)
 	}
 	
 	
-	private func registerForNotifications()
+	fileprivate func registerForNotifications()
 	{
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SharingViewController.handleKeyboardNotification(_:)), name: UIKeyboardWillChangeFrameNotification, object: nil)
-		NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SharingViewController.textFieldDidChangeText(_:)), name: UITextFieldTextDidChangeNotification, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(SharingViewController.handleKeyboardNotification(_:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(SharingViewController.textFieldDidChangeText(_:)), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
 		
 	}
-	func handleKeyboardNotification(notif: NSNotification)
+	func handleKeyboardNotification(_ notif: Notification)
 	{
 		let animationTime = notif.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as! Double
 		let keyboardEndFrame = notif.userInfo?[UIKeyboardFrameEndUserInfoKey] as! NSValue
@@ -92,12 +92,12 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 		
 		if let delegate = self.sharingDelegate
 		{
-			delegate.taggingKeyboardWillChange(animationTime, endFrame: keyboardEndFrame.CGRectValue())
+			delegate.taggingKeyboardWillChange(animationTime, endFrame: keyboardEndFrame.cgRectValue)
 		}
-		if (keyboardEndFrame.CGRectValue().origin.y == UIApplication.sharedApplication().keyWindow?.frame.height)
+		if (keyboardEndFrame.cgRectValue.origin.y == UIApplication.shared.keyWindow?.frame.height)
 		{
-			let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(animationTime))
-			dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+			let dispatchTime: DispatchTime = DispatchTime.now() + Double(Int64(animationTime)) / Double(NSEC_PER_SEC)
+			DispatchQueue.main.asyncAfter(deadline: dispatchTime, execute: {
 				self.animateButtonEntranceWithPrep()
 			})
 			
@@ -107,7 +107,7 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 	}
 	
 	// MARK: - Textfield handling
-	func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 		
 		let noSpaceString = TagTextProvider.removeSpaces(string)
 		
@@ -135,7 +135,7 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 			return false
 		}
 		
-		if (string.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 1)
+		if (string.lengthOfBytes(using: String.Encoding.utf8) > 1)
 		{
 			autoKeyboardWasOn = true
 		}
@@ -148,8 +148,8 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 		
 		if (self.chosenWordIndex != nil && !string.isEmpty)
 		{
-			self.tagsCollectionView.deselectItemAtIndexPath(self.chosenWordIndex!, animated: true)
-			self.collectionView(self.tagsCollectionView, didDeselectItemAtIndexPath: self.chosenWordIndex!)
+			self.tagsCollectionView.deselectItem(at: self.chosenWordIndex!, animated: true)
+			self.collectionView(self.tagsCollectionView, didDeselectItemAt: self.chosenWordIndex!)
 			self.chosenWordIndex = nil
 			
 			
@@ -158,7 +158,7 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 		return string.isEmpty
 	}
 	
-	func textFieldDidChangeText(notif: NSNotification)
+	func textFieldDidChangeText(_ notif: Notification)
 	{
 		notifyDelegateOnChangedText()
 	}
@@ -166,8 +166,8 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 	func deleteBackwardsDetected() {
 		if (self.chosenEmojiIndex != nil &&  TagTextProvider.isCurrentCharSetSecondWord(TagTextProvider.currentEmoji))
 		{
-			self.tagsCollectionView.deselectItemAtIndexPath(self.chosenEmojiIndex!, animated: true)
-			self.collectionView(self.tagsCollectionView, didDeselectItemAtIndexPath: self.chosenEmojiIndex!)
+			self.tagsCollectionView.deselectItem(at: self.chosenEmojiIndex!, animated: true)
+			self.collectionView(self.tagsCollectionView, didDeselectItemAt: self.chosenEmojiIndex!)
 			self.chosenEmojiIndex = nil
 			TagTextProvider.currentEmoji = nil
 			return;
@@ -175,22 +175,22 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 		
 		if (self.chosenWordIndex != nil && TagTextProvider.isCurrentCharSetSecondWord(TagTextProvider.currentWord))
 		{
-			self.tagsCollectionView.deselectItemAtIndexPath(self.chosenWordIndex!, animated: true)
-			self.collectionView(self.tagsCollectionView, didDeselectItemAtIndexPath: self.chosenWordIndex!)
+			self.tagsCollectionView.deselectItem(at: self.chosenWordIndex!, animated: true)
+			self.collectionView(self.tagsCollectionView, didDeselectItemAt: self.chosenWordIndex!)
 			self.chosenWordIndex = nil
 			return;
 		}
 		
 	}
 	
-	func notifyDelegateOnChangedText(input : String = "")
+	func notifyDelegateOnChangedText(_ input : String = "")
 	{
 		if let delegate = self.sharingDelegate
 		{
 			var returnVal = input
 			if (returnVal.isEmpty)
 			{
-				textField.text = textField.text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+				textField.text = textField.text!.trimmingCharacters(in: CharacterSet.whitespaces)
 				returnVal = textField.text!
 				TagTextProvider.handleDeletion()
 				TagTextProvider.currentString = returnVal.isEmpty ? nil : returnVal
@@ -205,13 +205,13 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 		}
 	}
 	
-	func textFieldShouldReturn(textField: UITextField) -> Bool
+	func textFieldShouldReturn(_ textField: UITextField) -> Bool
 	{
 		self.textField.resignFirstResponder()
 		return true
 	}
 	
-	func textFieldShouldClear(textField: UITextField) -> Bool
+	func textFieldShouldClear(_ textField: UITextField) -> Bool
 	{
 		deselectItems()
 		self.chosenWordIndex = nil
@@ -227,12 +227,12 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 	func deselectItems()
 	{
 		
-		if let indices = self.tagsCollectionView.indexPathsForSelectedItems() where indices.count != 0
+		if let indices = self.tagsCollectionView.indexPathsForSelectedItems, indices.count != 0
 		{
 			for indexPath in indices
 			{
-				self.tagsCollectionView.deselectItemAtIndexPath(indexPath, animated: true)
-				self.collectionView(self.tagsCollectionView, didDeselectItemAtIndexPath: indexPath)
+				self.tagsCollectionView.deselectItem(at: indexPath, animated: true)
+				self.collectionView(self.tagsCollectionView, didDeselectItemAt: indexPath)
 			}
 		}
 	}
@@ -249,8 +249,8 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 		
 		for view in [self.facebook_share_button, self.twitter_share_button, self.more_share_button]
 		{
-			view.layer.transform = CATransform3DMakeScale(0.01, 0.01, 1)
-			view.hidden = true
+			view?.layer.transform = CATransform3DMakeScale(0.01, 0.01, 1)
+			view?.isHidden = true
 		}
 	}
 	
@@ -267,16 +267,16 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 		{
 			let view = shuffled[i]
 			let delay = Double(i)*0.1
-			view.hidden = false
-			UIView.animateWithDuration(0.5, delay: delay ,usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
-				view.layer.transform = CATransform3DIdentity
+			view?.isHidden = false
+			UIView.animate(withDuration: 0.5, delay: delay ,usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: UIViewAnimationOptions.curveLinear, animations: { () -> Void in
+				view?.layer.transform = CATransform3DIdentity
 				}, completion: nil)
 			
 		}
 	}
 	
 	// MARK: - Collection view delegation
-	func shouldBeFirstItemAtIndexPath(indexPath: NSIndexPath!) -> Bool {
+	func shouldBeFirstItem(at indexPath: IndexPath!) -> Bool {
 		if (indexPath.row < tagsDataSource.count)
 		{
 			return true
@@ -286,20 +286,20 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 	}
 	
 	
-	func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+	func numberOfSections(in collectionView: UICollectionView) -> Int {
 		return 1
 	}
 	
-	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
+	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
 		return tagsDataSource.count + extraDataEmojis.count;
 	}
 	
-	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		
 		
-		let cell = collectionView.dequeueReusableCellWithReuseIdentifier(CellIdent, forIndexPath: indexPath) as! TagsCollectionViewCell
+		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdent, for: indexPath) as! TagsCollectionViewCell
 		var found = false
-		if let selectedIndices = collectionView.indexPathsForSelectedItems()
+		if let selectedIndices = collectionView.indexPathsForSelectedItems
 		{
 			for index in selectedIndices
 			{
@@ -315,13 +315,13 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 		
 		if (found)
 		{
-			cell.backgroundColor = UIColor.whiteColor()
-			cell.tagName.textColor = UIColor.blackColor()
+			cell.backgroundColor = UIColor.white
+			cell.tagName.textColor = UIColor.black
 		}
 		else
 		{
-			cell.backgroundColor = UIColor.blackColor()
-			cell.tagName.textColor = UIColor.whiteColor()
+			cell.backgroundColor = UIColor.black
+			cell.tagName.textColor = UIColor.white
 		}
 		
 		var value : NSString
@@ -338,9 +338,9 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 		
 	}
 	
-	func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+	func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
 		
-		if (!self.textField.isFirstResponder())
+		if (!self.textField.isFirstResponder)
 		{
 			self.textField.becomeFirstResponder()
 		}
@@ -348,15 +348,15 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 		let isWord = indexPath.item % 2 == 0 ? true : false
 		if (self.chosenWordIndex != nil && isWord)
 		{
-			self.tagsCollectionView.deselectItemAtIndexPath(self.chosenWordIndex!, animated: true)
-			self.collectionView(self.tagsCollectionView, didDeselectItemAtIndexPath: self.chosenWordIndex!)
+			self.tagsCollectionView.deselectItem(at: self.chosenWordIndex!, animated: true)
+			self.collectionView(self.tagsCollectionView, didDeselectItemAt: self.chosenWordIndex!)
 		}
 		
 			
 		if (self.chosenEmojiIndex != nil && !isWord)
 		{
-			self.tagsCollectionView.deselectItemAtIndexPath(self.chosenEmojiIndex!, animated: true)
-			self.collectionView(self.tagsCollectionView, didDeselectItemAtIndexPath: self.chosenEmojiIndex!)
+			self.tagsCollectionView.deselectItem(at: self.chosenEmojiIndex!, animated: true)
+			self.collectionView(self.tagsCollectionView, didDeselectItemAt: self.chosenEmojiIndex!)
 		}
 			
 		self.chosenWordIndex = isWord ? indexPath : self.chosenWordIndex
@@ -365,7 +365,7 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 		return true
 	}
 	
-	func collectionView(collectionView: UICollectionView, shouldDeselectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+	func collectionView(_ collectionView: UICollectionView, shouldDeselectItemAt indexPath: IndexPath) -> Bool {
 		var result = true
 		if let emojiIndexPath = self.chosenEmojiIndex
 		{
@@ -380,20 +380,20 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 		return result;
 	}
 	
-	func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
-		let cell = collectionView.cellForItemAtIndexPath(indexPath)
+	func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+		let cell = collectionView.cellForItem(at: indexPath)
 		if let tagCell = cell as? TagsCollectionViewCell
 		{
-			tagCell.backgroundColor = UIColor.blackColor()
-			tagCell.tagName.textColor = UIColor.whiteColor()
+			tagCell.backgroundColor = UIColor.black
+			tagCell.tagName.textColor = UIColor.white
 		}
 	}
 
-	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		
-		let cell = collectionView.cellForItemAtIndexPath(indexPath) as! TagsCollectionViewCell
-		cell.backgroundColor = UIColor.whiteColor()
-		cell.tagName.textColor = UIColor.blackColor()
+		let cell = collectionView.cellForItem(at: indexPath) as! TagsCollectionViewCell
+		cell.backgroundColor = UIColor.white
+		cell.tagName.textColor = UIColor.black
 		var value : NSString
 		if (indexPath.item < self.tagsDataSource.count)
 		{
@@ -409,7 +409,7 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 		notifyDelegateOnChangedText(value as String)
 	}
 	
-	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
+	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
 	{
 		if (indexPath.item % 2 != 0)
 		{
@@ -428,10 +428,10 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 		
 
 		let font = UIFont(name: "Raleway", size: 17)
-		let attributes : [String : AnyObject!] = [NSFontAttributeName : font]
+		let attributes : [String : Any] = [NSFontAttributeName : font]
 		
-		let size = data.boundingRectWithSize(CGSize(width: 9999, height: 26),
-			options: NSStringDrawingOptions.UsesLineFragmentOrigin,
+		let size = data.boundingRect(with: CGSize(width: 9999, height: 26),
+			options: NSStringDrawingOptions.usesLineFragmentOrigin,
 			attributes: attributes,
 			context: nil)
 	
@@ -441,24 +441,24 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 	
 	
 	// MARK: - Buttons Handling
-	@IBAction func shareButtonPressed(sender: AnyObject) {
+	@IBAction func shareButtonPressed(_ sender: AnyObject) {
 		
 		
 			if let delegate = self.sharingDelegate
 			{
-				NSNotificationCenter.defaultCenter().removeObserver(self)
+				NotificationCenter.default.removeObserver(self)
 				delegate.textEditingDidEnd()
 				let url = delegate.imageForSharing()
-				documentationInteractionController = UIDocumentInteractionController(URL: url)
+				documentationInteractionController = UIDocumentInteractionController(url: url)
 				documentationInteractionController?.delegate = self
-				documentationInteractionController?.presentOptionsMenuFromRect(self.view.superview!.superview!.bounds, inView: self.view.superview!.superview!, animated: true)
+				documentationInteractionController?.presentOptionsMenu(from: self.view.superview!.superview!.bounds, in: self.view.superview!.superview!, animated: true)
 				
 			}
 			return;
 		
 	}
 	
-	func documentInteractionController(controller: UIDocumentInteractionController, didEndSendingToApplication application: String?) {
+	func documentInteractionController(_ controller: UIDocumentInteractionController, didEndSendingToApplication application: String?) {
 		uploadImage()
 	}
 	
@@ -471,12 +471,12 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 	
 	
 	
-	func documentInteractionControllerDidDismissOptionsMenu(controller: UIDocumentInteractionController) {
+	func documentInteractionControllerDidDismissOptionsMenu(_ controller: UIDocumentInteractionController) {
 		registerForNotifications()
 //		toggleShareButtonBgAnimation()
 	}
 	
-	private func sortDataSource(words :[String], emojis : [String]) ->[String]
+	fileprivate func sortDataSource(_ words :[String], emojis : [String]) ->[String]
 	{
 		let lowestCount = words.count >= emojis.count ?  emojis.count : words.count
 		
@@ -492,39 +492,39 @@ class SharingViewController: UIViewController, TMTextFieldDelegate, UICollection
 		
 		var arrayWithExtras = words.count >= emojis.count ? words : emojis
 		
-		arrayWithExtras.removeRange(0..<index)
-		self.extraDataEmojis = arrayWithExtras;
+		arrayWithExtras.removeSubrange(0..<index)
+		self.extraDataEmojis = arrayWithExtras as [NSString]!;
 //		result.appendContentsOf(arrayWithExtras)
 		
 		return result;
 	}
 	
-	@IBAction func facebookShareRequested(sender: AnyObject) {
+	@IBAction func facebookShareRequested(_ sender: AnyObject) {
 		self.shareTo(SLServiceTypeFacebook);
 	}
 	
-	@IBAction func twitterShareRequested(sender: AnyObject) {
+	@IBAction func twitterShareRequested(_ sender: AnyObject) {
 		self.shareTo(SLServiceTypeTwitter);
 	}
 	
 	
-	private func shareTo(type: String!)
+	fileprivate func shareTo(_ type: String!)
 	{
-		if (SLComposeViewController.isAvailableForServiceType(type))
+		if (SLComposeViewController.isAvailable(forServiceType: type))
 		{
 			let text = self.textField.text != nil ? self.textField.text! : ""
 
 			let mySLComposerSheet = SLComposeViewController(forServiceType: type)
-			mySLComposerSheet.setInitialText(TagTextProvider.addAllHashtags(text) + " #tagmoment")
-			mySLComposerSheet.addImage(self.sharingDelegate!.imageForCaching())
-			mySLComposerSheet.completionHandler = {(result : SLComposeViewControllerResult) -> Void in
-				if result == .Done
+			mySLComposerSheet?.setInitialText(TagTextProvider.addAllHashtags(text) + " #tagmoment")
+			mySLComposerSheet?.add(self.sharingDelegate!.imageForCaching())
+			mySLComposerSheet?.completionHandler = {(result : SLComposeViewControllerResult) -> Void in
+				if result == .done
 				{
 					self.uploadImage()
 				}
 					
 			}
-			UIApplication.sharedApplication().delegate?.window??.rootViewController?.presentViewController(mySLComposerSheet, animated: true, completion: nil)
+			UIApplication.shared.delegate?.window??.rootViewController?.present(mySLComposerSheet!, animated: true, completion: nil)
 		}
 	}
 	

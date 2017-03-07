@@ -16,18 +16,18 @@ class TMWaveMask: NSObject, TMMask {
 		self.workingBounds = rect
 	}
 	
-	func clippingPathWithRect(bounds : CGRect) -> CGPath
+	func clippingPathWithRect(_ bounds : CGRect) -> CGPath
 	{
 		let path = UIBezierPath()
-		path.moveToPoint(CGPoint(x: self.workingBounds.width/2, y: 0))
-		path.addQuadCurveToPoint(CGPoint(x: self.workingBounds.width/2, y: self.workingBounds.height/2),
+		path.move(to: CGPoint(x: self.workingBounds.width/2, y: 0))
+		path.addQuadCurve(to: CGPoint(x: self.workingBounds.width/2, y: self.workingBounds.height/2),
 			controlPoint: CGPoint(x: self.workingBounds.width/4, y: self.workingBounds.height/4))
-		path.addQuadCurveToPoint(CGPoint(x: self.workingBounds.width/2, y: self.workingBounds.height), controlPoint: CGPoint(x: self.workingBounds.width*3/4, y: self.workingBounds.height*3/4))
-		path.addLineToPoint(CGPoint(x: self.workingBounds.width, y: self.workingBounds.height))
-		path.addLineToPoint(CGPoint(x: self.workingBounds.width, y: 0))
-		path.closePath()
+		path.addQuadCurve(to: CGPoint(x: self.workingBounds.width/2, y: self.workingBounds.height), controlPoint: CGPoint(x: self.workingBounds.width*3/4, y: self.workingBounds.height*3/4))
+		path.addLine(to: CGPoint(x: self.workingBounds.width, y: self.workingBounds.height))
+		path.addLine(to: CGPoint(x: self.workingBounds.width, y: 0))
+		path.close()
 		
-		return path.CGPath
+		return path.cgPath
 	}
 		
 	var cameraBounds : CGRect{

@@ -11,7 +11,7 @@ class FilterImageParameter : FilterParameterProtocol
 		self.key = key
 	}
 	
-	func normalizedValueFromPercent(percent : Float) -> AnyObject
+	func normalizedValueFromPercent(_ percent : Float) -> AnyObject
 	{
 		return CIColor(red: CGFloat(percent), green:  CGFloat(percent), blue:  CGFloat(percent), alpha: 1.0)
 	}

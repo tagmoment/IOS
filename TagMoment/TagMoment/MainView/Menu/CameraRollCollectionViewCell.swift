@@ -16,17 +16,17 @@ class CameraRollCollectionViewCell: UICollectionViewCell {
 	
 	var blurredView : UIView!
 	var shouldColorSelection = false
-	override var selected: Bool {
+	override var isSelected: Bool {
 		didSet {
 			if (self.shouldColorSelection)
 			{
-				if self.selected {
-					self.layer.borderColor = UIColor.whiteColor().CGColor
+				if self.isSelected {
+					self.layer.borderColor = UIColor.white.cgColor
 					self.layer.borderWidth = 4
 				}
 				else
 				{
-					self.layer.borderColor = UIColor.clearColor().CGColor
+					self.layer.borderColor = UIColor.clear.cgColor
 					self.layer.borderWidth = 0
 				}
 			}
@@ -48,15 +48,15 @@ class CameraRollCollectionViewCell: UICollectionViewCell {
 	
     override func awakeFromNib() {
         super.awakeFromNib()
-		if let blurView = VisualEffectsUtil.initBlurredOverLay(TagMomentBlurEffect.Dark) as? UIVisualEffectView
+		if let blurView = VisualEffectsUtil.initBlurredOverLay(TagMomentBlurEffect.dark) as? UIVisualEffectView
 		{
 			self.blurredView = blurView
-			self.blurredView.autoresizingMask = UIViewAutoresizing.None
+			self.blurredView.autoresizingMask = UIViewAutoresizing()
     			
 			self.albumName.removeFromSuperview()
 			blurView.contentView.addSubview(albumName)
 			self.addSubview(blurredView)
-			self.bringSubviewToFront(albumName)
+			self.bringSubview(toFront: albumName)
     
 		}
 	}

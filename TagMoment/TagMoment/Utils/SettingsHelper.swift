@@ -12,10 +12,10 @@ class SettingsHelper: NSObject {
 	class func registerSettingsIfNeeded()
 	{
 		
-		let userDefaults = NSUserDefaults.standardUserDefaults()
-		if (userDefaults.valueForKey("saveToCameraRoll") == nil)
+		let userDefaults = UserDefaults.standard
+		if (userDefaults.value(forKey: "saveToCameraRoll") == nil)
 		{
-			userDefaults.registerDefaults( [ "saveToCameraRoll" : "prompt" ])
+			userDefaults.register( defaults: [ "saveToCameraRoll" : "prompt" ])
 			userDefaults.synchronize()
 		}
 		
@@ -23,22 +23,22 @@ class SettingsHelper: NSObject {
 	
 	class func saveToCameraRollSaveState()
 	{
-		let userDefaults = NSUserDefaults.standardUserDefaults()
-		userDefaults.setObject("always", forKey: "saveToCameraRoll")
+		let userDefaults = UserDefaults.standard
+		userDefaults.set("always", forKey: "saveToCameraRoll")
 		userDefaults.synchronize()
 	}
 	
 	class func neverSaveToCameraRollSameState()
 	{
-		let userDefaults = NSUserDefaults.standardUserDefaults()
-		userDefaults.setObject("never", forKey: "saveToCameraRoll")
+		let userDefaults = UserDefaults.standard
+		userDefaults.set("never", forKey: "saveToCameraRoll")
 		userDefaults.synchronize()
 	}
 	
 	class func shouldSaveToCameraRoll() -> Bool
 	{
-		let userDefaults = NSUserDefaults.standardUserDefaults()
-		if let value = userDefaults.valueForKey("saveToCameraRoll")
+		let userDefaults = UserDefaults.standard
+		if let value = userDefaults.value(forKey: "saveToCameraRoll")
 		{
 			let valueString = value as! String
 			return valueString == "always"
@@ -49,8 +49,8 @@ class SettingsHelper: NSObject {
 	
 	class func shouldPrompt() -> Bool
 	{
-		let userDefaults = NSUserDefaults.standardUserDefaults()
-		if let value = userDefaults.valueForKey("saveToCameraRoll")
+		let userDefaults = UserDefaults.standard
+		if let value = userDefaults.value(forKey: "saveToCameraRoll")
 		{
 			let valueString = value as! String
 			return valueString == "prompt"

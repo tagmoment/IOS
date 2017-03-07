@@ -11,9 +11,9 @@ import Foundation
 class TimerHandler : NSObject{
 	var counting = false
 	weak var numberImageView : UIImageView?
-	var timer : NSTimer?
+	var timer : Timer?
 	
-	func applyCountDownEffectWithCount(count : Int, onView view : UIView)
+	func applyCountDownEffectWithCount(_ count : Int, onView view : UIView)
 	{
 		if counting
 		{
@@ -24,11 +24,11 @@ class TimerHandler : NSObject{
 		
 		let numberImage = UIImage(named: "\(count)")
 		let imageView = UIImageView(image: numberImage)
-		imageView.backgroundColor = UIColor.clearColor()
+		imageView.backgroundColor = UIColor.clear
 		imageView.tag = count
 		numberImageView = imageView
 		view.pinSubViewToAllEdges(numberImageView!)
-		timer = NSTimer.scheduledTimerWithTimeInterval(0.8, target: self, selector: #selector(TimerHandler.timerInterval(_:)), userInfo: nil, repeats: false)
+		timer = Timer.scheduledTimer(timeInterval: 0.8, target: self, selector: #selector(TimerHandler.timerInterval(_:)), userInfo: nil, repeats: false)
 		
 		
 	}
@@ -39,7 +39,7 @@ class TimerHandler : NSObject{
 		numberImageView?.removeFromSuperview()
 		numberImageView = nil
 	}
-	func timerInterval(sender : AnyObject!)
+	func timerInterval(_ sender : AnyObject!)
 	{
 		numberImageView!.tag -= 1;
 		timer?.invalidate()
@@ -50,14 +50,14 @@ class TimerHandler : NSObject{
 			numberImageView!.removeFromSuperview()
 			numberImageView = nil
 			counting = !counting
-			let mainController = UIApplication.sharedApplication().delegate?.window!?.rootViewController! as! MainViewController
+			let mainController = UIApplication.shared.delegate?.window!?.rootViewController! as! MainViewController
 			mainController.captureButtonPressed()
 			return
 		}
 		
 		let numberImage = UIImage(named: "\(numberImageView!.tag)")
 		numberImageView?.image = numberImage
-		timer = NSTimer.scheduledTimerWithTimeInterval(0.8, target: self, selector: #selector(TimerHandler.timerInterval(_:)), userInfo: nil, repeats: false)
+		timer = Timer.scheduledTimer(timeInterval: 0.8, target: self, selector: #selector(TimerHandler.timerInterval(_:)), userInfo: nil, repeats: false)
 	}
 	
 	

@@ -10,7 +10,7 @@ class TMArtistFilter : TMAlphaFilterBase{
 		get
 		{
 			var filters = super.filtersProtected
-			filters.insert(CIFilter(name: "CIPhotoEffectTransfer")!, atIndex: 0)
+			filters.insert(CIFilter(name: "CIPhotoEffectTransfer")!, at: 0)
 			return filters
 		}
 	}

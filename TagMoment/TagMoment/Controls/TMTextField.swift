@@ -15,19 +15,19 @@ protocol TMTextFieldDelegate : UITextFieldDelegate
 
 
 class TMTextField: UITextField {
-	override func placeholderRectForBounds(bounds: CGRect) -> CGRect {
-		let rect =  self.rightViewRectForBounds(bounds)
-		return CGRectMake(bounds.origin.x + CGRectGetWidth(rect)/2, bounds.origin.y, bounds.width, bounds.height)
+	override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+		let rect =  self.rightViewRect(forBounds: bounds)
+		return CGRect(x: bounds.origin.x + rect.width/2, y: bounds.origin.y, width: bounds.width, height: bounds.height)
 	}
 	
-	override func textRectForBounds(bounds: CGRect) -> CGRect {
-		let rect =  self.rightViewRectForBounds(bounds)
-		return CGRectMake(bounds.origin.x + CGRectGetWidth(rect)/2, bounds.origin.y, bounds.width, bounds.height)
+	override func textRect(forBounds bounds: CGRect) -> CGRect {
+		let rect =  self.rightViewRect(forBounds: bounds)
+		return CGRect(x: bounds.origin.x + rect.width/2, y: bounds.origin.y, width: bounds.width, height: bounds.height)
 	}
 	
-	override func editingRectForBounds(bounds: CGRect) -> CGRect {
-		let rect =  self.rightViewRectForBounds(bounds)
-		return CGRectMake(bounds.origin.x + CGRectGetWidth(rect)/2, bounds.origin.y, bounds.width, bounds.height)
+	override func editingRect(forBounds bounds: CGRect) -> CGRect {
+		let rect =  self.rightViewRect(forBounds: bounds)
+		return CGRect(x: bounds.origin.x + rect.width/2, y: bounds.origin.y, width: bounds.width, height: bounds.height)
 	}
 	
 	override func deleteBackward() {
@@ -39,13 +39,13 @@ class TMTextField: UITextField {
 		super.deleteBackward()
 	}
 	
-	override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
-		UIMenuController.sharedMenuController().menuVisible = false
+	override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+		UIMenuController.shared.isMenuVisible = false
 		return false;
 	}
 	
-	override func caretRectForPosition(position: UITextPosition) -> CGRect {
-		return super.caretRectForPosition(self.endOfDocument)
+	override func caretRect(for position: UITextPosition) -> CGRect {
+		return super.caretRect(for: self.endOfDocument)
 	}
 	
 }

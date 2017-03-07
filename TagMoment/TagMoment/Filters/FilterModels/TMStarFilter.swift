@@ -14,7 +14,7 @@ class TMStarFilter : TMAlphaFilterBase{
 		get
 		{
 			var filters = super.filtersProtected
-			filters.insert(CIFilter(name: "CIColorControls")!, atIndex: 0)
+			filters.insert(CIFilter(name: "CIColorControls")!, at: 0)
 			return filters
 
 		}
@@ -29,7 +29,7 @@ class TMStarFilter : TMAlphaFilterBase{
 		self.displayName = "Wish"
 	}
 	
-	override func applyFilterValue(value : Float)
+	override func applyFilterValue(_ value : Float)
 	{
 		let defaultParams = self.constantParams[self.filters[0].name];
 		for param in defaultParams!
@@ -41,12 +41,12 @@ class TMStarFilter : TMAlphaFilterBase{
 		
 		
 	}
-	override func createConstantFilterParameters(inout outParams : [String : [FilterParameterProtocol]])
+	override func createConstantFilterParameters(_ outParams : inout [String : [FilterParameterProtocol]])
 	{
 		var colorControlsfilterParams = [FilterParameterProtocol]()
-		colorControlsfilterParams.append(FilterConstantParameter(key: "inputSaturation", constant: Float(0.64)))
-		colorControlsfilterParams.append(FilterConstantParameter(key: "inputBrightness", constant: Float(0.2)))
-		colorControlsfilterParams.append(FilterConstantParameter(key: "inputContrast", constant: Float(1.88)))
+		colorControlsfilterParams.append(FilterConstantParameter(key: "inputSaturation", constant: Float(0.64) as AnyObject))
+		colorControlsfilterParams.append(FilterConstantParameter(key: "inputBrightness", constant: Float(0.2) as AnyObject))
+		colorControlsfilterParams.append(FilterConstantParameter(key: "inputContrast", constant: Float(1.88) as AnyObject))
 		outParams.updateValue(colorControlsfilterParams, forKey: self.filters[0].name)
 	}
 	

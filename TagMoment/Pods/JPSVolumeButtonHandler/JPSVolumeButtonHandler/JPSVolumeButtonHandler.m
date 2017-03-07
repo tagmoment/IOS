@@ -21,6 +21,9 @@ static CGFloat minVolume                    = 0.00001f;
 @property (nonatomic, strong) AVAudioSession * session;
 @property (nonatomic, strong) MPVolumeView   * volumeView;
 @property (nonatomic, assign) BOOL             appIsActive;
+@property (nonatomic, assign) BOOL             isStarted;
+@property (nonatomic, assign) BOOL             disableSystemVolumeHandler;
+@property (nonatomic, assign) BOOL             isAdjustingInitialVolume;
 
 @end
 
@@ -30,20 +33,39 @@ static CGFloat minVolume                    = 0.00001f;
 
 - (id)init {
     self = [super init];
+    
     if (self) {
         _appIsActive = YES;
-        [self setupSession];
-        [self disableVolumeHUD];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidChangeActive:) name:UIApplicationWillResignActiveNotification object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidChangeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
+        _sessionCategory = AVAudioSessionCategoryPlayAndRecord;
 
-        [self updateInitialVolumeWithDelay];
+        _volumeView = [[MPVolumeView alloc] initWithFrame:CGRectMake(MAXFLOAT, MAXFLOAT, 0, 0)];
+
+        [[UIApplication sharedApplication].windows.firstObject addSubview:_volumeView];
+        
+        _volumeView.hidden = YES;
     }
     return self;
 }
 
 - (void)dealloc {
+    if (_isStarted) {
+        [self stopHandler];
+        [self.volumeView removeFromSuperview];
+    }
+}
+
+- (void)startHandler:(BOOL)disableSystemVolumeHandler {
+    self.isStarted = YES;
+    self.volumeView.hidden = NO; // Start visible to prevent changes made during setup from showing default volume
+    self.disableSystemVolumeHandler = disableSystemVolumeHandler;
+
+    // There is a delay between setting the volume view before the system actually disables the HUD
+    [self performSelector:@selector(setupSession) withObject:nil afterDelay:1];
+}
+
+- (void)stopHandler {
+    self.isStarted = NO;
+    self.volumeView.hidden = YES;
     // https://github.com/jpsim/JPSVolumeButtonHandler/issues/11
     // http://nshipster.com/key-value-observing/#safe-unsubscribe-with-@try-/-@catch
     @try {
@@ -52,13 +74,21 @@ static CGFloat minVolume                    = 0.00001f;
     @catch (NSException * __unused exception) {
     }
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [self.volumeView removeFromSuperview];
 }
 
 - (void)setupSession {
+    if (!self.isStarted) {
+        // Has since been stopped, do not actually do the setup.
+        return;
+    }
+
     NSError *error = nil;
     self.session = [AVAudioSession sharedInstance];
-    [self.session setCategory:AVAudioSessionCategoryPlayback withOptions:AVAudioSessionCategoryOptionMixWithOthers error:&error];
+    // this must be done before calling setCategory or else the initial volume is reset
+    [self setInitialVolume];
+    [self.session setCategory:_sessionCategory
+                  withOptions:AVAudioSessionCategoryOptionMixWithOthers
+                        error:&error];
     if (error) {
         NSLog(@"%@", error);
         return;
@@ -74,13 +104,24 @@ static CGFloat minVolume                    = 0.00001f;
                    forKeyPath:sessionVolumeKeyPath
                       options:(NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew)
                       context:sessionContext];
-    
+
     // Audio session is interrupted when you send the app to the background,
     // and needs to be set to active again when it goes to app goes back to the foreground
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(audioSessionInterrupted:)
                                                  name:AVAudioSessionInterruptionNotification
                                                object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationDidChangeActive:)
+                                                 name:UIApplicationWillResignActiveNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(applicationDidChangeActive:)
+                                                 name:UIApplicationDidBecomeActiveNotification
+                                               object:nil];
+
+    self.volumeView.hidden = !self.disableSystemVolumeHandler;
 }
 
 - (void)audioSessionInterrupted:(NSNotification*)notification {
@@ -106,35 +147,23 @@ static CGFloat minVolume                    = 0.00001f;
     }
 }
 
-- (void)disableVolumeHUD {
-    self.volumeView = [[MPVolumeView alloc] initWithFrame:CGRectMake(MAXFLOAT, MAXFLOAT, 0, 0)];
-    [[[[UIApplication sharedApplication] windows] firstObject] addSubview:self.volumeView];
-}
-
-- (void)updateInitialVolumeWithDelay {
-    // Wait for the volume view to be ready before setting the volume to avoid showing the HUD
-    double delayInSeconds = 0.1f;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [self setInitialVolume];
-    });
-}
-    
 - (void)setInitialVolume {
     self.initialVolume = self.session.outputVolume;
     if (self.initialVolume > maxVolume) {
         self.initialVolume = maxVolume;
+        self.isAdjustingInitialVolume = YES;
         [self setSystemVolume:self.initialVolume];
     } else if (self.initialVolume < minVolume) {
         self.initialVolume = minVolume;
+        self.isAdjustingInitialVolume = YES;
         [self setSystemVolume:self.initialVolume];
     }
 }
 
 - (void)applicationDidChangeActive:(NSNotification *)notification {
     self.appIsActive = [notification.name isEqualToString:UIApplicationDidBecomeActiveNotification];
-    if (self.appIsActive) {
-        [self updateInitialVolumeWithDelay];
+    if (self.appIsActive && self.isStarted) {
+        [self setInitialVolume];
     }
 }
 
@@ -160,10 +189,16 @@ static CGFloat minVolume                    = 0.00001f;
         
         CGFloat newVolume = [change[NSKeyValueChangeNewKey] floatValue];
         CGFloat oldVolume = [change[NSKeyValueChangeOldKey] floatValue];
-        
-        if (newVolume == self.initialVolume) {
+
+        if (self.disableSystemVolumeHandler && newVolume == self.initialVolume) {
             // Resetting volume, skip blocks
             return;
+        } else if (self.isAdjustingInitialVolume) {
+            if (newVolume == maxVolume || newVolume == minVolume) {
+                // Sometimes when setting initial volume during setup the callback is triggered incorrectly
+                return;
+            }
+            self.isAdjustingInitialVolume = NO;
         }
         
         if (newVolume > oldVolume) {
@@ -171,7 +206,12 @@ static CGFloat minVolume                    = 0.00001f;
         } else {
             if (self.downBlock) self.downBlock();
         }
-        
+
+        if (!self.disableSystemVolumeHandler) {
+            // Don't reset volume if default handling is enabled
+            return;
+        }
+
         // Reset volume
         [self setSystemVolume:self.initialVolume];
     } else {

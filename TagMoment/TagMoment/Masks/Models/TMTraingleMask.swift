@@ -15,13 +15,13 @@ class TMTraingleMask: TMMask {
 		self.workingBounds = rect
 	}
 	
-	func clippingPathWithRect(bounds: CGRect) -> CGPath {
+	func clippingPathWithRect(_ bounds: CGRect) -> CGPath {
 		let somepath = UIBezierPath()
-		somepath.moveToPoint(CGPoint(x: workingBounds.width,y: 0.0))
-		somepath.addLineToPoint(CGPoint(x: workingBounds.width,y: workingBounds.height))
-		somepath.addLineToPoint(CGPoint(x: 0.0, y: workingBounds.height))
-		somepath.closePath()
-		return somepath.CGPath
+		somepath.move(to: CGPoint(x: workingBounds.width,y: 0.0))
+		somepath.addLine(to: CGPoint(x: workingBounds.width,y: workingBounds.height))
+		somepath.addLine(to: CGPoint(x: 0.0, y: workingBounds.height))
+		somepath.close()
+		return somepath.cgPath
 	}
 	
 	var cameraBounds : CGRect{

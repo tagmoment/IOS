@@ -12,20 +12,20 @@ let CachedImagePathKey = "cachedImagePathKey"
 class FileHandlingService
 {
 	
-	class func SaveImageToDisk(image: UIImage, postfix : String = "jpeg", shouldSavePath : Bool = true)
+	class func SaveImageToDisk(_ image: UIImage, postfix : String = "jpeg", shouldSavePath : Bool = true)
 	{
 		let imageData = UIImageJPEGRepresentation(image, 0.8)
 		
-		let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true);
+		let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true);
 		let documentsDirectory = paths[0] 
 		let imagePath = documentsDirectory + "/ShareMe." + postfix
 		
-		let filemanager = NSFileManager.defaultManager()
+		let filemanager = FileManager.default
 		var error : NSError?
-		if (filemanager.fileExistsAtPath(imagePath))
+		if (filemanager.fileExists(atPath: imagePath))
 		{
 			do {
-				try filemanager.removeItemAtPath(imagePath)
+				try filemanager.removeItem(atPath: imagePath)
 			} catch let error1 as NSError {
 				error = error1
 				print("Error removing file: \(error?.localizedDescription)")
@@ -35,10 +35,10 @@ class FileHandlingService
 		if let imageData = imageData
 		{
 			do {
-				try imageData.writeToFile(imagePath, options: NSDataWritingOptions.DataWritingFileProtectionNone)
+				try imageData.write(to: URL(fileURLWithPath: imagePath), options: NSData.WritingOptions.noFileProtection)
 				if (shouldSavePath)
 				{
-					NSUserDefaults.standardUserDefaults().setObject(imagePath, forKey: CachedImagePathKey)
+					UserDefaults.standard.set(imagePath, forKey: CachedImagePathKey)
 					print("the cachedImagedPath is %@",imagePath, terminator: "")
 				}
 			} catch let error1 as NSError {
@@ -50,7 +50,7 @@ class FileHandlingService
 
 	}
 	
-	class func SaveImageToSources(image: UIImage)
+	class func SaveImageToSources(_ image: UIImage)
 	{
 		SaveImageToDisk(image)
 		SaveImageToDisk(image, postfix: "igo", shouldSavePath: false)
@@ -59,14 +59,14 @@ class FileHandlingService
 	
 	class func InstagrameFilePath() -> String
 	{
-		let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true);
+		let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true);
 		let documentsDirectory = paths[0] 
 		return documentsDirectory + "/ShareMe.igo"
 	}
 	
 	class func WhatsappFilePath() -> String
 	{
-		let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true);
+		let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true);
 		let documentsDirectory = paths[0] 
 		return documentsDirectory + "/ShareMe.wai"
 	}

@@ -14,23 +14,23 @@ class TMMaskViewModel: NSObject, NSCoding {
 	var name: String?
 	var hasOneCapture : Bool
 	
-	private let NameKey = "NameKey"
-	private let OneCaptureKey = "OneCaptureKey"
+	fileprivate let NameKey = "NameKey"
+	fileprivate let OneCaptureKey = "OneCaptureKey"
 	
 	required init?(coder aDecoder: NSCoder) {
-		if let name = aDecoder.decodeObjectForKey(NameKey) as? String
+		if let name = aDecoder.decodeObject(forKey: NameKey) as? String
 		{
 			self.name = name
 		}
 		
-		self.hasOneCapture = aDecoder.decodeBoolForKey(OneCaptureKey)
+		self.hasOneCapture = aDecoder.decodeBool(forKey: OneCaptureKey)
 	}
 
-	func encodeWithCoder(aCoder: NSCoder) {
+	func encode(with aCoder: NSCoder) {
 		if let name = self.name
 		{
-			aCoder.encodeObject(name, forKey: NameKey)
-			aCoder.encodeBool(hasOneCapture, forKey: OneCaptureKey)
+			aCoder.encode(name, forKey: NameKey)
+			aCoder.encode(hasOneCapture, forKey: OneCaptureKey)
 		}
 	}
 	init(name: String){

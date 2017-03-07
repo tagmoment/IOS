@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0730"
+   LastUpgradeVersion = "0820"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FBBEF6AA8E8483FE9C432B16A32B8362"
+               BlueprintIdentifier = "70EB0B28D7F74F0E5C036BACAD6DE994"
                BuildableName = "Cloudinary.framework"
                BlueprintName = "Cloudinary"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FBBEF6AA8E8483FE9C432B16A32B8362"
+            BlueprintIdentifier = "70EB0B28D7F74F0E5C036BACAD6DE994"
             BuildableName = "Cloudinary.framework"
             BlueprintName = "Cloudinary"
             ReferencedContainer = "container:Pods.xcodeproj">
